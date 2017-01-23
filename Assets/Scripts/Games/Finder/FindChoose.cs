@@ -36,6 +36,8 @@ public class FindChoose : MonoBehaviour {
 
 	}
 	void Update(){
+		if (GameController.Instance.IsStartMenuActive)
+			return;
 
 		time += timeAmount * Time.deltaTime;
 

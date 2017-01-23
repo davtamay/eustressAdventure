@@ -38,18 +38,16 @@ public class InfoBubble : MonoBehaviour {
 
 		switch (infoType) {
 
-			case InfoType.INTRO:
+		case InfoType.INTRO:
 
-			if (firstRunIntro== false) {
+			if (firstRunIntro == false) {
 				firstRunIntro = true;
-				StartCoroutine (OnUpdate());
+				StartCoroutine (OnUpdate ());
 
-			} else
+			} else {
 				transform.parent.gameObject.SetActive (false);
-
-			
-			GameController.Instance.IsInfoBubbleActive = false;
-
+				GameController.Instance.IsInfoBubbleActive = false;
+			}
 			break;
 
 			case InfoType.STRESS_MENU:
@@ -57,11 +55,10 @@ public class InfoBubble : MonoBehaviour {
 			if (firstRunStressMenu == false) {
 				firstRunStressMenu = true;
 				StartCoroutine (OnUpdate());
-			} else
+			} else{
 				transform.parent.gameObject.SetActive (false);
-
-			
-			GameController.Instance.IsInfoBubbleActive = false;
+				GameController.Instance.IsInfoBubbleActive = false;
+			}
 			break;
 
 			case InfoType.GAME_MENU:
@@ -69,11 +66,10 @@ public class InfoBubble : MonoBehaviour {
 			if (firstRunGameMenu == false) {
 				firstRunGameMenu = true;
 				StartCoroutine (OnUpdate());
-			} else
+			} else{
 				transform.parent.gameObject.SetActive (false);
-
-			
-			GameController.Instance.IsInfoBubbleActive =false;
+				GameController.Instance.IsInfoBubbleActive = false;
+			}
 			break;
 		}
 
