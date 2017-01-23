@@ -33,7 +33,7 @@ public class GTDEnemyRotate : MonoBehaviour {
 			timer += Time.deltaTime;
 			transform.LookAt(player.position);
 			if (timer > bulletDelay) {
-				BulletManager.BulletPosition (transform.TransformPoint (Vector3.forward * 1.5f), Quaternion.LookRotation (player.transform.position - transform.position), 0.3f);
+				BulletManager.BulletPosition (transform.TransformPoint (Vector3.forward * 1.5f), Quaternion.LookRotation (player.transform.position - transform.position), 0.3f,1);
 				timer = 0;
 
 			}
@@ -46,7 +46,8 @@ public class GTDEnemyRotate : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 
-		if (other.transform.CompareTag ("Bullet")) {
+		if (other.transform.GetComponent<BulletControll>().bulletID == 0)  {
+			other.gameObject.SetActive (false);
 			Destroy (gameObject);
 			PlayerManager.Instance.points = 1;
 		}

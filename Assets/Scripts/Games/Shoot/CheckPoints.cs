@@ -22,8 +22,29 @@ public class CheckPoints : MonoBehaviour {
 		if (other.transform.CompareTag("Player")){
 			if (string.Equals ("1a", checkPointName, System.StringComparison.CurrentCultureIgnoreCase))
 				StartCoroutine (spawnWave ()); 
-			if (string.Equals ("1b", checkPointName, System.StringComparison.CurrentCultureIgnoreCase))
+			else if (string.Equals ("1b", checkPointName, System.StringComparison.CurrentCultureIgnoreCase))
 				StartCoroutine (spawnWave ()); 
+			else if (string.Equals ("1c", checkPointName, System.StringComparison.CurrentCultureIgnoreCase))
+				StartCoroutine (spawnWave ()); 
+			else if (string.Equals ("1d", checkPointName, System.StringComparison.CurrentCultureIgnoreCase))
+				StartCoroutine (spawnWave ()); 
+			else if (string.Equals ("2a", checkPointName, System.StringComparison.CurrentCultureIgnoreCase))
+				StartCoroutine (spawnWave ()); 
+			else if (string.Equals ("2b", checkPointName, System.StringComparison.CurrentCultureIgnoreCase))
+				StartCoroutine (spawnWave ()); 
+			else if (string.Equals ("2c", checkPointName, System.StringComparison.CurrentCultureIgnoreCase))
+				StartCoroutine (spawnWave ()); 
+			else if (string.Equals ("2d", checkPointName, System.StringComparison.CurrentCultureIgnoreCase))
+				StartCoroutine (spawnWave ());
+			else if (string.Equals ("3a", checkPointName, System.StringComparison.CurrentCultureIgnoreCase))
+				StartCoroutine (spawnWave ()); 
+			else if (string.Equals ("3b", checkPointName, System.StringComparison.CurrentCultureIgnoreCase))
+				StartCoroutine (spawnWave ()); 
+			else if (string.Equals ("3c", checkPointName, System.StringComparison.CurrentCultureIgnoreCase))
+				StartCoroutine (spawnWave ()); 
+			else if (string.Equals ("3d", checkPointName, System.StringComparison.CurrentCultureIgnoreCase))
+				StartCoroutine (spawnWave ());
+
 		
 		
 

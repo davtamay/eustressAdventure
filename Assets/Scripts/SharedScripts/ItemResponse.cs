@@ -88,7 +88,7 @@ public class ItemResponse : MonoBehaviour {
 
 		}else if (other.CompareTag ("Bullet")) {
 		
-			Destroy (this.gameObject);
+			other.gameObject.SetActive (false);
 		
 		
 		

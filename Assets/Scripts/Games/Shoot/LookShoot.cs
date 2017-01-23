@@ -5,7 +5,7 @@ public class LookShoot : MonoBehaviour {
 
 	private Camera cam;
 
-	[SerializeField]private float delayShoot;
+	public static float delayShoot = 0.8f;
 
 
 
@@ -21,12 +21,24 @@ public class LookShoot : MonoBehaviour {
 			yield return new WaitForSeconds (delayShoot);
 
 
-			BulletManager.BulletPosition (cam.transform.TransformPoint (Vector3.forward * 1.8f), cam.transform.rotation, 1);
+			BulletManager.BulletPosition (cam.transform.TransformPoint (Vector3.forward * 1.8f), cam.transform.rotation, 1, 0);
 
 
 		}
 
+	
 
 	}
+	//void OnCollisionEnter(Collision other){
+
+	//	if (other.transform.GetComponent<BulletControll> ().bulletID == 1) {
+	//		other.gameObject.SetActive (false);
+	//		PlayerManager.Instance.points = -1;
+
+	//	}
+
+	
+	
+//	}
 
 }

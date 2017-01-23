@@ -21,6 +21,8 @@ public class ButtonPopUp : MonoBehaviour {
 	public float sweepRate = 100.0f;
 	private float previousCameraAngle;
 
+	private bool clicker;
+
 
 
 
@@ -45,6 +47,12 @@ public class ButtonPopUp : MonoBehaviour {
 	
 
 	}
+
+	void OnEnable(){
+		MagnetSensor.OnCardboardTrigger += OpenMenuClicker;
+	
+	
+	}
 	void Start(){
 		myRectTransform.position =  (Vector3.down * 100);
 
@@ -61,6 +69,9 @@ public class ButtonPopUp : MonoBehaviour {
 			//myRectTransform.localPosition = cam.transform.rotation * (Vector3.back * 10);
 			yield return null;
 
+
+#if (!UNITY_ANDROID || !Unity_IPhone)
+		
 
 		isFacingDown = DetectFacingDown ();
 		isMovingDown = DetectMovingDown ();
@@ -93,10 +104,36 @@ public class ButtonPopUp : MonoBehaviour {
 				stressMenuRectTransform.localRotation = Quaternion.LookRotation (stressMenuRectTransform.position - cam.transform.position);
 		
 		}
+			}
+#endif
+	}
+
+
+	void OpenMenuClicker(){
+
+		isMenuShowing = true;
+		GameController.Instance.SetMenuActive ();
+		GameController.Instance.Paused = true;
+		foreach (Camera c in cameras) {
+
+			c.cullingMask = 1 << 5;
+
+		}
+		myRectTransform.localPosition = cam.transform.rotation * (Vector3.forward*2.5f);
+
+
+		myRectTransform.rotation = Quaternion.LookRotation (myRectTransform.position - cam.transform.position);
+		stressMenuRectTransform.localPosition =  cam.transform.rotation * (( stressMStartingPos - Vector3.forward *5) + Vector3.up *5);
+		stressMenuRectTransform.localRotation = Quaternion.LookRotation (stressMenuRectTransform.position - cam.transform.position);
+	}
+
+
+	private void OnDisable(){
+
+		MagnetSensor.OnCardboardTrigger -= OpenMenuClicker;
+
 
 	}
-	}
-
 	public void HideDButton(){
 		isMenuShowing = false;
 
@@ -125,4 +162,6 @@ public class ButtonPopUp : MonoBehaviour {
 		return (rate >= sweepRate);
 	
 	}
+
+
 }

@@ -43,15 +43,20 @@ public class BulletManager : MonoBehaviour {
 			yield return null;
 		}
 	}
-
-	public static Transform BulletPosition(Vector3 pos, Quaternion dir, float speed){
+	//ID : Player = 0, Enemy = 1;
+	public static Transform BulletPosition(Vector3 pos, Quaternion dir, float speed, int iD){
 
 		Transform spawnedPrefab = Instance.queue.Dequeue ();
-	
+		while (spawnedPrefab == null)
+			spawnedPrefab = Instance.queue.Dequeue ();
 
 		spawnedPrefab.gameObject.SetActive (true);
 
-		spawnedPrefab.GetComponent<BulletControll> ().bulletSpeed = speed;
+		BulletControll bulletControll = spawnedPrefab.GetComponent<BulletControll> ();
+		bulletControll.bulletSpeed = speed;
+		bulletControll.bulletID = iD;
+
+	
 		spawnedPrefab.rotation = dir;
 		spawnedPrefab.position = pos; 
 		 

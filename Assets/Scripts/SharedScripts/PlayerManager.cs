@@ -30,6 +30,7 @@ public class PlayerManager : MonoBehaviour {
 		health = 0;
 		points = 0;
 
+		healthColorIndicator = GameObject.FindWithTag ("UIColor").GetComponent<Image>();
 		curSceneName = SceneController.Instance.GetCurrentSceneName ();
 
 	}
@@ -86,7 +87,7 @@ public class PlayerManager : MonoBehaviour {
 
 	void Start(){
 
-		healthColorIndicator = GameObject.FindWithTag ("UIColor").GetComponent<Image>();
+		//healthColorIndicator = GameObject.FindWithTag ("UIColor").GetComponent<Image>();
 
 
 		healthColorIndicator.color = healthColor;

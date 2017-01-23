@@ -4,7 +4,9 @@ using System.Collections;
 public class BulletControll : MonoBehaviour {
 
 	public float bulletSpeed;
-	public float timeUntilOnDisabled;
+	public int bulletID;
+	[SerializeField]private float timeUntilOnDisabled;
+
 
 	//public Rigidbody myRigidBody;
 

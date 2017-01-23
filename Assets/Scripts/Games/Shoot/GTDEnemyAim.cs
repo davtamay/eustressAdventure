@@ -26,9 +26,9 @@ public class GTDEnemyAim : MonoBehaviour {
 
 
 			if (!isDirectShoot) 
-				BulletManager.BulletPosition (transform.TransformPoint (Vector3.forward * 1.5f), Quaternion.LookRotation (playerTarget.transform.position - transform.position),0.3f );
+				BulletManager.BulletPosition (transform.TransformPoint (Vector3.forward * 1.5f), Quaternion.LookRotation (playerTarget.transform.position - transform.position),0.3f,1 );
 			else
-				BulletManager.BulletPosition (transform.TransformPoint (Vector3.forward * 1f), transform.rotation, 0.3f);
+				BulletManager.BulletPosition (transform.TransformPoint (Vector3.forward * 1f), transform.rotation, 0.3f,1);
 		}
 	} 
 
@@ -37,7 +37,8 @@ public class GTDEnemyAim : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 	
-		if (other.transform.CompareTag ("Bullet")) {
+		if (other.transform.GetComponent<BulletControll>().bulletID == 0) {
+			other.gameObject.SetActive (false);
 			Destroy (gameObject);
 			PlayerManager.Instance.points = 1;
 		}
