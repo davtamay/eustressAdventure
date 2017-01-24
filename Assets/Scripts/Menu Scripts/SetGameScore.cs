@@ -29,6 +29,25 @@ public class SetGameScore : MonoBehaviour {
 			curText.text = "HighScore: " + HighScoreManager.Instance.LoadCollectionsScore();
 			break;
 
+		case Game.WACK:
+			curText.text = "HighScore: " + HighScoreManager.Instance.LoadWackScore();
+			break;
+		case Game.MATCH:
+			curText.text = "HighScore: " + HighScoreManager.Instance.LoadMatchScore();
+			break;
+
+		case Game.SHOOT:
+			curText.text = "HighScore: " + HighScoreManager.Instance.LoadShootScore();
+			break;
+
+		case Game.HIT:
+			curText.text = "HighScore: " + HighScoreManager.Instance.LoadHitScore();
+			break;
+
+		case Game.HOOP:
+			curText.text = "HighScore: " + HighScoreManager.Instance.LoadHoopScore();
+			break;
+
 
 		
 		

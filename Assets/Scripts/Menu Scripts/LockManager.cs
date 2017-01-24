@@ -42,9 +42,32 @@ public class LockManager : MonoBehaviour {
 				game.gameObject.SetActive (false);
 
 				break;
+		
+		case Game.COLLECTIONS:
+			break;
+		case Game.FINDER:
+			break;
+		case Game.HIT:
+			break;
+		case Game.MATCH:
+			break;
+		case Game.WACK:
+			break;
+		case Game.SHOOT:
+			break;
+		case Game.HOOP:
+			break;
+
 
 		}
 
+	}
+	void CheckLock(){
+	
+	
+	
+	
+	
 	}
 	//static may turn everything off since it is only one instance;
 	/*public static void CheckLock(Game curGame){

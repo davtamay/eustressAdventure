@@ -172,11 +172,11 @@ public class WackLookClick : MonoBehaviour {
 		string moleType = mole.GetComponent<MoleType> ().moleDescription;
 
 		if(string.Equals ("Mole", moleType, System.StringComparison.CurrentCultureIgnoreCase))
-			WackGameManager.Instance.points = 1;
+			PlayerManager.Instance.points = 1;
 		else if (string.Equals ("Cloud", moleType, System.StringComparison.CurrentCultureIgnoreCase))
-			WackGameManager.Instance.points = 3;
+			PlayerManager.Instance.points = 3;
 		else if (string.Equals ("Mole", moleType, System.StringComparison.CurrentCultureIgnoreCase))
-			WackGameManager.Instance.points = 5;
+			PlayerManager.Instance.points = 5;
 
 	
 		yield return null;

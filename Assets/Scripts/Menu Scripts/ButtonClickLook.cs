@@ -35,7 +35,7 @@ public class ButtonClickLook : MonoBehaviour {
 	public enum Stressed{yes,no};
 	public enum StressTypes{angry, anxious, dissapointed, frustrated, sad, worried, none};
 	public enum MenuCoping {breathing, counting, refraiming, music,paint, none};
-	public enum Games{skyjumper, collections, hit, finder, match, wack, hoops, getThemDown, none};
+	public enum Games{skyjumper, collections, hit, finder, match, wack, hoops, shoot, none};
 
 	public enum MusicPlayerButton{play,stop,next,previous, none}
 
@@ -185,7 +185,11 @@ public class ButtonClickLook : MonoBehaviour {
 				SceneController.Instance.ChangeSkyBox ();
 
 			} else if (isBackButton) {
-				
+
+
+				if (PlayerManager.Instance != null && HighScoreManager.Instance != null) {
+					HighScoreManager.Instance.CheckHighScore (SceneController.Instance.GetCurrentSceneName(), PlayerManager.Instance.points);
+				}
 				SceneController.Instance.ResetGame ("Intro");
 			
 			}else if (isStartButton) {
@@ -328,8 +332,8 @@ public class ButtonClickLook : MonoBehaviour {
 					SceneController.Instance.Load ("Hoops");
 					break;
 
-				case Games.getThemDown:
-					SceneController.Instance.Load ("GetThemDown");
+				case Games.shoot:
+					SceneController.Instance.Load ("Shoot");
 					break;
 				}
 

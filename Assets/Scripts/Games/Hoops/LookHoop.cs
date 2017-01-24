@@ -43,6 +43,9 @@ public class LookHoop : MonoBehaviour {
 
 	void Update () {
 
+		if (GameController.Instance.IsStartMenuActive)
+			return;
+
 		focusDial.fillAmount = 1;
 
 		if (DetectFocus ()) {

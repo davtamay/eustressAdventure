@@ -20,7 +20,7 @@ public class LookSelect : MonoBehaviour {
 	public Text coinText;
 
 
-	private int _points;
+/*	private int _points;
 	public int points{
 		get{return _points;}
 
@@ -28,7 +28,7 @@ public class LookSelect : MonoBehaviour {
 			_points += value;
 			coinText.text += _points.ToString();  }
 
-	}
+	}*/
 
 
 
@@ -149,7 +149,8 @@ public class LookSelect : MonoBehaviour {
 
 			spawnedCards -= 2;
 
-			points = 1;
+			PlayerManager.Instance.points = 1;
+		//	points = 1;
 
 			particles.Play();
 			yield return new WaitForSeconds (3);

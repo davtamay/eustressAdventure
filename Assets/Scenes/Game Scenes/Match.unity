@@ -4288,6 +4288,7 @@ GameObject:
   - component: {fileID: 283576836}
   - component: {fileID: 283576838}
   - component: {fileID: 283576837}
+  - component: {fileID: 283576839}
   m_Layer: 0
   m_Name: HighScoreText
   m_TagString: Untagged
@@ -4352,6 +4353,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 283576835}
+--- !u!114 &283576839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 283576835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb21c48e8c604e978cc52be22ea42b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curGame: 3
 --- !u!1 &317275899
 GameObject:
   m_ObjectHideFlags: 0
@@ -4478,6 +4491,54 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 327982533}
+--- !u!1 &436056031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 436056032}
+  - component: {fileID: 436056033}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &436056032
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 436056031}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1106064982}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &436056033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 436056031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28dded03a7bb4a83961873fc3594c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  addHealthColor: {r: 0, g: 0, b: 0, a: 0}
+  healthColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
+  armorTime: 0
+  coinText: {fileID: 1878505367}
+  isInvulnerable: 0
 --- !u!1 &472187297
 GameObject:
   m_ObjectHideFlags: 0
@@ -5225,6 +5286,7 @@ GameObject:
   - component: {fileID: 856409633}
   - component: {fileID: 856409636}
   - component: {fileID: 856409634}
+  - component: {fileID: 856409637}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -5394,6 +5456,18 @@ MonoBehaviour:
   isMedium: 0
   isHard: 0
   cardObjects: []
+--- !u!114 &856409637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 856409632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811cd7bd0639d4e66b204fa38c05bc83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highScore: 0
 --- !u!1 &924051622
 GameObject:
   m_ObjectHideFlags: 0
@@ -6125,8 +6199,8 @@ Transform:
   - {fileID: 648711606}
   - {fileID: 40149300}
   - {fileID: 1321811525}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 436056032}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1117688770
 GameObject:

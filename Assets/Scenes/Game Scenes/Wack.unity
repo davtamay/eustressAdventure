@@ -4466,7 +4466,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &134145757
 GameObject:
@@ -7277,7 +7277,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400004, guid: b8b03d395f5734e98af91ccf44f9bf47, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 402317139}
-  m_LocalRotation: {x: 0.10192446, y: 0, z: 0, w: 0.99479216}
+  m_LocalRotation: {x: 0.10192446, y: -0, z: -0, w: 0.99479216}
   m_LocalPosition: {x: 0, y: 1.69, z: 107.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7286,8 +7286,8 @@ Transform:
   - {fileID: 280474283}
   - {fileID: 1803443255}
   - {fileID: 1945844336}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 1693879039}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 11.7, y: 0, z: 0}
 --- !u!1 &403461794
 GameObject:
@@ -39092,6 +39092,54 @@ Transform:
   m_Father: {fileID: 1007188015}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1693879038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1693879039}
+  - component: {fileID: 1693879040}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1693879039
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1693879038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 402317141}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1693879040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1693879038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28dded03a7bb4a83961873fc3594c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  addHealthColor: {r: 0, g: 0, b: 0, a: 0}
+  healthColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
+  armorTime: 0
+  coinText: {fileID: 1456918898}
+  isInvulnerable: 0
 --- !u!1 &1714377076
 GameObject:
   m_ObjectHideFlags: 0
@@ -43601,6 +43649,7 @@ GameObject:
   - component: {fileID: 2113006454}
   - component: {fileID: 2113006456}
   - component: {fileID: 2113006455}
+  - component: {fileID: 2113006457}
   m_Layer: 0
   m_Name: HighScoreText
   m_TagString: Untagged
@@ -43665,6 +43714,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2113006453}
+--- !u!114 &2113006457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2113006453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb21c48e8c604e978cc52be22ea42b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curGame: 1
 --- !u!1 &2114457213
 GameObject:
   m_ObjectHideFlags: 0
@@ -43759,6 +43820,7 @@ GameObject:
   - component: {fileID: 2117696954}
   - component: {fileID: 2117696957}
   - component: {fileID: 2117696956}
+  - component: {fileID: 2117696958}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -43851,6 +43913,18 @@ MonoBehaviour:
   hardLevelTime: 20
   warningSign: {fileID: 597748442}
   coinText: {fileID: 1456918898}
+--- !u!114 &2117696958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2117696953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811cd7bd0639d4e66b204fa38c05bc83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highScore: 0
 --- !u!1 &2120207954
 GameObject:
   m_ObjectHideFlags: 0

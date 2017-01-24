@@ -1329,7 +1329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb21c48e8c604e978cc52be22ea42b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curGame: 0
+  curGame: 7
 --- !u!114 &381833136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3266,6 +3266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 800178970}
   - component: {fileID: 800178969}
+  - component: {fileID: 800178971}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -3297,6 +3298,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &800178971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 800178968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811cd7bd0639d4e66b204fa38c05bc83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highScore: 0
 --- !u!1 &809082494
 GameObject:
   m_ObjectHideFlags: 0
@@ -4967,7 +4980,7 @@ MonoBehaviour:
   notMovingSweepRate: 0
   currentLookHit: {x: 0, y: 0, z: 0}
   focusSweepRate: 2
-  slowSweepRate: 8
+  slowSweepRate: 6
   focusDial: {fileID: 0}
   isDialShown: 0
   focusTime: 0.8

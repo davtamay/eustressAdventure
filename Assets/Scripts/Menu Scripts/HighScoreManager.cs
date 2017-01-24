@@ -55,6 +55,57 @@ public class HighScoreManager : MonoBehaviour {
 			Writer.Close ();
 
 		}
+		string wackPath = Application.persistentDataPath + @"/wackScore.json";
+
+		if(!File.Exists(wackPath)){
+
+			StreamWriter Writer = new StreamWriter (wackPath);
+			Writer.WriteLine (JsonUtility.ToJson (this));
+			Writer.Close ();
+		}
+
+		string matchPath = Application.persistentDataPath + @"/matchScore.json";
+
+
+		if (!File.Exists(matchPath)) {
+
+			StreamWriter Writer = new StreamWriter (matchPath);
+			Writer.WriteLine (JsonUtility.ToJson (this));
+			Writer.Close ();
+
+		}
+
+		string shootPath = Application.persistentDataPath + @"/shootScore.json";
+
+
+		if (!File.Exists(shootPath)) {
+
+			StreamWriter Writer = new StreamWriter (shootPath);
+			Writer.WriteLine (JsonUtility.ToJson (this));
+			Writer.Close ();
+
+		}
+		string hitPath = Application.persistentDataPath + @"/hitScore.json";
+
+
+		if (!File.Exists(hitPath)) {
+
+			StreamWriter Writer = new StreamWriter (hitPath);
+			Writer.WriteLine (JsonUtility.ToJson (this));
+			Writer.Close ();
+
+		}
+
+		string hoopPath = Application.persistentDataPath + @"/hoopScore.json";
+
+
+		if (!File.Exists(hoopPath)) {
+
+			StreamWriter Writer = new StreamWriter (hoopPath);
+			Writer.WriteLine (JsonUtility.ToJson (this));
+			Writer.Close ();
+
+		}
 
 
 
@@ -154,6 +205,158 @@ public class HighScoreManager : MonoBehaviour {
 
 	}
 
+	public void SaveWackScore(int score){
+
+		string OutputPath = Application.persistentDataPath + @"/wackScore.json";
+
+		highScore = score;
+
+		StreamWriter Writer = new StreamWriter (OutputPath);
+		Writer.WriteLine (JsonUtility.ToJson (this));
+		Writer.Close();
+		Debug.Log("output to:" + OutputPath);
+	}
+
+	public int LoadWackScore (){
+
+		string InputPath = Application.persistentDataPath + @"/wackScore.json";
+
+		StreamReader Reader = new StreamReader (InputPath);
+		string JSonString = Reader.ReadToEnd ();
+		Debug.Log ("Reading:" + JSonString);
+		JsonUtility.FromJsonOverwrite (JSonString, this);
+		Reader.Close();
+
+		int HighScore = 0;
+
+		HighScore = highScore;
+
+		return HighScore;
+
+
+	}
+	public void SaveMatchScore(int score){
+
+		string OutputPath = Application.persistentDataPath + @"/matchScore.json";
+
+		highScore = score;
+
+		StreamWriter Writer = new StreamWriter (OutputPath);
+		Writer.WriteLine (JsonUtility.ToJson (this));
+		Writer.Close();
+		Debug.Log("output to:" + OutputPath);
+	}
+
+	public int LoadMatchScore (){
+
+		string InputPath = Application.persistentDataPath + @"/matchScore.json";
+
+		StreamReader Reader = new StreamReader (InputPath);
+		string JSonString = Reader.ReadToEnd ();
+		Debug.Log ("Reading:" + JSonString);
+		JsonUtility.FromJsonOverwrite (JSonString, this);
+		Reader.Close();
+
+		int HighScore = 0;
+
+		HighScore = highScore;
+
+		return HighScore;
+
+
+	}
+	public void SaveShootScore(int score){
+
+		string OutputPath = Application.persistentDataPath + @"/shootScore.json";
+
+		highScore = score;
+
+		StreamWriter Writer = new StreamWriter (OutputPath);
+		Writer.WriteLine (JsonUtility.ToJson (this));
+		Writer.Close();
+		Debug.Log("output to:" + OutputPath);
+	}
+
+	public int LoadShootScore (){
+
+		string InputPath = Application.persistentDataPath + @"/shootScore.json";
+
+		StreamReader Reader = new StreamReader (InputPath);
+		string JSonString = Reader.ReadToEnd ();
+		Debug.Log ("Reading:" + JSonString);
+		JsonUtility.FromJsonOverwrite (JSonString, this);
+		Reader.Close();
+
+		int HighScore = 0;
+
+		HighScore = highScore;
+
+		return HighScore;
+
+
+	}
+	public void SaveHitScore(int score){
+
+		string OutputPath = Application.persistentDataPath + @"/hitScore.json";
+
+		highScore = score;
+
+		StreamWriter Writer = new StreamWriter (OutputPath);
+		Writer.WriteLine (JsonUtility.ToJson (this));
+		Writer.Close();
+		Debug.Log("output to:" + OutputPath);
+	}
+
+	public int LoadHitScore (){
+
+		string InputPath = Application.persistentDataPath + @"/hitScore.json";
+
+		StreamReader Reader = new StreamReader (InputPath);
+		string JSonString = Reader.ReadToEnd ();
+		Debug.Log ("Reading:" + JSonString);
+		JsonUtility.FromJsonOverwrite (JSonString, this);
+		Reader.Close();
+
+		int HighScore = 0;
+
+		HighScore = highScore;
+
+		return HighScore;
+
+
+	}
+	public void SaveHoopScore(int score){
+
+		string OutputPath = Application.persistentDataPath + @"/hoopScore.json";
+
+		highScore = score;
+
+		StreamWriter Writer = new StreamWriter (OutputPath);
+		Writer.WriteLine (JsonUtility.ToJson (this));
+		Writer.Close();
+		Debug.Log("output to:" + OutputPath);
+	}
+
+	public int LoadHoopScore (){
+
+		string InputPath = Application.persistentDataPath + @"/hoopScore.json";
+
+		StreamReader Reader = new StreamReader (InputPath);
+		string JSonString = Reader.ReadToEnd ();
+		Debug.Log ("Reading:" + JSonString);
+		JsonUtility.FromJsonOverwrite (JSonString, this);
+		Reader.Close();
+
+		int HighScore = 0;
+
+		HighScore = highScore;
+
+		return HighScore;
+
+
+	}
+
+
 	public void CheckHighScore(string sceneName, int score){
 
 		Debug.Log (sceneName);
@@ -175,6 +378,36 @@ public class HighScoreManager : MonoBehaviour {
 
 			if (score > LoadFinderScore ()) {
 				SaveFinderScore (score);
+				return;
+			} 
+		}else if (string.Equals(sceneName,"Wack", System.StringComparison.CurrentCultureIgnoreCase)) {
+
+			if (score > LoadWackScore ()) {
+				SaveWackScore (score);
+				return;
+			} 
+		} else if (string.Equals(sceneName,"Match", System.StringComparison.CurrentCultureIgnoreCase)) {
+
+			if (score > LoadMatchScore ()) {
+				SaveMatchScore (score);
+				return;
+			} 
+		}else if (string.Equals(sceneName,"Shoot", System.StringComparison.CurrentCultureIgnoreCase)) {
+
+			if (score > LoadShootScore ()) {
+				SaveShootScore (score);
+				return;
+			} 
+		} else if (string.Equals(sceneName,"Hit", System.StringComparison.CurrentCultureIgnoreCase)) {
+
+			if (score > LoadHitScore ()) {
+				SaveHitScore (score);
+				return;
+			} 
+		}else if (string.Equals(sceneName,"Hoops", System.StringComparison.CurrentCultureIgnoreCase)) {
+
+			if (score > LoadHoopScore ()) {
+				SaveHoopScore (score);
 				return;
 			} 
 		}

@@ -94,15 +94,7 @@ public class WackGameManager : MonoBehaviour {
 	}
 
 
-	private int _points;
-	public int points{
-		get{return _points;}
 
-		set{coinText.text = ":";
-			_points += value;
-			coinText.text += _points.ToString();  }
-
-	}
 		
 
 	void SetDifficulty(Difficulty selectedDifficulty){
