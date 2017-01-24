@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour {
 	private bool isMenuActive;
 	public bool IsMenuActive{
 
-		get{ return Menu.activeSelf; }
+		get{ return Menu.activeInHierarchy; }
 		
 	}
 

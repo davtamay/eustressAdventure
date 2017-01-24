@@ -146,8 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49829b901713147dfab072d5b062dc9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myRectTransform: {fileID: 0}
-  stressMenuRectTransform: {fileID: 0}
+  destressOffset: 3
   isFacingDown: 0
   isMovingDown: 0
   isMenuShowing: 0
@@ -291,7 +290,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1636652598}
   m_Direction: 0
   m_Value: 0.9999999
-  m_Size: 0.14395
+  m_Size: 0.14394999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1183,14 +1182,13 @@ GameObject:
   - component: {fileID: 67167218}
   - component: {fileID: 67167217}
   - component: {fileID: 67167216}
-  - component: {fileID: 67167215}
   m_Layer: 5
   m_Name: DestressorButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &67167214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1199,36 +1197,18 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 67167213}
   m_LocalRotation: {x: 0.60876137, y: -0, z: -0, w: 0.7933534}
-  m_LocalPosition: {x: 0, y: 0, z: 1.62}
-  m_LocalScale: {x: 0.25, y: 0.24999994, z: 0.49346164}
+  m_LocalPosition: {x: 0, y: 0, z: -0.4}
+  m_LocalScale: {x: 0.25, y: 0.24999988, z: 0.49346158}
   m_Children:
   - {fileID: 26576491}
-  m_Father: {fileID: 89181208}
-  m_RootOrder: 3
+  m_Father: {fileID: 744666431}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -1.3}
+  m_AnchoredPosition: {x: 50, y: 48.7}
   m_SizeDelta: {x: 7.59, y: 7.26}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &67167215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 67167213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49829b901713147dfab072d5b062dc9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myRectTransform: {fileID: 0}
-  stressMenuRectTransform: {fileID: 0}
-  isFacingDown: 0
-  isMovingDown: 0
-  isMenuShowing: 0
-  cameras: []
-  sweepRate: 150
 --- !u!114 &67167216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1529,10 +1509,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 844235008}
+  - {fileID: 744666431}
   - {fileID: 805252392}
   - {fileID: 270466335}
-  - {fileID: 67167214}
   m_Father: {fileID: 1169058128}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5736,6 +5715,59 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 730457289}
+--- !u!1 &744666430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 744666431}
+  - component: {fileID: 744666432}
+  m_Layer: 5
+  m_Name: Destress
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &744666431
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 744666430}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 844235008}
+  - {fileID: 67167214}
+  m_Father: {fileID: 89181208}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &744666432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 744666430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49829b901713147dfab072d5b062dc9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destressOffset: 1
+  isFacingDown: 1
+  isMovingDown: 0
+  isMenuShowing: 0
+  cameras: []
+  sweepRate: 150
 --- !u!1 &750049967
 GameObject:
   m_ObjectHideFlags: 0
@@ -6837,19 +6869,19 @@ RectTransform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 844235001}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.08715578, y: 0, z: 0, w: 0.9961947}
   m_LocalPosition: {x: 0, y: 0, z: 8.050003}
   m_LocalScale: {x: 0.08, y: 0.1, z: 0.49346176}
   m_Children:
   - {fileID: 1802382318}
   - {fileID: 243239453}
   - {fileID: 267817388}
-  m_Father: {fileID: 89181208}
+  m_Father: {fileID: 744666431}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -10, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.44, y: 3.33}
+  m_AnchoredPosition: {x: 49.559994, y: 53.33}
   m_SizeDelta: {x: 193.3, y: 127.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &845772386

@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ButtonPopUp : MonoBehaviour {
+public class DestressPopUp : MonoBehaviour {
+	
+	private RectTransform myRectTransform;
+	private GameObject dButton;
 
-	public RectTransform myRectTransform;
-	public RectTransform stressMenuRectTransform;
-
-	private Vector3 stressMStartingPos;
-
-	private Vector3 startPosition;
-
+	[SerializeField] float destressOffset = 1;
 	public bool isFacingDown = false;
 	public bool isMovingDown = false;
 
@@ -21,7 +18,7 @@ public class ButtonPopUp : MonoBehaviour {
 	public float sweepRate = 100.0f;
 	private float previousCameraAngle;
 
-	private bool clicker;
+
 
 
 
@@ -31,19 +28,14 @@ public class ButtonPopUp : MonoBehaviour {
 		cam = Camera.main;
 
 		cameras = cam.GetComponentsInChildren<Camera> ();
-
-
-
-
-		stressMenuRectTransform = GameObject.FindWithTag ("StressMenu").GetComponent<RectTransform>()as RectTransform;
-		stressMStartingPos = stressMenuRectTransform.localPosition;
-
+		previousCameraAngle = CameraAngleFromGround ();
 
 		myRectTransform = GetComponent<RectTransform> ();
 
-		 
+		dButton = myRectTransform.GetChild (1).gameObject;
+		dButton.SetActive (false);
 
-		previousCameraAngle = CameraAngleFromGround ();
+
 	
 
 	}
@@ -54,7 +46,6 @@ public class ButtonPopUp : MonoBehaviour {
 	
 	}
 	void Start(){
-		myRectTransform.position =  (Vector3.down * 100);
 
 		StartCoroutine (UpdateGame());
 	}
@@ -66,12 +57,32 @@ public class ButtonPopUp : MonoBehaviour {
 
 
 		while(true){
-			//myRectTransform.localPosition = cam.transform.rotation * (Vector3.back * 10);
+
 			yield return null;
 
+#if(UNITY_EDITOR)
+			if (Input.GetMouseButton(0)) {
+			
+				isMenuShowing = true;
+				GameController.Instance.SetMenuActive ();
+				GameController.Instance.Paused = true;
+				foreach (Camera c in cameras) {
 
-#if (!UNITY_ANDROID || !Unity_IPhone)
-		
+					c.cullingMask = 1 << 5;
+
+				}
+
+				myRectTransform.localPosition = cam.transform.rotation * Vector3.forward * destressOffset; 
+				myRectTransform.localRotation = Quaternion.LookRotation (myRectTransform.position - cam.transform.position);
+				dButton.SetActive (true);
+			
+			
+			
+			}
+#endif
+
+#if (!UNITY_ANDROID)
+/*		
 
 		isFacingDown = DetectFacingDown ();
 		isMovingDown = DetectMovingDown ();
@@ -96,16 +107,15 @@ public class ButtonPopUp : MonoBehaviour {
 					c.cullingMask = 1 << 5;
 				
 				}
-				myRectTransform.localPosition = cam.transform.rotation * (Vector3.forward*2.5f);
 
-
-				myRectTransform.rotation = Quaternion.LookRotation (myRectTransform.position - cam.transform.position);
-				stressMenuRectTransform.localPosition =  cam.transform.rotation * (( stressMStartingPos - Vector3.forward *5) + Vector3.up *5);
-				stressMenuRectTransform.localRotation = Quaternion.LookRotation (stressMenuRectTransform.position - cam.transform.position);
+				myRectTransform.localPosition = cam.transform.rotation * Vector3.forward * 3; 
+				myRectTransform.localRotation = Quaternion.LookRotation (myRectTransform.position - cam.transform.position);
+				dButton.SetActive (true);
 		
-		}
-			}
+		}*/
 #endif
+			}
+
 	}
 
 
@@ -119,12 +129,10 @@ public class ButtonPopUp : MonoBehaviour {
 			c.cullingMask = 1 << 5;
 
 		}
-		myRectTransform.localPosition = cam.transform.rotation * (Vector3.forward*2.5f);
 
-
-		myRectTransform.rotation = Quaternion.LookRotation (myRectTransform.position - cam.transform.position);
-		stressMenuRectTransform.localPosition =  cam.transform.rotation * (( stressMStartingPos - Vector3.forward *5) + Vector3.up *5);
-		stressMenuRectTransform.localRotation = Quaternion.LookRotation (stressMenuRectTransform.position - cam.transform.position);
+		myRectTransform.localPosition = cam.transform.rotation * Vector3.forward * 3; 
+		myRectTransform.localRotation = Quaternion.LookRotation (myRectTransform.position - cam.transform.position);
+		dButton.SetActive (true);
 	}
 
 
@@ -134,15 +142,13 @@ public class ButtonPopUp : MonoBehaviour {
 
 
 	}
-	public void HideDButton(){
+	public void HideDestress(){
 		isMenuShowing = false;
-
+		dButton.SetActive (false);
 		//layermask to everything
 		foreach (Camera c in cameras) 
 			c.cullingMask = -1;
-		
-		myRectTransform.position =  (Vector3.down * 100);
-		//myRectTransform.position = cam.transform.rotation * (Vector3.back *10);
+
 	
 	}
 	private float CameraAngleFromGround(){

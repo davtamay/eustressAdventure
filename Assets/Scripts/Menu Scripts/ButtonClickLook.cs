@@ -17,7 +17,7 @@ public class ButtonClickLook : MonoBehaviour {
 	private Image buttonFill;
 	private Button button;
 	private GameObject StressMenu;
-//	public bool isMenuActive = false;
+
 	private SAssessment sAsses;
 	public bool isSType = false;
 
@@ -176,7 +176,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 				StressMenu.SetActive (false);
 				GameController.Instance.Paused = false;
-				GetComponentInParent<ButtonPopUp> ().HideDButton ();
+				GetComponentInParent<DestressPopUp> ().HideDestress ();
 
 					
 	UnityEngine.Profiling.Profiler.EndSample ();
