@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour {
 	private GameObject gameStart;
 	private GameObject gameOver;
 
+	public Camera[] cameras;
+	private Camera cam;
 
 	public static GameController Instance
 	{ get { return instance; } }
@@ -26,6 +28,9 @@ public class GameController : MonoBehaviour {
 		instance = this; 
 
 		Menu = GameObject.FindWithTag ("StressMenu");
+
+		cam = Camera.main;
+		cameras = cam.GetComponentsInChildren<Camera> ();
 
 	}
 
@@ -92,8 +97,26 @@ public class GameController : MonoBehaviour {
 	
 	}
 	public bool isGameOver{
-		set{ gameOver.SetActive (value);}
+		set{ gameOver.SetActive (value);
+			if (true == value)
+				MakeOnlyUIVisible ();
+			else
+				MakeEverythingVisible ();
+		
+		}
 
+	}
+	public void MakeOnlyUIVisible(){
+
+		foreach (Camera c in cameras) 
+			c.cullingMask = 1 << 5;
+
+		
+	
+	}
+	public void MakeEverythingVisible(){
+		foreach (Camera c in cameras) 
+			c.cullingMask = -1;
 	}
 
 		
