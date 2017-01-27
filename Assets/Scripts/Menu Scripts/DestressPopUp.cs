@@ -3,6 +3,8 @@ using System.Collections;
 
 public class DestressPopUp : MonoBehaviour {
 
+
+
 	private RectTransform myRectTransform;
 	private GameObject dButton;
 
@@ -17,16 +19,23 @@ public class DestressPopUp : MonoBehaviour {
 	public float sweepRate = 100.0f;
 	private float previousCameraAngle;
 
+	Vector3 originalDirection = Vector3.zero;
+	Vector3 currentDirection;
 
-
-
+	[SerializeField] private bool isOrientationChangeToFront = true;
+	[SerializeField] private bool isOrientationChangeToLastView = false;
+	[SerializeField] private bool isMenuFirstTime = false;
+	public Transform camHead;
+	public Transform camHeadParent;
 
 
 	void Awake(){
 
 		cam = Camera.main;
+		camHead = cam.transform.parent;
+		camHeadParent = camHead.transform.parent;
 
-		//cameras = cam.GetComponentsInChildren<Camera> ();
+
 		previousCameraAngle = CameraAngleFromGround ();
 
 		myRectTransform = GetComponent<RectTransform> ();
@@ -60,7 +69,31 @@ public class DestressPopUp : MonoBehaviour {
 			yield return null;
 
 			#if(UNITY_EDITOR)
+
+
 			if (Input.GetMouseButton(0)) {
+				if (isOrientationChangeToFront)
+					currentDirection = camHead.localEulerAngles;
+
+				if(isOrientationChangeToLastView)
+				if (isMenuFirstTime == false){
+
+					isMenuFirstTime = true;
+					currentDirection = camHead.localEulerAngles;
+
+
+					if(isOrientationChangeToLastView){
+						if (Mathf.Sign (originalDirection.y) == 1)
+							currentDirection.y -= originalDirection.y;
+						else
+							currentDirection.y += originalDirection.y;
+
+					}
+
+				}
+
+			
+
 
 				isMenuShowing = true;
 				GameController.Instance.SetMenuActive ();
@@ -76,7 +109,7 @@ public class DestressPopUp : MonoBehaviour {
 			}
 			#endif
 
-			#if (!UNITY_ANDROID)
+			#if (UNITY_ANDROID)
 			/*		
 
 		isFacingDown = DetectFacingDown ();
@@ -112,7 +145,30 @@ public class DestressPopUp : MonoBehaviour {
 
 	void OpenMenuClicker(){
 		Handheld.Vibrate ();
+		if (isOrientationChangeToFront) 
+			currentDirection = camHead.localEulerAngles;
+
+
+		if (isOrientationChangeToLastView) {
+			if (isMenuFirstTime == false) {
+
+				isMenuFirstTime = true;
+				currentDirection = camHead.localEulerAngles;
+
+
+				if (isOrientationChangeToLastView) {
+					if (Mathf.Sign (originalDirection.y) == 1)
+						currentDirection.y -= originalDirection.y;
+					else
+						currentDirection.y += originalDirection.y;
+
+				}
+
+			}
+		}
+
 		isMenuShowing = true;
+
 		GameController.Instance.SetMenuActive ();
 		GameController.Instance.Paused = true;
 		GameController.Instance.MakeOnlyUIVisible();
@@ -130,12 +186,45 @@ public class DestressPopUp : MonoBehaviour {
 
 	}
 	public void HideDestress(){
+
+		if (isOrientationChangeToFront) {
+			//float angle = Mathf.DeltaAngle (originalDirection.y, currentDirection.y);
+			//originalDirection.y = angle;
+			originalDirection.y = currentDirection.y;
+
+			float deviation = currentDirection.y;
+			if (Mathf.Sign (deviation) == 1)
+				originalDirection *= -1;
+
+
+			camHeadParent.localEulerAngles = originalDirection;
+			currentDirection = Vector3.zero;
+			originalDirection = Vector3.zero;
+		
+		}
+		if (isOrientationChangeToLastView) {
+
+			originalDirection.y = currentDirection.y;
+
+			currentDirection.y = camHead.localEulerAngles.y;
+
+			originalDirection.y -= currentDirection.y;
+		
+
+			camHeadParent.localEulerAngles = originalDirection;
+
+			currentDirection = Vector3.zero;
+		
+			isMenuFirstTime = false;
+		}
+
 		isMenuShowing = false;
 		dButton.SetActive (false);
-		//layermask to everything
+
 		GameController.Instance.MakeEverythingVisible ();
-		//foreach (Camera c in cameras) 
-		//	c.cullingMask = -1;
+	
+
+
 
 
 	}

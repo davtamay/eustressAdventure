@@ -236,13 +236,13 @@ Transform:
   m_PrefabParentObject: {fileID: 400008, guid: b8b03d395f5734e98af91ccf44f9bf47, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 22404015}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01678934, y: 0.0331837, z: 0.0062772804}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.01678934, y: 0.03318416, z: 0.0062795635}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 701693687}
-  m_Father: {fileID: 402317141}
-  m_RootOrder: 1
+  m_Father: {fileID: 887417748}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &22404017
 MonoBehaviour:
@@ -7974,8 +7974,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.69, z: 107.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 887417748}
   - {fileID: 701837529}
-  - {fileID: 22404016}
   - {fileID: 280474283}
   - {fileID: 1945844336}
   m_Father: {fileID: 1693879039}
@@ -17511,7 +17511,7 @@ RectTransform:
   - {fileID: 859736201}
   - {fileID: 1329849387}
   m_Father: {fileID: 402317141}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17534,6 +17534,11 @@ MonoBehaviour:
   isMovingDown: 0
   isMenuShowing: 0
   sweepRate: 150
+  isOrientationChangeToFront: 1
+  isOrientationChangeToLastView: 0
+  isMenuFirstTime: 0
+  camHead: {fileID: 0}
+  camHeadParent: {fileID: 0}
 --- !u!1 &716159990
 GameObject:
   m_ObjectHideFlags: 0
@@ -19791,6 +19796,35 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 886876688}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &887417747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 887417748}
+  m_Layer: 0
+  m_Name: HeadParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &887417748
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 887417747}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 22404016}
+  m_Father: {fileID: 402317141}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &889563599
 GameObject:
   m_ObjectHideFlags: 0
