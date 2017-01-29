@@ -19,20 +19,21 @@ public class LookSelect : MonoBehaviour {
 	private CardSpawner cardSpawner;
 	public Text coinText;
 
+	private GameObject newWave;
+	private float timeUntilNewWave;
 
-/*	private int _points;
-	public int points{
-		get{return _points;}
-
-		set{coinText.text = ":";
-			_points += value;
-			coinText.text += _points.ToString();  }
-
-	}*/
 
 
 
 	void Start (){
+
+
+		newWave = GameObject.FindWithTag ("NewWave");
+
+		timeUntilNewWave = newWave.GetComponent<NewWave> ().timeUntilDisapear;
+
+		newWave.gameObject.SetActive (false);
+
 
 		selectedCard = notNullOnSelected;
 
@@ -82,12 +83,8 @@ public class LookSelect : MonoBehaviour {
 			isFirstCard = true;
 			firstCard = selectedCard;
 
-			//1st test *no error* yield return 
-			yield return StartCoroutine (RotateCard (firstCard));
+			StartCoroutine (RotateCard (firstCard));
 		
-
-	
-
 			yield break;
 		
 		}else if (isFirstCard && !isSecondCard){
@@ -97,9 +94,10 @@ public class LookSelect : MonoBehaviour {
 
 			secondCard = selectedCard;
 
+			StartCoroutine (TestCards (firstCard, secondCard));
 			StartCoroutine (RotateCard (secondCard));
 
-			StartCoroutine (TestCards (firstCard, secondCard));
+
 
 		
 
@@ -110,7 +108,7 @@ public class LookSelect : MonoBehaviour {
 
 	IEnumerator RotateCard (GameObject selected){
 
-		Vector3 rot = new Vector3 (0,90,0);
+		Vector3 rot = new Vector3 (0,180,0);
 		bool isRotating = true;
 		float timeToRotate = 0.0f;
 
@@ -126,11 +124,8 @@ public class LookSelect : MonoBehaviour {
 
 
 			//error cards are not turning all the way
-			if (timeToRotate > 2f){
-			//	if (selectedCurRot.y < 5 && selectedCurRot.y > 0) {
-			//		selectedCurRot.y = 0;
-			//		selected.transform.localEulerAngles = Vector3.zero;
-			//	}
+			if (timeToRotate > 1f){
+			
 					isRotating = false;
 					yield break;
 
@@ -150,7 +145,6 @@ public class LookSelect : MonoBehaviour {
 			spawnedCards -= 2;
 
 			PlayerManager.Instance.points = 1;
-		//	points = 1;
 
 			particles.Play();
 			yield return new WaitForSeconds (3);
@@ -163,9 +157,22 @@ public class LookSelect : MonoBehaviour {
 				particles.Stop();
 
 				if (cardSpawner.GetWave == 0) {
+				
+					newWave.SetActive (true);
+				
+					yield return new WaitForSeconds (timeUntilNewWave);
+
 					cardSpawner.ChangeWave (Difficulty.medium);
 					spawnedCards = cardSpawner.GetSpawned;
+
+
 				} else if (cardSpawner.GetWave == 1) {
+
+					newWave.SetActive (true);
+
+					yield return new WaitForSeconds (timeUntilNewWave);
+
+
 					cardSpawner.ChangeWave (Difficulty.hard);
 					spawnedCards = cardSpawner.GetSpawned;
 				}else if (cardSpawner.GetWave == 2) {
@@ -178,13 +185,18 @@ public class LookSelect : MonoBehaviour {
 		}else {
 			
 
-		//	yield return 
-			StartCoroutine (RotateCard (firstCard));
+			yield return StartCoroutine (RotateCard (firstCard));
+			firstCard.transform.localEulerAngles = new Vector3 (0, Mathf.Floor(firstCard.transform.localEulerAngles.y/10)*10,0); //Vector3.zero;
 			firstCard = null;
 
+		
+	
 		//	yield return *error: turn back faster
 			yield return StartCoroutine (RotateCard (secondCard));
+			secondCard.transform.localEulerAngles = new Vector3 (0, Mathf.Floor(secondCard.transform.localEulerAngles.y/10)*10,0);//Vector3.zero;
 			secondCard = null;
+
+		
 			selectedCard = notNullOnSelected;
 
 

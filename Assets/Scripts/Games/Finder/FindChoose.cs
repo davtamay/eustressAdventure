@@ -5,8 +5,7 @@ using UnityEngine.UI;
 public class FindChoose : MonoBehaviour {
 
 	private Camera cam;
-	//public Text coinText;
-	//public int amountOfCoins;
+
 	private int amountOfFinders;
 	private int objectsFound;
 	private FinderSpawner spawner;
@@ -21,7 +20,19 @@ public class FindChoose : MonoBehaviour {
 	private string curScene;
 
 	private float time;
+
+
+	private GameObject newWave;
+	private float timeUntilNewWave;
+
 	void Start () {
+
+		newWave = GameObject.FindWithTag ("NewWave");
+
+		timeUntilNewWave = newWave.GetComponent<NewWave> ().timeUntilDisapear;
+
+		newWave.gameObject.SetActive (false);
+
 
 		curScene = SceneController.Instance.GetCurrentSceneName ();
 
@@ -32,76 +43,85 @@ public class FindChoose : MonoBehaviour {
 		spawner = GetComponent<FinderSpawner>();
 		amountOfFinders = spawner.GetAmountOfFindTargets();
 
-
+		StartCoroutine (OnUpdate ());
 
 	}
-	void Update(){
-		if (GameController.Instance.IsStartMenuActive)
-			return;
+	IEnumerator OnUpdate(){
 
-		time += timeAmount * Time.deltaTime;
+		while (true) {
 
-		timer.fillAmount -= time;
+			yield return null;
 
+			if (GameController.Instance.IsStartMenuActive)
+				continue;
 
-		Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
+			time += timeAmount * Time.deltaTime;
 
-		RaycastHit hit;
-
-
-		if (Physics.Raycast (ray, out hit, 500)) {
+			timer.fillAmount -= time;
 
 
-			if (hit.transform.gameObject.CompareTag("FinderObject")) {
+			Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
 
-				hit.transform.GetComponent<Renderer> ().material.color = Color.green;
-				hit.transform.GetComponent<Collider>().enabled = false;
-				++objectsFound;
+			RaycastHit hit;
 
 
-				if (objectsFound == amountOfFinders){
-					if (timer.fillAmount > 0.70f)
-						UpdateCoinText (3);
-					else if (timer.fillAmount > 0.35f)
-						UpdateCoinText (2);
-					else if (timer.fillAmount > 0.00f)
-						UpdateCoinText (1);
+			if (Physics.Raycast (ray, out hit, 500)) {
+
+
+				if (hit.transform.gameObject.CompareTag ("FinderObject")) {
+
+					hit.transform.GetComponent<Renderer> ().material.color = Color.green;
+					hit.transform.GetComponent<Collider> ().enabled = false;
+					++objectsFound;
+
+
+					if (objectsFound == amountOfFinders) {
+						if (timer.fillAmount > 0.70f)
+							UpdateCoinText (3);
+						else if (timer.fillAmount > 0.35f)
+							UpdateCoinText (2);
+						else if (timer.fillAmount > 0.00f)
+							UpdateCoinText (1);
 					
-					objectsFound = 0;
-					spawner.TriggerMoreObjects(100);
-					spawner.TriggerFinderObjects ();
-					timer.fillAmount = 1;
-					time = 0;
-					currentLevel += 1;
-					if (currentLevel == amountUntilGameOver) {
+						objectsFound = 0;
 
-						HighScoreManager.Instance.CheckHighScore (curScene, playerManager.points);
-						GameController.Instance.isGameOver = true;
-						GameController.Instance.Paused = true;
+						newWave.SetActive (true);
+						yield return new WaitForSeconds (timeUntilNewWave);
+
+
+						spawner.TriggerMoreObjects (100, 5f);
+						spawner.TriggerFinderObjects ();
+						timer.fillAmount = 1;
+						time = 0;
+						currentLevel += 1;
+						if (currentLevel == amountUntilGameOver) {
+
+							HighScoreManager.Instance.CheckHighScore (curScene, playerManager.points);
+							GameController.Instance.isGameOver = true;
+							GameController.Instance.Paused = true;
 
 					
+						}
+
+						continue;
+
 					}
-
-					return;
-
-			}
-		}	
-		Debug.Log ("amountoffinders:" + amountOfFinders);
-		Debug.Log ("objectsfound:" + objectsFound);
+				}	
+				Debug.Log ("amountoffinders:" + amountOfFinders);
+				Debug.Log ("objectsfound:" + objectsFound);
 
 			
 
 			}
 
-
+		}
 	
 	}
 	void UpdateCoinText(int coins){
 
-		//amountOfCoins += coins;
 
 		playerManager.points += coins;
-		//coinText.text = ":" + amountOfCoins;
+
 
 
 	}

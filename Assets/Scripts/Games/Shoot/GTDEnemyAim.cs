@@ -14,6 +14,7 @@ public class GTDEnemyAim : MonoBehaviour {
 
 
 	void OnEnable(){
+		playerTarget = GameObject.FindWithTag ("Player");
 		StartCoroutine (OnUpdate());
 
 	}

@@ -8,7 +8,8 @@ public class PowerUpResponse : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 
-		if (other.transform.GetComponent<BulletControll> ().bulletID == 0) {
+		if(other.CompareTag ("Bullet"))
+		if (other.GetComponent<BulletControll> ().bulletID == 0) {
 
 			if (string.Equals (powerUpType, "SpeedShoot", System.StringComparison.CurrentCultureIgnoreCase)) {
 				other.gameObject.SetActive (false);
@@ -20,7 +21,8 @@ public class PowerUpResponse : MonoBehaviour {
 
 
 		
-		} 
+		} else
+			return;
 
 
 	}

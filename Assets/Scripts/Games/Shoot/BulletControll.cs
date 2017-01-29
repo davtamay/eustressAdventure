@@ -8,13 +8,10 @@ public class BulletControll : MonoBehaviour {
 	[SerializeField]private float timeUntilOnDisabled;
 
 
-	//public Rigidbody myRigidBody;
-
-
 
 
 	void OnEnable(){
-	//	myRigidBody = GetComponent<Rigidbody> ();
+
 		StartCoroutine (DestoyBullet());
 	
 

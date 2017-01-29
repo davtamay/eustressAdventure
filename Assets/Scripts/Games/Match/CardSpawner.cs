@@ -6,7 +6,7 @@ public enum Difficulty{easy,medium,hard}
 public class CardSpawner : MonoBehaviour {
 
 
-	//public Difficulty difficulty = Difficulty.easy;
+
 	public Texture2D[] images;
 	public Sprite[] sprites;
 

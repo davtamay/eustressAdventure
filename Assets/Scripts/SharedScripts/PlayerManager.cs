@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 
 public class PlayerManager : MonoBehaviour {
-	//new
+
 	private static PlayerManager instance;
 	public static PlayerManager Instance {
 		get{ return instance; }
@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour {
 
 		health = 0;
 		points = 0;
+
 
 		healthColorIndicator = GameObject.FindWithTag ("UIColor").GetComponent<Image>();
 		curSceneName = SceneController.Instance.GetCurrentSceneName ();
