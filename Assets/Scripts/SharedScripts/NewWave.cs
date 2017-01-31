@@ -10,10 +10,14 @@ public class NewWave : MonoBehaviour {
 	public float timeUntilDisapear;
 	private float timer; 
 
-
+	private Transform player;
+	
 
 	void OnEnable(){
+
+		player = Camera.main.transform;
 		originalPosition = transform.position;
+
 		StartCoroutine (OnUpdate ());
 	}
 
@@ -23,8 +27,10 @@ public class NewWave : MonoBehaviour {
 
 			timer += Time.deltaTime;
 
-			transform.Translate(Vector3.right * (Time.unscaledDeltaTime * moveSpeed)); 
+			transform.RotateAround(player.position , Vector3.up, moveSpeed * Time.deltaTime);
 
+			transform.LookAt (player.position);
+		
 			yield return null;
 
 		}

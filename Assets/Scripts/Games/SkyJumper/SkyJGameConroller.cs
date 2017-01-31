@@ -11,7 +11,10 @@ public class SkyJGameConroller : MonoBehaviour {
 	private float itemTime;
 
 	private float newObsTime;
-	private int currentObs;
+	private int currentObs = 1;
+
+	private GameObject newWave;
+	private float timeUntilWaveDisapear;
 
 
 	private AddRandomPiece addPiece;
@@ -19,39 +22,61 @@ public class SkyJGameConroller : MonoBehaviour {
 
 
 	void Awake(){
+
 		addPiece = GetComponent<AddRandomPiece> ();
-	
+
+		newWave = GameObject.FindWithTag ("NewWave");
+		newWave.SetActive (false);
+		timeUntilWaveDisapear = newWave.GetComponent<NewWave>().timeUntilDisapear;
+	//	newObsTime = 0.0f;
+		StartCoroutine (OnUpdate ());
 	}
-	void Update () {
+	IEnumerator OnUpdate () {
 
-		obsTime += Time.deltaTime;
-		itemTime += Time.deltaTime;
+		while (true) {
 
-		newObsTime += Time.deltaTime;
 
-		if (obsTime >= objRespondTime) { 
+			obsTime += Time.deltaTime;
+			itemTime += Time.deltaTime;
 
-			obsTime = 0.0f;
+			newObsTime += Time.deltaTime;
 
-			if (newObstacleTime < newObsTime) {
-				currentObs++;
-				newObsTime = 0.0f;
+			yield return null;
+
+			if (itemTime >= itemRespondTime) { 
+
+				itemTime = 0.0f;
+				addPiece.AddNewItem ();
+
 			}
 
+			if (obsTime >= objRespondTime) { 
 				addPiece.AddNewObstacle (currentObs);
+				obsTime = 0.0f;
 
-		}
-		if (itemTime >= itemRespondTime) { 
 
-			itemTime = 0.0f;
-			addPiece.AddNewItem ();
 
-		}
-		return;
+				if (newObstacleTime < newObsTime) {
+
+					newObsTime = 0.0f;
+
+					yield return new WaitForSeconds (timeUntilWaveDisapear);
+					newWave.SetActive (true);
+
+					++currentObs;
+					continue;
+				//	addPiece.AddNewObstacle (currentObs);
+				}
+
+
+
+			}
+
+			//continue;
 
 			
 		
 
-	
+		}
 	}
 }

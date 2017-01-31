@@ -5,12 +5,12 @@ using UnityEngine;
 public class BallHoopPoints : MonoBehaviour {
 
 	[SerializeField] private int points;
-	[SerializeField] private bool isHoop;
+	[SerializeField] private bool isPersist;
 
 
 
 	void OnTriggerEnter(Collider other){
-		if (isHoop) {
+		if (isPersist) {
 			PlayerManager.Instance.points = points;
 			other.gameObject.SetActive (false);
 		} else {

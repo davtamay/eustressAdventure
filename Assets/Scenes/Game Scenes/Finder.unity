@@ -5780,7 +5780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 1299006941}
   timeAmount: 0.0005
-  amountUntilGameOver: 2
+  amountUntilGameOver: 5
   currentLevel: 0
 --- !u!4 &1368636031
 Transform:
@@ -5818,6 +5818,7 @@ MonoBehaviour:
   - {fileID: 1351069378}
   numberOfObstacles: 500
   obstacleManager: {fileID: 117917050}
+  distanceAgregate: 5
   radiusOfFinderOpening: 0.1
 --- !u!114 &1368636033
 MonoBehaviour:
@@ -7490,7 +7491,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1750449538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.12, y: 2, z: 3}
+  m_LocalPosition: {x: 0.93, y: 2, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1631659251}
@@ -7507,8 +7508,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901326cd8b8fb47d3800c1a8cac1c6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  timeUntilDisapear: 5
+  moveSpeed: 80
+  timeUntilDisapear: 8
 --- !u!212 &1750449541
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7543,7 +7544,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 34bce3ae13e6f448ea3dfb621ab9fdef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 6, y: 2}

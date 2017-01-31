@@ -89,7 +89,7 @@ public class FindChoose : MonoBehaviour {
 						yield return new WaitForSeconds (timeUntilNewWave);
 
 
-						spawner.TriggerMoreObjects (100, 5f);
+						spawner.TriggerMoreObjects (100);
 						spawner.TriggerFinderObjects ();
 						timer.fillAmount = 1;
 						time = 0;

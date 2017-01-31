@@ -12,6 +12,7 @@ public class FinderSpawner : MonoBehaviour {
 
 	public int numberOfObstacles;
 	[SerializeField] private GameObject obstacleManager;
+	[SerializeField] private float distanceAgregate = 5.5f;
 
 
 	public float radiusOfFinderOpening = 0.2f;
@@ -28,7 +29,7 @@ public class FinderSpawner : MonoBehaviour {
 		for (int i = 0; i < numberOfObstacles; i++) {
 		
 			int randomNum = Random.Range (0, obstacletypes);
-			GameObject obstacle = Instantiate (obstacles[randomNum], (Random.onUnitSphere + Vector3.up * 0.5f) * 5.5f , Quaternion.identity) as GameObject;
+			GameObject obstacle = Instantiate (obstacles[randomNum], (Random.onUnitSphere + Vector3.up * 0.5f) * distanceAgregate , Quaternion.identity) as GameObject;
 			obstacle.transform.parent = obstacleManager.transform;
 
 			//obstacle.GetComponent<Collider>().bounds.Contains (obstacle)
@@ -37,7 +38,7 @@ public class FinderSpawner : MonoBehaviour {
 		
 		}
 
-
+		distanceAgregate++;
 			
 
 	
@@ -70,7 +71,7 @@ public class FinderSpawner : MonoBehaviour {
 
 		for (int i = 0; i < findTargets.Length; i++){
 
-			GameObject finderObject = Instantiate (findTargets[i], (Random.onUnitSphere + Vector3.up * 0.7f) * 6 , Quaternion.identity) as GameObject;
+			GameObject finderObject = Instantiate (findTargets[i], (Random.onUnitSphere + Vector3.up * 0.7f) * distanceAgregate , Quaternion.identity) as GameObject;
 
 
 			Rigidbody rb = finderObject.AddComponent<Rigidbody>();
@@ -99,19 +100,20 @@ public class FinderSpawner : MonoBehaviour {
 	
 	
 		}
-		public void TriggerMoreObjects (int amount, float distance){
+		public void TriggerMoreObjects (int amount){
 			
 
 		for (int i = 0; i < amount; i++) {
 
 			int randomNum = Random.Range (0, obstacleTypes);
-			GameObject obstacle = Instantiate (obstacles[randomNum], (Random.onUnitSphere + Vector3.up * 0.7f) * distance , Quaternion.identity) as GameObject;
+			GameObject obstacle = Instantiate (obstacles[randomNum], (Random.onUnitSphere + Vector3.up * 0.7f) * distanceAgregate , Quaternion.identity) as GameObject;
 			obstacle.transform.parent = obstacleManager.transform;
 
 			obstacle.tag = "Obstacle";
 
 
 		}
+		distanceAgregate++;
 
 }
 }
