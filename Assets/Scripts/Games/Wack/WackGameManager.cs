@@ -27,9 +27,6 @@ public class WackGameManager : MonoBehaviour {
 	public float hardLevelTime;
 
 
-	private GameObject newWave;
-	private float timeUntilNewWave;
-
 	private bool isEasy;
 	private bool isMedium;
 
@@ -56,14 +53,9 @@ public class WackGameManager : MonoBehaviour {
 
 
 	void Start(){
-		newWave = GameObject.FindWithTag ("NewWave");
-
-		timeUntilNewWave = newWave.GetComponent<NewWave> ().timeUntilDisapear; 
-
-
+	
 		wackLookClick = GetComponent<WackLookClick> ();
 	
-		newWave.SetActive (false);
 		SetDifficulty (Difficulty.easy);
 		isEasy = true;
 
@@ -77,19 +69,19 @@ public class WackGameManager : MonoBehaviour {
 				timePassed += Time.deltaTime;
 
 				if (timePassed > mediumLevelTime && isEasy) {
-					wackLookClick.TurnOffAllMoles(timeUntilNewWave);
-					newWave.SetActive (true);
-					yield return new WaitForSeconds (timeUntilNewWave);
+					wackLookClick.TurnOffAllMoles(GameController.Instance.GetNewWaveTime);
+
+				yield return StartCoroutine (GameController.Instance.NewWave ());
 				
 					SetDifficulty (Difficulty.medium);
 					isMedium = true;
 					isEasy = false;
 				}
 				if (timePassed > hardLevelTime && isMedium) {
-					wackLookClick.TurnOffAllMoles(timeUntilNewWave);
-					newWave.SetActive (true);
+					wackLookClick.TurnOffAllMoles(GameController.Instance.GetNewWaveTime);
 
-					yield return new WaitForSeconds (timeUntilNewWave);
+					yield return StartCoroutine (GameController.Instance.NewWave ());
+
 					//warningSign.SetActive (false);
 					SetDifficulty (Difficulty.hard);
 					isMedium = false;

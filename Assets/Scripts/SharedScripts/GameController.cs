@@ -8,8 +8,15 @@ public class GameController : MonoBehaviour {
 	private GameObject gameStart;
 	private GameObject gameOver;
 
+	private GameObject newWave;
+	private float timeUntilNewWave;
+
 	public Camera[] cameras;
 	private Camera cam;
+
+
+
+
 
 	public static GameController Instance
 	{ get { return instance; } }
@@ -38,7 +45,10 @@ public class GameController : MonoBehaviour {
 		gameStart = GameObject.FindWithTag ("GameStart");
 		gameOver = GameObject.FindWithTag ("GameOver");
 
-
+		newWave = GameObject.FindWithTag ("NewWave");
+		timeUntilNewWave = newWave.GetComponent<NewWave> ().timeUntilDisapear;
+		newWave.gameObject.SetActive (false);
+	
 		if (gameOver != null) {
 
 			gameOver.SetActive (false);
@@ -96,6 +106,18 @@ public class GameController : MonoBehaviour {
 		gameStart.SetActive (false);
 	
 	}
+
+	public IEnumerator NewWave(){
+
+		newWave.SetActive (true);
+		yield return new WaitForSeconds (timeUntilNewWave);
+	}
+	public float GetNewWaveTime{
+	
+		get{return timeUntilNewWave;}	
+	}
+
+	                       
 	public bool isGameOver{
 		set{ gameOver.SetActive (value);
 			if (true == value)

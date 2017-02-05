@@ -30,13 +30,14 @@ public class Enemy : MonoBehaviour {
 
 	private Vector3 moveDirection; 
 	
-	private LayerMask groundLM;
+	public LayerMask groundLM;
 
 	public EnemyState currentState = EnemyState.Idle;
 
+
 	void Awake(){
 
-		groundLM = LayerMask.NameToLayer ("Ground");
+
 		thisTransform = transform;
 		thisCollider = GetComponent<Collider> ();
 		thisRigidbody = GetComponent<Rigidbody> ();
@@ -45,10 +46,11 @@ public class Enemy : MonoBehaviour {
 
 	}
 
-	void Start (){
-		
+	void OnEnable (){
+
+		groundLM = 1 << 8;//LayerMask.NameToLayer ("Ground");
 		playerTransform = GameObject.FindWithTag ("Player").transform;
-		playerManager = GameObject.FindWithTag ("Player").GetComponent <PlayerManager> ();
+		playerManager = playerTransform.GetComponent <PlayerManager> ();
 		originalColor = thisRenderer.material.color;
 			
 		StartCoroutine (State_Idle());
@@ -59,7 +61,6 @@ public class Enemy : MonoBehaviour {
 		
 		currentState = EnemyState.Idle;
 		canSeePlayer = false;
-
 		yield return new WaitForSeconds (1);
 		currentState = EnemyState.Search;
 		StartCoroutine (State_Search ());
@@ -79,7 +80,6 @@ public class Enemy : MonoBehaviour {
 			tempRotation = Random.Range (0, 360);
 
 			thisRigidbody.MoveRotation (Quaternion.Euler (0, tempRotation, 0));
-			//thisTransform.Rotate (0, tempRotation, 0);
 
 
 			while (timeSearch < 5.0f) {
@@ -92,8 +92,9 @@ public class Enemy : MonoBehaviour {
 				if (distanceSqrd < followDistance * followDistance){
 					currentState = EnemyState.Chase;
 					canSeePlayer = true;
-					StopAllCoroutines ();	
+				//	StopAllCoroutines ();	
 					StartCoroutine (State_Chase ());
+					break;
 				}
 					
 
@@ -129,14 +130,16 @@ public class Enemy : MonoBehaviour {
 			if (distanceSqrd > followDistance * followDistance){
 				currentState = EnemyState.Idle;
 				canSeePlayer = false;
-				StopAllCoroutines ();	
+			//	StopAllCoroutines ();	
 				StartCoroutine (State_Idle ());
+				break;
 			}
 			if (distanceSqrd < attackDistance * attackDistance){
 				currentState = EnemyState.Attack;
 				canSeePlayer = true;
-				StopAllCoroutines ();	
+			//	StopAllCoroutines ();	
 				StartCoroutine (State_Attack ());
+				break;
 			}
 		
 			yield return null;
@@ -151,42 +154,58 @@ public class Enemy : MonoBehaviour {
 
 		thisRenderer.material.color = Color.blue;
 		RaycastHit hit;
+		Vector3 changeDirection = Vector3.zero;
 
 		while (currentState == EnemyState.RunAway) {
 
-			//test does not work in redirecting
-		/*	if(Physics.Raycast (thisTransform.position, thisTransform.forward, out hit, 4, groundLM)) {
-
-				int	tempRotation = Random.Range (0, 360);
-
-				moveDirection = new Vector3(0, tempRotation, 0);
-			//	yield return null;
-
-			}else*/
 			moveDirection = (thisTransform.position - playerTransform.position).normalized;
 
-			moveDirection *= speed * Time.deltaTime;
-			moveDirection.y = 0;
-			thisTransform.position += moveDirection;
 
+
+
+		//	moveDirection *= speed * Time.deltaTime;
+
+		//	thisRigidbody.MoveRotation (Quaternion.Euler (moveDirection));
+
+			//moveDirection.y = 0;
+
+			//test does not work in redirecting
+			if(Physics.Raycast (thisTransform.position, thisTransform.forward, out hit, 10)){//,groundLM)) {
+
+				thisRigidbody.MoveRotation (Quaternion.AngleAxis (90, thisTransform.up) * transform.rotation);
+			//	changeDirection = thisTransform.eulerAngles + moveDirection /2; 
+				thisRigidbody.MovePosition (thisTransform.position + (thisTransform.forward * speed * Time.deltaTime ));
+				yield return null;
+				continue;
+			} 
 		
+
+			//thisRigidbody.MoveRotation (Quaternion.Euler (changeDirection));
+		//	thisRigidbody.MovePosition (thisTransform.position + (changeDirection * speed * Time.deltaTime ));
+			thisRigidbody.MovePosition (thisTransform.position + (thisTransform.forward * speed * Time.deltaTime ));
+
+			changeDirection = Vector3.zero;
 
 			float distanceSqrd = (thisTransform.position - playerTransform.position).sqrMagnitude;
-
-		
-
 		
 
 			if (distanceSqrd > runAwayDistance * runAwayDistance){
 				thisRenderer.material.color = originalColor;
-				currentState = EnemyState.Idle;
-				canSeePlayer = false;
-				StopAllCoroutines ();	
+			//	StopAllCoroutines ();	
 				StartCoroutine (State_Idle ());
+				yield break;
 			}
 
-			if(thisCollider.bounds.Contains(playerTransform.position))
-				gameObject.SetActive(false);
+			if (thisCollider.bounds.Contains (playerTransform.position)) {
+
+				thisRenderer.material.color = originalColor;
+			//	StopAllCoroutines ();	
+				StartCoroutine (State_Idle ());
+				EnemyManager.Instance.activeEnemies.Remove (this.gameObject);
+				gameObject.SetActive (false);
+				yield break;
+
+			}
 
 
 
@@ -219,8 +238,9 @@ public class Enemy : MonoBehaviour {
 			} else {
 				currentState = EnemyState.Chase;
 				canSeePlayer = true;
-				StopAllCoroutines ();	
+			//	StopAllCoroutines ();	
 				StartCoroutine (State_Chase ());
+				break;
 		
 			}
 		}

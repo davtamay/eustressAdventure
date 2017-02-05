@@ -13,8 +13,6 @@ public class SkyJGameConroller : MonoBehaviour {
 	private float newObsTime;
 	private int currentObs = 1;
 
-	private GameObject newWave;
-	private float timeUntilWaveDisapear;
 
 
 	private AddRandomPiece addPiece;
@@ -25,10 +23,7 @@ public class SkyJGameConroller : MonoBehaviour {
 
 		addPiece = GetComponent<AddRandomPiece> ();
 
-		newWave = GameObject.FindWithTag ("NewWave");
-		newWave.SetActive (false);
-		timeUntilWaveDisapear = newWave.GetComponent<NewWave>().timeUntilDisapear;
-	//	newObsTime = 0.0f;
+
 		StartCoroutine (OnUpdate ());
 	}
 	IEnumerator OnUpdate () {
@@ -60,8 +55,7 @@ public class SkyJGameConroller : MonoBehaviour {
 
 					newObsTime = 0.0f;
 
-					yield return new WaitForSeconds (timeUntilWaveDisapear);
-					newWave.SetActive (true);
+					StartCoroutine (GameController.Instance.NewWave ());
 
 					++currentObs;
 					continue;

@@ -5,7 +5,6 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
     <ProjectGuid>{EAF453E1-97DE-C4EF-1444-2BD9EFAB110A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -34,166 +33,165 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.XML" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>/opt/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\opt\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>/opt/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>..\..\..\..\opt\Unity\Editor\Data\Managed\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Delete\CreateNewGround.cs" />
-     <Compile Include="Assets\GoogleVR\DemoScenes\ControllerDemo\ControllerDebugInfo.cs" />
-     <Compile Include="Assets\GoogleVR\DemoScenes\ControllerDemo\ControllerDemoManager.cs" />
-     <Compile Include="Assets\GoogleVR\DemoScenes\HeadsetDemo\FPS.cs" />
-     <Compile Include="Assets\GoogleVR\DemoScenes\HeadsetDemo\Teleport.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudio.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudioListener.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudioRoom.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudioSource.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Controller\GvrController.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviderFactory.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviders\AndroidNativeControllerProvider.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviders\DummyControllerProvider.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviders\EmulatorControllerProvider.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerState.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorClientSocket.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorConfig.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorDataTypes.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorManager.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\PhoneEvent.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\IControllerProvider.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\GazeInputModule.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\GvrEye.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\GvrHead.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\GvrPostRender.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\GvrPreRender.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\GvrProfile.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\GvrViewer.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\Pose3D.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\StereoController.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\StereoRenderEffect.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\UI\GvrGaze.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\UI\GvrReticle.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\UI\IGvrGazePointer.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\UI\IGvrGazeResponder.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\VRDevices\AndroidDevice.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\VRDevices\BaseAndroidDevice.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\VRDevices\BaseVRDevice.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\VRDevices\EditorDevice.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\VRDevices\GvrDevice.cs" />
-     <Compile Include="Assets\GoogleVR\Scripts\VRDevices\iOSDevice.cs" />
-     <Compile Include="Assets\Scripts\Games\Collections\CollectorLookWalk.cs" />
-     <Compile Include="Assets\Scripts\Games\Collections\Enemy.cs" />
-     <Compile Include="Assets\Scripts\Games\Collections\EnemyManager.cs" />
-     <Compile Include="Assets\Scripts\Games\Collections\SpawnCollections.cs" />
-     <Compile Include="Assets\Scripts\Games\Finder\FindChoose.cs" />
-     <Compile Include="Assets\Scripts\Games\Finder\FinderSpawner.cs" />
-     <Compile Include="Assets\Scripts\Games\Hit\CoinManager.cs" />
-     <Compile Include="Assets\Scripts\Games\Hit\CoinTrigger.cs" />
-     <Compile Include="Assets\Scripts\Games\Hit\LookHit.cs" />
-     <Compile Include="Assets\Scripts\Games\Hoops\BallControl.cs" />
-     <Compile Include="Assets\Scripts\Games\Hoops\BallHoopPoints.cs" />
-     <Compile Include="Assets\Scripts\Games\Hoops\BallManager.cs" />
-     <Compile Include="Assets\Scripts\Games\Hoops\HoopSpawn.cs" />
-     <Compile Include="Assets\Scripts\Games\Hoops\LOOKHOOPTEST.cs" />
-     <Compile Include="Assets\Scripts\Games\Hoops\LookHoop.cs" />
-     <Compile Include="Assets\Scripts\Games\Match\CardSpawner.cs" />
-     <Compile Include="Assets\Scripts\Games\Match\LookSelect.cs" />
-     <Compile Include="Assets\Scripts\Games\Paint\PaintLook.cs" />
-     <Compile Include="Assets\Scripts\Games\Paint\PaintManager.cs" />
-     <Compile Include="Assets\Scripts\Games\Paint\PaintTool.cs" />
-     <Compile Include="Assets\Scripts\Games\Shoot\BulletControll.cs" />
-     <Compile Include="Assets\Scripts\Games\Shoot\BulletManager.cs" />
-     <Compile Include="Assets\Scripts\Games\Shoot\CheckPoints.cs" />
-     <Compile Include="Assets\Scripts\Games\Shoot\GTDEnemyAim.cs" />
-     <Compile Include="Assets\Scripts\Games\Shoot\GTDEnemyRotate.cs" />
-     <Compile Include="Assets\Scripts\Games\Shoot\GTDNewEnemy.cs" />
-     <Compile Include="Assets\Scripts\Games\Shoot\LookShoot.cs" />
-     <Compile Include="Assets\Scripts\Games\Shoot\PowerUpResponse.cs" />
-     <Compile Include="Assets\Scripts\Games\SkyJumper\AddRandomPiece.cs" />
-     <Compile Include="Assets\Scripts\Games\SkyJumper\GroundTextMover.cs" />
-     <Compile Include="Assets\Scripts\Games\SkyJumper\LookMovement.cs" />
-     <Compile Include="Assets\Scripts\Games\SkyJumper\Movement.cs" />
-     <Compile Include="Assets\Scripts\Games\SkyJumper\ObjExitTrigger.cs" />
-     <Compile Include="Assets\Scripts\Games\SkyJumper\SkyJGameConroller.cs" />
-     <Compile Include="Assets\Scripts\Games\Wack\MoleType.cs" />
-     <Compile Include="Assets\Scripts\Games\Wack\WackGameManager.cs" />
-     <Compile Include="Assets\Scripts\Games\Wack\WackLookClick.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\BaseSoundController.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\ButtonClickLook.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\CountingDownS.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\CursorPositioner.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\DestressPopUp.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\FolowAllong.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\GameSuggest.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\HighScoreManager.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\LockManager.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\MagnetSensor.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\MoveAroundChoice.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\MusicController.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\MusicTrackName.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\PaintPopUp.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\SAssessment.cs" />
-     <Compile Include="Assets\Scripts\Menu Scripts\SetGameScore.cs" />
-     <Compile Include="Assets\Scripts\SharedScripts\Extensions.cs" />
-     <Compile Include="Assets\Scripts\SharedScripts\GameController.cs" />
-     <Compile Include="Assets\Scripts\SharedScripts\InfoBubble.cs" />
-     <Compile Include="Assets\Scripts\SharedScripts\ItemResponse.cs" />
-     <Compile Include="Assets\Scripts\SharedScripts\ItemRotate.cs" />
-     <Compile Include="Assets\Scripts\SharedScripts\NewWave.cs" />
-     <Compile Include="Assets\Scripts\SharedScripts\PlayerManager.cs" />
-     <Compile Include="Assets\Scripts\SharedScripts\SceneController.cs" />
-     <Compile Include="Assets\Scripts\SharedScripts\WaveController.cs" />
-     <Compile Include="Assets\Scripts\TESTING.cs" />
-     <Compile Include="Assets\TagFrenzy\Scripts\Core\EditorTag.cs" />
-     <Compile Include="Assets\TagFrenzy\Scripts\Core\MultiTagManager.cs" />
-     <Compile Include="Assets\TagFrenzy\Scripts\Core\TagFrenzyList.cs" />
-     <Compile Include="Assets\TagFrenzy\Scripts\Core\TagMatch.cs" />
-     <Compile Include="Assets\TagFrenzy\Scripts\Core\Tags.cs" />
-     <Compile Include="Assets\TagFrenzy\Scripts\Test.cs" />
-     <Compile Include="Assets\TagFrenzy\Scripts\User\GameObjectExtensions.cs" />
-     <Compile Include="Assets\TagFrenzy\Scripts\User\MultiTag.cs" />
-     <None Include="Assets\Text\Menu\Frustrated_CR.txt" />
-     <None Include="Assets\GoogleVR\Distortion\GvrDistortion.cginc" />
-     <None Include="Assets\Text\Menu\Sad_CR.txt" />
-     <None Include="Assets\GoogleVR\Resources\UnlitTexture.shader" />
-     <None Include="Assets\Text\Menu\Anxiety_CR.txt" />
-     <None Include="Assets\TagFrenzy\Resources\Tags.xml" />
-     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
-     <None Include="Assets\Text\Menu\Anger_CR.txt" />
-     <None Include="Assets\GoogleVR\Resources\UI\GvrReticleShader.shader" />
-     <None Include="Assets\Text\Menu\Disappointed_CR.txt" />
-     <None Include="Assets\GoogleVR\Resources\SolidColor.shader" />
-     <None Include="Assets\Text\Menu\Worried_CR.txt" />
- <Reference Include="UnityEngine.UI">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Networking">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.TestRunner">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
- </Reference>
- <Reference Include="nunit.framework">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/nunit.framework.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.HoloLens">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.VR">
- <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
- </Reference>
- <Reference Include="Google.ProtocolBuffers">
- <HintPath>/home/user/Desktop/Destress/Assets/Plugins/Google.ProtocolBuffers.dll</HintPath>
- </Reference>
+    <Compile Include="Assets\Delete\CreateNewGround.cs" />
+    <Compile Include="Assets\GoogleVR\DemoScenes\ControllerDemo\ControllerDebugInfo.cs" />
+    <Compile Include="Assets\GoogleVR\DemoScenes\ControllerDemo\ControllerDemoManager.cs" />
+    <Compile Include="Assets\GoogleVR\DemoScenes\HeadsetDemo\FPS.cs" />
+    <Compile Include="Assets\GoogleVR\DemoScenes\HeadsetDemo\Teleport.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudio.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudioListener.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudioRoom.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Audio\GvrAudioSource.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Controller\GvrController.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviderFactory.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviders\AndroidNativeControllerProvider.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviders\DummyControllerProvider.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerProviders\EmulatorControllerProvider.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\ControllerState.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorClientSocket.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorConfig.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorDataTypes.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorManager.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\Emulator\PhoneEvent.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Controller\Internal\IControllerProvider.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\GazeInputModule.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\GvrEye.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\GvrHead.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\GvrPostRender.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\GvrPreRender.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\GvrProfile.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\GvrViewer.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\Pose3D.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\StereoController.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\StereoRenderEffect.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\UI\GvrGaze.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\UI\GvrReticle.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\UI\IGvrGazePointer.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\UI\IGvrGazeResponder.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\VRDevices\AndroidDevice.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\VRDevices\BaseAndroidDevice.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\VRDevices\BaseVRDevice.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\VRDevices\EditorDevice.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\VRDevices\GvrDevice.cs" />
+    <Compile Include="Assets\GoogleVR\Scripts\VRDevices\iOSDevice.cs" />
+    <Compile Include="Assets\Scripts\Games\Collections\CollectorLookWalk.cs" />
+    <Compile Include="Assets\Scripts\Games\Collections\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Games\Collections\EnemyManager.cs" />
+    <Compile Include="Assets\Scripts\Games\Collections\SpawnCollections.cs" />
+    <Compile Include="Assets\Scripts\Games\Finder\FindChoose.cs" />
+    <Compile Include="Assets\Scripts\Games\Finder\FinderSpawner.cs" />
+    <Compile Include="Assets\Scripts\Games\Hit\CoinManager.cs" />
+    <Compile Include="Assets\Scripts\Games\Hit\CoinTrigger.cs" />
+    <Compile Include="Assets\Scripts\Games\Hit\LookHit.cs" />
+    <Compile Include="Assets\Scripts\Games\Hoops\BallControl.cs" />
+    <Compile Include="Assets\Scripts\Games\Hoops\BallHoopPoints.cs" />
+    <Compile Include="Assets\Scripts\Games\Hoops\BallManager.cs" />
+    <Compile Include="Assets\Scripts\Games\Hoops\HoopSpawn.cs" />
+    <Compile Include="Assets\Scripts\Games\Hoops\LookHoop.cs" />
+    <Compile Include="Assets\Scripts\Games\Match\CardSpawner.cs" />
+    <Compile Include="Assets\Scripts\Games\Match\LookSelect.cs" />
+    <Compile Include="Assets\Scripts\Games\Paint\PaintLook.cs" />
+    <Compile Include="Assets\Scripts\Games\Paint\PaintManager.cs" />
+    <Compile Include="Assets\Scripts\Games\Paint\PaintTool.cs" />
+    <Compile Include="Assets\Scripts\Games\Shoot\BulletControll.cs" />
+    <Compile Include="Assets\Scripts\Games\Shoot\BulletManager.cs" />
+    <Compile Include="Assets\Scripts\Games\Shoot\CheckPoints.cs" />
+    <Compile Include="Assets\Scripts\Games\Shoot\GTDEnemyAim.cs" />
+    <Compile Include="Assets\Scripts\Games\Shoot\GTDEnemyRotate.cs" />
+    <Compile Include="Assets\Scripts\Games\Shoot\GTDNewEnemy.cs" />
+    <Compile Include="Assets\Scripts\Games\Shoot\LookShoot.cs" />
+    <Compile Include="Assets\Scripts\Games\Shoot\PowerUpResponse.cs" />
+    <Compile Include="Assets\Scripts\Games\SkyJumper\AddRandomPiece.cs" />
+    <Compile Include="Assets\Scripts\Games\SkyJumper\GroundTextMover.cs" />
+    <Compile Include="Assets\Scripts\Games\SkyJumper\LookMovement.cs" />
+    <Compile Include="Assets\Scripts\Games\SkyJumper\Movement.cs" />
+    <Compile Include="Assets\Scripts\Games\SkyJumper\ObjExitTrigger.cs" />
+    <Compile Include="Assets\Scripts\Games\SkyJumper\SkyJGameConroller.cs" />
+    <Compile Include="Assets\Scripts\Games\Wack\MoleType.cs" />
+    <Compile Include="Assets\Scripts\Games\Wack\WackGameManager.cs" />
+    <Compile Include="Assets\Scripts\Games\Wack\WackLookClick.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\BaseSoundController.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\ButtonClickLook.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\CountingDownS.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\CursorPositioner.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\DestressPopUp.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\FolowAllong.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\GameSuggest.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\HighScoreManager.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\LockManager.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\MagnetSensor.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\MoveAroundChoice.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\MusicController.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\MusicTrackName.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\PaintPopUp.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\SAssessment.cs" />
+    <Compile Include="Assets\Scripts\Menu Scripts\SetGameScore.cs" />
+    <Compile Include="Assets\Scripts\SharedScripts\Extensions.cs" />
+    <Compile Include="Assets\Scripts\SharedScripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\SharedScripts\InfoBubble.cs" />
+    <Compile Include="Assets\Scripts\SharedScripts\ItemResponse.cs" />
+    <Compile Include="Assets\Scripts\SharedScripts\ItemRotate.cs" />
+    <Compile Include="Assets\Scripts\SharedScripts\NewWave.cs" />
+    <Compile Include="Assets\Scripts\SharedScripts\PlayerManager.cs" />
+    <Compile Include="Assets\Scripts\SharedScripts\SceneController.cs" />
+    <Compile Include="Assets\Scripts\SharedScripts\WaveController.cs" />
+    <Compile Include="Assets\Scripts\TESTING.cs" />
+    <Compile Include="Assets\TagFrenzy\Scripts\Core\EditorTag.cs" />
+    <Compile Include="Assets\TagFrenzy\Scripts\Core\MultiTagManager.cs" />
+    <Compile Include="Assets\TagFrenzy\Scripts\Core\TagFrenzyList.cs" />
+    <Compile Include="Assets\TagFrenzy\Scripts\Core\TagMatch.cs" />
+    <Compile Include="Assets\TagFrenzy\Scripts\Core\Tags.cs" />
+    <Compile Include="Assets\TagFrenzy\Scripts\Test.cs" />
+    <Compile Include="Assets\TagFrenzy\Scripts\User\GameObjectExtensions.cs" />
+    <Compile Include="Assets\TagFrenzy\Scripts\User\MultiTag.cs" />
+    <None Include="Assets\Text\Menu\Frustrated_CR.txt" />
+    <None Include="Assets\GoogleVR\Distortion\GvrDistortion.cginc" />
+    <None Include="Assets\Text\Menu\Sad_CR.txt" />
+    <None Include="Assets\GoogleVR\Resources\UnlitTexture.shader" />
+    <None Include="Assets\Text\Menu\Anxiety_CR.txt" />
+    <None Include="Assets\TagFrenzy\Resources\Tags.xml" />
+    <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+    <None Include="Assets\Text\Menu\Anger_CR.txt" />
+    <None Include="Assets\GoogleVR\Resources\UI\GvrReticleShader.shader" />
+    <None Include="Assets\Text\Menu\Disappointed_CR.txt" />
+    <None Include="Assets\GoogleVR\Resources\SolidColor.shader" />
+    <None Include="Assets\Text\Menu\Worried_CR.txt" />
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>..\..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>..\..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\TestRunner\UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\TestRunner\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>..\..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\UnityAnalytics\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>..\..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\UnityHoloLens\RuntimeEditor\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VR">
+      <HintPath>..\..\..\..\opt\Unity\Editor\Data\UnityExtensions\Unity\UnityVR\RuntimeEditor\UnityEngine.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.ProtocolBuffers">
+      <HintPath>Assets\Plugins\Google.ProtocolBuffers.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -203,5 +201,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  
 </Project>

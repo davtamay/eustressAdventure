@@ -19,20 +19,12 @@ public class LookSelect : MonoBehaviour {
 	private CardSpawner cardSpawner;
 	public Text coinText;
 
-	private GameObject newWave;
-	private float timeUntilNewWave;
+
 
 
 
 
 	void Start (){
-
-
-		newWave = GameObject.FindWithTag ("NewWave");
-
-		timeUntilNewWave = newWave.GetComponent<NewWave> ().timeUntilDisapear;
-
-		newWave.gameObject.SetActive (false);
 
 
 		selectedCard = notNullOnSelected;
@@ -158,9 +150,7 @@ public class LookSelect : MonoBehaviour {
 
 				if (cardSpawner.GetWave == 0) {
 				
-					newWave.SetActive (true);
-				
-					yield return new WaitForSeconds (timeUntilNewWave);
+					StartCoroutine (GameController.Instance.NewWave ());
 
 					cardSpawner.ChangeWave (Difficulty.medium);
 					spawnedCards = cardSpawner.GetSpawned;
@@ -168,9 +158,7 @@ public class LookSelect : MonoBehaviour {
 
 				} else if (cardSpawner.GetWave == 1) {
 
-					newWave.SetActive (true);
-
-					yield return new WaitForSeconds (timeUntilNewWave);
+					StartCoroutine (GameController.Instance.NewWave ());
 
 
 					cardSpawner.ChangeWave (Difficulty.hard);

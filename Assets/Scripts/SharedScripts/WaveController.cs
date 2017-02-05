@@ -12,8 +12,6 @@ public class WaveController : MonoBehaviour {
 	[SerializeField] float timeUntilSecondWave;
 	[SerializeField] float timeUntilThirdWave;
 
-	private GameObject newWave;
-	private float timeUntilWaveDisapear;
 
 	private float timer;
 
@@ -38,9 +36,7 @@ public class WaveController : MonoBehaviour {
 		foreach (GameObject go1 in firstWaveObjects) 
 			go1.SetActive (true);
 
-		newWave = GameObject.FindWithTag ("NewWave");
-		newWave.SetActive (false);
-		timeUntilWaveDisapear = newWave.GetComponent<NewWave>().timeUntilDisapear;
+
 		StartCoroutine (OnUpdate ());
 	}
 
@@ -63,8 +59,7 @@ public class WaveController : MonoBehaviour {
 				foreach (GameObject go1 in firstWaveObjects) 
 					go1.SetActive (false);
 
-				newWave.SetActive (true);
-				yield return new WaitForSeconds (timeUntilWaveDisapear);
+				StartCoroutine (GameController.Instance.NewWave ());
 
 				foreach (GameObject go2 in secondWaveObjects) 
 					go2.SetActive (true);
@@ -80,8 +75,7 @@ public class WaveController : MonoBehaviour {
 				foreach (GameObject go2 in firstWaveObjects) 
 					go2.SetActive (false);
 
-				newWave.SetActive (true);
-				yield return new WaitForSeconds (timeUntilWaveDisapear);
+				StartCoroutine (GameController.Instance.NewWave ());
 
 				foreach (GameObject go3 in secondWaveObjects) 
 					go3.SetActive (true);

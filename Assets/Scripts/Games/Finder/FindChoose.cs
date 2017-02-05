@@ -27,11 +27,6 @@ public class FindChoose : MonoBehaviour {
 
 	void Start () {
 
-		newWave = GameObject.FindWithTag ("NewWave");
-
-		timeUntilNewWave = newWave.GetComponent<NewWave> ().timeUntilDisapear;
-
-		newWave.gameObject.SetActive (false);
 
 
 		curScene = SceneController.Instance.GetCurrentSceneName ();
@@ -85,8 +80,7 @@ public class FindChoose : MonoBehaviour {
 					
 						objectsFound = 0;
 
-						newWave.SetActive (true);
-						yield return new WaitForSeconds (timeUntilNewWave);
+						StartCoroutine (GameController.Instance.NewWave ());
 
 
 						spawner.TriggerMoreObjects (100);

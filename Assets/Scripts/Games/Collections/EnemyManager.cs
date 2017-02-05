@@ -16,6 +16,7 @@ public class EnemyManager : MonoBehaviour {
 	public int enemiesToCreate;
 
 	public List <GameObject> enemies;
+	public List <GameObject> activeEnemies;
 
 	void Awake()
 	{
@@ -55,6 +56,7 @@ public class EnemyManager : MonoBehaviour {
 
 				enemies [i].SetActive (true);
 				enemies [i].transform.position = pos;
+				activeEnemies.Add(enemies[i]);
 
 			
 				break;
@@ -105,12 +107,12 @@ public class EnemyManager : MonoBehaviour {
 	}
 	IEnumerator EnemyRunAway(){
 
-		for (int i = 0; i < enemies.Count; i++) {
-			if (enemies [i].activeSelf) {
-				Enemy curEnemy = enemies [i].GetComponent<Enemy> ();
+		for (int i = 0; i < activeEnemies.Count; i++) {
+
+				Enemy curEnemy = activeEnemies [i].GetComponent<Enemy> ();
 				curEnemy.currentState = EnemyState.RunAway;
 				curEnemy.EnemyRunAway ();
-			}
+			
 		}
 		yield return null;
 	}

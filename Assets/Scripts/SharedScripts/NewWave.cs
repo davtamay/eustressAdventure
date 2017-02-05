@@ -16,7 +16,7 @@ public class NewWave : MonoBehaviour {
 	void OnEnable(){
 
 		player = Camera.main.transform;
-		originalPosition = transform.position;
+		originalPosition = transform.localPosition;
 
 		StartCoroutine (OnUpdate ());
 	}
@@ -43,7 +43,7 @@ public class NewWave : MonoBehaviour {
 
 	void OnDisable(){
 	
-		transform.position = originalPosition;
+		transform.localPosition = originalPosition;
 	
 	}
 }
