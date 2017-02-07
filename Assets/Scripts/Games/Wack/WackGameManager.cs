@@ -23,6 +23,7 @@ public class WackGameManager : MonoBehaviour {
 	private float timePassed;
 
 	public int amountOfMolesToEnable = 3;
+
 	public float mediumLevelTime;
 	public float hardLevelTime;
 
@@ -32,6 +33,8 @@ public class WackGameManager : MonoBehaviour {
 
 	public Text coinText;
 	WackLookClick wackLookClick;
+
+	private bool isDone;
 
 	public static WackGameManager Instance
 	{ get { return instance; } }
@@ -59,6 +62,7 @@ public class WackGameManager : MonoBehaviour {
 		SetDifficulty (Difficulty.easy);
 		isEasy = true;
 
+		GameController.Instance.TimeToAdd(ref isDone, mediumLevelTime);
 		StartCoroutine (UpdateGame());
 	}
 		
@@ -72,7 +76,8 @@ public class WackGameManager : MonoBehaviour {
 					wackLookClick.TurnOffAllMoles(GameController.Instance.GetNewWaveTime);
 
 				yield return StartCoroutine (GameController.Instance.NewWave ());
-				
+					GameController.Instance.TimeToAdd(ref isDone, hardLevelTime);
+
 					SetDifficulty (Difficulty.medium);
 					isMedium = true;
 					isEasy = false;

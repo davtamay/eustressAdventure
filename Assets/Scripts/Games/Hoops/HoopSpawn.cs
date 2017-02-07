@@ -6,6 +6,7 @@ public class HoopSpawn : MonoBehaviour {
 
 	private Animator animator;
 	[SerializeField]bool isCrate;
+	[SerializeField]bool isHellicopter;
 
 
 	// Use this for initialization
@@ -15,8 +16,11 @@ public class HoopSpawn : MonoBehaviour {
 
 		if(isCrate)
 		animator.Play("Move",-1,Random.Range (0.0f,1.0f));
+		else if(isHellicopter)
+		animator.Play("HelicopterMove",-1,Random.Range (0.0f,1.0f));
 		else
 		animator.Play("ZombieMove",-1,Random.Range (0.0f,1.0f));
+
 		
 	}
 

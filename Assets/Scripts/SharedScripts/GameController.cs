@@ -11,8 +11,12 @@ public class GameController : MonoBehaviour {
 	private GameObject newWave;
 	private float timeUntilNewWave;
 
-	public Camera[] cameras;
+	private Camera[] cameras;
 	private Camera cam;
+
+	private float timer;
+	private	bool isTimerOn;
+	[SerializeField] private float timerSpeed = 1.2f;
 
 
 
@@ -69,7 +73,7 @@ public class GameController : MonoBehaviour {
 				Time.timeScale = 1;
 			}
 		}
-	}      
+	}
 
 	private bool isMenuActive;
 	public bool IsMenuActive{
@@ -106,6 +110,43 @@ public class GameController : MonoBehaviour {
 		gameStart.SetActive (false);
 	
 	}
+
+	public string TimeToAdd(ref bool isDone, float time = 0f){
+		
+		timer += time;
+
+		if (time > 0f) {
+			isTimerOn = true;
+			StartCoroutine (StartTimer ());
+		}
+
+		string minutes = Mathf.Floor(timer /60).ToString("00");
+		string seconds = Mathf.Floor (timer % 60).ToString ("00");
+
+		if (timer < 0f) {
+			isDone = true;
+			isTimerOn = false;
+		}
+
+		return minutes + ":" + seconds;
+	
+	
+	}
+
+	private IEnumerator StartTimer(){
+
+		while (isTimerOn) {
+		
+			timer -= Time.deltaTime * timerSpeed;
+
+			yield return null;
+		}
+
+		yield break;
+	
+	
+	}
+
 
 	public IEnumerator NewWave(){
 

@@ -38,7 +38,7 @@ public class WackLookClick : MonoBehaviour {
 
 				RaycastHit hit;
 
-				if (Physics.Raycast (ray, out hit, 500)) {
+				if (Physics.SphereCast (ray, 0.2f, out hit, 500)) {
 
 					if (hit.transform.CompareTag ("Ground")) {
 						yield return null;
