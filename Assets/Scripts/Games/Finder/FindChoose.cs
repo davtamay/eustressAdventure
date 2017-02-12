@@ -80,7 +80,7 @@ public class FindChoose : MonoBehaviour {
 					
 						objectsFound = 0;
 
-						StartCoroutine (GameController.Instance.NewWave ());
+						yield return StartCoroutine (GameController.Instance.NewWave ());
 
 
 						spawner.TriggerMoreObjects (100);

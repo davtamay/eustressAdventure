@@ -3,59 +3,77 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveController : MonoBehaviour {
-	
 
-	[SerializeField]private GameObject[] firstWaveObjects;
-	[SerializeField]private GameObject[] secondWaveObjects;
-	[SerializeField]private GameObject[] thirdWaveObjects;
-	[SerializeField]private GameObject[] fourthWaveObjects;
-	[SerializeField]private GameObject[] fifthWaveObjects;
-	[SerializeField]private GameObject[] sixWaveObjects;
 
+	private Transform thisTransform;
+
+	[SerializeField]private Transform firstWaveObject;
+	[SerializeField]private Transform secondWaveObject;
+	[SerializeField]private Transform thirdWaveObject;
+	[SerializeField]private Transform fourthWaveObject;
+	[SerializeField]private Transform fifthWaveObject;
+	[SerializeField]private Transform sixWaveObject;
+
+	[SerializeField] int GOToRespondFirstWave;
+	[SerializeField] int GOToRespondSecondWave;
 	[SerializeField] float timeUntilSecondWave;
+	[SerializeField] int GOToRespondThirdWave;
 	[SerializeField] float timeUntilThirdWave;
+	[SerializeField] int GOToRespondFourthWave;
 	[SerializeField] float timeUntilFourthWave;
+	[SerializeField] int GOToRespondFifthWave;
 	[SerializeField] float timeUntilFifthWave;
+	[SerializeField] int GOToRespondSixthWave;
 	[SerializeField] float timeUntilSixthWave;
 
+
+	private List<int> myIndices;
 
 	private float timer;
 	private bool isDone;
 
 
 	void Awake(){
+		thisTransform = transform;
+
+		firstWaveObject = thisTransform.GetChild(0);
+		secondWaveObject = thisTransform.GetChild(1);
+		thirdWaveObject = thisTransform.GetChild(2);
+		fourthWaveObject = thisTransform.GetChild(3);
+		fifthWaveObject = thisTransform.GetChild(4);
+		sixWaveObject = thisTransform.GetChild(5);
 	
-		foreach (GameObject go1 in firstWaveObjects) 
-			go1.SetActive (false);
+		foreach (Transform gO1 in firstWaveObject)
+			gO1.gameObject.SetActive (false);
+
+		foreach (Transform gO2 in secondWaveObject)
+			gO2.gameObject.SetActive (false);
+
+		foreach (Transform gO3 in thirdWaveObject)
+			gO3.gameObject.SetActive (false);
+
+		foreach (Transform gO4 in fourthWaveObject)
+			gO4.gameObject.SetActive (false);
+
+		foreach (Transform gO5 in fifthWaveObject)
+			gO5.gameObject.SetActive (false);
+
+		foreach (Transform gO6 in sixWaveObject)
+			gO6.gameObject.SetActive (false);
 
 
-		foreach (GameObject go2 in secondWaveObjects) 
-			go2.SetActive (false);
-	
-		foreach (GameObject go3 in thirdWaveObjects) 
-			go3.SetActive (false);
-
-		foreach (GameObject go4 in fourthWaveObjects) 
-			go4.SetActive (false);
-
-
-		foreach (GameObject go5 in fifthWaveObjects) 
-			go5.SetActive (false);
-
-		foreach (GameObject go6 in sixWaveObjects) 
-			go6.SetActive (false);
-
-	
-	
 	}
 
 
 	void Start(){
 		GameController.Instance.TimeToAdd (ref isDone, timeUntilSecondWave);
 
-		foreach (GameObject go1 in firstWaveObjects) 
-			go1.SetActive (true);
-
+		RandomizeGOToEnable (GOToRespondFirstWave, firstWaveObject);
+		
+		foreach (int go1 in myIndices) 
+			firstWaveObject.GetChild (go1).gameObject.SetActive (true);
+		
+		//myIndices.Clear();
 
 		StartCoroutine (OnUpdate ());
 	}
@@ -82,16 +100,19 @@ public class WaveController : MonoBehaviour {
 
 			if (isDone && isFirstWave) {
 				isDone = false;
-				foreach (GameObject go1 in firstWaveObjects) 
-					go1.SetActive (false);
+	
+				firstWaveObject.gameObject.SetActive (false);
 
 				yield return StartCoroutine (GameController.Instance.NewWave ());
 
 				GameController.Instance.TimeToAdd (ref isDone, timeUntilThirdWave);
 
-				foreach (GameObject go2 in secondWaveObjects) 
-					go2.SetActive (true);
+				RandomizeGOToEnable (GOToRespondSecondWave, secondWaveObject);
 
+				foreach (int go2 in myIndices) 
+					secondWaveObject.GetChild (go2).gameObject.SetActive (true);
+
+			//	myIndices.Clear();
 
 				isFirstWave = false;
 				isSecondWave = true;
@@ -100,16 +121,25 @@ public class WaveController : MonoBehaviour {
 			
 		
 			if (isDone && isSecondWave) {
+				isDone = false;
 
-				foreach (GameObject go2 in secondWaveObjects) 
-					go2.SetActive (false);
+				secondWaveObject.gameObject.SetActive (false);
+
 
 				yield return StartCoroutine (GameController.Instance.NewWave ());
 
 				GameController.Instance.TimeToAdd (ref isDone, timeUntilFourthWave);
 
-				foreach (GameObject go3 in thirdWaveObjects) 
-					go3.SetActive (true);
+
+				RandomizeGOToEnable (GOToRespondThirdWave, thirdWaveObject);
+
+				foreach (int go3 in myIndices) 
+					thirdWaveObject.GetChild(go3).gameObject.SetActive (true);
+
+
+
+
+			//	myIndices.Clear();
 
 			//	timer = 0;
 				isSecondWave = false;
@@ -120,16 +150,20 @@ public class WaveController : MonoBehaviour {
 
 			}
 			if (isDone && isThirdWave) {
+				isDone = false;
 
-				foreach (GameObject go3 in thirdWaveObjects) 
-					go3.SetActive (false);
+				thirdWaveObject.gameObject.SetActive (false);
 
 				yield return StartCoroutine (GameController.Instance.NewWave ());
 
 				GameController.Instance.TimeToAdd (ref isDone, timeUntilFifthWave);
 
-				foreach (GameObject go4 in fourthWaveObjects) 
-					go4.SetActive (true);
+				RandomizeGOToEnable (GOToRespondFourthWave, fourthWaveObject);
+
+				foreach (int go4 in myIndices) 
+					fourthWaveObject.GetChild(go4).gameObject.SetActive (true);
+
+			//	myIndices.Clear();
 
 			//	timer = 0;
 				isThirdWave = false;
@@ -141,15 +175,19 @@ public class WaveController : MonoBehaviour {
 			}
 			if (isDone && isFourthWave) {
 
-				foreach (GameObject go4 in fourthWaveObjects) 
-					go4.SetActive (false);
+				fourthWaveObject.gameObject.SetActive (false);
 
 				yield return StartCoroutine (GameController.Instance.NewWave ());
 
 				GameController.Instance.TimeToAdd (ref isDone, timeUntilSixthWave);
+				isDone = false;
 
-				foreach (GameObject go5 in fifthWaveObjects) 
-					go5.SetActive (true);
+				RandomizeGOToEnable (GOToRespondFifthWave, fifthWaveObject);
+
+				foreach (int go5 in myIndices) 
+					fifthWaveObject.GetChild(go5).gameObject.SetActive (true);
+
+				//myIndices.Clear();
 
 		
 				isFourthWave = false;
@@ -159,14 +197,18 @@ public class WaveController : MonoBehaviour {
 
 			}
 			if (isDone && isFifthWave) {
+				isDone = false;
 
-				foreach (GameObject go5 in fifthWaveObjects) 
-					go5.SetActive (false);
+				fifthWaveObject.gameObject.SetActive (false);
 
 				yield return StartCoroutine (GameController.Instance.NewWave ());
 
-				foreach (GameObject go6 in sixWaveObjects) 
-					go6.SetActive (true);
+				RandomizeGOToEnable (GOToRespondSixthWave, sixWaveObject);
+
+				foreach (int go6 in myIndices) 
+					sixWaveObject.GetChild(go6).gameObject.SetActive (true);
+
+			//	myIndices.Clear();
 
 
 				isFifthWave = false;
@@ -182,4 +224,35 @@ public class WaveController : MonoBehaviour {
 	}
 		
 	}
+
+	private void RandomizeGOToEnable(int numToRespawn, Transform gO){
+
+
+		int ChildCount = gO.childCount;
+
+		if (numToRespawn > ChildCount) {
+			Debug.LogWarning ("numToRespawn/GOToRespond can't be bigger than available childCount");
+			return;
+		}
+		//Debug.Log (ChildCount);
+		myIndices = new List<int> (ChildCount);
+
+		for (int i = 0; i < numToRespawn; i++) {
+
+		int myIndexPull = Random.Range(0, ChildCount);
+
+
+		while (myIndices.Contains (myIndexPull)) {
+
+			myIndexPull = Random.Range (0, ChildCount);
+
+		}
+
+		myIndices.Add (myIndexPull);
+
+
+
+	}
+}
+
 }

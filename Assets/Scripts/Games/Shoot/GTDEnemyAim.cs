@@ -37,8 +37,8 @@ public class GTDEnemyAim : MonoBehaviour {
 
 
 	void OnTriggerEnter(Collider other){
-	
-		if (other.transform.GetComponent<BulletControll>().bulletID == 0) {
+		int BulletID = other.transform.GetComponent<BulletControll> ().bulletID;
+		if (BulletID == 0) {
 			other.gameObject.SetActive (false);
 			Destroy (gameObject);
 			PlayerManager.Instance.points = 1;

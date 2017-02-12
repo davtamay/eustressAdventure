@@ -112,12 +112,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 					return;
 
-					} else {
-					
-				//		Debug.Log ("i hit layer:" + (hit.transform.gameObject.layer) + "Which is 0 (default)");
-
-
-					}
+					} 
 				
 				}
 		//	}
@@ -200,8 +195,11 @@ public class ButtonClickLook : MonoBehaviour {
 
 			}else if (isReplayButton) {
 
+
 				SceneController.Instance.ResetCurrentGame ();
 
+
+			//	GetComponentInParent<DestressPopUp> ().HideDestress ();
 
 			} else if (isMusicButton) {
 

@@ -85,6 +85,7 @@ public class SAssessment : MonoBehaviour
 
 	public void OnLevelWasLoad(){
 
+
 		cRObject = GameObject.FindWithTag ("CRText");
 		folowAllong = cRObject.GetComponent<FolowAllong> ();
 		folowAllong.messageLength = cognitiveRefraimingText [0].text.Length;
@@ -97,12 +98,10 @@ public class SAssessment : MonoBehaviour
 
 		cRTextRect.sizeDelta = new Vector2 (widthExpand * 10f, 50);
 
-
 		sMenu = GameObject.FindWithTag ("StressMenu");
 		sMenu.SetActive (false);
-		
 
-		if (string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase)) {
+				if (string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase)) {
 			GameController.Instance.Paused = false;
 		
 			if (typeOfFeeling == null) {

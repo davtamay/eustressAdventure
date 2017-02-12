@@ -43,6 +43,7 @@ public class SceneController : MonoBehaviour {
 		SceneManager.sceneLoaded += OnLevelLoad;
 	}
 	void OnLevelLoad(Scene scene, LoadSceneMode sceneMode){
+		//new test stressmenu 2/12/17
 
 		if(string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase))
 			GameController.Instance.Paused = false;
@@ -52,7 +53,7 @@ public class SceneController : MonoBehaviour {
 
 		RenderSettings.skybox = skyboxes [currentSkybox];
 
-
+	
 
 
 	}
@@ -65,6 +66,7 @@ public class SceneController : MonoBehaviour {
 	public void ResetCurrentGame(){
 		
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+
 
 	
 	}

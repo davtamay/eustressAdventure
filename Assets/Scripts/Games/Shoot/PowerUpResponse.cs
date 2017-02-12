@@ -8,15 +8,24 @@ public class PowerUpResponse : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 
+
 		if(other.CompareTag ("Bullet"))
 		if (other.GetComponent<BulletControll> ().bulletID == 0) {
 
+			other.gameObject.SetActive (false);
+
 			if (string.Equals (powerUpType, "SpeedShoot", System.StringComparison.CurrentCultureIgnoreCase)) {
-				other.gameObject.SetActive (false);
 				StartCoroutine (SpeedShoot ());
+
 			} else if (string.Equals (powerUpType, "Armor", System.StringComparison.CurrentCultureIgnoreCase)) {
 				PlayerManager.Instance.AddArmor ();
 				Destroy (gameObject);
+
+			} else if (string.Equals (powerUpType, "SlowDown", System.StringComparison.CurrentCultureIgnoreCase)) {
+
+				StartCoroutine (SlowDown ());
+			
+			
 			}
 
 
@@ -28,7 +37,7 @@ public class PowerUpResponse : MonoBehaviour {
 	}
 
 	IEnumerator SpeedShoot(){
-		Debug.Log ("Bullet Speed Increased");
+
 		gameObject.transform.position = new Vector3 (0, -100, 0);
 		float curDelayShoot = LookShoot.delayShoot;
 		LookShoot.delayShoot = 0.2f;
@@ -38,5 +47,18 @@ public class PowerUpResponse : MonoBehaviour {
 
 	
 	
+	}
+	IEnumerator SlowDown(){
+	
+		gameObject.transform.position = new Vector3 (0, -100, 0);
+		Time.timeScale = 0.4f;
+		yield return new WaitForSecondsRealtime (10);
+		Time.timeScale = 1f;
+
+		Destroy (gameObject);
+
+
+
+
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 
-	private GameObject Menu;
+	public GameObject Menu;
 
 	private GameObject gameStart;
 	private GameObject gameOver;
@@ -30,17 +30,16 @@ public class GameController : MonoBehaviour {
 
 	void Awake()
 	{
-	//	DontDestroyOnLoad (gameObject);
 
 		if (instance) {
-	//		DestroyImmediate (gameObject);
 			return;
 		}
 		instance = this; 
 
 		Menu = GameObject.FindWithTag ("StressMenu");
 
-		cam = Camera.main;
+		cam = GameObject.FindWithTag ("MainCamera").GetComponent<Camera> ();
+		//cam = Camera.main;
 		cameras = cam.GetComponentsInChildren<Camera> ();
 
 	}
@@ -49,9 +48,12 @@ public class GameController : MonoBehaviour {
 		gameStart = GameObject.FindWithTag ("GameStart");
 		gameOver = GameObject.FindWithTag ("GameOver");
 
-		newWave = GameObject.FindWithTag ("NewWave");
-		timeUntilNewWave = newWave.GetComponent<NewWave> ().timeUntilDisapear;
-		newWave.gameObject.SetActive (false);
+		if (newWave == null) {
+			newWave = GameObject.FindWithTag ("NewWave");
+			timeUntilNewWave = newWave.GetComponent<NewWave> ().timeUntilDisapear;
+			newWave.gameObject.SetActive (false);
+
+		}
 	
 		if (gameOver != null) {
 
