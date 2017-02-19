@@ -16,12 +16,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013556075902}
-  - 33: {fileID: 33000012934637056}
-  - 135: {fileID: 135000011440117472}
-  - 23: {fileID: 23000014294602606}
+  - component: {fileID: 4000013556075902}
+  - component: {fileID: 33000012934637056}
+  - component: {fileID: 135000011440117472}
+  - component: {fileID: 23000014294602606}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -34,13 +34,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000010341442828}
-  - 33: {fileID: 33000012656264920}
-  - 136: {fileID: 136000012517901132}
-  - 23: {fileID: 23000013580463220}
-  - 114: {fileID: 114000012390776886}
+  - component: {fileID: 4000010341442828}
+  - component: {fileID: 33000012656264920}
+  - component: {fileID: 136000012517901132}
+  - component: {fileID: 23000013580463220}
+  - component: {fileID: 114000012390776886}
   m_Layer: 0
   m_Name: OrbiterEnemy
   m_TagString: Untagged
@@ -55,13 +55,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013903349472}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 65.99124, y: 79.859726, z: 215.01656}
+  m_LocalPosition: {x: 85.9, y: 76.93, z: 207.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013556075902}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000013556075902
 Transform:
   m_ObjectHideFlags: 1
@@ -71,10 +71,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.49, z: 0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000010341442828}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23000013580463220
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -89,7 +89,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 38741cdda1e2348b99ce3d51e138ecb0, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -97,12 +99,13 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23000014294602606
 MeshRenderer:
@@ -118,7 +121,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -126,12 +131,13 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33000012656264920
 MeshFilter:
@@ -159,10 +165,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDelay: 4
-  bulletSpeed: 10
-  speed: 0.2
-  circleRadius: 14
-  distanceUntilCircle: 20
+  bulletSpeed: 15
+  speed: 3
+  orbiterSpeed: 3
+  circleRadius: 40
+  distanceUntilCircle: 70
 --- !u!135 &135000011440117472
 SphereCollider:
   m_ObjectHideFlags: 1

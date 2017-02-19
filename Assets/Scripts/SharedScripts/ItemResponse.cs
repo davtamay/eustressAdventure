@@ -37,11 +37,11 @@ public class ItemResponse : MonoBehaviour {
 				Destroy (this.gameObject);
 				EnemyManager.Instance.ReduceSpeed ();
 			}
-			else if (string.Equals (itemDescription, "Size", System.StringComparison.CurrentCultureIgnoreCase)) {
+	//		else if (string.Equals (itemDescription, "Size", System.StringComparison.CurrentCultureIgnoreCase)) {
 
 		//		Destroy (this.gameObject);
 		//		EnemyManager.Instance.ReduceSize ();
-			}
+		//	}
 			else if (string.Equals (itemDescription, "RunAway", System.StringComparison.CurrentCultureIgnoreCase)) {
 
 				Destroy (this.gameObject);
@@ -87,9 +87,18 @@ public class ItemResponse : MonoBehaviour {
 			}
 
 		}else if (other.CompareTag ("Bullet")) {
-		
+
+			//int BulletID = other.transform.GetComponent<BulletControll> ().bulletID;
+			//if (BulletID == 0) 
+			if (string.Equals (itemDescription, "Health", System.StringComparison.CurrentCultureIgnoreCase)) {
+				PlayerManager.Instance.health += 1;
+				//Destroy (this.gameObject);
+			}
+
+			//gameObject.SetActive (false);
 			other.gameObject.SetActive (false);
-		
+			gameObject.SetActive (false);
+			//Destroy (gameObject);
 		
 		
 		}

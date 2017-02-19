@@ -21,7 +21,7 @@ public class CheckPoints : MonoBehaviour {
 
 		if (other.transform.CompareTag("Player")){
 			if (string.Equals ("1a", checkPointName, System.StringComparison.CurrentCultureIgnoreCase)) {
-				StartCoroutine (GameController.Instance.NewWave ());
+			//	StartCoroutine (GameController.Instance.NewWave ());
 				StartCoroutine (spawnWave ());
 
 			}
@@ -95,7 +95,6 @@ public class CheckPoints : MonoBehaviour {
 		foreach (int ran in myIndices)
 			TEMPGO.transform.GetChild (ran).gameObject.SetActive (false);
 
-			//totalMoles [ran].transform.parent.gameObject.SetActive (false);
 			
 		yield return new WaitForSeconds (secondsUntilInactive);
 

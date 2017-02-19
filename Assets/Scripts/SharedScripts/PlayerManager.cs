@@ -38,10 +38,10 @@ public class PlayerManager : MonoBehaviour {
 
 	public Color hurtColor;
 	public Color addHealthColor;
-
 	public Color healthColor;
 	public Color armorColor;
 	public int armorTime;
+
 	public Text coinText;
 
 
@@ -50,6 +50,7 @@ public class PlayerManager : MonoBehaviour {
 
 
 	private Image healthColorIndicator;
+
 	private int _health;
 
 	public int health{

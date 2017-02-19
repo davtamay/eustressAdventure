@@ -9,30 +9,30 @@ public class PowerUpResponse : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 
 
-		if(other.CompareTag ("Bullet"))
-		if (other.GetComponent<BulletControll> ().bulletID == 0) {
+		if (other.CompareTag ("Bullet")) {
+			int BulletID = other.transform.GetComponent<BulletControll> ().bulletID;
 
-			other.gameObject.SetActive (false);
+			if (BulletID == 0) {
+				other.gameObject.SetActive (false);
 
-			if (string.Equals (powerUpType, "SpeedShoot", System.StringComparison.CurrentCultureIgnoreCase)) {
-				StartCoroutine (SpeedShoot ());
+				if (string.Equals (powerUpType, "SpeedShoot", System.StringComparison.CurrentCultureIgnoreCase)) {
+					StartCoroutine (SpeedShoot ());
 
-			} else if (string.Equals (powerUpType, "Armor", System.StringComparison.CurrentCultureIgnoreCase)) {
-				PlayerManager.Instance.AddArmor ();
-				Destroy (gameObject);
+				} else if (string.Equals (powerUpType, "Armor", System.StringComparison.CurrentCultureIgnoreCase)) {
+					PlayerManager.Instance.AddArmor ();
+					Destroy (gameObject);
 
-			} else if (string.Equals (powerUpType, "SlowDown", System.StringComparison.CurrentCultureIgnoreCase)) {
+				} else if (string.Equals (powerUpType, "SlowDown", System.StringComparison.CurrentCultureIgnoreCase)) {
 
-				StartCoroutine (SlowDown ());
+					StartCoroutine (SlowDown ());
 			
 			
+				}
 			}
-
-
 		
-		} else
-			return;
-
+		
+		
+	}
 
 	}
 

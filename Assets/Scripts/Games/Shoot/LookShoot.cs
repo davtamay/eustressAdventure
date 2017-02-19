@@ -21,7 +21,7 @@ public class LookShoot : MonoBehaviour {
 			yield return new WaitForSeconds (delayShoot);
 
 
-			BulletManager.BulletPosition (cam.transform.TransformPoint (Vector3.forward * 1.8f), cam.transform.rotation, 1, 0);
+			BulletManager.BulletPosition (cam.transform.TransformPoint (Vector3.forward * 1.8f), cam.transform.rotation, 1);
 
 
 		}
