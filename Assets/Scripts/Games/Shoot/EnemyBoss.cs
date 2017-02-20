@@ -9,27 +9,77 @@ public class EnemyBoss : MonoBehaviour {
 	public UnityEvent OnBossDeath;
 	[SerializeField]private int health;
 
-	//[SerializeField] private bool isFirstBoss;
-	//[SerializeField] private bool isSecondBoss;
-	//private Transform childTransform;
+	[SerializeField] private bool isSecondBoss;
+	[SerializeField]private GameObject zombie;
+	[SerializeField]private Transform[] zombieRespawnPoints;
+	[SerializeField] private Transform player;
+	private GameObject zombieParent;
+
+
+
+	private Transform thisTransform;
 	private Renderer thisRenderer;
+	private Animator thisAnimator;
+	private Vector3 originalPos;
 	private Color origColor;
-	private Color hitColor;
+
 
 
 
 	void Awake(){
 
+		thisTransform = transform;
+		originalPos = thisTransform.position;
 		thisRenderer = GetComponent<Renderer> ();
-	//	origColor = thisRenderer.material.color;
-		origColor = thisRenderer.material.GetColor ("_EmissionColor");
-	//	childTransform = transform.GetChild (0);
+		origColor = Color.black;
+		player = GameObject.FindWithTag ("Player").transform;
+	
+
+		if (isSecondBoss) {
+			thisAnimator = GetComponent <Animator> ();
+
+			zombieParent = new GameObject ("Zombie Manager");
+			zombieParent.transform.parent = transform.parent;
 
 
+			StartCoroutine (CloudBossActions ());
+
+		}
 	
 	}
 
-	void Update(){
+	IEnumerator CloudBossActions(){
+	
+		while (true) {
+
+
+			yield return new WaitForSeconds (4f);
+
+			StartCoroutine(	MoveCloudToNewPos ());
+
+			GameObject zomGO = Instantiate (zombie, zombieRespawnPoints [Random.Range (0, zombieRespawnPoints.Length)].position,Quaternion.LookRotation (player.forward));//player.forward));//Quaternion.identity );
+			zomGO.transform.parent = zombieParent.transform;
+		
+		
+		}
+	
+	
+	
+	}
+
+	IEnumerator MoveCloudToNewPos(){
+
+
+		Vector3 newRandomLoc = originalPos +  Random.insideUnitSphere * 30;
+
+		thisAnimator.SetBool ("isLocChange", true);
+
+		yield return new WaitForSeconds (2.5f);
+
+		thisTransform.position = newRandomLoc;
+
+		thisAnimator.SetBool ("isLocChange", false);
+
 
 	
 	
@@ -44,8 +94,11 @@ public class EnemyBoss : MonoBehaviour {
 			if (BulletID == 0) {
 				other.gameObject.SetActive (false);
 				StartCoroutine (ChangeBossColor ());
-				PlayerManager.Instance.points = 1;
+				PlayerManager.Instance.points = 10;
 				health--;
+
+				if (isSecondBoss)
+					thisAnimator.SetTrigger ("isHit");
 				if (health == 0) {
 					OnBossDeath.Invoke();
 

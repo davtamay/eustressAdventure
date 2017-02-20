@@ -62,8 +62,9 @@ public class PlayerManager : MonoBehaviour {
 				healthColor.a += 0.1f;
 				if (healthColor.a >= .91f) {
 					HighScoreManager.Instance.CheckHighScore (curSceneName, _points);
-					GameController.Instance.Paused = true;
 					GameController.Instance.isGameOver = true;
+					GameController.Instance.Paused = true;
+
 
 		
 				};

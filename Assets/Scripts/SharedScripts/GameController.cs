@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
 
@@ -11,6 +12,8 @@ public class GameController : MonoBehaviour {
 	private GameObject newWave;
 	private float timeUntilNewWave;
 
+
+
 	private Camera[] cameras;
 	private Camera cam;
 
@@ -18,8 +21,8 @@ public class GameController : MonoBehaviour {
 	private	bool isTimerOn;
 	[SerializeField] private float timerSpeed = 1.2f;
 
-
-
+	private GameObject hitEffect;
+	//private List<GameObject> hitEffects;
 
 
 	public static GameController Instance
@@ -45,6 +48,9 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Start(){
+	//	hitEffects = new List<GameObject> ();
+
+
 		gameStart = GameObject.FindWithTag ("GameStart");
 		gameOver = GameObject.FindWithTag ("GameOver");
 
@@ -53,6 +59,13 @@ public class GameController : MonoBehaviour {
 			timeUntilNewWave = newWave.GetComponent<NewWave> ().timeUntilDisapear;
 			newWave.gameObject.SetActive (false);
 
+		}
+
+		if (hitEffect == null) {
+		
+			hitEffect = Resources.Load ("HitEffect") as GameObject;//GameObject.FindWithTag ("HitEffect");
+			//hitEffect.SetActive (false);
+		
 		}
 	
 		if (gameOver != null) {
@@ -182,6 +195,17 @@ public class GameController : MonoBehaviour {
 	public void MakeEverythingVisible(){
 		foreach (Camera c in cameras) 
 			c.cullingMask = -1;
+	}
+
+	public IEnumerator HitEffectLocation(Vector3 hitLoc){
+
+		Instantiate (hitEffect, hitLoc, Quaternion.identity);
+	
+		yield return null;
+
+
+	
+	
 	}
 
 		

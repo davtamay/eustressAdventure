@@ -24,7 +24,7 @@ public class EnemyPursue : MonoBehaviour {
 
 		if (isPursueEnemy) {
 			Vector3 dir = (player.position - transform.position).normalized;
-			thisTransform.position += dir * speed;
+			thisTransform.position += dir * speed * Time.deltaTime;
 			thisTransform.LookAt (thisTransform.position);
 
 		}

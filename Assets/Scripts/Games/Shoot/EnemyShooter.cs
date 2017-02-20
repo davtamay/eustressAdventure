@@ -42,6 +42,7 @@ public class EnemyShooter : MonoBehaviour {
 		if (other.CompareTag ("Bullet")) {
 			int BulletID = other.transform.GetComponent<BulletControll> ().bulletID;
 			if (BulletID == 0) {
+				GameController.Instance.HitEffectLocation (other.transform.position);
 				other.gameObject.SetActive (false);
 				Destroy (gameObject);
 				PlayerManager.Instance.points = 1;

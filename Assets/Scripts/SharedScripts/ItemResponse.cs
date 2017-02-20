@@ -88,20 +88,29 @@ public class ItemResponse : MonoBehaviour {
 
 		}else if (other.CompareTag ("Bullet")) {
 
+			StartCoroutine( GameController.Instance.HitEffectLocation (other.transform.position));
 			//int BulletID = other.transform.GetComponent<BulletControll> ().bulletID;
 			//if (BulletID == 0) 
 			if (string.Equals (itemDescription, "Health", System.StringComparison.CurrentCultureIgnoreCase)) {
 				PlayerManager.Instance.health += 1;
-				//Destroy (this.gameObject);
+
 			}
 
-			//gameObject.SetActive (false);
-			other.gameObject.SetActive (false);
+		//	StartCoroutine(DeactivateObjects(gameObject, other.gameObject));
 			gameObject.SetActive (false);
-			//Destroy (gameObject);
+			other.gameObject.SetActive (false);
+
 		
 		
 		}
+	}
+
+	IEnumerator DeactivateObjects(params GameObject[] gO){
+	//	yield return new WaitForSeconds(0.2f);
+		yield return null;//new WaitForEndOfFrame ();
+		foreach (GameObject go in gO)
+			go.SetActive (false);
+
 	}
 		
 	IEnumerator SetCollectorPlayerSpeed(GameObject GOtoDestroy){
