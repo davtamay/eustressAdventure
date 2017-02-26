@@ -9,6 +9,7 @@ public class ZombieEnemyAttack : MonoBehaviour {
 	private Transform player;
 	[SerializeField] float speed = 20f;
 	[SerializeField] float disToAttack = 5f;
+	//public AnimationCurve animCurve;
 //	private float distanceFromGround = 10f;
 
 	private Vector3 destUp;
@@ -37,7 +38,7 @@ public class ZombieEnemyAttack : MonoBehaviour {
 		} 
 
 	//	Vector3 elevatedPos = transform.position;
-		RaycastHit hit;
+	/*	RaycastHit hit;
 
 		if (Physics.Raycast (thisTransform.position, Vector3.down, out hit)) {
 		
@@ -45,7 +46,7 @@ public class ZombieEnemyAttack : MonoBehaviour {
 			destUp = hit.normal;
 
 
-		}
+		}*/
 			
 			
 			dirToPlayer = (player.position - thisTransform.position).normalized;

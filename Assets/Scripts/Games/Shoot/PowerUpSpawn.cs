@@ -2,17 +2,58 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUpSpawn : MonoBehaviour {
+public  class PowerUpSpawn : MonoBehaviour {
 
 	[SerializeField]private GameObject[] PowerUps;
-	[SerializeField] float timeUntilPowerUp = 2;
-	private Transform playerTransform;
 
-	IEnumerator Start(){
 
-		playerTransform = GameObject.FindWithTag ("Player").transform;
 
-		int RandomPowerUp;
+	public static PowerUpSpawn Instance
+	{ get { return instance; } }
+
+	private static PowerUpSpawn instance = null;
+
+
+	void Awake()
+	{
+
+		if (instance) {
+			Debug.Log ("There is two PowerUpSpawn Instances");
+			return;
+		}
+		instance = this; 
+	}
+
+	public GameObject SpawnPowerUpLocation(Vector3 pos){
+	
+	
+		int RandomPowerUp = Random.Range (0, PowerUps.Length);
+		GameObject gO = Instantiate (PowerUps [RandomPowerUp], pos , Quaternion.identity);
+		gO.transform.position += Vector3.back * 5f;
+		StartCoroutine (DestroyObjects (12f, gO));
+
+		//Invoke ("Destroy(gO)", 12f);
+		return gO;
+	}
+
+	IEnumerator DestroyObjects(float time, params GameObject[] gO){
+
+		while (time > 0f) {
+
+			time -= Time.deltaTime;
+			yield return null;
+		
+		}
+
+
+			//yield return new WaitForSeconds(time);
+		if (gO == null)
+
+			foreach (GameObject go in gO)
+				go.SetActive (false);
+
+	}
+		/*int RandomPowerUp;
 
 		while (true) {
 		
@@ -30,5 +71,5 @@ public class PowerUpSpawn : MonoBehaviour {
 	
 	
 	
-	}
+	}*/
 }

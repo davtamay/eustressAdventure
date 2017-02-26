@@ -16,32 +16,32 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000010436668034}
-  - 33: {fileID: 33000011354934132}
-  - 65: {fileID: 65000011387415742}
-  - 23: {fileID: 23000013481173878}
-  - 114: {fileID: 114000010963821234}
-  - 54: {fileID: 54000011385884364}
+  - component: {fileID: 4000010436668034}
+  - component: {fileID: 33000011354934132}
+  - component: {fileID: 65000011387415742}
+  - component: {fileID: 23000013481173878}
+  - component: {fileID: 114000010963821234}
+  - component: {fileID: 54000011385884364}
   m_Layer: 0
   m_Name: 'EnemyAIm '
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000011034489454
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013113897660}
-  - 33: {fileID: 33000010965731236}
-  - 135: {fileID: 135000013155712658}
-  - 23: {fileID: 23000012159701690}
+  - component: {fileID: 4000013113897660}
+  - component: {fileID: 33000010965731236}
+  - component: {fileID: 135000013155712658}
+  - component: {fileID: 23000012159701690}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -55,14 +55,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011001985824}
-  m_LocalRotation: {x: 0, y: 0.953717, z: 0, w: 0.30070582}
-  m_LocalPosition: {x: -15.14, y: -16.67, z: 75.22}
+  m_LocalRotation: {x: 0, y: 0.013089582, z: 0, w: 0.99991435}
+  m_LocalPosition: {x: 372.41, y: 20, z: 214.36}
   m_LocalScale: {x: 3, y: 3, z: 3}
-  m_LocalEulerAnglesHint: {x: 0, y: 145, z: 0}
   m_Children:
   - {fileID: 4000013113897660}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 1.5, z: 0}
 --- !u!4 &4000013113897660
 Transform:
   m_ObjectHideFlags: 1
@@ -72,10 +72,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000010436668034}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23000012159701690
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -90,7 +90,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 38741cdda1e2348b99ce3d51e138ecb0, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -98,12 +100,13 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23000013481173878
 MeshRenderer:
@@ -119,7 +122,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -127,12 +132,13 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33000010965731236
 MeshFilter:
@@ -186,9 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798395bed5da94e7fa2062b87e3303ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
-  bulletDelay: 1
-  bulletSpeed: 4
+  bulletDelay: 3
+  bulletSpeed: 2
   playerTarget: {fileID: 0}
   isDirectShoot: 0
 --- !u!135 &135000013155712658

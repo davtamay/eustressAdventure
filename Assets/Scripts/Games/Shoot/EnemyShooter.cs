@@ -14,7 +14,7 @@ public class EnemyShooter : MonoBehaviour {
 
 
 	void OnEnable(){
-		playerTarget = GameObject.FindWithTag ("Player");
+		playerTarget = Camera.main.gameObject;//GameObject.FindWithTag ("Player");
 		StartCoroutine (OnUpdate());
 
 	}

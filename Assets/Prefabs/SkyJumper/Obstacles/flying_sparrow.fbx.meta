@@ -27,6 +27,7 @@ ModelImporter:
     400018: Scene_Root1
     4300000: Mesh1
     7400000: Animation
+    7400002: Animation001
     9500000: //RootNode
     13700000: Mesh1
   materials:
@@ -39,17 +40,67 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Animation001
+      takeName: Animation
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mesh1
+        weight: 1
+      - path: Scene_Root
+        weight: 1
+      - path: Scene_Root/Scene_Root1
+        weight: 1
+      - path: Scene_Root/Scene_Root1/Bone
+        weight: 1
+      - path: Scene_Root/Scene_Root1/Bone/Bone1
+        weight: 1
+      - path: Scene_Root/Scene_Root1/Bone/Bone1/Bone2
+        weight: 1
+      - path: Scene_Root/Scene_Root1/Bone/Bone1/Bone2/Bone4
+        weight: 1
+      - path: Scene_Root/Scene_Root1/Bone/Bone1/Bone3
+        weight: 1
+      - path: Scene_Root/Scene_Root1/Bone/Bone1/Bone3/Bone5
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -75,6 +126,7 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -85,7 +137,10 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1

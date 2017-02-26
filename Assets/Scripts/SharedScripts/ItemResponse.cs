@@ -88,23 +88,54 @@ public class ItemResponse : MonoBehaviour {
 
 		}else if (other.CompareTag ("Bullet")) {
 
-			StartCoroutine( GameController.Instance.HitEffectLocation (other.transform.position));
+			StartCoroutine(DeactivateObjects(gameObject, other.gameObject));
+
+			Vector3 HitLocation = other.transform.position;
+			StartCoroutine( GameController.Instance.HitEffectLocation (HitLocation));
 			//int BulletID = other.transform.GetComponent<BulletControll> ().bulletID;
 			//if (BulletID == 0) 
-			if (string.Equals (itemDescription, "Health", System.StringComparison.CurrentCultureIgnoreCase)) {
-				PlayerManager.Instance.health += 1;
+		//	if (string.Equals (itemDescription, "Health", System.StringComparison.CurrentCultureIgnoreCase)) {
+		//		PlayerManager.Instance.health += 1;
 
+		//	}
+
+
+
+			int randomNum = Random.Range(0,10);
+
+			switch (randomNum) {
+			case 0:
+				GameObject PowerUp = PowerUpSpawn.Instance.SpawnPowerUpLocation (HitLocation);
+
+			//	StartCoroutine	(DestroyObjects (14f, PowerUp));
+
+
+			break;
+
+			default:
+				break;
+			
+			
+			
 			}
+	
 
-		//	StartCoroutine(DeactivateObjects(gameObject, other.gameObject));
-			gameObject.SetActive (false);
-			other.gameObject.SetActive (false);
+
 
 		
 		
 		}
 	}
 
+	IEnumerator DestroyObjects(float time, params GameObject[] gO){
+
+		yield return new WaitForSeconds(time);
+		if (gO == null)
+
+		foreach (GameObject go in gO)
+			go.SetActive (false);
+
+	}
 	IEnumerator DeactivateObjects(params GameObject[] gO){
 	//	yield return new WaitForSeconds(0.2f);
 		yield return null;//new WaitForEndOfFrame ();
@@ -135,30 +166,7 @@ public class ItemResponse : MonoBehaviour {
 
 
 
-
-
-		/*void OnCollisionEnter (Collision collision){ 
-
-		//other.transform.GetComponent <Collider> ().enabled = false;
-		Debug.Log ("i triggered");
-
-		if (collision.transform.CompareTag ("Item")) {
-
-			Destroy (collision.gameObject);
-			/*foreach (ContactPoint contact in collision.contacts) {
-
-				contact.otherCollider.gameObject;
-				Destroy (contact.thisCollider.gameObject);
-			}
-			//if (this.transform.gameObject.InstanceID() > other.transform.InstanceID())
-
 	
-		}
-		return;
-	
-		}*/
-
-
 
 
 }

@@ -69,10 +69,6 @@ public class CheckPoints : MonoBehaviour {
 
 		myIndices = new List<int> (ChildCount);
 
-		Debug.Log (TEMPGO.transform.childCount);
-		//foreach(Transform gO in transform.GetChild(0))
-
-
 
 		for (int i = 0; i < numToNotRespawn; i++) {
 

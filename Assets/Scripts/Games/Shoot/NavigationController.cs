@@ -15,10 +15,14 @@ public class NavigationController : MonoBehaviour {
 
 
 	void Awake () {
-		if(firstBoss != null)
-		firstBoss.SetActive (false);
-		if(secondBoss != null)
-		secondBoss.SetActive (false);
+		if (firstBoss != null)
+			firstBoss.SetActive (false);
+		if (secondBoss != null) {
+			secondBoss.SetActive (false);
+			//curBoss = 1;
+		}
+		
+
 		animator = GetComponent<Animator> ();
 		originalSpeed = animator.speed;
 
@@ -31,7 +35,7 @@ public class NavigationController : MonoBehaviour {
 			firstBoss.SetActive (true);
 			curBoss++;
 		} else if (curBoss == 1) {
-			firstBoss.SetActive (true);
+			secondBoss.SetActive (true);
 			curBoss++;
 		}
 	}

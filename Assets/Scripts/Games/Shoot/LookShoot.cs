@@ -6,12 +6,14 @@ public class LookShoot : MonoBehaviour {
 	private Camera cam;
 
 	public static float delayShoot = 0.8f;
+	public static float originalDelayShoot;
 
 
 
 
 	IEnumerator Start(){
 	
+		originalDelayShoot = delayShoot;
 		cam = Camera.main;
 	
 	

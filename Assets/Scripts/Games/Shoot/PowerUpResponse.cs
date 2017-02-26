@@ -6,6 +6,8 @@ public class PowerUpResponse : MonoBehaviour {
 
 	public string powerUpType;
 
+
+
 	void OnTriggerEnter(Collider other){
 
 
@@ -26,6 +28,9 @@ public class PowerUpResponse : MonoBehaviour {
 
 					StartCoroutine (SlowDown ());
 			
+				}else if (string.Equals (powerUpType, "Health", System.StringComparison.CurrentCultureIgnoreCase)) {
+					PlayerManager.Instance.health += 1;
+					Destroy (gameObject);
 				}
 			}
 		
@@ -46,17 +51,28 @@ public class PowerUpResponse : MonoBehaviour {
 
 
 	}
-	IEnumerator SpeedShoot(){
 
+	public static float speedTimer = 0f;
+	public IEnumerator SpeedShoot(){
+
+		speedTimer += 10f;
+		if (speedTimer > 10f) {
+			speedTimer = 10f;
+
+		}
 		gameObject.transform.position = new Vector3 (0, -100, 0);
-		float curDelayShoot = LookShoot.delayShoot;
+
 		LookShoot.delayShoot = 0.2f;
-		yield return new WaitForSeconds(10); 
-		LookShoot.delayShoot = curDelayShoot;
-		Destroy (gameObject);
+		while (speedTimer > 0f) {
 
 
-	
+			speedTimer -= Time.deltaTime;
+		
+			yield return null;
+		}
+		//yield return new WaitForSeconds (speedTimer); 
+		LookShoot.delayShoot = LookShoot.originalDelayShoot;
+	    Destroy (gameObject);
 	
 	}
 	IEnumerator SlowDown(){

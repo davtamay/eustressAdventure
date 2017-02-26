@@ -40,7 +40,7 @@ public class EnemyBoss : MonoBehaviour {
 
 			zombieParent = new GameObject ("Zombie Manager");
 			zombieParent.transform.parent = transform.parent;
-
+		//	thisAnimator.SetBool ("isLocChange", true);
 
 			StartCoroutine (CloudBossActions ());
 
@@ -50,12 +50,15 @@ public class EnemyBoss : MonoBehaviour {
 
 	IEnumerator CloudBossActions(){
 	
+
+		//yield return new WaitForSeconds (3f);
+
 		while (true) {
 
 
 			yield return new WaitForSeconds (4f);
 
-			StartCoroutine(	MoveCloudToNewPos ());
+		//	StartCoroutine(	MoveCloudToNewPos ());
 
 			GameObject zomGO = Instantiate (zombie, zombieRespawnPoints [Random.Range (0, zombieRespawnPoints.Length)].position,Quaternion.LookRotation (player.forward));//player.forward));//Quaternion.identity );
 			zomGO.transform.parent = zombieParent.transform;
@@ -66,15 +69,19 @@ public class EnemyBoss : MonoBehaviour {
 	
 	
 	}
-
-	IEnumerator MoveCloudToNewPos(){
+	public void MoveCloudToNewPos(){
+		Vector3 newRandomLoc = originalPos +  Random.insideUnitSphere * 30;
+		thisTransform.position = newRandomLoc;
+	}
+	/*IEnumerator MoveCloudToNewPos(){
 
 
 		Vector3 newRandomLoc = originalPos +  Random.insideUnitSphere * 30;
 
 		thisAnimator.SetBool ("isLocChange", true);
 
-		yield return new WaitForSeconds (2.5f);
+		yield return null;
+		//yield return new WaitForSeconds (3f);
 
 		thisTransform.position = newRandomLoc;
 
@@ -83,7 +90,7 @@ public class EnemyBoss : MonoBehaviour {
 
 	
 	
-	}
+	}*/
 
 	void OnTriggerEnter(Collider other){
 

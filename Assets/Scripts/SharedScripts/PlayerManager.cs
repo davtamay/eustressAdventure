@@ -41,6 +41,7 @@ public class PlayerManager : MonoBehaviour {
 	public Color healthColor;
 	public Color armorColor;
 	public int armorTime;
+	public bool isArmorOn = false;
 
 	public Text coinText;
 
@@ -97,9 +98,12 @@ public class PlayerManager : MonoBehaviour {
 
 	
 	}
+
+	public static float armorTimer = 0f;
 	public void AddArmor (){
 
-
+		StopAllCoroutines ();
+		isArmorOn = true;
 		isInvulnerable = true;
 		healthColorIndicator.color = armorColor;
 		StartCoroutine (AddArmorTime());
@@ -109,12 +113,30 @@ public class PlayerManager : MonoBehaviour {
 
 	IEnumerator AddArmorTime(){
 
-		yield return new WaitForSeconds (armorTime);
+		armorTimer = armorTime;
+
+		while (armorTimer > 0) {
+		
+			armorTimer -= Time.deltaTime;
+			yield return null;
+		}
+
+		//yield return new WaitForSeconds (armorTime);
 		isInvulnerable = false;
+		isArmorOn = false;
 		healthColorIndicator.color = healthColor;
+
 	}
 	IEnumerator HealthReduceColor (Color col){
 	
+		if (isArmorOn) {
+		
+			healthColorIndicator.color = armorColor;
+			yield break;
+		
+		}
+		
+
 		healthColorIndicator.color = col;
 
 		yield return new WaitForSeconds (1.0f);
@@ -123,6 +145,13 @@ public class PlayerManager : MonoBehaviour {
 
 	}
 	IEnumerator HealthAddColor (Color col){
+
+		if (isArmorOn) {
+		
+			healthColorIndicator.color = armorColor;
+			yield break;
+
+		}
 
 		healthColorIndicator.color = col;
 
