@@ -9,6 +9,7 @@ public class CardSpawner : MonoBehaviour {
 
 	public Texture2D[] images;
 	public Sprite[] sprites;
+	private LookSelect lookSelect;
 
 	public Transform easy;
 	public Transform medium;
@@ -16,7 +17,8 @@ public class CardSpawner : MonoBehaviour {
 
 	private Vector3 easyStartPos;
 	private Vector3 mediumStartPos;
-	//private Vector3 hardStartPos;
+	private Vector3 hardStartPos;
+
 
 	public bool isEasy;
 	public bool	isMedium;
@@ -40,33 +42,30 @@ public class CardSpawner : MonoBehaviour {
 
 
 	void Awake () {
+		lookSelect = GetComponent<LookSelect> ();
 
 		easyStartPos = easy.position;
 		mediumStartPos = medium.position;
-	//	hardStartPos = hard.position;
+		hardStartPos = hard.position;
 	
 
 		ChangeWave (Difficulty.easy);
-		StartCoroutine (testOn ());
-
-	}
-
-	IEnumerator testOn(){
 	
-		yield return new WaitForSeconds (8);
-		//ChangeWave (Difficulty.hard);
+
 	}
+
+
 
 	public void ChangeWave (Difficulty diff){
-
-
+		lookSelect.isFirstCard = false;
+		lookSelect.isSecondCard = false;
+	
 		switch (diff) {
 
-		case Difficulty.easy:
+			case Difficulty.easy:
 
-			cardsToSpawn = 16;
-				//Destroy (medium.gameObject);
-				//Destroy (hard.gameObject);
+				cardsToSpawn = 16;
+
 				wave = 0;
 				medium.gameObject.SetActive (false);
 				hard.gameObject.SetActive (false);
@@ -75,7 +74,7 @@ public class CardSpawner : MonoBehaviour {
 			case Difficulty.medium:
 
 				cardsToSpawn = 32;
-				//Destroy (hard.gameObject);
+				
 				wave = 1;
 				easy.position = easyStartPos;
 				medium.gameObject.SetActive (true);
@@ -93,9 +92,12 @@ public class CardSpawner : MonoBehaviour {
 
 		}
 
-		foreach (GameObject gO in cardObjects)
-			gO.SetActive (false);
+		foreach (GameObject gO in cardObjects) {
+		//	cardObjects.Remove (gO);
 
+
+			Destroy (gO);//gO.SetActive (false);
+		}
 
 		Shuffle (sprites);
 		for (int i = 0; i < cardsToSpawn; i++) {
@@ -121,6 +123,7 @@ public class CardSpawner : MonoBehaviour {
 
 			GameObject topCard = GameObject.CreatePrimitive (PrimitiveType.Quad);
 			GameObject bottomCard = GameObject.CreatePrimitive (PrimitiveType.Quad);
+
 
 			topCard.name = images[i].name;
 
@@ -186,6 +189,7 @@ public class CardSpawner : MonoBehaviour {
 					topCard.transform.position = easy.position + (Vector3.down * 1.5f);
 					bottomCard.transform.position = easy.position + (Vector3.down * 1.5f);
 					easy.position = topCard.transform.position;
+				
 
 				
 				} else if (isMedium) {
@@ -200,6 +204,7 @@ public class CardSpawner : MonoBehaviour {
 				} else if (isHard) {
 
 					easy.gameObject.SetActive (false);
+					hard.gameObject.SetActive (false);
 					//Destroy (hard.gameObject);
 					topCard.transform.position = hard.position + (Vector3.down * 1.5f);
 					bottomCard.transform.position = hard.position + (Vector3.down * 1.5f);
@@ -212,6 +217,9 @@ public class CardSpawner : MonoBehaviour {
 
 		} 
 
+		easy.position = easyStartPos;
+		medium.position = mediumStartPos;
+		hard.position = hardStartPos;
 	}
 	
 

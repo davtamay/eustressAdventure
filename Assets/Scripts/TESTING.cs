@@ -5,9 +5,11 @@ public class TESTING : MonoBehaviour,IGvrGazePointer {
 	float radiusy;
 	float radiusx;
 
+	private Camera cam;
+
 	// Use this for initialization
 	void OnEnable () {
-		
+		cam = Camera.main;
 		GazeInputModule.gazePointer = this;
 	}
 	

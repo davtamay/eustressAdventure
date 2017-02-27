@@ -18,6 +18,7 @@ public class LookSelect : MonoBehaviour {
 	public int spawnedCards;
 	private CardSpawner cardSpawner;
 	public Text coinText;
+	private LookSelect lookSelect;
 
 
 

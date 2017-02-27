@@ -94,7 +94,7 @@ public class ButtonClickLook : MonoBehaviour {
 				if (!GameController.Instance.IsMenuActive) {
 					
 					hitButton = hit.transform.gameObject;
-					buttonFill = hitButton.GetComponent<Image> ();
+					//buttonFill = hitButton.GetComponent<Image> ();
 
 					StartCoroutine ("ButtonLook");
 
