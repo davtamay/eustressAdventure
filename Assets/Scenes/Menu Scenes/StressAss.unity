@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 684125683}
-  m_IndirectSpecularColor: {r: 0.4376615, g: 0.49863285, b: 0.6194703, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -165,6 +165,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -172,7 +173,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 0
   copingMethod: 0
-  games: 0
   curMusicButton: 0
 --- !u!114 &23114875
 MonoBehaviour:
@@ -398,6 +398,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -405,7 +406,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 2
   copingMethod: 0
-  games: 0
   curMusicButton: 0
 --- !u!65 &82423819
 BoxCollider:
@@ -511,6 +511,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -518,7 +519,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 6
   copingMethod: 4
-  games: 8
   curMusicButton: 4
 --- !u!114 &91358192
 MonoBehaviour:
@@ -881,6 +881,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -888,7 +889,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 2
-  games: 6
   curMusicButton: 0
 --- !u!114 &157541465
 MonoBehaviour:
@@ -1184,6 +1184,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -1191,7 +1192,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 4
   copingMethod: 0
-  games: 0
   curMusicButton: 0
 --- !u!114 &199887675
 MonoBehaviour:
@@ -1495,6 +1495,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: Stressed_Hit
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -1502,7 +1503,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 2
   curMusicButton: 0
 --- !u!65 &211424918
 BoxCollider:
@@ -2436,6 +2436,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -2443,7 +2444,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 1
-  games: 2
   curMusicButton: 0
 --- !u!114 &420232304
 MonoBehaviour:
@@ -2892,7 +2892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &594304398
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2906,10 +2906,10 @@ RectTransform:
   m_Father: {fileID: 1501488130}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 67.65433, y: -40}
+  m_SizeDelta: {x: 1.9753087, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &594304399
 MonoBehaviour:
@@ -2928,6 +2928,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -2935,7 +2936,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 3
   curMusicButton: 0
 --- !u!65 &594304400
 BoxCollider:
@@ -3831,6 +3831,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -3838,7 +3839,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 0
   copingMethod: 0
-  games: 0
   curMusicButton: 3
 --- !u!114 &803858195
 MonoBehaviour:
@@ -3970,6 +3970,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: Stressed_Match
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -3977,7 +3978,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 4
   curMusicButton: 0
 --- !u!65 &804235683
 BoxCollider:
@@ -4214,6 +4214,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -4221,7 +4222,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 6
   copingMethod: 3
-  games: 8
   curMusicButton: 0
 --- !u!114 &819497507
 MonoBehaviour:
@@ -4820,6 +4820,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -4827,7 +4828,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 0
   copingMethod: 5
-  games: 8
   curMusicButton: 4
 --- !u!65 &1052708015
 BoxCollider:
@@ -4972,6 +4972,9 @@ MonoBehaviour:
   isMovingDown: 0
   isMenuShowing: 0
   sweepRate: 150
+  isOrientationChangeToFront: 1
+  isOrientationChangeToLastView: 0
+  isMenuFirstTime: 0
   camHead: {fileID: 0}
   camHeadParent: {fileID: 0}
 --- !u!1 &1113778458
@@ -5825,6 +5828,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 1
   isStartButton: 0
   isReplayButton: 0
@@ -5832,7 +5836,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 0
   curMusicButton: 0
 --- !u!114 &1380413564
 MonoBehaviour:
@@ -6246,6 +6249,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -6253,7 +6257,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 3
   copingMethod: 0
-  games: 0
   curMusicButton: 0
 --- !u!114 &1403560488
 MonoBehaviour:
@@ -6414,6 +6417,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -6421,7 +6425,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 0
   copingMethod: 0
-  games: 0
   curMusicButton: 2
 --- !u!114 &1465241789
 MonoBehaviour:
@@ -6726,12 +6729,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angryGames:
-  - {fileID: 804235684}
+  - {fileID: 1516450394}
   - {fileID: 211424915}
-  - {fileID: 594304401}
-  - {fileID: 1717737693}
-  anxiousGames: []
-  dissapointedGames: []
+  - {fileID: 1718194826}
+  anxiousGames:
+  - {fileID: 804235684}
+  - {fileID: 1718194826}
+  - {fileID: 1516450394}
+  dissapointedGames:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   frustratedGames: []
   sadGames: []
   worriedGames: []
@@ -6795,6 +6803,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: Stressed_Collection
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -6802,7 +6811,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 1
   curMusicButton: 0
 --- !u!65 &1516450393
 BoxCollider:
@@ -6990,7 +6998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd7eff3e8b744e9e8b75f9ea0ed62bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameras: []
+  Menu: {fileID: 0}
+  timerSpeed: 1.2
 --- !u!4 &1558214595
 Transform:
   m_ObjectHideFlags: 0
@@ -7281,6 +7290,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 1
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -7288,7 +7298,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 0
   curMusicButton: 0
 --- !u!114 &1627159003
 MonoBehaviour:
@@ -7437,6 +7446,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -7444,7 +7454,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 0
   copingMethod: 0
-  games: 0
   curMusicButton: 1
 --- !u!114 &1674909621
 MonoBehaviour:
@@ -7745,6 +7754,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -7752,7 +7762,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 0
-  games: 2
   curMusicButton: 0
 --- !u!114 &1709028171
 MonoBehaviour:
@@ -7906,7 +7915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1717737693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8003,6 +8012,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -8010,7 +8020,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 5
   curMusicButton: 0
 --- !u!65 &1717737696
 BoxCollider:
@@ -8057,10 +8066,10 @@ RectTransform:
   m_Father: {fileID: 1501488130}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 141.64557, y: -40}
+  m_SizeDelta: {x: 31.645569, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1718194822
 GameObject:
@@ -8077,7 +8086,7 @@ GameObject:
   - component: {fileID: 1718194825}
   - component: {fileID: 1718194824}
   m_Layer: 0
-  m_Name: GetThemDown
+  m_Name: Shoot
   m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8118,6 +8127,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: Stressed_Shoot
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -8125,7 +8135,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 7
   curMusicButton: 0
 --- !u!65 &1718194825
 BoxCollider:
@@ -8297,6 +8306,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -8304,7 +8314,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 5
   curMusicButton: 0
 --- !u!135 &1751692259
 SphereCollider:
@@ -8700,7 +8709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1813258002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8714,10 +8723,10 @@ RectTransform:
   m_Father: {fileID: 1501488130}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 7.0754714, y: -40}
+  m_SizeDelta: {x: 14.150943, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &1813258003
 BoxCollider:
@@ -8847,6 +8856,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -8854,7 +8864,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 0
   curMusicButton: 0
 --- !u!1 &1813338327
 GameObject:
@@ -9155,6 +9164,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -9162,7 +9172,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 1
   copingMethod: 5
-  games: 8
   curMusicButton: 4
 --- !u!65 &1894656908
 BoxCollider:
@@ -9512,6 +9521,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -9519,7 +9529,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 5
   copingMethod: 0
-  games: 0
   curMusicButton: 0
 --- !u!114 &2040497090
 MonoBehaviour:

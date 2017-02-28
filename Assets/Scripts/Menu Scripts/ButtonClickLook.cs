@@ -24,7 +24,10 @@ public class ButtonClickLook : MonoBehaviour {
 	public bool isStressed = false;
 	public bool isMenuCope = false;
 	public bool isEnvChanger = false;
+
 	public bool isGame = false;
+	[SerializeField] private string gameScene;
+
 	public bool isBackButton = false;
 	public bool isStartButton = false;
 	public bool isReplayButton = false;
@@ -35,14 +38,14 @@ public class ButtonClickLook : MonoBehaviour {
 	public enum Stressed{yes,no};
 	public enum StressTypes{angry, anxious, dissapointed, frustrated, sad, worried, none};
 	public enum MenuCoping {breathing, counting, refraiming, music,paint, none};
-	public enum Games{skyjumper, collections, hit, finder, match, wack, hoops, shoot, none};
+	//public enum Games{skyjumper, collections, hit, finder, match, wack, hoops, shoot, STRESSED_COLLECTION, STRESSED_HIT, STRESSED_MATCH, STRESSED_SHOOT, none};
 
 	public enum MusicPlayerButton{play,stop,next,previous, none}
 
 	public Stressed curStressed;
 	public StressTypes StressT;
 	public MenuCoping copingMethod;
-	public Games games;
+//	public Games games;
 	public MusicPlayerButton curMusicButton;
 
 	GameObject hitButton;
@@ -63,7 +66,7 @@ public class ButtonClickLook : MonoBehaviour {
 		button = GetComponent <Button> ();
 		col = GetComponent <Collider> ();
 
-		cam = GameObject.FindWithTag ("MainCamera").GetComponent<Camera>();
+		cam = Camera.main;
 
 		currentButton = this.gameObject;
 
@@ -298,7 +301,9 @@ public class ButtonClickLook : MonoBehaviour {
 						
 			} else if (isGame && !isSMenuOpener) {
 
-
+				LoadScene (gameScene);
+				yield break;
+				/*
 				switch (games) {
 
 				case Games.skyjumper:
@@ -333,7 +338,22 @@ public class ButtonClickLook : MonoBehaviour {
 				case Games.shoot:
 					SceneController.Instance.Load ("Shoot");
 					break;
-				}
+				case Games.STRESSED_COLLECTION:
+					SceneController.Instance.Load ("Stressed_Collection");
+					break;
+
+				case Games.STRESSED_HIT:
+					SceneController.Instance.Load ("Stressed_Hit");
+					break;
+
+				case Games.STRESSED_MATCH:
+					SceneController.Instance.Load ("Stressed_Match");
+					break;
+
+				case Games.STRESSED_SHOOT:
+					SceneController.Instance.Load ("Stressed_Shoot");
+					break;
+				}*/
 
 			}
 
@@ -341,6 +361,17 @@ public class ButtonClickLook : MonoBehaviour {
 			yield return null;
 		}
 	}
+	void LoadScene(string scene){
+	
+		SceneController.Instance.Load (scene);
+	
+	
+	
+	}
+
+
+
+
 		
 			
 	}

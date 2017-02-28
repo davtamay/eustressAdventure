@@ -952,7 +952,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd7eff3e8b744e9e8b75f9ea0ed62bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameras: []
+  Menu: {fileID: 0}
+  timerSpeed: 1.2
 --- !u!4 &238540354
 Transform:
   m_ObjectHideFlags: 0
@@ -1247,6 +1248,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: Match
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -1904,6 +1906,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: Hit
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -2729,6 +2732,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: Hoops
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -2906,6 +2910,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: Finder
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -3146,6 +3151,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 1
   isStartButton: 0
   isReplayButton: 0
@@ -4447,6 +4453,9 @@ MonoBehaviour:
   isMovingDown: 0
   isMenuShowing: 0
   sweepRate: 150
+  isOrientationChangeToFront: 1
+  isOrientationChangeToLastView: 0
+  isMenuFirstTime: 0
   camHead: {fileID: 0}
   camHeadParent: {fileID: 0}
 --- !u!1 &1043564889
@@ -4919,6 +4928,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -5440,6 +5450,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: Wack
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -5617,6 +5628,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: Collections
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -5872,6 +5884,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -7612,6 +7625,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -7770,6 +7784,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -8068,6 +8083,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -8280,6 +8296,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: SkyJumper
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -8644,6 +8661,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 1
+  gameScene: Shoot
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -9090,6 +9108,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -9367,6 +9386,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -10101,6 +10121,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -10399,6 +10420,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -10779,6 +10801,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -11205,6 +11228,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 1
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
