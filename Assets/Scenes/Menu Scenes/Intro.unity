@@ -95,6 +95,73 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &2231571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2231572}
+  - component: {fileID: 2231574}
+  - component: {fileID: 2231573}
+  m_Layer: 5
+  m_Name: RawImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2231572
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2231571}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.23000073}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 0.9999964}
+  m_Children: []
+  m_Father: {fileID: 1411852054}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 35, y: 15}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2231573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2231571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Texture: {fileID: 2800000, guid: ea4e0bd52cc464212aec9c1fe7563786, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &2231574
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2231571}
 --- !u!1 &8067202
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +526,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -466,7 +534,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 5
   curMusicButton: 0
 --- !u!135 &26576493
 SphereCollider:
@@ -984,6 +1051,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -991,7 +1059,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 0
-  games: 2
   curMusicButton: 0
 --- !u!114 &43572433
 MonoBehaviour:
@@ -1373,6 +1440,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -1380,7 +1448,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 2
-  games: 6
   curMusicButton: 0
 --- !u!114 &76927349
 MonoBehaviour:
@@ -1987,6 +2054,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -1994,7 +2062,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 0
   copingMethod: 0
-  games: 0
   curMusicButton: 0
 --- !u!114 &240043381
 MonoBehaviour:
@@ -2233,6 +2300,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 1
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -2240,7 +2308,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 0
   curMusicButton: 0
 --- !u!114 &243239456
 MonoBehaviour:
@@ -2944,6 +3011,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 1
   isReplayButton: 0
@@ -2951,7 +3019,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 6
   curMusicButton: 0
 --- !u!114 &290815690
 MonoBehaviour:
@@ -3332,6 +3399,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 1
@@ -3339,7 +3407,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 6
   curMusicButton: 0
 --- !u!114 &313498858
 MonoBehaviour:
@@ -3544,7 +3611,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1406466220}
+  - {fileID: 2016942976}
   m_Father: {fileID: 935802616}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3584,6 +3651,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -3591,7 +3659,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 1
-  games: 2
   curMusicButton: 0
 --- !u!114 &361123122
 MonoBehaviour:
@@ -3795,6 +3862,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -3802,7 +3870,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 0
   copingMethod: 0
-  games: 0
   curMusicButton: 0
 --- !u!114 &381480141
 MonoBehaviour:
@@ -4135,84 +4202,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 406561064}
---- !u!1 &422431375
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1000012208128336, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 422431376}
-  - component: {fileID: 422431378}
-  - component: {fileID: 422431377}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &422431376
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224000012817756786, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 422431375}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1684581495}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &422431377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000014088976362, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 422431375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 9
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 9
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Cognitive Refraiming
---- !u!222 &422431378
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 222000013819655322, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 422431375}
 --- !u!1 &455719094
 GameObject:
   m_ObjectHideFlags: 0
@@ -4794,6 +4783,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -4801,7 +4791,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 0
   copingMethod: 0
-  games: 0
   curMusicButton: 1
 --- !u!114 &565142921
 MonoBehaviour:
@@ -4948,6 +4937,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -4955,7 +4945,6 @@ MonoBehaviour:
   curStressed: 1
   StressT: 6
   copingMethod: 5
-  games: 8
   curMusicButton: 4
 --- !u!114 &577329143
 MonoBehaviour:
@@ -5110,6 +5099,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -5117,7 +5107,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 0
   copingMethod: 0
-  games: 0
   curMusicButton: 3
 --- !u!114 &625357939
 MonoBehaviour:
@@ -5209,7 +5198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &628693133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5527,6 +5516,73 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 674012896}
+--- !u!1 &688822583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 688822584}
+  - component: {fileID: 688822586}
+  - component: {fileID: 688822585}
+  m_Layer: 5
+  m_Name: RawImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &688822584
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 688822583}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.23000027}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999654}
+  m_Children: []
+  m_Father: {fileID: 1203439403}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 35, y: 15}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &688822585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 688822583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Texture: {fileID: 2800000, guid: 87fe4493b348f4521bb03fea05718a98, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &688822586
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 688822583}
 --- !u!1 &699829357
 GameObject:
   m_ObjectHideFlags: 0
@@ -5619,6 +5675,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -5626,7 +5683,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 6
   copingMethod: 4
-  games: 8
   curMusicButton: 4
 --- !u!114 &699829362
 MonoBehaviour:
@@ -6064,6 +6120,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -6071,7 +6128,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 0
   copingMethod: 0
-  games: 0
   curMusicButton: 2
 --- !u!114 &730457293
 MonoBehaviour:
@@ -6568,6 +6624,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -6575,7 +6632,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 0
   copingMethod: 0
-  games: 0
   curMusicButton: 3
 --- !u!114 &791692338
 MonoBehaviour:
@@ -6875,6 +6931,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -6882,7 +6939,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 6
   copingMethod: 3
-  games: 8
   curMusicButton: 0
 --- !u!114 &801695356
 MonoBehaviour:
@@ -7623,6 +7679,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -7630,7 +7687,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 0
   copingMethod: 0
-  games: 0
   curMusicButton: 1
 --- !u!65 &914673960
 BoxCollider:
@@ -7716,6 +7772,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 1
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -7723,7 +7780,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 0
   curMusicButton: 0
 --- !u!114 &918987656
 MonoBehaviour:
@@ -9080,6 +9136,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -9087,7 +9144,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 6
   copingMethod: 4
-  games: 8
   curMusicButton: 4
 --- !u!114 &1104503843
 MonoBehaviour:
@@ -9413,7 +9469,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1653114020}
+  - {fileID: 1501384491}
   m_Father: {fileID: 935802616}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9453,6 +9509,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -9460,7 +9517,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 0
-  games: 2
   curMusicButton: 0
 --- !u!114 &1126342556
 MonoBehaviour:
@@ -9740,6 +9796,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 1
   isStartButton: 0
   isReplayButton: 0
@@ -9747,7 +9804,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 0
   curMusicButton: 0
 --- !u!114 &1134983561
 MonoBehaviour:
@@ -10053,7 +10109,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.23}
   m_LocalScale: {x: 1, y: 0.99999994, z: 0.9999999}
   m_Children:
-  - {fileID: 1712754913}
+  - {fileID: 688822584}
   m_Father: {fileID: 935802616}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10112,6 +10168,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -10119,7 +10176,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 6
   copingMethod: 3
-  games: 8
   curMusicButton: 0
 --- !u!114 &1203439407
 MonoBehaviour:
@@ -10907,86 +10963,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1399200040}
---- !u!1 &1406466219
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1000010806699636, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1406466220}
-  - component: {fileID: 1406466222}
-  - component: {fileID: 1406466221}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1406466220
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224000014141583968, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1406466219}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 361123119}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -3.5}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1406466221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000010269476246, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1406466219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 9
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 9
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Counting
-
-'
---- !u!222 &1406466222
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 222000012605198218, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1406466219}
 --- !u!1 &1411852053
 GameObject:
   m_ObjectHideFlags: 0
@@ -11021,6 +10997,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 0.99999994, z: 1}
   m_Children:
   - {fileID: 1021837019}
+  - {fileID: 2231572}
   m_Father: {fileID: 935802616}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11079,6 +11056,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -11086,7 +11064,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 6
   copingMethod: 4
-  games: 8
   curMusicButton: 4
 --- !u!114 &1411852058
 MonoBehaviour:
@@ -11425,6 +11402,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1477439649}
+--- !u!1 &1501384490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1501384491}
+  - component: {fileID: 1501384493}
+  - component: {fileID: 1501384492}
+  m_Layer: 5
+  m_Name: RawImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1501384491
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1501384490}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1126342553}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 35, y: 15}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1501384492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1501384490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Texture: {fileID: 2800000, guid: 9df405ba27bee4d5db281eb1d99ac21c, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1501384493
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1501384490}
 --- !u!1 &1504538512
 GameObject:
   m_ObjectHideFlags: 0
@@ -12265,86 +12309,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1653114019
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1000010814887790, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1653114020}
-  - component: {fileID: 1653114022}
-  - component: {fileID: 1653114021}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1653114020
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224000010701424470, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1653114019}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1126342553}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -4.4}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1653114021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000010003090334, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1653114019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 9
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Breathing
-
-'
---- !u!222 &1653114022
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 222000010617701038, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1653114019}
 --- !u!1 &1654002043
 GameObject:
   m_ObjectHideFlags: 0
@@ -12412,6 +12376,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 1
   isReplayButton: 0
@@ -12419,7 +12384,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 6
   curMusicButton: 0
 --- !u!114 &1654002047
 MonoBehaviour:
@@ -12702,6 +12666,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -12709,7 +12674,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 0
   copingMethod: 0
-  games: 0
   curMusicButton: 2
 --- !u!65 &1674064583
 BoxCollider:
@@ -12793,6 +12757,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -12800,7 +12765,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 0
   copingMethod: 0
-  games: 0
   curMusicButton: 0
 --- !u!114 &1680608423
 MonoBehaviour:
@@ -12911,7 +12875,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 422431376}
+  - {fileID: 1717019050}
   m_Father: {fileID: 935802616}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12951,6 +12915,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -12958,7 +12923,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 2
-  games: 6
   curMusicButton: 0
 --- !u!114 &1684581498
 MonoBehaviour:
@@ -13231,86 +13195,73 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1709545632}
---- !u!1 &1712754912
+--- !u!1 &1717019049
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1000013742932082, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1712754913}
-  - component: {fileID: 1712754915}
-  - component: {fileID: 1712754914}
+  - component: {fileID: 1717019050}
+  - component: {fileID: 1717019052}
+  - component: {fileID: 1717019051}
   m_Layer: 5
-  m_Name: Text
+  m_Name: RawImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1712754913
+--- !u!224 &1717019050
 RectTransform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224000011634850616, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1712754912}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 1717019049}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00000023841858}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.9999964}
   m_Children: []
-  m_Father: {fileID: 1203439403}
+  m_Father: {fileID: 1684581495}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -4.4}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.0000006854534}
+  m_SizeDelta: {x: 35, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1712754914
+--- !u!114 &1717019051
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000010754219514, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1712754912}
+  m_GameObject: {fileID: 1717019049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 9
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Music
-
-'
---- !u!222 &1712754915
+  m_Texture: {fileID: 2800000, guid: c78ea9eabe223448681e40703dd8f06c, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1717019052
 CanvasRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 222000011523758924, guid: 88ccd640441de4e57bfa4e1a63b2df12,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1712754912}
+  m_GameObject: {fileID: 1717019049}
 --- !u!1 &1720137960
 GameObject:
   m_ObjectHideFlags: 0
@@ -13471,6 +13422,7 @@ MonoBehaviour:
   isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -13478,7 +13430,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 1
-  games: 2
   curMusicButton: 0
 --- !u!114 &1726850572
 MonoBehaviour:
@@ -13671,6 +13622,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -13678,7 +13630,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 5
   curMusicButton: 0
 --- !u!135 &1754373899
 SphereCollider:
@@ -13920,6 +13871,7 @@ MonoBehaviour:
   isMenuCope: 0
   isEnvChanger: 0
   isGame: 0
+  gameScene: 
   isBackButton: 1
   isStartButton: 0
   isReplayButton: 0
@@ -13927,7 +13879,6 @@ MonoBehaviour:
   curStressed: 0
   StressT: 8
   copingMethod: 3
-  games: 0
   curMusicButton: 0
 --- !u!114 &1802382321
 MonoBehaviour:
@@ -15259,6 +15210,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2002346877}
+--- !u!1 &2016942975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2016942976}
+  - component: {fileID: 2016942978}
+  - component: {fileID: 2016942977}
+  m_Layer: 5
+  m_Name: RawImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2016942976
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2016942975}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00000023841858}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.9999964}
+  m_Children: []
+  m_Father: {fileID: 361123119}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.0000006854534}
+  m_SizeDelta: {x: 35, y: 15}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2016942977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2016942975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Texture: {fileID: 2800000, guid: 876601a8ef5f548a0a7f224fc08b6308, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &2016942978
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2016942975}
 --- !u!1 &2034567891
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,8 +41,8 @@ public class GameController : MonoBehaviour {
 
 		Menu = GameObject.FindWithTag ("StressMenu");
 
-		cam = GameObject.FindWithTag ("MainCamera").GetComponent<Camera> ();
-		//cam = Camera.main;
+		//cam = GameObject.FindWithTag ("MainCamera").GetComponent<Camera> ();
+		cam = Camera.main;
 		cameras = cam.GetComponentsInChildren<Camera> ();
 
 	}

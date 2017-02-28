@@ -11,7 +11,7 @@ public class SceneController : MonoBehaviour {
 		set{ curskybox = value;} 
 
 	}
-	public Material[] skyboxes = new Material[18];
+	public Material[] skyboxes;
 	private GameObject stressMenu;
 
 	public static SceneController Instance
