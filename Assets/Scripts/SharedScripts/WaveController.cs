@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class WaveController : MonoBehaviour {
 
 
+
 	private Transform thisTransform;
+	[SerializeField]UnityEvent onWaveChange;
+	[SerializeField]UnityEvent onWaveShowStart;
 
 	[SerializeField]private Transform firstWaveObject;
 	[SerializeField]private Transform secondWaveObject;
@@ -13,6 +18,8 @@ public class WaveController : MonoBehaviour {
 	[SerializeField]private Transform fourthWaveObject;
 	[SerializeField]private Transform fifthWaveObject;
 	[SerializeField]private Transform sixWaveObject;
+
+	[SerializeField]private bool isRemainAfterWave;
 
 	[SerializeField] int GOToRespondFirstWave;
 	[SerializeField] int GOToRespondSecondWave;
@@ -74,6 +81,7 @@ public class WaveController : MonoBehaviour {
 			firstWaveObject.GetChild (go1).gameObject.SetActive (true);
 		
 		//myIndices.Clear();
+		onWaveChange.Invoke ();
 
 		StartCoroutine (OnUpdate ());
 	}
@@ -100,9 +108,12 @@ public class WaveController : MonoBehaviour {
 
 			if (isDone && isFirstWave) {
 				isDone = false;
-	
+
+
+				if (!isRemainAfterWave)
 				firstWaveObject.gameObject.SetActive (false);
 
+				onWaveShowStart.Invoke ();
 				yield return StartCoroutine (GameController.Instance.NewWave ());
 
 				GameController.Instance.TimeToAdd (ref isDone, timeUntilThirdWave);
@@ -112,6 +123,7 @@ public class WaveController : MonoBehaviour {
 				foreach (int go2 in myIndices) 
 					secondWaveObject.GetChild (go2).gameObject.SetActive (true);
 
+				onWaveChange.Invoke ();
 			//	myIndices.Clear();
 
 				isFirstWave = false;
@@ -123,9 +135,10 @@ public class WaveController : MonoBehaviour {
 			if (isDone && isSecondWave) {
 				isDone = false;
 
+				if (!isRemainAfterWave)
 				secondWaveObject.gameObject.SetActive (false);
 
-
+				onWaveShowStart.Invoke ();
 				yield return StartCoroutine (GameController.Instance.NewWave ());
 
 				GameController.Instance.TimeToAdd (ref isDone, timeUntilFourthWave);
@@ -140,7 +153,7 @@ public class WaveController : MonoBehaviour {
 
 
 			//	myIndices.Clear();
-
+				onWaveChange.Invoke ();
 			//	timer = 0;
 				isSecondWave = false;
 				isThirdWave = true;
@@ -152,8 +165,10 @@ public class WaveController : MonoBehaviour {
 			if (isDone && isThirdWave) {
 				isDone = false;
 
+				if (!isRemainAfterWave)
 				thirdWaveObject.gameObject.SetActive (false);
 
+				onWaveShowStart.Invoke ();
 				yield return StartCoroutine (GameController.Instance.NewWave ());
 
 				GameController.Instance.TimeToAdd (ref isDone, timeUntilFifthWave);
@@ -164,7 +179,7 @@ public class WaveController : MonoBehaviour {
 					fourthWaveObject.GetChild(go4).gameObject.SetActive (true);
 
 			//	myIndices.Clear();
-
+				onWaveChange.Invoke ();
 			//	timer = 0;
 				isThirdWave = false;
 				isFourthWave = true;
@@ -175,8 +190,10 @@ public class WaveController : MonoBehaviour {
 			}
 			if (isDone && isFourthWave) {
 
+				if (!isRemainAfterWave)
 				fourthWaveObject.gameObject.SetActive (false);
 
+				onWaveShowStart.Invoke ();
 				yield return StartCoroutine (GameController.Instance.NewWave ());
 
 				GameController.Instance.TimeToAdd (ref isDone, timeUntilSixthWave);
@@ -188,7 +205,7 @@ public class WaveController : MonoBehaviour {
 					fifthWaveObject.GetChild(go5).gameObject.SetActive (true);
 
 				//myIndices.Clear();
-
+				onWaveChange.Invoke ();
 		
 				isFourthWave = false;
 				isFifthWave = true;
@@ -198,9 +215,12 @@ public class WaveController : MonoBehaviour {
 			}
 			if (isDone && isFifthWave) {
 				isDone = false;
+			
 
+				if (!isRemainAfterWave)
 				fifthWaveObject.gameObject.SetActive (false);
 
+				onWaveShowStart.Invoke ();
 				yield return StartCoroutine (GameController.Instance.NewWave ());
 
 				RandomizeGOToEnable (GOToRespondSixthWave, sixWaveObject);
@@ -209,7 +229,7 @@ public class WaveController : MonoBehaviour {
 					sixWaveObject.GetChild(go6).gameObject.SetActive (true);
 
 			//	myIndices.Clear();
-
+				onWaveChange.Invoke ();
 
 				isFifthWave = false;
 				isSixWave = true;

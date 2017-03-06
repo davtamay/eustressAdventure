@@ -55,18 +55,19 @@ public class WackGameManager : MonoBehaviour {
 
 
 	void Start(){
-	
+	/*
 		wackLookClick = GetComponent<WackLookClick> ();
 	
 		SetDifficulty (Difficulty.easy);
 		isEasy = true;
 
 		GameController.Instance.TimeToAdd(ref isDone, mediumLevelTime);
-		StartCoroutine (UpdateGame());
+		StartCoroutine (UpdateGame());*/
 	}
 		
 	IEnumerator UpdateGame(){
-	
+		yield return null;
+	/*
 		while (true) {
 			if (!GameController.Instance.Paused) { 
 				timePassed += Time.deltaTime;
@@ -81,6 +82,7 @@ public class WackGameManager : MonoBehaviour {
 					isMedium = true;
 					isEasy = false;
 				}
+
 				if (timePassed > hardLevelTime && isMedium) {
 					wackLookClick.TurnOffAllMoles(GameController.Instance.GetNewWaveTime);
 
@@ -211,16 +213,20 @@ public class WackGameManager : MonoBehaviour {
 			break;
 
 
-		}
+		}*/
 	}
 	//CheckifMolesAreActiveInHierarcy (AKA scene - taking into account parent active)
 
-	void AddMolesToActiveList(){
+	public void AddMolesToActiveList(){
 		
 		for (int i = 0; i < totalMoles.Length; i++) {
 
-			if (totalMoles [i].activeInHierarchy) 
+			if (totalMoles [i].activeInHierarchy) {
+				if(activeMoles.Contains(totalMoles[i]))
+				   continue;
+				else
 				activeMoles.Add (totalMoles [i]);
+				   }
 	
 		}
 	}
