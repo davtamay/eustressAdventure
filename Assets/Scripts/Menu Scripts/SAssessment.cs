@@ -33,14 +33,15 @@ public class SAssessment : MonoBehaviour
 
 	void Awake()
 	{
+
 		cRObject = GameObject.FindWithTag ("CRText");
 		folowAllong = cRObject.GetComponent<FolowAllong> ();
 		folowAllong.messageLength = cognitiveRefraimingText [0].text.Length;
 
 		//int widthExpand = cognitiveRefraimingText [0].text.Length;
 
-	//	cRText = cRObject.GetComponentInChildren<Text> ();
-	//	cRTextRect = cRText.GetComponent <RectTransform> ();
+		cRText = cRObject.GetComponentInChildren<Text> ();
+		cRTextRect = cRText.GetComponent <RectTransform> ();
 	//	cRTextRect.sizeDelta = new Vector2 (widthExpand * 11f, 50);
 
 	//	cRText.text = cognitiveRefraimingText [0].text;

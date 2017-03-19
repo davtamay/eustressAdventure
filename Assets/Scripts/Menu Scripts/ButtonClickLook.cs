@@ -33,6 +33,9 @@ public class ButtonClickLook : MonoBehaviour {
 	public bool isReplayButton = false;
 	public bool isMusicButton = false;
 
+	public bool isAllowWalk = false;
+	private static bool isWalking = false;
+
 	private Collider col;
 
 	public enum Stressed{yes,no};
@@ -153,7 +156,7 @@ public class ButtonClickLook : MonoBehaviour {
 				
 
 	UnityEngine.Profiling.Profiler.BeginSample ("ButtonPress");
-			if(isStressed){
+			if (isStressed) {
 				switch (curStressed) {
 
 				case Stressed.yes:
@@ -170,15 +173,31 @@ public class ButtonClickLook : MonoBehaviour {
 
 				}
 				
-			}else if (isSMenuOpener) {
+			} else if (isSMenuOpener) {
 
 				StressMenu.SetActive (false);
 				GameController.Instance.Paused = false;
 				GetComponentInParent<DestressPopUp> ().HideDestress ();
 
 					
-	UnityEngine.Profiling.Profiler.EndSample ();
-			} else if (isEnvChanger) {
+				UnityEngine.Profiling.Profiler.EndSample ();
+			} else if (isAllowWalk) {
+			
+				isWalking = !isWalking;
+				if (isWalking) {
+
+					GameObject.FindWithTag ("Player").GetComponent<CollectorLookWalk> ().enabled = true;
+					GameObject.FindWithTag ("Player").GetComponent<CharacterController> ().enabled = true;
+
+				} else {
+
+					GameObject.FindWithTag ("Player").GetComponent<CollectorLookWalk> ().enabled = false;
+					GameObject.FindWithTag ("Player").GetComponent<CharacterController> ().enabled = false;
+				
+				}
+			
+			
+			}else if (isEnvChanger) {
 
 				SceneController.Instance.ChangeSkyBox ();
 

@@ -108,8 +108,8 @@ public class EnemyBoss : MonoBehaviour {
 					thisAnimator.SetTrigger ("isHit");
 				if (health == 0) {
 					OnBossDeath.Invoke();
-
 					Destroy (transform.parent.gameObject);
+
 				}
 
 			}

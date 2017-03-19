@@ -79,9 +79,10 @@ public class LookMovement : MonoBehaviour {
 			if (isCharGrounded()) {
 
 				if (70.0f > CameraAngleFromUp() && CameraAngleFromUp() >0.0f) {
-
-				movement.y +=  jumpHeight ;
-				isGoingDown = false;
+					if (!GameController.Instance.IsMenuActive) {
+						movement.y += jumpHeight;
+						isGoingDown = false;
+					}
 				} 
 
 				}else { 
