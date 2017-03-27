@@ -417,6 +417,7 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 1
+  isAllowWalk: 0
   curStressed: 0
   StressT: 0
   copingMethod: 0
@@ -607,6 +608,7 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 1
+  isAllowWalk: 0
   curStressed: 0
   StressT: 0
   copingMethod: 0
@@ -7181,7 +7183,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 75cdae75792774292adc9232eb1fe5b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7226,7 +7228,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 341651268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08, y: 0.15, z: 111.28}
+  m_LocalPosition: {x: 0.08, y: 0.26, z: 111.28}
   m_LocalScale: {x: 7.53, y: 0.99, z: 5.08}
   m_Children:
   - {fileID: 162022717}
@@ -7249,7 +7251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c35e4665f819452280613d312fb807e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onWaveChange:
+  onGameStart:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2117696957}
@@ -7263,6 +7265,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onWaveChange:
+    m_PersistentCalls:
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onWaveShowStart:
@@ -7291,14 +7298,39 @@ MonoBehaviour:
   GOToRespondFirstWave: 3
   GOToRespondSecondWave: 3
   timeUntilSecondWave: 10
+  onSecondWaveStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   GOToRespondThirdWave: 3
   timeUntilThirdWave: 10
+  onThirdWaveStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   GOToRespondFourthWave: 3
   timeUntilFourthWave: 10
+  onFourthWaveStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   GOToRespondFifthWave: 3
   timeUntilFifthWave: 10
+  onFifthWaveStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   GOToRespondSixthWave: 3
   timeUntilSixthWave: 10
+  onWaveFinished:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &344665519
 GameObject:
   m_ObjectHideFlags: 0
@@ -7376,6 +7408,7 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
+  isAllowWalk: 0
   curStressed: 0
   StressT: 8
   copingMethod: 0
@@ -9226,6 +9259,7 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
+  isAllowWalk: 0
   curStressed: 0
   StressT: 8
   copingMethod: 2
@@ -13823,6 +13857,7 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
+  isAllowWalk: 0
   curStressed: 0
   StressT: 8
   copingMethod: 1
@@ -14837,6 +14872,7 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
+  isAllowWalk: 0
   curStressed: 0
   StressT: 6
   copingMethod: 4
@@ -15850,6 +15886,7 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
+  isAllowWalk: 0
   curStressed: 0
   StressT: 8
   copingMethod: 3
@@ -18422,6 +18459,7 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 1
+  isAllowWalk: 0
   curStressed: 0
   StressT: 0
   copingMethod: 0
@@ -18853,6 +18891,7 @@ MonoBehaviour:
   isStartButton: 1
   isReplayButton: 0
   isMusicButton: 0
+  isAllowWalk: 0
   curStressed: 0
   StressT: 8
   copingMethod: 3
@@ -22847,6 +22886,7 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
+  isAllowWalk: 0
   curStressed: 0
   StressT: 8
   copingMethod: 3
@@ -28110,6 +28150,7 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
+  isAllowWalk: 0
   curStressed: 0
   StressT: 6
   copingMethod: 3
@@ -28994,6 +29035,77 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1637850096}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1641946211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1641946212}
+  - component: {fileID: 1641946214}
+  - component: {fileID: 1641946213}
+  m_Layer: 0
+  m_Name: Terrain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1641946212
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1641946211}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -100, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1693879039}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!154 &1641946213
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1641946211}
+  m_Material: {fileID: 0}
+  m_Enabled: 1
+  m_TerrainData: {fileID: 15600000, guid: 4de44f51a2d6946f3a9c0df997c32d1c, type: 2}
+  m_EnableTreeColliders: 1
+--- !u!218 &1641946214
+Terrain:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1641946211}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_TerrainData: {fileID: 15600000, guid: 4de44f51a2d6946f3a9c0df997c32d1c, type: 2}
+  m_TreeDistance: 2000
+  m_TreeBillboardDistance: 50
+  m_TreeCrossFadeLength: 5
+  m_TreeMaximumFullLODCount: 50
+  m_DetailObjectDistance: 80
+  m_DetailObjectDensity: 1
+  m_HeightmapPixelError: 5
+  m_SplatMapDistance: 1000
+  m_HeightmapMaximumLOD: 0
+  m_CastShadows: 1
+  m_DrawHeightmap: 1
+  m_DrawTreesAndFoliage: 1
+  m_ReflectionProbeUsage: 1
+  m_MaterialType: 0
+  m_LegacySpecular:
+    serializedVersion: 2
+    rgba: 4286545791
+  m_LegacyShininess: 0.078125
+  m_MaterialTemplate: {fileID: 0}
+  m_BakeLightProbesForTrees: 1
+  m_ScaleInLightmap: 0.0512
+  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &1646299753
 GameObject:
   m_ObjectHideFlags: 0
@@ -32368,6 +32480,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 402317141}
+  - {fileID: 1641946212}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32898,6 +33011,7 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
+  isAllowWalk: 0
   curStressed: 0
   StressT: 8
   copingMethod: 3
@@ -38464,6 +38578,7 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 1
+  isAllowWalk: 0
   curStressed: 0
   StressT: 0
   copingMethod: 0
@@ -38915,6 +39030,7 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 1
   isMusicButton: 0
+  isAllowWalk: 0
   curStressed: 0
   StressT: 8
   copingMethod: 3

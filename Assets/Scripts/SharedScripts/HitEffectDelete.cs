@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class HitEffectDelete : MonoBehaviour {
 
-	private ParticleSystem particleSystem;
+	private ParticleSystem particleSys;
 	// Use this for initialization
 	void Start () {
-		particleSystem = GetComponent <ParticleSystem>();
+		particleSys = GetComponent <ParticleSystem>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (!particleSystem.isPlaying)
-			Destroy (this.gameObject);
+		if (!particleSys.isPlaying)
+			Destroy (gameObject);
 	}
 }

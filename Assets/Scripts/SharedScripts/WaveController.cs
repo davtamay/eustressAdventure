@@ -9,6 +9,7 @@ public class WaveController : MonoBehaviour {
 
 
 	private Transform thisTransform;
+	[SerializeField]UnityEvent onGameStart;
 	[SerializeField]UnityEvent onWaveChange;
 	[SerializeField]UnityEvent onWaveShowStart;
 
@@ -24,14 +25,19 @@ public class WaveController : MonoBehaviour {
 	[SerializeField] int GOToRespondFirstWave;
 	[SerializeField] int GOToRespondSecondWave;
 	[SerializeField] float timeUntilSecondWave;
+	[SerializeField]UnityEvent onSecondWaveStart;
 	[SerializeField] int GOToRespondThirdWave;
 	[SerializeField] float timeUntilThirdWave;
+	[SerializeField]UnityEvent onThirdWaveStart;
 	[SerializeField] int GOToRespondFourthWave;
 	[SerializeField] float timeUntilFourthWave;
+	[SerializeField]UnityEvent onFourthWaveStart;
 	[SerializeField] int GOToRespondFifthWave;
 	[SerializeField] float timeUntilFifthWave;
+	[SerializeField]UnityEvent onFifthWaveStart;
 	[SerializeField] int GOToRespondSixthWave;
 	[SerializeField] float timeUntilSixthWave;
+	[SerializeField]UnityEvent onWaveFinished;
 
 
 	private List<int> myIndices;
@@ -81,7 +87,8 @@ public class WaveController : MonoBehaviour {
 			firstWaveObject.GetChild (go1).gameObject.SetActive (true);
 		
 		//myIndices.Clear();
-		onWaveChange.Invoke ();
+		onGameStart.Invoke();
+	//	onWaveChange.Invoke ();
 
 		StartCoroutine (OnUpdate ());
 	}
@@ -124,6 +131,7 @@ public class WaveController : MonoBehaviour {
 					secondWaveObject.GetChild (go2).gameObject.SetActive (true);
 
 				onWaveChange.Invoke ();
+				onSecondWaveStart.Invoke ();
 			//	myIndices.Clear();
 
 				isFirstWave = false;
@@ -154,6 +162,7 @@ public class WaveController : MonoBehaviour {
 
 			//	myIndices.Clear();
 				onWaveChange.Invoke ();
+				onThirdWaveStart.Invoke ();
 			//	timer = 0;
 				isSecondWave = false;
 				isThirdWave = true;
@@ -180,6 +189,7 @@ public class WaveController : MonoBehaviour {
 
 			//	myIndices.Clear();
 				onWaveChange.Invoke ();
+				onFourthWaveStart.Invoke ();
 			//	timer = 0;
 				isThirdWave = false;
 				isFourthWave = true;
@@ -206,6 +216,7 @@ public class WaveController : MonoBehaviour {
 
 				//myIndices.Clear();
 				onWaveChange.Invoke ();
+				onFifthWaveStart.Invoke ();
 		
 				isFourthWave = false;
 				isFifthWave = true;
@@ -230,6 +241,8 @@ public class WaveController : MonoBehaviour {
 
 			//	myIndices.Clear();
 				onWaveChange.Invoke ();
+				onWaveFinished.Invoke ();
+
 
 				isFifthWave = false;
 				isSixWave = true;
