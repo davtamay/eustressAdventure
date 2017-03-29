@@ -102,7 +102,7 @@ public class SAssessment : MonoBehaviour
 		sMenu = GameObject.FindWithTag ("StressMenu");
 		sMenu.SetActive (false);
 
-				if (string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase)) {
+		if (string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase)) {
 			GameController.Instance.Paused = false;
 		
 			if (typeOfFeeling == null) {

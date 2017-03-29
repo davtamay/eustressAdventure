@@ -34,7 +34,7 @@ public class ButtonClickLook : MonoBehaviour {
 	public bool isMusicButton = false;
 
 	public bool isAllowWalk = false;
-	private static bool isWalking = false;
+	public bool isWalking = false;
 
 	private Collider col;
 
@@ -186,6 +186,7 @@ public class ButtonClickLook : MonoBehaviour {
 				isWalking = !isWalking;
 				if (isWalking) {
 
+					GameController.Instance.Paused = false;
 					GameObject.FindWithTag ("Player").GetComponent<CollectorLookWalk> ().enabled = true;
 					GameObject.FindWithTag ("Player").GetComponent<CharacterController> ().enabled = true;
 

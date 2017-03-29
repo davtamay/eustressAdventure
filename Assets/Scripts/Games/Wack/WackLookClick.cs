@@ -7,14 +7,14 @@ public class WackLookClick : MonoBehaviour {
 
 	private Camera cam;
 
-	public float speedDifficulty;
-	public float timer;
+	public static float speedDifficulty = 1f;
+	private float timer;
 
 	private int isIdleHash = Animator.StringToHash("IsIdle"); 
 	private int isPopupHash = Animator.StringToHash("IsPopup");
 	private int	isDeadHash = Animator.StringToHash ("IsDead");
 
-	[SerializeField] private List<GameObject> curPopUpMoles = new List<GameObject>();
+	//[SerializeField] private List<GameObject> curPopUpMoles = new List<GameObject>();
 
 	public int currentMoleIndex;
 
@@ -37,9 +37,6 @@ public class WackLookClick : MonoBehaviour {
 	
 			while (true) {
 
-			//if (WackGameManager.Instance.activeMoles.Count == 0)
-				//continue;
-				
 				Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
 
 				RaycastHit hit;
@@ -56,13 +53,20 @@ public class WackLookClick : MonoBehaviour {
 						Debug.Log ("is Wacked");
 
 						yield return StartCoroutine (HitMole (hit.transform.gameObject));
-					//	StartCoroutine (TurnOffMole (hit.transform.gameObject));
-				
 						
 
 
 
 					}
+					
+					if (hit.transform.CompareTag ("PowerUp")) {
+
+					hit.transform.GetComponent<PowerUpResponse> ().Response();
+					//hit.transform.GetComponent<Collider> ().enabled = false;
+
+					}
+
+
 				} else {
 					yield return null;
 				} 
@@ -72,43 +76,17 @@ public class WackLookClick : MonoBehaviour {
 
 				if (timer > speedDifficulty) {
 
-				//	Debug.Log ("timer is called");
+			
 
 					timer = 0;
-				/*
-
-					int randomMole = Random.Range (0, WackGameManager.Instance.activeMoles.Count);
-						
-
-
-				while (currentMole.GetInstanceID () == WackGameManager.Instance.activeMoles [randomMole].GetInstanceID ()) {
-		//			Debug.Log (randomMole);
-					!currentMole.GetComponent<MoleType> ().isIdle;
-					randomMole = Random.Range (0, WackGameManager.Instance.activeMoles.Count);
-					//currentMole = WackGameManager.Instance.activeMoles [randomMole];
-					yield return null;
-				}
-					*/
+			
 
 					currentMoleIndex = GetComparedRandomMoleIndex (currentMole);
 					currentMole = WackGameManager.Instance.activeMoles [currentMoleIndex];
 					
-
-		/*			while (!currentMole.GetComponent<MoleType>().isIdle) {
-					
-					currentMoleIndex = GetComparedRandomMoleIndex (currentMole);
-					currentMole = WackGameManager.Instance.activeMoles [currentMoleIndex];
-					yield return null;
-
-					}*/
-			//	print (currentMoleIndex);
-				//	currentMole.GetComponent<MoleType> ().isIdle = false;
 
 					yield return StartCoroutine (TurnOnMole (currentMole));
 
-				//	StartCoroutine (TurnOffMole (currentMole));
-
-					//currentMole.GetComponent<MoleType> ().isIdle = true;
 
 					yield return null;
 
@@ -129,15 +107,10 @@ public class WackLookClick : MonoBehaviour {
 		foreach (GameObject mole in WackGameManager.Instance.activeMoles) {
 
 			Animator an = mole.GetComponent<Animator> ();
-		//	an.speed = 10f;
+		
 			an.SetTrigger (isIdleHash);
 			an.SetBool (isPopupHash, false);
-		//	an.SetBool (isIdleHash, true);
-		//	an.speed = 1f;
-			//an.SetTrigger ("IsTuenedOff");
-		//	an.SetTrigger (isIdleHash);
-		//	an.SetTrigger ("IsDead");
-			//an.SetBool (isDeadHash, true);
+	;
 		}
 		float timeOff = GameController.Instance.GetNewWaveTime;
 		StartCoroutine (TurnOffAll(timeOff));
@@ -147,15 +120,6 @@ public class WackLookClick : MonoBehaviour {
 	}
 
 	public IEnumerator TurnOffAll(float offTime){
-		//float Timer = offTime;
-
-	//	while(Timer > 0){
-
-		//	Timer -= Time.deltaTime;
-		//	yield return null;
-
-
-
 		
 
 		yield return new WaitForSeconds (offTime);
@@ -169,8 +133,6 @@ public class WackLookClick : MonoBehaviour {
 		
 		
 		}
-		//StartCoroutine (UpdateGame());
-	//	}
 			
 		}
 
@@ -181,15 +143,12 @@ public class WackLookClick : MonoBehaviour {
 
 		Animator an = mole.GetComponent<Animator> ();
 
-		//an.SetBool (isDeadHash, false);
-		//an.SetBool (isIdleHash, true);
-
 		an.SetTrigger (isIdleHash);
 		an.SetBool(isPopupHash, true);
 
 
 		yield return null;
-		//an.SetBool(isPopupHash, false);
+
 
 	
 	}
@@ -198,14 +157,10 @@ public class WackLookClick : MonoBehaviour {
 
 		Animator an = mole.GetComponent<Animator> ();
 
-	//	an.SetBool (isDeadHash, false);
-	//	an.SetBool (isIdleHash, true);
-
 		an.SetBool (isPopupHash, false);
 		an.SetTrigger (isIdleHash);
 
-		//yield return new WaitUntil (() => an.IsInTransition (0));
-		//mole.GetComponent<MoleType> ().isIdle = true;
+
 		yield return null;
 
 
@@ -219,9 +174,8 @@ public class WackLookClick : MonoBehaviour {
 		Animator an = mole.GetComponent<Animator> ();
 
 		an.SetTrigger (isDeadHash);
-		//an.SetBool (isIdleHash, false);
 		an.SetBool (isPopupHash, false);
-		//an.SetBool (isDeadHash, true);
+	
 
 
 
@@ -245,7 +199,7 @@ public class WackLookClick : MonoBehaviour {
 
 		while (gO.GetInstanceID () == WackGameManager.Instance.activeMoles [randomMole].GetInstanceID ()) {
 		
-			//!currentMole.GetComponent<MoleType> ().isIdle;
+
 			randomMole = Random.Range (0, WackGameManager.Instance.activeMoles.Count);
 		
 

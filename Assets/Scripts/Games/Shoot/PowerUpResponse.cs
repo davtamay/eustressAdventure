@@ -79,6 +79,7 @@ public class PowerUpResponse : MonoBehaviour {
 	
 		gameObject.transform.position = new Vector3 (0, -100, 0);
 		Time.timeScale = 0.4f;
+		//willchange timescale in menu..
 		yield return new WaitForSecondsRealtime (10);
 		Time.timeScale = 1f;
 
@@ -87,5 +88,45 @@ public class PowerUpResponse : MonoBehaviour {
 
 
 
+	}
+
+	public void Response (){
+	
+		bool isDone = false;
+
+		if (string.Equals (powerUpType, "AddTime", System.StringComparison.CurrentCultureIgnoreCase)) {
+
+			GameController.Instance.TimeToAdd (ref isDone, 10f);
+			Destroy (gameObject);
+		}
+		if (string.Equals (powerUpType, "MoleRate", System.StringComparison.CurrentCultureIgnoreCase)) {
+
+			StartCoroutine (MoleRate ());
+		}
+		if (string.Equals (powerUpType, "SlowDown", System.StringComparison.CurrentCultureIgnoreCase)) {
+
+			StartCoroutine (SlowDown ());
+		}
+
+	
+	}
+	IEnumerator MoleRate(){
+		
+		float origSpeed = WackLookClick.speedDifficulty;
+		gameObject.transform.position = new Vector3 (0, -100, 0);
+		WackLookClick.speedDifficulty = 0.6f;
+		yield return new WaitForSeconds(10); 
+		WackLookClick.speedDifficulty = origSpeed;
+		Destroy (gameObject);
+
+
+
+
+
+	
+	
+	
+	
+	
 	}
 }

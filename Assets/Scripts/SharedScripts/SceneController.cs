@@ -47,7 +47,7 @@ public class SceneController : MonoBehaviour {
 	}
 
 	void OnLevelLoad(Scene scene, LoadSceneMode sceneMode){
-
+		//ButtonClickLook.isWalking = false;
 
 		//new test stressmenu 2/12/17
 		if(string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase))
@@ -81,7 +81,6 @@ public class SceneController : MonoBehaviour {
 		while (true) {
 
 			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Faded")) {
-				Debug.Log (anim.GetCurrentAnimatorStateInfo (0));
 				SceneManager.LoadScene (scene);
 				break;
 			}

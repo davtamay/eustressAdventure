@@ -14,10 +14,28 @@ public class GameTimer : MonoBehaviour {
 	void Start () {
 		timerText = GetComponent<Text> ();
 		timerText.text = GameController.Instance.TimeToAdd(ref isDone);
+		StartCoroutine (OnUpdate ());
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	IEnumerator OnUpdate(){
+	
+		while (true) {
+		
+			timerText.text = GameController.Instance.TimeToAdd(ref isDone);
+
+
+			if (isDone) {
+				timerText.text = "TimeUp!";
+				isDone = false;
+			}
+		
+		
+			yield return new WaitForSeconds (0.2f);
+		}
+	
+	
+	}
+/*	void Update () {
 		timerText.text = GameController.Instance.TimeToAdd(ref isDone);
 
 
@@ -26,5 +44,5 @@ public class GameTimer : MonoBehaviour {
 			isDone = false;
 		}
 
-	}
+	}*/
 }

@@ -50,7 +50,6 @@ public class GameController : MonoBehaviour {
 	void Start(){
 	//	hitEffects = new List<GameObject> ();
 
-
 		gameStart = GameObject.FindWithTag ("GameStart");
 		gameOver = GameObject.FindWithTag ("GameOver");
 
@@ -127,11 +126,13 @@ public class GameController : MonoBehaviour {
 	}
 
 	public string TimeToAdd(ref bool isDone, float time = 0f){
-		
+
 		timer += time;
 
 		if (time > 0f) {
+
 			isTimerOn = true;
+			StopAllCoroutines ();
 			StartCoroutine (StartTimer ());
 		}
 
@@ -149,9 +150,10 @@ public class GameController : MonoBehaviour {
 	}
 
 	private IEnumerator StartTimer(){
+		
 
 		while (isTimerOn) {
-		
+
 			timer -= Time.deltaTime * timerSpeed;
 
 			yield return null;
