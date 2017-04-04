@@ -24,6 +24,9 @@ public class EnemyManager : MonoBehaviour {
 	public List <GameObject> enemies;
 	public List <GameObject> activeEnemies;
 
+	[SerializeField]private Transform currentEnemiesUI;
+
+
 	void Awake()
 	{
 		//	DontDestroyOnLoad (gameObject);
@@ -41,6 +44,9 @@ public class EnemyManager : MonoBehaviour {
 	}
 
 	void Start(){
+
+		for (int i = 0; i < currentEnemiesUI.childCount; i++)
+			currentEnemiesUI.GetChild (i).gameObject.SetActive (false);
 
 
 		enemies = new List<GameObject> ();
@@ -80,22 +86,20 @@ public class EnemyManager : MonoBehaviour {
 				//enemies [i].transform.position = pos;
 				Vector3 sourcePostion = pos;//thisTransform.position;//The position you want to place your agent
 				NavMeshHit closestHit;
-
+			
 				if(NavMesh.SamplePosition(  sourcePostion, out closestHit, 500, 1 ) ){
 					transform.position = closestHit.position;
+					if (enemies[i].GetComponent<NavMeshAgent>() == null)
 					enemies[i].AddComponent<NavMeshAgent>();
 
 				}
 				else
 					Debug.LogError("Could not find position on NavMesh!");
 
-
-
-
-
-
 				activeEnemies.Add(enemies[i]);
 
+				SetCurrentEnemies();
+				//currentEnemiesText.text = activeEnemies.Count.ToString();
 			
 				break;
 			}
@@ -104,22 +108,57 @@ public class EnemyManager : MonoBehaviour {
 
 
 	}
+	/// <summary>
+	/// Call to set the current enemies into PlayerUI.
+	/// </summary>
+	public void SetCurrentEnemies(){
 
+		int CurrentActiveEnemies = activeEnemies.Count;
+		int EnemyImagesCount = currentEnemiesUI.childCount;
 
-	public Vector3 furthestWayPointFromPlayer(Transform enemy){
+		if (CurrentActiveEnemies == 0) {
+			currentEnemiesUI.GetChild (0).gameObject.SetActive (false);
+			return;
+		}
+		
+
+		for (int i = CurrentActiveEnemies - 1; i < EnemyImagesCount; i++)
+			currentEnemiesUI.GetChild (i).gameObject.SetActive (false);
+
+		for (int i = 0; i < CurrentActiveEnemies; i++) {
+
+	
+			if (currentEnemiesUI.GetChild (i).gameObject.activeInHierarchy)
+				continue;
+
+				currentEnemiesUI.GetChild (i).gameObject.SetActive (true);
+		}
+	
+	
+	}
+	/// <summary>
+	/// Get Furthest Waypoint position from player
+	/// </summary>
+	/// <returns>Furthest waypoint position (Vector3)</returns>
+	/// <param name="enemy">Enemy Transform</param>
+	/// <param name="radiusPermitance">Allow to include waypoints at a certain distance</param>
+	public Vector3 GetFurthestWayPointFromPlayer(Transform enemy, float radiusPermitance = 40f){
 	
 
 			Vector3 furtherWayPoint = wayPoints[0];
 			float furthestDistance = 0;
 
-		Vector3 closestWayPoint = wayPoints[0];
+		//Vector3 closestWayPoint = wayPoints[0];
 		//float closestDistance = 0;
 
 		foreach (Vector3 wp in wayPoints) {
 
+
 			float playerDistance = Vector3.Distance (player.position, wp);
 			float enemyDistance = Vector3.Distance (enemy.position, wp);
 
+			if(Vector3.Distance(enemy.position, wp) > radiusPermitance)
+				continue;
 
 			if (playerDistance > enemyDistance){
 
@@ -138,7 +177,7 @@ public class EnemyManager : MonoBehaviour {
 		return furtherWayPoint;
 	
 	}
-	public Vector3 closestWayPointFromPlayer(Transform enemy){
+	public Vector3 ClosestWayPointFromPlayer(Transform enemy, float radiusPermitance){
 
 
 
@@ -148,11 +187,17 @@ public class EnemyManager : MonoBehaviour {
 
 		foreach (Vector3 wp in wayPoints) {
 
-			if (Vector3.Distance (player.position, wp) >= Vector3.Distance (enemy.position, wp)){
+			float playerDistance = Vector3.Distance (player.position, wp);
+			float enemyDistance = Vector3.Distance (enemy.position, wp);
 
-				if (Vector3.Distance (enemy.position, wp) <= closestDistance) {
+			if(Vector3.Distance(enemy.position, wp) > radiusPermitance)
+				continue;
 
-					closestDistance = Vector3.Distance (enemy.position, wp);
+			if (playerDistance >= enemyDistance){
+
+				if (enemyDistance <= closestDistance) {
+
+					closestDistance = enemyDistance;
 
 					closestWayPoint = wp;
 					//closestWayPoint = wayPoints[0];
@@ -179,13 +224,16 @@ public class EnemyManager : MonoBehaviour {
 	}
 	IEnumerator ReduceEnemySpeed(){
 
-
+		float originalNavSpeed = 0f;
 
 		for (int i = 0; i < enemies.Count; i++) {
 
 			if (enemies [i].activeSelf) {
 
 				Enemy curEnemy = enemies [i].GetComponent<Enemy> ();
+				NavMeshAgent curNavAgent = curEnemy.GetComponent<NavMeshAgent> ();
+				originalNavSpeed = curNavAgent.speed;
+				curNavAgent.speed = 2.0F;
 				curEnemy.speed = 2.0f;
 
 				}
@@ -196,6 +244,8 @@ public class EnemyManager : MonoBehaviour {
 
 			if (enemies [e].activeSelf) {
 				Enemy curEnemy = enemies [e].GetComponent<Enemy> ();
+				NavMeshAgent curNavAgent = curEnemy.GetComponent<NavMeshAgent> ();
+				curNavAgent.speed = originalNavSpeed;
 				curEnemy.speed = 20.0f;
 			}
 			}

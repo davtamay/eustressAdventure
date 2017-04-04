@@ -20,6 +20,10 @@ public class Enemy : MonoBehaviour {
 
 	private bool canSeePlayer;
 	private Color originalColor;
+	private float originalSpeed;
+	private float originalAngularSpeed;
+	private float originalStopingDistance;
+	private float originalAcceleration;
 
 	Renderer thisRenderer;
 	Collider thisCollider;
@@ -52,28 +56,18 @@ public class Enemy : MonoBehaviour {
 
 	void OnEnable (){
 
-
 		groundLM = 1 << 8;//LayerMask.NameToLayer ("Ground");
 		playerTransform = GameObject.FindWithTag ("Player").transform;
 		playerManager = playerTransform.GetComponent <PlayerManager> ();
 		originalColor = thisRenderer.material.color;
-			
-	/*	Vector3 sourcePostion = thisTransform.position;//The position you want to place your agent
-		NavMeshHit closestHit;
-		if( NavMesh.SamplePosition(  sourcePostion, out closestHit, 500, 1 ) ){
-			transform.position = closestHit.position;
-			gameObject.AddComponent<NavMeshAgent>();
-			//TODO
-		}
-		else
-			Debug.LogError("Could not find position on NavMesh!");
-*/		//thisAgent = GetComponent <UnityEngine.AI.NavMeshAgent> ();
 
 		StartCoroutine (State_Idle());
 	}
 
-
+	#region Enemy_Idle
 	public IEnumerator State_Idle (){
+		
+
 
 
 		currentState = EnemyState.Idle;
@@ -84,62 +78,76 @@ public class Enemy : MonoBehaviour {
 		if (thisAgent == null) {
 			thisAgent = GetComponent <NavMeshAgent> ();
 			thisAgent.speed = 15f;
-			thisAgent.stoppingDistance = 0;
+			originalSpeed = thisAgent.speed;
+			thisAgent.stoppingDistance = 6;
+			originalStopingDistance = thisAgent.stoppingDistance;
+			originalAngularSpeed = thisAgent.angularSpeed;
+			originalAcceleration = thisAgent.acceleration;
 			thisAgent.baseOffset = 4.5f;
+
+		} else {
+		
+			thisAgent.speed = originalSpeed;
+			thisAgent.angularSpeed = originalAngularSpeed;
+			thisAgent.stoppingDistance = originalStopingDistance;
+		
+		
 		}
 
 		StartCoroutine (State_Search ());
 
 		}
-
+	#endregion
+	#region Enemy_Search
 	public IEnumerator State_Search(){
 		
 		int tempWayPoint;
 		int tempRotation;
 		RaycastHit hit;
+		//temp
 
 		while (currentState == EnemyState.Search) {
-
-			//float timeSearch = 0.0f;
+			yield return null;
 
 			tempWayPoint = Random.Range (0, EnemyManager.Instance.wayPoints.Length);
 	
 
-		//	while (timeSearch < 5.0f) {
+		
 
-				if(thisAgent.remainingDistance < 5f)
+				if(thisAgent.remainingDistance < 3f)
 				thisAgent.SetDestination (EnemyManager.Instance.wayPoints [tempWayPoint]);
-			//	if (thisAgent.pathPending)
+		//	if (thisAgent.pathPending) 
 
-				//test 3/20/2017
-				//thisTransform.Translate (0, 0, speed * Time.deltaTime);
+			
+
 
 				float distanceSqrd = (thisTransform.position - playerTransform.position).sqrMagnitude;
 			
 				if (distanceSqrd < followDistance * followDistance){
 					currentState = EnemyState.Chase;
 					canSeePlayer = true;
-				//	StopAllCoroutines ();	
+
 					StartCoroutine (State_Chase ());
 					break;
 				}
 					
 
+
+			//	if (Physics.Raycast(thisTransform.position, thisTransform.forward, out hit, 4.0f))
 		
-				if (Physics.Raycast(thisTransform.position, thisTransform.forward, out hit, 4.0f))
-			//		break;
-				
-			//	}
 
 
 
-			//	timeSearch += Time.deltaTime;
+		
 				yield return null;
 			}
-		//	timeSearch = 0.0f;
+	
 			yield return null;
-		//}
+	
 	}
+
+	#endregion
+	#region Enemy_Chase
 	public IEnumerator State_Chase(){
 		
 
@@ -173,7 +181,7 @@ public class Enemy : MonoBehaviour {
 				currentState = EnemyState.Attack;
 				canSeePlayer = true;
 			//	StopAllCoroutines ();	
-				thisAgent.stoppingDistance = 0;
+				thisAgent.stoppingDistance = 6;
 				StartCoroutine (State_Attack ());
 				break;
 			}
@@ -182,6 +190,10 @@ public class Enemy : MonoBehaviour {
 		}
 	
 	}
+
+	#endregion
+	//FIXME - Enemy becomes stuck and heads forwad check - CookBook AI
+	#region Enemy_RunAway
 	public void EnemyRunAway(){
 
 		StartCoroutine (State_RunAway());
@@ -195,32 +207,28 @@ public class Enemy : MonoBehaviour {
 		Vector3 changeDirection = Vector3.zero;
 	
 		thisAgent.speed = 20f;
+		thisAgent.angularSpeed = 20f;
+		thisAgent.acceleration = 18f;
+		//test
+		thisAgent.stoppingDistance = 0f;
+		thisAgent.autoBraking = false;
+
+
+		thisAgent.isStopped = true;
+		thisAgent.SetDestination (EnemyManager.Instance.GetFurthestWayPointFromPlayer (thisTransform, 120f));
+		yield return new WaitUntil (() => thisAgent.pathPending == false);
+		thisAgent.isStopped = false;
 
 		while (currentState == EnemyState.RunAway) {
 
 			float distanceSqrd = (thisTransform.position - playerTransform.position).sqrMagnitude;
 
-		/*	if (Vector3.Dot (playerTransform.forward, thisTransform.forward) > 0f) {
-			
-				int tempWayPoint = Random.Range (0, EnemyManager.Instance.wayPoints.Length);
-				thisAgent.SetDestination (EnemyManager.Instance.wayPoints [tempWayPoint]);
-				yield return new WaitUntil (() => thisAgent.pathPending == false);
-
-			}*/
-
-			if (thisAgent.remainingDistance < 6f || thisAgent.path.status == NavMeshPathStatus.PathInvalid || thisAgent.path.status == NavMeshPathStatus.PathPartial) {
+	
+			if (thisAgent.remainingDistance < 15f){// || thisAgent.path.status == NavMeshPathStatus.PathInvalid || thisAgent.path.status == NavMeshPathStatus.PathPartial) {
 			
 
-				thisAgent.SetDestination (EnemyManager.Instance.furthestWayPointFromPlayer (thisTransform));
+				thisAgent.SetDestination (EnemyManager.Instance.GetFurthestWayPointFromPlayer (thisTransform, 120f));
 
-				if (Vector3.Dot (playerTransform.forward, thisTransform.forward) > 0f) {
-
-					int tempWayPoint = Random.Range (0, EnemyManager.Instance.wayPoints.Length);
-					thisAgent.SetDestination (EnemyManager.Instance.wayPoints [tempWayPoint]);
-					yield return new WaitUntil (() => thisAgent.pathPending == false);
-				}
-
-				yield return new WaitUntil (() => thisAgent.pathPending == false);
 			}
 
 			
@@ -228,8 +236,6 @@ public class Enemy : MonoBehaviour {
 
 			if (distanceSqrd > runAwayDistance * runAwayDistance){
 				thisRenderer.material.color = originalColor;
-			//	StopAllCoroutines ();	
-				thisAgent.speed = 15f;
 				StartCoroutine (State_Idle ());
 				yield break;
 			}
@@ -241,6 +247,9 @@ public class Enemy : MonoBehaviour {
 				StartCoroutine (State_Idle ());
 				EnemyManager.Instance.activeEnemies.Remove (this.gameObject);
 				gameObject.SetActive (false);
+
+				EnemyManager.Instance.SetCurrentEnemies ();
+
 				yield break;
 
 			}
@@ -258,6 +267,8 @@ public class Enemy : MonoBehaviour {
 	
 	
 	}
+	#endregion
+	#region Enemy_Attack
 	public IEnumerator State_Attack(){
 	
 
@@ -283,5 +294,6 @@ public class Enemy : MonoBehaviour {
 			}
 		}
 	}
+	#endregion
 
 }

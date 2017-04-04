@@ -124,7 +124,12 @@ public class GameController : MonoBehaviour {
 		gameStart.SetActive (false);
 	
 	}
-
+	/// <summary>
+	/// Check or AddTime to GameTimer
+	/// </summary>
+	/// <returns>Current Time in string 00:00</returns>
+	/// <param name="isDone">Add Ref bool local variable to have reference to current timer completion.</param>
+	/// <param name="time">Add time to current game timer could be left out if only checking isDone.</param>
 	public string TimeToAdd(ref bool isDone, float time = 0f){
 
 		timer += time;

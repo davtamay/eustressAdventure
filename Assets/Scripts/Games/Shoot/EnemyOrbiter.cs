@@ -32,7 +32,7 @@ public class EnemyOrbiter : MonoBehaviour {
 	public float turningDirection = 0f;
 
 
-	void Update() {
+	void LateUpdate() {
 
 		bool isOrbit = false;
 
@@ -96,7 +96,6 @@ public class EnemyOrbiter : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 
 		if(other.CompareTag("Bullet")){
-
 
 			int BulletID = other.transform.GetComponent<BulletControll> ().bulletID;
 			if (BulletID == 0) {
