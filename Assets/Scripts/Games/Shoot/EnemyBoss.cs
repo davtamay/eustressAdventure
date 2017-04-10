@@ -15,6 +15,11 @@ public class EnemyBoss : MonoBehaviour {
 	[SerializeField] private Transform player;
 	private GameObject zombieParent;
 
+	[SerializeField] private bool isThirdBoss;
+	[SerializeField]private GameObject rock;
+	[SerializeField]private Transform rockTransform;
+
+
 
 
 	private Transform thisTransform;
@@ -40,10 +45,16 @@ public class EnemyBoss : MonoBehaviour {
 
 			zombieParent = new GameObject ("Zombie Manager");
 			zombieParent.transform.parent = transform.parent;
-		//	thisAnimator.SetBool ("isLocChange", true);
+
 
 			StartCoroutine (CloudBossActions ());
 
+		}
+
+		if (isThirdBoss) {
+		
+		
+		
 		}
 	
 	}
@@ -73,24 +84,6 @@ public class EnemyBoss : MonoBehaviour {
 		Vector3 newRandomLoc = originalPos +  Random.insideUnitSphere * 30;
 		thisTransform.position = newRandomLoc;
 	}
-	/*IEnumerator MoveCloudToNewPos(){
-
-
-		Vector3 newRandomLoc = originalPos +  Random.insideUnitSphere * 30;
-
-		thisAnimator.SetBool ("isLocChange", true);
-
-		yield return null;
-		//yield return new WaitForSeconds (3f);
-
-		thisTransform.position = newRandomLoc;
-
-		thisAnimator.SetBool ("isLocChange", false);
-
-
-	
-	
-	}*/
 
 	void OnTriggerEnter(Collider other){
 
@@ -129,6 +122,12 @@ public class EnemyBoss : MonoBehaviour {
 		//thisRenderer.material.color = origColor;
 		thisRenderer.material.SetColor ("_EmissionColor", origColor);
 	
+	}
+
+	public void SetRockToThrow(){
+
+		Instantiate (rock, rockTransform.position, Quaternion.identity);
+
 	}
 
 

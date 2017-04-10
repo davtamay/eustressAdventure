@@ -5,6 +5,8 @@ using UnityEngine;
 public  class PowerUpSpawn : MonoBehaviour {
 
 	[SerializeField]private GameObject[] PowerUps;
+	[SerializeField]private Vector3 spawnOffset = Vector3.back * 5f;
+	[SerializeField]private float timeUntilDestroy = 12f;
 
 
 
@@ -29,8 +31,8 @@ public  class PowerUpSpawn : MonoBehaviour {
 	
 		int RandomPowerUp = Random.Range (0, PowerUps.Length);
 		GameObject gO = Instantiate (PowerUps [RandomPowerUp], pos , Quaternion.identity);
-		gO.transform.position += Vector3.back * 5f;
-		StartCoroutine (DestroyObjects (12f, gO));
+		gO.transform.position += spawnOffset;
+		StartCoroutine (DestroyObjects (timeUntilDestroy, gO));
 
 		//Invoke ("Destroy(gO)", 12f);
 		return gO;

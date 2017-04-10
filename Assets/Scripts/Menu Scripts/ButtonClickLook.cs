@@ -83,6 +83,7 @@ public class ButtonClickLook : MonoBehaviour {
 	}
 	void Update(){
 
+
 		if (GameController.Instance.IsInfoBubbleActive)
 			return;
 

@@ -203,7 +203,6 @@ public class Enemy : MonoBehaviour {
 
 
 		thisRenderer.material.color = Color.blue;
-		RaycastHit hit;
 		Vector3 changeDirection = Vector3.zero;
 	
 		thisAgent.speed = 20f;
@@ -243,11 +242,12 @@ public class Enemy : MonoBehaviour {
 			if (thisCollider.bounds.Contains (playerTransform.position)) {
 
 				thisRenderer.material.color = originalColor;
-			//	StopAllCoroutines ();	
+
 				StartCoroutine (State_Idle ());
 				EnemyManager.Instance.activeEnemies.Remove (this.gameObject);
 				gameObject.SetActive (false);
 
+				PlayerManager.Instance.points = 3;
 				EnemyManager.Instance.SetCurrentEnemies ();
 
 				yield break;

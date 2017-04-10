@@ -143,7 +143,7 @@ public class ItemResponse : MonoBehaviour {
 			go.SetActive (false);
 
 	}
-		
+
 	IEnumerator SetCollectorPlayerSpeed(GameObject GOtoDestroy){
 
 		CollectorLookWalk coll = player.GetComponent<CollectorLookWalk>();

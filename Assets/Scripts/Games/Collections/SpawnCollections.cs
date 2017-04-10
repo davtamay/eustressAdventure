@@ -63,6 +63,8 @@ public class SpawnCollections : MonoBehaviour {
 					Destroy (tempCollObj);
 			}
 	
+
+
 	
 			if (isFirstWave) {
 		

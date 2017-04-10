@@ -10,7 +10,8 @@ public class PowerUpResponse : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 
-
+		#region Shoot
+		//Checking for Shoot PowerUps
 		if (other.CompareTag ("Bullet")) {
 			int BulletID = other.transform.GetComponent<BulletControll> ().bulletID;
 
@@ -31,13 +32,24 @@ public class PowerUpResponse : MonoBehaviour {
 				}else if (string.Equals (powerUpType, "Health", System.StringComparison.CurrentCultureIgnoreCase)) {
 					PlayerManager.Instance.health += 1;
 					Destroy (gameObject);
+
+				}else if (string.Equals (powerUpType, "Coin", System.StringComparison.CurrentCultureIgnoreCase)) {
+					PlayerManager.Instance.points += 5;
+					Destroy (gameObject);
 				}
 			}
-		
-		
-		
-		} else
-			return;
+			#endregion
+	//FIXME Add More Items to trigger gravity == 0, power lift, addtime and bonus coins
+		#region Hit
+		} else if(other.CompareTag("Obstacle")){
+
+			if (string.Equals (powerUpType, "Coin", System.StringComparison.CurrentCultureIgnoreCase)) {
+				PlayerManager.Instance.points += 5;
+				Destroy (gameObject);
+			}
+		#endregion
+		}
+
 
 	}
 	IEnumerator AddArmor(){

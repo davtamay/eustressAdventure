@@ -1854,6 +1854,7 @@ GameObject:
   - component: {fileID: 292074097}
   - component: {fileID: 292074096}
   - component: {fileID: 292074099}
+  - component: {fileID: 292074100}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -1937,6 +1938,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScore: 0
+--- !u!114 &292074100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 292074095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c35e4665f819452280613d312fb807e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGameStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onWaveChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onWaveShowStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  firstWaveObject: {fileID: 0}
+  secondWaveObject: {fileID: 0}
+  thirdWaveObject: {fileID: 0}
+  fourthWaveObject: {fileID: 0}
+  fifthWaveObject: {fileID: 0}
+  sixWaveObject: {fileID: 0}
+  isRemainAfterWave: 0
+  GOToRespondFirstWave: 0
+  GOToRespondSecondWave: 0
+  timeUntilSecondWave: 0
+  onSecondWaveStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  GOToRespondThirdWave: 0
+  timeUntilThirdWave: 0
+  onThirdWaveStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  GOToRespondFourthWave: 0
+  timeUntilFourthWave: 0
+  onFourthWaveStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  GOToRespondFifthWave: 0
+  timeUntilFifthWave: 0
+  onFifthWaveStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  GOToRespondSixthWave: 0
+  timeUntilSixthWave: 0
+  onWaveFinished:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &307134775
 GameObject:
   m_ObjectHideFlags: 0

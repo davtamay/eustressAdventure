@@ -32,6 +32,8 @@ public class PlayerManager : MonoBehaviour {
 
 
 		healthColorIndicator = GameObject.FindWithTag ("UIColor").GetComponent<Image>();
+
+		if(SceneController.Instance != null)
 		curSceneName = SceneController.Instance.GetCurrentSceneName ();
 
 	}
