@@ -25,8 +25,8 @@ public class ButtonClickLook : MonoBehaviour {
 	public bool isMenuCope = false;
 	public bool isEnvChanger = false;
 
-	public bool isGame = false;
-	[SerializeField] private string gameScene;
+	//public bool isGame = false;
+	//[SerializeField] private string gameScene;
 
 	public bool isBackButton = false;
 	public bool isStartButton = false;
@@ -41,7 +41,6 @@ public class ButtonClickLook : MonoBehaviour {
 	public enum Stressed{yes,no};
 	public enum StressTypes{angry, anxious, dissapointed, frustrated, sad, worried, none};
 	public enum MenuCoping {breathing, counting, refraiming, music,paint, none};
-	//public enum Games{skyjumper, collections, hit, finder, match, wack, hoops, shoot, STRESSED_COLLECTION, STRESSED_HIT, STRESSED_MATCH, STRESSED_SHOOT, none};
 
 	public enum MusicPlayerButton{play,stop,next,previous, none}
 
@@ -75,17 +74,16 @@ public class ButtonClickLook : MonoBehaviour {
 
 		data = new PointerEventData (EventSystem.current);
 
-	//	if (sAsses == null)
-	//		sAsses = GameObject.FindWithTag ("StressAssess").GetComponent<SAssessment> ();
-		
-
 
 	}
 	void Update(){
 
-
-		if (GameController.Instance.IsInfoBubbleActive)
+	
+		if(!isSMenuOpener)
+		if (GameController.Instance.IsInfoBubbleActive) 
 			return;
+		
+
 
 		Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
 
@@ -101,7 +99,6 @@ public class ButtonClickLook : MonoBehaviour {
 				if (!GameController.Instance.IsMenuActive) {
 					
 					hitButton = hit.transform.gameObject;
-					//buttonFill = hitButton.GetComponent<Image> ();
 
 					StartCoroutine ("ButtonLook");
 
@@ -320,75 +317,25 @@ public class ButtonClickLook : MonoBehaviour {
 					break;
 				}
 						
-			} else if (isGame && !isSMenuOpener) {
+			} /*else if (isGame && !isSMenuOpener) {
 
 				LoadScene (gameScene);
 				yield break;
-				/*
-				switch (games) {
+		
 
-				case Games.skyjumper:
-
-					SceneController.Instance.Load ("SkyJumper");
-					break;
-
-				case Games.collections:
-					SceneController.Instance.Load ("Collections");
-					break;
-				
-				case Games.hit:
-					SceneController.Instance.Load ("Hit");
-					break;
-
-				case Games.finder:
-					SceneController.Instance.Load ("Finder");
-					break;
-
-				case Games.match:
-					SceneController.Instance.Load ("Match");
-					break;
-				
-				case Games.wack:
-					SceneController.Instance.Load ("Wack");
-					break;
-				
-				case Games.hoops:
-					SceneController.Instance.Load ("Hoops");
-					break;
-
-				case Games.shoot:
-					SceneController.Instance.Load ("Shoot");
-					break;
-				case Games.STRESSED_COLLECTION:
-					SceneController.Instance.Load ("Stressed_Collection");
-					break;
-
-				case Games.STRESSED_HIT:
-					SceneController.Instance.Load ("Stressed_Hit");
-					break;
-
-				case Games.STRESSED_MATCH:
-					SceneController.Instance.Load ("Stressed_Match");
-					break;
-
-				case Games.STRESSED_SHOOT:
-					SceneController.Instance.Load ("Stressed_Shoot");
-					break;
-				}*/
-
-			}
+			}*/
 
 			buttonFill.fillAmount = 1.0f;
 			yield return null;
 		}
 	}
-	void LoadScene(string scene){
+/*	void LoadScene(string scene){
 	
 		SceneController.Instance.Load (scene);
 	
 	
 	
-	}
+	}*/
 
 
 

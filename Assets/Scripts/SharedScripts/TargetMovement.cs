@@ -9,12 +9,17 @@ public class TargetMovement : MonoBehaviour
 
     private Vector3 initialPosition;
     private Vector3 nextMovementPoint;
+	private Transform thisTransform;
 		
 	// Use this for initialization
 	void Start () 
-    {
-        initialPosition = transform.position;
+    {	
+		thisTransform = transform;
+		initialPosition = thisTransform.position;
+
         CalculateNextMovementPoint();
+
+
 	}
 
     void CalculateNextMovementPoint()
@@ -25,12 +30,20 @@ public class TargetMovement : MonoBehaviour
 
         nextMovementPoint = initialPosition + new Vector3(posX, posY, posZ); 
     }
+
+//	void OnDrawGizmos(){
 	
+//		Gizmos.DrawRay (thisTransform.position, thisTransform.forward *10);
+//	}
 	// Update is called once per frame
 	void Update () 
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(nextMovementPoint - transform.position), 1.0f * Time.deltaTime);
+
+		RaycastHit hit;
+		if(Physics.Raycast(thisTransform.position, thisTransform.forward, 15))
+			CalculateNextMovementPoint();
 
         if(Vector3.Distance(nextMovementPoint, transform.position) <= 10.0f)
             CalculateNextMovementPoint();

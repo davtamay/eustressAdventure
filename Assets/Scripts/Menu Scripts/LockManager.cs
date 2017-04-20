@@ -16,10 +16,19 @@ public class LockManager : MonoBehaviour {
 	[SerializeField]private int hoopcoreToBeat;
 
 	[SerializeField] private Game curGame;
+
+
+	private Collider GameAssessCollider;
+	private ParticleSystem.MainModule particleSys;
+
 	private Transform game;
 	private Transform lockGame;
 
 	void Start(){
+
+		GameAssessCollider = GetComponentInChildren<Collider> ();
+
+
 
 		foreach (Transform gO in transform) {
 			if (gO.name == "Game")
@@ -48,6 +57,19 @@ public class LockManager : MonoBehaviour {
 		case Game.FINDER:
 			break;
 		case Game.HIT:
+
+			if (HighScoreManager.Instance.LoadFinderScore () > finderScoreToBeat)
+				lockGame.gameObject.SetActive (false);
+
+			else {
+
+				game.gameObject.SetActive (false);
+				GameAssessCollider.enabled = false;
+				
+			
+			}
+
+
 			break;
 		case Game.MATCH:
 			break;

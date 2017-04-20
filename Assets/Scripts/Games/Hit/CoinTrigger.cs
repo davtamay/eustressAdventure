@@ -11,7 +11,6 @@ public class CoinTrigger : MonoBehaviour {
 	//public float timeForAirCoin;
 
 	void OnTriggerEnter(Collider other){
-		Debug.Log(other.gameObject.name);
 
 		CoinManager.Instance.UpdateCoinText (pointsForCollider);
 	

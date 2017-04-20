@@ -9,11 +9,12 @@ public class SetGameScore : MonoBehaviour {
 
 
 	public Game curGame;
-	private Text curText;
+	private TextMesh curText;
+
 
 	void Start () {
 
-		curText = GetComponent<Text> ();
+		curText = GetComponent<TextMesh> ();
 
 		switch (curGame) {
 		

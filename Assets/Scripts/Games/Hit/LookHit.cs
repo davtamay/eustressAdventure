@@ -27,7 +27,7 @@ public class LookHit : MonoBehaviour {
 		cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
 
 		if (isGame)
-			timerUntilExplode = 0.15f;
+			timerUntilExplode = 0.0f;
 	
 	}
 	void FixedUpdate () {
@@ -53,17 +53,29 @@ public class LookHit : MonoBehaviour {
 			ExplodeTime += Time.deltaTime;
 
 			if(isGame)
+			//	hit.rigidbody.AddRelativeForce (cam.transform.forward* amountOfObjectDrift);
+
+			//	hit.rigidbody.AddForceAtPosition(hit.point.normalized * amountOfObjectDrift, hit.point);
+				hit.rigidbody.AddForceAtPosition(hit.transform.forward.normalized * amountOfObjectDrift, hit.point);
+
+
 				//hit.rigidbody.AddRelativeForce ( cam.transform.forward * 10 + Vector3.up * liftUp);
-				hit.rigidbody.AddRelativeForce (cam.transform.forward* amountOfObjectDrift);
+				//hit.rigidbody.AddForce (cam.transform.forward* amountOfObjectDrift);
+				//Debug.LogFormat("{0} : this is amountoflift", amountOfObjectLift);
 			else
 				hit.rigidbody.AddRelativeForce (cam.transform.forward * forceStrength);
 
 			if (ExplodeTime >= timerUntilExplode) {
 
 				if (isGame) {
+					hit.rigidbody.AddForce (Vector3.up * amountOfObjectLift);
 
+					//hit.rigidbody.AddForce (cam.transform.forward.normalized* amountOfObjectDrift + Vector3.up * amountOfObjectLift);
+
+					//hit.rigidbody.AddForce(
+					//hit.rigidbody.AddForceAtPosition(Vector3.up * 5f,hit.point,ForceMode.Impulse);
 					//4
-					hit.rigidbody.AddExplosionForce (20, hit.transform.position, 5, amountOfObjectLift, ForceMode.Impulse);
+					//hit.rigidbody.AddExplosionForce (20, hit.transform.position, 5, amountOfObjectLift, ForceMode.Impulse);
 					ExplodeTime = 0;
 
 				} else {

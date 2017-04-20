@@ -55,8 +55,11 @@ public class GameController : MonoBehaviour {
 
 		if (newWave == null) {
 			newWave = GameObject.FindWithTag ("NewWave");
-			timeUntilNewWave = newWave.GetComponent<NewWave> ().timeUntilDisapear;
-			newWave.gameObject.SetActive (false);
+
+			if (newWave != null) {
+				timeUntilNewWave = newWave.GetComponent<NewWave> ().timeUntilDisapear;
+				newWave.gameObject.SetActive (false);
+			}
 
 		}
 

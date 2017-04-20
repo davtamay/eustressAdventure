@@ -110,9 +110,12 @@ public class SAssessment : MonoBehaviour
 				typeOfFeeling.SetActive (true);
 			}
 
-			if (gSuggest == null) 
+			if (gSuggest == null)
 				gSuggest = (GameSuggest)GameObject.FindWithTag ("GameSuggest").GetComponent<GameSuggest> ();
 
+		} else if (string.Equals (SceneManager.GetActiveScene ().name, "AllGames", System.StringComparison.CurrentCultureIgnoreCase)) {
+			GameController.Instance.Paused = false;
+		
 		}else GameController.Instance.Paused = true;
 			
 
