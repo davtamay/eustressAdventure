@@ -25,8 +25,8 @@ public class ButtonClickLook : MonoBehaviour {
 	public bool isMenuCope = false;
 	public bool isEnvChanger = false;
 
-	//public bool isGame = false;
-	//[SerializeField] private string gameScene;
+	public bool isGame = false;
+	[SerializeField] private string gameScene;
 
 	public bool isBackButton = false;
 	public bool isStartButton = false;
@@ -38,16 +38,16 @@ public class ButtonClickLook : MonoBehaviour {
 
 	private Collider col;
 
-	public enum Stressed{yes,no};
+	//public enum Stressed{yes,no};
 	public enum StressTypes{angry, anxious, dissapointed, frustrated, sad, worried, none};
 	public enum MenuCoping {breathing, counting, refraiming, music,paint, none};
 
 	public enum MusicPlayerButton{play,stop,next,previous, none}
 
-	public Stressed curStressed;
+	//public Stressed curStressed;
 	public StressTypes StressT;
 	public MenuCoping copingMethod;
-//	public Games games;
+	//public Games games;
 	public MusicPlayerButton curMusicButton;
 
 	GameObject hitButton;
@@ -154,7 +154,7 @@ public class ButtonClickLook : MonoBehaviour {
 				
 
 	UnityEngine.Profiling.Profiler.BeginSample ("ButtonPress");
-			if (isStressed) {
+		/*	if (isStressed) {
 				switch (curStressed) {
 
 				case Stressed.yes:
@@ -171,7 +171,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 				}
 				
-			} else if (isSMenuOpener) {
+			} else*/ if (isSMenuOpener) {
 
 				StressMenu.SetActive (false);
 				GameController.Instance.Paused = false;
@@ -317,25 +317,25 @@ public class ButtonClickLook : MonoBehaviour {
 					break;
 				}
 						
-			} /*else if (isGame && !isSMenuOpener) {
+			} else if (isGame && !isSMenuOpener) {
 
 				LoadScene (gameScene);
 				yield break;
 		
 
-			}*/
+			}
 
 			buttonFill.fillAmount = 1.0f;
 			yield return null;
 		}
 	}
-/*	void LoadScene(string scene){
+	void LoadScene(string scene){
 	
 		SceneController.Instance.Load (scene);
 	
 	
 	
-	}*/
+	}
 
 
 
