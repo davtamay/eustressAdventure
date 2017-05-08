@@ -19,34 +19,34 @@ public class SetGameScore : MonoBehaviour {
 		switch (curGame) {
 		
 		case Game.FINDER:
-			curText.text = "HighScore: " + HighScoreManager.Instance.LoadFinderScore();
+			curText.text = "HighScore: " + DataManager.Instance.LoadFinderScore();
 			break;
 
 		case Game.SKYJUMPER:
-			curText.text = "HighScore: " + HighScoreManager.Instance.LoadSkyWalkerScore();
+			curText.text = "HighScore: " + DataManager.Instance.LoadSkyWalkerScore();
 			break;
 
 		case Game.COLLECTIONS:
-			curText.text = "HighScore: " + HighScoreManager.Instance.LoadCollectionsScore();
+			curText.text = "HighScore: " + DataManager.Instance.LoadCollectionsScore();
 			break;
 
 		case Game.WACK:
-			curText.text = "HighScore: " + HighScoreManager.Instance.LoadWackScore();
+			curText.text = "HighScore: " + DataManager.Instance.LoadWackScore();
 			break;
 		case Game.MATCH:
-			curText.text = "HighScore: " + HighScoreManager.Instance.LoadMatchScore();
+			curText.text = "HighScore: " + DataManager.Instance.LoadMatchScore();
 			break;
 
 		case Game.SHOOT:
-			curText.text = "HighScore: " + HighScoreManager.Instance.LoadShootScore();
+			curText.text = "HighScore: " + DataManager.Instance.LoadShootScore();
 			break;
 
 		case Game.HIT:
-			curText.text = "HighScore: " + HighScoreManager.Instance.LoadHitScore();
+			curText.text = "HighScore: " + DataManager.Instance.LoadHitScore();
 			break;
 
 		case Game.HOOP:
-			curText.text = "HighScore: " + HighScoreManager.Instance.LoadHoopScore();
+			curText.text = "HighScore: " + DataManager.Instance.LoadHoopScore();
 			break;
 
 

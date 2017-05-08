@@ -6,7 +6,7 @@ using UnityEngine;
 public class DogInteraction : InteractionBehavior{
 
 	private Coroutine FollowPlayer;
-	private Transform thisTransform;
+
 	[SerializeField]private float walkingSpeed;
 	[SerializeField]private float maxDistanceOffset;
 	[SerializeField]private float minDistanceOffset;
@@ -16,12 +16,12 @@ public class DogInteraction : InteractionBehavior{
 
 
 
-
 	public void OnTriggerEnter(){
 
-		thisTransform = transform;
 		thisAnimator = GetComponent<Animator> ();
 		thisRenderer = GetComponentInChildren<SkinnedMeshRenderer> ();
+
+		ReachedProximity ();
 
 		onInteraction.Invoke ();
 

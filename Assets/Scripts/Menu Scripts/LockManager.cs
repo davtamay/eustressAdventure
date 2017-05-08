@@ -45,7 +45,7 @@ public class LockManager : MonoBehaviour {
 
 		case Game.SKYJUMPER:
 
-			if (HighScoreManager.Instance.LoadFinderScore () > finderScoreToBeat)
+			if (DataManager.Instance.LoadFinderScore () > finderScoreToBeat)
 				lockGame.gameObject.SetActive (false);
 			else
 				game.gameObject.SetActive (false);
@@ -58,7 +58,7 @@ public class LockManager : MonoBehaviour {
 			break;
 		case Game.HIT:
 
-			if (HighScoreManager.Instance.LoadFinderScore () > finderScoreToBeat)
+			if (DataManager.Instance.LoadFinderScore () > finderScoreToBeat)
 				lockGame.gameObject.SetActive (false);
 
 			else {

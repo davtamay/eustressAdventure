@@ -64,7 +64,7 @@ public class PlayerManager : MonoBehaviour {
 				StartCoroutine (HealthReduceColor (hurtColor));
 				healthColor.a += 0.1f;
 				if (healthColor.a >= .91f) {
-					HighScoreManager.Instance.CheckHighScore (curSceneName, _points);
+					DataManager.Instance.CheckHighScore (curSceneName, _points);
 					GameController.Instance.isGameOver = true;
 					GameController.Instance.Paused = true;
 

@@ -74,6 +74,9 @@ public class ButtonClickLook : MonoBehaviour {
 
 		data = new PointerEventData (EventSystem.current);
 
+		if (isAllowWalk)
+			buttonFill.color = Color.red;
+
 
 	}
 	void Update(){
@@ -184,12 +187,14 @@ public class ButtonClickLook : MonoBehaviour {
 				isWalking = !isWalking;
 				if (isWalking) {
 
+					buttonFill.color = Color.green;
 					GameController.Instance.Paused = false;
 					GameObject.FindWithTag ("Player").GetComponent<CollectorLookWalk> ().enabled = true;
 					GameObject.FindWithTag ("Player").GetComponent<CharacterController> ().enabled = true;
 
 				} else {
 
+					buttonFill.color = Color.red;
 					GameObject.FindWithTag ("Player").GetComponent<CollectorLookWalk> ().enabled = false;
 					GameObject.FindWithTag ("Player").GetComponent<CharacterController> ().enabled = false;
 				
@@ -203,8 +208,8 @@ public class ButtonClickLook : MonoBehaviour {
 			} else if (isBackButton) {
 
 
-				if (PlayerManager.Instance != null && HighScoreManager.Instance != null) {
-					HighScoreManager.Instance.CheckHighScore (SceneController.Instance.GetCurrentSceneName(), PlayerManager.Instance.points);
+				if (PlayerManager.Instance != null && DataManager.Instance != null) {
+					DataManager.Instance.CheckHighScore (SceneController.Instance.GetCurrentSceneName(), PlayerManager.Instance.points);
 				}
 				SceneController.Instance.ResetGame ("Intro");
 			

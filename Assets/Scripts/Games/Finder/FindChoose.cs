@@ -90,7 +90,7 @@ public class FindChoose : MonoBehaviour {
 						currentLevel += 1;
 						if (currentLevel == amountUntilGameOver) {
 
-							HighScoreManager.Instance.CheckHighScore (curScene, playerManager.points);
+							DataManager.Instance.CheckHighScore (curScene, playerManager.points);
 							GameController.Instance.isGameOver = true;
 							GameController.Instance.Paused = true;
 

@@ -3,12 +3,16 @@ using System.Collections;
 
 public class CollectorLookWalk : MonoBehaviour {
 
-	public LayerMask layerMask;
-	public float jumpHeight;
-	public float jumpFromGroundDis;
-	public float jumpSpeed;
+	[SerializeField] private LayerMask groundLayer;
+	[SerializeField] private LayerMask bounceLayer;
+	[SerializeField] private float jumpHeight;
+	[SerializeField]private bool isSuperJumpAvailable;
+	[SerializeField]private float superJumpHeightAdd;
+	[SerializeField]private float superJumpSpeedAdd;
+	[SerializeField] private float jumpFromGroundDis;
+	[SerializeField] private float jumpSpeed;
 	public float velocity = 0.7f;
-	public float gravity = 8;
+	[SerializeField] private float gravity = 8;
 	private CharacterController controller;
 	private Vector3 moveDirection;
 	private bool isGoingDown = true;
@@ -17,12 +21,12 @@ public class CollectorLookWalk : MonoBehaviour {
 	private Transform thisTransform;
 	private float originalYPos;
 
-	public float minMoveAngleFromUp = 89.0f;
-	public float maxMoveAngleFromUp = 180.0f;
-	public float minJumpAngleFromUp = 0.0f;
-	public float maxJumpAngleFromUp = 70.0f;
+	[SerializeField] private float minMoveAngleFromUp = 89.0f;
+	[SerializeField] private float maxMoveAngleFromUp = 180.0f;
+	[SerializeField] private float minJumpAngleFromUp = 0.0f;
+	[SerializeField] private float maxJumpAngleFromUp = 70.0f;
 
-	public bool isCharInGround;
+	private bool isCharInGround;
 
 	void Start () {
 		controller = GetComponent<CharacterController> ();
@@ -67,16 +71,37 @@ public class CollectorLookWalk : MonoBehaviour {
 
 		if (isGoingUp) {
 
-
-			moveDirection.y += (jumpSpeed + gravity) * Time.deltaTime;
+			if (!isSuperJumpAvailable) {
+				moveDirection.y += (jumpSpeed + gravity) * Time.deltaTime;
 
 
 			
-			if (thisTransform.position.y > originalYPos + jumpHeight) {
+				if (thisTransform.position.y > originalYPos + jumpHeight) {
 
 
-				isGoingDown = true;
-				isGoingUp = false;
+					isGoingDown = true;
+					isGoingUp = false;
+				}
+
+
+			} else {
+
+
+				moveDirection.y += (jumpSpeed +SuperJumpSpeed+ gravity) * Time.deltaTime;
+
+				SuperJumpSpeed = 0;
+
+				if (thisTransform.position.y > originalYPos + jumpHeight + SuperJump) {
+					
+					SuperJump = 0;
+
+					isGoingDown = true;
+					isGoingUp = false;
+				}
+			
+			
+			
+			
 			}
 
 		}
@@ -119,16 +144,43 @@ public class CollectorLookWalk : MonoBehaviour {
 	
 	}
 
-
+	private float SuperJump;
+	private float SuperJumpSpeed;
 
 	private bool isCharGrounded(){
 
+
 		RaycastHit hit;
 
-		if (Physics.Raycast (transform.position, -transform.up, out hit, jumpFromGroundDis, layerMask)){
-			return true;
 
-		}else {return false;}
+
+		if (!isSuperJumpAvailable) {
+			if (Physics.Raycast (transform.position, -transform.up, out hit, jumpFromGroundDis, groundLayer))
+				return true;
+			else
+				return false;
+
+		} else {
+		
+			if (Physics.Raycast (transform.position, -transform.up, out hit, jumpFromGroundDis, groundLayer))
+				return true;
+
+			if (Physics.Raycast (transform.position, -transform.up, out hit, jumpFromGroundDis, bounceLayer)){
+				SuperJump = superJumpHeightAdd;
+				SuperJumpSpeed = superJumpSpeedAdd;
+				return true;
+		
+			}
+					
+				return false;
+
+		
+
+		
+		}
+
+
+
 	}
 	private float CameraAngleFromUp(){
 		return Vector3.Angle (Vector3.up, Camera.main.transform.rotation * Vector3.forward);}

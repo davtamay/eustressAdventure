@@ -19,6 +19,8 @@ public class SceneController : MonoBehaviour {
 
 	private static SceneController instance = null;
 
+	private Transform player;
+
 	private Animator anim = null;
 
 	void Awake()
@@ -41,18 +43,21 @@ public class SceneController : MonoBehaviour {
 		stressMenu = GameObject.FindWithTag ("StressMenu");
 		stressMenu.SetActive (false);
 
+		player = GameObject.FindWithTag ("Player").transform;
+
 		SceneManager.sceneLoaded += OnLevelLoad;
 
 		anim = GetComponentInChildren<Animator>();
 	}
 
 	void OnLevelLoad(Scene scene, LoadSceneMode sceneMode){
-		//ButtonClickLook.isWalking = false;
 
-		//new test stressmenu 2/12/17
+
+
 		if(string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase))
 			GameController.Instance.Paused = false;
 		else GameController.Instance.Paused = true;
+
 
 		SAssessment.Instance.OnLevelWasLoad ();
 
@@ -62,14 +67,21 @@ public class SceneController : MonoBehaviour {
 	//		return;
 
 			anim.SetTrigger ("FadeOut");
-
-
+			
+		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
+			GameController.Instance.Paused = false;
+			player = GameObject.FindWithTag ("Player").transform;
+			player.position = DataManager.Instance.LoadPosition ();
+		}
 
 
 
 	}
 
 	public void Load(string scene){
+
+		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase))
+			DataManager.Instance.SavePosition (player.position);
 
 		anim.SetTrigger ("FadeIn");
 		StartCoroutine (ChangeScene (scene));
@@ -101,7 +113,6 @@ public class SceneController : MonoBehaviour {
 
 	public void ResetGame (string scene){
 
-	//	SceneManager.LoadScene (scene);
 		Load (scene);
 
 	}
