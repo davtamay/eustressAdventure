@@ -8,37 +8,76 @@ public class DogInteraction : InteractionBehavior{
 	private Coroutine FollowPlayer;
 
 	[SerializeField]private float walkingSpeed;
-	[SerializeField]private float maxDistanceOffset;
-	[SerializeField]private float minDistanceOffset;
+	[SerializeField]private float maxDistance;
+	[SerializeField]private float slowRadius;
 	[SerializeField][Range(0f,1f)]private float chanceOfJump;
 	private Animator thisAnimator;
 	private SkinnedMeshRenderer thisRenderer;
 
+	private static DogInteraction curDogInteraction = null;
+	//private static GameObject curDogInteraction;
 
 
-	public void OnTriggerEnter(){
 
+
+
+
+	public void OnStart(){
+	
 		thisAnimator = GetComponent<Animator> ();
 		thisRenderer = GetComponentInChildren<SkinnedMeshRenderer> ();
+
+		if (!curDogInteraction) {
+			curDogInteraction = this;//.gameObject;
+			curDogInteraction.gameObject.GetComponent<LookInteraction> ().enabled = false;
+		}else{
+			
+
+			curDogInteraction.gameObject.GetComponent<LookInteraction> ().enabled = true;
+			OnChange ();
+			curDogInteraction.gameObject.GetComponent<LookInteraction> ().enabled = false;
+
+
+		}
+
+			
+
 
 		ReachedProximity ();
 
 		onInteraction.Invoke ();
 
+
 		FollowPlayer = StartCoroutine (Follow());
-		
 	
+	}
+	private void OnChange(){
+	
+		if (curDogInteraction) {
+			StopCoroutine (curDogInteraction.gameObject.GetComponent<DogInteraction>().FollowPlayer);
+
+			curDogInteraction = this;//.gameObject;
+
+
+
+		}
 	
 	}
 
+
+
 	private IEnumerator Follow(){
 
-
+	
 
 		while (true) {
 
+
+
+
 			thisTransform.LookAt (player);
 			Vector3 playerDistance = player.position - thisTransform.position;
+			float distance = playerDistance.magnitude;
 			Vector3 playerDirection = playerDistance.normalized;
 
 			if (thisRenderer.isVisible) {
@@ -55,21 +94,22 @@ public class DogInteraction : InteractionBehavior{
 			//float distanceOffset = Mathf.Clamp(max
 			Vector3 velocity = Vector3.zero;
 
-			if (playerDistance.magnitude > maxDistanceOffset) {
+			if (distance > maxDistance) {
 			
-				velocity = playerDirection * walkingSpeed * Time.deltaTime;
+				if (distance > slowRadius)
+					velocity = playerDirection * walkingSpeed * Time.deltaTime;
+				else
+					velocity = playerDirection *walkingSpeed * Time.deltaTime * distance/ slowRadius;
 				velocity.y = 0;
 				thisTransform.position += velocity;
 
 
 			}
 
-			if (velocity.magnitude > 0.1f)
+			if (velocity.magnitude > 0.01f)
 				thisAnimator.SetTrigger ("Walk");
 			else
 				thisAnimator.SetTrigger ("Idle");
-
-
 
 
 			yield return null;

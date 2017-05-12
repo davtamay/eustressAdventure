@@ -5,13 +5,15 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider))]
+
 public class InteractionBehavior : MonoBehaviour {
 
 	[SerializeField]protected UnityEvent onInteraction;
 	[SerializeField]protected GameObject infoCanvasPrefab;
 	[SerializeField]protected Vector3 infoOffset;
 	[SerializeField]protected float yInfoRotationOffset;
+	[SerializeField]protected float xInfoRotationOffset;
+	[SerializeField]protected float zInfoRotationOffset;
 
 	[SerializeField]protected string infoText;
 	[SerializeField]protected float timeActive;
@@ -65,6 +67,8 @@ public class InteractionBehavior : MonoBehaviour {
 		//	infoCanvasPrefab.transform.LookAt (2* thisTransform.position - player.position, Vector3.up);
 			infoCanvasPrefab.transform.LookAt (player.position);
 			infoCanvasPrefab.transform.localRotation = Quaternion.AngleAxis (yInfoRotationOffset, Vector3.up);
+			infoCanvasPrefab.transform.localRotation *= Quaternion.AngleAxis (xInfoRotationOffset, Vector3.right);
+			infoCanvasPrefab.transform.localRotation *= Quaternion.AngleAxis (zInfoRotationOffset, Vector3.forward);
 
 
 			if (time > timer) {
