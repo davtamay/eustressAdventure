@@ -7,12 +7,12 @@ using UnityEngine;
 
 public class LookInteraction : MonoBehaviour {
 
-	[SerializeField]private string objectName;
 	[SerializeField] GameObject imageGO;
-	[SerializeField] Vector3 imageOffset;
 	[SerializeField] float lookTime;
 	[SerializeField] float lookDistance;
 	[SerializeField]UnityEvent onLookClick;
+
+	[SerializeField] bool isItemForSlot;
 
 
 	private Image image;
@@ -54,6 +54,13 @@ public class LookInteraction : MonoBehaviour {
 			if (0f > timer) {
 			
 				onLookClick.Invoke ();
+
+				if (isItemForSlot) 
+					PlayerManager.Instance.AddItemToSlot (gameObject);
+
+				timer = lookTime;
+				
+
 			}
 
 

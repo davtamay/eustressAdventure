@@ -26,12 +26,24 @@ public class CollectorLookWalk : MonoBehaviour {
 	[SerializeField] private float minJumpAngleFromUp = 0.0f;
 	[SerializeField] private float maxJumpAngleFromUp = 70.0f;
 
+	[SerializeField] private bool isSlotsPresent;
+	private GameObject UISlots;
+	private bool isStayedLookingDown;
+
 	private bool isCharInGround;
+
+	void Awake(){
+	
+		if (isSlotsPresent)
+			UISlots = GameObject.FindWithTag ("UISlot");
+		
+	}
 
 	void Start () {
 		controller = GetComponent<CharacterController> ();
 		thisTransform = transform;
 		originalYPos = thisTransform.position.y;
+
 
 	}
 
@@ -58,6 +70,8 @@ public class CollectorLookWalk : MonoBehaviour {
 				originalYPos = thisTransform.position.y;
 				isGoingDown = false;
 				isGoingUp = true;
+				//new
+				isStayedLookingDown = false;
 		
 			} 
 
@@ -112,7 +126,17 @@ public class CollectorLookWalk : MonoBehaviour {
 			moveDirection.x = 0;
 			moveDirection.z = 0;
 
+
+
+			if (isSlotsPresent) {
+				if (!UISlots.activeInHierarchy && !isStayedLookingDown)
+					StartCoroutine (PlayerManager.Instance.ShowUISlots());
+
+			}
+			isStayedLookingDown = true;
+
 			} 
+		
 		moveDirection.x *= velocity;
 		moveDirection.z *= velocity;
 		controller.Move (moveDirection);
@@ -184,4 +208,7 @@ public class CollectorLookWalk : MonoBehaviour {
 	}
 	private float CameraAngleFromUp(){
 		return Vector3.Angle (Vector3.up, Camera.main.transform.rotation * Vector3.forward);}
+
+
+
 }

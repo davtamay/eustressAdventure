@@ -45,15 +45,14 @@ public class BicycleInteraction : InteractionBehavior {
 
 	IEnumerator DriveBike(){
 	
-		//thisTransform.SetParent (player, false);
-		//player.SetParent(thisTransform,true);
+	
 		while (true) {
 			player.position = positionToMoveTo.position;
 			yield return new WaitForEndOfFrame();
 			player.position = positionToMoveTo.position;
 			moveDirection = thisTransform.TransformDirection (Vector3.forward);//thisTransform.forward.normalized;
 			player.position = Vector3.Lerp (player.position, positionToMoveTo.position, Time.deltaTime * 3);
-			//player.position = positionToMoveTo.position;
+
 
 			thisTransform.localRotation = Quaternion.RotateTowards(thisTransform.rotation, Quaternion.Euler (new Vector3(0, Camera.main.transform.eulerAngles.y,0)), Time.deltaTime * 20 * rotSpeed); //Quaternion.AngleAxis (plare.position, Vector3.up);//Quaternion.RotateTowards(thisTransform.rotation, Quaternion.LookRotation(player.position), Time.deltaTime * rotSpeed);
 		

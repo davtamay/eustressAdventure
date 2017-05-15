@@ -14,11 +14,12 @@ public class InteractionBehavior : MonoBehaviour {
 	[SerializeField]protected float yInfoRotationOffset;
 	[SerializeField]protected float xInfoRotationOffset;
 	[SerializeField]protected float zInfoRotationOffset;
+	[SerializeField]protected Vector3 InfoSize;
 
 	[SerializeField]protected string infoText;
 	[SerializeField]protected float timeActive;
 
-	private Text infoTextComponent;
+	protected Text infoTextComponent;
 
 	protected float distanceToInteraction;
 	protected Transform thisTransform;
@@ -32,8 +33,9 @@ public class InteractionBehavior : MonoBehaviour {
 
 		if (infoCanvasPrefab != null) {
 
-			infoCanvasPrefab = Instantiate (infoCanvasPrefab, new Vector3(thisTransform.localPosition.x + infoOffset.x, thisTransform.localPosition.y + infoOffset.y, thisTransform.localPosition.z + infoOffset.z), Quaternion.identity) ;
+			infoCanvasPrefab = Instantiate (infoCanvasPrefab, new Vector3(thisTransform.position.x + infoOffset.x, thisTransform.position.y + infoOffset.y, thisTransform.position.z + infoOffset.z), Quaternion.identity) ;
 			infoCanvasPrefab.transform.SetParent(thisTransform);
+			infoCanvasPrefab.transform.localScale += InfoSize;
 			infoTextComponent = infoCanvasPrefab.GetComponentInChildren<Text> ();
 			infoTextComponent.text = infoText;
 			infoCanvasPrefab.SetActive (false);

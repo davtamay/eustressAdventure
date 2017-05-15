@@ -72,16 +72,23 @@ public class SceneController : MonoBehaviour {
 			GameController.Instance.Paused = false;
 			player = GameObject.FindWithTag ("Player").transform;
 			player.position = DataManager.Instance.LoadPosition ();
+			//new
+	//		PlayerManager.Instance.playerSlotGOList.Clear();
+	//		PlayerManager.Instance.playerSlotGOList = DataManager.Instance.LoadItemList();
+			Debug.Log ("SceneController playerslot count: " + PlayerManager.Instance.playerSlotGOList.Count);
 		}
-
-
+			
 
 	}
 
 	public void Load(string scene){
 
-		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase))
+		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
 			DataManager.Instance.SavePosition (player.position);
+			//new
+			DataManager.Instance.SaveItemList (PlayerManager.Instance.playerSlotGOList);
+		}
+
 
 		anim.SetTrigger ("FadeIn");
 		StartCoroutine (ChangeScene (scene));

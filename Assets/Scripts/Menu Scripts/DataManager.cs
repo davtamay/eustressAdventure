@@ -12,6 +12,7 @@ public class DataManager : MonoBehaviour {
 
 	public int highScore = 0;
 	public Vector3 position = Vector3.zero;
+	public List<string> slotListStrings = new List<string>();
 
 
 
@@ -117,6 +118,63 @@ public class DataManager : MonoBehaviour {
 
 		}
 
+		string items = Application.persistentDataPath + @"/curItems.json";
+
+		if (!File.Exists(items)) {
+
+			StreamWriter Writer = new StreamWriter (items);
+			Writer.WriteLine (JsonUtility.ToJson (this));
+			Writer.Close ();
+
+		}
+
+
+
+
+	}
+	public void SaveItemList(List<GameObject> curSlotList){
+		
+		string OutputPath = Application.persistentDataPath + @"/curItems.json";
+	
+		slotListStrings.Clear ();
+		for (int i = 0; i < curSlotList.Count; i++) {
+			if (slotListStrings.Contains (curSlotList [i].name)) {
+			//slotListStrings.Remove (curSlotList [i].name);
+				continue;
+			}else
+			this.slotListStrings.Add (curSlotList [i].name);
+		
+		}
+		StreamWriter Writer = new StreamWriter (OutputPath);
+		Writer.WriteLine (JsonUtility.ToJson (this));
+		Writer.Close();
+		Debug.Log("output to:" + OutputPath);
+	}
+	public List<GameObject> LoadItemList (){
+
+
+		string InputPath = Application.persistentDataPath + @"/curItems.json";
+		Debug.Log (InputPath);
+		StreamReader Reader = new StreamReader (InputPath);
+		string JSonString = Reader.ReadToEnd ();
+		Debug.Log ("Reading:" + JSonString);
+		JsonUtility.FromJsonOverwrite (JSonString, this);
+		Reader.Close();
+
+		List<GameObject> sList = new List<GameObject> ();
+
+
+		foreach (string str in PlayerManager.Instance.StringToGODict.Keys){
+
+			for (int i = 0; i < slotListStrings.Count; i++)
+				if (str == slotListStrings[i])
+					sList.Add (PlayerManager.Instance.StringToGODict [str]);
+			
+			}
+
+
+		Debug.Log ("LOAD : " + "String to Dict Count: " + PlayerManager.Instance.StringToGODict.Count + "SlotListStrings: " + slotListStrings.Count + "SList : " + sList.Count);
+		return sList;
 
 
 	}
