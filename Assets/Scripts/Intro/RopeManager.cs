@@ -15,9 +15,16 @@ public class RopeManager : MonoBehaviour {
 		if (other.collider.CompareTag ("Player") && !isFirstCollision) {
 		
 			isFirstCollision = true;
-			//++collisionCount;
 
-			FirstCP = (ContactPoint)other.contacts.GetValue(0);
+			//NEW
+			foreach (ContactPoint cP in other.contacts) {
+				FirstCP = cP;
+				if (FirstCP.point != null)
+					break;
+			
+			}
+				
+		//	FirstCP = (ContactPoint)other.contacts.GetValue(0);
 
 			other.gameObject.GetComponent<CollectorLookWalk> ().enabled = false;
 
@@ -37,7 +44,7 @@ public class RopeManager : MonoBehaviour {
 		while (true) {
 
 			
-			player.position = cPRope.transform.position + Vector3.left * 1.2f + (movingOffset);
+			player.position = cPRope.transform.position + Vector3.left * 1.5f + (movingOffset);
 		
 			if (Vector3.Dot (Camera.main.transform.forward, Vector3.up) > 0.7f) 
 				movingOffset += (Vector3.up * 1.5f) * Time.deltaTime;

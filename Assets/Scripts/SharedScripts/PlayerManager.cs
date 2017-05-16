@@ -109,13 +109,14 @@ public class PlayerManager : MonoBehaviour {
 					if (!playerSlotGOList.Contains (DataManager.Instance.LoadItemList () [i])) {
 						playerSlotGOList.Add (DataManager.Instance.LoadItemList () [i]);
 						AddItemToSlot (DataManager.Instance.LoadItemList () [i]);
-				//		Debug.Log ("SlotSPace: " + i + playerSlotGOList[i].name);
+
+						DataManager.Instance.LoadItemList () [i].SetActive (false);
+			
 					}
-				//	Debug.Log (DataManager.Instance.LoadItemList () [i].name);
+				
 				}
 			}
-
-			//	Debug.Log ("SlotSPace: " + playerSlotGOList.Count);
+				
 
 			UISlots.SetActive (false);
 

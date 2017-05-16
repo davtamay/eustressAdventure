@@ -15,8 +15,7 @@ public class InteractionBehavior : MonoBehaviour {
 	[SerializeField]protected float xInfoRotationOffset;
 	[SerializeField]protected float zInfoRotationOffset;
 	[SerializeField]protected Vector3 InfoSize;
-
-	[SerializeField]protected string infoText;
+	[TextArea][SerializeField]protected string infoText;
 	[SerializeField]protected float timeActive;
 
 	protected Text infoTextComponent;
@@ -49,6 +48,7 @@ public class InteractionBehavior : MonoBehaviour {
 
 	public void ReachedProximity(){
 	
+
 		infoCanvasPrefab.SetActive (true);
 		infoActive = StartCoroutine (InfoActive ());
 	
@@ -56,7 +56,7 @@ public class InteractionBehavior : MonoBehaviour {
 	}
 	
 	public IEnumerator InfoActive(){
-
+		infoTextComponent.text = infoText;
 		float timer = timeActive;
 		float time = 0;
 

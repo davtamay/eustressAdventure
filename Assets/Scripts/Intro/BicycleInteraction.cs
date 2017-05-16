@@ -12,6 +12,9 @@ public class BicycleInteraction : InteractionBehavior {
 	[SerializeField]private float rotSpeed = 5f;
 	[SerializeField] private float minMoveAngleFromUp = 89.0f;
 	[SerializeField] private float maxMoveAngleFromUp = 180.0f;
+	[SerializeField] private CharacterController charController;
+
+	[SerializeField]private GameObject feetGO;
 
 	private bool isOnBike;
 
@@ -19,7 +22,6 @@ public class BicycleInteraction : InteractionBehavior {
 
 	private Vector3 moveDirection;
 	private Coroutine Drive;
-
 
 
 	public void MoveToPosition(){
@@ -30,6 +32,8 @@ public class BicycleInteraction : InteractionBehavior {
 			player.position = positionToMoveTo.position;
 			player.GetComponent<CollectorLookWalk> ().enabled = false;
 			Drive = StartCoroutine (DriveBike ());
+			if (feetGO)
+				feetGO.SetActive (false);
 			isOnBike = true;
 		} else {
 		
@@ -37,6 +41,8 @@ public class BicycleInteraction : InteractionBehavior {
 			player.GetComponent<CollectorLookWalk> ().enabled = true;
 			StopCoroutine (Drive);
 			isOnBike = false;
+			if (feetGO)
+				feetGO.SetActive (true);
 			
 		}
 
@@ -68,10 +74,10 @@ public class BicycleInteraction : InteractionBehavior {
 		//	moveDirection.z *= velocity ;
 			//moveSpeed based On Tilt
 			moveDirection *= (90 - CameraAngleFromUp ()) * Time.deltaTime * velocity;
-			moveDirection.y = thisTransform.position.y;
+			moveDirection.y += Physics.gravity.y * Time.deltaTime;;
 
-			thisTransform.localPosition += moveDirection;
-
+			//thisTransform.localPosition += moveDirection;
+			charController.Move(moveDirection);
 		//	thisTransform.rotation = Quaternion.RotateTowards(thisTransform.rotation, Quaternion.LookRotation(Camera.main.transform.position), Time.deltaTime *20);
 			yield return null;
 
