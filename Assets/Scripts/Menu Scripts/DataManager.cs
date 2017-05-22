@@ -2,7 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+/*
+[SerializeField]
+public class DataCollection{
 
+	public Vector3 position;
+	public List<GameObject> slotList;
+	public List<string> slotListString;
+
+	public DataCollection(){
+
+		position = Vector3.zero;
+		slotList = new List<GameObject> ();
+		slotListString = new List<string> ();
+	
+	}
+
+}*/
 public class DataManager : MonoBehaviour {
 
 	public static DataManager Instance
@@ -14,17 +30,20 @@ public class DataManager : MonoBehaviour {
 	public Vector3 position = Vector3.zero;
 	public List<string> slotListStrings = new List<string>();
 
+//	public DataCollection dataCollected;
+
+
 
 
 	void Awake(){
-
+		
 		if (instance) {
 			Debug.Log ("There are two HighScoreManagers");
 			return;
 		}
 		instance = this; 
 
-
+	//	dataCollected = new DataCollection ();
 
 		string skyWalkerPath = Application.persistentDataPath + @"/skyWalkerScore.json";
 
@@ -127,12 +146,97 @@ public class DataManager : MonoBehaviour {
 			Writer.Close ();
 
 		}
+		/*
+		string playerDataCollection= Application.persistentDataPath + @"/playerData.json";
 
+		if (!File.Exists(playerDataCollection)) {
 
+			StreamWriter Writer = new StreamWriter (playerDataCollection);
+			Writer.WriteLine (JsonUtility.ToJson (this));
+			Writer.Close ();
+
+		}
+		*/
 
 
 	}
+	/*
+	public void SavePlayerData(DataCollection dc){
+
+		string OutputPath = Application.persistentDataPath + @"/playerData.json";
+
+	/*	slotListStrings.Clear ();
+		for (int i = 0; i < curSlotList.Count; i++) {
+			if (slotListStrings.Contains (curSlotList [i].name)) 
+				continue;
+			else
+				this.slotListStrings.Add (curSlotList [i].name);
+
+		}*/
+
+	/*
+
+		Debug.Log ("LOADING = " + dc.slotList.Count + "POSITION" + dc.position);
+	//	dataCollected.slotList.Clear ();
+
+		for (int i = 0; i < dc.slotList.Count; i++) {
+			
+			if (dataCollected.slotListString.Contains (dc.slotList[i].name))
+				continue;
+			else
+				this.dataCollected.slotListString.Add(dc.slotList[i].name);
+
+		}
+
+
+		//DataCollection nDC = new DataCollection ();
+
+		dataCollected.position = dc.position;
+
+		dataCollected.slotList = dc.slotList;
+
+
+		StreamWriter Writer = new StreamWriter (OutputPath);
+		Writer.WriteLine (JsonUtility.ToJson (dataCollected));
+		Writer.Close();
+		Debug.Log("output to:" + OutputPath);
+	}
+	public DataCollection LoadPlayerData (){
+
+
+		string InputPath = Application.persistentDataPath + @"/playerData.json";
+		Debug.Log (InputPath);
+		StreamReader Reader = new StreamReader (InputPath);
+		string JSonString = Reader.ReadToEnd ();
+		Debug.Log ("Reading:" + JSonString);
+		JsonUtility.FromJsonOverwrite (JSonString, dataCollected);
+		Reader.Close();
+
+		DataCollection dC = new DataCollection();
+		dC.slotList = new List<GameObject> ();
+		dC.position = dataCollected.position;
+	//	dC.slotList = dataCollected.slotList;
+
+		foreach (string str in PlayerManager.Instance.StringToGODict.Keys){
+
+			for (int i = 0; i < dataCollected.slotListString.Count; i++)
+				if (str == dataCollected.slotListString[i])
+					dataCollected.slotList.Add (PlayerManager.Instance.StringToGODict [str]);
+
+		}
+
+
+	//	Debug.Log ("LOAD : String to Dict Count: " + PlayerManager.Instance.StringToGODict.Count + "DataCollectedCSlotList: " + dataCollected.slotList.Count + "DcSListCount : " + dC.slotList.Count + "DCposition : " + dataCollected.position);
+
+
+		return dC;
+
+
+	}
+*/
+
 	public void SaveItemList(List<GameObject> curSlotList){
+		
 		
 		string OutputPath = Application.persistentDataPath + @"/curItems.json";
 	
@@ -173,7 +277,7 @@ public class DataManager : MonoBehaviour {
 			}
 
 
-		Debug.Log ("LOAD : " + "String to Dict Count: " + PlayerManager.Instance.StringToGODict.Count + "SlotListStrings: " + slotListStrings.Count + "SList : " + sList.Count);
+	//	Debug.Log ("LOAD : " + "String to Dict Count: " + PlayerManager.Instance.StringToGODict.Count + "SlotListStrings: " + slotListStrings.Count + "SList : " + sList.Count);
 		return sList;
 
 

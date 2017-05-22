@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -71,10 +72,14 @@ public class SceneController : MonoBehaviour {
 		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
 			GameController.Instance.Paused = false;
 			player = GameObject.FindWithTag ("Player").transform;
+
 			player.position = DataManager.Instance.LoadPosition ();
-			//new
-	//		PlayerManager.Instance.playerSlotGOList.Clear();
-	//		PlayerManager.Instance.playerSlotGOList = DataManager.Instance.LoadItemList();
+
+			//new 5/20/17
+
+			//player.position = DataManager.Instance.LoadPlayerData().position;
+
+
 			Debug.Log ("SceneController playerslot count: " + PlayerManager.Instance.playerSlotGOList.Count);
 		}
 			
@@ -85,8 +90,17 @@ public class SceneController : MonoBehaviour {
 
 		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
 			DataManager.Instance.SavePosition (player.position);
-			//new
 			DataManager.Instance.SaveItemList (PlayerManager.Instance.playerSlotGOList);
+
+			//new 5/20/17
+		/*	DataCollection dC = new DataCollection();
+			dC.position = player.position;
+			dC.slotList = new List<GameObject>(PlayerManager.Instance.playerSlotGOList);
+
+			DataManager.Instance.SavePlayerData (dC);
+
+			Debug.Log ("POS LOADED: " + dC.position + "SLOTLIST LOADED COUNT" + dC.slotList.Count);
+			*/
 		}
 
 

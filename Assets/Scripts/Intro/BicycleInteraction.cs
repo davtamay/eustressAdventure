@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BicycleInteraction : InteractionBehavior {
+public class BicycleInteraction : InteractionBehaviour {
 
 
 	[SerializeField]private Transform positionToMoveTo;
@@ -28,7 +28,7 @@ public class BicycleInteraction : InteractionBehavior {
 
 	
 		if (!isOnBike) {
-			ReachedProximity ();
+			TriggerInfo ();
 			player.position = positionToMoveTo.position;
 			player.GetComponent<CollectorLookWalk> ().enabled = false;
 			Drive = StartCoroutine (DriveBike ());

@@ -111,12 +111,28 @@ public class PlayerManager : MonoBehaviour {
 						AddItemToSlot (DataManager.Instance.LoadItemList () [i]);
 
 						DataManager.Instance.LoadItemList () [i].SetActive (false);
+						//Destroy(DataManager.Instance.LoadItemList () [i]);
 			
 					}
 				
 				}
 			}
-				
+
+			//new 5/20/17
+		/*	if (DataManager.Instance.LoadPlayerData().slotList.Count != 0) {
+				playerSlotGOList.Clear ();
+				for (int i = 0; i < DataManager.Instance.LoadPlayerData().slotList.Count; i++) {
+					
+					if (!playerSlotGOList.Contains (DataManager.Instance.LoadPlayerData().slotList [i])) {
+						playerSlotGOList.Add (DataManager.Instance.LoadPlayerData().slotList [i]);
+						AddItemToSlot (DataManager.Instance.LoadPlayerData().slotList [i]);
+
+						DataManager.Instance.LoadPlayerData().slotList[i].SetActive (false);
+
+					}
+
+				}
+			}*/
 
 			UISlots.SetActive (false);
 

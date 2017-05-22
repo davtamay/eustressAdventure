@@ -15,6 +15,7 @@ public class Flock : MonoBehaviour
 	void Awake(){
 	
 		thisRigidBody = GetComponent<Rigidbody> ();
+
 	}
 
     void Update()
@@ -25,8 +26,14 @@ public class Flock : MonoBehaviour
         {
             Vector3 relativePos = steer() * Time.deltaTime;
 
-            if(relativePos != Vector3.zero)
+			if (float.IsNaN (relativePos.x))
+				return;
+			
+			if(relativePos != Vector3.zero)
 				thisRigidBody.velocity = relativePos;
+
+
+			
 
             // enforce minimum and maximum speeds for the boids
 			float speed = thisRigidBody.velocity.magnitude;

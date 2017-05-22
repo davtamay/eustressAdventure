@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class DogInteraction : InteractionBehavior{
+public class DogInteraction : InteractionBehaviour{
 
 	private Coroutine FollowPlayer;
 
@@ -43,7 +43,7 @@ public class DogInteraction : InteractionBehavior{
 			
 
 
-		ReachedProximity ();
+		TriggerInfo ();
 
 		onInteraction.Invoke ();
 

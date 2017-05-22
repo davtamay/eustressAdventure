@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectTaskInteraction : InteractionBehavior {
+public class CollectTaskInteraction : InteractionBehaviour {
 
 	//[SerializeField]private List<GameObject> gOsToCollect;
 	[SerializeField]private Transform collectObjParent;

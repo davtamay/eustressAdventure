@@ -47,6 +47,7 @@ public class FlockController : MonoBehaviour
 		
         foreach (Flock flock in flockList)
 		{
+			
             center += flock.transform.localPosition;
             velocity += flock.GetComponent<Rigidbody>().velocity;
 			flock.transform.LookAt (target, Vector3.up);

@@ -50,7 +50,7 @@ public class LockManager : MonoBehaviour {
 			else
 				game.gameObject.SetActive (false);
 
-				break;
+			break;
 		
 		case Game.COLLECTIONS:
 			break;
@@ -58,10 +58,10 @@ public class LockManager : MonoBehaviour {
 			break;
 		case Game.HIT:
 
-			if (DataManager.Instance.LoadFinderScore () > finderScoreToBeat)
+			if (DataManager.Instance.LoadFinderScore () > finderScoreToBeat){
 				lockGame.gameObject.SetActive (false);
-
-			else {
+				game.gameObject.SetActive (true);
+			}else {
 
 				game.gameObject.SetActive (false);
 				GameAssessCollider.enabled = false;
