@@ -11,15 +11,15 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1980894733899018}
   m_IsPrefabParent: 1
---- !u!1 &1223335272805460
+--- !u!1 &1107856769599562
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4530750574494018}
-  - component: {fileID: 215187983874858162}
+  - component: {fileID: 4130885497032642}
+  - component: {fileID: 215907255523544144}
   m_Layer: 0
   m_Name: Reflection Probe
   m_TagString: Untagged
@@ -47,15 +47,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 64
   m_IsActive: 1
---- !u!4 &4530750574494018
+--- !u!4 &4130885497032642
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223335272805460}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.33155543, y: -0.11135335, z: 0.1800003}
-  m_LocalScale: {x: 0.11667089, y: 0.1, z: 1}
+  m_GameObject: {fileID: 1107856769599562}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.043402772, y: 0.13, z: -0.06}
+  m_LocalScale: {x: 0.17361109, y: 0.31152648, z: 1}
   m_Children: []
   m_Father: {fileID: 4540112093799596}
   m_RootOrder: 0
@@ -67,10 +67,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1980894733899018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.8916397, y: 3.19, z: 17.3}
-  m_LocalScale: {x: 5.76, y: 3.21, z: 1}
+  m_LocalPosition: {x: -37.06, y: 2.07, z: -10.5}
+  m_LocalScale: {x: 5.76, y: 3.21, z: 0.01}
   m_Children:
-  - {fileID: 4530750574494018}
+  - {fileID: 4130885497032642}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -164,23 +164,23 @@ MonoBehaviour:
   infoText: mirror test
   timeActive: 100
   infoBackGround: {r: 0, g: 1, b: 1, a: 1}
---- !u!215 &215187983874858162
+--- !u!215 &215907255523544144
 ReflectionProbe:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223335272805460}
+  m_GameObject: {fileID: 1107856769599562}
   m_Enabled: 1
   serializedVersion: 2
   m_Type: 0
   m_Mode: 1
   m_RefreshMode: 1
-  m_TimeSlicingMode: 0
-  m_Resolution: 128
+  m_TimeSlicingMode: 1
+  m_Resolution: 256
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 16.4, y: 0, z: 0}
-  m_BoxOffset: {x: -8.2, y: 0, z: 0}
-  m_NearClip: 0.3
+  m_BoxSize: {x: 10, y: 5.22, z: 24.379051}
+  m_BoxOffset: {x: 0, y: 0, z: -12.189526}
+  m_NearClip: 0.01
   m_FarClip: 1000
   m_ShadowDistance: 100
   m_ClearFlags: 1
@@ -190,8 +190,8 @@ ReflectionProbe:
     m_Bits: 4294967295
   m_IntensityMultiplier: 1
   m_BlendDistance: 1
-  m_HDR: 0
-  m_BoxProjection: 0
+  m_HDR: 1
+  m_BoxProjection: 1
   m_RenderDynamicObjects: 0
   m_UseOcclusionCulling: 1
   m_Importance: 1

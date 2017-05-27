@@ -5,6 +5,15 @@ using UnityEngine;
 public class LockManager : MonoBehaviour {
 
 
+	public static bool isFinderAvailable;
+	public static bool isWackAvailable;
+	public static bool isSkyJumperAvailable;
+	public static bool isMatchAvailable;
+	public static bool isHitAvailable;
+	public static bool isCollectionsAvailable;
+	public static bool isShootAvailable;
+	public static bool isHoopAvailable;
+
 	//public Game curGame = Game.COLLECTIONS;
 	[SerializeField]private int finderScoreToBeat;
 	[SerializeField]private int wackScoreToBeat;
@@ -13,7 +22,7 @@ public class LockManager : MonoBehaviour {
 	[SerializeField]private int hitScoreToBeat;
 	[SerializeField]private int collectionsScoreToBeat;
 	[SerializeField]private int shootScoreToBeat;
-	[SerializeField]private int hoopcoreToBeat;
+	[SerializeField]private int hoopScoreToBeat;
 
 	[SerializeField] private Game curGame;
 
@@ -45,26 +54,46 @@ public class LockManager : MonoBehaviour {
 
 		case Game.SKYJUMPER:
 
-			if (DataManager.Instance.LoadFinderScore () > finderScoreToBeat)
+			//if (DataManager.Instance.LoadFinderScore () > finderScoreToBeat) {
+			if(isSkyJumperAvailable){
 				lockGame.gameObject.SetActive (false);
+				game.gameObject.SetActive (true);
+
+			}
 			else
 				game.gameObject.SetActive (false);
 
 			break;
 		
 		case Game.COLLECTIONS:
+
+			if (isCollectionsAvailable) {
+				lockGame.gameObject.SetActive (false);
+				game.gameObject.SetActive (true);
+			}
+			else
+				game.gameObject.SetActive (false);
+			
 			break;
+		
 		case Game.FINDER:
+
+			if (isFinderAvailable) {
+				lockGame.gameObject.SetActive (false);
+				game.gameObject.SetActive (true);
+			}else
+				game.gameObject.SetActive (false);
+			
 			break;
 		case Game.HIT:
 
-			if (DataManager.Instance.LoadFinderScore () > finderScoreToBeat){
+			if (isHitAvailable){
 				lockGame.gameObject.SetActive (false);
 				game.gameObject.SetActive (true);
 			}else {
 
 				game.gameObject.SetActive (false);
-				GameAssessCollider.enabled = false;
+				//GameAssessCollider.enabled = false;
 				
 			
 			}
@@ -72,12 +101,36 @@ public class LockManager : MonoBehaviour {
 
 			break;
 		case Game.MATCH:
+			if (isMatchAvailable) {
+				lockGame.gameObject.SetActive (false);
+				game.gameObject.SetActive (true);
+			}else
+				game.gameObject.SetActive (false);
+			
 			break;
 		case Game.WACK:
+			if (isWackAvailable) {
+				lockGame.gameObject.SetActive (false);
+				game.gameObject.SetActive (true);
+			}else
+				game.gameObject.SetActive (false);
+			
 			break;
 		case Game.SHOOT:
+			if (isShootAvailable) {
+				lockGame.gameObject.SetActive (false);
+				game.gameObject.SetActive (true);
+			}else
+				game.gameObject.SetActive (false);
+			
 			break;
 		case Game.HOOP:
+			if (isHoopAvailable) {
+				lockGame.gameObject.SetActive (false);
+				game.gameObject.SetActive (true);
+			}else
+				game.gameObject.SetActive (false);
+			
 			break;
 
 

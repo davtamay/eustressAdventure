@@ -16,7 +16,7 @@ public class InteractionBehaviour : MonoBehaviour {
 	[SerializeField]protected float xInfoRotationOffset;
 	[SerializeField]protected float zInfoRotationOffset;
 	[SerializeField]protected Vector3 InfoSize;
-	[TextArea][SerializeField]protected string infoText;
+	[TextArea(0,15)][SerializeField]protected string infoText;
 	[SerializeField]protected float timeActive;
 	[SerializeField]protected Color infoBackGround = Color.cyan;
 
@@ -37,8 +37,12 @@ public class InteractionBehaviour : MonoBehaviour {
 		if (infoCanvasPrefab != null) {
 
 			infoCanvasPrefab = Instantiate (infoCanvasPrefab, new Vector3(thisTransform.position.x + infoOffset.x, thisTransform.position.y + infoOffset.y, thisTransform.position.z + infoOffset.z), Quaternion.identity) ;
-			infoCanvasPrefab.transform.SetParent(thisTransform);
 			infoCanvasPrefab.transform.localScale += InfoSize;
+			//pS.startSizeXMultiplier += InfoSize.x;
+			//pS.startSizeYMultiplier += InfoSize.y;
+
+			infoCanvasPrefab.transform.SetParent(thisTransform);
+
 
 			pS = infoCanvasPrefab.GetComponentInChildren<ParticleSystem> ().main;
 			pS.startColor = new ParticleSystem.MinMaxGradient (infoBackGround);

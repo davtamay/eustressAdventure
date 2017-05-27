@@ -9,7 +9,15 @@ public class CollectTaskInteraction : InteractionBehaviour {
 	[SerializeField]private string textAfterCompletion;
 	[SerializeField]private GameObject objectToGive;
 	[SerializeField]private string nameForPlayerPref;
+
+	private Animator thisAnimator;
+
 	void Start(){
+
+		thisAnimator = GetComponent<Animator> ();
+		thisAnimator.SetBool ("Idle", false);
+		thisAnimator.SetBool ("Walk", true);
+
 
 		if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 1) {
 			collectObjParent.gameObject.SetActive (false);
@@ -23,6 +31,10 @@ public class CollectTaskInteraction : InteractionBehaviour {
 	
 		if (other.CompareTag ("Player")) {
 
+			thisAnimator.SetBool ("Idle", true);
+			thisAnimator.SetBool ("Walk", false);
+			transform.LookAt (player, Vector3.up);
+
 			if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 0) {
 				infoCanvasPrefab.SetActive (true);
 				CheckForTaskCompletion ();
@@ -35,8 +47,14 @@ public class CollectTaskInteraction : InteractionBehaviour {
 	}
 	void OnTriggerExit(Collider other){
 
-		if (other.CompareTag ("Player"))
+		if (other.CompareTag ("Player")) {
+
+			thisAnimator.SetBool ("Idle", false);
+			thisAnimator.SetBool ("Walk", true);
+
 			infoCanvasPrefab.SetActive (false);
+
+		}
 	}
 
 	void OnTriggerStay(Collider other){
