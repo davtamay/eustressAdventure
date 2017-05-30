@@ -15,7 +15,7 @@ public class InteractionBehaviour : MonoBehaviour {
 	[SerializeField]protected float yInfoRotationOffset;
 	[SerializeField]protected float xInfoRotationOffset;
 	[SerializeField]protected float zInfoRotationOffset;
-	[SerializeField]protected Vector3 InfoSize;
+	[SerializeField]protected Vector2 InfoSizeOffset;
 	[TextArea(0,15)][SerializeField]protected string infoText;
 	[SerializeField]protected float timeActive;
 	[SerializeField]protected Color infoBackGround = Color.cyan;
@@ -37,18 +37,37 @@ public class InteractionBehaviour : MonoBehaviour {
 		if (infoCanvasPrefab != null) {
 
 			infoCanvasPrefab = Instantiate (infoCanvasPrefab, new Vector3(thisTransform.position.x + infoOffset.x, thisTransform.position.y + infoOffset.y, thisTransform.position.z + infoOffset.z), Quaternion.identity) ;
-			infoCanvasPrefab.transform.localScale += InfoSize;
-			//pS.startSizeXMultiplier += InfoSize.x;
+			//infoCanvasPrefab.transform.localScale += InfoSizeOffset;
+
+		//	Rect infoTextRect = infoCanvasPrefab.transform.GetChild(0).GetComponent<RectTransform> ().rect;
+			//infoTextRect.rect.size = new Vector2 (InfoSizeOffset.y,InfoSizeOffset.x);
+			//infoTextRect.rect.Set (infoTextRect.position.x, infoTextRect.position.y, InfoSizeOffset.x, InfoSizeOffset.y);
+		//	infoTextRect.height += InfoSizeOffset.y;
+		//	infoTextRect.width += InfoSizeOffset.x;
+
+
 			//pS.startSizeYMultiplier += InfoSize.y;
 
 			infoCanvasPrefab.transform.SetParent(thisTransform);
-
+		//		infoTextRect.height += InfoSizeOffset.y;
+		//		infoTextRect.width += InfoSizeOffset.x;
+		//	Debug.Log ("what is this? " + infoTextRect.width);
 
 			pS = infoCanvasPrefab.GetComponentInChildren<ParticleSystem> ().main;
 			pS.startColor = new ParticleSystem.MinMaxGradient (infoBackGround);
-
+			//pS.startSize = new ParticleSystem.MinMaxCurve (infoCanvasRect.width + infoCanvasRect.heig /2 );
 			infoTextComponent = infoCanvasPrefab.GetComponentInChildren<Text> ();
 			infoTextComponent.text = infoText;
+
+			RectTransform infoTextRect = infoTextComponent.transform.GetComponent<RectTransform> ();
+			infoTextRect.sizeDelta += new Vector2 (InfoSizeOffset.x,InfoSizeOffset.y);
+
+		//	infoTextRect.rect.height += InfoSizeOffset.y;
+		//		infoTextRect.rect.width += InfoSizeOffset.x;
+
+			pS.startSizeX = new ParticleSystem.MinMaxCurve(infoTextRect.sizeDelta.x/50 );
+			pS.startSizeY = new ParticleSystem.MinMaxCurve(infoTextRect.sizeDelta.y/50 );
+
 
 			infoCanvasPrefab.SetActive (false);
 		}
@@ -110,7 +129,7 @@ public class InteractionBehaviour : MonoBehaviour {
 		Vector2 InfoScale = Info.GetComponent<RectTransform>().sizeDelta;
 	
 		Gizmos.color = Color.blue;
-		Gizmos.DrawWireCube (new Vector3(thisTransform.position.x + infoOffset.x, thisTransform.position.y + infoOffset.y, thisTransform.position.z + infoOffset.z), new Vector3(InfoScale.x + InfoSize.x, InfoScale.y + InfoSize.y, 1 + InfoSize.z));
+		Gizmos.DrawWireCube (new Vector3(thisTransform.position.x + infoOffset.x, thisTransform.position.y + infoOffset.y, thisTransform.position.z), new Vector3(InfoScale.x + InfoSizeOffset.x, InfoScale.y + InfoSizeOffset.y, 1));
 	}
 
 

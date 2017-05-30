@@ -34,7 +34,6 @@ public class EnemyOrbiter : MonoBehaviour {
 
 	void LateUpdate() {
 
-		bool isOrbit = false;
 
 		curDistance = Vector3.Distance (player.position, thisTransform.position);
 
@@ -43,8 +42,6 @@ public class EnemyOrbiter : MonoBehaviour {
 	
 
 			if (isHelicopter) {
-
-				RaycastHit hit;
 
 			/*	if (Physics.SphereCast (thisTransform.position,50f, thisTransform.right, out hit, 7f))
 					turningDirection -= 0.005f;

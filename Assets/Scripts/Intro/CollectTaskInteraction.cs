@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class CollectTaskInteraction : InteractionBehaviour {
 
-	//[SerializeField]private List<GameObject> gOsToCollect;
-	[SerializeField]private Transform collectObjParent;
-	[SerializeField]private string textAfterCompletion;
-	[SerializeField]private GameObject objectToGive;
-	[SerializeField]private string nameForPlayerPref;
 
-	private Animator thisAnimator;
+	[SerializeField]protected Transform collectObjParent;
+	[TextArea(0,15)][SerializeField]protected string textAfterCompletion;
+	[SerializeField]protected GameObject objectToGive;
+	[SerializeField]protected string nameForPlayerPref;
 
-	void Start(){
-
-		thisAnimator = GetComponent<Animator> ();
-		thisAnimator.SetBool ("Idle", false);
-		thisAnimator.SetBool ("Walk", true);
+	public virtual void Start(){
 
 
 		if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 1) {
@@ -27,12 +21,10 @@ public class CollectTaskInteraction : InteractionBehaviour {
 			
 	}
 
-	void OnTriggerEnter(Collider other){
+	public virtual void OnTriggerEnter(Collider other){
 	
 		if (other.CompareTag ("Player")) {
 
-			thisAnimator.SetBool ("Idle", true);
-			thisAnimator.SetBool ("Walk", false);
 			transform.LookAt (player, Vector3.up);
 
 			if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 0) {
@@ -45,27 +37,27 @@ public class CollectTaskInteraction : InteractionBehaviour {
 		}
 
 	}
-	void OnTriggerExit(Collider other){
+	public virtual void OnTriggerExit(Collider other){
 
 		if (other.CompareTag ("Player")) {
-
-			thisAnimator.SetBool ("Idle", false);
-			thisAnimator.SetBool ("Walk", true);
 
 			infoCanvasPrefab.SetActive (false);
 
 		}
 	}
 
-	void OnTriggerStay(Collider other){
+	public virtual void OnTriggerStay(Collider other){
 
 	
-		if (other.CompareTag ("Player"))
-			infoCanvasPrefab.transform.LookAt (2* thisTransform.position - player.position);
+		if (other.CompareTag ("Player")) {
+			infoCanvasPrefab.transform.LookAt (2 * thisTransform.position - player.position);
+			//thisTransform.transform.LookAt (player.position);
+			//thisTransform.rotation = Quaternion.RotateTowards (thisTransform.rotation, Quaternion.LookRotation (player.position), 5f);
+		}
 	
 	}
 
-	public void CheckForTaskCompletion(){
+	public virtual void CheckForTaskCompletion(){
 	
 		int itemsCollected = 0;
 		int cCount = collectObjParent.childCount;
@@ -88,8 +80,8 @@ public class CollectTaskInteraction : InteractionBehaviour {
 				if(objectToGive != null)
 				PlayerManager.Instance.AddItemToSlot (objectToGive);
 			}
-
-			//collectObjParent.gameObject.SetActive (false);
+				
+			collectObjParent.gameObject.SetActive (false);
 			PlayerPrefs.SetInt(nameForPlayerPref,1);
 			return;
 

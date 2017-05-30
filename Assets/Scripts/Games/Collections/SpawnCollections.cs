@@ -73,7 +73,7 @@ public class SpawnCollections : MonoBehaviour {
 						isFirstWave = false;
 						isSecondWave = true;
 						for (int i = 0; i < amountOfEnemies1; i++){
-							int Randomnum = Random.Range (0, spawnLocations.Length);
+							
 							EnemyManager.Instance.InitiateEnemy(spawnLoc [spawnLocRandom].position + Vector3.up * 4);
 							yield return null;
 						}
@@ -88,7 +88,7 @@ public class SpawnCollections : MonoBehaviour {
 						isSecondWave = false;
 						isThirdWave = true;
 						for (int i = 0; i < amountOfEnemies2; i++){
-							int Randomnum = Random.Range (0, spawnLocations.Length);
+							
 							EnemyManager.Instance.InitiateEnemy(spawnLoc [spawnLocRandom].position + Vector3.up * 4);
 							yield return null;
 						}

@@ -102,9 +102,6 @@ public class Enemy : MonoBehaviour {
 	public IEnumerator State_Search(){
 		
 		int tempWayPoint;
-		int tempRotation;
-		RaycastHit hit;
-		//temp
 
 		while (currentState == EnemyState.Search) {
 			yield return null;

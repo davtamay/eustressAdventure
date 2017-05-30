@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -80,9 +79,10 @@ public class PlayerManager : MonoBehaviour {
 				SpriteRenderer curSprRend = GO.transform.GetChild (0).GetComponentInChildren<SpriteRenderer> ();
 				totalGoInSceneDict.Add (GO, curSprRend);
 			
-				//StringToGODict.Add (GO.name, GO);
+				StringToGODict.Add (GO.name, GO);
+				Debug.Log (GO.name);
 				//new 5/26/17
-				StringToGODict[GO.name] =  GO;
+				//StringToGODict[GO.name] =  GO;
 
 			}
 

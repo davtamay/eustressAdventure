@@ -39,7 +39,17 @@
 
 			UNITY_INITIALIZE_OUTPUT(Input,o);
 			float time = _Time * _Speed;
+
+
+
 			float waveValueA = sin(time + v.vertex.x * _Frequency) * _Amplitude;
+
+			//new Info 5/29/17
+			if (v.texcoord.x >= 0.95)
+			//_Amplitude = 0;  
+			waveValueA = -0.2;
+
+
 
 			v.vertex.xyz = float3 (v.vertex.x, v.vertex.y + waveValueA, v.vertex.z);
 			v.normal = normalize(float3(v.normal.x + waveValueA, v.normal.y, v.normal.z));

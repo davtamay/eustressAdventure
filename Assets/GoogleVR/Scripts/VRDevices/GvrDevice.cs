@@ -96,7 +96,7 @@ namespace Gvr.Internal {
 
     public override void PostRender(RenderTexture stereoScreen) {
       SetTextureId((int)stereoScreen.GetNativeTexturePtr());
-      GL.IssuePluginEvent(kRenderEvent);
+			GL.IssuePluginEvent(System.IntPtr.Zero, kRenderEvent);
     }
 
     public override void OnPause(bool pause) {

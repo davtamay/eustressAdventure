@@ -490,6 +490,9 @@ public class GvrViewer : MonoBehaviour {
     InitDevice();
     StereoScreen = null;
     AddPrePostRenderStages();
+	//FIXME trying new scene loaded for GVR
+		//new 5/27/17
+		//SceneManager.sceneLoaded += OnLevelWasLoaded;
   }
 
   void Start() {
@@ -638,7 +641,9 @@ public class GvrViewer : MonoBehaviour {
   void OnApplicationFocus(bool focus) {
     device.OnFocus(focus);
   }
-	
+		
+
+
   void OnLevelWasLoaded(int level) {
     device.OnLevelLoaded(level);
   }

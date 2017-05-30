@@ -249,6 +249,7 @@ public class DataManager : MonoBehaviour {
 			this.slotListStrings.Add (curSlotList [i].name);
 		
 		}
+
 		StreamWriter Writer = new StreamWriter (OutputPath);
 		Writer.WriteLine (JsonUtility.ToJson (this));
 		Writer.Close();
