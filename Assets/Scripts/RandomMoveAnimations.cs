@@ -26,81 +26,79 @@ public class RandomMoveAnimations : MonoBehaviour {
 		initialPos = transform.position;
 	}
 
-	void Update(){
-		
-		Vector3 dir;
+	void Start(){
 
-		if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsName ("Walk")) {
+		StartCoroutine (OnUpdate());
+	}
+
+	IEnumerator OnUpdate(){
+
+		while (true) {
+			yield return null;
+			Vector3 dir;
+
+			if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsName ("Walk")) {
 			
 			
-			if (!isFirstTime) {
+				if (!isFirstTime) {
 
-				curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
-				curWayPoint.y = initialPos.y; 
+					curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
+					curWayPoint.y = initialPos.y; 
 
-				isFirstTime = true;
-			}
+					isFirstTime = true;
+				}
 
-			if (Vector3.Distance(transform.position, curWayPoint) < disUntilWayPointChange ){
+				if (Vector3.Distance (transform.position, curWayPoint) < disUntilWayPointChange) {
 
-				oldWayPoint = curWayPoint;
-				curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
-				curWayPoint.y = initialPos.y; 
+					//oldWayPoint = curWayPoint;
+					curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
+					curWayPoint.y = initialPos.y; 
 
-				isTurning = true;
+					//isTurning = true;
 
+					yield return StartCoroutine (Turn (curWayPoint));
 
-				return;
+					//return;
 			
 
-			}
+				}
 	
 
 
-			dir = (curWayPoint - transform.position).normalized;
+				dir = (curWayPoint - transform.position).normalized;
 
-			Vector3 movePosition = dir * Time.deltaTime * moveForwardSpeed;
-			movePosition.y = 0;
+				Vector3 movePosition = dir * Time.deltaTime * moveForwardSpeed;
+				movePosition.y = 0;
 
-			transform.position += movePosition;
+				transform.position += movePosition;
 
-			if (isTurning) {
+				transform.LookAt (curWayPoint, Vector3.up);
 
-				while(true) {
-
-
-					rotationToLookTo = Quaternion.LookRotation (curWayPoint);
-
-
-					//if(Quaternion.Angle(transform.rotation, rotationToLookTo) <= 0.2f)
-					//float diff = Mathf.LerpAngle(transform.rotation.eulerAngles.y, rotationToLookTo.eulerAngles.y, 2f * Time.deltaTime);
-					//transform.rotation = Quaternion.AngleAxis (diff, Vector3.up);
-
-					//transform.eulerAngles = Vector3.Lerp (transform.rotation.eulerAngles, rotationToLookTo.eulerAngles, 2f * Time.deltaTime);
-					//transform.eulerAngles = Vector3.Lerp (transform.rotation.eulerAngles, rotationToLookTo.eulerAngles, 2f * Time.deltaTime);
-					transform.rotation = Quaternion.RotateTowards (transform.rotation, rotationToLookTo , 5f);//Quaternion.Lerp(transform.rotation, rotationToLookTo , 2f * Time.deltaTime);
-					//Quaternion.RotateTowards (animator.transform.rotation, rotationToLookTo , 0.5f);
-					if (Mathf.Abs (transform.rotation.eulerAngles.y - rotationToLookTo.eulerAngles.y) <= 1) {
-						isTurning = false;
-						break;
-					}
-					//	Debug.Log(Vector3.Dot(transform.forward.normalized, dir) );
-
-
-					return;
-				}
+				thisAnimator.SetInteger ("Random", Random.Range (0, 1000));
 			
-			
-			}else
-			transform.LookAt (curWayPoint,Vector3.up);
-
-			thisAnimator.SetInteger ("RandomLook", Random.Range (0, 1000));
+			}
 			
 		}
-			
-		
 		
 		}
+
+	IEnumerator Turn(Vector3 toRotation){
+
+		Quaternion targetRotation = Quaternion.LookRotation (toRotation - transform.position);
+		float timer = 0;
+
+		while (true) {
+			timer += Time.deltaTime;
+		
+			transform.rotation = Quaternion.RotateTowards (transform.rotation, targetRotation,3f);
+		
+			if (Quaternion.Dot (transform.rotation, targetRotation) >= 0.95 || timer > 7) 
+				yield break;
+
+			yield return null;
+	
+		}
+	}
 
 	
 	

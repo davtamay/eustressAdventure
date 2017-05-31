@@ -8,30 +8,30 @@ AnimatorController:
   m_Name: AnimCont_CollectorTask1_MountainArea
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: RandomLook
+  - m_Name: Random
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Idle
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Walk
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: IsNotLooking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -56,7 +56,7 @@ AnimatorStateTransition:
     m_ConditionEvent: IsNotLooking
     m_EventTreshold: 1
   - m_ConditionMode: 6
-    m_ConditionEvent: RandomLook
+    m_ConditionEvent: Random
     m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102031795061593542}
@@ -131,7 +131,7 @@ AnimatorStateTransition:
     m_ConditionEvent: IsNotLooking
     m_EventTreshold: 0
   - m_ConditionMode: 6
-    m_ConditionEvent: RandomLook
+    m_ConditionEvent: Random
     m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102651284517196196}
@@ -286,7 +286,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: fded2260f74524f5991dd8cb9aaeceb8, type: 2}
+  m_Motion: {fileID: 7400006, guid: acd1077dac28d460382412474058a87b, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
