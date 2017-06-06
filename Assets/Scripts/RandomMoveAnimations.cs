@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class RandomMoveAnimations : MonoBehaviour {
 
-	Animator thisAnimator;
+	public Animator thisAnimator;
 
-	[SerializeField] private Vector3 initialPos; 
+	private int animRandHash = Animator.StringToHash("Random");
+
+	public bool isRandomOn = true;
+
+	public Vector3 initialPos; 
 	[SerializeField] private Vector3 curWayPoint;
 
 	[SerializeField] private float moveForwardSpeed = 3f;
 
 	[SerializeField] private float disUntilWayPointChange;
-	[SerializeField] private float distaceToSearch = 10;
+	public float distaceToSearch = 10;
 
-	[SerializeField]private bool isFirstTime;
+	[SerializeField] private int perFrameChanceOfRandom = 1000;
+
+	public bool isFirstTime;
 
 	bool isTurning = false;
 	Vector3 oldWayPoint;
@@ -24,10 +30,15 @@ public class RandomMoveAnimations : MonoBehaviour {
 
 		thisAnimator = GetComponent<Animator> ();
 		initialPos = transform.position;
+
+		//animRandHash = thisAnimator.StringToHash("Random");
 	}
 
-	void Start(){
+	public void Start(){
 
+		//onUpdateIEnum = OnUpdate();
+			
+	//	onUpdateCoroutine = 
 		StartCoroutine (OnUpdate());
 	}
 
@@ -35,54 +46,56 @@ public class RandomMoveAnimations : MonoBehaviour {
 
 		while (true) {
 			yield return null;
-			Vector3 dir;
 
-			if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsName ("Walk")) {
+
+			if (isRandomOn) {
+				
+				Vector3 dir;
+
+				if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsName ("Walk")) {
 			
 			
-				if (!isFirstTime) {
+					if (!isFirstTime) {
 
-					curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
-					curWayPoint.y = initialPos.y; 
+						curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
+						curWayPoint.y = initialPos.y; 
 
-					isFirstTime = true;
-				}
+						isFirstTime = true;
+					}
 
-				if (Vector3.Distance (transform.position, curWayPoint) < disUntilWayPointChange) {
+					if (Vector3.Distance (transform.position, curWayPoint) < disUntilWayPointChange) {
 
-					//oldWayPoint = curWayPoint;
-					curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
-					curWayPoint.y = initialPos.y; 
+				
+						curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
+						curWayPoint.y = initialPos.y; 
 
-					//isTurning = true;
+					
 
-					yield return StartCoroutine (Turn (curWayPoint));
-
-					//return;
+						yield return StartCoroutine (Turn (curWayPoint));
 			
 
-				}
+					}
 	
 
 
-				dir = (curWayPoint - transform.position).normalized;
+					dir = (curWayPoint - transform.position).normalized;
 
-				Vector3 movePosition = dir * Time.deltaTime * moveForwardSpeed;
-				movePosition.y = 0;
+					Vector3 movePosition = dir * Time.deltaTime * moveForwardSpeed;
+					movePosition.y = 0;
 
-				transform.position += movePosition;
+					transform.position += movePosition;
 
-				transform.LookAt (curWayPoint, Vector3.up);
+					transform.LookAt (curWayPoint, Vector3.up);
 
-				thisAnimator.SetInteger ("Random", Random.Range (0, 1000));
+					thisAnimator.SetInteger (animRandHash, Random.Range (0, perFrameChanceOfRandom));
 			
+				}
 			}
-			
 		}
 		
 		}
 
-	IEnumerator Turn(Vector3 toRotation){
+	public IEnumerator Turn(Vector3 toRotation){
 
 		Quaternion targetRotation = Quaternion.LookRotation (toRotation - transform.position);
 		float timer = 0;

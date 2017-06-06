@@ -76,7 +76,7 @@ public class PlayerManager : MonoBehaviour {
 			StringToGODict = new Dictionary<string, GameObject>();
 
 			foreach(GameObject GO in GameObject.FindGameObjectsWithTag("Item")){
-				SpriteRenderer curSprRend = GO.transform.GetChild (0).GetComponentInChildren<SpriteRenderer> ();
+				SpriteRenderer curSprRend = GO.transform.GetChild (0).transform.GetChild (0).GetComponentInChildren<SpriteRenderer> ();
 				totalGoInSceneDict.Add (GO, curSprRend);
 			
 				StringToGODict.Add (GO.name, GO);
@@ -165,10 +165,10 @@ public class PlayerManager : MonoBehaviour {
 		}
 
 		playerSlotsUIDict [curSlot].sprite = totalGoInSceneDict [GO].sprite;
-		GameObject mainObject = totalGoInSceneDict [GO].transform.parent.parent.gameObject;
+		GameObject mainObject = totalGoInSceneDict [GO].transform.parent.parent.parent.gameObject;
 
 		if(!playerSlotGOList.Contains(StringToGODict[mainObject.name]))
-		playerSlotGOList.Add (totalGoInSceneDict [GO].transform.parent.parent.gameObject);
+		playerSlotGOList.Add (totalGoInSceneDict [GO].transform.parent.parent.parent.gameObject);
 		
 		
 		playerSlotsUIDict [curSlot].gameObject.SetActive (true);

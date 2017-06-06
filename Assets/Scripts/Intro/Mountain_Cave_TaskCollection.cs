@@ -16,7 +16,7 @@ public class Mountain_Cave_TaskCollection : CollectTaskInteraction {
 
 		if(other.CompareTag("Player")){
 
-			onInteraction.Invoke ();
+			onInitialInteractionSelect.Invoke ();
 
 			if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 0) {
 				infoCanvasPrefab.SetActive (true);

@@ -28,7 +28,7 @@ public class BicycleInteraction : InteractionBehaviour {
 
 	
 		if (!isOnBike) {
-			TriggerInfo ();
+		//	TriggerInfo ();
 			player.position = positionToMoveTo.position;
 			player.GetComponent<CollectorLookWalk> ().enabled = false;
 			Drive = StartCoroutine (DriveBike ());

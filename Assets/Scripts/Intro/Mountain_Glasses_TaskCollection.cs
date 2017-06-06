@@ -29,14 +29,14 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 			thisAnimator.SetBool ("Idle", true);
 			thisAnimator.SetBool ("Walk", false);
 			transform.LookAt (player, Vector3.up);
-
+			/*
 			if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 0) {
 				infoCanvasPrefab.SetActive (true);
 				CheckForTaskCompletion ();
 			} else {
 				infoCanvasPrefab.SetActive (true);
 				return;
-			}
+			}*/
 		}
 
 	}
@@ -47,7 +47,7 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 			thisAnimator.SetBool ("Idle", false);
 			thisAnimator.SetBool ("Walk", true);
 
-			infoCanvasPrefab.SetActive (false);
+		//	infoCanvasPrefab.SetActive (false);
 
 		}
 	}
@@ -63,6 +63,9 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 
 	}
 	public override void CheckForTaskCompletion(){
+
+		if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 1)
+			return;
 
 		int itemsCollected = 0;
 		int cCount = collectObjParent.childCount;

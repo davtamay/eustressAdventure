@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class InteractionBehaviour : MonoBehaviour {
 
-	[SerializeField]protected UnityEvent onInteraction;
+	[SerializeField]protected UnityEvent onInitialInteractionSelect;
 	[SerializeField]protected GameObject infoCanvasPrefab;
 	[SerializeField]protected Vector3 infoOffset;
 	[SerializeField]protected bool isAutomaticRotation = false;
@@ -19,6 +19,14 @@ public class InteractionBehaviour : MonoBehaviour {
 	[TextArea(0,15)][SerializeField]protected string infoText;
 	[SerializeField]protected float timeActive;
 	[SerializeField]protected Color infoBackGround = Color.cyan;
+
+	[Header("Action")] [SerializeField]protected UnityEvent onActionSelect;
+	[TextArea(0,15)][SerializeField]protected string ActionText;
+
+
+	[Header("Information")] [SerializeField]protected UnityEvent onInformationSelect;
+	[TextArea(0,15)][SerializeField]protected string informationText;
+
 
 	protected Text infoTextComponent;
 
@@ -37,25 +45,12 @@ public class InteractionBehaviour : MonoBehaviour {
 		if (infoCanvasPrefab != null) {
 
 			infoCanvasPrefab = Instantiate (infoCanvasPrefab, new Vector3(thisTransform.position.x + infoOffset.x, thisTransform.position.y + infoOffset.y, thisTransform.position.z + infoOffset.z), Quaternion.identity) ;
-			//infoCanvasPrefab.transform.localScale += InfoSizeOffset;
-
-		//	Rect infoTextRect = infoCanvasPrefab.transform.GetChild(0).GetComponent<RectTransform> ().rect;
-			//infoTextRect.rect.size = new Vector2 (InfoSizeOffset.y,InfoSizeOffset.x);
-			//infoTextRect.rect.Set (infoTextRect.position.x, infoTextRect.position.y, InfoSizeOffset.x, InfoSizeOffset.y);
-		//	infoTextRect.height += InfoSizeOffset.y;
-		//	infoTextRect.width += InfoSizeOffset.x;
-
-
-			//pS.startSizeYMultiplier += InfoSize.y;
 
 			infoCanvasPrefab.transform.SetParent(thisTransform);
-		//		infoTextRect.height += InfoSizeOffset.y;
-		//		infoTextRect.width += InfoSizeOffset.x;
-		//	Debug.Log ("what is this? " + infoTextRect.width);
 
 			pS = infoCanvasPrefab.GetComponentInChildren<ParticleSystem> ().main;
 			pS.startColor = new ParticleSystem.MinMaxGradient (infoBackGround);
-			//pS.startSize = new ParticleSystem.MinMaxCurve (infoCanvasRect.width + infoCanvasRect.heig /2 );
+
 			infoTextComponent = infoCanvasPrefab.GetComponentInChildren<Text> ();
 			infoTextComponent.text = infoText;
 
@@ -79,9 +74,11 @@ public class InteractionBehaviour : MonoBehaviour {
 	Coroutine infoActive; 
 
 	public void TriggerInfo(){
-		
-		infoCanvasPrefab.SetActive (true);
 
+		if (infoCanvasPrefab.activeInHierarchy)
+			return;
+			
+		infoCanvasPrefab.SetActive (true);
 		infoActive = StartCoroutine (InfoActive ());
 	
 	
@@ -107,13 +104,14 @@ public class InteractionBehaviour : MonoBehaviour {
 				infoCanvasPrefab.transform.LookAt (player.position, Vector3.up);
 				infoCanvasPrefab.transform.localRotation *= Quaternion.AngleAxis (180, Vector3.up);
 			}
-
-			//infoCanvasPrefab.transform.localPosition = infoOffset;
+				
 
 			if (time > timer) {
 			
 				infoCanvasPrefab.SetActive (false);
-				StopCoroutine (infoActive);
+				timer = timeActive;
+				yield break;
+				//StopCoroutine (infoActive);
 			}
 
 			yield return null;

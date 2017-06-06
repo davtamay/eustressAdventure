@@ -29,13 +29,13 @@ public class DogInteraction : InteractionBehaviour{
 
 		if (!curDogInteraction) {
 			curDogInteraction = this;//.gameObject;
-			curDogInteraction.gameObject.GetComponent<LookInteraction> ().enabled = false;
+			curDogInteraction.transform.GetChild(0).GetComponent<LookInteraction> ().enabled = false;
 		}else{
 			
 
-			curDogInteraction.gameObject.GetComponent<LookInteraction> ().enabled = true;
+			curDogInteraction.transform.GetChild(0).GetComponent<LookInteraction> ().enabled = true;
 			OnChange ();
-			curDogInteraction.gameObject.GetComponent<LookInteraction> ().enabled = false;
+			curDogInteraction.transform.GetChild(0).GetComponent<LookInteraction> ().enabled = false;
 
 
 		}
@@ -43,9 +43,9 @@ public class DogInteraction : InteractionBehaviour{
 			
 
 
-		TriggerInfo ();
+		//TriggerInfo ();
 
-		onInteraction.Invoke ();
+		onInitialInteractionSelect.Invoke ();
 
 
 		FollowPlayer = StartCoroutine (Follow());
@@ -54,16 +54,23 @@ public class DogInteraction : InteractionBehaviour{
 	private void OnChange(){
 	
 		if (curDogInteraction) {
-			StopCoroutine (curDogInteraction.gameObject.GetComponent<DogInteraction>().FollowPlayer);
 
+			//StopCoroutine (curDogInteraction.transform.parent.GetComponent<DogInteraction>().FollowPlayer);
+			StopCoroutine (curDogInteraction.transform.GetComponent<DogInteraction>().FollowPlayer);
 			curDogInteraction = this;//.gameObject;
 
-
+			//check for bugs especially for switching multiple pets
+		//	if (Equals (curDogInteraction, this))
+			//StopCoroutine (FollowPlayer);
 
 		}
 	
 	}
 
+/*	public void Stop(){
+	
+		StopCoroutine ("FollowPlayer");
+	}*/
 
 
 	private IEnumerator Follow(){

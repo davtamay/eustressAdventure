@@ -9,7 +9,9 @@ public class LookInteraction : MonoBehaviour {
 
 	[SerializeField] GameObject imageGO;
 	[SerializeField] float lookTime;
+	[SerializeField] float timeUntilImageDeactivate = 5f;
 	[SerializeField] float lookDistance;
+
 	[SerializeField]UnityEvent onLookClick;
 
 	[SerializeField] bool isItemForSlot;
@@ -17,8 +19,10 @@ public class LookInteraction : MonoBehaviour {
 
 	private Image image;
 	private Collider thisCollider;
+	public Collider parentCollider;
 	private Camera cam;
 	float timer;
+
 
 	void Awake () {
 
@@ -27,6 +31,8 @@ public class LookInteraction : MonoBehaviour {
 		timer = lookTime;
 		thisCollider = GetComponent<Collider> ();
 
+		if(!isItemForSlot)
+		parentCollider = transform.parent.GetComponent<Collider> ();
 
 		image = GetComponentInChildren<Image> ();
 
@@ -34,19 +40,56 @@ public class LookInteraction : MonoBehaviour {
 		imageGO.SetActive (false);
 		
 	}
-	
 
+	private float timeActive;
+
+	IEnumerator EnableAndDisable(){
+		float timer = 0;
+		timeActive = timeUntilImageDeactivate;
+
+		isActive = true;
+		imageGO.SetActive (true);
+
+		while (0 < timeActive) {
+
+
+			yield return null;
+			imageGO.transform.LookAt (cam.transform);
+
+			timeActive -= Time.deltaTime;
+
+		}
+
+		isActive = false;
+		imageGO.SetActive (false);
+	}
+
+	private bool isActive;
 	void Update () {
 
 		RaycastHit hit;
 		Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
 			
+
+			
+
+		
+		
 		if (thisCollider.Raycast (ray, out hit, lookDistance)) {
 
-			if(!imageGO.activeInHierarchy)
-			imageGO.SetActive (true);
+			timeActive = timeUntilImageDeactivate;
 
-			imageGO.transform.LookAt (cam.transform);
+			if (isItemForSlot) {
+
+			//	timer = lookTime;
+
+				if (!isActive) {
+					StartCoroutine (EnableAndDisable ());
+				}
+			
+			}
+
+
 
 			timer -= Time.deltaTime;
 			image.fillAmount = timer / lookTime;
@@ -54,6 +97,7 @@ public class LookInteraction : MonoBehaviour {
 			if (0f > timer) {
 			
 				onLookClick.Invoke ();
+				timeActive = 0;
 
 				if (isItemForSlot) 
 					PlayerManager.Instance.AddItemToSlot (gameObject);
@@ -69,8 +113,22 @@ public class LookInteraction : MonoBehaviour {
 		} else {
 
 			timer = lookTime;
-			imageGO.SetActive (false);
+			image.fillAmount = timer / lookTime;
+		//	imageGO.SetActive (false);
 		
+		}
+
+		if(!isItemForSlot)
+		if (parentCollider.Raycast (ray, out hit, lookDistance)) {
+
+			timeActive = timeUntilImageDeactivate;
+			timer = lookTime;
+
+			if (!isActive) {
+				StartCoroutine (EnableAndDisable ());
+			}
+
+
 		}
 
 

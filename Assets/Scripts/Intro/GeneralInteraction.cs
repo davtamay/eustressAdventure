@@ -9,7 +9,7 @@ public class GeneralInteraction : InteractionBehaviour {
 		if(other.CompareTag("Player")){
 
 		TriggerInfo ();
-		onInteraction.Invoke ();
+		onInitialInteractionSelect.Invoke ();
 		}
 	}
 		
