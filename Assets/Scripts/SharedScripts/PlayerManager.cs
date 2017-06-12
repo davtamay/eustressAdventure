@@ -67,7 +67,7 @@ public class PlayerManager : MonoBehaviour {
 		}
 
 	//FIXME Games may use Item game tag besided the intro, so check if there are no interuptions/bugs 5/13/17
-
+		if(SceneController.Instance.GetCurrentSceneName() == "Intro")
 		if (GameObject.FindWithTag ("Item") != null) {
 
 			totalGoInSceneDict = new Dictionary<GameObject,SpriteRenderer> ();

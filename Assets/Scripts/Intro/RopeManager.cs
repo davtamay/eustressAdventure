@@ -4,69 +4,129 @@ using UnityEngine;
 
 public class RopeManager : MonoBehaviour {
 
-	private ContactPoint FirstCP;
+//	private ContactPoint FirstCP;
+	private Transform thisRopeTransform;
 	private float TimeUntilFall = 3f;
 	private static bool isFirstCollision;
 	private static int collisionCount;
 
+	//private Rigidbody thisRigidbody;
+
 
 	void OnCollisionEnter(Collision other){
-	
+		
+		Debug.Log (other.transform.name);
+
 		if (other.collider.CompareTag ("Player") && !isFirstCollision) {
-		
+
 			isFirstCollision = true;
-
-			//NEW
-			foreach (ContactPoint cP in other.contacts) {
-				FirstCP = cP;
-				if (FirstCP.point != null)
-					break;
-			
-			}
-				
-		//	FirstCP = (ContactPoint)other.contacts.GetValue(0);
-
-			other.gameObject.GetComponent<CollectorLookWalk> ().enabled = false;
-
+			Debug.Log ("InsideCollisonEnter");
 		
-			StartCoroutine (RopeHoldOn (other.transform, FirstCP.thisCollider.transform));
+			thisRopeTransform = this.transform;
+			other.transform.position = Vector3.Lerp (other.transform.position, thisRopeTransform.position, Time.deltaTime * 1.5f);
+
+			StartCoroutine (RopeHoldOn (other.transform, thisRopeTransform));//FirstCP.thisCollider.transform));
 
 
 		}
 	
 	}
 
-	IEnumerator RopeHoldOn(Transform player, Transform cPRope){
-		
+
+	IEnumerator RopeHoldOn(Transform player, Transform ropeSegmentTrans){
+		player.gameObject.GetComponent<PlayerLookMove> ().enabled = false;
+		player.gameObject.GetComponent<CharacterController> ().enabled = false;
+		player.gameObject.GetComponent<CapsuleCollider> ().enabled = false;
+
+
 		Vector3 movingOffset = Vector3.zero;
-		float timer = 0;
+
+		float swingingVelocity = 7f;
+
+		Vector3 dir = Camera.main.transform.forward.normalized;
+		dir.y = 0;
+
+		Vector3 origRopePos = new Vector3 (ropeSegmentTrans.parent.position.x,  player.position.y , ropeSegmentTrans.parent.position.z);
+
+
+	
+		float parentYPos = transform.parent.position.y;
+
+		while (Vector3.Distance (player.position, ropeSegmentTrans.position) > 1.5f) {
+			player.position = Vector3.Lerp (player.position, ropeSegmentTrans.position, Time.deltaTime * 1.5f);
+			ropeSegmentTrans.position = Vector3.Lerp (ropeSegmentTrans.position, player.position, Time.deltaTime * 1.5f);
+			yield return null;
+			continue;
+		}
+
+
+
 
 		while (true) {
+			if((Vector3.Distance (player.position, ropeSegmentTrans.position) > 3f))
+				ropeSegmentTrans.position = Vector3.Lerp (ropeSegmentTrans.position, player.position  , Time.deltaTime * 8f);
 
-			
-			player.position = cPRope.transform.position + Vector3.left * 1.5f + (movingOffset);
+			yield return new WaitForEndOfFrame();
+
+				player.position = Vector3.Lerp (player.position, origRopePos  + Vector3.left * 1f + (movingOffset), Time.deltaTime * 7f);
+				
 		
-			if (Vector3.Dot (Camera.main.transform.forward, Vector3.up) > 0.7f) 
-				movingOffset += (Vector3.up * 1.5f) * Time.deltaTime;
-
-			if (Vector3.Dot (Camera.main.transform.forward, Vector3.down) > 0.7f) {
-				movingOffset += (Vector3.down * 3.5f) * Time.deltaTime;
-				timer += Time.deltaTime; 
+			if (player.position.y > parentYPos)
+				player.position -= Vector3.up * 0.2f;//Vector3.up * parentYPos;
 
 
-				RaycastHit hit;
+			movingOffset = Vector3.zero;
 
 
-				if (timer > TimeUntilFall || Physics.Raycast (player.position, Vector3.down, 5f, 1<<8)) {
-					player.GetComponent<CollectorLookWalk> ().enabled = true;
+			if (swingingVelocity > 0.01f) {
+
+			//	thisRigidbody.AddRelativeForce(dir * (swingingVelocity), ForceMode.Acceleration);
+
+				swingingVelocity -= Time.deltaTime * 0.4f;
+
+
+				movingOffset = dir * Mathf.Sin(Time.time * 1.5f) * swingingVelocity;
+			
+				
+				if (Vector3.Dot (Camera.main.transform.forward, Vector3.down) > 0.7f) {
+					player.GetComponent<PlayerLookMove> ().enabled = true;
+					player.GetComponent<CharacterController> ().enabled = true;
+					player.gameObject.GetComponent<CapsuleCollider> ().enabled = true;
+			
 					isFirstCollision = false;
-					//collisionCount = 0;
 					StopAllCoroutines ();
 				}
 
-			} else
-				timer = 0;
-		
+				if (swingingVelocity < 0.1f) {
+					
+					//thisRigidbody.Sleep ();
+					player.position = Vector3.Lerp (player.position, origRopePos + Vector3.left * 1f , Time.deltaTime * 1f);
+					swingingVelocity = 0f;
+				}
+
+
+				continue;
+			}
+
+	
+
+
+			//10f reflects maxUpPos
+			if (Vector3.Dot (Camera.main.transform.forward, Vector3.up) > 0.7f)// && player.transform.position.y < 10f)//transform.parent.position.y) 
+				movingOffset.y += (1f) * Time.deltaTime;
+
+			if (Vector3.Dot (Camera.main.transform.forward, Vector3.down) > 0.7f) {
+				player.GetComponent<PlayerLookMove> ().enabled = true;
+				player.GetComponent<CharacterController> ().enabled = true;
+				player.gameObject.GetComponent<CapsuleCollider> ().enabled = true;
+
+
+				isFirstCollision = false;
+				StopAllCoroutines ();
+
+
+			}
+
 			yield return null;
 		}
 

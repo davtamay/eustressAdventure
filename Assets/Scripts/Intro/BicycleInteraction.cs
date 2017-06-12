@@ -30,7 +30,7 @@ public class BicycleInteraction : InteractionBehaviour {
 		if (!isOnBike) {
 		//	TriggerInfo ();
 			player.position = positionToMoveTo.position;
-			player.GetComponent<CollectorLookWalk> ().enabled = false;
+			player.GetComponent<PlayerLookMove> ().enabled = false;
 			Drive = StartCoroutine (DriveBike ());
 			if (feetGO)
 				feetGO.SetActive (false);
@@ -38,7 +38,7 @@ public class BicycleInteraction : InteractionBehaviour {
 		} else {
 		
 			player.position = positionToGetOut.position;
-			player.GetComponent<CollectorLookWalk> ().enabled = true;
+			player.GetComponent<PlayerLookMove> ().enabled = true;
 			StopCoroutine (Drive);
 			isOnBike = false;
 			if (feetGO)

@@ -15,12 +15,15 @@ public class CowHomeTrigger : MonoBehaviour {
 
 
 			RandomMoveAnimations RMA = other.GetComponent<RandomMoveAnimations> ();
+
 			float yInit = RMA.initialPos.y;
 			RMA.initialPos = this.transform.position;
 			RMA.initialPos.y = yInit;
 			RMA.distaceToSearch = 10f; 
-
 			RMA.isFirstTime = false;
+			RMA.isRandomOn = true;
+
+
 			//other.enabled = false;
 
 

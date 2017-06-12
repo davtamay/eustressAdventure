@@ -11,7 +11,7 @@ public class CowMove : MonoBehaviour {
 	private RandomMoveAnimations randMoveAnimScript;
 
 	private Transform thisTransform;
-	private Animator thisAnimator;
+	//private Animator thisAnimator;
 
 	private int animIdleHash = Animator.StringToHash ("Idle");
 
@@ -21,18 +21,15 @@ public class CowMove : MonoBehaviour {
 		randMoveAnimScript = GetComponent<RandomMoveAnimations> ();
 
 	}
-
-	void Start(){
-
-		thisAnimator = randMoveAnimScript.thisAnimator;
-	
-	}
-
+		
+	IEnumerator startRanIEnum;
 	void OnTriggerEnter(Collider other){
 
 
 		if (other.CompareTag ("Player")) {
 		
+			if (startRanIEnum != null)
+			StopCoroutine (startRanIEnum);
 			randMoveAnimScript.isRandomOn = false;
 
 		
@@ -40,11 +37,15 @@ public class CowMove : MonoBehaviour {
 
 	
 	}
+
+	//Coroutine startRandomCoroutine;
 	void OnTriggerExit(Collider other){
 
 
 		if (other.CompareTag ("Player")) {
-			StartCoroutine (StartRandom ());
+			
+			startRanIEnum = StartRandom ();
+			StartCoroutine (startRanIEnum);
 
 
 		}
@@ -53,7 +54,8 @@ public class CowMove : MonoBehaviour {
 	}
 	IEnumerator StartRandom(){
 	
-		yield return new WaitForSeconds (0.1f);
+		yield return new WaitForSeconds (4f);
+
 		randMoveAnimScript.isRandomOn = true;
 	}
 
@@ -86,6 +88,8 @@ public class CowMove : MonoBehaviour {
 			if (timer >= 2f) {
 				timer = 0;
 				randMoveAnimScript.isRandomOn = false;
+				if(startRanIEnum != null)
+				StopCoroutine (startRanIEnum);
 				StartCoroutine (randMoveAnimScript.Turn (2*thisTransform.position - other.transform.position));
 			}
 

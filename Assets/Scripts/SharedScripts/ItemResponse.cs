@@ -105,7 +105,7 @@ public class ItemResponse : MonoBehaviour {
 
 			switch (randomNum) {
 			case 0:
-				GameObject PowerUp = PowerUpSpawn.Instance.SpawnPowerUpLocation (HitLocation);
+	//			GameObject PowerUp = PowerUpSpawn.Instance.SpawnPowerUpLocation (HitLocation);
 
 			//	StartCoroutine	(DestroyObjects (14f, PowerUp));
 
@@ -146,7 +146,7 @@ public class ItemResponse : MonoBehaviour {
 
 	IEnumerator SetCollectorPlayerSpeed(GameObject GOtoDestroy){
 
-		CollectorLookWalk coll = player.GetComponent<CollectorLookWalk>();
+		PlayerLookMove coll = player.GetComponent<PlayerLookMove>();
 		float CurrentVelocity = coll.velocity;
 		coll.velocity = 60;
 

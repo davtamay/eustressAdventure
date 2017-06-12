@@ -249,7 +249,8 @@ public class DataManager : MonoBehaviour {
 			this.slotListStrings.Add (curSlotList [i].name);
 		
 		}
-
+	//Open Following to Clear Off Slot in case of error (Have to save by changing levels)
+	//slotListStrings.Clear ();
 		StreamWriter Writer = new StreamWriter (OutputPath);
 		Writer.WriteLine (JsonUtility.ToJson (this));
 		Writer.Close();

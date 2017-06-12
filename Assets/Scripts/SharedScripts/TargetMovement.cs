@@ -41,7 +41,7 @@ public class TargetMovement : MonoBehaviour
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(nextMovementPoint - transform.position), 1.0f * Time.deltaTime);
 
-		RaycastHit hit;
+	//	RaycastHit hit;
 		if(Physics.Raycast(thisTransform.position, thisTransform.forward, 15))
 			CalculateNextMovementPoint();
 

@@ -44,7 +44,7 @@ public class LookInteraction : MonoBehaviour {
 	private float timeActive;
 
 	IEnumerator EnableAndDisable(){
-		float timer = 0;
+	//	float timer = 0;
 		timeActive = timeUntilImageDeactivate;
 
 		isActive = true;

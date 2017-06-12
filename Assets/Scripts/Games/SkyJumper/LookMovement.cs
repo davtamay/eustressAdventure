@@ -4,7 +4,7 @@ using TagFrenzy;
 public class LookMovement : MonoBehaviour {
 
 	private Camera cam;
-	private GameObject player;
+	//private GameObject player;
 
 	float horizontalDisToMove;
 	float upDisToJump;
@@ -40,7 +40,7 @@ public class LookMovement : MonoBehaviour {
 
 	void Start(){
 		cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>() as Camera;
-		player = GameObject.FindWithTag ("Player");
+	//	player = GameObject.FindWithTag ("Player");
 		charControll = GetComponent <CharacterController> ();
 
 		if(isStayParentPos)

@@ -9,13 +9,17 @@ using UnityEngine;
 public class InteractionBehaviour : MonoBehaviour {
 
 	[SerializeField]protected UnityEvent onInitialInteractionSelect;
+
+	[Header("UI Text Settings")]
 	[SerializeField]protected GameObject infoCanvasPrefab;
 	[SerializeField]protected Vector3 infoOffset;
 	[SerializeField]protected bool isAutomaticRotation = false;
 	[SerializeField]protected float yInfoRotationOffset;
 	[SerializeField]protected float xInfoRotationOffset;
 	[SerializeField]protected float zInfoRotationOffset;
-	[SerializeField]protected Vector2 InfoSizeOffset;
+	[SerializeField]protected Vector2 InfoSize;
+	//[SerializeField]protected TextAlignment textAllignment = TextAlignment.Left;
+	[SerializeField]protected TextAnchor textAnchor = TextAnchor.UpperLeft;
 	[TextArea(0,15)][SerializeField]protected string infoText;
 	[SerializeField]protected float timeActive;
 	[SerializeField]protected Color infoBackGround = Color.cyan;
@@ -52,11 +56,14 @@ public class InteractionBehaviour : MonoBehaviour {
 			pS.startColor = new ParticleSystem.MinMaxGradient (infoBackGround);
 
 			infoTextComponent = infoCanvasPrefab.GetComponentInChildren<Text> ();
+			infoTextComponent.alignment = textAnchor;//(TextAnchor)textAllignment;
 			infoTextComponent.text = infoText;
 
-			RectTransform infoTextRect = infoTextComponent.transform.GetComponent<RectTransform> ();
-			infoTextRect.sizeDelta += new Vector2 (InfoSizeOffset.x,InfoSizeOffset.y);
+			//infoTextComponent.
 
+			RectTransform infoTextRect = infoTextComponent.transform.GetComponent<RectTransform> ();
+			infoTextRect.sizeDelta = new Vector2 (InfoSize.x,InfoSize.y);
+		//	infoTextRect.sizeDelta.Scale(new Vector2 (InfoSizeOffset.x,  InfoSizeOffset.y));
 		//	infoTextRect.rect.height += InfoSizeOffset.y;
 		//		infoTextRect.rect.width += InfoSizeOffset.x;
 
@@ -122,12 +129,12 @@ public class InteractionBehaviour : MonoBehaviour {
 	void OnDrawGizmos(){
 
 		thisTransform = transform;
-		GameObject Info = GameObject.FindWithTag ("EditorOnly");
+		//GameObject Info = GameObject.FindWithTag ("EditorOnly");
 
-		Vector2 InfoScale = Info.GetComponent<RectTransform>().sizeDelta;
+		//Vector2 InfoScale = new Vector2 (InfoSize.x, InfoSize.y)//Info.GetComponent<RectTransform>().sizeDelta;
 	
 		Gizmos.color = Color.blue;
-		Gizmos.DrawWireCube (new Vector3(thisTransform.position.x + infoOffset.x, thisTransform.position.y + infoOffset.y, thisTransform.position.z), new Vector3(InfoScale.x + InfoSizeOffset.x, InfoScale.y + InfoSizeOffset.y, 1));
+		Gizmos.DrawWireCube (new Vector3(thisTransform.position.x + infoOffset.x, thisTransform.position.y + infoOffset.y, thisTransform.position.z + infoOffset.z),new Vector3(InfoSize.x/3, InfoSize.y/3, 1));// new Vector3(InfoScale.x + InfoSizeOffset.x, InfoScale.y + InfoSizeOffset.y, 1));
 	}
 
 

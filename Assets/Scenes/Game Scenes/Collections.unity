@@ -743,7 +743,6 @@ MonoBehaviour:
   isMusicButton: 0
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 8
   copingMethod: 3
   curMusicButton: 0
@@ -920,7 +919,6 @@ MonoBehaviour:
   isMusicButton: 0
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 6
   copingMethod: 4
   curMusicButton: 4
@@ -1163,7 +1161,6 @@ MonoBehaviour:
   isMusicButton: 0
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 8
   copingMethod: 3
   curMusicButton: 0
@@ -1379,7 +1376,6 @@ MonoBehaviour:
   isMusicButton: 0
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 8
   copingMethod: 3
   curMusicButton: 0
@@ -1937,7 +1933,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811cd7bd0639d4e66b204fa38c05bc83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highScore: 0
 --- !u!114 &292074100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2338,7 +2333,6 @@ MonoBehaviour:
   isMusicButton: 0
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 8
   copingMethod: 1
   curMusicButton: 0
@@ -4026,7 +4020,6 @@ MonoBehaviour:
   isMusicButton: 1
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 0
   copingMethod: 0
   curMusicButton: 3
@@ -4987,7 +4980,6 @@ MonoBehaviour:
   isMusicButton: 1
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 0
   copingMethod: 0
   curMusicButton: 0
@@ -5339,22 +5331,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1165338108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f8921fd67834e4baa64ec954df6d2b, type: 3}
+  m_Script: {fileID: 11500000, guid: d9a6c5cc337cf44fdafce66e1a1ed535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
+  groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  jumpHeight: 15
-  jumpFromGroundDis: 2
-  jumpSpeed: 15
-  velocity: 18
-  gravity: 16
-  minMoveAngleFromUp: 95
+  bounceLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  jumpHeight: 9
+  isSuperJumpAvailable: 0
+  superJumpHeightAdd: 0
+  superJumpSpeedAdd: 0
+  jumpFromGroundDis: 3
+  jumpSpeed: 12
+  velocity: 13
+  gravity: 12
+  minMoveAngleFromUp: 89
   maxMoveAngleFromUp: 180
   minJumpAngleFromUp: 0
   maxJumpAngleFromUp: 70
-  isCharInGround: 0
+  isSlotsPresent: 0
 --- !u!114 &1165338110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5366,6 +5364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28dded03a7bb4a83961873fc3594c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSlotGOList: []
   hurtColor: {r: 0.77254903, g: 0.77254903, b: 0.77254903, a: 0.5294118}
   addHealthColor: {r: 0.6544118, g: 1, b: 0.6544118, a: 0.734}
   healthColor: {r: 0, g: 0, b: 0, a: 0}
@@ -5480,7 +5479,6 @@ MonoBehaviour:
   isMusicButton: 1
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 0
   copingMethod: 0
   curMusicButton: 2
@@ -6252,7 +6250,6 @@ MonoBehaviour:
   isMusicButton: 0
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 6
   copingMethod: 3
   curMusicButton: 0
@@ -6546,7 +6543,6 @@ MonoBehaviour:
   isMusicButton: 0
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 8
   copingMethod: 3
   curMusicButton: 0
@@ -6789,7 +6785,6 @@ MonoBehaviour:
   isMusicButton: 0
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 8
   copingMethod: 2
   curMusicButton: 0
@@ -7438,7 +7433,6 @@ MonoBehaviour:
   isMusicButton: 0
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 8
   copingMethod: 3
   curMusicButton: 0
@@ -7943,7 +7937,6 @@ MonoBehaviour:
   isMusicButton: 0
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 8
   copingMethod: 3
   curMusicButton: 0
@@ -8103,7 +8096,6 @@ MonoBehaviour:
   isMusicButton: 0
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 8
   copingMethod: 3
   curMusicButton: 0
@@ -8428,7 +8420,6 @@ MonoBehaviour:
   isMusicButton: 0
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 8
   copingMethod: 3
   curMusicButton: 0
@@ -9651,7 +9642,6 @@ MonoBehaviour:
   isMusicButton: 0
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 8
   copingMethod: 0
   curMusicButton: 0
@@ -10123,7 +10113,6 @@ MonoBehaviour:
   isMusicButton: 1
   isAllowWalk: 0
   isWalking: 0
-  curStressed: 0
   StressT: 0
   copingMethod: 0
   curMusicButton: 1

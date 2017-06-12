@@ -28,10 +28,10 @@ public class CollectTaskInteraction : InteractionBehaviour {
 			transform.LookAt (player, Vector3.up);
 
 			if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 0) {
-				infoCanvasPrefab.SetActive (true);
+			//	infoCanvasPrefab.SetActive (true);
 				CheckForTaskCompletion ();
 			} else {
-				infoCanvasPrefab.SetActive (true);
+			//	infoCanvasPrefab.SetActive (true);
 				return;
 			}
 		}

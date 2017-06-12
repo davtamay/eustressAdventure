@@ -14,6 +14,7 @@ public class RandomMoveAnimations : MonoBehaviour {
 	[SerializeField] private Vector3 curWayPoint;
 
 	[SerializeField] private float moveForwardSpeed = 3f;
+	[SerializeField] private float rotationSpeed = 2.5f;
 
 	[SerializeField] private float disUntilWayPointChange;
 	public float distaceToSearch = 10;
@@ -41,7 +42,7 @@ public class RandomMoveAnimations : MonoBehaviour {
 	//	onUpdateCoroutine = 
 		StartCoroutine (OnUpdate());
 	}
-
+	Vector3 dir;
 	IEnumerator OnUpdate(){
 
 		while (true) {
@@ -50,24 +51,43 @@ public class RandomMoveAnimations : MonoBehaviour {
 
 			if (isRandomOn) {
 				
-				Vector3 dir;
+
 
 				if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsName ("Walk")) {
 			
 			
 					if (!isFirstTime) {
-
+						
 						curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
 						curWayPoint.y = initialPos.y; 
+						/*
+						while (!(Vector3.Dot (transform.forward, dir) > 0.20f)) {
+
+							curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
+							curWayPoint.y = initialPos.y; 
+							dir = (curWayPoint - transform.position).normalized;
+						}*/
 
 						isFirstTime = true;
 					}
 
+
 					if (Vector3.Distance (transform.position, curWayPoint) < disUntilWayPointChange) {
 
-				
+
+
 						curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
 						curWayPoint.y = initialPos.y; 
+
+
+						dir = (curWayPoint - transform.position).normalized;
+
+						while (!(Vector3.Dot (transform.forward, dir) > 0.20f)) {
+
+							curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
+							curWayPoint.y = initialPos.y; 
+							dir = (curWayPoint - transform.position).normalized;
+						}
 
 					
 
@@ -77,8 +97,8 @@ public class RandomMoveAnimations : MonoBehaviour {
 					}
 	
 
-
 					dir = (curWayPoint - transform.position).normalized;
+
 
 					Vector3 movePosition = dir * Time.deltaTime * moveForwardSpeed;
 					movePosition.y = 0;
@@ -103,10 +123,15 @@ public class RandomMoveAnimations : MonoBehaviour {
 		while (true) {
 			timer += Time.deltaTime;
 		
-			transform.rotation = Quaternion.RotateTowards (transform.rotation, targetRotation,3f);
-		
-			if (Quaternion.Dot (transform.rotation, targetRotation) >= 0.95 || timer > 7) 
+			transform.rotation = Quaternion.RotateTowards (transform.rotation, targetRotation, rotationSpeed);
+
+			if(Vector3.Dot(transform.forward, dir) >= 0.99f || timer > 7)
 				yield break;
+
+		/*	transform.rotation = Quaternion.RotateTowards (transform.rotation, targetRotation,3f);
+		
+			if (Quaternion.Dot (transform.rotation, targetRotation) >= 0.99 || timer > 7) 
+				yield break;*/
 
 			yield return null;
 	

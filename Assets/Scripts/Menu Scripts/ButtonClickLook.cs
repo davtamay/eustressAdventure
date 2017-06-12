@@ -189,14 +189,14 @@ public class ButtonClickLook : MonoBehaviour {
 
 					buttonFill.color = Color.green;
 					GameController.Instance.Paused = false;
-					GameObject.FindWithTag ("Player").GetComponent<CollectorLookWalk> ().enabled = true;
-					GameObject.FindWithTag ("Player").GetComponent<CharacterController> ().enabled = true;
+					GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ().enabled = true;
+					//GameObject.FindWithTag ("Player").GetComponent<CharacterController> ().enabled = true;
 
 				} else {
 
 					buttonFill.color = Color.red;
-					GameObject.FindWithTag ("Player").GetComponent<CollectorLookWalk> ().enabled = false;
-					GameObject.FindWithTag ("Player").GetComponent<CharacterController> ().enabled = false;
+					GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ().enabled = false;
+				//	GameObject.FindWithTag ("Player").GetComponent<CharacterController> ().enabled = false;
 				
 				}
 			
