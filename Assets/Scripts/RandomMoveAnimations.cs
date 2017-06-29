@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RandomMoveAnimations : MonoBehaviour {
 
-	public Animator thisAnimator;
+	private Animator thisAnimator;
+	private Transform thisTransform;
 
 	private int animRandHash = Animator.StringToHash("Random");
 
@@ -29,6 +30,7 @@ public class RandomMoveAnimations : MonoBehaviour {
 
 	void Awake(){
 
+		thisTransform = transform;
 		thisAnimator = GetComponent<Animator> ();
 		initialPos = transform.position;
 
@@ -71,6 +73,13 @@ public class RandomMoveAnimations : MonoBehaviour {
 						isFirstTime = true;
 					}
 
+					RaycastHit hit;
+					if (Physics.Raycast (thisTransform.position, thisTransform.forward, 5)) {
+
+						curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
+						curWayPoint.y = initialPos.y; 
+					
+					}
 
 					if (Vector3.Distance (transform.position, curWayPoint) < disUntilWayPointChange) {
 
@@ -82,7 +91,7 @@ public class RandomMoveAnimations : MonoBehaviour {
 
 						dir = (curWayPoint - transform.position).normalized;
 
-						while (!(Vector3.Dot (transform.forward, dir) > 0.20f)) {
+						while (!(Vector3.Dot (transform.forward, dir) > 0.15f)) {
 
 							curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
 							curWayPoint.y = initialPos.y; 
@@ -125,6 +134,8 @@ public class RandomMoveAnimations : MonoBehaviour {
 		
 			transform.rotation = Quaternion.RotateTowards (transform.rotation, targetRotation, rotationSpeed);
 
+			transform.eulerAngles = new Vector3 (0, transform.eulerAngles.y);
+				
 			if(Vector3.Dot(transform.forward, dir) >= 0.99f || timer > 7)
 				yield break;
 

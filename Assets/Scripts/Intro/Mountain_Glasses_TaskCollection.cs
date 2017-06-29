@@ -13,12 +13,13 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 		thisAnimator.SetBool ("Idle", false);
 		thisAnimator.SetBool ("Walk", true);
 
-		if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 1) {
+		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1) {
 			collectObjParent.gameObject.SetActive (false);
 			thisAnimator.SetBool ("IsNotLooking", true);
 
 			infoTextComponent.text = textAfterCompletion;
-		}
+		}else
+			PlayerPrefs.SetInt(nameForPlayerPref,0);
 		
 	}
 	
@@ -56,8 +57,11 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 
 
 		if (other.CompareTag ("Player")) {
-			infoCanvasPrefab.transform.LookAt (2 * thisTransform.position - player.position);
-			thisTransform.transform.LookAt (player.position);
+		//	infoCanvasPrefab.transform.LookAt (2 * thisTransform.position - player.position);
+			thisTransform.rotation = Quaternion.RotateTowards(thisTransform.rotation, Quaternion.LookRotation(Camera.main.transform.position - thisTransform.position),3f);
+		
+			thisTransform.eulerAngles = new Vector3 (0, thisTransform.eulerAngles.y, 0);
+			//thisTransform.transform.LookAt (player.position);
 			//thisTransform.rotation = Quaternion.RotateTowards (thisTransform.rotation, Quaternion.LookRotation (player.position), 5f);
 		}
 

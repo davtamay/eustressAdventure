@@ -11,14 +11,18 @@ public class CowMove : MonoBehaviour {
 	private RandomMoveAnimations randMoveAnimScript;
 
 	private Transform thisTransform;
-	//private Animator thisAnimator;
+	private Rigidbody thisRigidBody;
+	private Animator thisAnimator;
 
 	private int animIdleHash = Animator.StringToHash ("Idle");
 
 	void Awake(){
 	
 		thisTransform = transform;
+		//thisRigidBody = GetComponent<Rigidbody> ();
+		thisAnimator = GetComponent<Animator>();
 		randMoveAnimScript = GetComponent<RandomMoveAnimations> ();
+
 
 	}
 		
@@ -27,13 +31,18 @@ public class CowMove : MonoBehaviour {
 
 
 		if (other.CompareTag ("Player")) {
-		
-			if (startRanIEnum != null)
-			StopCoroutine (startRanIEnum);
+
+			thisAnimator.SetBool (animIdleHash, false);
+			//CrossFade("Walk",4f);
+			StopAllCoroutines ();
 			randMoveAnimScript.isRandomOn = false;
+		}
+		/*	if (startRanIEnum != null)
+			StopCoroutine (startRanIEnum);
+
 
 		
-		}
+		}*/
 
 	
 	}
@@ -43,7 +52,8 @@ public class CowMove : MonoBehaviour {
 
 
 		if (other.CompareTag ("Player")) {
-			
+			thisAnimator.SetBool (animIdleHash, true);
+			//thisAnimator.CrossFade(animIdleHash, 3f);
 			startRanIEnum = StartRandom ();
 			StartCoroutine (startRanIEnum);
 
@@ -54,44 +64,44 @@ public class CowMove : MonoBehaviour {
 	}
 	IEnumerator StartRandom(){
 	
-		yield return new WaitForSeconds (4f);
-
+		yield return new WaitForSeconds (3f);
+		thisAnimator.SetBool (animIdleHash, false);
 		randMoveAnimScript.isRandomOn = true;
 	}
 
 
 	float timer = 0;
 	Vector3 oldPosition;
+	//To stop cow from going thru fence?
+	/*void OnColliderStay(Collision coll){
+	
+		thisTransform.position += 
+	}*/
+//	Vector3 velocity;
 	void OnTriggerStay(Collider other){
 	
 		timer += Time.deltaTime;
 
 		if(other.CompareTag("Player")){
-
+			thisAnimator.SetBool (animIdleHash, false);
 
 			Vector3 playerRelativePos =(thisTransform.position - other.transform.position).normalized;
 
 
 			playerRelativePos.y = 0;
 
-			oldPosition = thisTransform.position;
-
 			thisTransform.position += playerRelativePos * moveSpeed * Time.deltaTime;
-
-
-		/*	if ((thisTransform.position - oldPosition).sqrMagnitude <= 0.005f)
-				thisAnimator.SetBool ("Idle", true);
-			else
-				thisAnimator.SetBool ("Idle", false);*/
-
+	
 		
-			if (timer >= 2f) {
+			if (timer >= 0.7f) {
 				timer = 0;
 				randMoveAnimScript.isRandomOn = false;
-				if(startRanIEnum != null)
-				StopCoroutine (startRanIEnum);
+				StopAllCoroutines();
 				StartCoroutine (randMoveAnimScript.Turn (2*thisTransform.position - other.transform.position));
 			}
+
+
+
 
 		}
 	

@@ -52,8 +52,9 @@ public class LookInteraction : MonoBehaviour {
 
 		while (0 < timeActive) {
 
+			yield return new WaitForEndOfFrame();
+			//yield return null;
 
-			yield return null;
 			imageGO.transform.LookAt (cam.transform);
 
 			timeActive -= Time.deltaTime;
@@ -122,7 +123,7 @@ public class LookInteraction : MonoBehaviour {
 		if (parentCollider.Raycast (ray, out hit, lookDistance)) {
 
 			timeActive = timeUntilImageDeactivate;
-			timer = lookTime;
+			//timer = lookTime;
 
 			if (!isActive) {
 				StartCoroutine (EnableAndDisable ());

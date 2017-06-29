@@ -14,6 +14,8 @@ public class InteractionBehaviour : MonoBehaviour {
 	[SerializeField]protected GameObject infoCanvasPrefab;
 	[SerializeField]protected Vector3 infoOffset;
 	[SerializeField]protected bool isAutomaticRotation = false;
+	[SerializeField]protected bool isAutomaticStayUpRight = true;
+
 	[SerializeField]protected float yInfoRotationOffset;
 	[SerializeField]protected float xInfoRotationOffset;
 	[SerializeField]protected float zInfoRotationOffset;
@@ -63,9 +65,6 @@ public class InteractionBehaviour : MonoBehaviour {
 
 			RectTransform infoTextRect = infoTextComponent.transform.GetComponent<RectTransform> ();
 			infoTextRect.sizeDelta = new Vector2 (InfoSize.x,InfoSize.y);
-		//	infoTextRect.sizeDelta.Scale(new Vector2 (InfoSizeOffset.x,  InfoSizeOffset.y));
-		//	infoTextRect.rect.height += InfoSizeOffset.y;
-		//		infoTextRect.rect.width += InfoSizeOffset.x;
 
 			pS.startSizeX = new ParticleSystem.MinMaxCurve(infoTextRect.sizeDelta.x/50 );
 			pS.startSizeY = new ParticleSystem.MinMaxCurve(infoTextRect.sizeDelta.y/50 );
@@ -108,8 +107,13 @@ public class InteractionBehaviour : MonoBehaviour {
 				infoCanvasPrefab.transform.localRotation *= Quaternion.AngleAxis (zInfoRotationOffset, Vector3.forward);
 
 			} else {
+				yield return new WaitForEndOfFrame ();
 				infoCanvasPrefab.transform.LookAt (player.position, Vector3.up);
 				infoCanvasPrefab.transform.localRotation *= Quaternion.AngleAxis (180, Vector3.up);
+				if (isAutomaticStayUpRight) {
+					infoCanvasPrefab.transform.eulerAngles = new Vector3 (0, infoCanvasPrefab.transform.eulerAngles.y, infoCanvasPrefab.transform.eulerAngles.z);
+
+				}
 			}
 				
 

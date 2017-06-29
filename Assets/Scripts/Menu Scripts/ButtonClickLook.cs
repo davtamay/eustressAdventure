@@ -34,7 +34,7 @@ public class ButtonClickLook : MonoBehaviour {
 	public bool isMusicButton = false;
 
 	public bool isAllowWalk = false;
-	public bool isWalking = false;
+	private bool isWalking = false;
 
 	private Collider col;
 

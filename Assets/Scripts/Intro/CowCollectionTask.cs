@@ -13,11 +13,16 @@ public class CowCollectionTask : CollectTaskInteraction {
 
 		}
 	}
+	public override void OnTriggerStay(Collider other){
+	
+		return;
+	
+	}
 	public override void OnTriggerEnter(Collider other){
 
 		if (other.CompareTag ("Player")) {
 
-			transform.LookAt (player, Vector3.up);
+			//transform.LookAt (player, Vector3.up);
 		}
 	}
 }
