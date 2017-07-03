@@ -18,7 +18,7 @@ public class CursorPositioner : MonoBehaviour {
 
 		Ray ray = new Ray (camTrans.position, camTrans.rotation * Vector3.forward);
 		RaycastHit hit;
-		if (Physics.Raycast(ray, out hit)){
+		if (Physics.Raycast(ray, out hit,10f,-1, QueryTriggerInteraction.Ignore)){
 		if (hit.distance <= defaultPosZ) {
 			transform.localPosition = new Vector3 (0, 0, hit.distance);
 		} else {

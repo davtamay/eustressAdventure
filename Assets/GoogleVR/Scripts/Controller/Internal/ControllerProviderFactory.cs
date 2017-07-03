@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissioßns and
 // limitations under the License.
 
+// The controller is not available for versions of Unity without the
+// // GVR native integration.
+#if UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_EDITOR)
+
 using UnityEngine;
 
 /// @cond
@@ -25,17 +29,18 @@ namespace Gvr.Internal {
     static internal IControllerProvider CreateControllerProvider(GvrController owner) {
 #if UNITY_EDITOR || UNITY_STANDALONE
       // Use the Controller Emulator.
-      return new EmulatorControllerProvider(owner.emulatorConnectionMode, owner.enableGyro,
-          owner.enableAccel);
+      return new EmulatorControllerProvider(owner.emulatorConnectionMode);
 #elif UNITY_ANDROID
       // Use the GVR C API.
-      return new AndroidNativeControllerProvider(owner.enableGyro, owner.enableAccel);
+      return new AndroidNativeControllerProvider();
 #else
       // Platform not supported.
       Debug.LogWarning("No controller support on this platform.");
       return new DummyControllerProvider();
-#endif
+#endif  // UNITY_EDITOR || UNITY_STANDALONE
     }
   }
 }
 /// @endcond
+
+#endif  // UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_EDITOR)
