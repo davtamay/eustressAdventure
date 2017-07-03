@@ -5,6 +5,7 @@ using UnityEngine;
 public class CowMove : MonoBehaviour {
 
 	[SerializeField] float moveSpeed = 3;
+	[SerializeField] float timeUntilRestartSearch = 2f;
 
 
 
@@ -14,6 +15,7 @@ public class CowMove : MonoBehaviour {
 	private Rigidbody thisRigidBody;
 	private Animator thisAnimator;
 
+	private int randAnimHash = Animator.StringToHash("Random");
 	private int animIdleHash = Animator.StringToHash ("Idle");
 
 	void Awake(){
@@ -64,7 +66,7 @@ public class CowMove : MonoBehaviour {
 	}
 	IEnumerator StartRandom(){
 	
-		yield return new WaitForSeconds (3f);
+		yield return new WaitForSeconds (timeUntilRestartSearch);
 		thisAnimator.SetBool (animIdleHash, false);
 		randMoveAnimScript.isRandomOn = true;
 	}
@@ -83,6 +85,8 @@ public class CowMove : MonoBehaviour {
 		timer += Time.deltaTime;
 
 		if(other.CompareTag("Player")){
+
+			thisAnimator.SetInteger (randAnimHash, Random.Range (0, randMoveAnimScript.perFrameChanceOfRandom));
 			thisAnimator.SetBool (animIdleHash, false);
 
 			Vector3 playerRelativePos =(thisTransform.position - other.transform.position).normalized;

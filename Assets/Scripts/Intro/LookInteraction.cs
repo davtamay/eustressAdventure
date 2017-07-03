@@ -13,11 +13,15 @@ public class LookInteraction : MonoBehaviour {
 	[SerializeField] float lookDistance;
 
 	[SerializeField]UnityEvent onLookClick;
+	[SerializeField]bool isSpriteChangeOnClick = false;
 
 	[SerializeField] bool isItemForSlot;
 
 
-	private Image image;
+	[SerializeField]private Sprite spriteToChange;
+	public Sprite originalSprite;
+	public Image image;
+
 	private Collider thisCollider;
 	public Collider parentCollider;
 	private Camera cam;
@@ -35,6 +39,7 @@ public class LookInteraction : MonoBehaviour {
 		parentCollider = transform.parent.GetComponent<Collider> ();
 
 		image = GetComponentInChildren<Image> ();
+		originalSprite = image.sprite;
 
 		imageGO = image.transform.parent.gameObject;
 		imageGO.SetActive (false);
@@ -53,7 +58,7 @@ public class LookInteraction : MonoBehaviour {
 		while (0 < timeActive) {
 
 			yield return new WaitForEndOfFrame();
-			//yield return null;
+			//yield return null
 
 			imageGO.transform.LookAt (cam.transform);
 
@@ -70,11 +75,6 @@ public class LookInteraction : MonoBehaviour {
 
 		RaycastHit hit;
 		Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
-			
-
-			
-
-		
 		
 		if (thisCollider.Raycast (ray, out hit, lookDistance)) {
 
@@ -98,6 +98,10 @@ public class LookInteraction : MonoBehaviour {
 			if (0f > timer) {
 			
 				onLookClick.Invoke ();
+
+				if (isSpriteChangeOnClick)
+					ChangeSprite ();
+				
 				timeActive = 0;
 
 				if (isItemForSlot) 
@@ -136,5 +140,17 @@ public class LookInteraction : MonoBehaviour {
 
 
 		}
+	private bool isOriginalImage = true;
+	public void ChangeSprite(){
+
+		if (isOriginalImage)
+			image.sprite = spriteToChange;
+		else
+			image.sprite = originalSprite;
+
+		isOriginalImage = !isOriginalImage;
+	
+	
+	}
 
 }

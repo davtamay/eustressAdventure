@@ -12,8 +12,25 @@ public class Mountain_Cave_TaskCollection : CollectTaskInteraction {
 	
 	
 	}
-	public override void OnTriggerEnter(Collider other){
+		
+	public void OnSpeak(){
 
+		if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 0) {
+			MoveRock ();
+			//infoCanvasPrefab.SetActive (true);
+			CheckForTaskCompletion ();
+		} else {
+			MoveRock ();
+			//infoCanvasPrefab.SetActive (true);
+			infoTextComponent.text = textAfterCompletion;
+			return;
+		}
+
+	}
+	public override void OnTriggerEnter(Collider other){
+		onInitialInteractionSelect.Invoke ();
+
+		/*
 		if(other.CompareTag("Player")){
 
 			onInitialInteractionSelect.Invoke ();
@@ -27,17 +44,18 @@ public class Mountain_Cave_TaskCollection : CollectTaskInteraction {
 				return;
 			}
 
-		}
+		}*/
+	}
+	public override void OnTriggerStay(Collider other){
+		return;
 	}
 	public override void OnTriggerExit(Collider other){
 	
+		if(thisAnimator.GetCurrentAnimatorStateInfo(0).IsName("CaveDoorOpen"))
 		thisAnimator.SetTrigger ("DoorClosed");
 	
 	}
-	//public override void OnTriggerStay(Collider other){
 
-
-	//}
 
 
 

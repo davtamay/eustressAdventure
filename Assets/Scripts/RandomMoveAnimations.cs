@@ -20,7 +20,7 @@ public class RandomMoveAnimations : MonoBehaviour {
 	[SerializeField] private float disUntilWayPointChange;
 	public float distaceToSearch = 10;
 
-	[SerializeField] private int perFrameChanceOfRandom = 1000;
+	public int perFrameChanceOfRandom = 1000;
 
 	public bool isFirstTime;
 
@@ -81,7 +81,7 @@ public class RandomMoveAnimations : MonoBehaviour {
 					
 					}
 
-					if (Vector3.Distance (transform.position, curWayPoint) < disUntilWayPointChange) {
+					if (Vector3.Distance (thisTransform.position, curWayPoint) < disUntilWayPointChange) {
 
 
 
@@ -95,7 +95,7 @@ public class RandomMoveAnimations : MonoBehaviour {
 
 							curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
 							curWayPoint.y = initialPos.y; 
-							dir = (curWayPoint - transform.position).normalized;
+							dir = (curWayPoint - thisTransform.position).normalized;
 						}
 
 					
@@ -106,15 +106,15 @@ public class RandomMoveAnimations : MonoBehaviour {
 					}
 	
 
-					dir = (curWayPoint - transform.position).normalized;
+					dir = (curWayPoint - thisTransform.position).normalized;
 
 
 					Vector3 movePosition = dir * Time.deltaTime * moveForwardSpeed;
 					movePosition.y = 0;
 
-					transform.position += movePosition;
+					thisTransform.position += movePosition;
 
-					transform.LookAt (curWayPoint, Vector3.up);
+					thisTransform.LookAt (curWayPoint, Vector3.up);
 
 					thisAnimator.SetInteger (animRandHash, Random.Range (0, perFrameChanceOfRandom));
 			
@@ -126,17 +126,17 @@ public class RandomMoveAnimations : MonoBehaviour {
 
 	public IEnumerator Turn(Vector3 toRotation){
 
-		Quaternion targetRotation = Quaternion.LookRotation (toRotation - transform.position);
+		Quaternion targetRotation = Quaternion.LookRotation (toRotation - thisTransform.position);
 		float timer = 0;
 
 		while (true) {
 			timer += Time.deltaTime;
 		
-			transform.rotation = Quaternion.RotateTowards (transform.rotation, targetRotation, rotationSpeed);
+			thisTransform.rotation = Quaternion.RotateTowards (transform.rotation, targetRotation, rotationSpeed);
 
-			transform.eulerAngles = new Vector3 (0, transform.eulerAngles.y);
+			thisTransform.eulerAngles = new Vector3 (0, thisTransform.eulerAngles.y);
 				
-			if(Vector3.Dot(transform.forward, dir) >= 0.99f || timer > 7)
+			if(Vector3.Dot(thisTransform.forward, dir) >= 0.99f || timer > 7)
 				yield break;
 
 		/*	transform.rotation = Quaternion.RotateTowards (transform.rotation, targetRotation,3f);

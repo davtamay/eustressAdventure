@@ -9,8 +9,8 @@ public class CowCollectionTask : CollectTaskInteraction {
 	{
 		if (CowHomeTrigger.totalCows > 0) {
 			infoTextComponent.text = textAfterCompletion;
-			Debug.Log ("CowCollTrigger : " + CowHomeTrigger.totalCows);
-
+			//Debug.Log ("CowCollTrigger : " + CowHomeTrigger.totalCows);
+			PlayerPrefs.SetInt(nameForPlayerPref,1);
 		}
 	}
 	public override void OnTriggerStay(Collider other){

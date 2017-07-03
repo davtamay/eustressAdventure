@@ -17,7 +17,8 @@ public class CollectTaskInteraction : InteractionBehaviour {
 			collectObjParent.gameObject.SetActive (false);
 
 			infoTextComponent.text = textAfterCompletion;
-		}
+		}else
+			PlayerPrefs.SetInt(nameForPlayerPref,0);
 			
 	}
 
