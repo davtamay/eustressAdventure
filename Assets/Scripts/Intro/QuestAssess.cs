@@ -11,7 +11,19 @@ public class QuestAssess : MonoBehaviour {
 	private Dictionary<string,string> taskDictionary;
 	private Text[] qTextSpaces;
 
-	void Awake(){
+	public static QuestAssess Instance
+	{ get { return instance; } }
+
+	private static QuestAssess instance = null;
+
+	 void Awake(){
+		//PlayerPrefs.DeleteAll ();
+		if (instance) {
+			DestroyImmediate (gameObject);
+			return;
+		}
+		instance = this; 
+
 
 		taskDictionary = new Dictionary<string, string>();
 
@@ -31,15 +43,26 @@ public class QuestAssess : MonoBehaviour {
 	}
 
 	int count = 0;
+
+
 	void Start(){
+
+		OnUpdate ();
+	
+	}
+
+	public void OnUpdate(){
+		 count = 0;
+		//for(int i = 0; i < qTextSpaces.Length; i++)
+		//	qTextSpaces[i].text = string.Empty;
 
 		foreach (string pPN in taskDictionary.Keys) {
 
 			if (EvaluatePlayerPref (pPN))
-					count++;
+				count++;
 
-			}		
-	
+		}	
+
 	}
 
 	bool EvaluatePlayerPref(string pPName){

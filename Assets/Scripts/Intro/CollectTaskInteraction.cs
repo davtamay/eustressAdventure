@@ -13,12 +13,13 @@ public class CollectTaskInteraction : InteractionBehaviour {
 	public virtual void Start(){
 
 
-		if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 1) {
+		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1) {
 			collectObjParent.gameObject.SetActive (false);
 
 			infoTextComponent.text = textAfterCompletion;
-		}else
-			PlayerPrefs.SetInt(nameForPlayerPref,0);
+		}//else if( PlayerPrefs.GetInt (nameForPlayerPref) == 0)
+		//	PlayerPrefs.SetInt(nameForPlayerPref,0);
+		//else if(PlayerPrefs.HasKey(!nameForPlayerPref)
 			
 	}
 
@@ -26,15 +27,13 @@ public class CollectTaskInteraction : InteractionBehaviour {
 	
 		if (other.CompareTag ("Player")) {
 
-			transform.LookAt (player, Vector3.up);
+			//transform.LookAt (player, Vector3.up);
 
 			if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 0) {
-			//	infoCanvasPrefab.SetActive (true);
 				CheckForTaskCompletion ();
-			} else {
-			//	infoCanvasPrefab.SetActive (true);
+			} else 
 				return;
-			}
+			
 		}
 
 	}

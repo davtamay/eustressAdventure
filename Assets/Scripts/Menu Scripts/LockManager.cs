@@ -15,14 +15,14 @@ public class LockManager : MonoBehaviour {
 	public static bool isHoopAvailable;
 
 	//public Game curGame = Game.COLLECTIONS;
-	[SerializeField]private int finderScoreToBeat;
-	[SerializeField]private int wackScoreToBeat;
-	[SerializeField]private int skyJumperScoreToBeat;
-	[SerializeField]private int matchScoreToBeat;
-	[SerializeField]private int hitScoreToBeat;
-	[SerializeField]private int collectionsScoreToBeat;
-	[SerializeField]private int shootScoreToBeat;
-	[SerializeField]private int hoopScoreToBeat;
+	[SerializeField]private bool finderScoreToBeat;
+	[SerializeField]private bool wackScoreToBeat;
+	[SerializeField]private bool skyJumperScoreToBeat;
+	[SerializeField]private bool matchScoreToBeat;
+	[SerializeField]private bool hitScoreToBeat;
+	[SerializeField]private bool collectionsScoreToBeat;
+	[SerializeField]private bool shootScoreToBeat;
+	[SerializeField]private bool hoopScoreToBeat;
 
 	[SerializeField] private Game curGame;
 
@@ -34,6 +34,15 @@ public class LockManager : MonoBehaviour {
 	private Transform lockGame;
 
 	void Start(){
+
+		isFinderAvailable = finderScoreToBeat;
+		isWackAvailable = wackScoreToBeat;
+		isSkyJumperAvailable = skyJumperScoreToBeat;
+		isMatchAvailable = matchScoreToBeat;
+		isHitAvailable = hitScoreToBeat;
+		isCollectionsAvailable = collectionsScoreToBeat;
+		isShootAvailable = shootScoreToBeat;
+		isHoopAvailable = hoopScoreToBeat;
 
 		GameAssessCollider = GetComponentInChildren<Collider> ();
 

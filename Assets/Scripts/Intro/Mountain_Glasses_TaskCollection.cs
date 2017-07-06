@@ -9,6 +9,7 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 	// Use this for initialization
 	public override void Start () {
 
+
 		thisAnimator = GetComponent<Animator> ();
 		thisAnimator.SetBool ("Idle", false);
 		thisAnimator.SetBool ("Walk", true);
@@ -18,9 +19,10 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 			thisAnimator.SetBool ("IsNotLooking", true);
 
 			infoTextComponent.text = textAfterCompletion;
-		}else
-			PlayerPrefs.SetInt(nameForPlayerPref,0);
+		} //else {
+			
 		
+	//	}
 	}
 	
 	public override void OnTriggerEnter(Collider other){
@@ -29,7 +31,7 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 
 			thisAnimator.SetBool ("Idle", true);
 			thisAnimator.SetBool ("Walk", false);
-			transform.LookAt (player, Vector3.up);
+			//transform.LookAt (player, Vector3.up);
 			/*
 			if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 0) {
 				infoCanvasPrefab.SetActive (true);
@@ -68,8 +70,12 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 	}
 	public override void CheckForTaskCompletion(){
 
-		if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 1)
+		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1)
 			return;
+
+		PlayerPrefs.SetInt (nameForPlayerPref, 0);
+		PlayerPrefs.Save ();
+		QuestAssess.Instance.OnUpdate ();
 
 		int itemsCollected = 0;
 		int cCount = collectObjParent.childCount;
@@ -96,6 +102,8 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 			thisAnimator.SetBool ("IsNotLooking", true);
 			//collectObjParent.gameObject.SetActive (false);
 			PlayerPrefs.SetInt(nameForPlayerPref,1);
+			PlayerPrefs.Save ();
+			QuestAssess.Instance.OnUpdate ();
 			return;
 
 		}else

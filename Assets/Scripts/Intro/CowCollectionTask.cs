@@ -7,10 +7,17 @@ public class CowCollectionTask : CollectTaskInteraction {
 
 	public override void CheckForTaskCompletion ()
 	{
+		
 		if (CowHomeTrigger.totalCows > 0) {
 			infoTextComponent.text = textAfterCompletion;
 			//Debug.Log ("CowCollTrigger : " + CowHomeTrigger.totalCows);
 			PlayerPrefs.SetInt(nameForPlayerPref,1);
+			PlayerPrefs.Save ();
+			QuestAssess.Instance.OnUpdate ();
+		}else{
+			PlayerPrefs.SetInt(nameForPlayerPref,0);
+			PlayerPrefs.Save ();
+			QuestAssess.Instance.OnUpdate ();
 		}
 	}
 	public override void OnTriggerStay(Collider other){
@@ -20,9 +27,11 @@ public class CowCollectionTask : CollectTaskInteraction {
 	}
 	public override void OnTriggerEnter(Collider other){
 
-		if (other.CompareTag ("Player")) {
+		return;
+	//	if (other.CompareTag ("Player")) {
+
 
 			//transform.LookAt (player, Vector3.up);
-		}
+	//	}
 	}
 }
