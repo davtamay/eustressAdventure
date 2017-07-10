@@ -7,9 +7,9 @@ public class SAssessment : MonoBehaviour
 {
 	
 	public string stressFeel;
-	public GameObject typeOfFeeling;
+	//public GameObject typeOfFeeling;
 
-	public GameSuggest gSuggest;
+	//public GameSuggest gSuggest;
 
 	public TextAsset[] cognitiveRefraimingText;
 
@@ -18,9 +18,6 @@ public class SAssessment : MonoBehaviour
 	public Text cRText;
 
 	public FolowAllong folowAllong;
-
-
-
 
 	public string storeText;
 
@@ -71,11 +68,11 @@ public class SAssessment : MonoBehaviour
 
 
 
-		if (string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase)) {
-			typeOfFeeling = GameObject.FindWithTag ("TypeOfFeeling");
-			typeOfFeeling.SetActive (true);
-			gSuggest = (GameSuggest)GameObject.FindWithTag ("GameSuggest").GetComponent<GameSuggest> ();
-		}
+		//if (string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase)) {
+		//	typeOfFeeling = GameObject.FindWithTag ("TypeOfFeeling");
+		//	typeOfFeeling.SetActive (true);
+		//	gSuggest = (GameSuggest)GameObject.FindWithTag ("GameSuggest").GetComponent<GameSuggest> ();
+		//}
 	
 
 
@@ -102,7 +99,7 @@ public class SAssessment : MonoBehaviour
 		sMenu = GameObject.FindWithTag ("StressMenu");
 		sMenu.SetActive (false);
 
-		if (string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase)) {
+		/*if (string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase)) {
 			GameController.Instance.Paused = false;
 		
 			if (typeOfFeeling == null) {
@@ -110,14 +107,14 @@ public class SAssessment : MonoBehaviour
 				typeOfFeeling.SetActive (true);
 			}
 
-			if (gSuggest == null)
-				gSuggest = (GameSuggest)GameObject.FindWithTag ("GameSuggest").GetComponent<GameSuggest> ();
+		//	if (gSuggest == null)
+		//		gSuggest = (GameSuggest)GameObject.FindWithTag ("GameSuggest").GetComponent<GameSuggest> ();
 
 		} else if (string.Equals (SceneManager.GetActiveScene ().name, "AllGames", System.StringComparison.CurrentCultureIgnoreCase)) {
 			GameController.Instance.Paused = false;
 		
 		}else GameController.Instance.Paused = true;
-			
+			*/
 
 	}
 
@@ -221,9 +218,9 @@ public class SAssessment : MonoBehaviour
 
 		
 		}
-		typeOfFeeling.SetActive (false);
+	//	typeOfFeeling.SetActive (false);
 
-		gSuggest.SelectGames (stressFeel);
+		//gSuggest.SelectGames (stressFeel);
 		
 	}
 		

@@ -4,55 +4,59 @@ using UnityEngine;
 
 public class RockHtSmaller : MonoBehaviour {
 
-	ParticleSystem pS;
+	private ParticleSystem pS;
 	[SerializeField] private Transform rock;
 	[SerializeField]Vector3 rockReduction;
 
-	[SerializeField] string ppName;
+	//[SerializeField] string ppName;
 
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		
+		pS = GetComponentInChildren<ParticleSystem> ();
+		pS.Stop ();
+		/*
 		if (PlayerPrefs.GetInt (ppName) == 1)
 			Destroy (gameObject);
 		else {
-			pS = GetComponent<ParticleSystem> ();
+			pS = GetComponentInChildren<ParticleSystem> ();
 			pS.Stop ();
 
 		}
-		
+		*/
 	}
-	public void OnStart(){
+	//public void OnStart(){
 
-		StartCoroutine (MakeRockSmaller());
-	}
+	//	StartCoroutine (MakeRockSmaller());
+	//}
 
-	IEnumerator MakeRockSmaller(){
-		float timer = 0;
+	//IEnumerator
+	public void MakeRockSmaller(){
+		//float timer = 0;
 		pS.Play ();
-		while (true) {
+		//while (true) {
 		
-			timer += Time.deltaTime;
-			if(pS.main.startLifetime.constant <= timer){
+			//timer += Time.deltaTime;
+			//if(pS.main.startLifetime.constant <= timer){
 				rock.localScale -= rockReduction;
 
-				timer = 0;
+				//timer = 0;
 
 				if (Mathf.Sign (rock.localScale.x) == -1 || Mathf.Sign (rock.localScale.y) == -1 || Mathf.Sign (rock.localScale.z) == -1) {
-					pS.Stop ();
-					StopAllCoroutines ();
-					PlayerPrefs.SetInt (ppName, 1);
-					PlayerPrefs.Save ();
-					QuestAssess.Instance.OnUpdate ();
-					Destroy (rock.gameObject);
+					
+					//StopAllCoroutines ();
+					
+					rock.localScale = Vector3.zero;
+				//	pS.Stop ();
+					Destroy (rock.parent.gameObject,3);
 
 				}
 
-			}
-			yield return null;
+		//	}
+		//	yield return null;
 		
-		}
+		//}
 
 	
 	

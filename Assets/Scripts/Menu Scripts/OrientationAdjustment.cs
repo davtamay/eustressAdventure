@@ -1,22 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DestressPopUp : MonoBehaviour {
+public class OrientationAdjustment : MonoBehaviour {
 
 
 
 	private RectTransform myRectTransform;
-	private GameObject dButton;
+	//private GameObject dButton;
 
 	[SerializeField] float destressOffset = 1;
-	public bool isFacingDown = false;
-	public bool isMovingDown = false;
+	//public bool isFacingDown = false;
+	//public bool isMovingDown = false;
 
 	public bool isMenuShowing = false;
 
-	private Camera cam;
+	//private Camera cam;
 
-	public float sweepRate = 100.0f;
+	//public float sweepRate = 100.0f;
 	private float previousCameraAngle;
 
 	Vector3 originalDirection = Vector3.zero;
@@ -25,23 +25,22 @@ public class DestressPopUp : MonoBehaviour {
 	[SerializeField] private bool isOrientationChangeToFront = true;
 	[SerializeField] private bool isOrientationChangeToLastView = false;
 	[SerializeField] private bool isMenuFirstTime = false;
-	public Transform camHead;
-	public Transform camHeadParent;
+	public Transform camTransform;
+	public Transform camParent;
 
 
 	void Awake(){
 
-		cam = Camera.main;
-		camHead = cam.transform.parent;
-		camHeadParent = camHead.transform.parent;
+		camTransform = Camera.main.transform;//cam.transform.parent;
+		camParent = camTransform.parent;//camHead.transform.parent;
 
 
 		previousCameraAngle = CameraAngleFromGround ();
 
 		myRectTransform = GetComponent<RectTransform> ();
 
-		dButton = myRectTransform.GetChild (1).gameObject;
-		dButton.SetActive (false);
+		//dButton = myRectTransform.GetChild (1).gameObject;
+		//dButton.SetActive (false);
 
 
 
@@ -73,13 +72,13 @@ public class DestressPopUp : MonoBehaviour {
 
 			if (Input.GetMouseButton(0)) {
 				if (isOrientationChangeToFront)
-					currentDirection = camHead.localEulerAngles;
+					currentDirection = camTransform.localEulerAngles;
 
 				if(isOrientationChangeToLastView)
 				if (isMenuFirstTime == false){
 
 					isMenuFirstTime = true;
-					currentDirection = camHead.localEulerAngles;
+					currentDirection = camTransform.localEulerAngles;
 
 
 					if(isOrientationChangeToLastView){
@@ -100,9 +99,9 @@ public class DestressPopUp : MonoBehaviour {
 				GameController.Instance.Paused = true;
 				GameController.Instance.MakeOnlyUIVisible();
 
-				myRectTransform.localPosition = cam.transform.rotation * Vector3.forward * destressOffset; 
-				myRectTransform.localRotation = Quaternion.LookRotation (myRectTransform.position - cam.transform.position);
-				dButton.SetActive (true);
+				myRectTransform.localPosition = camTransform.rotation * Vector3.forward * destressOffset; 
+				myRectTransform.localRotation = Quaternion.LookRotation (myRectTransform.position - camTransform.position);
+				//dButton.SetActive (true);
 
 
 
@@ -146,14 +145,14 @@ public class DestressPopUp : MonoBehaviour {
 	void OpenMenuClicker(){
 		Handheld.Vibrate ();
 		if (isOrientationChangeToFront) 
-			currentDirection = camHead.localEulerAngles;
+			currentDirection = camTransform.localEulerAngles;
 
 
 		if (isOrientationChangeToLastView) {
 			if (isMenuFirstTime == false) {
 
 				isMenuFirstTime = true;
-				currentDirection = camHead.localEulerAngles;
+				currentDirection = camTransform.localEulerAngles;
 
 
 				if (isOrientationChangeToLastView) {
@@ -173,9 +172,9 @@ public class DestressPopUp : MonoBehaviour {
 		GameController.Instance.Paused = true;
 		GameController.Instance.MakeOnlyUIVisible();
 
-		myRectTransform.localPosition = cam.transform.rotation * Vector3.forward * 3; 
-		myRectTransform.localRotation = Quaternion.LookRotation (myRectTransform.position - cam.transform.position);
-		dButton.SetActive (true);
+		myRectTransform.localPosition = camTransform.rotation * Vector3.forward * 3; 
+		myRectTransform.localRotation = Quaternion.LookRotation (myRectTransform.position -  camTransform.position);
+		//dButton.SetActive (true);
 	}
 
 
@@ -185,7 +184,7 @@ public class DestressPopUp : MonoBehaviour {
 
 
 	}
-	public void HideDestress(){
+	public void ShowGame(){
 
 		if (isOrientationChangeToFront) {
 			//float angle = Mathf.DeltaAngle (originalDirection.y, currentDirection.y);
@@ -197,7 +196,7 @@ public class DestressPopUp : MonoBehaviour {
 				originalDirection *= -1;
 
 
-			camHeadParent.localEulerAngles = originalDirection;
+			camParent.localEulerAngles = originalDirection;
 			currentDirection = Vector3.zero;
 			originalDirection = Vector3.zero;
 		
@@ -206,12 +205,12 @@ public class DestressPopUp : MonoBehaviour {
 
 			originalDirection.y = currentDirection.y;
 
-			currentDirection.y = camHead.localEulerAngles.y;
+			currentDirection.y = camTransform.localEulerAngles.y;
 
 			originalDirection.y -= currentDirection.y;
 		
 
-			camHeadParent.localEulerAngles = originalDirection;
+			camParent.localEulerAngles = originalDirection;
 
 			currentDirection = Vector3.zero;
 		
@@ -219,7 +218,7 @@ public class DestressPopUp : MonoBehaviour {
 		}
 
 		isMenuShowing = false;
-		dButton.SetActive (false);
+		//dButton.SetActive (false);
 
 		GameController.Instance.MakeEverythingVisible ();
 	
@@ -230,7 +229,7 @@ public class DestressPopUp : MonoBehaviour {
 	}
 	private float CameraAngleFromGround(){
 
-		return Vector3.Angle (Vector3.down, cam.transform.rotation * Vector3.forward); 
+		return Vector3.Angle (Vector3.down, camTransform.rotation * Vector3.forward); 
 	}
 	private bool DetectFacingDown(){
 
@@ -242,7 +241,8 @@ public class DestressPopUp : MonoBehaviour {
 		float deltaAngle = previousCameraAngle - angle;
 		float rate = deltaAngle / Time.deltaTime;
 		previousCameraAngle = angle;
-		return (rate >= sweepRate);
+		return false;
+		//return (rate >= sweepRate);
 
 	}
 

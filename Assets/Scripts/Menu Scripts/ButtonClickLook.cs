@@ -178,7 +178,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 				StressMenu.SetActive (false);
 				GameController.Instance.Paused = false;
-				GetComponentInParent<DestressPopUp> ().HideDestress ();
+				GetComponentInParent<OrientationAdjustment> ().ShowGame ();
 
 					
 				UnityEngine.Profiling.Profiler.EndSample ();
