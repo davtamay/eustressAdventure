@@ -13,10 +13,10 @@ public class LookInteraction : MonoBehaviour {
 	[SerializeField] float lookDistance;
 
 	[SerializeField]UnityEvent onLookClick;
-	[SerializeField]bool isSpriteChangeOnClick = false;
 
+	//Check for bugs since I invalidated this in script
 	[SerializeField] bool isItemForSlot;
-
+	[SerializeField]bool isSpriteChangeOnClick = false;
 
 	[SerializeField]private Sprite spriteToChange;
 	public Sprite originalSprite;
@@ -35,16 +35,18 @@ public class LookInteraction : MonoBehaviour {
 		timer = lookTime;
 		thisCollider = GetComponent<Collider> ();
 
-		if(!isItemForSlot)
-		parentCollider = transform.parent.GetComponent<Collider> ();
+		//if(!isItemForSlot)
+			parentCollider = transform.parent.GetComponent<Collider> ();
 
 		image = GetComponentInChildren<Image> ();
 		originalSprite = image.sprite;
 
 		imageGO = image.transform.parent.gameObject;
 		imageGO.SetActive (false);
+		thisCollider.enabled = false;
 		
 	}
+
 
 	private float timeActive;
 
@@ -54,6 +56,7 @@ public class LookInteraction : MonoBehaviour {
 
 		isActive = true;
 		imageGO.SetActive (true);
+		thisCollider.enabled = true;
 
 		while (0 < timeActive) {
 
@@ -68,6 +71,7 @@ public class LookInteraction : MonoBehaviour {
 
 		isActive = false;
 		imageGO.SetActive (false);
+		thisCollider.enabled = false;
 	}
 
 	private bool isActive;
@@ -105,7 +109,7 @@ public class LookInteraction : MonoBehaviour {
 				timeActive = 0;
 
 				if (isItemForSlot) 
-					PlayerManager.Instance.AddItemToSlot (gameObject);
+					PlayerManager.Instance.AddItemToSlot (transform.parent.gameObject);
 
 				timer = lookTime;
 				
@@ -123,7 +127,8 @@ public class LookInteraction : MonoBehaviour {
 		
 		}
 
-		if(!isItemForSlot)
+		//if(!isItemForSlot)
+		if(parentCollider != null)
 		if (parentCollider.Raycast (ray, out hit, lookDistance)) {
 
 			timeActive = timeUntilImageDeactivate;
