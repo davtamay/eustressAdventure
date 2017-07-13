@@ -24,7 +24,7 @@ public class DogInteraction : InteractionBehaviour{
 	private static DogInteraction curDogInteraction = null;
 	//private static GameObject curDogInteraction;
 
-	void Awake(){
+	public override void Awake(){
 
 		base.Awake ();
 		thisAnimator = GetComponent<Animator> ();

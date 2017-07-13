@@ -30,7 +30,6 @@ public class LookInteraction : MonoBehaviour {
 
 	void Awake () {
 
-		PlayerPrefs.DeleteAll ();
 		cam = Camera.main;
 		timer = lookTime;
 		thisCollider = GetComponent<Collider> ();

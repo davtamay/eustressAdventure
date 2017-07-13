@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TagFrenzy;
 
 public class ButtonClickLook : MonoBehaviour {
+	//currently only have meditation on this event;
+	[SerializeField]private UnityEvent OnClick;
+	[SerializeField] bool isClickEventCalled = false;
+
 
 	public bool isSMenuOpener = false;
-
-
 	private Camera cam;
 	private GameObject currentButton;
 	private float timeToSelect = 2.0f;
@@ -23,6 +26,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 	public bool isStressed = false;
 	public bool isMenuCope = false;
+
 	public bool isEnvChanger = false;
 
 	public bool isGame = false;
@@ -33,22 +37,23 @@ public class ButtonClickLook : MonoBehaviour {
 	public bool isReplayButton = false;
 	public bool isMusicButton = false;
 
+
 	public bool isAllowWalk = false;
 	private bool isWalking = false;
 
 	private Collider col;
 
-	//public enum Stressed{yes,no};
+
 	public enum StressTypes{angry, anxious, dissapointed, frustrated, sad, worried, none};
-	public enum MenuCoping {breathing, counting, refraiming, music,paint, none};
+	public enum MenuCoping {breathing, counting, refraiming, music, paint, meditation, none};
 
 	public enum MusicPlayerButton{play,stop,next,previous, none}
+	public MusicPlayerButton curMusicButton;
 
-	//public Stressed curStressed;
 	public StressTypes StressT;
 	public MenuCoping copingMethod;
-	//public Games games;
-	public MusicPlayerButton curMusicButton;
+
+
 
 	GameObject hitButton;
 	PointerEventData data;
@@ -320,6 +325,11 @@ public class ButtonClickLook : MonoBehaviour {
 				case MenuCoping.none:
 					button.onClick.Invoke ();
 					break;
+
+				case MenuCoping.meditation:
+					button.onClick.Invoke ();
+					//button.onClick.Invoke ();
+					break;
 				}
 						
 			} else if (isGame && !isSMenuOpener) {
@@ -329,6 +339,9 @@ public class ButtonClickLook : MonoBehaviour {
 		
 
 			}
+
+			if (isClickEventCalled)
+				OnClick.Invoke ();
 
 			buttonFill.fillAmount = 1.0f;
 			yield return null;
@@ -341,10 +354,13 @@ public class ButtonClickLook : MonoBehaviour {
 	
 	
 	}
+	public void LoadURL(string url){
 
+		Application.OpenURL (url);
+		Application.Quit ();
+	
 
-
-
+	}
 		
 			
 	}

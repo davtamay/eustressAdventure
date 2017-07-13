@@ -639,6 +639,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
@@ -651,9 +657,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 3
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &63622140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,6 +910,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -916,9 +928,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &73901847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2038,6 +2050,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -2050,9 +2068,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &125028188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2431,7 +2449,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 171250256}
   m_LocalRotation: {x: -0.6950949, y: 0.12978126, z: -0.12978126, w: 0.6950949}
-  m_LocalPosition: {x: 0.23, y: 2.4, z: 0}
+  m_LocalPosition: {x: -0.17, y: 1.37, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 1542372189}
@@ -2489,74 +2507,6 @@ MonoBehaviour:
   originalSprite: {fileID: 0}
   image: {fileID: 0}
   parentCollider: {fileID: 0}
---- !u!1 &172328629
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 172328630}
-  - component: {fileID: 172328632}
-  - component: {fileID: 172328631}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &172328630
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 172328629}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 308506244}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1, y: 1}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &172328631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 172328629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.41176468, g: 0.41479236, b: 0.41479236, a: 1}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6390b7e6cf6114ba9989807e409a692b, type: 3}
-  m_Type: 3
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &172328632
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 172328629}
 --- !u!1 &173432576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3213,6 +3163,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 1
   isSType: 0
   isStressed: 0
@@ -3225,9 +3181,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &186568816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3722,6 +3678,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -3734,9 +3696,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &230935678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3833,6 +3795,17 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 2020472066}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 932296988}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -4700,6 +4673,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -4712,9 +4691,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 1
+  curMusicButton: 4
   StressT: 6
   copingMethod: 5
-  curMusicButton: 4
 --- !u!114 &298685051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4967,130 +4946,6 @@ Transform:
   m_Father: {fileID: 1713648356}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &308506243
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 308506244}
-  - component: {fileID: 308506248}
-  - component: {fileID: 308506247}
-  - component: {fileID: 308506246}
-  - component: {fileID: 308506245}
-  m_Layer: 5
-  m_Name: FocusImage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &308506244
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 308506243}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -16.603325}
-  m_LocalScale: {x: 25.000002, y: 20.000002, z: 2.0264997}
-  m_Children:
-  - {fileID: 172328630}
-  m_Father: {fileID: 932296989}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 209.60008, y: -30.000015}
-  m_SizeDelta: {x: 11, y: 11}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &308506245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 308506243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 573ef5c09436e4500a440ef085ae164d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerMaskDraw:
-    serializedVersion: 2
-    m_Bits: 0
-  layerMaskDrawTool:
-    serializedVersion: 2
-    m_Bits: 0
-  notMovingSweepRate: 0
-  currentLookHit: {x: 0, y: 0, z: 0}
-  focusSweepRate: 0
-  slowSweepRate: 0
-  focusDial: {fileID: 0}
-  isDialShown: 0
-  focusTime: 0
-  isFocused: 0
-  isMovingSlow: 0
-  isColorChaged: 0
-  amountToUndo: 0
-  camDir: {x: 0, y: 0, z: 0}
-  curCollor: {r: 0, g: 0, b: 0, a: 1}
---- !u!114 &308506246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 308506243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &308506247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 308506243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
---- !u!223 &308506248
-Canvas:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 308506243}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1 &317617784
 GameObject:
   m_ObjectHideFlags: 0
@@ -5201,7 +5056,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 321201803}
   m_LocalRotation: {x: -0.6950949, y: 0.12978126, z: -0.12978126, w: 0.6950949}
-  m_LocalPosition: {x: -1.26, y: -1.02, z: 0}
+  m_LocalPosition: {x: -1.13, y: -0.69, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 378069082}
@@ -8240,6 +8095,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -8252,9 +8113,9 @@ MonoBehaviour:
   isReplayButton: 1
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &481381501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15607,6 +15468,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -15619,9 +15486,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &569902963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15718,6 +15585,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2020472066}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 932296988}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -16437,6 +16315,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -16449,9 +16333,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &623679180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16821,6 +16705,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
@@ -16833,9 +16723,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 2
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &674019830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21364,6 +21254,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
@@ -21376,9 +21272,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 4
   StressT: 1
   copingMethod: 5
-  curMusicButton: 4
 --- !u!114 &797696762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22161,13 +22057,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 845922822}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.000000037252903, y: -0.08015687, z: -0.000000059604645, w: 0.9967823}
+  m_LocalPosition: {x: -0.00000057555735, y: 0.069999956, z: 0.06899913}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1269427573}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -9.195001, z: 0}
 --- !u!92 &845922825
 Behaviour:
   m_ObjectHideFlags: 0
@@ -22360,6 +22256,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -22372,9 +22274,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &852209832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25817,6 +25719,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -25829,9 +25737,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &873112615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25928,6 +25836,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2020472066}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 932296988}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -30060,8 +29979,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 2.1899981}
   m_LocalScale: {x: 0.5, y: 0.49999997, z: 0.9999964}
   m_Children:
-  - {fileID: 1800720296}
-  - {fileID: 308506244}
+  - {fileID: 1639577249}
   m_Father: {fileID: 1748725312}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -31833,6 +31751,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -31845,9 +31769,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &1066098032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32156,6 +32080,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -32168,9 +32098,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &1081816659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32310,6 +32240,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
@@ -32322,9 +32258,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 5
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &1084298068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33634,7 +33570,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b12b0b4e1f2ff4ac2b9124984ff01db1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b64e461ff08df4332815917cdc7e8849, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -33737,6 +33673,82 @@ MeshFilter:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 3e575c10aafab4b0b8af8589548090eb, type: 3}
   m_PrefabInternal: {fileID: 1263657240}
+--- !u!1 &1236214690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1236214691}
+  - component: {fileID: 1236214693}
+  - component: {fileID: 1236214692}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1236214691
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1236214690}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1639577249}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1236214692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1236214690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Beach
+
+'
+--- !u!222 &1236214693
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1236214690}
 --- !u!1 &1238741557
 GameObject:
   m_ObjectHideFlags: 0
@@ -33934,21 +33946,22 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1269427572}
-  m_LocalRotation: {x: 0.39141664, y: -0.6031868, z: 0.66556245, w: -0.19996344}
-  m_LocalPosition: {x: -2.7615154, y: -6.504679, z: -1.9059161}
+  m_LocalRotation: {x: 0.3241781, y: -0.653898, z: 0.6812961, w: -0.05622828}
+  m_LocalPosition: {x: -3.564, y: -5.68, z: -2.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 845922823}
+  - {fileID: 1465563445}
   m_Father: {fileID: 802620631}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -102.94301}
+  m_LocalEulerAnglesHint: {x: 58.709003, y: 97.228004, z: 254.53299}
 --- !u!23 &1269427574
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1269427572}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -33982,7 +33995,7 @@ BoxCollider:
   m_GameObject: {fileID: 1269427572}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -38779,6 +38792,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -38791,9 +38810,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &1403391158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38890,6 +38909,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2020472066}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 932296988}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -38999,6 +39029,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -39011,9 +39047,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &1416314743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43029,10 +43065,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isMenuCope: 1
   isEnvChanger: 0
   isGame: 0
   gameScene: 
@@ -43041,9 +43083,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
-  StressT: 0
-  copingMethod: 0
   curMusicButton: 0
+  StressT: 0
+  copingMethod: 5
 --- !u!114 &1464736750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43137,7 +43179,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2020472066}
         m_MethodName: SetActive
@@ -43149,6 +43191,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 932296988}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -43187,6 +43240,76 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1464736746}
+--- !u!1001 &1465563444
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1269427573}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.089
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.619
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.525978
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.47259626
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.47259626
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.52597797
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 83.88
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+  m_IsPrefabParent: 0
+--- !u!4 &1465563445 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: 243b18b25bdb940c1b616a91a82b1207, type: 3}
+  m_PrefabInternal: {fileID: 1465563444}
 --- !u!1 &1471429075
 GameObject:
   m_ObjectHideFlags: 0
@@ -50542,6 +50665,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -50554,9 +50683,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &1565172138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50653,6 +50782,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2020472066}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 932296988}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -51263,6 +51403,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -51275,9 +51421,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &1637064681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51355,6 +51501,174 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1637064677}
+--- !u!1 &1639577248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1639577249}
+  - component: {fileID: 1639577254}
+  - component: {fileID: 1639577253}
+  - component: {fileID: 1639577252}
+  - component: {fileID: 1639577251}
+  - component: {fileID: 1639577250}
+  m_Layer: 5
+  m_Name: MeditationVideo1
+  m_TagString: Button
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1639577249
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1639577248}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1236214691}
+  m_Father: {fileID: 932296989}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -138.40018, y: 56.5}
+  m_SizeDelta: {x: 92.1, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!65 &1639577250
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1639577248}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 70.6, y: 30, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1639577251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1639577248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1639577251}
+        m_MethodName: LoadURL
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: https://www.youtube.com/watch?v=MhBufzqQmzk
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 1
+  isSMenuOpener: 0
+  isSType: 0
+  isStressed: 0
+  isMenuCope: 0
+  isEnvChanger: 0
+  isGame: 0
+  gameScene: 
+  isBackButton: 0
+  isStartButton: 0
+  isReplayButton: 0
+  isMusicButton: 0
+  isAllowWalk: 0
+  curMusicButton: 0
+  StressT: 0
+  copingMethod: 0
+--- !u!114 &1639577252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1639577248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1639577253}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1639577253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1639577248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1639577254
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1639577248}
 --- !u!1 &1647845139
 GameObject:
   m_ObjectHideFlags: 0
@@ -52582,6 +52896,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
@@ -52594,9 +52914,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 4
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &1735935710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52923,6 +53243,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -52935,9 +53261,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &1774248359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53589,87 +53915,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1800720295
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1800720296}
-  - component: {fileID: 1800720299}
-  - component: {fileID: 1800720298}
-  - component: {fileID: 1800720297}
-  m_Layer: 10
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1800720296
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1800720295}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 932296989}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!65 &1800720297
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1800720295}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 250, y: 100, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1800720298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1800720295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1800720299
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1800720295}
 --- !u!1 &1801532146
 GameObject:
   m_ObjectHideFlags: 0
@@ -62711,6 +62956,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
@@ -62723,9 +62974,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 4
   StressT: 0
   copingMethod: 5
-  curMusicButton: 4
 --- !u!114 &2051762680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63521,6 +63772,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isClickEventCalled: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
@@ -63533,9 +63790,9 @@ MonoBehaviour:
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  curMusicButton: 0
   StressT: 0
   copingMethod: 0
-  curMusicButton: 0
 --- !u!114 &2097295967
 MonoBehaviour:
   m_ObjectHideFlags: 0
