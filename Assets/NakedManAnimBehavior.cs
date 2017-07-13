@@ -11,6 +11,9 @@ public class NakedManAnimBehavior : StateMachineBehaviour {
 			Destroy (animator.transform.gameObject, 4f);
 		}
 
+		if (stateInfo.IsTag ("GoDown"))
+			animator.GetComponentInChildren<SkinnedMeshRenderer> ().SetBlendShapeWeight (3, 100);
+
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -44,9 +47,10 @@ public class NakedManAnimBehavior : StateMachineBehaviour {
 			animator.transform.GetChild (0).localPosition = Vector3.zero;
 
 		}
-		if(stateInfo.IsTag("GoDown"))
+		if (stateInfo.IsTag ("GoDown")) 
 			animator.transform.localPosition += animator.transform.up * -0.8f * Time.deltaTime;
 
+		
 
 
 

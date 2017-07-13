@@ -30,6 +30,7 @@ public class Mountain_Cave_TaskCollection : CollectTaskInteraction {
 	public override void OnTriggerEnter(Collider other){
 		onInitialInteractionSelect.Invoke ();
 
+
 		/*
 		if(other.CompareTag("Player")){
 

@@ -37,7 +37,7 @@ public class RandomLook_AnimationBehavior : StateMachineBehaviour {
 
 	}
 	bool isTurning = false;
-	Vector3 oldWayPoint;
+//	Vector3 oldWayPoint;
 	Quaternion rotationToLookTo;
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -56,7 +56,7 @@ public class RandomLook_AnimationBehavior : StateMachineBehaviour {
 
 		if (Vector3.Distance(animator.transform.position, curWayPoint) < disUntilWayPointChange ){
 
-			oldWayPoint = curWayPoint;
+		//	oldWayPoint = curWayPoint;
 			curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
 			curWayPoint.y = initialPos.y; 
 

@@ -17,7 +17,7 @@ public class OrientationAdjustment : MonoBehaviour {
 	//private Camera cam;
 
 	//public float sweepRate = 100.0f;
-	private float previousCameraAngle;
+	//private float previousCameraAngle;
 
 	Vector3 originalDirection = Vector3.zero;
 	Vector3 currentDirection;
@@ -35,7 +35,7 @@ public class OrientationAdjustment : MonoBehaviour {
 		camParent = camTransform.parent;//camHead.transform.parent;
 
 
-		previousCameraAngle = CameraAngleFromGround ();
+		//previousCameraAngle = CameraAngleFromGround ();
 
 		myRectTransform = GetComponent<RectTransform> ();
 
@@ -235,16 +235,16 @@ public class OrientationAdjustment : MonoBehaviour {
 
 		return (CameraAngleFromGround () < 50.0f);
 	}
-	private bool DetectMovingDown(){
+	/*private bool DetectMovingDown(){
 
 		float angle = CameraAngleFromGround ();
 		float deltaAngle = previousCameraAngle - angle;
 		float rate = deltaAngle / Time.deltaTime;
 		previousCameraAngle = angle;
 		return false;
-		//return (rate >= sweepRate);
+		return (rate >= sweepRate);
 
-	}
+	}*/
 
 
 }

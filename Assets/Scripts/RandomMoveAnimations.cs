@@ -24,7 +24,7 @@ public class RandomMoveAnimations : MonoBehaviour {
 
 	public bool isFirstTime;
 
-	bool isTurning = false;
+//	bool isTurning = false;
 	Vector3 oldWayPoint;
 	Quaternion rotationToLookTo;
 
@@ -73,7 +73,7 @@ public class RandomMoveAnimations : MonoBehaviour {
 						isFirstTime = true;
 					}
 
-					RaycastHit hit;
+					//RaycastHit hit;
 					if (Physics.Raycast (thisTransform.position, thisTransform.forward, 5)) {
 
 						curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;

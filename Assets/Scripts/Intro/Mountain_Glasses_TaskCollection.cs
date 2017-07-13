@@ -28,7 +28,7 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 	public override void OnTriggerEnter(Collider other){
 
 		if (other.CompareTag ("Player")) {
-
+			GetComponentInChildren<SkinnedMeshRenderer> ().SetBlendShapeWeight (1, 70);
 			thisAnimator.SetBool ("Idle", true);
 			thisAnimator.SetBool ("Walk", false);
 			//transform.LookAt (player, Vector3.up);
@@ -46,7 +46,7 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 	public override void OnTriggerExit(Collider other){
 
 		if (other.CompareTag ("Player")) {
-
+			GetComponentInChildren<SkinnedMeshRenderer> ().SetBlendShapeWeight (1, 0);
 			thisAnimator.SetBool ("Idle", false);
 			thisAnimator.SetBool ("Walk", true);
 

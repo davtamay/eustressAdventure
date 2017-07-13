@@ -12,7 +12,7 @@ public class ParticleEffectReplay : MonoBehaviour {
 
 	void OnEnable () {
 
-		particleSystemToReplay.Simulate(particleSystemToReplay.duration);
+		particleSystemToReplay.Simulate(particleSystemToReplay.main.duration);
 		particleSystemToReplay.Play();
 	}
 	void OnDisable(){
