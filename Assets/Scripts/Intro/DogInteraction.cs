@@ -25,7 +25,7 @@ public class DogInteraction : InteractionBehaviour{
 	//private static GameObject curDogInteraction;
 
 	public override void Awake(){
-		PlayerPrefs.DeleteAll ();
+		//PlayerPrefs.DeleteAll ();
 		base.Awake ();
 		thisAnimator = GetComponent<Animator> ();
 		thisRenderer = GetComponentInChildren<SkinnedMeshRenderer> ();

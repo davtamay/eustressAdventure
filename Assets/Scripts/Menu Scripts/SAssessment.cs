@@ -31,7 +31,7 @@ public class SAssessment : MonoBehaviour
 	void Awake()
 	{
 
-		cRObject = GameObject.FindWithTag ("CRText");
+		cRObject = GameObject.FindWithTag ("CRText").transform.GetChild(0).gameObject;
 		folowAllong = cRObject.GetComponent<FolowAllong> ();
 		folowAllong.messageLength = cognitiveRefraimingText [0].text.Length;
 

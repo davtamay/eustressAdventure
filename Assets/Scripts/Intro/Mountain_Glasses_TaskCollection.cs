@@ -5,20 +5,26 @@ using UnityEngine;
 public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 
 	private Animator thisAnimator;
+	private SkinnedMeshRenderer thisSkinMeshRend;
+	[SerializeField]private GameObject glasses;
 
 	// Use this for initialization
 	public override void Start () {
 
 
 		thisAnimator = GetComponent<Animator> ();
+		thisSkinMeshRend = GetComponentInChildren<SkinnedMeshRenderer> ();
 		thisAnimator.SetBool ("Idle", false);
 		thisAnimator.SetBool ("Walk", true);
 
 		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1) {
+			glasses.SetActive (true);
 			collectObjParent.gameObject.SetActive (false);
 			thisAnimator.SetBool ("IsNotLooking", true);
-
 			infoTextComponent.text = textAfterCompletion;
+			thisSkinMeshRend.SetBlendShapeWeight (0, 20);
+			thisSkinMeshRend.SetBlendShapeWeight (1, 90);
+			thisSkinMeshRend.SetBlendShapeWeight (3, 0);
 		} //else {
 			
 		
@@ -28,7 +34,7 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 	public override void OnTriggerEnter(Collider other){
 
 		if (other.CompareTag ("Player")) {
-			GetComponentInChildren<SkinnedMeshRenderer> ().SetBlendShapeWeight (1, 70);
+			thisSkinMeshRend.SetBlendShapeWeight (1, 70);
 			thisAnimator.SetBool ("Idle", true);
 			thisAnimator.SetBool ("Walk", false);
 			//transform.LookAt (player, Vector3.up);
@@ -46,7 +52,7 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 	public override void OnTriggerExit(Collider other){
 
 		if (other.CompareTag ("Player")) {
-			GetComponentInChildren<SkinnedMeshRenderer> ().SetBlendShapeWeight (1, 0);
+			thisSkinMeshRend.SetBlendShapeWeight (1, 0);
 			thisAnimator.SetBool ("Idle", false);
 			thisAnimator.SetBool ("Walk", true);
 
@@ -100,7 +106,10 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 			}
 
 			thisAnimator.SetBool ("IsNotLooking", true);
-			//collectObjParent.gameObject.SetActive (false);
+			thisSkinMeshRend.SetBlendShapeWeight (0, 20);
+			thisSkinMeshRend.SetBlendShapeWeight (1, 50);
+			thisSkinMeshRend.SetBlendShapeWeight (3, 0);
+
 			PlayerPrefs.SetInt(nameForPlayerPref,1);
 			PlayerPrefs.Save ();
 			QuestAssess.Instance.OnUpdate ();
