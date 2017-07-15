@@ -54,9 +54,12 @@ ModelImporter:
     7400002: ArmatureAction_001
     7400004: anim_nakedHuman_foundNaked
     7400006: anim_human_walk
-    7400008: anim_Intro_mountain_CollTaskStandLook
-    7400010: anim_Intro_mountain_CollTaskCrouchLook
-    7400012: anim_human_idle
+    7400008: anim_human_mountain_CollTaskStandLook
+    7400010: anim_human_mountain_CollTaskCrouchLook
+    7400012: anim_human_inuuredidle
+    7400014: anim_human_idle
+    7400016: anim_human_injuredLook
+    7400018: anim_human_injuredLiftingHand
     9500000: //RootNode
     13700000: Cube_004
   materials:
@@ -130,78 +133,6 @@ ModelImporter:
           preInfinity: 3
           postInfinity: 3
           rotationOrder: 0
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Armature
-        weight: 1
-      - path: Armature/hips
-        weight: 1
-      - path: Armature/hips/spine
-        weight: 1
-      - path: Armature/hips/spine/head
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
-        weight: 1
-      - path: Armature/upper_leg_L
-        weight: 1
-      - path: Armature/upper_leg_L/mid_leg_L
-        weight: 1
-      - path: Armature/upper_leg_L/mid_leg_L/lower_leg_L
-        weight: 1
-      - path: Armature/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
-        weight: 1
-      - path: Armature/upper_leg_R
-        weight: 1
-      - path: Armature/upper_leg_R/mid_leg_R
-        weight: 1
-      - path: Armature/upper_leg_R/mid_leg_R/lower_leg_R
-        weight: 1
-      - path: Armature/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
-        weight: 1
-      - path: Cube_004
-        weight: 1
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: ArmatureAction_001
-      takeName: ArmatureAction_001
-      firstFrame: -1
-      lastFrame: 309
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
       events: []
       transformMask:
       - path: 
@@ -343,7 +274,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: anim_Intro_mountain_CollTaskStandLook
+      name: anim_human_mountain_CollTaskStandLook
       takeName: ArmatureAction_001
       firstFrame: 118
       lastFrame: 159
@@ -415,7 +346,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: anim_Intro_mountain_CollTaskCrouchLook
+      name: anim_human_mountain_CollTaskCrouchLook
       takeName: ArmatureAction_001
       firstFrame: 70
       lastFrame: 120
@@ -558,6 +489,222 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: anim_human_injuredLook
+      takeName: ArmatureAction_001
+      firstFrame: 171
+      lastFrame: 178
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hips
+        weight: 1
+      - path: Armature/hips/spine
+        weight: 1
+      - path: Armature/hips/spine/head
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
+        weight: 1
+      - path: Armature/upper_leg_L
+        weight: 1
+      - path: Armature/upper_leg_L/mid_leg_L
+        weight: 1
+      - path: Armature/upper_leg_L/mid_leg_L/lower_leg_L
+        weight: 1
+      - path: Armature/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
+        weight: 1
+      - path: Armature/upper_leg_R
+        weight: 1
+      - path: Armature/upper_leg_R/mid_leg_R
+        weight: 1
+      - path: Armature/upper_leg_R/mid_leg_R/lower_leg_R
+        weight: 1
+      - path: Armature/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 150
+    - serializedVersion: 16
+      name: anim_human_inuuredidle
+      takeName: ArmatureAction_001
+      firstFrame: 171
+      lastFrame: 173
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hips
+        weight: 1
+      - path: Armature/hips/spine
+        weight: 1
+      - path: Armature/hips/spine/head
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
+        weight: 1
+      - path: Armature/upper_leg_L
+        weight: 1
+      - path: Armature/upper_leg_L/mid_leg_L
+        weight: 1
+      - path: Armature/upper_leg_L/mid_leg_L/lower_leg_L
+        weight: 1
+      - path: Armature/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
+        weight: 1
+      - path: Armature/upper_leg_R
+        weight: 1
+      - path: Armature/upper_leg_R/mid_leg_R
+        weight: 1
+      - path: Armature/upper_leg_R/mid_leg_R/lower_leg_R
+        weight: 1
+      - path: Armature/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: anim_human_injuredLiftingHand
+      takeName: ArmatureAction_001
+      firstFrame: 175
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hips
+        weight: 1
+      - path: Armature/hips/spine
+        weight: 1
+      - path: Armature/hips/spine/head
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
+        weight: 1
+      - path: Armature/upper_leg_L
+        weight: 1
+      - path: Armature/upper_leg_L/mid_leg_L
+        weight: 1
+      - path: Armature/upper_leg_L/mid_leg_L/lower_leg_L
+        weight: 1
+      - path: Armature/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
+        weight: 1
+      - path: Armature/upper_leg_R
+        weight: 1
+      - path: Armature/upper_leg_R/mid_leg_R
+        weight: 1
+      - path: Armature/upper_leg_R/mid_leg_R/lower_leg_R
+        weight: 1
+      - path: Armature/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -569,7 +716,7 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
-    keepQuads: 0
+    keepQuads: 1
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001

@@ -15,7 +15,7 @@ public class SAssessment : MonoBehaviour
 
 	public GameObject cRObject;
 	public RectTransform cRTextRect;
-	public Text cRText;
+	public Text[] cRText;
 
 	public FolowAllong folowAllong;
 
@@ -37,8 +37,8 @@ public class SAssessment : MonoBehaviour
 
 		//int widthExpand = cognitiveRefraimingText [0].text.Length;
 
-		cRText = cRObject.GetComponentInChildren<Text> ();
-		cRTextRect = cRText.GetComponent <RectTransform> ();
+		cRText = cRObject.GetComponentsInChildren<Text> (true);
+		cRTextRect = cRText[0].gameObject.GetComponent <RectTransform> ();
 	//	cRTextRect.sizeDelta = new Vector2 (widthExpand * 11f, 50);
 
 	//	cRText.text = cognitiveRefraimingText [0].text;
@@ -84,13 +84,13 @@ public class SAssessment : MonoBehaviour
 	public void OnLevelWasLoad(){
 
 
-		cRObject = GameObject.FindWithTag ("CRText");
+		cRObject = GameObject.FindWithTag ("CRText").transform.GetChild(0).gameObject;;
 		folowAllong = cRObject.GetComponent<FolowAllong> ();
 		folowAllong.messageLength = cognitiveRefraimingText [0].text.Length;
 
-		cRText = cRObject.GetComponentInChildren<Text> () as Text;
-		cRTextRect = cRText.GetComponent <RectTransform> ();
-		cRText.text = storeText;
+		cRText = cRObject.GetComponentsInChildren<Text> (true);
+		cRTextRect = cRText[0].gameObject.GetComponent <RectTransform> ();
+		cRText[0].text = storeText;
 
 		int widthExpand = storeText.Length;
 
@@ -147,9 +147,9 @@ public class SAssessment : MonoBehaviour
 			folowAllong.messageLength = cognitiveRefraimingText [0].text.Length;
 		
 
-			cRText.text = cognitiveRefraimingText [0].text;
+			cRText[0].text = cognitiveRefraimingText [0].text;
 
-			storeText = cRText.text;
+			storeText = cRText[0].text;
 			break;
 
 
@@ -161,7 +161,7 @@ public class SAssessment : MonoBehaviour
 			cRTextRect.sizeDelta = new Vector2 (widthExpand * 10f, 50);
 			folowAllong.messageLength = cognitiveRefraimingText [1].text.Length;
 
-			cRText.text = cognitiveRefraimingText [1].text;
+			cRText[0].text = cognitiveRefraimingText [1].text;
 
 			break;
 
@@ -173,7 +173,7 @@ public class SAssessment : MonoBehaviour
 			cRTextRect.sizeDelta = new Vector2 (widthExpand * 10f, 50);
 			folowAllong.messageLength = cognitiveRefraimingText [2].text.Length;
 
-			cRText.text = cognitiveRefraimingText [2].text;
+			cRText[0].text = cognitiveRefraimingText [2].text;
 
 			break;	
 
@@ -186,7 +186,7 @@ public class SAssessment : MonoBehaviour
 			cRTextRect.sizeDelta = new Vector2 (widthExpand * 10f, 50);
 			folowAllong.messageLength = cognitiveRefraimingText [3].text.Length;
 
-			cRText.text = cognitiveRefraimingText [3].text;
+			cRText[0].text = cognitiveRefraimingText [3].text;
 
 			break;	
 
@@ -198,7 +198,7 @@ public class SAssessment : MonoBehaviour
 			cRTextRect.sizeDelta = new Vector2 (widthExpand * 10f, 50);
 			folowAllong.messageLength = cognitiveRefraimingText [4].text.Length;
 
-			cRText.text = cognitiveRefraimingText [4].text;
+			cRText[0].text = cognitiveRefraimingText [4].text;
 
 
 			break;
@@ -212,7 +212,7 @@ public class SAssessment : MonoBehaviour
 			cRTextRect.sizeDelta = new Vector2 (widthExpand * 10f, 50);
 			folowAllong.messageLength = cognitiveRefraimingText [5].text.Length;
 
-			cRText.text = cognitiveRefraimingText [5].text;
+			cRText[0].text = cognitiveRefraimingText [5].text;
 
 			break;	
 
