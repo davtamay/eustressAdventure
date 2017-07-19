@@ -62,7 +62,7 @@ public class CollectTaskInteraction : InteractionBehaviour {
 		int itemsCollected = 0;
 		int cCount = collectObjParent.childCount;
 
-		foreach(GameObject gO in PlayerManager.Instance.playerSlotGOList){
+		foreach(GameObject gO in PlayerManager.Instance.playerItemSlotGOList){
 			
 			for(int i = 0; i < cCount; i++){
 				
@@ -88,6 +88,22 @@ public class CollectTaskInteraction : InteractionBehaviour {
 		}else
 			return;
 	
+	}
+	public void SaveTaskIdentified(){
+
+		if (PlayerPrefs.HasKey (nameForPlayerPref) == false) {
+			PlayerPrefs.SetInt (nameForPlayerPref, 0);
+			PlayerPrefs.Save ();
+			QuestAssess.Instance.OnUpdate ();
+		}
+
+	}
+	public void SaveTaskCompletion(){
+
+		PlayerPrefs.SetInt (nameForPlayerPref, 1);
+		PlayerPrefs.Save ();
+		QuestAssess.Instance.OnUpdate ();
+
 	}
 
 }

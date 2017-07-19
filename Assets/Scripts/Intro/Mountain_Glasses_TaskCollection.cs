@@ -79,14 +79,12 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1)
 			return;
 
-		PlayerPrefs.SetInt (nameForPlayerPref, 0);
-		PlayerPrefs.Save ();
-		QuestAssess.Instance.OnUpdate ();
+		SaveTaskIdentified ();
 
 		int itemsCollected = 0;
 		int cCount = collectObjParent.childCount;
 
-		foreach(GameObject gO in PlayerManager.Instance.playerSlotGOList){
+		foreach(GameObject gO in PlayerManager.Instance.playerItemSlotGOList){
 
 			for(int i = 0; i < cCount; i++){
 
@@ -98,21 +96,29 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 
 		//	Debug.Log("PlayerSlotUSED:" + PlayerManager.Instance.playerSlotGOList.Count + " GO TO Collect: " + gOsToCollect.Count + " ItemsCollected:" + itemsCollected);
 		if (cCount == itemsCollected) {
+
+			infoTextComponent.text = textAfterCompletion;
+
+
+
 			for (int i = 0; i < cCount; i++) {
+				Debug.Log ("CHILDNAMEBEINGERASED: " + collectObjParent.GetChild (i).gameObject);
 				PlayerManager.Instance.RemoveItemFromSlot (collectObjParent.GetChild(i).gameObject);
-				infoTextComponent.text = textAfterCompletion;
-				if(objectToGive != null)
-					PlayerManager.Instance.AddItemToSlot (objectToGive);
+				//DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
+
+				
 			}
 
+			if (objectToGive != null) 
+				PlayerManager.Instance.AddItemToSlot (objectToGive);
+			
+			//DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
 			thisAnimator.SetBool ("IsNotLooking", true);
 			thisSkinMeshRend.SetBlendShapeWeight (0, 20);
 			thisSkinMeshRend.SetBlendShapeWeight (1, 50);
 			thisSkinMeshRend.SetBlendShapeWeight (3, 0);
 
-			PlayerPrefs.SetInt(nameForPlayerPref,1);
-			PlayerPrefs.Save ();
-			QuestAssess.Instance.OnUpdate ();
+			SaveTaskCompletion ();
 			return;
 
 		}else

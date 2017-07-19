@@ -45,6 +45,8 @@ public class SceneController : MonoBehaviour {
 		stressMenu.SetActive (false);
 
 		player = GameObject.FindWithTag ("Player").transform;
+		player.position = DataManager.Instance.LoadPosition ();
+
 
 		SceneManager.sceneLoaded += OnLevelLoad;
 
@@ -80,7 +82,7 @@ public class SceneController : MonoBehaviour {
 			//player.position = DataManager.Instance.LoadPlayerData().position;
 
 
-			Debug.Log ("SceneController playerslot count: " + PlayerManager.Instance.playerSlotGOList.Count);
+			Debug.Log ("SceneController playerslot count: " + PlayerManager.Instance.playerItemSlotGOList.Count);
 		}
 			
 
@@ -90,7 +92,7 @@ public class SceneController : MonoBehaviour {
 
 		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
 			DataManager.Instance.SavePosition (player.position);
-			DataManager.Instance.SaveItemList (PlayerManager.Instance.playerSlotGOList);
+			DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
 
 			//new 5/20/17
 		/*	DataCollection dC = new DataCollection();
@@ -107,6 +109,16 @@ public class SceneController : MonoBehaviour {
 		anim.SetTrigger ("FadeIn");
 		StartCoroutine (ChangeScene (scene));
 
+	}
+
+	public void OnApplicationQuit(){
+
+		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
+			DataManager.Instance.SavePosition (player.position);
+			DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
+
+
+		}
 	}
 
 	public IEnumerator ChangeScene (string scene){

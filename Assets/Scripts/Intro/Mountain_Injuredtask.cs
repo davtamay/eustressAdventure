@@ -69,7 +69,7 @@ public class Mountain_Injuredtask : CollectTaskInteraction {
 		if (Vector3.Angle (lookDirection, transform.forward) > maxAngle) {
 			finalLookVector = Vector3.RotateTowards (thisTransform.forward, lookDirection, Mathf.Deg2Rad * maxAngle, 0.5f);
 			thisAnimator.SetBool ("IsLooking", false);
-			thisAnimator.CrossFade ("LookRaiseArm", Time.deltaTime);
+			//thisAnimator.CrossFade ("LookRaiseArm", Time.deltaTime );
 			isLooking = false;
 		} else {
 			finalLookVector = lookDirection;
@@ -92,12 +92,11 @@ public class Mountain_Injuredtask : CollectTaskInteraction {
 		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1)
 			return;
 
-		PlayerPrefs.SetInt (nameForPlayerPref, 0);
+			SaveTaskIdentified ();
+		//PlayerPrefs.SetInt (nameForPlayerPref, 0);
 
 		if (DataManager.Instance.LoadSkyWalkerScore () <= scoreNeededForTask) {
-			PlayerPrefs.SetInt (nameForPlayerPref, 1);
-			PlayerPrefs.Save ();
-			QuestAssess.Instance.OnUpdate ();
+			SaveTaskCompletion ();
 		}
 		/*foreach(GameObject gO in PlayerManager.Instance.playerSlotGOList){
 			Debug.Log (gO.name);
@@ -108,7 +107,7 @@ public class Mountain_Injuredtask : CollectTaskInteraction {
 	//	}
 	}
 
-	public void SavePlayerPreference(){
+	/*public void SavePlayerPreference(){
 
 		PlayerPrefs.SetInt (nameForPlayerPref, 1);
 		PlayerPrefs.Save ();
@@ -124,7 +123,7 @@ public class Mountain_Injuredtask : CollectTaskInteraction {
 			QuestAssess.Instance.OnUpdate ();
 		}
 
-	}
+	}*/
 }
 
 

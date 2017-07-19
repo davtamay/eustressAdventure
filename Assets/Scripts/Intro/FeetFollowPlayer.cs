@@ -6,20 +6,34 @@ public class FeetFollowPlayer : MonoBehaviour {
 
 	private Transform cam;
 	[SerializeField]private float rotationToSpeed = 1;
-	private RectTransform thisRectTransform;
+	private Transform thisTransform;
 
+	Vector3 movePos;
 
 
 
 	void Start () {
 		
-		thisRectTransform = GetComponent<RectTransform>();
+		thisTransform = GetComponent<Transform>();
 		cam = Camera.main.transform;
 
+		movePos = new Vector3 (90, cam.eulerAngles.y, 0);
+
+		thisTransform.eulerAngles = movePos;
+
 	}
+	Vector3 destUp;
 	void Update () {
 
-		Vector3 movePos = new Vector3 (90, cam.eulerAngles.y, 0);
+	//	RaycastHit hit;
+	//	if (Physics.Raycast (transform.position, -Vector3.up, out hit, 5,LayerMask.NameToLayer("Ground")))
+	//		destUp = hit.normal;
+
+	//		thisRectTransform.
+		
+		
+		
+		//movePos.y = cam.eulerAngles.y;
 
 		//float angle = cam.eulerAngles.y;
 
@@ -28,8 +42,12 @@ public class FeetFollowPlayer : MonoBehaviour {
 		//angle = (angle < -180) ? angle + 360 : angle;
 
 
-		thisRectTransform.eulerAngles = movePos;
-
+		thisTransform.eulerAngles  = new Vector3 (90, cam.eulerAngles.y, 0);
+		//Vector3 firstsrot = new Vector3 (90, cam.eulerAngles.y, 0);
+		//movePos;
+		//Vector3 secondrot =  Vector3.Slerp (-thisTransform.up, destUp, 5 * Time.deltaTime);
+	//	thisTransform.up = Vector3.Slerp (thisTransform.up, destUp, 5 * Time.deltaTime);
+	//	thisTransform.eulerAngles = firstsrot + secondrot;
 	
 
 

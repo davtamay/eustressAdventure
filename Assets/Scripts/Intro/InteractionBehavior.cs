@@ -40,6 +40,9 @@ public class InteractionBehaviour : MonoBehaviour {
 	protected Transform thisTransform;
 	protected Transform player;
 
+	protected Animator infoCanvasAnimator;
+
+
 	private ParticleSystem.MainModule pS;
 
 
@@ -51,6 +54,9 @@ public class InteractionBehaviour : MonoBehaviour {
 		if (infoCanvasPrefab != null) {
 
 			infoCanvasPrefab = Instantiate (infoCanvasPrefab, new Vector3(thisTransform.position.x + infoOffset.x, thisTransform.position.y + infoOffset.y, thisTransform.position.z + infoOffset.z), Quaternion.identity) ;
+
+			infoCanvasAnimator = infoCanvasPrefab.GetComponent<Animator> ();
+
 
 			infoCanvasPrefab.transform.SetParent(thisTransform);
 
@@ -78,15 +84,18 @@ public class InteractionBehaviour : MonoBehaviour {
 	}
 
 	Coroutine infoActive; 
-
+	private bool isResetTime;
 	public void TriggerInfo(){
 
-		if (infoCanvasPrefab.activeInHierarchy)
+		if (infoCanvasPrefab.activeInHierarchy) {
+			isResetTime = true;
 			return;
-			
-		infoCanvasPrefab.SetActive (true);
-		infoActive = StartCoroutine (InfoActive ());
+		}
 	
+		infoCanvasPrefab.SetActive (true);
+		infoCanvasAnimator.SetBool ("IsActive", true);
+		infoActive = StartCoroutine (InfoActive ());
+
 	
 	}
 	
@@ -96,6 +105,11 @@ public class InteractionBehaviour : MonoBehaviour {
 		float time = 0;
 
 		while (true) {
+
+			if (isResetTime) {
+				time = 0;
+				isResetTime = false;
+			}
 
 			time += Time.deltaTime;
 
@@ -118,16 +132,36 @@ public class InteractionBehaviour : MonoBehaviour {
 				
 
 			if (time > timer) {
-			
-				infoCanvasPrefab.SetActive (false);
-				timer = timeActive;
-				yield break;
+				infoCanvasAnimator.SetBool ("IsActive", false);
+
+				if (infoCanvasAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+				 {
+
+					infoCanvasPrefab.SetActive (false);
+					timer = timeActive;
+					yield break;
+				}
 				//StopCoroutine (infoActive);
 			}
 
 			yield return null;
 
 		}
+	}
+	public void TakeOffInfo(){
+	
+		if (infoCanvasPrefab.activeInHierarchy) {
+
+			infoCanvasAnimator.SetBool ("IsActive", false);
+			if (infoCanvasAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+			{
+				infoCanvasPrefab.SetActive (false);
+				StopCoroutine (InfoActive ());
+				return;
+			}
+		}
+	
+	
 	}
 
 	void OnDrawGizmos(){

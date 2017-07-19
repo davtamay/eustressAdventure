@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 4012799732864472}
   - component: {fileID: 114177588989695924}
   - component: {fileID: 135237309358248722}
+  - component: {fileID: 95705736743196488}
   m_Layer: 16
   m_Name: ActionSelect
   m_TagString: Untagged
@@ -522,8 +523,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1573186535871116}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.74, y: 1.32, z: -12.76}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.7, y: 1.36, z: -8.6}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children:
   - {fileID: 4474518452491524}
@@ -758,6 +759,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.48, y: 0.38, z: 0.48}
   m_Center: {x: 0, y: 0.16, z: 0}
+--- !u!95 &95705736743196488
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354864406006114}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 524560456b80a4a789e6f798d7cf552b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95707749716110454
 Animator:
   serializedVersion: 3
@@ -806,8 +824,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  isSpriteChangeOnClick: 1
   isItemForSlot: 0
+  isSpriteChangeOnClick: 1
   spriteToChange: {fileID: 21300000, guid: 1964fd500dd454d808c3902d7566d6ba, type: 3}
   originalSprite: {fileID: 0}
   image: {fileID: 0}
@@ -1016,8 +1034,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  isSpriteChangeOnClick: 0
   isItemForSlot: 0
+  isSpriteChangeOnClick: 0
   spriteToChange: {fileID: 0}
   originalSprite: {fileID: 0}
   image: {fileID: 0}

@@ -30,8 +30,8 @@ public class Mountain_Rock_Collect : CollectTaskInteraction {
 	public override void CheckForTaskCompletion ()
 	{
 		
-		foreach(GameObject gO in PlayerManager.Instance.playerSlotGOList){
-			Debug.Log (gO.name);
+		foreach(GameObject gO in PlayerManager.Instance.playerItemSlotGOList){
+			//Debug.Log (gO.name);
 			if (string.Equals (gO.name, nameOfItemNeeded, System.StringComparison.CurrentCultureIgnoreCase)) 
 				gOImagetoUnlockAndActivate.SetActive (true);	
 
@@ -39,7 +39,7 @@ public class Mountain_Rock_Collect : CollectTaskInteraction {
 		}
 	}
 
-	public void SavePlayerPreference(){
+	/*public void SavePlayerPreference(){
 
 		PlayerPrefs.SetInt (nameForPlayerPref, 1);
 		PlayerPrefs.Save ();
@@ -55,5 +55,5 @@ public class Mountain_Rock_Collect : CollectTaskInteraction {
 			QuestAssess.Instance.OnUpdate ();
 		}
 	
-	}
+	}*/
 }

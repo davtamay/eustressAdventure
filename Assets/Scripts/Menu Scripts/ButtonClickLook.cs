@@ -31,6 +31,9 @@ public class ButtonClickLook : MonoBehaviour {
 
 	public bool isGame = false;
 	[SerializeField] private string gameScene;
+	[SerializeField] private bool isResetPositiontoHome;
+	[SerializeField] private Vector3 homePosition;
+
 
 	public bool isBackButton = false;
 	public bool isStartButton = false;
@@ -77,7 +80,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 		currentButton = this.gameObject;
 
-		data = new PointerEventData (EventSystem.current);
+		//data = new PointerEventData (EventSystem.current);
 
 		if (isAllowWalk)
 			buttonFill.color = Color.red;
@@ -87,9 +90,9 @@ public class ButtonClickLook : MonoBehaviour {
 	void Update(){
 
 	
-		if(!isSMenuOpener)
-		if (GameController.Instance.IsInfoBubbleActive) 
-			return;
+	//	if(!isSMenuOpener)
+	//	if (GameController.Instance.IsInfoBubbleActive) 
+	//		return;
 		
 
 
@@ -132,7 +135,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 			} else {
 		
-				ExecuteEvents.Execute<IPointerExitHandler> (currentButton, data, ExecuteEvents.pointerExitHandler);
+			//	ExecuteEvents.Execute<IPointerExitHandler> (currentButton, data, ExecuteEvents.pointerExitHandler);
 				countDown = timeToSelect;
 				buttonFill.fillAmount = 1.0f;
 
@@ -144,7 +147,7 @@ public class ButtonClickLook : MonoBehaviour {
 			
 		// highlight
 
-		ExecuteEvents.Execute<IPointerEnterHandler> (hitButton, data, ExecuteEvents.pointerEnterHandler);
+		//ExecuteEvents.Execute<IPointerEnterHandler> (hitButton, data, ExecuteEvents.pointerEnterHandler);
 		countDown -= Time.unscaledDeltaTime;
 
 		buttonFill.fillAmount = countDown / timeToSelect;
@@ -152,8 +155,8 @@ public class ButtonClickLook : MonoBehaviour {
 
 		if (countDown < 0.0f && hitButton == currentButton) {
 
-			if(!isMenuCope)
-			ExecuteEvents.Execute<IPointerClickHandler> (hitButton, data, ExecuteEvents.pointerClickHandler);
+		//	if(!isMenuCope)
+		//	ExecuteEvents.Execute<IPointerClickHandler> (hitButton, data, ExecuteEvents.pointerClickHandler);
 
 			countDown = timeToSelect;
 
@@ -201,12 +204,12 @@ public class ButtonClickLook : MonoBehaviour {
 
 					buttonFill.color = Color.red;
 					GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ().enabled = false;
-				//	GameObject.FindWithTag ("Player").GetComponent<CharacterController> ().enabled = false;
+					//	GameObject.FindWithTag ("Player").GetComponent<CharacterController> ().enabled = false;
 				
 				}
 			
 			
-			}else if (isEnvChanger) {
+			} else if (isEnvChanger) {
 
 				SceneController.Instance.ChangeSkyBox ();
 
@@ -214,25 +217,32 @@ public class ButtonClickLook : MonoBehaviour {
 
 
 				if (PlayerManager.Instance != null && DataManager.Instance != null) {
-					DataManager.Instance.CheckHighScore (SceneController.Instance.GetCurrentSceneName(), PlayerManager.Instance.points);
+					DataManager.Instance.CheckHighScore (SceneController.Instance.GetCurrentSceneName (), PlayerManager.Instance.points);
 				}
 				SceneController.Instance.ResetGame ("Intro");
 			
-			}else if (isStartButton) {
+			} else if (isStartButton) {
 
 				GameController.Instance.StartGame ();
 				GameController.Instance.Paused = false;
 
+				SceneController.Instance.Load ("Intro");
 
-			}else if (isReplayButton) {
+			} else if (isReplayButton) {
 
 
 				SceneController.Instance.ResetCurrentGame ();
 
 
-			//	GetComponentInParent<DestressPopUp> ().HideDestress ();
+				//	GetComponentInParent<DestressPopUp> ().HideDestress ();
 
-			} else if (isMusicButton) {
+			} else if (isResetPositiontoHome) {
+
+				GameObject.FindWithTag ("Player").transform.position = homePosition;
+				DataManager.Instance.SavePosition (homePosition);
+				LoadScene ("Intro");
+
+			}else if (isMusicButton) {
 
 				switch (curMusicButton) {
 

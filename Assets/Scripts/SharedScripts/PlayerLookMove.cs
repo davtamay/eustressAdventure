@@ -32,6 +32,10 @@ public class PlayerLookMove : MonoBehaviour {
 
 	private bool isCharInGround;
 
+	Vector3 destUp = Vector3.zero;
+	[SerializeField]private float angleSpeed = 5;
+	private ControllerColliderHit _contact;
+
 	void Awake(){
 		
 		controller = GetComponent<CharacterController> ();
@@ -57,9 +61,6 @@ public class PlayerLookMove : MonoBehaviour {
 
 		moveDirection = Camera.main.transform.forward;
 		moveDirection *= Time.deltaTime;
-
-
-
 
 
 
@@ -138,10 +139,20 @@ public class PlayerLookMove : MonoBehaviour {
 			isStayedLookingDown = true;
 
 			} 
+	/*	if (controller.isGrounded) {
+
+			if (Vector3.Dot (moveDirection, _contact.normal) < 0)
+				moveDirection = _contact.normal;
+			else
+				moveDirection += _contact.normal;
+
+		}*/
 		
 		moveDirection.x *= velocity;
 		moveDirection.z *= velocity;
 		controller.Move (moveDirection);
+
+		thisTransform.up = Vector3.Slerp (thisTransform.up, destUp, angleSpeed * Time.deltaTime);
 	}
 
 	IEnumerator JumpUp(){
@@ -219,19 +230,23 @@ public class PlayerLookMove : MonoBehaviour {
 
 
 		if (!isSuperJumpAvailable) {
-			if (Physics.Raycast (transform.position, -transform.up, out hit, jumpFromGroundDis, groundLayer))
+			if (Physics.Raycast (transform.position, -Vector3.up, out hit, jumpFromGroundDis, groundLayer)) {
+				destUp = hit.normal;
 				return true;
-			else
+			
+			}else
 				return false;
 
 		} else {
 		
-			if (Physics.Raycast (transform.position, -transform.up, out hit, jumpFromGroundDis, groundLayer))
+			if (Physics.Raycast (transform.position, -Vector3.up, out hit, jumpFromGroundDis, groundLayer))
+				destUp = hit.normal;
 				return true;
 
-			if (Physics.Raycast (transform.position, -transform.up, out hit, jumpFromGroundDis, bounceLayer)){
+			if (Physics.Raycast (transform.position, -Vector3.up, out hit, jumpFromGroundDis, bounceLayer)){
 				SuperJump = superJumpHeightAdd;
 				SuperJumpSpeed = superJumpSpeedAdd;
+				destUp = hit.normal;
 				return true;
 		
 			}
@@ -246,6 +261,10 @@ public class PlayerLookMove : MonoBehaviour {
 
 
 	}
+	/*void OnControllerColliderHit(ControllerColliderHit hit){
+		_contact = hit;
+	
+	}*/
 	private float CameraAngleFromUp(){
 		return Vector3.Angle (Vector3.up, Camera.main.transform.rotation * Vector3.forward);}
 

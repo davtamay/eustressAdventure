@@ -37,6 +37,8 @@ public class DataManager : MonoBehaviour {
 
 	void Awake(){
 		
+		//DeletePPDataTaskProgress ();
+		//PlayerPrefs.DeleteAll();
 		if (instance) {
 			Debug.Log ("There are two HighScoreManagers");
 			return;
@@ -234,6 +236,16 @@ public class DataManager : MonoBehaviour {
 
 	}
 */
+	//TEST
+//	public void DeleteItemSlotData(){
+
+//		slotListStrings.Clear ();
+//		SaveItemList(new List<GameObject>());
+
+//	}
+	public void DeletePPDataTaskProgress(){
+		PlayerPrefs.DeleteAll ();
+	}
 
 	public void SaveItemList(List<GameObject> curSlotList){
 		
@@ -242,6 +254,7 @@ public class DataManager : MonoBehaviour {
 	
 		slotListStrings.Clear ();
 		for (int i = 0; i < curSlotList.Count; i++) {
+		//Debug.Log((curSlotList [i].name));
 			if (slotListStrings.Contains (curSlotList [i].name)) {
 			//slotListStrings.Remove (curSlotList [i].name);
 				continue;
@@ -250,6 +263,7 @@ public class DataManager : MonoBehaviour {
 		
 		}
 	//Open Following to Clear Off Slot in case of error (Have to save by changing levels)
+	//PlayerPrefs.DeleteAll();
 	//slotListStrings.Clear ();
 		StreamWriter Writer = new StreamWriter (OutputPath);
 		Writer.WriteLine (JsonUtility.ToJson (this));

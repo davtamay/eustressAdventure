@@ -24,6 +24,8 @@ public class LookInteraction : MonoBehaviour {
 
 	private Collider thisCollider;
 	public Collider parentCollider;
+
+	private Animator thisAnimator;
 	private Camera cam;
 	float timer;
 
@@ -33,6 +35,8 @@ public class LookInteraction : MonoBehaviour {
 		cam = Camera.main;
 		timer = lookTime;
 		thisCollider = GetComponent<Collider> ();
+		thisAnimator = GetComponent<Animator> ();
+			
 
 		//if(!isItemForSlot)
 			parentCollider = transform.parent.GetComponent<Collider> ();
@@ -50,12 +54,13 @@ public class LookInteraction : MonoBehaviour {
 	private float timeActive;
 
 	IEnumerator EnableAndDisable(){
-	//	float timer = 0;
-		timeActive = timeUntilImageDeactivate;
 
+		timeActive = timeUntilImageDeactivate;
 		isActive = true;
 		imageGO.SetActive (true);
 		thisCollider.enabled = true;
+
+		thisAnimator.SetBool ("IsActive", true);
 
 		while (0 < timeActive) {
 
@@ -67,7 +72,12 @@ public class LookInteraction : MonoBehaviour {
 			timeActive -= Time.deltaTime;
 
 		}
+		thisAnimator.SetBool ("IsActive", false);
 
+		while (!thisAnimator.GetCurrentAnimatorStateInfo (0).IsName ("Idle"))
+			yield return null;
+			
+			
 		isActive = false;
 		imageGO.SetActive (false);
 		thisCollider.enabled = false;
@@ -89,7 +99,8 @@ public class LookInteraction : MonoBehaviour {
 
 				if (!isActive) {
 					StartCoroutine (EnableAndDisable ());
-				}
+				}else
+					timeActive = timeUntilImageDeactivate;
 			
 			}
 
@@ -99,8 +110,13 @@ public class LookInteraction : MonoBehaviour {
 			image.fillAmount = timer / lookTime;
 
 			if (0f > timer) {
-			
+				timer = lookTime;
+
 				onLookClick.Invoke ();
+
+				isActive = false;
+				imageGO.SetActive (false);
+				thisCollider.enabled = false;
 
 				if (isSpriteChangeOnClick)
 					ChangeSprite ();
@@ -109,8 +125,10 @@ public class LookInteraction : MonoBehaviour {
 
 				if (isItemForSlot) 
 					PlayerManager.Instance.AddItemToSlot (transform.parent.gameObject);
+					//DataManager.Instance.SaveItemList (PlayerManager.Instance.playerSlotGOList);
 
-				timer = lookTime;
+				
+
 				
 
 			}

@@ -79,7 +79,14 @@ public class BicycleInteraction : InteractionBehaviour {
 			//thisTransform.localPosition += moveDirection;
 			charController.Move(moveDirection);
 		//	thisTransform.rotation = Quaternion.RotateTowards(thisTransform.rotation, Quaternion.LookRotation(Camera.main.transform.position), Time.deltaTime *20);
+			//RaycastHit hit;
+			//if (Physics.Raycast (transform.position, -Vector3.up, out hit, LayerMask.NameToLayer("Ground"))) 
+			//	thisTransform.up = Vector3.Slerp (thisTransform.up, hit.normal, 5 * Time.deltaTime);
+
+
+
 			yield return null;
+
 
 		}
 	

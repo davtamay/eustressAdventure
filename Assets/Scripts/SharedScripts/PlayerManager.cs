@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour {
 
 
-	private Dictionary<GameObject,SpriteRenderer> totalGoInSceneDict;
-	private Dictionary<int, SpriteRenderer> playerSlotsUIDict;
+	private Dictionary<GameObject,SpriteRenderer> totalGOToSpriteInSceneDict;
+	private Dictionary<int, SpriteRenderer> playerIntToSpriteUISlotsDict;
 
 	public Dictionary<string, GameObject> StringToGODict;
-	public List<GameObject> playerSlotGOList;
+	public List<GameObject> playerItemSlotGOList;
 
 	private GameObject UISlots;
 	private int curSlot;
@@ -70,22 +70,26 @@ public class PlayerManager : MonoBehaviour {
 		if(SceneController.Instance.GetCurrentSceneName() == "Intro")
 		if (GameObject.FindWithTag ("Item") != null) {
 
-			totalGoInSceneDict = new Dictionary<GameObject,SpriteRenderer> ();
-			playerSlotsUIDict = new Dictionary<int,SpriteRenderer> ();
-			playerSlotGOList = new List<GameObject> ();
+			totalGOToSpriteInSceneDict = new Dictionary<GameObject,SpriteRenderer> ();
+			playerIntToSpriteUISlotsDict = new Dictionary<int,SpriteRenderer> ();
+			playerItemSlotGOList = new List<GameObject> ();
 			StringToGODict = new Dictionary<string, GameObject>();
 
 			foreach(GameObject GO in GameObject.FindGameObjectsWithTag("Item")){
-				SpriteRenderer curSprRend = GO.transform.GetChild (0).transform.GetChild (0).GetComponentInChildren<SpriteRenderer> ();
-				totalGoInSceneDict.Add (GO, curSprRend);
+
+				SpriteRenderer curSprRend = GO.GetComponentInChildren<SpriteRenderer> (true);//GO.transform.GetChild (0).transform.GetChild (0).GetComponentInChildren<SpriteRenderer> ();
+				//Debug.Log(curSprRend.sprite.name);
+
+				totalGOToSpriteInSceneDict.Add (GO, curSprRend);
+
 			
 				StringToGODict.Add (GO.name, GO);
-				Debug.Log (GO.name);
+				//Debug.Log (GO.name);
 				//new 5/26/17
 				//StringToGODict[GO.name] =  GO;
-
+				Debug.Log ("GOInEnvironment: " + GO.name);
 			}
-
+			//Debug.Log("TOTALGOSPRITEINSCENDIC" + totalGOToSpriteInSceneDict.Values.Count);
 			UISlots = GameObject.FindWithTag ("UISlot");
 
 
@@ -93,23 +97,23 @@ public class PlayerManager : MonoBehaviour {
 
 			foreach (Transform curTran in UISlots.transform) {
 
+				//if (curTran.GetComponent<SpriteRenderer> () == null)
+				//	continue;
 
-				if (curTran.GetComponent<SpriteRenderer> () == null)
-					continue;
 
-
-				playerSlotsUIDict.Add(itemCount, curTran.GetComponent<SpriteRenderer>());
+				playerIntToSpriteUISlotsDict.Add(itemCount, curTran.GetComponentInChildren<SpriteRenderer>(true));
 
 				itemCount++;
 
 				curTran.gameObject.SetActive (false);
-
+				//Debug.Log ("SLOTS:" + curTran.name);
 			}
+			//Debug.Log("playeINTTOSPRITEUISLOTSDIC" + playerItemSlotGOList.Count + "ITEMCOUNT" + itemCount);
 			if (DataManager.Instance.LoadItemList ().Count != 0) {
-				playerSlotGOList.Clear ();
+				playerItemSlotGOList.Clear ();
 				for (int i = 0; i < DataManager.Instance.LoadItemList ().Count; i++) {
-					if (!playerSlotGOList.Contains (DataManager.Instance.LoadItemList () [i])) {
-						playerSlotGOList.Add (DataManager.Instance.LoadItemList () [i]);
+					if (!playerItemSlotGOList.Contains (DataManager.Instance.LoadItemList () [i])) {
+						playerItemSlotGOList.Add (DataManager.Instance.LoadItemList () [i]);
 						AddItemToSlot (DataManager.Instance.LoadItemList () [i]);
 
 						DataManager.Instance.LoadItemList () [i].SetActive (false);
@@ -145,36 +149,36 @@ public class PlayerManager : MonoBehaviour {
 
 
 	public void AddItemToSlot(GameObject gO){
-		curSlot = 0;
+		int curSlot = 0;
 
 		GameObject GO = StringToGODict [gO.name];
 
 
 
-		foreach (SpriteRenderer curSR in playerSlotsUIDict.Values) {
-
-			if (curSR.sprite.GetInstanceID () == totalGoInSceneDict [GO].sprite.GetInstanceID ()) {
+		foreach (SpriteRenderer curSR in playerIntToSpriteUISlotsDict.Values) {
+			if(curSR.sprite != null)
+			if (curSR.sprite == totalGOToSpriteInSceneDict [GO].sprite) {
 				return;
 			}
 
-			if (playerSlotsUIDict [curSlot].gameObject.activeSelf) {
+			if (playerIntToSpriteUISlotsDict [curSlot].gameObject.activeSelf) {
 				++curSlot;
 				continue;}
 
 			
 		}
 
-		playerSlotsUIDict [curSlot].sprite = totalGoInSceneDict [GO].sprite;
-		GameObject mainObject = totalGoInSceneDict [GO].transform.parent.parent.parent.gameObject;
-
-		if(!playerSlotGOList.Contains(StringToGODict[mainObject.name]))
-		playerSlotGOList.Add (totalGoInSceneDict [GO].transform.parent.parent.parent.gameObject);
+		playerIntToSpriteUISlotsDict [curSlot].sprite = totalGOToSpriteInSceneDict [GO].sprite;
+		GameObject mainObject = totalGOToSpriteInSceneDict [GO].transform.parent.parent.parent.gameObject;
+	
+		if(!playerItemSlotGOList.Contains(StringToGODict[mainObject.name]))
+		playerItemSlotGOList.Add (totalGOToSpriteInSceneDict [GO].transform.parent.parent.parent.gameObject);
 		
 		
-		playerSlotsUIDict [curSlot].gameObject.SetActive (true);
+		playerIntToSpriteUISlotsDict [curSlot].gameObject.SetActive (true);
 		StartCoroutine (ShowUISlots ());
 
-
+		DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
 	
 
 	}
@@ -182,16 +186,43 @@ public class PlayerManager : MonoBehaviour {
 	public void RemoveItemFromSlot(GameObject gO){
 
 		GameObject GO = StringToGODict [gO.name];
-		
-		foreach (SpriteRenderer curSR in playerSlotsUIDict.Values) {
+		int curSlot = playerIntToSpriteUISlotsDict.Count;
 
-			if (curSR.sprite.GetInstanceID () == totalGoInSceneDict [GO].sprite.GetInstanceID ()) {
-				curSR.gameObject.SetActive (false);
-				playerSlotGOList.Remove (totalGoInSceneDict [GO].transform.parent.parent.gameObject);
+		foreach (SpriteRenderer curSR in playerIntToSpriteUISlotsDict.Values) {
+			
+			curSlot--;
+
+			//if (curSR.sprite == null)
+			//	continue;
+
+			if (curSR.sprite == totalGOToSpriteInSceneDict [GO].sprite){
+				//continue;
+				Debug.Log ("REMOVEITEMFROMLIST CURSLOT:" + curSlot + ";totalGOTOSpriteValueInput:" + totalGOToSpriteInSceneDict [GO].sprite.name +  ";playerinttoSpriteUISpriteName" + curSR.sprite.name);
+			//if (curSR.sprite == totalGOToSpriteInSceneDict [GO].sprite) {
+				//playerIntToSpriteUISlotsDict [curSlot].sprite = null;
+				curSR.sprite = null;
+				playerIntToSpriteUISlotsDict [curSlot].gameObject.SetActive (false);
+
+				GameObject mainObject = totalGOToSpriteInSceneDict [GO].transform.parent.parent.parent.gameObject;
+				playerItemSlotGOList.Remove (mainObject);
+				StringToGODict.Remove (mainObject.name);
+
+				//if(playerItemSlotGOList.Contains(StringToGODict[mainObject.name]))
+				//	playerItemSlotGOList.Remove (totalGOToSpriteInSceneDict [gO].transform.parent.parent.parent.gameObject);
 			}
+			//break;
+
+				/*curSR.sprite = null;
+				curSlot--;
+				//GO.SetActive(false);
+				curSR.gameObject.SetActive (false);
+				playerItemSlotGOList.Remove (gO);
+				playerItemSlotGOList.Remove (totalGOToSpriteInSceneDict [gO].transform.parent.parent.gameObject);
+				*/
+		//	}
 			
 		}
-
+		DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
 	}
 
 
