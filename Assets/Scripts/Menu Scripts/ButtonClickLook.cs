@@ -34,6 +34,7 @@ public class ButtonClickLook : MonoBehaviour {
 	[SerializeField] private bool isResetPositiontoHome;
 	[SerializeField] private Vector3 homePosition;
 
+	[SerializeField] private bool isRestartProgress;
 
 	public bool isBackButton = false;
 	public bool isStartButton = false;
@@ -164,33 +165,25 @@ public class ButtonClickLook : MonoBehaviour {
 		
 				
 
-	UnityEngine.Profiling.Profiler.BeginSample ("ButtonPress");
-		/*	if (isStressed) {
-				switch (curStressed) {
-
-				case Stressed.yes:
-					SceneController.Instance.Load ("StressAss");
-
-					break;
-
-				case Stressed.no:
-					SceneController.Instance.Load ("AllGames");
-
-					break;
-
-
-
-				}
-				
-			} else*/ if (isSMenuOpener) {
+	//UnityEngine.Profiling.Profiler.BeginSample ("ButtonPress");
+			if (isSMenuOpener) {
 
 				StressMenu.SetActive (false);
 				GameController.Instance.Paused = false;
 				GetComponentInParent<OrientationAdjustment> ().ShowGame ();
 
 					
-				UnityEngine.Profiling.Profiler.EndSample ();
-			} else if (isAllowWalk) {
+			//	UnityEngine.Profiling.Profiler.EndSample ();
+			
+			} else if (isRestartProgress) {
+
+				DataManager.Instance.DeleteHighScoreSlotandPositionData (homePosition);
+				DataManager.Instance.DeletePPDataTaskProgress ();
+				SceneController.Instance.Load ("Intro");
+			
+			
+			
+			}else if (isAllowWalk) {
 			
 				isWalking = !isWalking;
 				if (isWalking) {
@@ -226,7 +219,7 @@ public class ButtonClickLook : MonoBehaviour {
 				GameController.Instance.StartGame ();
 				GameController.Instance.Paused = false;
 
-				SceneController.Instance.Load ("Intro");
+				//SceneController.Instance.Load ("Intro");
 
 			} else if (isReplayButton) {
 

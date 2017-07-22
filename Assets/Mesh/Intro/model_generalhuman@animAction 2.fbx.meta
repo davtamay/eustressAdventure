@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: a53514df44085475eac59dfd0f7b3e86
-timeCreated: 1500356083
+guid: eafc3f6c110834c1392e98541cd273d9
+timeCreated: 1500496658
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -50,22 +50,24 @@ ModelImporter:
     400040: upper_leg_L
     400042: upper_leg_R
     4300000: Cube_004
-    7400000: Default Take
-    7400002: ArmatureAction_001
-    7400004: Human_groundLook
-    7400006: Human_InjuredLeg
-    7400008: Human_nakedSurpised
-    7400010: human_scratchinghead
-    7400012: Human_walk
-    7400014: Default Take001
-    7400016: Human_groundLook001
-    7400018: Human_InjuredLeg001
-    7400020: Human_nakedSurpised001
-    7400022: human_scratchinghead001
-    7400024: Human_walk001
-    7400026: Human_InjuredIdle
-    7400028: Human_InjuredLook
-    7400030: Human_InjuredLiftArm
+    7400000: animAction 2
+    7400002: anim_Human_groundLook
+    7400004: anim_Human_InjuredLeg
+    7400006: anim_Human_Meditation
+    7400008: anim_Human_nakedSurpised
+    7400010: anim_human_scratchinghead
+    7400012: anim_Human_walk
+    7400014: ArmatureAction_001
+    7400016: PoseLib
+    7400018: anim_Human_MeditationSalute
+    7400020: anim_Human_groundLook001
+    7400022: anim_Human_InjuredLeg001
+    7400024: anim_Human_Meditation001
+    7400026: anim_Human_nakedSurpised001
+    7400028: anim_human_scratchinghead001
+    7400030: anim_Human_walk001
+    7400032: PoseLib001
+    7400034: anim_Human_MeditationBreathe
     9500000: //RootNode
     13700000: Cube_004
   materials:
@@ -92,8 +94,440 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Default Take001
+      name: anim_Human_MeditationSalute
       takeName: Default Take
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hips
+        weight: 1
+      - path: Armature/hips/spine
+        weight: 1
+      - path: Armature/hips/spine/head
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
+        weight: 1
+      - path: Armature/hips/upper_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
+        weight: 1
+      - path: Armature/hips/upper_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: anim_Human_groundLook001
+      takeName: anim_Human_groundLook
+      firstFrame: 0
+      lastFrame: 67
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hips
+        weight: 1
+      - path: Armature/hips/spine
+        weight: 1
+      - path: Armature/hips/spine/head
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
+        weight: 1
+      - path: Armature/hips/upper_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
+        weight: 1
+      - path: Armature/hips/upper_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: anim_Human_InjuredLeg001
+      takeName: anim_Human_InjuredLeg
+      firstFrame: 5
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hips
+        weight: 1
+      - path: Armature/hips/spine
+        weight: 1
+      - path: Armature/hips/spine/head
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
+        weight: 1
+      - path: Armature/hips/upper_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
+        weight: 1
+      - path: Armature/hips/upper_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: anim_Human_Meditation001
+      takeName: anim_Human_Meditation
+      firstFrame: 18
+      lastFrame: 330
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hips
+        weight: 1
+      - path: Armature/hips/spine
+        weight: 1
+      - path: Armature/hips/spine/head
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
+        weight: 1
+      - path: Armature/hips/upper_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
+        weight: 1
+      - path: Armature/hips/upper_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: anim_Human_nakedSurpised001
+      takeName: anim_Human_nakedSurpised
+      firstFrame: 7
+      lastFrame: 87
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hips
+        weight: 1
+      - path: Armature/hips/spine
+        weight: 1
+      - path: Armature/hips/spine/head
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
+        weight: 1
+      - path: Armature/hips/upper_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
+        weight: 1
+      - path: Armature/hips/upper_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: anim_human_scratchinghead001
+      takeName: anim_human_scratchinghead
+      firstFrame: 2
+      lastFrame: 42
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/hips
+        weight: 1
+      - path: Armature/hips/spine
+        weight: 1
+      - path: Armature/hips/spine/head
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
+        weight: 1
+      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
+        weight: 1
+      - path: Armature/hips/upper_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L
+        weight: 1
+      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
+        weight: 1
+      - path: Armature/hips/upper_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R
+        weight: 1
+      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
+        weight: 1
+      - path: Cube_004
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: anim_Human_walk001
+      takeName: anim_Human_walk
       firstFrame: -1
       lastFrame: 59
       wrapMode: 0
@@ -236,10 +670,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Human_groundLook001
-      takeName: Human_groundLook
-      firstFrame: -1
-      lastFrame: 67
+      name: PoseLib001
+      takeName: PoseLib
+      firstFrame: 0
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -308,442 +742,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Human_InjuredLeg001
-      takeName: Human_InjuredLeg
-      firstFrame: 5
-      lastFrame: 45
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Armature
-        weight: 1
-      - path: Armature/hips
-        weight: 1
-      - path: Armature/hips/spine
-        weight: 1
-      - path: Armature/hips/spine/head
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
-        weight: 1
-      - path: Armature/hips/upper_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
-        weight: 1
-      - path: Armature/hips/upper_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
-        weight: 1
-      - path: Cube_004
-        weight: 1
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Human_nakedSurpised001
-      takeName: Human_nakedSurpised
-      firstFrame: 7
-      lastFrame: 87
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Armature
-        weight: 1
-      - path: Armature/hips
-        weight: 1
-      - path: Armature/hips/spine
-        weight: 1
-      - path: Armature/hips/spine/head
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
-        weight: 1
-      - path: Armature/hips/upper_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
-        weight: 1
-      - path: Armature/hips/upper_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
-        weight: 1
-      - path: Cube_004
-        weight: 1
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: human_scratchinghead001
-      takeName: human_scratchinghead
-      firstFrame: 2
-      lastFrame: 42
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Armature
-        weight: 1
-      - path: Armature/hips
-        weight: 1
-      - path: Armature/hips/spine
-        weight: 1
-      - path: Armature/hips/spine/head
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
-        weight: 1
-      - path: Armature/hips/upper_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
-        weight: 1
-      - path: Armature/hips/upper_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
-        weight: 1
-      - path: Cube_004
-        weight: 1
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Human_walk001
-      takeName: Human_walk
-      firstFrame: -1
-      lastFrame: 59
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Armature
-        weight: 1
-      - path: Armature/hips
-        weight: 1
-      - path: Armature/hips/spine
-        weight: 1
-      - path: Armature/hips/spine/head
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
-        weight: 1
-      - path: Armature/hips/upper_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
-        weight: 1
-      - path: Armature/hips/upper_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
-        weight: 1
-      - path: Cube_004
-        weight: 1
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Human_InjuredIdle
-      takeName: Human_InjuredLeg
-      firstFrame: 5
-      lastFrame: 6
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Armature
-        weight: 1
-      - path: Armature/hips
-        weight: 1
-      - path: Armature/hips/spine
-        weight: 1
-      - path: Armature/hips/spine/head
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
-        weight: 1
-      - path: Armature/hips/upper_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
-        weight: 1
-      - path: Armature/hips/upper_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
-        weight: 1
-      - path: Cube_004
-        weight: 1
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Human_InjuredLook
-      takeName: Human_InjuredLeg
-      firstFrame: 5
-      lastFrame: 9
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Armature
-        weight: 1
-      - path: Armature/hips
-        weight: 1
-      - path: Armature/hips/spine
-        weight: 1
-      - path: Armature/hips/spine/head
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_L/lower_arm_L/mid_arm_L/hand_L
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R
-        weight: 1
-      - path: Armature/hips/spine/shoulder_R/lower_arm_R/mid_arm_R/hand_R
-        weight: 1
-      - path: Armature/hips/upper_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L
-        weight: 1
-      - path: Armature/hips/upper_leg_L/mid_leg_L/lower_leg_L/foot_L
-        weight: 1
-      - path: Armature/hips/upper_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R
-        weight: 1
-      - path: Armature/hips/upper_leg_R/mid_leg_R/lower_leg_R/foot_R
-        weight: 1
-      - path: Cube_004
-        weight: 1
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Human_InjuredLiftArm
-      takeName: Human_InjuredLeg
-      firstFrame: 3
-      lastFrame: 40
+      name: anim_Human_MeditationBreathe
+      takeName: anim_Human_Meditation
+      firstFrame: 145
+      lastFrame: 312
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

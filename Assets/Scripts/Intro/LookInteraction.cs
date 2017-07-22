@@ -16,6 +16,9 @@ public class LookInteraction : MonoBehaviour {
 
 	//Check for bugs since I invalidated this in script
 	[SerializeField] bool isItemForSlot;
+	[SerializeField] bool reducesStress;
+	[SerializeField] float amountOfStressReduction;
+
 	[SerializeField]bool isSpriteChangeOnClick = false;
 
 	[SerializeField]private Sprite spriteToChange;
@@ -105,7 +108,6 @@ public class LookInteraction : MonoBehaviour {
 			}
 
 
-
 			timer -= Time.deltaTime;
 			image.fillAmount = timer / lookTime;
 
@@ -127,9 +129,8 @@ public class LookInteraction : MonoBehaviour {
 					PlayerManager.Instance.AddItemToSlot (transform.parent.gameObject);
 					//DataManager.Instance.SaveItemList (PlayerManager.Instance.playerSlotGOList);
 
-				
-
-				
+				if (reducesStress)
+					UIStressGage.Instance.stress = -amountOfStressReduction;
 
 			}
 

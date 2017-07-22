@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
 
-	public GameObject Menu;
+	public GameObject stressMenu;
 
 	private GameObject gameStart;
 	private GameObject gameOver;
@@ -39,8 +39,12 @@ public class GameController : MonoBehaviour {
 		}
 		instance = this; 
 
-		Menu = GameObject.FindWithTag ("StressMenu");
+		stressMenu = GameObject.FindWithTag ("StressMenu");
 
+
+	//	if (string.Equals (SceneController.Instance.GetCurrentSceneName(), "MainMenu", System.StringComparison.CurrentCultureIgnoreCase))
+	//		stressMenu.SetActive (false);
+		
 		//cam = GameObject.FindWithTag ("MainCamera").GetComponent<Camera> ();
 		cam = Camera.main;
 		cameras = cam.GetComponentsInChildren<Camera> ();
@@ -95,7 +99,7 @@ public class GameController : MonoBehaviour {
 	private bool isMenuActive;
 	public bool IsMenuActive{
 
-		get{ return Menu.activeInHierarchy; }
+		get{ return stressMenu.activeInHierarchy; }
 		
 	}
 
@@ -113,7 +117,7 @@ public class GameController : MonoBehaviour {
 
 	public void SetMenuActive(){
 	
-		Menu.SetActive (true);
+		stressMenu.SetActive (true);
 	}
 
 	//private bool isStartMenuActive;

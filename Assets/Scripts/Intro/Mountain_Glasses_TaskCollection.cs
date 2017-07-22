@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
@@ -8,16 +9,17 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 	private SkinnedMeshRenderer thisSkinMeshRend;
 	[SerializeField]private GameObject glasses;
 
-	// Use this for initialization
 	public override void Start () {
-
-
+		
+		infoTextComponent.text = "BYE,BYE" + textAfterCompletion;
 		thisAnimator = GetComponent<Animator> ();
 		thisSkinMeshRend = GetComponentInChildren<SkinnedMeshRenderer> ();
 		thisAnimator.SetBool ("Idle", false);
 		thisAnimator.SetBool ("Walk", true);
 
 		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1) {
+			thisParticleSystem.startColor = new ParticleSystem.MinMaxGradient (Color.green);
+			infoTextComponent.text = textAfterCompletion;
 			glasses.SetActive (true);
 			collectObjParent.gameObject.SetActive (false);
 			thisAnimator.SetBool ("IsNotLooking", true);
@@ -94,31 +96,29 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 			}
 		}
 
-		//	Debug.Log("PlayerSlotUSED:" + PlayerManager.Instance.playerSlotGOList.Count + " GO TO Collect: " + gOsToCollect.Count + " ItemsCollected:" + itemsCollected);
 		if (cCount == itemsCollected) {
+
+			SaveTaskCompletion ();
 
 			infoTextComponent.text = textAfterCompletion;
 
 
-
 			for (int i = 0; i < cCount; i++) {
-				Debug.Log ("CHILDNAMEBEINGERASED: " + collectObjParent.GetChild (i).gameObject);
 				PlayerManager.Instance.RemoveItemFromSlot (collectObjParent.GetChild(i).gameObject);
-				//DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
-
-				
 			}
 
 			if (objectToGive != null) 
 				PlayerManager.Instance.AddItemToSlot (objectToGive);
-			
-			//DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
+
+			UIStressGage.Instance.stress = -180;
+
 			thisAnimator.SetBool ("IsNotLooking", true);
 			thisSkinMeshRend.SetBlendShapeWeight (0, 20);
 			thisSkinMeshRend.SetBlendShapeWeight (1, 50);
 			thisSkinMeshRend.SetBlendShapeWeight (3, 0);
+			//infoBackGround = Color.green;
 
-			SaveTaskCompletion ();
+
 			return;
 
 		}else

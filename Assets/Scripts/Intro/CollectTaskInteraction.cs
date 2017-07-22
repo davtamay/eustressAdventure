@@ -27,8 +27,6 @@ public class CollectTaskInteraction : InteractionBehaviour {
 	
 		if (other.CompareTag ("Player")) {
 
-			//transform.LookAt (player, Vector3.up);
-
 			if (PlayerPrefs.GetInt (nameForPlayerPref, 0) == 0) {
 				CheckForTaskCompletion ();
 			} else 

@@ -66,8 +66,6 @@ public class SAssessment : MonoBehaviour
 
 		sMenu = GameObject.FindWithTag ("StressMenu");
 
-
-
 		//if (string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase)) {
 		//	typeOfFeeling = GameObject.FindWithTag ("TypeOfFeeling");
 		//	typeOfFeeling.SetActive (true);

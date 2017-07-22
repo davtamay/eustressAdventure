@@ -186,40 +186,20 @@ public class PlayerManager : MonoBehaviour {
 	public void RemoveItemFromSlot(GameObject gO){
 
 		GameObject GO = StringToGODict [gO.name];
-		int curSlot = playerIntToSpriteUISlotsDict.Count;
+	
 
 		foreach (SpriteRenderer curSR in playerIntToSpriteUISlotsDict.Values) {
 			
-			curSlot--;
-
-			//if (curSR.sprite == null)
-			//	continue;
-
 			if (curSR.sprite == totalGOToSpriteInSceneDict [GO].sprite){
-				//continue;
-				Debug.Log ("REMOVEITEMFROMLIST CURSLOT:" + curSlot + ";totalGOTOSpriteValueInput:" + totalGOToSpriteInSceneDict [GO].sprite.name +  ";playerinttoSpriteUISpriteName" + curSR.sprite.name);
-			//if (curSR.sprite == totalGOToSpriteInSceneDict [GO].sprite) {
-				//playerIntToSpriteUISlotsDict [curSlot].sprite = null;
+				
 				curSR.sprite = null;
-				playerIntToSpriteUISlotsDict [curSlot].gameObject.SetActive (false);
+				curSR.gameObject.SetActive (false);
 
 				GameObject mainObject = totalGOToSpriteInSceneDict [GO].transform.parent.parent.parent.gameObject;
 				playerItemSlotGOList.Remove (mainObject);
 				StringToGODict.Remove (mainObject.name);
 
-				//if(playerItemSlotGOList.Contains(StringToGODict[mainObject.name]))
-				//	playerItemSlotGOList.Remove (totalGOToSpriteInSceneDict [gO].transform.parent.parent.parent.gameObject);
 			}
-			//break;
-
-				/*curSR.sprite = null;
-				curSlot--;
-				//GO.SetActive(false);
-				curSR.gameObject.SetActive (false);
-				playerItemSlotGOList.Remove (gO);
-				playerItemSlotGOList.Remove (totalGOToSpriteInSceneDict [gO].transform.parent.parent.gameObject);
-				*/
-		//	}
 			
 		}
 		DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
@@ -242,8 +222,6 @@ public class PlayerManager : MonoBehaviour {
 					GameController.Instance.isGameOver = true;
 					GameController.Instance.Paused = true;
 
-
-		
 				};
 			}
 				if (value + _health > _health && !(healthColor.a == 0.0f)){

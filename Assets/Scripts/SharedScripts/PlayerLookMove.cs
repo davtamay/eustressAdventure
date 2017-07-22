@@ -36,6 +36,10 @@ public class PlayerLookMove : MonoBehaviour {
 	[SerializeField]private float angleSpeed = 5;
 	private ControllerColliderHit _contact;
 
+	[SerializeField]private float amountOfStressToAdd;
+	[SerializeField]private float stressToAddPerSeconds;
+
+
 	void Awake(){
 		
 		controller = GetComponent<CharacterController> ();
@@ -55,7 +59,20 @@ public class PlayerLookMove : MonoBehaviour {
 
 	
 	// Update is called once per frame
+	float timer;
 	void Update () {
+
+		if(string.Equals(SceneController.Instance.GetCurrentSceneName(), "Intro", System.StringComparison.CurrentCultureIgnoreCase)){
+
+			timer += Time.deltaTime;
+
+			if (timer > stressToAddPerSeconds){
+				timer = 0;
+				UIStressGage.Instance.stress = amountOfStressToAdd;
+
+			}
+
+		}
 
 		isCharInGround = isCharGrounded();
 

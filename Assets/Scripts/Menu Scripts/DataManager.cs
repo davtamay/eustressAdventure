@@ -236,13 +236,21 @@ public class DataManager : MonoBehaviour {
 
 	}
 */
-	//TEST
-//	public void DeleteItemSlotData(){
+	
+//TEST
+	public void DeleteHighScoreSlotandPositionData(Vector3 originalPos){
 
-//		slotListStrings.Clear ();
-//		SaveItemList(new List<GameObject>());
+		//slotListStrings.Clear ();
+		SavePosition(new Vector3 (0,2,0));
+		SaveItemList(new List<GameObject>());
+		SaveSkyWalkerScore (0);	
+		SaveCollectionsScore (0);
+		SaveHitScore (0);
+		SaveHoopScore (0);
+		SaveMatchScore (0);
+		SaveWackScore (0);
 
-//	}
+	}
 	public void DeletePPDataTaskProgress(){
 		PlayerPrefs.DeleteAll ();
 	}

@@ -275,6 +275,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -1023,10 +1026,10 @@ RectTransform:
   m_Father: {fileID: 365442933}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 33.79064, y: -7.5}
+  m_SizeDelta: {x: 9.516257, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &78392494
 BoxCollider:
@@ -1064,6 +1067,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -2654,6 +2660,9 @@ MonoBehaviour:
   isEnvChanger: 1
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -3271,10 +3280,10 @@ RectTransform:
   m_Father: {fileID: 365442933}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 4.7581286, y: -7.5}
+  m_SizeDelta: {x: 9.516257, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &363669095
 BoxCollider:
@@ -3312,6 +3321,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -4591,6 +4603,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -4847,6 +4862,40 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 470648095}
+--- !u!1 &473644693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 473644694}
+  m_Layer: 5
+  m_Name: CR
+  m_TagString: CRText
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &473644694
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 473644693}
+  m_LocalRotation: {x: -0.09027626, y: -0, z: -0, w: 0.9959168}
+  m_LocalPosition: {x: 0, y: 0, z: -43.920467}
+  m_LocalScale: {x: 0.50000006, y: 0.4827332, z: 1.1185012}
+  m_Children:
+  - {fileID: 615662657}
+  m_Father: {fileID: 824116631}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -971.2001, y: 45.887302}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &488916349
 GameObject:
   m_ObjectHideFlags: 0
@@ -5009,6 +5058,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -5166,6 +5218,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -5327,6 +5382,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -6617,6 +6675,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -6787,7 +6848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &615662657
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6795,19 +6856,19 @@ RectTransform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 615662656}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.19}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.09027625, y: -0, z: -0, w: 0.9959168}
+  m_LocalPosition: {x: 0, y: 0, z: 33.497753}
+  m_LocalScale: {x: 2, y: 2.0334654, z: 0.93212587}
   m_Children:
   - {fileID: 405729320}
   - {fileID: 431596470}
   - {fileID: 365442933}
-  m_Father: {fileID: 824116631}
-  m_RootOrder: 3
+  m_Father: {fileID: 473644694}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -38.9, y: 2}
+  m_AnchoredPosition: {x: 1864.6, y: -106.60821}
   m_SizeDelta: {x: 125.2, y: 77.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &615662658
@@ -6988,6 +7049,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -7374,6 +7438,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -7600,6 +7667,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -8143,6 +8213,9 @@ MonoBehaviour:
   isEnvChanger: 1
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -8307,6 +8380,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 1
@@ -9025,6 +9101,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -9490,7 +9569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd7eff3e8b744e9e8b75f9ea0ed62bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Menu: {fileID: 0}
+  stressMenu: {fileID: 0}
   timerSpeed: 1.2
 --- !u!4 &800178970
 Transform:
@@ -9595,6 +9674,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -9896,7 +9978,7 @@ RectTransform:
   - {fileID: 321991092}
   - {fileID: 488916350}
   - {fileID: 1337983070}
-  - {fileID: 615662657}
+  - {fileID: 473644694}
   - {fileID: 1149869237}
   - {fileID: 835861835}
   - {fileID: 1596072593}
@@ -10058,6 +10140,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -10683,7 +10768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28dded03a7bb4a83961873fc3594c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSlotGOList: []
+  playerItemSlotGOList: []
   hurtColor: {r: 0, g: 0, b: 0, a: 0}
   addHealthColor: {r: 0, g: 0, b: 0, a: 0}
   healthColor: {r: 0, g: 0, b: 0, a: 0}
@@ -10932,10 +11017,10 @@ RectTransform:
   m_Father: {fileID: 365442933}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 62.82316, y: -7.5}
+  m_SizeDelta: {x: 9.516257, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &934522942
 BoxCollider:
@@ -10973,6 +11058,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -11151,6 +11239,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 1
@@ -11391,6 +11482,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 1
   gameScene: Intro
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -12366,10 +12460,10 @@ RectTransform:
   m_Father: {fileID: 365442933}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 48.3069, y: -7.5}
+  m_SizeDelta: {x: 9.516257, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &1062729284
 BoxCollider:
@@ -12407,6 +12501,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -12607,10 +12704,10 @@ RectTransform:
   m_Father: {fileID: 365442933}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 19.274385, y: -7.5}
+  m_SizeDelta: {x: 9.516257, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &1068848129
 BoxCollider:
@@ -12648,6 +12745,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -13016,6 +13116,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -13861,10 +13964,10 @@ RectTransform:
   m_Father: {fileID: 365442933}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 77.33941, y: -7.5}
+  m_SizeDelta: {x: 9.516257, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &1267602829
 BoxCollider:
@@ -13902,6 +14005,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -14486,6 +14592,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -14734,6 +14843,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -15134,6 +15246,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -15298,6 +15413,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -15578,6 +15696,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: SkyJumper
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 1
@@ -16256,6 +16377,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -16368,10 +16492,10 @@ RectTransform:
   m_Father: {fileID: 365442933}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 88.548775, y: -7.5}
+  m_SizeDelta: {x: 2.9024584, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1508660635
 MonoBehaviour:
@@ -16725,6 +16849,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -17275,6 +17402,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -17529,6 +17659,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -17988,6 +18121,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -18150,6 +18286,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -18626,6 +18765,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -18787,6 +18929,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 1
   gameScene: Intro
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -19907,6 +20052,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -20102,8 +20250,8 @@ RectTransform:
   m_Father: {fileID: 1708863334}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.8560499, y: 0}
+  m_AnchorMax: {x: 0.9999999, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -20396,6 +20544,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -20840,6 +20991,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0
@@ -22031,6 +22185,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 1
   isReplayButton: 0
@@ -22317,6 +22474,9 @@ MonoBehaviour:
   isEnvChanger: 0
   isGame: 0
   gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
   isBackButton: 0
   isStartButton: 0
   isReplayButton: 0

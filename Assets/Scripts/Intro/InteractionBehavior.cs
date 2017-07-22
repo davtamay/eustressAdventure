@@ -43,7 +43,7 @@ public class InteractionBehaviour : MonoBehaviour {
 	protected Animator infoCanvasAnimator;
 
 
-	private ParticleSystem.MainModule pS;
+	protected ParticleSystem.MainModule thisParticleSystem;
 
 
 	public virtual void Awake(){
@@ -60,8 +60,8 @@ public class InteractionBehaviour : MonoBehaviour {
 
 			infoCanvasPrefab.transform.SetParent(thisTransform);
 
-			pS = infoCanvasPrefab.GetComponentInChildren<ParticleSystem> ().main;
-			pS.startColor = new ParticleSystem.MinMaxGradient (infoBackGround);
+			thisParticleSystem = infoCanvasPrefab.GetComponentInChildren<ParticleSystem> ().main;
+			thisParticleSystem.startColor = new ParticleSystem.MinMaxGradient (infoBackGround);
 
 			infoTextComponent = infoCanvasPrefab.GetComponentInChildren<Text> ();
 			infoTextComponent.alignment = textAnchor;//(TextAnchor)textAllignment;
@@ -72,8 +72,8 @@ public class InteractionBehaviour : MonoBehaviour {
 			RectTransform infoTextRect = infoTextComponent.transform.GetComponent<RectTransform> ();
 			infoTextRect.sizeDelta = new Vector2 (InfoSize.x,InfoSize.y);
 
-			pS.startSizeX = new ParticleSystem.MinMaxCurve(infoTextRect.sizeDelta.x/50 );
-			pS.startSizeY = new ParticleSystem.MinMaxCurve(infoTextRect.sizeDelta.y/50 );
+			thisParticleSystem.startSizeX = new ParticleSystem.MinMaxCurve(infoTextRect.sizeDelta.x/50 );
+			thisParticleSystem.startSizeY = new ParticleSystem.MinMaxCurve(infoTextRect.sizeDelta.y/50 );
 
 
 			infoCanvasPrefab.SetActive (false);
@@ -100,7 +100,7 @@ public class InteractionBehaviour : MonoBehaviour {
 	}
 	
 	public IEnumerator InfoActive(){
-		infoTextComponent.text = infoText;
+		
 		float timer = timeActive;
 		float time = 0;
 
