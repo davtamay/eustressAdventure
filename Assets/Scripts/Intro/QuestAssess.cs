@@ -16,6 +16,13 @@ public class QuestAssess : MonoBehaviour {
 
 	private static QuestAssess instance = null;
 
+	private Transform cam;
+
+	[SerializeField]private float scrollSpeed;
+
+	private Button[] navigationButtons;
+	private Scrollbar questScrollBar;
+
 	 void Awake(){
 		//PlayerPrefs.DeleteAll ();
 		if (instance) {
@@ -24,6 +31,11 @@ public class QuestAssess : MonoBehaviour {
 		}
 		instance = this; 
 
+		cam = Camera.main.transform;
+
+		Transform tempParent = transform.parent.parent;
+		navigationButtons = tempParent.GetComponentsInChildren <Button>();
+		questScrollBar = tempParent.GetComponentInChildren<Scrollbar> ();
 
 		taskDictionary = new Dictionary<string, string>();
 
@@ -41,6 +53,7 @@ public class QuestAssess : MonoBehaviour {
 		}
 		Debug.Log("TEXT SPASES: " + qTextSpaces.Length);
 	}
+		
 
 	int count = 0;
 
@@ -48,6 +61,29 @@ public class QuestAssess : MonoBehaviour {
 	void Start(){
 
 		OnUpdate ();
+	
+	}
+
+	void Update(){
+
+
+
+		RaycastHit hit;
+
+		if(Physics.Raycast(cam.position, cam.rotation * Vector3.forward, out hit)){
+
+			if (string.Equals (hit.transform.name, navigationButtons [0].transform.name, System.StringComparison.CurrentCultureIgnoreCase)) {
+				questScrollBar.value += Time.deltaTime * scrollSpeed;
+				//navigationButtons [0].animationTriggers.pressedTrigger.
+				navigationButtons[0].Select();
+				//navigationButtons[0].OnPointerDown(UnityEngine.EventSystems.ExecuteEvents.EX);
+			} else if (string.Equals (hit.transform.name, navigationButtons [1].transform.name, System.StringComparison.CurrentCultureIgnoreCase)) {
+				questScrollBar.value -= Time.deltaTime * scrollSpeed;
+				navigationButtons[1].Select();
+			}
+
+
+		}
 	
 	}
 

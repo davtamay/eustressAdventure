@@ -22,6 +22,7 @@ public class ButtonClickLook : MonoBehaviour {
 	private GameObject StressMenu;
 
 	private SAssessment sAsses;
+
 	public bool isSType = false;
 
 	public bool isStressed = false;
@@ -170,7 +171,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 				StressMenu.SetActive (false);
 				GameController.Instance.Paused = false;
-				GetComponentInParent<OrientationAdjustment> ().ShowGame ();
+				//GetComponentInParent<OrientationAdjustment> ().ShowGame ();
 
 					
 			//	UnityEngine.Profiling.Profiler.EndSample ();
@@ -231,9 +232,14 @@ public class ButtonClickLook : MonoBehaviour {
 
 			} else if (isResetPositiontoHome) {
 
-				GameObject.FindWithTag ("Player").transform.position = homePosition;
-				DataManager.Instance.SavePosition (homePosition);
-				LoadScene ("Intro");
+
+				//DataManager.Instance.SavePosition (homePosition);
+				SceneController.Instance.isCustomSavePosition = true;
+				SceneController.Instance.customSavePosition = homePosition;
+
+				SceneController.Instance.Load ("Intro");
+
+				//GameObject.FindWithTag ("Player").transform.position = homePosition;
 
 			}else if (isMusicButton) {
 

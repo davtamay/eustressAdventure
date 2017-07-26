@@ -14,10 +14,13 @@ public class TriggerGameSelection : MonoBehaviour {
 
 	//[SerializeField] private Color stepOutColor;
 	//[SerializeField] private Color stepInColor;
-
+	//private Collider thisCollider;
+	public bool isOn = true;
 
 
 	void Awake(){
+
+		//thisCollider = GetComponent<Collider> ();
 	
 		particleSys = GetComponent <ParticleSystem> ().main;
 		particleSys.startColor = new ParticleSystem.MinMaxGradient (Color.green);
@@ -29,7 +32,12 @@ public class TriggerGameSelection : MonoBehaviour {
 	
 		if (other.CompareTag ("Player")) {
 
-		
+			if (!other.GetComponent<PlayerLookMove> ().enabled) {
+				isOn = false;
+				return;
+			} else
+				isOn = true;
+
 			particleSys.startColor = new ParticleSystem.MinMaxGradient(Color.blue);
 
 
@@ -43,8 +51,11 @@ public class TriggerGameSelection : MonoBehaviour {
 
 	void OnTriggerStay(Collider other){
 
+		if (!isOn)
+			return;
+			
 		if (other.CompareTag ("Player")) {
-		
+
 			timer += Time.deltaTime;
 
 			if (timer > timeUntilSceneChange) {
@@ -65,6 +76,11 @@ public class TriggerGameSelection : MonoBehaviour {
 	
 
 		if (other.CompareTag ("Player")) {
+
+			if (!other.GetComponent<PlayerLookMove> ().enabled) {
+				isOn = true;
+				return;
+			}
 
 			timer = 0;
 			particleSys.startColor = new ParticleSystem.MinMaxGradient(Color.green);

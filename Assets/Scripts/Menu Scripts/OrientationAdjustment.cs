@@ -30,6 +30,8 @@ public class OrientationAdjustment : MonoBehaviour {
 
 
 	void Awake(){
+		//new
+
 
 		camTransform = Camera.main.transform;//cam.transform.parent;
 		camParent = camTransform.parent;//camHead.transform.parent;
@@ -59,6 +61,7 @@ public class OrientationAdjustment : MonoBehaviour {
 
 
 	//void Update(){
+
 	IEnumerator UpdateGame(){
 
 
@@ -101,7 +104,7 @@ public class OrientationAdjustment : MonoBehaviour {
 
 				myRectTransform.localPosition = camTransform.rotation * Vector3.forward * destressOffset; 
 				myRectTransform.localRotation = Quaternion.LookRotation (myRectTransform.position - camTransform.position);
-				//dButton.SetActive (true);
+
 
 
 
@@ -174,7 +177,7 @@ public class OrientationAdjustment : MonoBehaviour {
 
 		myRectTransform.localPosition = camTransform.rotation * Vector3.forward * 3; 
 		myRectTransform.localRotation = Quaternion.LookRotation (myRectTransform.position -  camTransform.position);
-		//dButton.SetActive (true);
+
 	}
 
 

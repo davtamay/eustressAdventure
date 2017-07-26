@@ -200,15 +200,15 @@ public class GameController : MonoBehaviour {
 	}
 	public void MakeOnlyUIVisible(){
 
-		foreach (Camera c in cameras) 
-			c.cullingMask = 1 << 5;
+		//foreach (Camera c in cameras) 
+		//	c.cullingMask = 1 << 5;
 
 		
 	
 	}
 	public void MakeEverythingVisible(){
-		foreach (Camera c in cameras) 
-			c.cullingMask = -1;
+		//foreach (Camera c in cameras) 
+		//	c.cullingMask = -1;
 	}
 
 	public IEnumerator HitEffectLocation(Vector3 hitLoc){

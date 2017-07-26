@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Mountain_Cave_TaskCollection : CollectTaskInteraction {
 
-	Animator thisAnimator;
+	private Animator thisAnimator;
+
+	[SerializeField] private int wackScoreToBeat;
+	[SerializeField] private GameObject[] GOToActivateOnCompletion;
 
 	public override void Start(){
 
@@ -21,6 +24,9 @@ public class Mountain_Cave_TaskCollection : CollectTaskInteraction {
 			CheckForTaskCompletion ();
 		} else {
 			MoveRock ();
+
+			foreach (GameObject gO in GOToActivateOnCompletion)
+				gO.SetActive (true);
 			//infoCanvasPrefab.SetActive (true);
 			infoTextComponent.text = textAfterCompletion;
 			return;
@@ -57,6 +63,20 @@ public class Mountain_Cave_TaskCollection : CollectTaskInteraction {
 	
 	}
 
+	public override void CheckForTaskCompletion ()
+	{
+
+		SaveTaskIdentified ();
+
+		if (DataManager.Instance.LoadWackScore () > wackScoreToBeat) {
+			SaveTaskCompletion ();
+
+			foreach (GameObject gO in GOToActivateOnCompletion)
+				gO.SetActive (true);
+		
+		}
+			
+	}
 
 
 

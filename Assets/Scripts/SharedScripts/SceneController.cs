@@ -24,6 +24,9 @@ public class SceneController : MonoBehaviour {
 
 	private Animator anim = null;
 
+	public bool isCustomSavePosition = false;
+	public Vector3 customSavePosition = Vector3.zero;
+
 	void Awake()
 	{
 		
@@ -39,9 +42,13 @@ public class SceneController : MonoBehaviour {
 		instance = this; 
 
 
-	}
-	void Start(){
 		stressMenu = GameObject.FindWithTag ("StressMenu");
+
+	}
+		
+
+	void Start(){
+		
 		stressMenu.SetActive (false);
 
 		player = GameObject.FindWithTag ("Player").transform;
@@ -54,13 +61,6 @@ public class SceneController : MonoBehaviour {
 	}
 
 	void OnLevelLoad(Scene scene, LoadSceneMode sceneMode){
-
-
-
-		if(string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase))
-			GameController.Instance.Paused = false;
-		else GameController.Instance.Paused = true;
-
 
 		SAssessment.Instance.OnLevelWasLoad ();
 
@@ -90,8 +90,17 @@ public class SceneController : MonoBehaviour {
 
 	public void Load(string scene){
 
+
+
 		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
-			DataManager.Instance.SavePosition (player.position);
+			if (!isCustomSavePosition)
+				DataManager.Instance.SavePosition (player.position);
+			else {
+				DataManager.Instance.SavePosition (customSavePosition);
+				isCustomSavePosition = false;
+
+			}
+			
 			DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
 
 			//new 5/20/17
@@ -124,6 +133,7 @@ public class SceneController : MonoBehaviour {
 	public IEnumerator ChangeScene (string scene){
 		
 		while (true) {
+			yield return null;
 
 			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Faded")) {
 				SceneManager.LoadScene (scene);
