@@ -26,7 +26,7 @@ public class ButtonClickLook : MonoBehaviour {
 	public bool isSType = false;
 
 	public bool isStressed = false;
-	public bool isMenuCope = false;
+	public bool isButtonInvoke = false;
 
 	public bool isEnvChanger = false;
 
@@ -37,7 +37,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 	[SerializeField] private bool isRestartProgress;
 
-	public bool isBackButton = false;
+	public bool isBackToIntroButton = false;
 	public bool isStartButton = false;
 	public bool isReplayButton = false;
 	public bool isMusicButton = false;
@@ -48,15 +48,19 @@ public class ButtonClickLook : MonoBehaviour {
 
 	private Collider col;
 
+	[SerializeField] private bool isStressModified;
+	[SerializeField] private float stressModifiedAmount;
+
+
 
 	public enum StressTypes{angry, anxious, dissapointed, frustrated, sad, worried, none};
-	public enum MenuCoping {breathing, counting, refraiming, music, paint, meditation, none};
+	//public enum MenuCoping {breathing, counting, refraiming, music, paint, meditation, none};
 
 	public enum MusicPlayerButton{play,stop,next,previous, none}
 	public MusicPlayerButton curMusicButton;
 
 	public StressTypes StressT;
-	public MenuCoping copingMethod;
+	//public MenuCoping copingMethod;
 
 
 
@@ -207,7 +211,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 				SceneController.Instance.ChangeSkyBox ();
 
-			} else if (isBackButton) {
+			} else if (isBackToIntroButton) {
 
 
 				if (PlayerManager.Instance != null && DataManager.Instance != null) {
@@ -306,10 +310,10 @@ public class ButtonClickLook : MonoBehaviour {
 
 				}
 
-			} else if (isMenuCope && !isSMenuOpener) {
+			} else if (isButtonInvoke && !isSMenuOpener) {
 				
-				
-				switch (copingMethod) {
+				button.onClick.Invoke ();
+				/*switch (copingMethod) {
 
 				case MenuCoping.breathing:
 					button.onClick.Invoke ();
@@ -340,7 +344,7 @@ public class ButtonClickLook : MonoBehaviour {
 					//button.onClick.Invoke ();
 					break;
 				}
-						
+						*/
 			} else if (isGame && !isSMenuOpener) {
 
 				LoadScene (gameScene);
@@ -365,6 +369,9 @@ public class ButtonClickLook : MonoBehaviour {
 	}
 	public void LoadURL(string url){
 
+		if (isStressModified)
+			UIStressGage.Instance.stress = stressModifiedAmount;
+		
 		Application.OpenURL (url);
 		Application.Quit ();
 	

@@ -33,11 +33,14 @@ public class InteractionBehaviour : MonoBehaviour {
 	[Header("Information")] [SerializeField]protected UnityEvent onInformationSelect;
 	[TextArea(0,15)][SerializeField]protected string informationText;
 
+	[Header("OnCompletion")] public UnityEvent onCompletion;
+	[TextArea(0,15)][SerializeField]protected string completionText;
+
 
 	protected Text infoTextComponent;
-
-	protected float distanceToInteraction;
 	protected Transform thisTransform;
+	protected float distanceToInteraction;
+
 	protected Transform player;
 
 	protected Animator infoCanvasAnimator;

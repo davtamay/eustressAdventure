@@ -27,6 +27,7 @@ public class DataManager : MonoBehaviour {
 	private static DataManager instance = null;
 
 	public int highScore = 0;
+	public float stressLevel = 0f;
 	public Vector3 position = Vector3.zero;
 	public List<string> slotListStrings = new List<string>();
 
@@ -140,6 +141,17 @@ public class DataManager : MonoBehaviour {
 		}
 
 		string items = Application.persistentDataPath + @"/curItems.json";
+
+		if (!File.Exists(items)) {
+
+			StreamWriter Writer = new StreamWriter (items);
+			Writer.WriteLine (JsonUtility.ToJson (this));
+			Writer.Close ();
+
+		}
+
+
+		string stressLevel = Application.persistentDataPath + @"/stressLevel.json";
 
 		if (!File.Exists(items)) {
 
@@ -336,6 +348,37 @@ public class DataManager : MonoBehaviour {
 
 
 	}
+	public void SaveStressLevel(float stressAmount){
+
+		string OutputPath = Application.persistentDataPath + @"/stressLevel.json";
+
+		this.stressLevel = stressAmount;
+
+		StreamWriter Writer = new StreamWriter (OutputPath);
+		Writer.WriteLine (JsonUtility.ToJson (this));
+		Writer.Close();
+		Debug.Log("output to:" + OutputPath);
+	}
+	public float LoadStressLevel (){
+
+
+		string InputPath = Application.persistentDataPath + @"/stressLevel.json";
+		Debug.Log (InputPath);
+		StreamReader Reader = new StreamReader (InputPath);
+		string JSonString = Reader.ReadToEnd ();
+		Debug.Log ("Reading:" + JSonString);
+		JsonUtility.FromJsonOverwrite (JSonString, this);
+		Reader.Close();
+
+		float stressAmount = 0;
+
+		stressAmount = this.stressLevel;
+
+		return stressAmount;
+
+
+	}
+
 
 	public void SaveSkyWalkerScore(int score){
 

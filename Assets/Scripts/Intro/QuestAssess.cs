@@ -24,7 +24,7 @@ public class QuestAssess : MonoBehaviour {
 	private Scrollbar questScrollBar;
 
 	 void Awake(){
-		//PlayerPrefs.DeleteAll ();
+
 		if (instance) {
 			DestroyImmediate (gameObject);
 			return;
@@ -34,8 +34,9 @@ public class QuestAssess : MonoBehaviour {
 		cam = Camera.main.transform;
 
 		Transform tempParent = transform.parent.parent;
+		//FIXME This may be causing errors to appear on console NullReferenceExemption(Null);
 		navigationButtons = tempParent.GetComponentsInChildren <Button>();
-		questScrollBar = tempParent.GetComponentInChildren<Scrollbar> ();
+		questScrollBar = tempParent.parent.GetComponentInChildren<Scrollbar> ();
 
 		taskDictionary = new Dictionary<string, string>();
 

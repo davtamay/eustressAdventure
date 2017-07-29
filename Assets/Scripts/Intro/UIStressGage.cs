@@ -31,7 +31,7 @@ public class UIStressGage : MonoBehaviour {
 		stressGageArrow = transform.GetChild (0);
 		originalPos = stressGageArrow.localEulerAngles;
 
-		stress = 6;
+		stress = 2;
 	}
 
 
@@ -42,12 +42,15 @@ public class UIStressGage : MonoBehaviour {
 
 		get { return _stress; } 
 
-		set {if (_stress + value <= 5) {
+		set {if (_stress + value <= 0) {
 				stressGageArrow.localEulerAngles = new Vector3 (0, 0,180);
+				_stress = 0;
 				value = 0;
+				return;
 			}
-			if (_stress + value >= 175) {
+			if (_stress + value >= 180) {
 				stressGageArrow.localEulerAngles = new Vector3 (0, 0, 0);
+				_stress = 180;
 				value = 0;
 				return;
 			}

@@ -62,6 +62,8 @@ public class PlayerLookMove : MonoBehaviour {
 	float timer;
 	void Update () {
 
+		//Debug.Log (DogInteraction.curDogInteraction);
+
 		if(string.Equals(SceneController.Instance.GetCurrentSceneName(), "Intro", System.StringComparison.CurrentCultureIgnoreCase)){
 
 			timer += Time.deltaTime;

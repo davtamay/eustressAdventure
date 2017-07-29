@@ -6,13 +6,15 @@ using UnityEngine.UI;
 
 public class DogInteraction : InteractionBehaviour{
 
-	private Coroutine FollowPlayer;
+	private Coroutine FollowTarget;
 
 	[SerializeField]private float walkingSpeed;
 	[SerializeField]private float maxDistance;
 	[SerializeField]private float slowRadius;
 	[SerializeField]private float dogSpeedRotation = 1.5f;
 	[SerializeField][Range(0f,1f)]private float chanceOfJump;
+
+	public Transform dogTransform;
 
 	private Animator thisAnimator;
 	private int idleAnimHash = Animator.StringToHash("Idle");
@@ -21,12 +23,17 @@ public class DogInteraction : InteractionBehaviour{
 
 	private bool isFollowing = false;
 
-	private static DogInteraction curDogInteraction = null;
+	public static DogInteraction curDogInteraction = null;
 	//private static GameObject curDogInteraction;
 
+	public Transform target;
+
 	public override void Awake(){
-		//PlayerPrefs.DeleteAll ();
+		
 		base.Awake ();
+
+		target = player;
+		dogTransform = thisTransform;
 		thisAnimator = GetComponent<Animator> ();
 		thisRenderer = GetComponentInChildren<SkinnedMeshRenderer> ();
 	
@@ -44,7 +51,7 @@ public class DogInteraction : InteractionBehaviour{
 		}else{
 
 			if (isFollowing) {
-				StopCoroutine (curDogInteraction.transform.GetComponent<DogInteraction>().FollowPlayer);
+				StopCoroutine (curDogInteraction.transform.GetComponent<DogInteraction>().FollowTarget);
 				curDogInteraction = null;
 				isFollowing = false;
 				return;
@@ -55,19 +62,19 @@ public class DogInteraction : InteractionBehaviour{
 			
 		onInitialInteractionSelect.Invoke ();
 
-		FollowPlayer = StartCoroutine (Follow());
+		FollowTarget = StartCoroutine (Follow());
 	
 	}
 	private void OnChange(){
 
 		if (curDogInteraction) {
-			LookInteraction tempLI = curDogInteraction.transform.FindChild ("ActionSelect").GetComponent<LookInteraction> (); 
+			LookInteraction tempLI = curDogInteraction.transform.Find ("ActionSelect").GetComponent<LookInteraction> (); 
 			//tempLI.image.sprite = tempLI.originalSprite;
 			tempLI.ChangeSprite();
 
 			curDogInteraction.isFollowing = false;
 
-			StopCoroutine (curDogInteraction.transform.GetComponent<DogInteraction>().FollowPlayer);
+			StopCoroutine (curDogInteraction.transform.GetComponent<DogInteraction>().FollowTarget);
 			curDogInteraction = this;//.gameObject;
 
 			//check for bugs especially for switching multiple pets
@@ -80,6 +87,7 @@ public class DogInteraction : InteractionBehaviour{
 
 	private void OnTriggerExit(Collider other){
 
+		if (!isFollowing)
 		if (other.CompareTag ("Player")) {
 			timer = 0;
 			GetComponent<RandomMoveAnimations> ().isRandomOn = true;
@@ -101,8 +109,8 @@ public class DogInteraction : InteractionBehaviour{
 
 			if (timer > timeUntilRespond) {
 				
-				thisTransform.rotation = Quaternion.RotateTowards (thisTransform.rotation, Quaternion.LookRotation (Camera.main.transform.position - thisTransform.position), dogSpeedRotation);
-				//thisTransform.eulerAngles = new Vector3 (0, thisTransform.eulerAngles.y);
+				thisTransform.rotation = Quaternion.RotateTowards (thisTransform.rotation, Quaternion.LookRotation (target.position - thisTransform.position), dogSpeedRotation);
+
 
 
 				thisAnimator.SetBool(walkAnimHash,false);
@@ -110,9 +118,9 @@ public class DogInteraction : InteractionBehaviour{
 				GetComponent<RandomMoveAnimations> ().isRandomOn = false;
 
 			}
-			if (Vector3.Dot (thisTransform.forward, playerDirection) >= 0.99f || timer > 2) {
+			if (Vector3.Dot (thisTransform.forward, targetDirection) >= 0.99f || timer > 2) {
 				timer = 0;
-				GoToPlayer ();
+				GoToTarget ();
 			}
 
 				
@@ -126,13 +134,13 @@ public class DogInteraction : InteractionBehaviour{
 
 
 
-	private IEnumerator Follow(){
+	public IEnumerator Follow(){
 
 		isFollowing = true;
 
 		while (true) {
 
-			GoToPlayer ();
+			GoToTarget ();
 
 			yield return null;
 
@@ -141,15 +149,15 @@ public class DogInteraction : InteractionBehaviour{
 
 	}
 
-	Vector3 playerDistance;
+	Vector3 targetDistance;
 	float distance; 
-	Vector3 playerDirection; 
+	Vector3 targetDirection; 
 
-	public void GoToPlayer(){
+	public void GoToTarget(){
 
-		playerDistance = player.position - thisTransform.position;
-		distance = playerDistance.magnitude;
-		playerDirection = playerDistance.normalized;
+		targetDistance = target.position - thisTransform.position;
+		distance = targetDistance.magnitude;
+		targetDirection = targetDistance.normalized;
 
 		if (thisRenderer.isVisible) {
 			if (Random.Range (0f, 100f) < chanceOfJump) 
@@ -165,9 +173,9 @@ public class DogInteraction : InteractionBehaviour{
 		if (distance > maxDistance) {
 
 			if (distance > slowRadius)
-				velocity = playerDirection * walkingSpeed * Time.deltaTime;
+				velocity = targetDirection * walkingSpeed * Time.deltaTime;
 			else
-				velocity = playerDirection *walkingSpeed * Time.deltaTime * distance/ slowRadius;
+				velocity = targetDirection *walkingSpeed * Time.deltaTime * distance/ slowRadius;
 			velocity.y = 0;
 			thisTransform.position += velocity;
 
@@ -182,7 +190,7 @@ public class DogInteraction : InteractionBehaviour{
 			thisAnimator.SetBool ("Walk",false);
 		}
 
-
+		thisTransform.LookAt (target); 
 
 	}
 

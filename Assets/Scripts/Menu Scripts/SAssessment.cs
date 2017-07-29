@@ -64,7 +64,7 @@ public class SAssessment : MonoBehaviour
 		
 	public void Start(){
 
-		sMenu = GameObject.FindWithTag ("StressMenu");
+		//sMenu = GameObject.FindWithTag ("StressMenu");
 
 		//if (string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase)) {
 		//	typeOfFeeling = GameObject.FindWithTag ("TypeOfFeeling");
@@ -94,8 +94,8 @@ public class SAssessment : MonoBehaviour
 
 		cRTextRect.sizeDelta = new Vector2 (widthExpand * 10f, 50);
 
-		sMenu = GameObject.FindWithTag ("StressMenu");
-		sMenu.SetActive (false);
+		//sMenu = GameObject.FindWithTag ("StressMenu");
+		//sMenu.SetActive (false);
 
 		/*if (string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase)) {
 			GameController.Instance.Paused = false;

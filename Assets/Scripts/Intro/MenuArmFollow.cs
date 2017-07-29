@@ -50,9 +50,10 @@ public class MenuArmFollow : MonoBehaviour {
 	bool isLerping = false;
 	void LateUpdate () {
 		if (Input.GetMouseButton (0)) {
+			curViewingAngle = camTransform.forward;
 
 			thisTransform.GetChild(0).gameObject.SetActive(true);
-			oldViewingAngle = camTransform.forward;
+			//oldViewingAngle = camTransform.forward;
 			isInitialClick = true;
 
 		}
@@ -60,6 +61,8 @@ public class MenuArmFollow : MonoBehaviour {
 		if (isInitialClick) {
 		
 			if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsTag ("Idle")) {
+
+
 				stressMenu.SetActive (true);
 				isInitialClick = false;
 			

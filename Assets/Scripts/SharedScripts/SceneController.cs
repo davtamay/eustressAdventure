@@ -53,7 +53,7 @@ public class SceneController : MonoBehaviour {
 
 		player = GameObject.FindWithTag ("Player").transform;
 		player.position = DataManager.Instance.LoadPosition ();
-
+		UIStressGage.Instance.stress = DataManager.Instance.LoadStressLevel ();
 
 		SceneManager.sceneLoaded += OnLevelLoad;
 
@@ -61,8 +61,12 @@ public class SceneController : MonoBehaviour {
 	}
 
 	void OnLevelLoad(Scene scene, LoadSceneMode sceneMode){
+		
 
 		SAssessment.Instance.OnLevelWasLoad ();
+
+		stressMenu = GameObject.FindWithTag ("StressMenu");
+		stressMenu.SetActive (false);
 
 		RenderSettings.skybox = skyboxes [currentSkybox];
 
@@ -76,13 +80,14 @@ public class SceneController : MonoBehaviour {
 			player = GameObject.FindWithTag ("Player").transform;
 
 			player.position = DataManager.Instance.LoadPosition ();
+			UIStressGage.Instance.stress = DataManager.Instance.LoadStressLevel ();
 
 			//new 5/20/17
 
 			//player.position = DataManager.Instance.LoadPlayerData().position;
 
 
-			Debug.Log ("SceneController playerslot count: " + PlayerManager.Instance.playerItemSlotGOList.Count);
+			//Debug.Log ("SceneController playerslot count: " + PlayerManager.Instance.playerItemSlotGOList.Count);
 		}
 			
 
@@ -100,7 +105,7 @@ public class SceneController : MonoBehaviour {
 				isCustomSavePosition = false;
 
 			}
-			
+			DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
 			DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
 
 			//new 5/20/17
@@ -123,8 +128,10 @@ public class SceneController : MonoBehaviour {
 	public void OnApplicationQuit(){
 
 		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
+			DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
 			DataManager.Instance.SavePosition (player.position);
 			DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
+
 
 
 		}
