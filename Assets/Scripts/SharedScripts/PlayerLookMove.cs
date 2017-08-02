@@ -28,7 +28,7 @@ public class PlayerLookMove : MonoBehaviour {
 
 	[SerializeField] private bool isSlotsPresent;
 	private GameObject UISlots;
-	private bool isStayedLookingDown;
+	//private bool isStayedLookingDown;
 
 	private bool isCharInGround;
 
@@ -93,7 +93,7 @@ public class PlayerLookMove : MonoBehaviour {
 				isGoingDown = false;
 				isGoingUp = true;
 				//new
-				isStayedLookingDown = false;
+				//isStayedLookingDown = false;
 		
 			} 
 
@@ -150,12 +150,12 @@ public class PlayerLookMove : MonoBehaviour {
 
 
 
-			if (isSlotsPresent) {
+			/*if (isSlotsPresent) {
 				if (!UISlots.activeInHierarchy && !isStayedLookingDown)
 					StartCoroutine (PlayerManager.Instance.ShowUISlots());
 
-			}
-			isStayedLookingDown = true;
+			}*/
+			//isStayedLookingDown = true;
 
 			} 
 	/*	if (controller.isGrounded) {

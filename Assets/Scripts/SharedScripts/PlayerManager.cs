@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour {
 	}
 
 	void Awake (){
-
+		UISlots = GameObject.FindWithTag ("UISlot");
 		//new
 		if (instance != null) {
 			Debug.LogError ("There is two instances off PlayerManager");
@@ -90,15 +90,12 @@ public class PlayerManager : MonoBehaviour {
 				Debug.Log ("GOInEnvironment: " + GO.name);
 			}
 			//Debug.Log("TOTALGOSPRITEINSCENDIC" + totalGOToSpriteInSceneDict.Values.Count);
-			UISlots = GameObject.FindWithTag ("UISlot");
+			//UISlots = GameObject.FindWithTag ("UISlot");
 
 
 			int itemCount = 0;
 
 			foreach (Transform curTran in UISlots.transform) {
-
-				//if (curTran.GetComponent<SpriteRenderer> () == null)
-				//	continue;
 
 
 				playerIntToSpriteUISlotsDict.Add(itemCount, curTran.GetComponentInChildren<SpriteRenderer>(true));
@@ -108,16 +105,29 @@ public class PlayerManager : MonoBehaviour {
 				curTran.gameObject.SetActive (false);
 				//Debug.Log ("SLOTS:" + curTran.name);
 			}
-			//Debug.Log("playeINTTOSPRITEUISLOTSDIC" + playerItemSlotGOList.Count + "ITEMCOUNT" + itemCount);
-			if (DataManager.Instance.LoadItemList ().Count != 0) {
-				playerItemSlotGOList.Clear ();
-				for (int i = 0; i < DataManager.Instance.LoadItemList ().Count; i++) {
-					if (!playerItemSlotGOList.Contains (DataManager.Instance.LoadItemList () [i])) {
-						playerItemSlotGOList.Add (DataManager.Instance.LoadItemList () [i]);
-						AddItemToSlot (DataManager.Instance.LoadItemList () [i]);
+				
+			//Needs to initiate before using liststringnames
+			int loadItemListCount = DataManager.Instance.LoadItemList ().Count;
 
-						DataManager.Instance.LoadItemList () [i].SetActive (false);
-						//Destroy(DataManager.Instance.LoadItemList () [i]);
+		//	foreach (GameObject gO in DataManager.Instance.LoadItemList ())
+		//		Debug.Log("LOADED LIST + : " + gO.name);
+			
+			//Debug.Log("playeINTTOSPRITEUISLOTSDIC" + playerItemSlotGOList.Count + "ITEMCOUNT" + itemCount);
+			if (loadItemListCount != 0) {
+				playerItemSlotGOList.Clear ();
+				for (int i = 0; i < loadItemListCount ; i++) {
+
+					if (!playerItemSlotGOList.Contains (StringToGODict[DataManager.Instance.slotListItemNames[i]])) {
+				//	foreach (GameObject gO in DataManager.Instance.LoadItemList ())
+				//		Debug.Log("LOADED LIST AFTER + : " + gO.name);
+					//Debug.Log("LOADED LIST AFTERTHEFACT : " + DataManager.Instance.LoadItemList ().Count);
+					//	Debug.Log("!!!!!!GO BeingSent to be added to SLOTS: " + playerItemSlotGOList[i].name);
+						playerItemSlotGOList.Add (StringToGODict[DataManager.Instance.slotListItemNames[i]]);
+						AddItemToSlot (StringToGODict[DataManager.Instance.slotListItemNames[i]]);
+
+					
+						StringToGODict[DataManager.Instance.slotListItemNames[i]].SetActive (false);
+
 			
 					}
 				
@@ -140,7 +150,7 @@ public class PlayerManager : MonoBehaviour {
 				}
 			}*/
 
-			UISlots.SetActive (false);
+			//UISlots.SetActive (false);
 
 		}
 
@@ -153,7 +163,7 @@ public class PlayerManager : MonoBehaviour {
 
 		GameObject GO = StringToGODict [gO.name];
 
-
+		//Debug.Log("When Adding playerITEMSLOTGOLIST :" + PlayerManager.Instance.playerItemSlotGOList.Count);
 
 		foreach (SpriteRenderer curSR in playerIntToSpriteUISlotsDict.Values) {
 			if(curSR.sprite != null)
@@ -176,8 +186,8 @@ public class PlayerManager : MonoBehaviour {
 		
 		
 		playerIntToSpriteUISlotsDict [curSlot].gameObject.SetActive (true);
-		StartCoroutine (ShowUISlots ());
-
+	//	StartCoroutine (ShowUISlots ());
+	//	Debug.Log("When Adding playerITEMSLOTGOLIST :" + PlayerManager.Instance.playerItemSlotGOList.Count);
 		DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
 	
 
@@ -311,12 +321,12 @@ public class PlayerManager : MonoBehaviour {
 		healthColorIndicator.color = healthColor;
 
 	}
-	public IEnumerator ShowUISlots(){
+	/*public IEnumerator ShowUISlots(){
 
 		UISlots.SetActive(true);
 		yield return new WaitForSeconds (4f);
 		UISlots.SetActive(false);
 
 
-	}
+	}*/
 }

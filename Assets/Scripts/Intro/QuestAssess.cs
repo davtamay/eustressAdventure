@@ -105,18 +105,18 @@ public class QuestAssess : MonoBehaviour {
 	bool EvaluatePlayerPref(string pPName){
 
 		if (!PlayerPrefs.HasKey (pPName)) {
-			Debug.Log ("PlayerPrefAssess: there is no " + pPName);
+		//	Debug.Log ("PlayerPrefAssess: there is no " + pPName);
 		//	qTextSpaces [count].text = string.Empty;
 			return false;
 		}else{
 		
 			if (PlayerPrefs.GetInt (pPName) == 0) {
-				Debug.Log ("PlayerPrefAssess: have but not completed " + pPName);
+			//	Debug.Log ("PlayerPrefAssess: have but not completed " + pPName);
 				qTextSpaces [count].text = taskDictionary [pPName];//questDescriptions [qID];
 				qTextSpaces [count].color = Color.gray;
 
 			} else if (PlayerPrefs.GetInt (pPName) == 1) {
-				Debug.Log ("PlayerPrefAssess: completed " + pPName);
+			//	Debug.Log ("PlayerPrefAssess: completed " + pPName);
 				qTextSpaces [count].text = taskDictionary [pPName];//questDescriptions [qID];
 				qTextSpaces [count].color = Color.green;
 

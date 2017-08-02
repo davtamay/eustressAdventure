@@ -29,7 +29,7 @@ public class DataManager : MonoBehaviour {
 	public int highScore = 0;
 	public float stressLevel = 0f;
 	public Vector3 position = Vector3.zero;
-	public List<string> slotListStrings = new List<string>();
+	public List<string> slotListItemNames = new List<string>();
 
 //	public DataCollection dataCollected;
 
@@ -253,7 +253,7 @@ public class DataManager : MonoBehaviour {
 	public void DeleteHighScoreSlotandPositionData(Vector3 originalPos){
 
 		//slotListStrings.Clear ();
-		SavePosition(new Vector3 (0,2,0));
+		SavePosition(originalPos);
 		SaveItemList(new List<GameObject>());
 		SaveSkyWalkerScore (0);	
 		SaveCollectionsScore (0);
@@ -272,23 +272,24 @@ public class DataManager : MonoBehaviour {
 		
 		string OutputPath = Application.persistentDataPath + @"/curItems.json";
 	
-		slotListStrings.Clear ();
+									//slotListStrings.Clear ();
 		for (int i = 0; i < curSlotList.Count; i++) {
-		//Debug.Log((curSlotList [i].name));
-			if (slotListStrings.Contains (curSlotList [i].name)) {
-			//slotListStrings.Remove (curSlotList [i].name);
+		//Debug.Log(("SAVING SLOT LIST CONTAINS : " + curSlotList [i].name));
+			if (slotListItemNames.Contains (curSlotList [i].name)) {
+			//slotListItemNames.Remove (curSlotList [i].name);
 				continue;
 			}else
-			this.slotListStrings.Add (curSlotList [i].name);
+			this.slotListItemNames.Add (curSlotList [i].name);
 		
 		}
 	//Open Following to Clear Off Slot in case of error (Have to save by changing levels)
 	//PlayerPrefs.DeleteAll();
-	//slotListStrings.Clear ();
+	//slotListItemNames.Clear ();
 		StreamWriter Writer = new StreamWriter (OutputPath);
 		Writer.WriteLine (JsonUtility.ToJson (this));
 		Writer.Close();
 		Debug.Log("output to:" + OutputPath);
+		
 	}
 	public List<GameObject> LoadItemList (){
 
@@ -305,10 +306,14 @@ public class DataManager : MonoBehaviour {
 
 
 		foreach (string str in PlayerManager.Instance.StringToGODict.Keys){
+			
+			for (int i = 0; i < slotListItemNames.Count; i++)
+				if (str == slotListItemNames [i]) {
 
-			for (int i = 0; i < slotListStrings.Count; i++)
-				if (str == slotListStrings[i])
+			//	Debug.Log ("LOADITEMLIST SLOTLISTSTRINGS :" + slotListStrings[i]);
 					sList.Add (PlayerManager.Instance.StringToGODict [str]);
+
+				}
 			
 			}
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DogInteraction : InteractionBehaviour{
 
+	[Header("Dog Settings")]
 	private Coroutine FollowTarget;
 
 	[SerializeField]private float walkingSpeed;
@@ -25,8 +26,13 @@ public class DogInteraction : InteractionBehaviour{
 
 	public static DogInteraction curDogInteraction = null;
 	//private static GameObject curDogInteraction;
-
 	public Transform target;
+
+	[Header("Task Settings")]
+	[SerializeField] private string nameOfGONeeded = "Bone";
+	[SerializeField] private GameObject objectToActivateWhenHad;
+
+
 
 	public override void Awake(){
 		
@@ -60,7 +66,7 @@ public class DogInteraction : InteractionBehaviour{
 
 		}
 			
-		onInitialInteractionSelect.Invoke ();
+		onInitialInteraction.Invoke ();
 
 		FollowTarget = StartCoroutine (Follow());
 	
@@ -84,7 +90,26 @@ public class DogInteraction : InteractionBehaviour{
 		}
 
 	}
+	private void OnTriggerEnter(Collider other){
 
+
+		if (other.CompareTag ("Player")) {
+
+			foreach(GameObject gO in PlayerManager.Instance.playerItemSlotGOList){
+
+
+
+				if (string.Equals (gO.name, nameOfGONeeded, System.StringComparison.CurrentCultureIgnoreCase))
+					//onActionSelect.Invoke (); 
+					objectToActivateWhenHad.SetActive(true);
+
+				
+			}
+
+		}
+
+
+	}
 	private void OnTriggerExit(Collider other){
 
 		if (!isFollowing)

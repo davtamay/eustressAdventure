@@ -5,7 +5,7 @@ using UnityEngine;
 public class CollectTaskInteraction : InteractionBehaviour {
 
 
-	[SerializeField]protected Transform collectObjParent;
+	//[SerializeField]protected Transform collectObjParent;
 	[TextArea(0,15)][SerializeField]protected string textAfterCompletion;
 	[SerializeField]protected GameObject objectToGive;
 	[SerializeField]protected string nameForPlayerPref;
@@ -14,7 +14,7 @@ public class CollectTaskInteraction : InteractionBehaviour {
 
 
 		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1) {
-			collectObjParent.gameObject.SetActive (false);
+			//collectObjParent.gameObject.SetActive (false);
 
 			infoTextComponent.text = textAfterCompletion;
 		}//else if( PlayerPrefs.GetInt (nameForPlayerPref) == 0)
@@ -56,7 +56,8 @@ public class CollectTaskInteraction : InteractionBehaviour {
 	}
 
 	public virtual void CheckForTaskCompletion(){
-	
+
+		/*
 		int itemsCollected = 0;
 		int cCount = collectObjParent.childCount;
 
@@ -85,7 +86,7 @@ public class CollectTaskInteraction : InteractionBehaviour {
 
 		}else
 			return;
-	
+	*/
 	}
 	public void SaveTaskIdentified(){
 
@@ -93,14 +94,31 @@ public class CollectTaskInteraction : InteractionBehaviour {
 			PlayerPrefs.SetInt (nameForPlayerPref, 0);
 			PlayerPrefs.Save ();
 			QuestAssess.Instance.OnUpdate ();
+
+
 		}
 
+	}
+
+	public bool IsTaskIdentified(){
+		if (PlayerPrefs.HasKey (nameForPlayerPref) == true)
+			return true;
+
+		return false;
+	
 	}
 	public void SaveTaskCompletion(){
 
 		PlayerPrefs.SetInt (nameForPlayerPref, 1);
 		PlayerPrefs.Save ();
 		QuestAssess.Instance.OnUpdate ();
+	
+	}
+	public bool IsTaskCompleted(){
+		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1)
+			return true;
+
+		return false;
 
 	}
 

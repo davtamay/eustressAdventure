@@ -55,6 +55,7 @@ public class SceneController : MonoBehaviour {
 		player.position = DataManager.Instance.LoadPosition ();
 		UIStressGage.Instance.stress = DataManager.Instance.LoadStressLevel ();
 
+
 		SceneManager.sceneLoaded += OnLevelLoad;
 
 		anim = GetComponentInChildren<Animator>();

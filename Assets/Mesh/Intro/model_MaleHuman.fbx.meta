@@ -3,7 +3,7 @@ guid: c1072374a9d044942916d3d8a272d4ef
 timeCreated: 1501182500
 licenseType: Free
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 21
   fileIDToRecycleName:
     100000: Armature
     100002: Cube.004
@@ -92,17 +92,54 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Inbetween bone rotation
+      in configuration does not match rotation in animation file:\n\t'mid_leg_L' :
+      rotation error = 91.478951 deg\n\t'mid_leg_R' : rotation error = 91.478951 deg\n"
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Armature|anim_action_lonelySit' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation DOF
+      on avatar to improve retargeting quality.\n\t'mid_arm_L' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'mid_leg_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'mid_leg_R'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Armature|anim_Human_groundLook' has import animation warnings that might lower
+      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
+      quality.\n\t'mid_arm_L' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\nClip 'Armature|anim_Human_InjuredLeg' has import
+      animation warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'mid_arm_L' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'mid_leg_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Armature|anim_Human_meditation' has import animation warnings that might lower
+      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
+      quality.\n\t'mid_arm_L' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\nClip 'Armature|anim_Human_nakedSurpised' has import
+      animation warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'mid_arm_L' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\nClip 'Armature|anim_human_scratchinghead'
+      has import animation warnings that might lower retargeting quality:\nNote: Activate
+      translation DOF on avatar to improve retargeting quality.\n\t'mid_arm_L' is
+      inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Armature|anim_Human_walk' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'mid_arm_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'mid_leg_L'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'mid_leg_R'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Armature|ArmatureAction.001' has import animation warnings that might lower
+      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
+      quality.\n\t'mid_arm_L' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\t'mid_leg_L' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n\t'mid_leg_R' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Armature|anim_action_lonelySitIdle
@@ -1094,7 +1131,10 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -1110,6 +1150,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -1126,7 +1167,7 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2

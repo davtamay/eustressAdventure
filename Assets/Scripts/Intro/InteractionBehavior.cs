@@ -8,7 +8,8 @@ using UnityEngine;
 
 public class InteractionBehaviour : MonoBehaviour {
 
-	[SerializeField]protected UnityEvent onInitialInteractionSelect;
+	//[SerializeField]
+	public UnityEvent onInitialInteraction;
 
 	[Header("UI Text Settings")]
 	[SerializeField]protected GameObject infoCanvasPrefab;

@@ -7,6 +7,9 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 
 	private Animator thisAnimator;
 	private SkinnedMeshRenderer thisSkinMeshRend;
+
+	[Header("Task Settings")]
+	[SerializeField]protected Transform collectObjParent;
 	[SerializeField]private GameObject glasses;
 
 	public override void Start () {

@@ -34,7 +34,7 @@ public class Park_LonelyDog_TaskCollection : CollectTaskInteraction {
 
 	}
 
-	public void Start(){
+	public override void Start(){
 		
 
 		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1) {

@@ -53,7 +53,7 @@ public class MenuArmFollow : MonoBehaviour {
 			curViewingAngle = camTransform.forward;
 
 			thisTransform.GetChild(0).gameObject.SetActive(true);
-			//oldViewingAngle = camTransform.forward;
+			oldViewingAngle =  Quaternion.Euler(0,90,0) * camTransform.forward ;
 			isInitialClick = true;
 
 		}
@@ -76,6 +76,7 @@ public class MenuArmFollow : MonoBehaviour {
 			if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsTag ("Start")) {
 
 
+				isClosedClick = false;
 				thisAnimator.SetBool ("Close", false);
 				stressMenu.SetActive (false);
 				//thisAnimator.Rebind ();

@@ -126,8 +126,9 @@ public class LookInteraction : MonoBehaviour {
 				timeActive = 0;
 
 				if (isItemForSlot) 
-					PlayerManager.Instance.AddItemToSlot (transform.parent.gameObject);
-					//DataManager.Instance.SaveItemList (PlayerManager.Instance.playerSlotGOList);
+					PlayerManager.Instance.AddItemToSlot (transform.parent.gameObject);{
+					//DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
+				}
 
 				if (reducesStress)
 					UIStressGage.Instance.stress = -amountOfStressReduction;

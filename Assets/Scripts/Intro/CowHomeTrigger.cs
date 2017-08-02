@@ -5,13 +5,25 @@ using UnityEngine;
 public class CowHomeTrigger : MonoBehaviour {
 
 	public static int totalCows = 0;
+	public static Vector3 thisPosition;
+
+	void Awake(){
+	
+	
+		thisPosition = transform.position;
+	}
 
 	void OnTriggerEnter(Collider other){
 	
-	
+		Debug.Log (totalCows);
 		if(other.CompareTag("Cow")){
+
+			if (other.isTrigger)
+				Destroy (other);//.enabled = false;
 			//other.enabled = false;
-			totalCows++;
+
+			//++totalCows;
+
 
 
 			RandomMoveAnimations RMA = other.GetComponent<RandomMoveAnimations> ();
@@ -23,10 +35,12 @@ public class CowHomeTrigger : MonoBehaviour {
 			RMA.isFirstTime = false;
 			RMA.isRandomOn = true;
 
+			totalCows += 1;
 
-			//other.enabled = false;
+			//other.attachedRigidbody.isKinematic = true;
 
 
+			Destroy (other.attachedRigidbody);
 
 
 
@@ -40,7 +54,7 @@ public class CowHomeTrigger : MonoBehaviour {
 
 		if (other.CompareTag ("Cow")) {
 
-			other.enabled = false;
+		//	other.enabled = false;
 		}
 	}
 }

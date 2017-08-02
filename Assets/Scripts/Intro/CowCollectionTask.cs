@@ -4,20 +4,49 @@ using UnityEngine;
 
 public class CowCollectionTask : CollectTaskInteraction {
 
+	[Header("TaskSettings")]
+	[SerializeField]private GameObject[] cowsNeededToCollect;
+
+	//int cowsToCollectForCompletion;
+
+	public void OnSpeak(){
+	//	DataManager.Instance.DeletePPDataTaskProgress ();
+	//	DataManager.Instance.DeleteHighScoreSlotandPositionData (player.position);
+
+		TriggerInfo ();
+
+		if (PlayerPrefs.GetInt (nameForPlayerPref) != 1)
+			CheckForTaskCompletion ();
+		else {
+		
+			foreach (GameObject cows in cowsNeededToCollect)
+				cows.transform.position = CowHomeTrigger.thisPosition;
+		
+		}
+	
+	
+	}
 
 	public override void CheckForTaskCompletion ()
 	{
 		
-		if (CowHomeTrigger.totalCows > 0) {
+		if (CowHomeTrigger.totalCows == cowsNeededToCollect.Length) {
 			infoTextComponent.text = textAfterCompletion;
 			//Debug.Log ("CowCollTrigger : " + CowHomeTrigger.totalCows);
-			PlayerPrefs.SetInt(nameForPlayerPref,1);
-			PlayerPrefs.Save ();
-			QuestAssess.Instance.OnUpdate ();
+			SaveTaskCompletion();
+
+			if (objectToGive != null) 
+				PlayerManager.Instance.AddItemToSlot (objectToGive);
+
+			UIStressGage.Instance.stress = -180;
+		//	PlayerPrefs.SetInt(nameForPlayerPref,1);
+		//	PlayerPrefs.Save ();
+		//	QuestAssess.Instance.OnUpdate ();
 		}else{
-			PlayerPrefs.SetInt(nameForPlayerPref,0);
-			PlayerPrefs.Save ();
-			QuestAssess.Instance.OnUpdate ();
+			SaveTaskIdentified ();
+			//PlayerPrefs.SetInt(nameForPlayerPref,0);
+			//PlayerPrefs.Save ();
+			//QuestAssess.Instance.OnUpdate ();
 		}
 	}
 	public override void OnTriggerStay(Collider other){
