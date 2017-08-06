@@ -31,8 +31,8 @@ public class InteractionBehaviour : MonoBehaviour {
 	[TextArea(0,15)][SerializeField]protected string ActionText;
 
 
-	[Header("Information")] [SerializeField]protected UnityEvent onInformationSelect;
-	[TextArea(0,15)][SerializeField]protected string informationText;
+	[Header("OnInfoPrefabDisable")] [SerializeField]protected UnityEvent onInfoDisable;
+	//[TextArea(0,15)][SerializeField]protected string informationText;
 
 	[Header("OnCompletion")] public UnityEvent onCompletion;
 	[TextArea(0,15)][SerializeField]protected string completionText;
@@ -88,13 +88,13 @@ public class InteractionBehaviour : MonoBehaviour {
 	}
 
 	Coroutine infoActive; 
-	private bool isResetTime;
+	//private bool isResetTime;
 	public void TriggerInfo(){
 
-		if (infoCanvasPrefab.activeInHierarchy) {
+	/*	if (infoCanvasPrefab.activeInHierarchy) {
 			isResetTime = true;
 			return;
-		}
+		}*/
 	
 		infoCanvasPrefab.SetActive (true);
 		infoCanvasAnimator.SetBool ("IsActive", true);
@@ -102,18 +102,20 @@ public class InteractionBehaviour : MonoBehaviour {
 
 	
 	}
-	
+
+	public float timerForActivation;
 	public IEnumerator InfoActive(){
 		
-		float timer = timeActive;
+		timerForActivation = timeActive;
+
 		float time = 0;
 
 		while (true) {
 
-			if (isResetTime) {
+		/*	if (isResetTime) {
 				time = 0;
 				isResetTime = false;
-			}
+			}*/
 
 			time += Time.deltaTime;
 
@@ -135,14 +137,14 @@ public class InteractionBehaviour : MonoBehaviour {
 			}
 				
 
-			if (time > timer) {
+			if (time > timerForActivation) {
 				infoCanvasAnimator.SetBool ("IsActive", false);
 
 				if (infoCanvasAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
 				 {
-
+					onInfoDisable.Invoke ();
 					infoCanvasPrefab.SetActive (false);
-					timer = timeActive;
+					timerForActivation = timeActive;
 					yield break;
 				}
 				//StopCoroutine (infoActive);
@@ -154,16 +156,21 @@ public class InteractionBehaviour : MonoBehaviour {
 	}
 	public void TakeOffInfo(){
 	
-		if (infoCanvasPrefab.activeInHierarchy) {
+	//	if (infoCanvasPrefab.activeInHierarchy) {
 
-			infoCanvasAnimator.SetBool ("IsActive", false);
+			timerForActivation = 0f;
+			/*infoCanvasAnimator.SetBool ("IsActive", false);
 			if (infoCanvasAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
 			{
+				StopAllCoroutines ();
+				infoCanvasAnimator.SetBool ("IsActive", false);
 				infoCanvasPrefab.SetActive (false);
 				StopCoroutine (InfoActive ());
+				StopCoroutine (infoActive);
+
 				return;
-			}
-		}
+			}*/
+	//	}
 	
 	
 	}

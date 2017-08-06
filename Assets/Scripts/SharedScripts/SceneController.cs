@@ -20,6 +20,8 @@ public class SceneController : MonoBehaviour {
 
 	private static SceneController instance = null;
 
+	[SerializeField] private bool isSceneLoading = false;
+
 	private Transform player;
 
 	private Animator anim = null;
@@ -138,20 +140,52 @@ public class SceneController : MonoBehaviour {
 		}
 	}
 
+	AsyncOperation async;
 	public IEnumerator ChangeScene (string scene){
 		
 		while (true) {
 			yield return null;
 
 			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Faded")) {
-				SceneManager.LoadScene (scene);
-				break;
+
+				if (!isSceneLoading) {
+
+					isSceneLoading = true;
+
+					async = SceneManager.LoadSceneAsync (scene);
+					StartCoroutine (WhileSceneIsLoading ());
+
+					break;
+				
+				}
+			//	SceneManager.LoadScene (scene);
+			//	break;
 			}
-			yield return null;
 		}
 
 
 
+	}
+	IEnumerator WhileSceneIsLoading(){
+		//Text text = GetComponentInChildren<Text> (true);
+		//text.gameObject.SetActive(true);
+		RawImage Rimage = GetComponentInChildren<RawImage> (true);
+		Vector2 RiSize = Rimage.rectTransform.sizeDelta;
+		Rimage.gameObject.SetActive (true);
+
+		Rimage.rectTransform.sizeDelta = new Vector2 (0, 50);
+		while (!async.isDone) {
+			//image.color = Color.red;//new Color(image.color.r, image.color.g, image.color.b, Mathf.PingPong(Time.time,1));
+
+			Rimage.rectTransform.sizeDelta = new Vector2((500 * async.progress), Rimage.rectTransform.sizeDelta.y );
+			yield return null;
+
+		}
+		isSceneLoading = false;
+		Rimage.gameObject.SetActive (false);
+		//text.gameObject.SetActive(false);
+
+	
 	}
 	public void ResetCurrentGame(){
 		

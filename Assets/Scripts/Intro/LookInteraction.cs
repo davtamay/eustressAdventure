@@ -16,12 +16,15 @@ public class LookInteraction : MonoBehaviour {
 
 	//Check for bugs since I invalidated this in script
 	[SerializeField] bool isItemForSlot;
-	[SerializeField] bool reducesStress;
-	[SerializeField] float amountOfStressReduction;
+
 
 	[SerializeField]bool isSpriteChangeOnClick = false;
 
 	[SerializeField]private Sprite spriteToChange;
+
+	[SerializeField]UnityEvent onSecondaryLookClick;
+	[SerializeField] bool isFirstNotInvokedInsteadOffSecond;
+
 	public Sprite originalSprite;
 	public Image image;
 
@@ -87,6 +90,7 @@ public class LookInteraction : MonoBehaviour {
 	}
 
 	private bool isActive;
+	private bool isOriginalImage = true;
 	void Update () {
 
 		RaycastHit hit;
@@ -114,14 +118,35 @@ public class LookInteraction : MonoBehaviour {
 			if (0f > timer) {
 				timer = lookTime;
 
-				onLookClick.Invoke ();
+
+
+				if(isOriginalImage)
+					onLookClick.Invoke ();
+				else{
+
+					if (isFirstNotInvokedInsteadOffSecond)
+						onSecondaryLookClick.Invoke ();
+					
+					else {
+						onLookClick.Invoke ();
+						//onSecondaryLookClick.Invoke ();
+					}
+						
+					}	
+
+
+				if (isSpriteChangeOnClick) {
+					ChangeSprite ();
+
+				}
+					
+			//	onLookClick.Invoke ();
 
 				isActive = false;
 				imageGO.SetActive (false);
 				thisCollider.enabled = false;
 
-				if (isSpriteChangeOnClick)
-					ChangeSprite ();
+
 				
 				timeActive = 0;
 
@@ -129,10 +154,7 @@ public class LookInteraction : MonoBehaviour {
 					PlayerManager.Instance.AddItemToSlot (transform.parent.gameObject);{
 					//DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
 				}
-
-				if (reducesStress)
-					UIStressGage.Instance.stress = -amountOfStressReduction;
-
+					
 			}
 
 
@@ -164,7 +186,7 @@ public class LookInteraction : MonoBehaviour {
 
 
 		}
-	private bool isOriginalImage = true;
+
 	public void ChangeSprite(){
 
 		if (isOriginalImage)
@@ -174,6 +196,12 @@ public class LookInteraction : MonoBehaviour {
 
 		isOriginalImage = !isOriginalImage;
 	
+	
+	}
+	public void SetToOriginalSprite(){
+	
+		image.sprite = originalSprite;
+		isOriginalImage = true;
 	
 	}
 

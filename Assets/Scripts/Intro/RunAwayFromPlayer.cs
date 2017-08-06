@@ -9,19 +9,20 @@ public class RunAwayFromPlayer : MonoBehaviour {
 	[SerializeField] float speed;
 	[SerializeField] GameObject objectToDropOnCollision;
 
-	private bool isStandingBy;
+	public bool isStandingBy;
 	private bool isGODroped;
 
 	private Vector3[] wayPoints;
 	private Transform player;
 	private Transform thisTransform;
-
+	private Animator thisAnimator;
 	private Vector3 curentTarget;
 
 
 	void Start(){
 
 		thisTransform = transform;
+		thisAnimator = GetComponent<Animator> ();
 		player = GameObject.FindWithTag ("Player").transform;
 		objectToDropOnCollision.SetActive (false);
 
@@ -56,37 +57,55 @@ public class RunAwayFromPlayer : MonoBehaviour {
 	}
 	void OnTriggerStay(){
 
-		curentTarget = GetFurthestWayPointFromPlayer(200f);
+
+
+	//	isStandingBy = false;
+	//	curentTarget = GetFurthestWayPointFromPlayer(200f);
 	//	thisTransform.position= GetFurthestWayPointFromPlayer();
 
 
 	}
 
-	void OnTriggerEnter(){
+	void OnTriggerEnter(Collider other){
 
-		isStandingBy = false;
-
-
-	}
-	void OnTriggerExit(){
-
-		isStandingBy = true;
+		if (other.transform.CompareTag ("Player")) {
+			isStandingBy = false;
+			curentTarget = GetFurthestWayPointFromPlayer(200f);
+			thisAnimator.SetBool ("IsRunning", true);
+		}
 
 
 	}
+	void OnTriggerExit(Collider other){
 
-	void Update(){
+		if (other.transform.CompareTag ("Player")){
+		
+			thisAnimator.SetBool ("IsRunning", false);
+			isStandingBy = true;
+			Debug.Log ("THISISEXXXITTT");
+		}
+	}
+
+	void LateUpdate(){
 
 
 		if (!isStandingBy) {
 
 			thisTransform.position += (curentTarget - thisTransform.position).normalized * speed * Time.deltaTime;
-	
-			if (Vector3.Distance (curentTarget, thisTransform.position) < 15f) {
+			thisTransform.LookAt (curentTarget);
+
+			if(Physics.BoxCast(thisTransform.position, Vector3.one, thisTransform.forward,transform.rotation, 5))
+				curentTarget = GetFurthestWayPointFromPlayer (200f);//curentTarget = wayPoints [Random.Range (0, wayPoints.Length)];
+
+			if (Vector3.Distance (curentTarget, thisTransform.position) < 15f || Vector3.Dot (thisTransform.forward, player.position - thisTransform.position) > 0.50f) {
 				curentTarget = GetFurthestWayPointFromPlayer (200f);
 
-				if (Vector3.Distance (curentTarget, GetFurthestWayPointFromPlayer (200f)) < 3f)
+
+
+
+				if (Vector3.Distance (curentTarget, GetFurthestWayPointFromPlayer (200f)) < 2f  )
 					curentTarget = wayPoints [Random.Range (0, wayPoints.Length)];
+
 
 			}
 		}	

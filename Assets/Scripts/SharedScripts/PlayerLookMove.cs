@@ -32,7 +32,7 @@ public class PlayerLookMove : MonoBehaviour {
 
 	private bool isCharInGround;
 
-	Vector3 destUp = Vector3.zero;
+	//Vector3 destUp = Vector3.zero;
 	[SerializeField]private float angleSpeed = 5;
 	private ControllerColliderHit _contact;
 
@@ -171,7 +171,7 @@ public class PlayerLookMove : MonoBehaviour {
 		moveDirection.z *= velocity;
 		controller.Move (moveDirection);
 
-		thisTransform.up = Vector3.Slerp (thisTransform.up, destUp, angleSpeed * Time.deltaTime);
+		//thisTransform.up = Vector3.Slerp (thisTransform.up, destUp, angleSpeed * Time.deltaTime);
 	}
 
 	IEnumerator JumpUp(){
@@ -250,7 +250,7 @@ public class PlayerLookMove : MonoBehaviour {
 
 		if (!isSuperJumpAvailable) {
 			if (Physics.Raycast (transform.position, -Vector3.up, out hit, jumpFromGroundDis, groundLayer)) {
-				destUp = hit.normal;
+			//	destUp = hit.normal;
 				return true;
 			
 			}else
@@ -258,14 +258,14 @@ public class PlayerLookMove : MonoBehaviour {
 
 		} else {
 		
-			if (Physics.Raycast (transform.position, -Vector3.up, out hit, jumpFromGroundDis, groundLayer))
+		/*	if (Physics.Raycast (transform.position, -Vector3.up, out hit, jumpFromGroundDis, groundLayer))
 				destUp = hit.normal;
-				return true;
+				return true;*/
 
 			if (Physics.Raycast (transform.position, -Vector3.up, out hit, jumpFromGroundDis, bounceLayer)){
 				SuperJump = superJumpHeightAdd;
 				SuperJumpSpeed = superJumpSpeedAdd;
-				destUp = hit.normal;
+		//		destUp = hit.normal;
 				return true;
 		
 			}

@@ -13,6 +13,8 @@ public class PlayerManager : MonoBehaviour {
 	public Dictionary<string, GameObject> StringToGODict;
 	public List<GameObject> playerItemSlotGOList;
 
+	public GameObject[] allItemGOInScene;
+
 	private GameObject UISlots;
 	private int curSlot;
 
@@ -34,6 +36,10 @@ public class PlayerManager : MonoBehaviour {
 	}
 
 	void Awake (){
+
+
+		allItemGOInScene = GameObject.FindGameObjectsWithTag ("Item");
+			
 		UISlots = GameObject.FindWithTag ("UISlot");
 		//new
 		if (instance != null) {
@@ -75,15 +81,15 @@ public class PlayerManager : MonoBehaviour {
 			playerItemSlotGOList = new List<GameObject> ();
 			StringToGODict = new Dictionary<string, GameObject>();
 
-			foreach(GameObject GO in GameObject.FindGameObjectsWithTag("Item")){
+			foreach(GameObject GO in allItemGOInScene){
 
 				SpriteRenderer curSprRend = GO.GetComponentInChildren<SpriteRenderer> (true);//GO.transform.GetChild (0).transform.GetChild (0).GetComponentInChildren<SpriteRenderer> ();
 				//Debug.Log(curSprRend.sprite.name);
 
 				totalGOToSpriteInSceneDict.Add (GO, curSprRend);
 
-			
-				StringToGODict.Add (GO.name, GO);
+				StringToGODict[GO.name] =  GO;
+				//StringToGODict.Add (GO.name, GO);
 				//Debug.Log (GO.name);
 				//new 5/26/17
 				//StringToGODict[GO.name] =  GO;

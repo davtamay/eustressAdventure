@@ -8,22 +8,31 @@ public class Stollen_Collections_Task : CollectTaskInteraction {
 	[SerializeField] private GameObject thiefGO;
 	[SerializeField] private string nameOfGONeededForCompletion;
 
+	private Animator thisAnimator;
+
 	public override void Start ()
 	{
+		thisAnimator = GetComponent<Animator> ();
 		
 		if (IsTaskIdentified())
 			return;
+
+		if (IsTaskCompleted ())
+			Destroy (thiefGO);
 		
 		thiefGO.SetActive (false);
 
 	}
 	public void OnSpeak(){
 
+		thisAnimator.SetTrigger ("Talk");
+
 		TriggerInfo ();
 
 		if (IsTaskCompleted())
 			return;
 
+		CheckForTaskCompletion ();
 
 		SaveTaskIdentified ();
 
@@ -34,13 +43,16 @@ public class Stollen_Collections_Task : CollectTaskInteraction {
 
 
 	public override void CheckForTaskCompletion ()
-	{
-		foreach (GameObject GO in PlayerManager.Instance.playerItemSlotGOList) {
+	{	for(int i = 0; i < PlayerManager.Instance.playerItemSlotGOList.Count; i++){
+		//foreach (GameObject GO in PlayerManager.Instance.playerItemSlotGOList) {
 		
-			if (string.Equals (nameOfGONeededForCompletion, GO.name, System.StringComparison.CurrentCultureIgnoreCase))
+			if (string.Equals (nameOfGONeededForCompletion, PlayerManager.Instance.playerItemSlotGOList[i].name, System.StringComparison.CurrentCultureIgnoreCase))
 				SaveTaskCompletion();
 
+			thisAnimator.SetTrigger ("Complete");
 			PlayerManager.Instance.AddItemToSlot (objectToGive);
+			//thiefGO.SetActive(true);
+			Destroy (thiefGO);
 		}
 	}
 }

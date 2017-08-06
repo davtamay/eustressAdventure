@@ -4,57 +4,69 @@ using UnityEngine;
 
 public class FeetFollowPlayer : MonoBehaviour {
 
-	private Transform cam;
+	private Transform camTransform;
 	[SerializeField]private float rotationToSpeed = 1;
 	private Transform thisTransform;
 
-	Vector3 movePos;
-
-
-
 	void Start () {
-		
+
+	
 		thisTransform = GetComponent<Transform>();
-		cam = Camera.main.transform;
+		camTransform = Camera.main.transform;
 
-		movePos = new Vector3 (90, cam.eulerAngles.y, 0);
-
-		thisTransform.eulerAngles = movePos;
 
 	}
-	Vector3 destUp;
+
+
 	void Update () {
-
-	//	RaycastHit hit;
-	//	if (Physics.Raycast (transform.position, -Vector3.up, out hit, 5,LayerMask.NameToLayer("Ground")))
-	//		destUp = hit.normal;
-
-	//		thisRectTransform.
 		
-		
-		
-		//movePos.y = cam.eulerAngles.y;
-
-		//float angle = cam.eulerAngles.y;
-
-		//angle = (angle < 1f) ? angle * -1 : angle;
-		//angle = (angle > 180) ?//angle - 180 : angle;
-		//angle = (angle < -180) ? angle + 360 : angle;
 
 
-		thisTransform.eulerAngles  = new Vector3 (90, cam.eulerAngles.y, 0);
-		//Vector3 firstsrot = new Vector3 (90, cam.eulerAngles.y, 0);
-		//movePos;
-		//Vector3 secondrot =  Vector3.Slerp (-thisTransform.up, destUp, 5 * Time.deltaTime);
-	//	thisTransform.up = Vector3.Slerp (thisTransform.up, destUp, 5 * Time.deltaTime);
-	//	thisTransform.eulerAngles = firstsrot + secondrot;
+		RaycastHit hit;
+
+
+		thisTransform.rotation = Quaternion.AngleAxis (camTransform.eulerAngles.y, Vector3.up);
+
+	
+		if (Physics.Raycast (transform.position, -transform.up, out hit, 10f)) {
+
+
+			transform.rotation = (Quaternion.FromToRotation (transform.up, hit.normal)) * transform.rotation;
+
+		}
+			
+
+	//	thisTransform.rotation = Quaternion.AngleAxis (camTransform.eulerAngles.y, Vector3.up);
+
+	//	AlignTransform (thisTransform);
+
+		thisTransform.rotation *= Quaternion.Euler (Vector3.right* 90);
+			
 	
 
+	}
 
-		//float LerpToYRotation = Mathf.Lerp (thisRectTransform.eulerAngles.y, angle , Time.deltaTime * rotationToSpeed);
-		//thisRectTransform.rotation = Quaternion.FromToRotation (new Vector3 (0,0,thisRectTransform.eulerAngles.y), new Vector3 (0, 0,thisRectTransform.eulerAngles.y));
-		//thisRectTransform.rotation = Quaternion.Euler (new Vector3 (90, LerpToYRotation,0));//LerpToYRotation));
 
-			
+
+	public static void AlignTransform(Transform transform)
+	{
+		Vector3 sample = SampleNormal(transform.position);
+
+		Vector3 proj = transform.forward - (Vector3.Dot(transform.forward, sample)) * sample;
+		transform.rotation = Quaternion.LookRotation(proj, sample);
+	}
+
+	public static Vector3 SampleNormal(Vector3 position)
+	{
+		Terrain terrain = Terrain.activeTerrain;
+		var terrainLocalPos = position - terrain.transform.position;
+		var normalizedPos = new Vector2(
+			Mathf.InverseLerp(0f, terrain.terrainData.size.x, terrainLocalPos.x),
+			Mathf.InverseLerp(0f, terrain.terrainData.size.z, terrainLocalPos.z)
+		);
+		var terrainNormal = terrain.terrainData.GetInterpolatedNormal(normalizedPos.x, normalizedPos.y);
+
+		return terrainNormal;
 	}
 }
+
