@@ -79,7 +79,7 @@ public class UIStressGage : MonoBehaviour {
 		}
 		//isRotate = false;
 		//}
-		Debug.Log (_stress);
+	//	Debug.Log (_stress);
 
 
 	}

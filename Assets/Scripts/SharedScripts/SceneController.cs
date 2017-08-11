@@ -54,7 +54,10 @@ public class SceneController : MonoBehaviour {
 		stressMenu.SetActive (false);
 
 		player = GameObject.FindWithTag ("Player").transform;
+
+		if (GetCurrentSceneName () == "Intro")
 		player.position = DataManager.Instance.LoadPosition ();
+		
 		UIStressGage.Instance.stress = DataManager.Instance.LoadStressLevel ();
 
 
@@ -76,7 +79,7 @@ public class SceneController : MonoBehaviour {
 	//	while (!anim.GetCurrentAnimatorStateInfo (0).IsName ("Faded"))
 	//		return;
 
-			anim.SetTrigger ("FadeOut");
+		//	anim.SetTrigger ("FadeOut");
 			
 		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
 			GameController.Instance.Paused = false;
@@ -85,13 +88,14 @@ public class SceneController : MonoBehaviour {
 			player.position = DataManager.Instance.LoadPosition ();
 			UIStressGage.Instance.stress = DataManager.Instance.LoadStressLevel ();
 
-			//new 5/20/17
+		} else {
 
-			//player.position = DataManager.Instance.LoadPlayerData().position;
+			//this plays after the fact before it finishes loading the level....
+		//	OrientationAdjustment.Instance.OrientationChangeToGlobalFront ();
+			GameController.Instance.Paused = true;
 
-
-			//Debug.Log ("SceneController playerslot count: " + PlayerManager.Instance.playerItemSlotGOList.Count);
 		}
+			
 			
 
 	}
@@ -111,15 +115,6 @@ public class SceneController : MonoBehaviour {
 			DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
 			DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
 
-			//new 5/20/17
-		/*	DataCollection dC = new DataCollection();
-			dC.position = player.position;
-			dC.slotList = new List<GameObject>(PlayerManager.Instance.playerSlotGOList);
-
-			DataManager.Instance.SavePlayerData (dC);
-
-			Debug.Log ("POS LOADED: " + dC.position + "SLOTLIST LOADED COUNT" + dC.slotList.Count);
-			*/
 		}
 
 
@@ -158,6 +153,7 @@ public class SceneController : MonoBehaviour {
 					break;
 				
 				}
+
 			//	SceneManager.LoadScene (scene);
 			//	break;
 			}
@@ -165,7 +161,7 @@ public class SceneController : MonoBehaviour {
 
 
 
-	}
+	}//this plays before OnlevelLoad()...
 	IEnumerator WhileSceneIsLoading(){
 		//Text text = GetComponentInChildren<Text> (true);
 		//text.gameObject.SetActive(true);
@@ -183,7 +179,13 @@ public class SceneController : MonoBehaviour {
 		}
 		isSceneLoading = false;
 		Rimage.gameObject.SetActive (false);
+			anim.SetTrigger ("FadeOut");
+		//if (!string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase))
+			OrientationAdjustment.Instance.OrientationChangeToGlobalFront ();
+	
 		//text.gameObject.SetActive(false);
+
+
 
 	
 	}

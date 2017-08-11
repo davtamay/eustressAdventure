@@ -38,13 +38,13 @@ public class CognitiveRefraimingAction : MonoBehaviour {
 
 					case "AddSpeed":
 
-						followAllongScript.scrollSpeed += Time.deltaTime * speedModifier;
+						followAllongScript.scrollSpeed += Time.unscaledDeltaTime * speedModifier;
 
 						break;
 
 					case "ReduceSpeed":
 
-						followAllongScript.scrollSpeed -= Time.deltaTime * speedModifier;
+						followAllongScript.scrollSpeed -= Time.unscaledDeltaTime * speedModifier;
 						//Mathf.Clamp (followAllongScript.scrollSpeed, 0f, 5f);
 						break;
 

@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour {
 
 	public GameObject[] allItemGOInScene;
 
+	private Transform thisTransform;
 	private GameObject UISlots;
 	private int curSlot;
 
@@ -29,6 +30,11 @@ public class PlayerManager : MonoBehaviour {
 	private Image healthColorIndicator;
 	private string curSceneName;
 
+	[SerializeField]private bool isShakeWhenHit = false;
+	[SerializeField]private float shakeTime = 2.0f;
+	[SerializeField]private float shakeAmount = 3.0f;
+	[SerializeField]private float shakeSpeed = 2.0f;
+
 	private static PlayerManager instance;
 	public static PlayerManager Instance {
 		get{ return instance; }
@@ -38,9 +44,7 @@ public class PlayerManager : MonoBehaviour {
 	void Awake (){
 
 
-		allItemGOInScene = GameObject.FindGameObjectsWithTag ("Item");
-			
-		UISlots = GameObject.FindWithTag ("UISlot");
+
 		//new
 		if (instance != null) {
 			Debug.LogError ("There is two instances off PlayerManager");
@@ -48,6 +52,13 @@ public class PlayerManager : MonoBehaviour {
 		} else {
 			instance = this;
 		}
+
+		thisTransform = transform;
+
+		allItemGOInScene = GameObject.FindGameObjectsWithTag ("Item");
+
+		UISlots = GameObject.FindWithTag ("UISlot");
+
 
 		healthColor.a = 0.0f; 
 
@@ -89,14 +100,9 @@ public class PlayerManager : MonoBehaviour {
 				totalGOToSpriteInSceneDict.Add (GO, curSprRend);
 
 				StringToGODict[GO.name] =  GO;
-				//StringToGODict.Add (GO.name, GO);
-				//Debug.Log (GO.name);
-				//new 5/26/17
-				//StringToGODict[GO.name] =  GO;
+			
 				Debug.Log ("GOInEnvironment: " + GO.name);
 			}
-			//Debug.Log("TOTALGOSPRITEINSCENDIC" + totalGOToSpriteInSceneDict.Values.Count);
-			//UISlots = GameObject.FindWithTag ("UISlot");
 
 
 			int itemCount = 0;
@@ -118,16 +124,13 @@ public class PlayerManager : MonoBehaviour {
 		//	foreach (GameObject gO in DataManager.Instance.LoadItemList ())
 		//		Debug.Log("LOADED LIST + : " + gO.name);
 			
-			//Debug.Log("playeINTTOSPRITEUISLOTSDIC" + playerItemSlotGOList.Count + "ITEMCOUNT" + itemCount);
+
 			if (loadItemListCount != 0) {
 				playerItemSlotGOList.Clear ();
 				for (int i = 0; i < loadItemListCount ; i++) {
 
 					if (!playerItemSlotGOList.Contains (StringToGODict[DataManager.Instance.slotListItemNames[i]])) {
-				//	foreach (GameObject gO in DataManager.Instance.LoadItemList ())
-				//		Debug.Log("LOADED LIST AFTER + : " + gO.name);
-					//Debug.Log("LOADED LIST AFTERTHEFACT : " + DataManager.Instance.LoadItemList ().Count);
-					//	Debug.Log("!!!!!!GO BeingSent to be added to SLOTS: " + playerItemSlotGOList[i].name);
+				
 						playerItemSlotGOList.Add (StringToGODict[DataManager.Instance.slotListItemNames[i]]);
 						AddItemToSlot (StringToGODict[DataManager.Instance.slotListItemNames[i]]);
 
@@ -139,24 +142,6 @@ public class PlayerManager : MonoBehaviour {
 				
 				}
 			}
-
-			//new 5/20/17
-		/*	if (DataManager.Instance.LoadPlayerData().slotList.Count != 0) {
-				playerSlotGOList.Clear ();
-				for (int i = 0; i < DataManager.Instance.LoadPlayerData().slotList.Count; i++) {
-					
-					if (!playerSlotGOList.Contains (DataManager.Instance.LoadPlayerData().slotList [i])) {
-						playerSlotGOList.Add (DataManager.Instance.LoadPlayerData().slotList [i]);
-						AddItemToSlot (DataManager.Instance.LoadPlayerData().slotList [i]);
-
-						DataManager.Instance.LoadPlayerData().slotList[i].SetActive (false);
-
-					}
-
-				}
-			}*/
-
-			//UISlots.SetActive (false);
 
 		}
 
@@ -232,6 +217,10 @@ public class PlayerManager : MonoBehaviour {
 
 		set{ if (value + _health < _health) {
 				StartCoroutine (HealthReduceColor (hurtColor));
+
+				if(isShakeWhenHit)
+				StartCoroutine (Shake ());
+				
 				healthColor.a += 0.1f;
 				if (healthColor.a >= .91f) {
 					DataManager.Instance.CheckHighScore (curSceneName, _points);
@@ -326,6 +315,25 @@ public class PlayerManager : MonoBehaviour {
 
 		healthColorIndicator.color = healthColor;
 
+	}
+
+	IEnumerator Shake(){
+	
+		Vector3 origPosition = thisTransform.localPosition;
+		float ElapsedTime = 0f;
+
+		while (ElapsedTime < shakeTime) {
+		
+			Vector3 RandomPoint = origPosition + Random.insideUnitSphere * shakeAmount;
+
+			thisTransform.localPosition = Vector3.Lerp (thisTransform.localPosition, RandomPoint, Time.deltaTime * shakeSpeed);
+		
+			yield return null;
+			ElapsedTime += Time.deltaTime;
+		}
+
+		thisTransform.localPosition = origPosition;
+	
 	}
 	/*public IEnumerator ShowUISlots(){
 

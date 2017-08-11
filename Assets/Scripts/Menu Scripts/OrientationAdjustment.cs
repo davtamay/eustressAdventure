@@ -1,30 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum OrientationChange { CHANGETOFRONT, CHANGETOLASTVIEW};
 public class OrientationAdjustment : MonoBehaviour {
 
 
 
-	private RectTransform myRectTransform;
-	//private GameObject dButton;
 
-	[SerializeField] float destressOffset = 1;
+	public static OrientationAdjustment Instance
+	{ get { return instance; } }
+
+	private static OrientationAdjustment instance = null;
+
+	private RectTransform myRectTransform;
+//	private GameObject dButton;
+
+	//[SerializeField] float destressOffset = 1;
 	//public bool isFacingDown = false;
 	//public bool isMovingDown = false;
 
-	public bool isMenuShowing = false;
+	//public bool isMenuShowing = false;
 
 	//private Camera cam;
 
 	//public float sweepRate = 100.0f;
-	//private float previousCameraAngle;
+	private float previousCameraAngle;
 
 	Vector3 originalDirection = Vector3.zero;
 	Vector3 currentDirection;
 
-	[SerializeField] private bool isOrientationChangeToFront = true;
-	[SerializeField] private bool isOrientationChangeToLastView = false;
-	[SerializeField] private bool isMenuFirstTime = false;
+	//[SerializeField] private bool isOrientationChangeToFront = true;
+	//[SerializeField] private bool isOrientationChangeToLastView = false;
+	//[SerializeField] private bool isMenuFirstTime = false;
 	public Transform camTransform;
 	public Transform camParent;
 
@@ -32,14 +39,12 @@ public class OrientationAdjustment : MonoBehaviour {
 	void Awake(){
 		//new
 
+		if (instance) {
+			return;
+		}
+		instance = this; 
 
-		camTransform = Camera.main.transform;//cam.transform.parent;
-		camParent = camTransform.parent;//camHead.transform.parent;
 
-
-		//previousCameraAngle = CameraAngleFromGround ();
-
-		myRectTransform = GetComponent<RectTransform> ();
 
 		//dButton = myRectTransform.GetChild (1).gameObject;
 		//dButton.SetActive (false);
@@ -49,19 +54,53 @@ public class OrientationAdjustment : MonoBehaviour {
 
 	}
 
-	void OnEnable(){
-		MagnetSensor.OnCardboardTrigger += OpenMenuClicker;
+//	void OnEnable(){
+//		MagnetSensor.OnCardboardTrigger += OpenMenuClicker;
 
 
-	}
+//	}
 	void Start(){
+		camTransform = Camera.main.transform;//cam.transform.parent;
+		camParent = camTransform.parent;//camHead.transform.parent;
+	//	myRectTransform = GetComponent<RectTransform> ();
+	//	StartCoroutine (UpdateGame());
+	//	camParent = //Vector3.SignedAngle(Vector3.forward, Vector3.forward - camTransform.forward, Vector3.up);
+	
 
-		StartCoroutine (UpdateGame());
 	}
+	public void OrientationChangeToGlobalFront(){
+		camTransform = Camera.main.transform;
+		camParent = camTransform.parent;
+	
+		currentDirection = Vector3.zero;
+		currentDirection.y = camTransform.eulerAngles.y;
+		if (Mathf.Sign (currentDirection.y) == 0)
+			camParent.eulerAngles += currentDirection;
+		else
+			camParent.eulerAngles -= currentDirection;
+
+
+		//StartCoroutine(OrientationToWorlFront());
+
+	}
+	/*IEnumerator OrientationToWorlFront(){
+		//why does this stay at 0 and then next frame changes?
+		Debug.Log (camTransform.eulerAngles);
+		yield return new WaitForSecondsRealtime (0.2f);
+		Debug.Log (camTransform.eulerAngles);
+		currentDirection = Vector3.zero;
+		currentDirection.y = camTransform.eulerAngles.y;
+		if (Mathf.Sign (currentDirection.y) == 0)
+			camParent.eulerAngles += currentDirection;
+		else
+			camParent.eulerAngles -= currentDirection;
+		
+	}*/
+
 
 
 	//void Update(){
-
+	/*
 	IEnumerator UpdateGame(){
 
 
@@ -112,7 +151,7 @@ public class OrientationAdjustment : MonoBehaviour {
 			#endif
 
 			#if (UNITY_ANDROID)
-			/*		
+				
 
 		isFacingDown = DetectFacingDown ();
 		isMovingDown = DetectMovingDown ();
@@ -122,7 +161,7 @@ public class OrientationAdjustment : MonoBehaviour {
 			if (isMenuShowing)
 				continue;
 			
-				HideDButton (); 
+			//	HideDButton (); 
 
 
 			} else if(isMovingDown && !isMenuShowing && isFacingDown) {
@@ -138,13 +177,13 @@ public class OrientationAdjustment : MonoBehaviour {
 				myRectTransform.localRotation = Quaternion.LookRotation (myRectTransform.position - cam.transform.position);
 				dButton.SetActive (true);
 		
-		}*/
+		}
 			#endif
 		}
 
-	}
+	}*/
 
-
+	/*
 	void OpenMenuClicker(){
 		Handheld.Vibrate ();
 		if (isOrientationChangeToFront) 
@@ -179,19 +218,20 @@ public class OrientationAdjustment : MonoBehaviour {
 		myRectTransform.localRotation = Quaternion.LookRotation (myRectTransform.position -  camTransform.position);
 
 	}
+	*/
+
+	//private void OnDisable(){
+
+	//	MagnetSensor.OnCardboardTrigger -= OpenMenuClicker;
 
 
-	private void OnDisable(){
+//	}
 
-		MagnetSensor.OnCardboardTrigger -= OpenMenuClicker;
-
-
-	}
-	public void ShowGame(){
+/*	public void ShowGame(OrientationChange changeViewSetting){
 
 		if (isOrientationChangeToFront) {
-			//float angle = Mathf.DeltaAngle (originalDirection.y, currentDirection.y);
-			//originalDirection.y = angle;
+	//	if( changeViewSetting == OrientationChange.CHANGETOFRONT){
+
 			originalDirection.y = currentDirection.y;
 
 			float deviation = currentDirection.y;
@@ -202,8 +242,8 @@ public class OrientationAdjustment : MonoBehaviour {
 			camParent.localEulerAngles = originalDirection;
 			currentDirection = Vector3.zero;
 			originalDirection = Vector3.zero;
-		
 		}
+	//	}else if(changeViewSetting == OrientationChange.CHANGETOLASTVIEW){
 		if (isOrientationChangeToLastView) {
 
 			originalDirection.y = currentDirection.y;
@@ -220,10 +260,10 @@ public class OrientationAdjustment : MonoBehaviour {
 			isMenuFirstTime = false;
 		}
 
-		isMenuShowing = false;
+	//1	isMenuShowing = false;
 		//dButton.SetActive (false);
 
-		GameController.Instance.MakeEverythingVisible ();
+	//	GameController.Instance.MakeEverythingVisible ();
 	
 
 

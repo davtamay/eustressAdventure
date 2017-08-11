@@ -24,7 +24,7 @@ public class MusicTrackName : MonoBehaviour {
 		while (true) {
 		
 			yield return null;
-			Debug.Log ("testing this track");
+			//Debug.Log ("testing this track");
 				trackText.text = "Track: "+ MusicController.Instance.GetCurrentTrackName();
 			//if I leave space, text does not show up and cannot use yield return WaitForSeconds ???
 

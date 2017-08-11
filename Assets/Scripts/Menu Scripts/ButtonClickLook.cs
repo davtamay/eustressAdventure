@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TagFrenzy;
 
+[RequireComponent(typeof (Collider))]
 public class ButtonClickLook : MonoBehaviour {
 	//currently only have meditation on this event;
 	[SerializeField]private UnityEvent OnClick;

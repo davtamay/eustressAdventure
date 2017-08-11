@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class LookSelect : MonoBehaviour {
 
 	//need to be provided a GO for it to work in VR
+	public static bool isTimerAFactor = true;
+
 	public GameObject selectedCard;
 	public GameObject notNullOnSelected;
 	public Camera cam;
@@ -21,6 +23,11 @@ public class LookSelect : MonoBehaviour {
 	private LookSelect lookSelect;
 
 
+	[SerializeField] float timeToBeatFirstLevel;
+	[SerializeField] float timeToBeatSecondLevel;
+	//Beating second levels accomplishes mission, 3rd level is to see highscore?
+	[SerializeField] float timeToBeatThirdLevel;
+
 
 
 
@@ -35,38 +42,76 @@ public class LookSelect : MonoBehaviour {
 
 		spawnedCards = cardSpawner.GetSpawned;
 		//spawnedCards = CardSpawner.GetSpawned;
+
+		GameController.Instance.TimeToAdd (ref isTimerDone, timeToBeatFirstLevel);
 	}
+	bool isTimerDone = false;
 	void Update(){
+
+	
+
+		if (isTimerDone) {
+
+			DataManager.Instance.CheckHighScore (SceneController.Instance.GetCurrentSceneName(), PlayerManager.Instance.points);
+			GameController.Instance.isGameOver = true;
+			//GameController.Instance.Paused = true;
+			this.enabled = false;
+
+		}
+
+	
+		if (isTimerAFactor) {
+		
+
+			GameController.Instance.TimeToAdd (ref isTimerDone);
+
+
+		}
+	
+
+
+
+
+	
 
 	Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
 
 
+	
+
 	RaycastHit hit;
 
-	if (Physics.Raycast (ray, out hit, 500)) {
+	if (Physics.Raycast (ray, out hit, 120)) {
 		
-			if (hit.transform.gameObject.GetInstanceID () == selectedCard.GetInstanceID () || isSecondCard)
-				return;
+			if (hit.transform.gameObject.CompareTag ("Card")) {
+
+				//Debug.Log (selectedCard.transform.gameObject.name);
+
+				if (hit.transform.gameObject.GetInstanceID () == selectedCard.GetInstanceID () || isSecondCard)
+					return;
 			
-		
-			if (hit.transform.gameObject.CompareTag("Card")) {
+
+
+
 				
 			
-			selectedCard = hit.transform.gameObject;
-			
-			
-			
-			StartCoroutine ("CardSelect");
 
 
-		}
+				selectedCard = hit.transform.gameObject;
+
+			
+			
+				StartCoroutine ("CardSelect");
+			}
+
+		
 	}else{
 
-			if (!isFirstCard || !isSecondCard) {
+			/*if (!isFirstCard || !isSecondCard) {
 
 				StopCoroutine ("CardSelect");
 
-			} 
+			} */
 	}
    }
 	IEnumerator CardSelect(){
@@ -113,15 +158,21 @@ public class LookSelect : MonoBehaviour {
 
 			timeToRotate += Time.deltaTime;
 
+			//selected.transform.rotation = Quaternion.LE (selected.transform.rotation, selected.transform.rotation * Quaternion.AngleAxis (180, Vector3.up), Time.deltaTime * 2f);
+				//Quaternion.AngleAxis (180, Vector3.up); //Quaternion.Lerp (selected.transform.rotation, selected.transform.rotation * Quaternion.AngleAxis (180, Vector3.up), Time.deltaTime * 2f);
+				//Quaternion.RotateTowards (selected.transform.rotation, selected.transform.rotation * Quaternion.AngleAxis(90, Vector3.up), 5f);
+				// Quaternion.LookRotation (-selected.transform.forward, Vector3.up);
+				;//Quaternion.RotateTowards (selected.transform.rotation, Quaternion.AngleAxis(180, Vector3.up), 5f);
 			selected.transform.Rotate (rot * Time.deltaTime);
 
 
 			//error cards are not turning all the way
 			if (timeToRotate > 1f){
-			
+
+		//	if (timeToRotate > 5f){
 					isRotating = false;
 					yield break;
-
+			
 			}
 		}
 	
@@ -131,7 +182,10 @@ public class LookSelect : MonoBehaviour {
 		yield return new WaitForSeconds (1.4f);
 		if (string.Equals(a.name,b.name, System.StringComparison.CurrentCultureIgnoreCase))
 		{
+			a.GetComponent<MeshCollider> ().enabled = false;
+			b.GetComponent<MeshCollider> ().enabled = false;
 			
+			PlayerManager.Instance.points = 1;
 
 			Debug.Log ("we have a match!");
 
@@ -139,50 +193,55 @@ public class LookSelect : MonoBehaviour {
 
 			PlayerManager.Instance.points = 1;
 
-			particles.Play();
-			yield return new WaitForSeconds (3);
-			particles.Stop();
+		//	particles.Play();
+		//	yield return new WaitForSeconds (3);
+		//	particles.Stop();
 
 
 			if (spawnedCards == 0) {
-				particles.Play ();
-				yield return new WaitForSeconds (5);
-				particles.Stop();
 
+				GameController.Instance.StopTimer ();
+				StartCoroutine (GameController.Instance.NewWave ());
+
+				particles.Play ();
+				yield return new WaitForSeconds (3);
+				particles.Stop();
+			
 				if (cardSpawner.GetWave == 0) {
-				
-					StartCoroutine (GameController.Instance.NewWave ());
 
 					cardSpawner.ChangeWave (Difficulty.medium);
+					GameController.Instance.TimeToAdd (ref isTimerDone, timeToBeatSecondLevel);
 					spawnedCards = cardSpawner.GetSpawned;
 
 
 				} else if (cardSpawner.GetWave == 1) {
 
-					StartCoroutine (GameController.Instance.NewWave ());
-
 
 					cardSpawner.ChangeWave (Difficulty.hard);
+					GameController.Instance.TimeToAdd (ref isTimerDone, timeToBeatThirdLevel);
 					spawnedCards = cardSpawner.GetSpawned;
+
 				}else if (cardSpawner.GetWave == 2) {
 					GameController.Instance.isGameOver = true;
 				}
 
-
+				GameController.Instance.ResumeTimer ();
 			}
 
 		}else {
 			
 
 			yield return StartCoroutine (RotateCard (firstCard));
-			firstCard.transform.localEulerAngles = new Vector3 (0, Mathf.Floor(firstCard.transform.localEulerAngles.y/10)*10,0); //Vector3.zero;
+			//85 is the original rotation of the card may have to change this by keeping and reflecting original value
+			firstCard.transform.localEulerAngles = new Vector3 (85, 0,0); //Vector3.zero;
 			firstCard = null;
 
 		
 	
 		//	yield return *error: turn back faster
 			yield return StartCoroutine (RotateCard (secondCard));
-			secondCard.transform.localEulerAngles = new Vector3 (0, Mathf.Floor(secondCard.transform.localEulerAngles.y/10)*10,0);//Vector3.zero;
+
+			secondCard.transform.localEulerAngles = new Vector3 (85, 0,0);//Vector3.zero;
 			secondCard = null;
 
 		

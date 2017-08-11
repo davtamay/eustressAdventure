@@ -9,6 +9,11 @@ public class CardSpawner : MonoBehaviour {
 
 	public Texture2D[] images;
 	public Sprite[] sprites;
+
+	//[SerializeField] Vector3 cardScale
+	[SerializeField] float topPadding = 1.5f;
+	[SerializeField] float sidePadding = -2;
+
 	private LookSelect lookSelect;
 
 	public Transform easy;
@@ -18,6 +23,8 @@ public class CardSpawner : MonoBehaviour {
 	private Vector3 easyStartPos;
 	private Vector3 mediumStartPos;
 	private Vector3 hardStartPos;
+
+
 
 
 	public bool isEasy;
@@ -49,8 +56,18 @@ public class CardSpawner : MonoBehaviour {
 		hardStartPos = hard.position;
 	
 
+
 		ChangeWave (Difficulty.easy);
 	
+
+		if (isHard)
+			ChangeWave (Difficulty.hard);
+		else if (isMedium)
+			ChangeWave (Difficulty.medium);
+		else if (isEasy)
+			ChangeWave (Difficulty.easy);
+
+		
 
 	}
 
@@ -122,7 +139,14 @@ public class CardSpawner : MonoBehaviour {
 		for (int i = 0; i < cardsToSpawn; i++){
 
 			GameObject topCard = GameObject.CreatePrimitive (PrimitiveType.Quad);
+
+
 			GameObject bottomCard = GameObject.CreatePrimitive (PrimitiveType.Quad);
+
+			topCard.GetComponent<MeshCollider> ().convex = true;
+
+
+
 
 
 			topCard.name = images[i].name;
@@ -140,9 +164,11 @@ public class CardSpawner : MonoBehaviour {
 
 			if (i <= 15) {
 
-				topCard.transform.rotation = easy.transform.rotation;
-				topCard.transform.position = easy.position + ((-2 * Vector3.right) * cardNumber);//new Vector 0,0,0.1f
-				bottomCard.transform.position = easy.position + ((-2 * Vector3.right) * cardNumber) + new Vector3 (0, 0, 0f);
+				topCard.transform.localRotation = easy.transform.rotation;
+				topCard.transform.localPosition = easy.position + ((sidePadding * Vector3.right) * cardNumber);//new Vector 0,0,0.1f
+				//topCard.transform.localScale = easy.transform.localScale;
+				bottomCard.transform.localPosition = easy.position + ((sidePadding * Vector3.right) * cardNumber) + new Vector3 (0, 0, 0f);
+				//\
 				isEasy = true;
 			
 			} else if (i > 15 && i <= 31) {
@@ -150,9 +176,12 @@ public class CardSpawner : MonoBehaviour {
 				if (i == 16)
 					cardNumber = 0;
 
-				topCard.transform.rotation = medium.transform.rotation;
-				topCard.transform.position = medium.position + ((2 * Vector3.forward) * cardNumber);
-				bottomCard.transform.position = medium.position + ((2 * Vector3.forward) * cardNumber) + new Vector3 (0, 0, 0);
+				topCard.transform.localRotation = medium.transform.rotation;
+				topCard.transform.localPosition = medium.position + ((sidePadding * Vector3.right) * cardNumber);
+			//	topCard.transform.localScale = medium.transform.localScale;
+				bottomCard.transform.localPosition = medium.position + ((sidePadding * Vector3.right) * cardNumber) + new Vector3 (0, 0, 0);
+			//	bottomCard.transform.localScale = medium.transform.localScale;
+
 				isEasy = false;
 				isMedium = true;
 		
@@ -163,15 +192,20 @@ public class CardSpawner : MonoBehaviour {
 					cardNumber = 0;
 
 				topCard.transform.rotation = hard.transform.rotation;
-				topCard.transform.position = hard.position + ((2 * Vector3.forward) * cardNumber);
-				bottomCard.transform.position = hard.position + ((2 * Vector3.forward) * cardNumber) + new Vector3 (0, 0, 0);
+				topCard.transform.position = hard.position + ((sidePadding * Vector3.right) * cardNumber);
+			//	topCard.transform.localScale = hard.transform.localScale;
+				bottomCard.transform.position = hard.position + ((sidePadding * Vector3.right) * cardNumber) + new Vector3 (0, 0, 0);
+			//	bottomCard.transform.localScale = hard.transform.localScale;
 				isMedium = false;
 				isHard = true;
 
 			}
-				
 
 			bottomCard.transform.parent = topCard.transform;
+
+			topCard.transform.localScale = easy.transform.localScale;
+
+
 			bottomCard.transform.localRotation = Quaternion.Euler (0, 180, 0);
 
 
@@ -186,8 +220,8 @@ public class CardSpawner : MonoBehaviour {
 
 					easy.gameObject.SetActive (false);
 					//Destroy (easy.gameObject);
-					topCard.transform.position = easy.position + (Vector3.down * 1.5f);
-					bottomCard.transform.position = easy.position + (Vector3.down * 1.5f);
+					topCard.transform.position = easy.position + (-topCard.transform.up * topPadding );
+					bottomCard.transform.position = easy.position + (-topCard.transform.up *topPadding);
 					easy.position = topCard.transform.position;
 				
 
@@ -196,8 +230,8 @@ public class CardSpawner : MonoBehaviour {
 
 					medium.gameObject.SetActive (false);
 					//Destroy (medium.gameObject);
-					topCard.transform.position = medium.position + (Vector3.down * 1.5f);
-					bottomCard.transform.position = medium.position + (Vector3.down * 1.5f);
+					topCard.transform.position = medium.position + (-topCard.transform.up * topPadding);
+					bottomCard.transform.position = medium.position + (-topCard.transform.up * topPadding);
 					medium.position = topCard.transform.position;
 				
 
@@ -206,8 +240,8 @@ public class CardSpawner : MonoBehaviour {
 					easy.gameObject.SetActive (false);
 					hard.gameObject.SetActive (false);
 					//Destroy (hard.gameObject);
-					topCard.transform.position = hard.position + (Vector3.down * 1.5f);
-					bottomCard.transform.position = hard.position + (Vector3.down * 1.5f);
+					topCard.transform.position = hard.position + (-topCard.transform.up * topPadding);
+					bottomCard.transform.position = hard.position + (-topCard.transform.up * topPadding);
 					hard.position = topCard.transform.position;
 				
 				}

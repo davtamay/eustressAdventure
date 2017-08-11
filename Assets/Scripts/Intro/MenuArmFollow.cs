@@ -56,6 +56,9 @@ public class MenuArmFollow : MonoBehaviour {
 			oldViewingAngle =  Quaternion.Euler(0,90,0) * camTransform.forward ;
 			isInitialClick = true;
 
+			if (SceneController.Instance.GetCurrentSceneName () != "intro")
+				GameController.Instance.Paused = true;
+
 		}
 
 		if (isInitialClick) {
@@ -97,7 +100,7 @@ public class MenuArmFollow : MonoBehaviour {
 
 				rotation = Quaternion.Euler (0, camTransform.eulerAngles.y, 0);
 
-				thisTransform.position = Vector3.Lerp (thisTransform.position, camTransform.position - (rotation * (offset * -1)), Time.deltaTime * 3f);
+				thisTransform.position = Vector3.Lerp (thisTransform.position, camTransform.position - (rotation * (offset * -1)), Time.unscaledDeltaTime * 3f);
 
 				thisTransform.LookAt (2 * thisTransform.position - camTransform.position, camTransform.up);
 			

@@ -11,13 +11,16 @@ public class StressModifierGeneral : MonoBehaviour {
 	void Update () {
 
 		timer += Time.deltaTime;
-		Debug.Log ("Is RUNNING");
 
-		if (timeUntilStressEffect > timer) {
+
+		if (timeUntilStressEffect < timer) {
+			Debug.Log (this.name + " - stress Is RUNNING");
 			UIStressGage.Instance.stress = stressEffect;
 			timer = 0;
 		}
 
 
 	}
+
+
 }

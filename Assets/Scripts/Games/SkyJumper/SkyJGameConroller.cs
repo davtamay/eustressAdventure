@@ -3,12 +3,16 @@ using System.Collections;
 
 public class SkyJGameConroller : MonoBehaviour {
 
-	public float objRespondTime;
+	public float obstacleRespondTime;
+
 	public float itemRespondTime;
-	public float newObstacleTime;
+	public float newWaveTime;
+	[SerializeField]private float newWaveObstacleRespondTimeDecrement;
 
 	private float obsTime;
 	private float itemTime;
+
+
 
 	private float newObsTime;
 	private int currentObs = 1;
@@ -45,17 +49,18 @@ public class SkyJGameConroller : MonoBehaviour {
 
 			}
 
-			if (obsTime >= objRespondTime) { 
+			if (obsTime >= obstacleRespondTime) { 
 				addPiece.AddNewObstacle (currentObs);
 				obsTime = 0.0f;
 
 
 
-				if (newObstacleTime < newObsTime) {
+				if (newWaveTime < newObsTime) {
 
+					obstacleRespondTime -= newWaveObstacleRespondTimeDecrement * PlayerManager.Instance.points;
 					newObsTime = 0.0f;
 
-					StartCoroutine (GameController.Instance.NewWave ());
+					yield return StartCoroutine (GameController.Instance.NewWave ());
 
 					++currentObs;
 					continue;

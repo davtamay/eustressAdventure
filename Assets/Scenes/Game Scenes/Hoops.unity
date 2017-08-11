@@ -42,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 11
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 6
+    serializedVersion: 9
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -71,10 +71,23 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-    m_StationaryBakeMode: 3
+    m_MixedBakeMode: 2
+    m_BakeBackend: 0
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 500
+    m_PVRBounces: 2
+    m_PVRFiltering: 0
+    m_PVRFilteringMode: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousColorSigma: 1
+    m_PVRFilteringAtrousNormalSigma: 1
+    m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
-  m_RuntimeCPUUsage: 25
-  m_ShadowMaskMode: 2
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -271,21 +284,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &29195043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,21 +1077,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 4
-  copingMethod: 0
 --- !u!114 &78392496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1599,6 +1614,7 @@ MonoBehaviour:
   - TASK 3 THIS IS
   - TASK 4 THIS IS
   - 
+  scrollSpeed: 0
 --- !u!114 &127670939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1903,7 +1919,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 168561198}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -1912,6 +1928,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 1142524427
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -2459,7 +2476,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 238127203}
-  - component: {fileID: 238127204}
   m_Layer: 5
   m_Name: Destress (1)
   m_TagString: Untagged
@@ -2487,24 +2503,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &238127204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 238127202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 255f4bd31f4e54fd88408f3bb001c954, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destressOffset: 1
-  isMenuShowing: 0
-  isOrientationChangeToFront: 0
-  isOrientationChangeToLastView: 1
-  isMenuFirstTime: 0
-  camTransform: {fileID: 0}
-  camParent: {fileID: 0}
 --- !u!1 &238754402
 GameObject:
   m_ObjectHideFlags: 0
@@ -2656,21 +2654,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 1
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &248062752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3317,21 +3316,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 4
   StressT: 0
-  copingMethod: 5
 --- !u!114 &363669097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3584,7 +3584,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 365442932}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -3593,6 +3593,7 @@ Canvas:
   m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 1811995675
   m_SortingOrder: 2
   m_TargetDisplay: 0
@@ -4040,7 +4041,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 413954258}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -4049,6 +4050,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -4512,7 +4514,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 439853165}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -4521,6 +4523,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 1811995675
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -4599,21 +4602,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &440674997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4821,6 +4825,7 @@ MonoBehaviour:
   - TASK 3 THIS IS
   - TASK 4 THIS IS
   - 
+  scrollSpeed: 0
 --- !u!114 &470648098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5054,21 +5059,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &493630895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5214,21 +5220,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &493879577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5378,21 +5385,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &503236097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5771,6 +5779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageLength: 0
   scrollSpeed: 0.05
+  scrollb: {fileID: 0}
 --- !u!114 &533904810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6319,7 +6328,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 568374726}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -6328,6 +6337,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 1142524427
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -6556,6 +6566,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   timeUntilDisapear: 0
+  objectToRotateAround: {fileID: 0}
+  fadeSpeed: 4
 --- !u!212 &610144932
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6596,6 +6608,8 @@ SpriteRenderer:
   m_Size: {x: 6, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &610786773
 GameObject:
   m_ObjectHideFlags: 0
@@ -6671,21 +6685,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &610786777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6885,6 +6900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageLength: 0
   scrollSpeed: 0.05
+  scrollb: {fileID: 0}
 --- !u!114 &615662659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7045,21 +7061,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &619155359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7434,21 +7451,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &661403251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7663,21 +7681,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &663020003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8209,21 +8228,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 1
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &696525870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8376,21 +8396,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 1
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &707031614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9097,21 +9118,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 1
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 4
   StressT: 6
-  copingMethod: 5
 --- !u!114 &747888929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9474,7 +9496,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 772341033}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -9483,6 +9505,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -9670,21 +9693,22 @@ MonoBehaviour:
   isSMenuOpener: 1
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &801737483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10045,7 +10069,22 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_CCT: 6500
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &825920811
@@ -10136,21 +10175,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &827981138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10573,6 +10613,8 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!222 &847358055
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10654,6 +10696,8 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!222 &853314904
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10735,6 +10779,8 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!222 &867519780
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10769,6 +10815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerItemSlotGOList: []
+  allItemGOInScene: []
   hurtColor: {r: 0, g: 0, b: 0, a: 0}
   addHealthColor: {r: 0, g: 0, b: 0, a: 0}
   healthColor: {r: 0, g: 0, b: 0, a: 0}
@@ -10777,6 +10824,10 @@ MonoBehaviour:
   isArmorOn: 0
   coinText: {fileID: 192772928}
   isInvulnerable: 0
+  isShakeWhenHit: 0
+  shakeTime: 2
+  shakeAmount: 3
+  shakeSpeed: 2
 --- !u!4 &874624567
 Transform:
   m_ObjectHideFlags: 0
@@ -11054,21 +11105,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 3
-  copingMethod: 0
 --- !u!114 &934522944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11235,21 +11287,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 1
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &935367688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11478,21 +11531,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 1
   gameScene: Intro
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &984077734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11932,7 +11986,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1036850778}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -11941,6 +11995,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 1811995675
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -12007,7 +12062,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1041002570}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -12016,6 +12071,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -12497,21 +12553,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 2
-  copingMethod: 0
 --- !u!114 &1062729286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12741,21 +12798,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 4
   StressT: 1
-  copingMethod: 5
 --- !u!114 &1068848131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13112,21 +13170,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1101774547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13764,6 +13823,8 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!222 &1200956237
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14001,21 +14062,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 5
-  copingMethod: 0
 --- !u!114 &1267602831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14502,6 +14564,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!4 &1308960057
 Transform:
   m_ObjectHideFlags: 0
@@ -14588,21 +14652,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1337230325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14839,21 +14904,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1341984830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15242,21 +15308,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1394327187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15409,21 +15476,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1395506375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15692,21 +15760,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: SkyJumper
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 1
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1441444394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16290,7 +16359,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1496091484}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -16299,6 +16368,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: -1186072337
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -16373,21 +16443,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1501373739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16677,7 +16748,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1567328857}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -16686,6 +16757,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 1142524427
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -16845,21 +16917,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1570763389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17078,6 +17151,8 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!222 &1576350756
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17277,7 +17352,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1581388514}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -17286,6 +17361,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -17398,21 +17474,22 @@ MonoBehaviour:
   isSMenuOpener: 1
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!135 &1588504372
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -17655,21 +17732,22 @@ MonoBehaviour:
   isSMenuOpener: 1
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!135 &1596373081
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18117,21 +18195,22 @@ MonoBehaviour:
   isSMenuOpener: 1
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1640165392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18282,21 +18361,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1645659239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18761,21 +18841,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1678337644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18925,21 +19006,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 1
   gameScene: Intro
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1679561853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19092,6 +19174,8 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!222 &1683793540
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19610,7 +19694,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1781251335}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -19619,6 +19703,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -19817,7 +19902,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1858498343}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -19826,6 +19911,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -20048,21 +20134,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1883351212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20540,21 +20627,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1936811465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20861,7 +20949,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1965487346}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -20870,6 +20958,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -20987,21 +21076,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &1990196713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21946,6 +22036,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!4 &2073402892
 Transform:
   m_ObjectHideFlags: 0
@@ -22181,21 +22273,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 1
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &2130307926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22382,7 +22475,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2139076470}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -22391,6 +22484,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -22470,21 +22564,22 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isMenuCope: 0
+  isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
   gameScene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
-  isBackButton: 0
+  isBackToIntroButton: 0
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
   isAllowWalk: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
   curMusicButton: 0
   StressT: 0
-  copingMethod: 0
 --- !u!114 &2145676686
 MonoBehaviour:
   m_ObjectHideFlags: 0

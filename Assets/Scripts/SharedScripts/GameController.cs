@@ -52,7 +52,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Start(){
-	//	hitEffects = new List<GameObject> ();
+
 
 		gameStart = GameObject.FindWithTag ("GameStart");
 		gameOver = GameObject.FindWithTag ("GameOver");
@@ -160,13 +160,30 @@ public class GameController : MonoBehaviour {
 	
 	
 	}
+	public float GetCurrentTime(){
+
+		return timer;
+	}
+
+	float timerTimeScale = 1;
+	public void StopTimer(){
+
+
+		timerTimeScale = 0;
+
+	}
+	public void ResumeTimer(){
+
+
+		timerTimeScale = 1;
+	}
 
 	private IEnumerator StartTimer(){
 		
 
 		while (isTimerOn) {
 
-			timer -= Time.deltaTime * timerSpeed;
+			timer -= Time.deltaTime * timerSpeed * timerTimeScale;
 
 			yield return null;
 		}

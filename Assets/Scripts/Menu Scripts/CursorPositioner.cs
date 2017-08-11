@@ -7,8 +7,10 @@ public class CursorPositioner : MonoBehaviour {
 	//private Camera cam;
 	Transform camTrans;
 
+	[SerializeField] private float zOffset = 0.2f;
+
 	void Start () { 
-		defaultPosZ = transform.localPosition.z;
+		defaultPosZ = transform.position.z;
 		camTrans = Camera.main.transform;
 	}
 	
@@ -18,14 +20,16 @@ public class CursorPositioner : MonoBehaviour {
 
 		Ray ray = new Ray (camTrans.position, camTrans.rotation * Vector3.forward);
 		RaycastHit hit;
-		if (Physics.Raycast(ray, out hit,10f,-1, QueryTriggerInteraction.Ignore)){
+		if (Physics.Raycast(ray, out hit, 10f ,-1, QueryTriggerInteraction.Ignore)){
 		if (hit.distance <= defaultPosZ) {
-			transform.localPosition = new Vector3 (0, 0, hit.distance);
+				transform.localPosition = new Vector3 (0, 0, hit.distance - zOffset);
 		} else {
-			transform.localPosition = new Vector3 (0,0, defaultPosZ);
+				transform.localPosition = new Vector3 (0,0, defaultPosZ + zOffset);
 		
 		}
 		
-	}
+		}else {
+			transform.localPosition = new Vector3 (0,0, defaultPosZ + zOffset);
+		}
 }
 }

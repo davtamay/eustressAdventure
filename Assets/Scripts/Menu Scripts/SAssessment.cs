@@ -216,9 +216,7 @@ public class SAssessment : MonoBehaviour
 
 		
 		}
-	//	typeOfFeeling.SetActive (false);
 
-		//gSuggest.SelectGames (stressFeel);
 		
 	}
 		

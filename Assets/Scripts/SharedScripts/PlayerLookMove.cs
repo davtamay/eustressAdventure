@@ -3,16 +3,23 @@ using System.Collections;
 
 public class PlayerLookMove : MonoBehaviour {
 
+	//public int testOBJECTASSESSIBILITY;
 	[SerializeField] private LayerMask groundLayer;
 	[SerializeField] private LayerMask bounceLayer;
+	public float velocity = 0.7f;
+
 	[SerializeField] private float jumpHeight;
+	[SerializeField] private float jumpFromGroundDis;
+	[SerializeField] private float jumpSpeed;
+	[SerializeField] private float jumpRechargeTime;
+
 	[SerializeField]private bool isSuperJumpAvailable;
 	[SerializeField]private float superJumpHeightAdd;
 	[SerializeField]private float superJumpSpeedAdd;
-	[SerializeField] private float jumpFromGroundDis;
-	[SerializeField] private float jumpSpeed;
-	public float velocity = 0.7f;
 	[SerializeField] private float gravity = 8;
+
+
+
 	private CharacterController controller;
 	private Vector3 moveDirection;
 	private bool isGoingDown = true;
@@ -26,29 +33,32 @@ public class PlayerLookMove : MonoBehaviour {
 	[SerializeField] private float minJumpAngleFromUp = 0.0f;
 	[SerializeField] private float maxJumpAngleFromUp = 70.0f;
 
-	[SerializeField] private bool isSlotsPresent;
+	[SerializeField] private float magnitudeOfStressFromFalling;
+
+
+
+
 	private GameObject UISlots;
-	//private bool isStayedLookingDown;
+
 
 	private bool isCharInGround;
 
-	//Vector3 destUp = Vector3.zero;
-	[SerializeField]private float angleSpeed = 5;
+	//[SerializeField]private float angleSpeed = 5;
 	private ControllerColliderHit _contact;
 
-	[SerializeField]private float amountOfStressToAdd;
-	[SerializeField]private float stressToAddPerSeconds;
+
 
 
 	void Awake(){
 		
 		controller = GetComponent<CharacterController> ();
 
-		if (isSlotsPresent)
-			UISlots = GameObject.FindWithTag ("UISlot");
+		//if (isSlotsPresent)
+		//	UISlots = GameObject.FindWithTag ("UISlot");
 		
 	}
 
+	float rechargeTimer;
 	void Start () {
 		//controller = GetComponent<CharacterController> ();
 		thisTransform = transform;
@@ -60,51 +70,43 @@ public class PlayerLookMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	float timer;
+	float amountOfFall;
+	//bool isInitialFalling;
+
 	void Update () {
 
-		//Debug.Log (DogInteraction.curDogInteraction);
 
-		if(string.Equals(SceneController.Instance.GetCurrentSceneName(), "Intro", System.StringComparison.CurrentCultureIgnoreCase)){
-
-			timer += Time.deltaTime;
-
-			if (timer > stressToAddPerSeconds){
-				timer = 0;
-				UIStressGage.Instance.stress = amountOfStressToAdd;
-
-			}
-
-		}
 
 		isCharInGround = isCharGrounded();
 
-		moveDirection = Camera.main.transform.forward;
+		moveDirection = Camera.main.transform.forward.normalized;
 		moveDirection *= Time.deltaTime;
 
+//		Debug.Log ("AMOUNT OFF STRESS FROM FALL" + amountOfFall + "ischaronGroud" + isCharInGround);
 
 
-		if (isCharGrounded() ) {
+		if (isCharInGround ) {
+
+			rechargeTimer -= Time.deltaTime;
+
+		//	UIStressGage.Instance.stress = amountOfFall * magnitudeOfStressFromFalling;
+		//	amountOfFall = 0f;
 
 		
-
+			if (rechargeTimer < 0)
 			if (maxJumpAngleFromUp > CameraAngleFromUp() && CameraAngleFromUp() > minJumpAngleFromUp && isGoingDown){
 
 				originalYPos = thisTransform.position.y;
 				isGoingDown = false;
 				isGoingUp = true;
+				rechargeTimer = jumpRechargeTime;
 				//new
 				//isStayedLookingDown = false;
 		
 			} 
 
-		}else { 
-
-		
-
-				moveDirection.y -= gravity * Time.deltaTime;
-
 		}
-
+			
 		if (isGoingUp) {
 
 			if (!isSuperJumpAvailable) {
@@ -123,7 +125,7 @@ public class PlayerLookMove : MonoBehaviour {
 			} else {
 
 
-				moveDirection.y += (jumpSpeed +SuperJumpSpeed+ gravity) * Time.deltaTime;
+				moveDirection.y += (jumpSpeed + SuperJumpSpeed + gravity) * Time.deltaTime;
 
 				SuperJumpSpeed = 0;
 
@@ -140,8 +142,11 @@ public class PlayerLookMove : MonoBehaviour {
 			
 			}
 
-		}
+		} else {
 			
+			moveDirection.y -= gravity * Time.deltaTime;
+			amountOfFall += gravity * Time.deltaTime;
+		}
 
 			if (minMoveAngleFromUp < CameraAngleFromUp() && CameraAngleFromUp() < maxMoveAngleFromUp) {
 
@@ -150,12 +155,7 @@ public class PlayerLookMove : MonoBehaviour {
 
 
 
-			/*if (isSlotsPresent) {
-				if (!UISlots.activeInHierarchy && !isStayedLookingDown)
-					StartCoroutine (PlayerManager.Instance.ShowUISlots());
-
-			}*/
-			//isStayedLookingDown = true;
+		
 
 			} 
 	/*	if (controller.isGrounded) {
@@ -171,7 +171,7 @@ public class PlayerLookMove : MonoBehaviour {
 		moveDirection.z *= velocity;
 		controller.Move (moveDirection);
 
-		//thisTransform.up = Vector3.Slerp (thisTransform.up, destUp, angleSpeed * Time.deltaTime);
+	
 	}
 
 	IEnumerator JumpUp(){
@@ -189,7 +189,7 @@ public class PlayerLookMove : MonoBehaviour {
 
 			controller.Move (moveDirection);
 
-			if (transform.position.y > jumpHeight) {
+			if (thisTransform.position.y > jumpHeight) {
 				isGoingDown = true;
 				yield break;
 			}
@@ -244,12 +244,15 @@ public class PlayerLookMove : MonoBehaviour {
 	private bool isCharGrounded(){
 
 
+
+
+
 		RaycastHit hit;
 
 
 
 		if (!isSuperJumpAvailable) {
-			if (Physics.Raycast (transform.position, -Vector3.up, out hit, jumpFromGroundDis, groundLayer)) {
+			if (Physics.Raycast (thisTransform.position, -Vector3.up, out hit, jumpFromGroundDis, groundLayer)) {
 			//	destUp = hit.normal;
 				return true;
 			
@@ -262,7 +265,7 @@ public class PlayerLookMove : MonoBehaviour {
 				destUp = hit.normal;
 				return true;*/
 
-			if (Physics.Raycast (transform.position, -Vector3.up, out hit, jumpFromGroundDis, bounceLayer)){
+			if (Physics.Raycast (thisTransform.position, -Vector3.up, out hit, jumpFromGroundDis, bounceLayer)){
 				SuperJump = superJumpHeightAdd;
 				SuperJumpSpeed = superJumpSpeedAdd;
 		//		destUp = hit.normal;

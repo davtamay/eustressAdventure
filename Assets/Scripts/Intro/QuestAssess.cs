@@ -74,12 +74,12 @@ public class QuestAssess : MonoBehaviour {
 		if(Physics.Raycast(cam.position, cam.rotation * Vector3.forward, out hit)){
 
 			if (string.Equals (hit.transform.name, navigationButtons [0].transform.name, System.StringComparison.CurrentCultureIgnoreCase)) {
-				questScrollBar.value += Time.deltaTime * scrollSpeed;
+				questScrollBar.value += Time.unscaledDeltaTime * scrollSpeed;
 				//navigationButtons [0].animationTriggers.pressedTrigger.
 				navigationButtons[0].Select();
 				//navigationButtons[0].OnPointerDown(UnityEngine.EventSystems.ExecuteEvents.EX);
 			} else if (string.Equals (hit.transform.name, navigationButtons [1].transform.name, System.StringComparison.CurrentCultureIgnoreCase)) {
-				questScrollBar.value -= Time.deltaTime * scrollSpeed;
+				questScrollBar.value -= Time.unscaledDeltaTime * scrollSpeed;
 				navigationButtons[1].Select();
 			}
 

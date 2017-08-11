@@ -8,6 +8,11 @@ public class GameTimer : MonoBehaviour {
 
 	private Text timerText;
 	private bool isDone;
+
+	[SerializeField] private bool isShowTextWhenDone = true;
+	[SerializeField] private string textToShow = "TimeUp!";
+	[SerializeField] private bool isPauseGameWhenDone = false;
+
 	//private string timer;
 
 	// Use this for initialization
@@ -18,20 +23,43 @@ public class GameTimer : MonoBehaviour {
 	}
 	
 	IEnumerator OnUpdate(){
-	
+
+		bool isMediumWarningOn = false;
+		bool isHardWarningOn = false;
+
 		while (true) {
 		
 			timerText.text = GameController.Instance.TimeToAdd(ref isDone);
 
+			if (GameController.Instance.GetCurrentTime () <= 30f && !isMediumWarningOn) {
+				timerText.color = Color.yellow;
+				isMediumWarningOn = true;
+			} else if (GameController.Instance.GetCurrentTime () <= 10f && !isHardWarningOn) {
+				timerText.color = Color.red;
+				isHardWarningOn = true;
+			}
+
+
+
+
+				
 
 			if (isDone) {
-				timerText.text = "TimeUp!";
+
+				if (isShowTextWhenDone)
+					timerText.text = textToShow;
+
+				if (isPauseGameWhenDone)
+					GameController.Instance.Paused = true;
+					
 				isDone = false;
 			}
 		
 		
 			yield return new WaitForSeconds (0.2f);
 		}
+		isMediumWarningOn = false;
+		isHardWarningOn = false;
 	
 	
 	}
