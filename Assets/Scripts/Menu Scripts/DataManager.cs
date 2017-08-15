@@ -153,9 +153,9 @@ public class DataManager : MonoBehaviour {
 
 		string stressLevel = Application.persistentDataPath + @"/stressLevel.json";
 
-		if (!File.Exists(items)) {
+		if (!File.Exists(stressLevel)) {
 
-			StreamWriter Writer = new StreamWriter (items);
+			StreamWriter Writer = new StreamWriter (stressLevel);
 			Writer.WriteLine (JsonUtility.ToJson (this));
 			Writer.Close ();
 
