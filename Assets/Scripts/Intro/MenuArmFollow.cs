@@ -50,6 +50,11 @@ public class MenuArmFollow : MonoBehaviour {
 	bool isLerping = false;
 	void LateUpdate () {
 		if (Input.GetMouseButton (0)) {
+			if (isInitialClick) {
+				thisAnimator.SetBool ("Close", false);
+				return;
+			}
+			
 			curViewingAngle = camTransform.forward;
 
 			thisTransform.GetChild(0).gameObject.SetActive(true);

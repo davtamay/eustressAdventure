@@ -7,8 +7,8 @@ public class TargetMovement : MonoBehaviour
     public Vector3 bound;
     public float speed = 100.0f;
 
-    private Vector3 initialPosition;
-    private Vector3 nextMovementPoint;
+	[SerializeField]private Vector3 initialPosition;
+    [SerializeField]private Vector3 nextMovementPoint;
 	private Transform thisTransform;
 		
 	// Use this for initialization
@@ -28,7 +28,7 @@ public class TargetMovement : MonoBehaviour
         float posY = Random.Range(initialPosition.y - bound.y, initialPosition.y + bound.y);
         float posZ = Random.Range(initialPosition.z - bound.z, initialPosition.z + bound.z);
 
-        nextMovementPoint = initialPosition + new Vector3(posX, posY, posZ); 
+		nextMovementPoint = new Vector3(posX, posY, posZ); //initialPosition + new Vector3(posX, posY, posZ); 
     }
 
 //	void OnDrawGizmos(){
@@ -38,11 +38,11 @@ public class TargetMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(nextMovementPoint - transform.position), 1.0f * Time.deltaTime);
+		transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(nextMovementPoint - transform.position), 2.0f * Time.deltaTime);
 
-	//	RaycastHit hit;
-		if(Physics.Raycast(thisTransform.position, thisTransform.forward, 15))
+	
+		if(Physics.Raycast(thisTransform.position, thisTransform.forward, 5f))
 			CalculateNextMovementPoint();
 
         if(Vector3.Distance(nextMovementPoint, transform.position) <= 10.0f)

@@ -20,7 +20,7 @@ public class SceneController : MonoBehaviour {
 
 	private static SceneController instance = null;
 
-	[SerializeField] private bool isSceneLoading = false;
+	[SerializeField] private static bool isSceneLoading = false;
 
 	private Transform player;
 
@@ -79,7 +79,7 @@ public class SceneController : MonoBehaviour {
 	//	while (!anim.GetCurrentAnimatorStateInfo (0).IsName ("Faded"))
 	//		return;
 
-		//	anim.SetTrigger ("FadeOut");
+			anim.SetTrigger ("FadeOut");
 			
 		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
 			GameController.Instance.Paused = false;
@@ -103,6 +103,7 @@ public class SceneController : MonoBehaviour {
 	public void Load(string scene){
 
 
+		anim.SetTrigger ("FadeIn");
 
 		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
 			if (!isCustomSavePosition)
@@ -118,12 +119,14 @@ public class SceneController : MonoBehaviour {
 		}
 
 
-		anim.SetTrigger ("FadeIn");
+
 		StartCoroutine (ChangeScene (scene));
 
 	}
 
 	public void OnApplicationQuit(){
+
+		player = GameObject.FindWithTag ("Player").transform;
 
 		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
 			DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
@@ -153,9 +156,7 @@ public class SceneController : MonoBehaviour {
 					break;
 				
 				}
-
-			//	SceneManager.LoadScene (scene);
-			//	break;
+					
 			}
 		}
 
@@ -179,11 +180,10 @@ public class SceneController : MonoBehaviour {
 		}
 		isSceneLoading = false;
 		Rimage.gameObject.SetActive (false);
-			anim.SetTrigger ("FadeOut");
-		//if (!string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase))
-			OrientationAdjustment.Instance.OrientationChangeToGlobalFront ();
+			
+		OrientationAdjustment.Instance.OrientationChangeToGlobalFront ();
 	
-		//text.gameObject.SetActive(false);
+
 
 
 
@@ -191,7 +191,7 @@ public class SceneController : MonoBehaviour {
 	}
 	public void ResetCurrentGame(){
 		
-		//SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+	
 		Load (SceneManager.GetActiveScene ().name);
 
 

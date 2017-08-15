@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4699327533857006}
+  - component: {fileID: 114050145122125802}
   m_Layer: 0
   m_Name: PointBoxMove
   m_TagString: Untagged
@@ -180,8 +181,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1153135341815474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.4, z: 17.11}
-  m_LocalScale: {x: 2, y: 1.2, z: 2}
+  m_LocalPosition: {x: 74.68, y: 2.67, z: 28.98}
+  m_LocalScale: {x: 0.55, y: 0.4, z: 0.55}
   m_Children:
   - {fileID: 4805619528557946}
   m_Father: {fileID: 0}
@@ -493,7 +494,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616267888071698}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 1c01ca29e32674885ba4e9b00edefdd1, type: 2}
   m_CullingMode: 0
@@ -503,6 +504,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114050145122125802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1153135341815474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f46d6c04bb24880abf2f22b0bcd130, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  isMoveWithSin: 0
+  positionRange: {x: 0.001, y: 0, z: 0}
+  isMoveWithSphereRandom: 0
+  radiusMagnitude: 0
+  distanceUntilRandomChange: 0
+  xConstraint: 0
+  yConstraint: 0
+  zConstraint: 0
+  isMovePosition: 0
+  moveMagnitude: {x: 0, y: 0, z: 0}
+  isRotate: 0
+  rotateMagnitude: {x: 0, y: 0, z: 0}
 --- !u!114 &114573773393848998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -515,16 +540,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 2
-  isPersist: 0
+  isPersist: 1
 --- !u!114 &114931107612114796
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616267888071698}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10f6c010b4a424c10bf058a939ba8a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCrate: 1
+  isHellicopter: 0

@@ -61,11 +61,12 @@ public class ButtonClickLook : MonoBehaviour {
 	public MusicPlayerButton curMusicButton;
 
 	public StressTypes StressT;
-	//public MenuCoping copingMethod;
 
 
 
-	GameObject hitButton;
+
+	static GameObject hitButton;
+
 	PointerEventData data;
 
 	void Awake(){
@@ -94,6 +95,11 @@ public class ButtonClickLook : MonoBehaviour {
 
 
 	}
+
+	private bool isLooking = false;
+	CoroutineController controller;
+
+
 	void Update(){
 
 	
@@ -102,6 +108,7 @@ public class ButtonClickLook : MonoBehaviour {
 	//		return;
 		
 
+		
 
 		Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
 
@@ -112,20 +119,40 @@ public class ButtonClickLook : MonoBehaviour {
 
 			if (col.Raycast (ray, out hit, 400)) {
 
+
+
+				
+			
 			if (hit.transform.gameObject.CompareTag ("Button")) {
 
-				if (!GameController.Instance.IsMenuActive) {
-					
+
+
+
+				//if (!GameController.Instance.IsMenuActive) {
+
 					hitButton = hit.transform.gameObject;
 
-					StartCoroutine ("ButtonLook");
+				if (controller != null )
+				if (controller.state == CoroutineState.Running)
+					return;
+				
+					isLooking = true;
+
+				if (controller == null ) {
+					this.StartCoroutineEx (ButtonLook (), out controller);
+					return;
+				}
+					
+				Debug.Log (controller.state);
 
 
-				} else{
+
+
+				//} 
+			/*else{
 
 
 					if (((1 << hit.transform.gameObject.layer) & 1 << 5) != 0) {	
-			//		Debug.Log ("i hit layer:" + (hit.transform.gameObject.layer) + "Which is 5 (UI)");
 
 					hitButton = hit.transform.gameObject;
 					buttonFill = hitButton.GetComponent<Image> ();
@@ -136,233 +163,223 @@ public class ButtonClickLook : MonoBehaviour {
 
 					} 
 				
-				}
-		//	}
+				}*/
+	
 			}
 
 			} else {
-		
+
+			if (controller != null)
+			if (controller.state == CoroutineState.Running)
+				controller = null;
+				//controller.state = CoroutineState.Finished;
+
+
 			//	ExecuteEvents.Execute<IPointerExitHandler> (currentButton, data, ExecuteEvents.pointerExitHandler);
+			//previousHitButton = currentButton;
+			//	StopCoroutine("ButtonLook");
+				//previousHitButton = null;
+			//	hitButton = null;
+			//StopCoroutine(buttonCoroutine);
+				isLooking = false;
 				countDown = timeToSelect;
 				buttonFill.fillAmount = 1.0f;
-
+				//previousHitButton = null;
 			}
 
 	}	
 
+
 	IEnumerator ButtonLook(){
 			
-		// highlight
+		countDown = timeToSelect;
+		buttonFill.fillAmount = 1.0f;
 
-		//ExecuteEvents.Execute<IPointerEnterHandler> (hitButton, data, ExecuteEvents.pointerEnterHandler);
-		countDown -= Time.unscaledDeltaTime;
+		while (isLooking) {
+			yield return null;
 
-		buttonFill.fillAmount = countDown / timeToSelect;
+			// highlight
+			//ExecuteEvents.Execute<IPointerEnterHandler> (hitButton, data, ExecuteEvents.pointerEnterHandler);
+			countDown -= Time.unscaledDeltaTime;
 
-
-		if (countDown < 0.0f && hitButton == currentButton) {
-
-		//	if(!isMenuCope)
-		//	ExecuteEvents.Execute<IPointerClickHandler> (hitButton, data, ExecuteEvents.pointerClickHandler);
-
-			countDown = timeToSelect;
+			buttonFill.fillAmount = countDown / timeToSelect;
 
 
-		
-				
+			if (countDown < 0.0f){ //&& hitButton == currentButton) {
 
-	//UnityEngine.Profiling.Profiler.BeginSample ("ButtonPress");
-			if (isSMenuOpener) {
+				//	if(!isMenuCope)
+				//	ExecuteEvents.Execute<IPointerClickHandler> (hitButton, data, ExecuteEvents.pointerClickHandler);
 
-				StressMenu.SetActive (false);
-				GameController.Instance.Paused = false;
-				//GetComponentInParent<OrientationAdjustment> ().ShowGame ();
+				countDown = timeToSelect;
+				buttonFill.fillAmount = 1.0f;
+				//hitButton = null;
 
-					
-			//	UnityEngine.Profiling.Profiler.EndSample ();
-			
-			} else if (isRestartProgress) {
+				//has to be called to prevent multiple clicks when clicking on button....
 
-				DataManager.Instance.DeleteHighScoreSlotandPositionData (homePosition);
-				DataManager.Instance.DeletePPDataTaskProgress ();
-				SceneController.Instance.Load ("Intro");
-			
-			
-			
-			}else if (isAllowWalk) {
-			
-				isWalking = !isWalking;
-				if (isWalking) {
+//FIXME ButtonOnClick clicks multiple times once it completes countdown.. It is not iterative it is one select				//StartCoroutine(DisableAndEnableCollider(col));
 
-					buttonFill.color = Color.green;
+
+
+				//UnityEngine.Profiling.Profiler.BeginSample ("ButtonPress");
+				if (isSMenuOpener) {
+
+					StressMenu.SetActive (false);
 					GameController.Instance.Paused = false;
-					GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ().enabled = true;
-					//GameObject.FindWithTag ("Player").GetComponent<CharacterController> ().enabled = true;
 
-				} else {
+					//	UnityEngine.Profiling.Profiler.EndSample ();
+			
+				} else if (isRestartProgress) {
 
-					buttonFill.color = Color.red;
-					GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ().enabled = false;
-					//	GameObject.FindWithTag ("Player").GetComponent<CharacterController> ().enabled = false;
-				
-				}
+					DataManager.Instance.DeleteHighScoreSlotandPositionData (homePosition);
+					DataManager.Instance.DeletePPDataTaskProgress ();
+					
+					LoadScene ("Intro");
+					
 			
 			
-			} else if (isEnvChanger) {
-
-				SceneController.Instance.ChangeSkyBox ();
-
-			} else if (isBackToIntroButton) {
-
-
-				if (PlayerManager.Instance != null && DataManager.Instance != null) {
-					DataManager.Instance.CheckHighScore (SceneController.Instance.GetCurrentSceneName (), PlayerManager.Instance.points);
-				}
-				SceneController.Instance.ResetGame ("Intro");
 			
-			} else if (isStartButton) {
+				} else if (isAllowWalk) {
+			
+					isWalking = !isWalking;
+					if (isWalking) {
 
-				GameController.Instance.StartGame ();
-				GameController.Instance.Paused = false;
-
-				//SceneController.Instance.Load ("Intro");
-
-			} else if (isReplayButton) {
-
-
-				SceneController.Instance.ResetCurrentGame ();
+						buttonFill.color = Color.green;
+						GameController.Instance.Paused = false;
+						GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ().enabled = true;
 
 
-				//	GetComponentInParent<DestressPopUp> ().HideDestress ();
+					} else {
 
-			} else if (isResetPositiontoHome) {
-
-
-				//DataManager.Instance.SavePosition (homePosition);
-				SceneController.Instance.isCustomSavePosition = true;
-				SceneController.Instance.customSavePosition = homePosition;
-
-				SceneController.Instance.Load ("Intro");
-
-				//GameObject.FindWithTag ("Player").transform.position = homePosition;
-
-			}else if (isMusicButton) {
-
-				switch (curMusicButton) {
-
-				case MusicPlayerButton.stop:
-					MusicController.Instance.StopM ();
-					break;
-
-				case MusicPlayerButton.next:
-					MusicController.Instance.PlayMusicNext ();
-					break;
+						buttonFill.color = Color.red;
+						GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ().enabled = false;
 				
-				case MusicPlayerButton.previous:
-					MusicController.Instance.PlayMusicPrevious ();
-					break;
+					}
+			
+			
+				} else if (isEnvChanger) {
 
-				case MusicPlayerButton.play:
-					MusicController.Instance.PlayM ();
-					break;
+					SceneController.Instance.ChangeSkyBox ();
 
+				} else if (isBackToIntroButton) {
+
+
+					if (PlayerManager.Instance != null && DataManager.Instance != null) {
+						DataManager.Instance.CheckHighScore (SceneController.Instance.GetCurrentSceneName (), PlayerManager.Instance.points);
+					}
+					LoadScene ("Intro");
+
+					//SceneController.Instance.ResetGame ("Intro");
+
+			
+				} else if (isStartButton) {
+
+					GameController.Instance.StartGame ();
+					GameController.Instance.Paused = false;
+					
+
+
+				} else if (isReplayButton)
+					SceneController.Instance.ResetCurrentGame ();
+				else if (isResetPositiontoHome) {
+
+			
+					SceneController.Instance.isCustomSavePosition = true;
+					SceneController.Instance.customSavePosition = homePosition;
+
+					LoadScene ("Intro");
+
+				} else if (isMusicButton) {
+
+					switch (curMusicButton) {
+
+					case MusicPlayerButton.stop:
+						MusicController.Instance.StopM ();
+						break;
+
+					case MusicPlayerButton.next:
+						MusicController.Instance.PlayMusicNext ();
+						break;
 				
+					case MusicPlayerButton.previous:
+						MusicController.Instance.PlayMusicPrevious ();
+						break;
+
+					case MusicPlayerButton.play:
+						MusicController.Instance.PlayM ();
+						break;
+
+					}
 
 
-				}
+				} else if (isSType) { //&& !isMenuActive) {
 
-
-
-			}else if (isSType){ //&& !isMenuActive) {
-
-				if (sAsses == null)
-					sAsses = GameObject.FindWithTag ("StressAssess").GetComponent<SAssessment> ();
+					if (sAsses == null)
+						sAsses = GameObject.FindWithTag ("StressAssess").GetComponent<SAssessment> ();
 				
 				
-				switch (StressT) {
+					switch (StressT) {
 
-				case StressTypes.angry:
-					sAsses.StressFeelChoice (SAssessment.TypeOfStress.angry);
-					break;
+					case StressTypes.angry:
+						sAsses.StressFeelChoice (SAssessment.TypeOfStress.angry);
+						break;
 						
-				case StressTypes.anxious:
-					sAsses.StressFeelChoice (SAssessment.TypeOfStress.anxious);
-					break;
+					case StressTypes.anxious:
+						sAsses.StressFeelChoice (SAssessment.TypeOfStress.anxious);
+						break;
 				
 
-				case StressTypes.dissapointed:
-					sAsses.StressFeelChoice (SAssessment.TypeOfStress.dissapointed);
-					break;
-				case StressTypes.frustrated:
-					sAsses.StressFeelChoice (SAssessment.TypeOfStress.frustrated);
-					break;
+					case StressTypes.dissapointed:
+						sAsses.StressFeelChoice (SAssessment.TypeOfStress.dissapointed);
+						break;
+					case StressTypes.frustrated:
+						sAsses.StressFeelChoice (SAssessment.TypeOfStress.frustrated);
+						break;
 
 
-				case StressTypes.sad:
-					sAsses.StressFeelChoice (SAssessment.TypeOfStress.sad);
-					break;
+					case StressTypes.sad:
+						sAsses.StressFeelChoice (SAssessment.TypeOfStress.sad);
+						break;
 
-				case StressTypes.worried:
-					sAsses.StressFeelChoice (SAssessment.TypeOfStress.worried);
-					break;
+					case StressTypes.worried:
+						sAsses.StressFeelChoice (SAssessment.TypeOfStress.worried);
+						break;
 
-				case StressTypes.none:
-					break;
+					case StressTypes.none:
+						break;
 
-				}
+					}
 
-			} else if (isButtonInvoke && !isSMenuOpener) {
-				
-				button.onClick.Invoke ();
-				/*switch (copingMethod) {
+				} else if (isGame && !isSMenuOpener) {
 
-				case MenuCoping.breathing:
-					button.onClick.Invoke ();
-					break;
-
-				case MenuCoping.counting:
-					button.onClick.Invoke ();
-					break;
-
-				case MenuCoping.refraiming:
-					button.onClick.Invoke ();
-					break;
-				
-				case MenuCoping.music:
-					button.onClick.Invoke ();
-					break;
-
-				case MenuCoping.paint:
-					button.onClick.Invoke ();
-					break;
-
-				case MenuCoping.none:
-					button.onClick.Invoke ();
-					break;
-
-				case MenuCoping.meditation:
-					button.onClick.Invoke ();
-					//button.onClick.Invoke ();
-					break;
-				}
-						*/
-			} else if (isGame && !isSMenuOpener) {
-
-				LoadScene (gameScene);
-				yield break;
+					LoadScene (gameScene);
 		
+
+				}
+
+				if (isButtonInvoke) 
+					button.onClick.Invoke ();
+				
+				if (isClickEventCalled)
+					OnClick.Invoke ();
+
+
+
+				countDown = timeToSelect;
+				buttonFill.fillAmount = 1.0f;
+				isLooking = false;
+			
+			
+				//to prevent multiple clicks in one time
+				yield return new WaitForSecondsRealtime (2f);
+				controller = null;
 
 			}
-
-			if (isClickEventCalled)
-				OnClick.Invoke ();
-
-			buttonFill.fillAmount = 1.0f;
-			yield return null;
 		}
+
 	}
+
 	void LoadScene(string scene){
-	
+		col.enabled = false;
 		SceneController.Instance.Load (scene);
 	
 	

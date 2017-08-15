@@ -7,6 +7,8 @@ using UnityEngine;
 public class GameTimer : MonoBehaviour {
 
 	private Text timerText;
+	private Color originalColor;
+
 	private bool isDone;
 
 	[SerializeField] private bool isShowTextWhenDone = true;
@@ -18,36 +20,41 @@ public class GameTimer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		timerText = GetComponent<Text> ();
+		originalColor = timerText.color;
 		timerText.text = GameController.Instance.TimeToAdd(ref isDone);
 		StartCoroutine (OnUpdate ());
+	}
+
+	public void SetUpcomingTimerDoneTextToShow(string text){
+	
+		textToShow = text;
+	
 	}
 	
 	IEnumerator OnUpdate(){
 
-		bool isMediumWarningOn = false;
-		bool isHardWarningOn = false;
 
 		while (true) {
 		
+
 			timerText.text = GameController.Instance.TimeToAdd(ref isDone);
+		
 
-			if (GameController.Instance.GetCurrentTime () <= 30f && !isMediumWarningOn) {
-				timerText.color = Color.yellow;
-				isMediumWarningOn = true;
-			} else if (GameController.Instance.GetCurrentTime () <= 10f && !isHardWarningOn) {
+			timerText.color = originalColor;
+
+			if (GameController.Instance.GetCurrentTime () <= 10f )
 				timerText.color = Color.red;
-				isHardWarningOn = true;
-			}
+			else if (GameController.Instance.GetCurrentTime () <= 25f)
+				timerText.color = Color.yellow;
 
-
-
-
-				
 
 			if (isDone) {
 
-				if (isShowTextWhenDone)
+				if (isShowTextWhenDone) {
+					timerText.color = originalColor;
 					timerText.text = textToShow;
+
+				}
 
 				if (isPauseGameWhenDone)
 					GameController.Instance.Paused = true;
@@ -58,8 +65,7 @@ public class GameTimer : MonoBehaviour {
 		
 			yield return new WaitForSeconds (0.2f);
 		}
-		isMediumWarningOn = false;
-		isHardWarningOn = false;
+
 	
 	
 	}

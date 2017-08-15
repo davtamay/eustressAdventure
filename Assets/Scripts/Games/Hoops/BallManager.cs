@@ -58,7 +58,7 @@ public class BallManager : MonoBehaviour {
 		Rigidbody spawnedRigidbody = spawnedPrefab.GetComponent<Rigidbody> ();
 		//remove velocity from used object to prevent objects from having velocity at start
 		spawnedRigidbody.velocity = Vector3.zero;
-		Debug.Log (spawnedRigidbody.velocity);
+		//Debug.Log (spawnedRigidbody.velocity);
 		spawnedRigidbody.AddForce (dir * ballForce, ForceMode.Impulse);
 
 		Instance.queue.Enqueue (spawnedPrefab);

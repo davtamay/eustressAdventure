@@ -10,8 +10,10 @@ public class WaveController : MonoBehaviour {
 
 	private Transform thisTransform;
 	[SerializeField]UnityEvent onGameStart;
-	[SerializeField]UnityEvent onWaveChange;
+
 	[SerializeField]UnityEvent onWaveShowStart;
+	[SerializeField]UnityEvent onWaveShowEnd;
+	[SerializeField]UnityEvent onWaveChange;
 
 	[SerializeField]private Transform firstWaveObject;
 	[SerializeField]private Transform secondWaveObject;
@@ -23,6 +25,7 @@ public class WaveController : MonoBehaviour {
 	[SerializeField]private bool isRemainAfterWave;
 
 	[SerializeField] int GOToRespondFirstWave;
+	[SerializeField]UnityEvent onFirstWaveStart;
 	[SerializeField] int GOToRespondSecondWave;
 	[SerializeField] float timeUntilSecondWave;
 	[SerializeField]UnityEvent onSecondWaveStart;
@@ -104,6 +107,7 @@ public class WaveController : MonoBehaviour {
 		bool isFifthWave = false;
 		bool isSixWave = false;
 
+		onFirstWaveStart.Invoke ();
 
 		while (TimerOn) {
 			yield return null;
@@ -119,9 +123,10 @@ public class WaveController : MonoBehaviour {
 
 				if (!isRemainAfterWave)
 				firstWaveObject.gameObject.SetActive (false);
-
+				
 				onWaveShowStart.Invoke ();
 				yield return StartCoroutine (GameController.Instance.NewWave ());
+				onWaveShowEnd.Invoke ();
 
 				GameController.Instance.TimeToAdd (ref isDone, timeUntilThirdWave);
 
@@ -148,6 +153,7 @@ public class WaveController : MonoBehaviour {
 
 				onWaveShowStart.Invoke ();
 				yield return StartCoroutine (GameController.Instance.NewWave ());
+				onWaveShowEnd.Invoke ();
 
 				GameController.Instance.TimeToAdd (ref isDone, timeUntilFourthWave);
 
@@ -179,6 +185,7 @@ public class WaveController : MonoBehaviour {
 
 				onWaveShowStart.Invoke ();
 				yield return StartCoroutine (GameController.Instance.NewWave ());
+				onWaveShowEnd.Invoke ();
 
 				GameController.Instance.TimeToAdd (ref isDone, timeUntilFifthWave);
 
@@ -205,6 +212,7 @@ public class WaveController : MonoBehaviour {
 
 				onWaveShowStart.Invoke ();
 				yield return StartCoroutine (GameController.Instance.NewWave ());
+				onWaveShowEnd.Invoke ();
 
 				GameController.Instance.TimeToAdd (ref isDone, timeUntilSixthWave);
 				isDone = false;
@@ -233,6 +241,7 @@ public class WaveController : MonoBehaviour {
 
 				onWaveShowStart.Invoke ();
 				yield return StartCoroutine (GameController.Instance.NewWave ());
+				onWaveShowEnd.Invoke ();
 
 				RandomizeGOToEnable (GOToRespondSixthWave, sixWaveObject);
 

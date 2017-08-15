@@ -128,8 +128,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4525411104526486}
-  - component: {fileID: 95320500940329704}
-  - component: {fileID: 114936314187675724}
+  - component: {fileID: 54321845800416364}
+  - component: {fileID: 114436812642107444}
   m_Layer: 0
   m_Name: MoveZombie
   m_TagString: Untagged
@@ -214,8 +214,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1796553965916244}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.9, y: 0, z: 28.77}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 85.76, y: 3.83, z: 32.31}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 4117919694461710}
   m_Father: {fileID: 0}
@@ -498,6 +498,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1288631384779596}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54321845800416364
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1796553965916244}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65664330301836796
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -527,23 +542,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95320500940329704
-Animator:
-  serializedVersion: 3
+--- !u!114 &114436812642107444
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1796553965916244}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2140be371283448329b076e48270a72a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f46d6c04bb24880abf2f22b0bcd130, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  isMoveWithSin: 0
+  positionRange: {x: 0, y: 0, z: 0}
+  isMoveWithSphereRandom: 0
+  radiusMagnitude: 0
+  distanceUntilRandomChange: 0
+  xConstraint: 0
+  yConstraint: 0
+  zConstraint: 0
+  isMovePosition: 1
+  moveMagnitude: {x: 0, y: 0, z: -0.015}
+  isRotate: 0
+  rotateMagnitude: {x: 0, y: 0, z: 0}
 --- !u!114 &114659715360477006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -557,19 +579,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: 3
   isPersist: 0
---- !u!114 &114936314187675724
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1796553965916244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10f6c010b4a424c10bf058a939ba8a49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCrate: 0
-  isHellicopter: 0
 --- !u!136 &136151632047408002
 CapsuleCollider:
   m_ObjectHideFlags: 1

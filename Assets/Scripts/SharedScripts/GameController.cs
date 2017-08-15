@@ -193,16 +193,27 @@ public class GameController : MonoBehaviour {
 	
 	}
 
-
+	bool isWaveImageOn;
 	public IEnumerator NewWave(){
-
+		isWaveImageOn = true;
 		newWave.SetActive (true);
 		yield return new WaitForSeconds (timeUntilNewWave);
+		isWaveImageOn = false;
+	}
+	public bool GetWaveActiveState(){
+
+		if (isWaveImageOn)
+			return true;
+
+		return false;
+	
+	
 	}
 	public float GetNewWaveTime{
 	
 		get{return timeUntilNewWave;}	
 	}
+
 
 	                       
 	public bool isGameOver{

@@ -155,10 +155,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4061706292221050}
-  - component: {fileID: 95601275588680972}
+  - component: {fileID: 114201981435485732}
   - component: {fileID: 135220426355874414}
   - component: {fileID: 114384630483122940}
-  - component: {fileID: 114219221054851106}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -305,8 +304,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1463718107437226}
   m_LocalRotation: {x: -0, y: 0.69171464, z: -0, w: 0.72217095}
-  m_LocalPosition: {x: -39.88, y: -1.3, z: 35.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 74.9, y: 4.2, z: 29.1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4011764670687120}
   - {fileID: 4734908801578144}
@@ -1039,29 +1038,12 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 8002a0cfe92a84f64a4c19662e44e0f5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95601275588680972
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1463718107437226}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fecdd9d1bd8bb4aea89a34babd4e0501, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114219221054851106
+--- !u!114 &114201981435485732
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1069,11 +1051,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1463718107437226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10f6c010b4a424c10bf058a939ba8a49, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f126522b6ac34cb3892107c38765165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCrate: 0
-  isHellicopter: 1
+  bound: {x: 20, y: 20, z: 10}
+  speed: 1
+  initialPosition: {x: 0, y: 0, z: 0}
+  nextMovementPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &114384630483122940
 MonoBehaviour:
   m_ObjectHideFlags: 1

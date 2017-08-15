@@ -37,6 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4244541799802286}
+  - component: {fileID: 114719783382138782}
   m_Layer: 0
   m_Name: PointBox
   m_TagString: Untagged
@@ -137,8 +138,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1076926593687000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6, y: -4, z: 10.6}
-  m_LocalScale: {x: 1.2, y: 1.5, z: 1.2}
+  m_LocalPosition: {x: 72.29492, y: 2.93, z: 30.53}
+  m_LocalScale: {x: 0.7, y: 0.5, z: 0.7}
   m_Children:
   - {fileID: 4937535275538458}
   - {fileID: 4737771497993266}
@@ -181,7 +182,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1558403120431578}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.86, y: -1.14, z: 0.87}
+  m_LocalPosition: {x: 0.86, y: -0.89, z: 0.87}
   m_LocalScale: {x: 1.5, y: 1.5, z: 0.099999994}
   m_Children: []
   m_Father: {fileID: 4244541799802286}
@@ -467,4 +468,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 1
-  isPersist: 0
+  isPersist: 1
+--- !u!114 &114719783382138782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076926593687000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f46d6c04bb24880abf2f22b0bcd130, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  isMoveWithSin: 0
+  positionRange: {x: 0, y: 0, z: 0}
+  isMoveWithSphereRandom: 1
+  radiusMagnitude: 3
+  distanceUntilRandomChange: 1
+  xConstraint: 0
+  yConstraint: 0
+  zConstraint: 1
+  isMovePosition: 0
+  moveMagnitude: {x: 0, y: 0, z: 0}
+  isRotate: 0
+  rotateMagnitude: {x: 0, y: 0, z: 0}
