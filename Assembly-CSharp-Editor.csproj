@@ -52,18 +52,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\editor\ObjectExplorer.cs" />
-     <Compile Include="Assets\GoogleVR\Demos\Editor\DemoInputManagerEditor.cs" />
-     <Compile Include="Assets\GoogleVR\Demos\Editor\PermissionsDemoBuildEditor.cs" />
-     <Compile Include="Assets\GoogleVR\Demos\Scripts\ScrollingUIDemo\Editor\PagedScrollbarEditor.cs" />
-     <Compile Include="Assets\GoogleVR\Editor\Audio\GvrAudioListenerEditor.cs" />
-     <Compile Include="Assets\GoogleVR\Editor\Audio\GvrAudioRoomEditor.cs" />
-     <Compile Include="Assets\GoogleVR\Editor\Audio\GvrAudioSoundfieldEditor.cs" />
-     <Compile Include="Assets\GoogleVR\Editor\Audio\GvrAudioSourceEditor.cs" />
-     <Compile Include="Assets\GoogleVR\Editor\Controller\GvrTooltipEditor.cs" />
-     <Compile Include="Assets\GoogleVR\Editor\EventSystem\GvrPointerScrollInputEditor.cs" />
-     <Compile Include="Assets\GoogleVR\Editor\GvrBuildProcessor.cs" />
-     <Compile Include="Assets\GoogleVR\Editor\GvrEditorSettings.cs" />
-     <Compile Include="Assets\GoogleVR\Editor\GvrMenu.cs" />
      <Compile Include="Assets\PostProcessing\Editor\Attributes\PostProcessingModelEditorAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Editor\Models\AmbientOcclusionModelEditor.cs" />
      <Compile Include="Assets\PostProcessing\Editor\Models\AntialiasingModelEditor.cs" />
@@ -102,15 +90,12 @@
      <Compile Include="Assets\TagFrenzy\Scripts\Editor\TagFrenzyListEditor.cs" />
      <None Include="Assets\Text\Menu\Frustrated_CR.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
-     <None Include="Assets\GoogleVR\Distortion\GvrDistortion.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Fog.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\LutGen.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
-     <None Include="Assets\GoogleVR\Demos\Shaders\VideoDemo\VideoDemoInsideShader.shader" />
      <None Include="Assets\Text\Menu\Sad_CR.txt" />
-     <None Include="Assets\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\UI\CurveBackground.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
      <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
@@ -121,7 +106,6 @@
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Uber.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Blit.shader" />
-     <None Include="Assets\GoogleVR\Shaders\GvrAdditiveOverlay.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformRender.shader" />
      <None Include="Assets\Shaders\Waves.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\VectorscopeCompute.compute" />
@@ -129,45 +113,32 @@
      <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.shader" />
      <None Include="Assets\TagFrenzy\Resources\Tags.xml" />
      <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
-     <None Include="Assets\GoogleVR\Demos\Environment\DemoEnvUnlitGrayscale.shader" />
      <None Include="Assets\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Common.cginc" />
-     <None Include="Assets\GoogleVR\Shaders\GvrUnlitTransparentOverlay.shader" />
      <None Include="Assets\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
-     <None Include="Assets\GoogleVR\Shaders\GvrUnlitTransparentOverlayColor.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\UI\Trackball.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.cginc" />
-     <None Include="Assets\GoogleVR\Demos\Shaders\GVRDemo\GVRDemoAmbientOcclusion.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\TAA.shader" />
      <None Include="Assets\Text\Menu\Anger_CR.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\EyeHistogram.compute" />
      <None Include="Assets\PostProcessing\Resources\Shaders\TAA.cginc" />
-     <None Include="Assets\GoogleVR\Shaders\GvrUnlitTextureOverlay.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\EyeAdaptation.cginc" />
-     <None Include="Assets\Plugins\Android\proguard-gvr.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\GrainGen.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\FXAA.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
-     <None Include="Assets\Plugins\Android\AndroidManifest-Daydream.xml" />
      <None Include="Assets\Shaders\OnTop3DText.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.shader" />
-     <None Include="Assets\GoogleVR\Demos\Shaders\GVRDemo\GVRDemoUnlitGrayscaleToColor.shader" />
-     <None Include="Assets\GoogleVR\Shaders\GvrReticleShader.shader" />
      <None Include="Assets\Text\Menu\Disappointed_CR.txt" />
-     <None Include="Assets\GoogleVR\Shaders\GvrUIOverlay.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\VectorscopeRender.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />
      <None Include="Assets\Shaders\MobileWater.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
-     <None Include="Assets\Plugins\Android\AndroidManifest-Cardboard.xml" />
      <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
      <None Include="Assets\Text\Menu\Worried_CR.txt" />
-     <None Include="Assets\GoogleVR\Shaders\GvrUnityCompatibility.cginc" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
-     <None Include="Assets\GoogleVR\Demos\Shaders\VideoDemo\VideoDemoStereoShader.shader" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>/opt/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
  </Reference>
@@ -380,9 +351,6 @@
  </Reference>
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>/opt/Unity/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="Google.ProtocolBuffers">
- <HintPath>/home/user/Desktop/destressor1/Assets/Plugins/Google.ProtocolBuffers.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>/home/user/.config/unity3d/cache/packages/packages.unity.com/com.unity.ads@0.0.16/UnityEngine.Advertisements.dll</HintPath>
