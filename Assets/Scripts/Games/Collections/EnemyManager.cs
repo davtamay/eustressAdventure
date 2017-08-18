@@ -11,7 +11,7 @@ public class EnemyManager : MonoBehaviour {
 
 
 	public Vector3 changeSize;
-	private Transform thisTransform;
+	//private Transform thisTransform;
 	public GameObject enemyPrefab;
 	private GameObject tempEnemy;
 	public int enemiesToCreate;
@@ -38,7 +38,7 @@ public class EnemyManager : MonoBehaviour {
 		instance = this; 
 
 
-		thisTransform = transform;
+	//	thisTransform = transform;
 	
 		player = GameObject.FindWithTag ("Player").transform;
 	}

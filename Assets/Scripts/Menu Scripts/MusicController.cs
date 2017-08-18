@@ -12,12 +12,12 @@ public class MusicObject //: MonoBehaviour
 	public AudioClip clip;
 	public string name;
 
-	private float volumeON = 1f;
-	private float targetVolume;
+	//private float volumeON = 1f;
+	//private float targetVolume;
 
-	private float volume = 0;
+	//private float volume = 0;
 
-	private int targetFadeState =0;
+	//private int targetFadeState =0;
 
 
 
@@ -26,8 +26,8 @@ public class MusicObject //: MonoBehaviour
 	{
 		
 
-		targetFadeState = 1;
-		targetVolume = volumeON;
+	//	targetFadeState = 1;
+		//targetVolume = volumeON;
 	//	source.volume = aVolume;// volume;
 		sourceGO = new GameObject ("AudioSource_" + aName);
 		sourceTR = sourceGO.transform;
@@ -59,7 +59,7 @@ public class MusicController : MonoBehaviour
 
 	public Transform myTransform;
 	//public string gamePrefsName = "DefaultGame";
-	private int fadeState;
+	//private int fadeState;
 	private int targetFadeState;
 	public float fadeTime = 15f;
 	public bool isFadeInAtStart = true;		
@@ -67,7 +67,7 @@ public class MusicController : MonoBehaviour
 	public bool isloopMusic = true;
 
 	private float volumeON = 1f;
-	private float targetVolume;
+	//private float targetVolume;
 
 	public AudioClip[] musicList;
 	public List<MusicObject> musicObjectList;
@@ -191,17 +191,17 @@ public class MusicController : MonoBehaviour
 	public void FadeIn(float fadeAmount)
 	{
 		volume = 0;
-		fadeState = 0;
-		targetFadeState = 1;
+	//	fadeState = 0;
+		//targetFadeState = 1;
 		fadeTime = fadeAmount;
 
 	}
 	public void FadeOut(float fadeAmount)
 	{
 		volume = volumeON;
-		fadeState = 1;
-		targetFadeState = 0;
-		targetVolume = 0;
+	//	fadeState = 1;
+	//	targetFadeState = 0;
+	//	targetVolume = 0;
 		fadeTime = fadeAmount;
 	}
 

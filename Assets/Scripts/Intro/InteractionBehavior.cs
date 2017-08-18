@@ -87,7 +87,7 @@ public class InteractionBehaviour : MonoBehaviour {
 	
 	}
 
-	Coroutine infoActive; 
+	//Coroutine infoActive; 
 	//private bool isResetTime;
 	public void TriggerInfo(){
 
@@ -98,7 +98,8 @@ public class InteractionBehaviour : MonoBehaviour {
 	
 		infoCanvasPrefab.SetActive (true);
 		infoCanvasAnimator.SetBool ("IsActive", true);
-		infoActive = StartCoroutine (InfoActive ());
+		//infoActive = 
+			StartCoroutine (InfoActive ());
 
 	
 	}

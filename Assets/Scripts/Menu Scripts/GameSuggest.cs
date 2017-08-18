@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using TagFrenzy;
+//using TagFrenzy;
 
 public class GameSuggest : MonoBehaviour {
 
@@ -27,14 +27,14 @@ public class GameSuggest : MonoBehaviour {
 	void Start(){
 		
 	
-	var	games = MultiTag.FindGameObjectsWithTags (Tags.Game);
+	//var	games = MultiTag.FindGameObjectsWithTags (Tags.Game);
 
 
-		foreach (GameObject gO in games) {
+	//	foreach (GameObject gO in games) {
 		
-			gO.SetActive (false);
+		//	gO.SetActive (false);
 		
-		}
+	//	}
 	}
 		
 	public void SelectGames(string typeofstress){

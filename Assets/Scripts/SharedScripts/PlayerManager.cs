@@ -209,7 +209,7 @@ public class PlayerManager : MonoBehaviour {
 
 
 
-	private int _health;
+	private int _health = 0;
 
 	public int health{
 		get{ return _health;}

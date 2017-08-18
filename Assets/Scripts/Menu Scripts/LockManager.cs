@@ -27,7 +27,7 @@ public class LockManager : MonoBehaviour {
 	[SerializeField] private Game curGame;
 
 
-	private Collider GameAssessCollider;
+	//private Collider GameAssessCollider;
 	private ParticleSystem.MainModule particleSys;
 
 	private Transform game;
@@ -44,7 +44,7 @@ public class LockManager : MonoBehaviour {
 		isShootAvailable = shootScoreToBeat;
 		isHoopAvailable = hoopScoreToBeat;
 
-		GameAssessCollider = GetComponentInChildren<Collider> ();
+	//	GameAssessCollider = GetComponentInChildren<Collider> ();
 
 
 

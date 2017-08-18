@@ -18,12 +18,12 @@ public class Enemy : MonoBehaviour {
 	public float runAwayDistance;
 	public float attackPush;
 
-	private bool canSeePlayer;
+	//private bool canSeePlayer;
 	private Color originalColor;
 	private float originalSpeed;
 	private float originalAngularSpeed;
 	private float originalStopingDistance;
-	private float originalAcceleration;
+	//private float originalAcceleration;
 
 	Renderer thisRenderer;
 	Collider thisCollider;
@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour {
 
 
 		currentState = EnemyState.Idle;
-		canSeePlayer = false;
+		//canSeePlayer = false;
 		yield return new WaitForSeconds (1);
 		currentState = EnemyState.Search;
 
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour {
 			thisAgent.stoppingDistance = 6;
 			originalStopingDistance = thisAgent.stoppingDistance;
 			originalAngularSpeed = thisAgent.angularSpeed;
-			originalAcceleration = thisAgent.acceleration;
+			//originalAcceleration = thisAgent.acceleration;
 			thisAgent.baseOffset = 4.5f;
 
 		} else {
@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour {
 			
 				if (distanceSqrd < followDistance * followDistance){
 					currentState = EnemyState.Chase;
-					canSeePlayer = true;
+					//canSeePlayer = true;
 
 					StartCoroutine (State_Chase ());
 					break;
@@ -168,7 +168,7 @@ public class Enemy : MonoBehaviour {
 
 			if (distanceSqrd > followDistance * followDistance){
 				currentState = EnemyState.Idle;
-				canSeePlayer = false;
+				//canSeePlayer = false;
 			//	StopAllCoroutines ();	
 				thisAgent.stoppingDistance = 0;
 				StartCoroutine (State_Idle ());
@@ -176,7 +176,7 @@ public class Enemy : MonoBehaviour {
 			}
 			if (distanceSqrd < attackDistance * attackDistance){
 				currentState = EnemyState.Attack;
-				canSeePlayer = true;
+				//canSeePlayer = true;
 			//	StopAllCoroutines ();	
 				thisAgent.stoppingDistance = 6;
 				StartCoroutine (State_Attack ());
@@ -283,7 +283,7 @@ public class Enemy : MonoBehaviour {
 				yield return new WaitForSeconds (3);
 			} else {
 				currentState = EnemyState.Chase;
-				canSeePlayer = true;
+				//canSeePlayer = true;
 			//	StopAllCoroutines ();	
 				StartCoroutine (State_Chase ());
 				break;

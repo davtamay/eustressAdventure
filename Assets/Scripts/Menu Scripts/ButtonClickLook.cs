@@ -4,7 +4,7 @@ using System;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using TagFrenzy;
+//using TagFrenzy;
 
 [RequireComponent(typeof (Collider))]
 public class ButtonClickLook : MonoBehaviour {
@@ -15,7 +15,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 	public bool isSMenuOpener = false;
 	private Camera cam;
-	private GameObject currentButton;
+	//private GameObject currentButton;
 	private float timeToSelect = 2.0f;
 	private float countDown = 2.0f;
 	private Image buttonFill;
@@ -65,7 +65,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 
 
-	static GameObject hitButton;
+	//static GameObject hitButton;
 
 	PointerEventData data;
 
@@ -86,7 +86,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 		cam = Camera.main;
 
-		currentButton = this.gameObject;
+	//	currentButton = this.gameObject;
 
 		//data = new PointerEventData (EventSystem.current);
 
@@ -114,7 +114,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 
 		RaycastHit hit;
-		hitButton = null;
+		//hitButton = null;
 
 
 			if (col.Raycast (ray, out hit, 400)) {
@@ -130,7 +130,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 				//if (!GameController.Instance.IsMenuActive) {
 
-					hitButton = hit.transform.gameObject;
+					//hitButton = hit.transform.gameObject;
 
 				if (controller != null )
 				if (controller.state == CoroutineState.Running)

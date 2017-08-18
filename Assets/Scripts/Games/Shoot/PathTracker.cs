@@ -7,9 +7,9 @@ using UnityEngine;
 public class PathTracker : MonoBehaviour {
 
 	//private LineRenderer lineRenderer;
-	TrailRenderer trailRenderer;
+	//TrailRenderer trailRenderer;
 	private int lengthOfLineRenderer = 1000;
-	[SerializeField]private float widthMultiply = 0.2f;
+	//[SerializeField]private float widthMultiply = 0.2f;
 
 
 	void Start(){
@@ -21,10 +21,10 @@ public class PathTracker : MonoBehaviour {
 
 	
 	}
-	void OnDrawGizmos(){
+	//void OnDrawGizmos(){
 	//	float timer = 0;
 	//	lineRenderer = GetComponent<LineRenderer> ();
-		trailRenderer = GetComponent<TrailRenderer> ();
+		//trailRenderer = GetComponent<TrailRenderer> ();
 	//	StartCoroutine (LineDelay ());
 	/*	for (int i =0; i <lengthOfLineRenderer; i++) {
 
@@ -40,7 +40,7 @@ public class PathTracker : MonoBehaviour {
 		
 
 
-	}
+//	}
 
 	IEnumerator LineDelay(){
 		while (true) {

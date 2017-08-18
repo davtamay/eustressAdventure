@@ -8,7 +8,7 @@ public class FinderSpawner : MonoBehaviour {
 	public GameObject[] findTargets;
 
 	public GameObject[] obstacles;
-	private int obstacleTypes;
+	private int obstacleTypes = 0;
 
 	public int numberOfObstacles;
 	[SerializeField] private GameObject obstacleManager;

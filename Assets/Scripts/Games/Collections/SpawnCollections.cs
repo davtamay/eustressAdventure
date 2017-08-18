@@ -28,7 +28,7 @@ public class SpawnCollections : MonoBehaviour {
 	[SerializeField] private int amountOfEnemies1;
 	private bool isSecondWave = false;
 	[SerializeField] private int amountOfEnemies2;
-	private bool isThirdWave = false;
+	//private bool isThirdWave = false;
 	[SerializeField] private int amountOfEnemies3;
 
 
@@ -86,7 +86,7 @@ public class SpawnCollections : MonoBehaviour {
 					if (EnemyManager.Instance.activeEnemies.Count == 0) {
 						StartCoroutine (GameController.Instance.NewWave ());
 						isSecondWave = false;
-						isThirdWave = true;
+					//	isThirdWave = true;
 						for (int i = 0; i < amountOfEnemies2; i++){
 							
 							EnemyManager.Instance.InitiateEnemy(spawnLoc [spawnLocRandom].position + Vector3.up * 4);

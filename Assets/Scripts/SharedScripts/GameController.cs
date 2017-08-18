@@ -14,8 +14,8 @@ public class GameController : MonoBehaviour {
 
 
 
-	private Camera[] cameras;
-	private Camera cam;
+	//private Camera[] cameras;
+	//private Camera cam;
 
 	private float timer;
 	private	bool isTimerOn;
@@ -46,8 +46,8 @@ public class GameController : MonoBehaviour {
 	//		stressMenu.SetActive (false);
 		
 		//cam = GameObject.FindWithTag ("MainCamera").GetComponent<Camera> ();
-		cam = Camera.main;
-		cameras = cam.GetComponentsInChildren<Camera> ();
+		//cam = Camera.main;
+	//	cameras = cam.GetComponentsInChildren<Camera> ();
 
 	}
 

@@ -15,7 +15,7 @@ public class UIStressGage : MonoBehaviour {
 	//[SerializeField]private int naturalStress = 5;
 	public bool isAddStress;
 	public bool isReduceStress;
-	private Vector3 originalPos;
+	//private Vector3 originalPos;
 
 	
 	//180 to down
@@ -29,7 +29,7 @@ public class UIStressGage : MonoBehaviour {
 		instance = this; 
 
 		stressGageArrow = transform.GetChild (0);
-		originalPos = stressGageArrow.localEulerAngles;
+	//	originalPos = stressGageArrow.localEulerAngles;
 
 		stress = 2;
 	}

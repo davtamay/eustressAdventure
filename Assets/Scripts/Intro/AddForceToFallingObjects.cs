@@ -7,7 +7,7 @@ public class AddForceToFallingObjects : MonoBehaviour {
 	private Rigidbody thisRigidbody;
 	private Rigidbody[] fracturedObjectsRb;
 	private Vector3 lastRigidbodyVelocity;
-	private bool isFractureAvailable = true;
+	//private bool isFractureAvailable = true;
 	void Awake(){
 	
 
@@ -31,7 +31,7 @@ public class AddForceToFallingObjects : MonoBehaviour {
 			for (int i = 0; i < fracturedObjectsRb.Length; i++) {
 				fracturedObjectsRb [i].constraints = RigidbodyConstraints.None;
 			}
-			isFractureAvailable = false;
+		//	isFractureAvailable = false;
 			Destroy (gameObject, 10);
 
 		}

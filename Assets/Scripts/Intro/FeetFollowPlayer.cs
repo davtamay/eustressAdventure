@@ -5,7 +5,7 @@ using UnityEngine;
 public class FeetFollowPlayer : MonoBehaviour {
 
 	private Transform camTransform;
-	[SerializeField]private float rotationToSpeed = 1;
+	//[SerializeField]private float rotationToSpeed = 1;
 	private Transform thisTransform;
 
 	void Start () {

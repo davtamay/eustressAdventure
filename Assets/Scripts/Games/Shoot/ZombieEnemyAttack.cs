@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombieEnemyAttack : MonoBehaviour {
-	private Collider thisCollider;
+	//private Collider thisCollider;
 	private Animator thisAnimator;
 	private Transform thisTransform;
 	private Transform player;
@@ -19,7 +19,7 @@ public class ZombieEnemyAttack : MonoBehaviour {
 	void Awake(){
 		thisTransform = transform;
 		player = GameObject.FindWithTag ("Player").transform;
-		thisCollider = GetComponent<Collider> ();
+	//	thisCollider = GetComponent<Collider> ();
 		thisAnimator = GetComponent<Animator> ();
 	}
 

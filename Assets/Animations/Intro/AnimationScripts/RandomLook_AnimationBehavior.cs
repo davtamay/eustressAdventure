@@ -36,7 +36,7 @@ public class RandomLook_AnimationBehavior : StateMachineBehaviour {
 		
 
 	}
-	bool isTurning = false;
+//	bool isTurning = false;
 //	Vector3 oldWayPoint;
 	Quaternion rotationToLookTo;
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

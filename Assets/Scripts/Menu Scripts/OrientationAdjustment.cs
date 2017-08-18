@@ -26,7 +26,7 @@ public class OrientationAdjustment : MonoBehaviour {
 	//public float sweepRate = 100.0f;
 	private float previousCameraAngle;
 
-	Vector3 originalDirection = Vector3.zero;
+//	Vector3 originalDirection = Vector3.zero;
 	Vector3 currentDirection;
 
 	//[SerializeField] private bool isOrientationChangeToFront = true;

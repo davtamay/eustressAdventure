@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using TagFrenzy;
+//using TagFrenzy;
 public class SkyJumperLookMovement : MonoBehaviour {
 
 	private Camera cam;

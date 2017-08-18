@@ -6,7 +6,7 @@ public class RopeManager : MonoBehaviour {
 
 //	private ContactPoint FirstCP;
 	private Transform thisRopeTransform;
-	private float TimeUntilFall = 3f;
+//	private float TimeUntilFall = 3f;
 	private static bool isFirstCollision;
 	private static int collisionCount;
 

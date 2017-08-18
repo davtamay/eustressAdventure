@@ -105,7 +105,7 @@ public class WaveController : MonoBehaviour {
 		bool isThirdWave = false;
 		bool isFourthWave = false;
 		bool isFifthWave = false;
-		bool isSixWave = false;
+	//	bool isSixWave = false;
 
 		onFirstWaveStart.Invoke ();
 
@@ -254,7 +254,7 @@ public class WaveController : MonoBehaviour {
 
 
 				isFifthWave = false;
-				isSixWave = true;
+		//		isSixWave = true;
 
 					TimerOn = false;
 

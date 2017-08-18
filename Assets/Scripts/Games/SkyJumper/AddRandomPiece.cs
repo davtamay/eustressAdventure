@@ -9,14 +9,14 @@ public class AddRandomPiece : MonoBehaviour {
 	public Transform[] objStartLocations;
 
 	private int obstacleNumb;
-	private int itemNumb;
+	//private int itemNumb;
 
 
 
 	void Awake(){
 	
 		obstacleNumb = obstacles.Length;
-		itemNumb = items.Length;
+		//itemNumb = items.Length;
 	}
 
 	public void AddNewObstacle(int obstacleLength){
