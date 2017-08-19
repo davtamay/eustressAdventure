@@ -11436,6 +11436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a696c44c81c08405489a0d4ca133c021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationToSpeed: 1
 --- !u!1 &299893825
 GameObject:
   m_ObjectHideFlags: 0
@@ -61375,6 +61376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a696c44c81c08405489a0d4ca133c021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationToSpeed: 1
 --- !u!65 &1097745472
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -96506,7 +96508,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1552754247}
-  m_LocalRotation: {x: -0.34611753, y: -0.5470279, z: -0.2649207, w: 0.71468896}
+  m_LocalRotation: {x: -0.3461175, y: -0.5470278, z: -0.26492068, w: 0.7146889}
   m_LocalPosition: {x: 0.00062, y: 0.01405, z: -0.00227}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -101253,6 +101255,8 @@ GameObject:
   - component: {fileID: 1713648356}
   - component: {fileID: 1713648358}
   - component: {fileID: 1713648357}
+  - component: {fileID: 1713648360}
+  - component: {fileID: 1713648359}
   m_Layer: 8
   m_Name: MainTerrain
   m_TagString: Untagged
@@ -101326,6 +101330,46 @@ Terrain:
   m_BakeLightProbesForTrees: 1
   m_ScaleInLightmap: 0.0512
   m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!95 &1713648359
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713648355}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!320 &1713648360
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713648355}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 31d3d591b84734876bb2d9f148a78119, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 114004965520580954, guid: 31d3d591b84734876bb2d9f148a78119, type: 2}
+    value: {fileID: 1713648355}
+  - key: {fileID: 114363179542209680, guid: 31d3d591b84734876bb2d9f148a78119, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 114354256458603882, guid: 31d3d591b84734876bb2d9f148a78119, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References:
+    - b3e57fb2269d543f38b7af3abcb3f358: {fileID: 1322988052}
 --- !u!1 &1715273797
 GameObject:
   m_ObjectHideFlags: 0
@@ -102754,7 +102798,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1752582771}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 200.5, y: 107.5, z: 0}
+  m_LocalPosition: {x: 203.5, y: 116.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 639997246}
