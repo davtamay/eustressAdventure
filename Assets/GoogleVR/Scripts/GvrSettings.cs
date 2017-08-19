@@ -20,7 +20,7 @@
 // This class is defined only for versions of Unity with the GVR native integration.
 #if UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_EDITOR)
 using UnityEngine;
-using UnityEngine.VR;
+using UnityEngine.XR;
 using System;
 using System.Runtime.InteropServices;
 #if UNITY_EDITOR
@@ -49,7 +49,7 @@ public static class GvrSettings {
     }
 #else
     get {
-      IntPtr gvrContextPtr = VRDevice.GetNativePtr();
+      IntPtr gvrContextPtr = XRDevice.GetNativePtr();
       if (gvrContextPtr == IntPtr.Zero) {
         Debug.Log("Null GVR context pointer, could not get viewer platform type");
         return ViewerPlatformType.Error;
@@ -90,7 +90,7 @@ public static class GvrSettings {
 #else
     // Running on Android.
     get {
-      IntPtr gvrContextPtr = VRDevice.GetNativePtr();
+      IntPtr gvrContextPtr = XRDevice.GetNativePtr();
       if (gvrContextPtr == IntPtr.Zero) {
         Debug.Log("Null GVR context pointer, could not get GVR user prefs' handedness");
         return UserPrefsHandedness.Error;

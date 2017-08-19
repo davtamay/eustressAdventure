@@ -16,7 +16,7 @@
 // GVR native integration.
 
 using UnityEngine;
-using UnityEngine.VR;
+using UnityEngine.XR;
 using System.Collections;
 
 /// The GvrArmModel is a standard interface to interact with a scene with the controller.
@@ -286,7 +286,7 @@ public class GvrArmModel : MonoBehaviour {
 
     return forward;
 #else
-    return InputTracking.GetLocalRotation(VRNode.Head) * Vector3.forward;
+    return InputTracking.GetLocalRotation(XRNode.Head) * Vector3.forward;
 #endif // UNITY_EDITOR
   }
 
