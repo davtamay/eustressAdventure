@@ -102,6 +102,8 @@ public class ButtonClickLook : MonoBehaviour {
 
 	void Update(){
 
+		if (SceneController.isSceneLoading)
+		return;
 	
 	//	if(!isSMenuOpener)
 	//	if (GameController.Instance.IsInfoBubbleActive) 
@@ -370,7 +372,7 @@ public class ButtonClickLook : MonoBehaviour {
 			
 			
 				//to prevent multiple clicks in one time
-				yield return new WaitForSecondsRealtime (2f);
+				yield return new WaitForSecondsRealtime (20f);
 				controller = null;
 
 			}

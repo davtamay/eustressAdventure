@@ -20,7 +20,7 @@ public class SceneController : MonoBehaviour {
 
 	private static SceneController instance = null;
 
-	[SerializeField] private static bool isSceneLoading = false;
+	public static bool isSceneLoading = false;
 
 	private Transform player;
 
@@ -34,8 +34,6 @@ public class SceneController : MonoBehaviour {
 		
 		RenderSettings.skybox = skyboxes [currentSkybox];
 
-		DontDestroyOnLoad (gameObject);
-
 
 		if (instance) {
 				DestroyImmediate (gameObject);
@@ -43,6 +41,7 @@ public class SceneController : MonoBehaviour {
 			}
 		instance = this; 
 
+		DontDestroyOnLoad (gameObject);
 
 		stressMenu = GameObject.FindWithTag ("StressMenu");
 
@@ -50,7 +49,8 @@ public class SceneController : MonoBehaviour {
 		
 
 	void Start(){
-		
+
+	
 		stressMenu.SetActive (false);
 
 		player = GameObject.FindWithTag ("Player").transform;
@@ -62,24 +62,29 @@ public class SceneController : MonoBehaviour {
 
 
 		SceneManager.sceneLoaded += OnLevelLoad;
-
+		
 		anim = GetComponentInChildren<Animator>();
+
 	}
 
 	void OnLevelLoad(Scene scene, LoadSceneMode sceneMode){
 		
 
-		SAssessment.Instance.OnLevelWasLoad ();
+		SAssessment.Instance.OnLevelLoad ();
 
-		stressMenu = GameObject.FindWithTag ("StressMenu");
-		stressMenu.SetActive (false);
+		if (GameObject.FindWithTag ("StressMenu") != null) {
+			stressMenu = GameObject.FindWithTag ("StressMenu");
+			stressMenu.SetActive (false);
+
+		} else
+			Debug.LogWarning ("There is no StressMenu in this scene");
 
 		RenderSettings.skybox = skyboxes [currentSkybox];
 
-	//	while (!anim.GetCurrentAnimatorStateInfo (0).IsName ("Faded"))
-	//		return;
 
-			anim.SetTrigger ("FadeOut");
+		//if Async is available and not crashing unity activate this...
+		//	anim.SetTrigger ("FadeOut");
+
 			
 		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
 			GameController.Instance.Paused = false;
@@ -95,15 +100,37 @@ public class SceneController : MonoBehaviour {
 			GameController.Instance.Paused = true;
 
 		}
-			
-			
 
+		//if Async is available and not crashing unity deactivate this...
+		OrientationAdjustment.Instance.OrientationChangeToGlobalFront ();
+		StartCoroutine(TakeOffFade());
+
+	}
+	IEnumerator TakeOffFade(){
+
+		anim.SetTrigger ("FadeOut");
+
+		while (true) {
+			yield return null;
+
+			if (anim.GetCurrentAnimatorStateInfo (0).IsTag ("Clear")) {
+				
+				isSceneLoading = false;
+				yield break;
+			
+			}
+				
+		
+		}
+	
+	
 	}
 
 	public void Load(string scene){
-
-
+	
 		anim.SetTrigger ("FadeIn");
+
+
 
 		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
 			if (!isCustomSavePosition)
@@ -118,54 +145,55 @@ public class SceneController : MonoBehaviour {
 
 		}
 
-
-
 		StartCoroutine (ChangeScene (scene));
 
 	}
 
-	public void OnApplicationQuit(){
-
-		player = GameObject.FindWithTag ("Player").transform;
-
-		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
-			DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
-			DataManager.Instance.SavePosition (player.position);
-			DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
-
-
-
-		}
-	}
 
 	AsyncOperation async;
 	public IEnumerator ChangeScene (string scene){
-		
+
+		//works... deactivate once async works
+		isSceneLoading = true;
 		while (true) {
+			yield return null;
+
+			if (anim.GetCurrentAnimatorStateInfo (0).IsTag ("Faded")) {
+				SceneManager.LoadScene (scene);
+				yield break;
+
+			}
+		}
+	
+
+		//FIXME LOADSCENASYNC CRASHES UNITY... because of components of camera from gvr and using async..
+		//doesnotwork...AS OF V2017.20
+		//SceneManager.LoadSceneAsync ("TEST");
+		/*
+
+		while (true) {
+			
 			yield return null;
 
 			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Faded")) {
 
+
 				if (!isSceneLoading) {
-
 					isSceneLoading = true;
-
 					async = SceneManager.LoadSceneAsync (scene);
 					StartCoroutine (WhileSceneIsLoading ());
-
-					break;
+					yield break;
 				
 				}
 					
 			}
 		}
 
-
+*/
 
 	}//this plays before OnlevelLoad()...
 	IEnumerator WhileSceneIsLoading(){
-		//Text text = GetComponentInChildren<Text> (true);
-		//text.gameObject.SetActive(true);
+		
 		RawImage Rimage = GetComponentInChildren<RawImage> (true);
 		Vector2 RiSize = Rimage.rectTransform.sizeDelta;
 		Rimage.gameObject.SetActive (true);
@@ -177,14 +205,17 @@ public class SceneController : MonoBehaviour {
 			Rimage.rectTransform.sizeDelta = new Vector2((500 * async.progress), Rimage.rectTransform.sizeDelta.y );
 			yield return null;
 
+
 		}
+		
+
 		isSceneLoading = false;
 		Rimage.gameObject.SetActive (false);
 			
 		OrientationAdjustment.Instance.OrientationChangeToGlobalFront ();
 	
-
-
+		yield return null;
+	
 
 
 	
@@ -220,6 +251,23 @@ public class SceneController : MonoBehaviour {
 		return SceneManager.GetActiveScene ().name;
 	
 	}
+	public void OnApplicationQuit(){
+
+		if (GameObject.FindWithTag ("Player") == null)
+			return;
+
+		player = GameObject.FindWithTag ("Player").transform;
+
+		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
+			DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
+			DataManager.Instance.SavePosition (player.position);
+			DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
+
+
+
+		}
+	}
+
 
 
 

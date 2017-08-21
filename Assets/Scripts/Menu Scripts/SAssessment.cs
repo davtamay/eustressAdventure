@@ -30,90 +30,47 @@ public class SAssessment : MonoBehaviour
 
 	void Awake()
 	{
-
-		cRObject = GameObject.FindWithTag ("CRText").transform.GetChild(0).gameObject;
-		folowAllong = cRObject.GetComponent<FolowAllong> ();
-		folowAllong.messageLength = cognitiveRefraimingText [0].text.Length;
-
-		//int widthExpand = cognitiveRefraimingText [0].text.Length;
-
-		cRText = cRObject.GetComponentsInChildren<Text> (true);
-		cRTextRect = cRText[0].gameObject.GetComponent <RectTransform> ();
-	//	cRTextRect.sizeDelta = new Vector2 (widthExpand * 11f, 50);
-
-	//	cRText.text = cognitiveRefraimingText [0].text;
-
-		//cRText = GameObject.FindWithTag ("CRText").GetComponentInChildren<Text> () as Text;
-		//cRTextRect = cRText.GetComponent <RectTransform> ();
-		//cRTextRect = (RectTransform)GameObject.FindWithTag ("CRText").GetComponent <RectTransform> ();
-		//cRText = cRTextRect.GetComponent<Text> ();
-
-		DontDestroyOnLoad (gameObject);
+	
+		if (GameObject.FindWithTag ("CRText") != null) {
+			cRObject = GameObject.FindWithTag ("CRText").transform.GetChild (0).gameObject;
+			folowAllong = cRObject.GetComponent<FolowAllong> ();
+			folowAllong.messageLength = cognitiveRefraimingText [0].text.Length;
 
 
-		if (instance) {
-			DestroyImmediate (gameObject);
-			return;
-		}
-		instance = this; 
-
-	//	SceneManager.sceneLoaded += OnLevelWasLoad;
-	}
-
-
-		
-	public void Start(){
-
-		//sMenu = GameObject.FindWithTag ("StressMenu");
-
-		//if (string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase)) {
-		//	typeOfFeeling = GameObject.FindWithTag ("TypeOfFeeling");
-		//	typeOfFeeling.SetActive (true);
-		//	gSuggest = (GameSuggest)GameObject.FindWithTag ("GameSuggest").GetComponent<GameSuggest> ();
-		//}
+			cRText = cRObject.GetComponentsInChildren<Text> (true);
+			cRTextRect = cRText [0].gameObject.GetComponent <RectTransform> ();
 	
 
 
-
-
-	}
-	
-
-	public void OnLevelWasLoad(){
-
-
-		cRObject = GameObject.FindWithTag ("CRText").transform.GetChild(0).gameObject;;
-		folowAllong = cRObject.GetComponent<FolowAllong> ();
-		folowAllong.messageLength = cognitiveRefraimingText [0].text.Length;
-
-		cRText = cRObject.GetComponentsInChildren<Text> (true);
-		cRTextRect = cRText[0].gameObject.GetComponent <RectTransform> ();
-		cRText[0].text = storeText;
-
-		int widthExpand = storeText.Length;
-
-		cRTextRect.sizeDelta = new Vector2 (widthExpand * 10f, 50);
-
-		//sMenu = GameObject.FindWithTag ("StressMenu");
-		//sMenu.SetActive (false);
-
-		/*if (string.Equals (SceneManager.GetActiveScene ().name, "StressAss", System.StringComparison.CurrentCultureIgnoreCase)) {
-			GameController.Instance.Paused = false;
-		
-			if (typeOfFeeling == null) {
-				typeOfFeeling = GameObject.FindWithTag ("TypeOfFeeling");
-				typeOfFeeling.SetActive (true);
+			if (instance) {
+				DestroyImmediate (gameObject);
+				return;
 			}
+			instance = this; 
 
-		//	if (gSuggest == null)
-		//		gSuggest = (GameSuggest)GameObject.FindWithTag ("GameSuggest").GetComponent<GameSuggest> ();
+			DontDestroyOnLoad (gameObject);
+		}
+	
+	}
 
-		} else if (string.Equals (SceneManager.GetActiveScene ().name, "AllGames", System.StringComparison.CurrentCultureIgnoreCase)) {
-			GameController.Instance.Paused = false;
-		
-		}else GameController.Instance.Paused = true;
-			*/
 
+	public void OnLevelLoad(){
+
+		if (GameObject.FindWithTag ("CRText") != null) {
+			cRObject = GameObject.FindWithTag ("CRText").transform.GetChild (0).gameObject;
+			folowAllong = cRObject.GetComponent<FolowAllong> ();
+			folowAllong.messageLength = cognitiveRefraimingText [0].text.Length;
+
+			cRText = cRObject.GetComponentsInChildren<Text> (true);
+			cRTextRect = cRText [0].gameObject.GetComponent <RectTransform> ();
+			cRText [0].text = storeText;
+
+			int widthExpand = storeText.Length;
+
+			cRTextRect.sizeDelta = new Vector2 (widthExpand * 10f, 50);
+
+
+		}
 	}
 
 	public string GetStressFeelType

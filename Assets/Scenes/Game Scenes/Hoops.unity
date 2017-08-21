@@ -5032,7 +5032,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a696c44c81c08405489a0d4ca133c021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationToSpeed: 1
 --- !u!65 &475658369
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9799,10 +9798,7 @@ GameObject:
   - component: {fileID: 941647722}
   - component: {fileID: 941647730}
   - component: {fileID: 941647729}
-  - component: {fileID: 941647728}
   - component: {fileID: 941647727}
-  - component: {fileID: 941647726}
-  - component: {fileID: 941647725}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9826,38 +9822,6 @@ Transform:
   m_Father: {fileID: 1051397982}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &941647725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 941647721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb5dd43baba2d4dc1bab789615567e3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raycastMode: 0
-  raycasterEventMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &941647726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: b8b03d395f5734e98af91ccf44f9bf47,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 941647721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1156c073149742478887bb24456f32d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  globalGainDb: 0
-  occlusionMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  quality: 2
 --- !u!81 &941647727
 AudioListener:
   m_ObjectHideFlags: 0
@@ -9867,14 +9831,6 @@ AudioListener:
   m_GameObject: {fileID: 941647721}
   m_Enabled: 1
   m_ExtensionPropertyValues: []
---- !u!92 &941647728
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9200004, guid: b8b03d395f5734e98af91ccf44f9bf47,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 941647721}
-  m_Enabled: 1
 --- !u!124 &941647729
 Behaviour:
   m_ObjectHideFlags: 0
@@ -12766,7 +12722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a696c44c81c08405489a0d4ca133c021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationToSpeed: 1
 --- !u!65 &1269648937
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18367,7 +18322,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1711290784}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 203.5, y: 116.5, z: 0}
+  m_LocalPosition: {x: 194.5, y: 87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1095266633}
