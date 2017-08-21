@@ -154,7 +154,7 @@ public class SceneController : MonoBehaviour {
 	public IEnumerator ChangeScene (string scene){
 
 		//works... deactivate once async works
-		isSceneLoading = true;
+		/*isSceneLoading = true;
 		while (true) {
 			yield return null;
 
@@ -163,13 +163,13 @@ public class SceneController : MonoBehaviour {
 				yield break;
 
 			}
-		}
+		}*/
 	
 
 		//FIXME LOADSCENASYNC CRASHES UNITY... because of components of camera from gvr and using async..
 		//doesnotwork...AS OF V2017.20
 		//SceneManager.LoadSceneAsync ("TEST");
-		/*
+
 
 		while (true) {
 			
@@ -179,17 +179,19 @@ public class SceneController : MonoBehaviour {
 
 
 				if (!isSceneLoading) {
+					
 					isSceneLoading = true;
 					async = SceneManager.LoadSceneAsync (scene);
+					//async.allowSceneActivation = false;
 					StartCoroutine (WhileSceneIsLoading ());
+
 					yield break;
 				
 				}
 					
 			}
 		}
-
-*/
+			
 
 	}//this plays before OnlevelLoad()...
 	IEnumerator WhileSceneIsLoading(){
@@ -200,6 +202,7 @@ public class SceneController : MonoBehaviour {
 
 		Rimage.rectTransform.sizeDelta = new Vector2 (0, 50);
 		while (!async.isDone) {
+		//while (async.progress > 0.89f) {
 			//image.color = Color.red;//new Color(image.color.r, image.color.g, image.color.b, Mathf.PingPong(Time.time,1));
 
 			Rimage.rectTransform.sizeDelta = new Vector2((500 * async.progress), Rimage.rectTransform.sizeDelta.y );
@@ -208,11 +211,11 @@ public class SceneController : MonoBehaviour {
 
 		}
 		
-
+		//async.allowSceneActivation = true;
 		isSceneLoading = false;
 		Rimage.gameObject.SetActive (false);
 			
-		OrientationAdjustment.Instance.OrientationChangeToGlobalFront ();
+		//OrientationAdjustment.Instance.OrientationChangeToGlobalFront ();
 	
 		yield return null;
 	
