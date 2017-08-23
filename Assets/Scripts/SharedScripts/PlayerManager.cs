@@ -30,10 +30,12 @@ public class PlayerManager : MonoBehaviour {
 	private Image healthColorIndicator;
 	private string curSceneName;
 
+
 	[SerializeField]private bool isShakeWhenHit = false;
 	[SerializeField]private float shakeTime = 2.0f;
 	[SerializeField]private float shakeAmount = 3.0f;
 	[SerializeField]private float shakeSpeed = 2.0f;
+
 
 	private static PlayerManager instance;
 	public static PlayerManager Instance {
@@ -78,13 +80,16 @@ public class PlayerManager : MonoBehaviour {
 	}
 	void Start(){
 
-		if (GameObject.FindWithTag ("UIColor") != null) {
-			healthColorIndicator = GameObject.FindWithTag ("UIColor").GetComponent<Image> ();
-			healthColorIndicator.color = healthColor;
+		if (GameObject.FindWithTag ("UIColor")) {
+			if (healthColorIndicator != null) {
+				healthColorIndicator = GameObject.FindWithTag ("UIColor").GetComponent<Image> ();
+				healthColorIndicator.color = healthColor;
+			}
 		}
 
 	//FIXME Games may use Item game tag besided the intro, so check if there are no interuptions/bugs 5/13/17
-		if(SceneController.Instance.GetCurrentSceneName() == "Intro")
+//		if(SceneController != null)
+		if(curSceneName == "Intro")
 		if (GameObject.FindWithTag ("Item") != null) {
 
 			totalGOToSpriteInSceneDict = new Dictionary<GameObject,SpriteRenderer> ();

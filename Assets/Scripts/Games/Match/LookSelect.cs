@@ -28,6 +28,7 @@ public class LookSelect : MonoBehaviour {
 	//Beating second levels accomplishes mission, 3rd level is to see highscore?
 	[SerializeField] float timeToBeatThirdLevel;
 
+	[SerializeField] Animator opponentAnimator;
 
 
 
@@ -200,6 +201,7 @@ public class LookSelect : MonoBehaviour {
 
 			if (spawnedCards == 0) {
 
+				opponentAnimator.SetTrigger ("Fall1");
 				GameController.Instance.StopTimer ();
 				StartCoroutine (GameController.Instance.NewWave ());
 
@@ -209,6 +211,7 @@ public class LookSelect : MonoBehaviour {
 			
 				if (cardSpawner.GetWave == 0) {
 
+				
 					cardSpawner.ChangeWave (Difficulty.medium);
 					GameController.Instance.TimeToAdd (ref isTimerDone, timeToBeatSecondLevel);
 					spawnedCards = cardSpawner.GetSpawned;
@@ -222,7 +225,9 @@ public class LookSelect : MonoBehaviour {
 					spawnedCards = cardSpawner.GetSpawned;
 
 				}else if (cardSpawner.GetWave == 2) {
+					opponentAnimator.SetTrigger ("Fall2");
 					GameController.Instance.isGameOver = true;
+
 				}
 
 				GameController.Instance.ResumeTimer ();

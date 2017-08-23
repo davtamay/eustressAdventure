@@ -12,6 +12,7 @@ public class MenuArmFollow : MonoBehaviour {
 	private GameObject stressMenu;
 
 	private Vector3 offset;
+	private string curSceneName;
 
 	void Awake(){
 		stressMenu = GameObject.FindWithTag ("StressMenu");
@@ -24,7 +25,9 @@ public class MenuArmFollow : MonoBehaviour {
 		//offset.z *= -1;
 	}
 	void Start(){
-	
+		if(SceneController.Instance != null)
+			curSceneName = SceneController.Instance.GetCurrentSceneName ();
+		
 		thisTransform.GetChild(0).gameObject.SetActive(false);
 	
 	}
@@ -61,7 +64,7 @@ public class MenuArmFollow : MonoBehaviour {
 			oldViewingAngle =  Quaternion.Euler(0,90,0) * camTransform.forward ;
 			isInitialClick = true;
 
-			if (SceneController.Instance.GetCurrentSceneName () != "intro")
+			if (curSceneName != "intro")
 				GameController.Instance.Paused = true;
 
 		}

@@ -28,6 +28,8 @@ public class SkyJumperLookMovement : MonoBehaviour {
 	public float minHorizontal;
 	public float maxHorizontal;
 
+	[SerializeField]Transform gOToManipulateRotation;
+	private Quaternion originalRotation;
 
 
 //	public bool isStayParentPos;
@@ -49,7 +51,7 @@ public class SkyJumperLookMovement : MonoBehaviour {
 	//	if(isStayParentPos)
 	//		parentTrans = GetComponentInParent<Transform> ();
 	
-
+		originalRotation = gOToManipulateRotation.rotation;
 
 
 
@@ -57,17 +59,27 @@ public class SkyJumperLookMovement : MonoBehaviour {
 
 	void FixedUpdate () {
 
-		if (speed > 0) {
+//		if (speed > 0) {
+		Quaternion manipulatedRotation = originalRotation;
 
 			if (70.0f > CameraAngleFromRight () && CameraAngleFromRight () > 0.0f) {
 
 				movement.x += speed;
+
+				manipulatedRotation *=  Quaternion.Euler(0,0,35);
+				gOToManipulateRotation.rotation = manipulatedRotation;
+
+
 				Debug.Log ("this is movement right");
 
 
 			} else if (180.0f > CameraAngleFromRight () && CameraAngleFromRight () > 110.0f) {
 
 				movement.x += -(speed);
+				
+				manipulatedRotation *= Quaternion.Euler(0,0,-35);
+				gOToManipulateRotation.rotation = manipulatedRotation;
+			//	gOToManipulateRotation.eulerAngles = originalRotation - new Vector3(0,movement.x,0) * Time.deltaTime *20;
 				Debug.Log ("this is movement left");
 		
 			} //else if (110.0f > CameraAngleFromRight () && CameraAngleFromRight () > 70.0f)
@@ -78,17 +90,29 @@ public class SkyJumperLookMovement : MonoBehaviour {
 
 				if (transform.position.y < maxHeight)
 					movement.y += speed;//jumpHeight * smoothJump;
+		
+
+				manipulatedRotation *= Quaternion.Euler(35,0,0);
+			gOToManipulateRotation.rotation = manipulatedRotation;
+			//	gOToManipulateRotation.eulerAngles = originalRotation + new Vector3(movement.y,0,0)* Time.deltaTime *20 ;
+
+
 			} else if (100.0f < CameraAngleFromUp () && CameraAngleFromUp () < 170.0f) {
 
 				if (transform.position.y > 0)
-					movement.y -= speed;//jumpHeight * smoothJump;
+					movement.y -= speed;
+
+				manipulatedRotation *= Quaternion.Euler(-35,0,0);
+				gOToManipulateRotation.rotation = manipulatedRotation;
+				//gOToManipulateRotation.eulerAngles = originalRotation - new Vector3(movement.y,0,0)  * Time.deltaTime *20;//jumpHeight * smoothJump;
 
 			}
 				
 
-		
+			movement *= Time.deltaTime;
 
-
+			//if (movement.magnitude > 0)
+				//gOToManipulateRotation.localEulerAngles = Vector3.Lerp(gOToManipulateRotation.localEulerAngles, gOToManipulateRotation.localEulerAngles + movement, Time.deltaTime * 1);
 	
 
 		
@@ -132,12 +156,12 @@ public class SkyJumperLookMovement : MonoBehaviour {
 
 
 
-			movement *= Time.deltaTime;
+
 
 
 			charControll.Move (movement);
 
-		}
+	//	}
 		}
 
 	private float CameraAngleFromRight(){

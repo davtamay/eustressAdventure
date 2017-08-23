@@ -17,6 +17,9 @@ public class FindChoose : MonoBehaviour {
 	public int amountUntilGameOver;
 	public int currentLevel;
 
+	private Transform player;
+	private Animator playerAnimator;
+
 	private string curScene;
 
 	private float time;
@@ -26,14 +29,17 @@ public class FindChoose : MonoBehaviour {
 	private float timeUntilNewWave;
 
 	void Start () {
+		cam = Camera.main;
 
-
-
+		if(SceneController.Instance !=null)
 		curScene = SceneController.Instance.GetCurrentSceneName ();
 
+		player = GameObject.FindWithTag ("Player").transform;
 
-		playerManager = GameObject.FindWithTag ("Player").GetComponent <PlayerManager> () as PlayerManager;
-		cam = GameObject.FindWithTag ("MainCamera").GetComponent<Camera>();
+		playerAnimator = player.GetComponent<Animator> ();
+		playerManager = player.GetComponent <PlayerManager> () as PlayerManager;
+
+
 
 		spawner = GetComponent<FinderSpawner>();
 		amountOfFinders = spawner.GetAmountOfFindTargets();
@@ -41,12 +47,17 @@ public class FindChoose : MonoBehaviour {
 		StartCoroutine (OnUpdate ());
 
 	}
+	Vector3 pastMovePos;
+	//int waveMultiplier = 0;
 	IEnumerator OnUpdate(){
+
+	//	originalPos = player.position;
+
 
 		while (true) {
 
 			yield return null;
-
+		
 			if (GameController.Instance.IsStartMenuActive)
 				continue;
 
@@ -71,38 +82,69 @@ public class FindChoose : MonoBehaviour {
 
 
 					if (objectsFound == amountOfFinders) {
+						pastMovePos = player.position;
+						objectsFound = 0;
+
+						spawner.TriggerObjects (500, cam.transform.position.y + 10);
+						yield return new WaitForSeconds (0.5f);
+						spawner.TriggerFinderObjects (cam.transform.position.y + 10);
+
 						if (timer.fillAmount > 0.70f)
 							UpdateCoinText (3);
 						else if (timer.fillAmount > 0.35f)
 							UpdateCoinText (2);
 						else if (timer.fillAmount > 0.00f)
 							UpdateCoinText (1);
+
 					
-						objectsFound = 0;
-
-						yield return StartCoroutine (GameController.Instance.NewWave ());
 
 
-						spawner.TriggerMoreObjects (100);
-						spawner.TriggerFinderObjects ();
+						playerAnimator.Play ("ClimbUp");
+
+						yield return new WaitUntil (() => playerAnimator.GetCurrentAnimatorStateInfo (0).IsName("Stop"));//playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !playerAnimator.IsInTransition(0));
+					
+						playerAnimator.SetTrigger ("Reset");
+						playerAnimator.applyRootMotion = true;
+
+
+						yield return new WaitForEndOfFrame ();
+
+						Vector3 differenceUp = Vector3.zero;
+						differenceUp.y = player.position.y - pastMovePos.y;//player.parent.position.y - originalPos.y ;
+
+
+
+						player.parent.position += differenceUp;
+						//spawner.TriggerFinderObjects (player.parent.position.y);
+
+						yield return null;
+						playerAnimator.applyRootMotion = false;
+					
+
+
+
+
+
+					
+						//spawner.TriggerFinderObjects (cam.transform.localPosition.y);
 						timer.fillAmount = 1;
 						time = 0;
 						currentLevel += 1;
-						if (currentLevel == amountUntilGameOver) {
+					/*	if (currentLevel == amountUntilGameOver) {
 
 							DataManager.Instance.CheckHighScore (curScene, playerManager.points);
 							GameController.Instance.isGameOver = true;
 							GameController.Instance.Paused = true;
 
 					
-						}
+						}*/
 
-						continue;
+						//continue;
 
 					}
 				}	
-				Debug.Log ("amountoffinders:" + amountOfFinders);
-				Debug.Log ("objectsfound:" + objectsFound);
+				//Debug.Log ("amountoffinders:" + amountOfFinders);
+				//Debug.Log ("objectsfound:" + objectsFound);
 
 			
 

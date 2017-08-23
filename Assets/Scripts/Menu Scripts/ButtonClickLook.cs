@@ -372,7 +372,7 @@ public class ButtonClickLook : MonoBehaviour {
 			
 			
 				//to prevent multiple clicks in one time
-				yield return new WaitForSecondsRealtime (20f);
+				yield return new WaitForSecondsRealtime (7f);
 				controller = null;
 
 			}

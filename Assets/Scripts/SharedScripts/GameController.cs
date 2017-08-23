@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour {
 	private GameObject gameStart;
 	private GameObject gameOver;
 
-	private GameObject newWave;
+	public GameObject newWaveGO;
 	private float timeUntilNewWave;
 
 
@@ -57,14 +57,11 @@ public class GameController : MonoBehaviour {
 		gameStart = GameObject.FindWithTag ("GameStart");
 		gameOver = GameObject.FindWithTag ("GameOver");
 
-		if (newWave == null) {
-			newWave = GameObject.FindWithTag ("NewWave");
-
-			if (newWave != null) {
-				timeUntilNewWave = newWave.GetComponent<NewWave> ().timeUntilDisapear;
-				newWave.gameObject.SetActive (false);
-			}
-
+		if (GameObject.FindWithTag ("NewWave")) {
+			//newWaveGO = null;
+			newWaveGO = GameObject.FindWithTag ("NewWave");
+			timeUntilNewWave = newWaveGO.transform.GetComponent<NewWave> ().timeUntilDisapear;
+			newWaveGO.gameObject.SetActive (false);
 		}
 
 		if (hitEffect == null) {
@@ -196,7 +193,7 @@ public class GameController : MonoBehaviour {
 	bool isWaveImageOn;
 	public IEnumerator NewWave(){
 		isWaveImageOn = true;
-		newWave.SetActive (true);
+		newWaveGO.SetActive (true);
 		yield return new WaitForSeconds (timeUntilNewWave);
 		isWaveImageOn = false;
 	}
