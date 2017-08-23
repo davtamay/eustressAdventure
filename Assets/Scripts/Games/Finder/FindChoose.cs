@@ -76,7 +76,8 @@ public class FindChoose : MonoBehaviour {
 
 				if (hit.transform.gameObject.CompareTag ("FinderObject")) {
 
-					hit.transform.GetComponent<Renderer> ().material.color = Color.green;
+					hit.transform.GetComponent<Renderer> ().sharedMaterial.SetColor("_EmissionColor", Color.green);
+
 					hit.transform.GetComponent<Collider> ().enabled = false;
 					++objectsFound;
 
@@ -85,9 +86,9 @@ public class FindChoose : MonoBehaviour {
 						pastMovePos = player.position;
 						objectsFound = 0;
 
-						spawner.TriggerObjects (500, cam.transform.position.y + 10);
+						spawner.TriggerObjects (500, player.parent.position.y + 10);
 						yield return new WaitForSeconds (0.5f);
-						spawner.TriggerFinderObjects (cam.transform.position.y + 10);
+						yield return StartCoroutine(spawner.TriggerFinderObjects (player.parent.position.y + 10));
 
 						if (timer.fillAmount > 0.70f)
 							UpdateCoinText (3);
@@ -103,6 +104,8 @@ public class FindChoose : MonoBehaviour {
 
 						yield return new WaitUntil (() => playerAnimator.GetCurrentAnimatorStateInfo (0).IsName("Stop"));//playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !playerAnimator.IsInTransition(0));
 					
+						spawner.ActivateFinder ();
+
 						playerAnimator.SetTrigger ("Reset");
 						playerAnimator.applyRootMotion = true;
 
@@ -121,12 +124,7 @@ public class FindChoose : MonoBehaviour {
 						playerAnimator.applyRootMotion = false;
 					
 
-
-
-
-
-					
-						//spawner.TriggerFinderObjects (cam.transform.localPosition.y);
+		
 						timer.fillAmount = 1;
 						time = 0;
 						currentLevel += 1;

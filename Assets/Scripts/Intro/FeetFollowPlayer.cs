@@ -28,17 +28,13 @@ public class FeetFollowPlayer : MonoBehaviour {
 		thisTransform.rotation = Quaternion.AngleAxis (camTransform.eulerAngles.y, Vector3.up);
 
 	
-		if (Physics.Raycast (transform.position, -transform.up, out hit, 10f)) {
+		if (Physics.Raycast (thisTransform.position, -thisTransform.up, out hit, 10f)) {
 
 
-			transform.rotation = (Quaternion.FromToRotation (transform.up, hit.normal)) * transform.rotation;
+			thisTransform.rotation = (Quaternion.FromToRotation (thisTransform.up, hit.normal)) * thisTransform.rotation;
 
 		}
 			
-
-	//	thisTransform.rotation = Quaternion.AngleAxis (camTransform.eulerAngles.y, Vector3.up);
-
-	//	AlignTransform (thisTransform);
 
 		thisTransform.rotation *= Quaternion.Euler (Vector3.right* 90);
 			

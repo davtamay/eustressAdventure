@@ -15,7 +15,7 @@ public class FinderSpawner : MonoBehaviour {
 	//public int numberOfObstacles;
 
 	[SerializeField] private float distanceAgregate = 5.5f;
-	[SerializeField] private float finderDistanceAgregate = 5.5f;
+	//[SerializeField] private float finderDistanceAgregate = 5.5f;
 
 	[SerializeField] private float heightDeviationFromPlayer = 2f;
 	[SerializeField] private float heightUpOffset = 2f;
@@ -48,7 +48,7 @@ public class FinderSpawner : MonoBehaviour {
 		foreach (Transform fO in findTargetParent) {
 
 			findTargets [e] = fO.gameObject;
-
+			fO.GetComponent<Renderer> ().sharedMaterial.SetColor ("_EmissionColor", Color.yellow);
 			e++;
 		}
 	
@@ -121,7 +121,8 @@ public class FinderSpawner : MonoBehaviour {
 			
 */
 	
-		TriggerFinderObjects (0);
+		StartCoroutine(TriggerFinderObjects (0));
+		ActivateFinder ();
 				
 
 
@@ -140,7 +141,7 @@ public class FinderSpawner : MonoBehaviour {
 	GameObject finderObject;
 	Vector3 randomPos;
 
-	public void TriggerFinderObjects (float height){
+	public IEnumerator TriggerFinderObjects (float height){
 
 
 		foreach (GameObject fO in findTargets)
@@ -150,56 +151,117 @@ public class FinderSpawner : MonoBehaviour {
 
 		for (int i = 0; i < findTargets.Length; i++){
 
-			Vector2 randomCirleUnits = Random.insideUnitCircle.normalized;
-			//randomCirleUnits.normalized;
+			Vector2 camPosWRandom = (new Vector2 (cam.transform.position.x, cam.transform.position.y) + Random.insideUnitCircle.normalized); 
+			Vector3 randomCirleUnits = new Vector3(camPosWRandom.x,0,camPosWRandom.y);
 
-			randomPos = new Vector3 (cam.transform.position.x + randomCirleUnits.x  * finderDistanceAgregate, height  , cam.transform.position.z + randomCirleUnits.y  * finderDistanceAgregate);
+			randomPos = new Vector3 (randomCirleUnits.x , height  , randomCirleUnits.y );
 
 			while(CheckForFinderIntersections(randomPos,cam.transform.position + Vector3.up * height))
-				randomPos = new Vector3 (cam.transform.position.x + randomCirleUnits.x  * finderDistanceAgregate, height , cam.transform.position.z + randomCirleUnits.y  * finderDistanceAgregate);
+				randomPos = new Vector3 (randomCirleUnits.x , height  , randomCirleUnits.y );
+				//randomPos = new Vector3 (cam.transform.position.x + randomCirleUnits.x , height , cam.transform.position.z + randomCirleUnits.y );
 
 		
 			switch (i) {
 			case 3:
+				//LHAND
 				finderObject = findTargets [i];
 				finderObject.transform.position = randomPos;
-
+				yield return StartCoroutine(AddToObjectNormal (finderObject.transform, height));
+				finderObject.transform.position += Vector3.up * 2f;
+				//height -= 2f;
 				break;
 			case 2:
+				//RHAND
 				finderObject = findTargets [i];
 				finderObject.transform.position = randomPos;
-
+				yield return StartCoroutine(AddToObjectNormal (finderObject.transform, height));
+				finderObject.transform.position += Vector3.up * 2f;
 				break;
 			case 1: 
+				//LFOOT
 				finderObject = findTargets [i];
 				finderObject.transform.position = randomPos;
+				yield return StartCoroutine(AddToObjectNormal (finderObject.transform, height));
+				finderObject.transform.position -= Vector3.up * 1.2f;
 				break;
 			case 0:
+				//RFOOT
 				finderObject = findTargets [i];
 				finderObject.transform.position = randomPos;
+				yield return StartCoroutine (AddToObjectNormal (finderObject.transform, height));
+				finderObject.transform.position -= Vector3.up * 1.2f;
 				break;
 
 			}
 
 			finderObject.GetComponent<Renderer> ().material.color = Color.magenta;
-			finderObject.GetComponent<Renderer> ().material.SetColor ("EmissionColor", Color.yellow);//"_EmissionColor",
+			finderObject.GetComponent<Renderer> ().sharedMaterial.SetColor ("_EmissionColor", Color.yellow);//"_EmissionColor",
 
 			finderObject.transform.GetComponent<Collider> ().enabled = true;
-
-		//	finderObject.SetActive)(
-			//Rigidbody rb = finderObject.AddComponent<Rigidbody>();
-			//rb.constraints = RigidbodyConstraints.FreezeAll;
-
-
+		
 
 			CheckForObstacleIntersections (Vector3.up * height, finderObject.transform.position);
 
+			//yield return null;
 		
 	}
+		//foreach (GameObject fO in findTargets)
+			//fO.SetActive (true);
+	}
+	public void ActivateFinder(){
+
 		foreach (GameObject fO in findTargets)
 			fO.SetActive (true);
+	
+	
 	}
 
+	public IEnumerator AddToObjectNormal(Transform finder, float height){
+	
+		//bool isObjectHit = false;
+		//finder.rotation = Quaternion.AngleAxis (camTransform.eulerAngles.y, Vector3.up);
+		Vector3 curPos = Vector3.up * height;
+		Vector2 randomCirleUnits;
+		RaycastHit hit;
+
+		while (true) {
+			if (Physics.Raycast (curPos, (finder.position - curPos).normalized, out hit, 50f)) {
+
+				if (hit.transform.CompareTag ("Obstacle")) {
+
+
+					finder.rotation = (Quaternion.FromToRotation (finder.up, hit.normal)) * finder.rotation;
+					finder.position = hit.point;
+					//finder.position += finder.up * 0.1f;
+					//	finder.position = hit.point - (finder.rotation * (Vector3.one)) ;
+					//	isObjectHit = true;
+
+					yield break;
+				}
+					
+
+
+			} 
+			Vector2 camPosWRandom = (new Vector2 (cam.transform.position.x, cam.transform.position.y) + Random.insideUnitCircle.normalized); 
+			Vector3 randomCirleUnit = new Vector3(camPosWRandom.x,0,camPosWRandom.y);
+
+			randomPos = new Vector3 (randomCirleUnit.x , height  , randomCirleUnit.y );
+
+				//randomCirleUnits = Random.insideUnitCircle.normalized;
+			//randomPos = new Vector3 (cam.transform.position.x + randomCirleUnits.x, curPos.y, cam.transform.position.z + randomCirleUnits.y);
+				finder.position = randomPos;
+
+				yield return null;
+
+
+		}
+
+
+	//	thisTransform.rotation *= Quaternion.Euler (Vector3.right* 90);
+	
+	
+	
+	}
 	public void CheckForObstacleIntersections (Vector3 from, Vector3 to){
 	
 		float distance = (from - to).magnitude;
@@ -249,11 +311,14 @@ public class FinderSpawner : MonoBehaviour {
 		}
 	public void TriggerObjects (int amount, float height){
 			
+		Vector2 randomCirleUnits = Random.insideUnitCircle.normalized;
 		for (int i = 0; i < amount; i++) {
+
+			randomCirleUnits = Random.insideUnitCircle.normalized;
 
 			Transform spawnedPrefab = queue.Dequeue ();
 
-			spawnedPrefab.position = new Vector3 (cam.transform.position.x + Random.insideUnitCircle.x * distanceAgregate, heightUpOffset + (height + Random.Range (-1f, 1f) * heightDeviationFromPlayer), cam.transform.position.z + Random.insideUnitCircle.y * distanceAgregate);
+			spawnedPrefab.position = new Vector3 (cam.transform.position.x + randomCirleUnits.x * distanceAgregate, heightUpOffset + (height + Random.Range (-1f, 1f) * heightDeviationFromPlayer), cam.transform.position.z + randomCirleUnits.y * distanceAgregate);
 			spawnedPrefab.gameObject.SetActive (true);
 
 
