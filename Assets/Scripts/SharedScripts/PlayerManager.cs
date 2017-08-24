@@ -112,6 +112,7 @@ public class PlayerManager : MonoBehaviour {
 
 			int itemCount = 0;
 
+			if(0 > UISlots.transform.childCount)
 			foreach (Transform curTran in UISlots.transform) {
 
 

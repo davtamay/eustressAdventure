@@ -65,6 +65,47 @@ public class FindChoose : MonoBehaviour {
 
 			timer.fillAmount -= time;
 
+			if (timer.fillAmount <= 0) {
+				pastMovePos = player.position;
+				objectsFound = 0;
+
+				spawner.TriggerObjects (500, player.parent.position.y -10 );
+			
+				yield return StartCoroutine(spawner.TriggerFinderObjects (player.parent.position.y - 10 ));
+				playerAnimator.Play ("Fall");
+
+				playerAnimator.SetTrigger ("Reset");
+				yield return new WaitUntil (() => playerAnimator.GetCurrentAnimatorStateInfo (0).IsName("Stop"));//playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !playerAnimator.IsInTransition(0));
+
+			
+				Vector3 differenceUp = Vector3.zero;
+				differenceUp.y = 10;//player.parent.position.y - pastMovePos.y;//player.parent.position.y - originalPos.y ;
+
+
+				player.parent.position -= differenceUp;
+			//	playerAnimator.applyRootMotion = false;
+				yield return new WaitForEndOfFrame ();
+
+				spawner.ActivateFinder ();
+
+
+
+
+
+				//spawner.TriggerFinderObjects (player.parent.position.y);
+
+
+			
+
+
+
+				timer.fillAmount = 1;
+				time = 0;
+				currentLevel -= 1;
+
+			
+			}
+
 
 			Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
 
