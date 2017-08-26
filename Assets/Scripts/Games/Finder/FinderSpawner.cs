@@ -53,7 +53,7 @@ public class FinderSpawner : MonoBehaviour {
 		}
 	
 	}
-	void Start () {
+	IEnumerator Start () {
 
 		cam = Camera.main.gameObject;
 
@@ -121,7 +121,7 @@ public class FinderSpawner : MonoBehaviour {
 			
 */
 	
-		StartCoroutine(TriggerFinderObjects (0));
+		yield return StartCoroutine(TriggerFinderObjects (0));
 		ActivateFinder ();
 				
 
@@ -140,60 +140,84 @@ public class FinderSpawner : MonoBehaviour {
 
 	GameObject finderObject;
 	Vector3 randomPos;
+	Vector3 randomCirleUnits;
 
+	Vector2 camPosWRandom;
 	public IEnumerator TriggerFinderObjects (float height){
 
 
-		foreach (GameObject fO in findTargets)
+		foreach (GameObject fO in findTargets) {
+			fO.transform.position = new Vector3(fO.transform.position.x, height, fO.transform.position.z);
 			fO.SetActive (false);
+
+		}
 		
 
 
 		for (int i = 0; i < findTargets.Length; i++){
 
-			Vector2 camPosWRandom = (new Vector2 (cam.transform.position.x, cam.transform.position.y) + Random.insideUnitCircle.normalized); 
-			Vector3 randomCirleUnits = new Vector3(camPosWRandom.x,0,camPosWRandom.y);
+			camPosWRandom = (new Vector2 (cam.transform.position.x, cam.transform.position.z) + Random.insideUnitCircle); 
+			randomCirleUnits = new Vector3(camPosWRandom.x,0,camPosWRandom.y);
 
-			randomPos = new Vector3 (randomCirleUnits.x , height  , randomCirleUnits.y );
+			randomPos = new Vector3 (randomCirleUnits.x , height  , randomCirleUnits.z );
 
-			while(CheckForFinderIntersections(randomPos,cam.transform.position + Vector3.up * height))
-				randomPos = new Vector3 (randomCirleUnits.x , height  , randomCirleUnits.y );
-				//randomPos = new Vector3 (cam.transform.position.x + randomCirleUnits.x , height , cam.transform.position.z + randomCirleUnits.y );
 
-		
 			switch (i) {
 			case 3:
-				//LHAND
+				
+				//LHANDl
 				finderObject = findTargets [i];
+
+
+
 				finderObject.transform.position = randomPos;
-				yield return StartCoroutine(AddToObjectNormal (finderObject.transform, height));
-				finderObject.transform.position += Vector3.up * 2f;
+				yield return StartCoroutine (SeparateAndAddToObjectNormal (finderObject.transform, height, i));
+				finderObject.transform.position += Vector3.up * (2f  + Random.Range (-0.5f, 0.5f));
 				//height -= 2f;
+
+			//	while (CheckForFinderIntersections (randomPos, cam.transform.position + Vector3.up * height) && (Vector3.Distance(randomPos, findTargets[2].transform.position ) < 8f)) 
+			//		randomPos = new Vector3 (randomCirleUnits.x, height, randomCirleUnits.y);
+
+				Debug.Log ("DISTANCE FROM LHANDRANDOM POS TO RHAND : " + Vector3.Distance (finderObject.transform.position, findTargets [2].transform.position) );
+				Debug.Log("RandomPos " + finderObject.transform.position  + "findTargets2" + findTargets[2].transform.position );
+
 				break;
 			case 2:
+				
 				//RHAND
 				finderObject = findTargets [i];
+
+			//	while (CheckForFinderIntersections (randomPos, cam.transform.position + Vector3.up * height)) 
+			///		randomPos = new Vector3 (randomCirleUnits.x, height, randomCirleUnits.y);
+				
 				finderObject.transform.position = randomPos;
-				yield return StartCoroutine(AddToObjectNormal (finderObject.transform, height));
-				finderObject.transform.position += Vector3.up * 2f;
+				yield return StartCoroutine (SeparateAndAddToObjectNormal (finderObject.transform, height, i));
+				finderObject.transform.position += Vector3.up * (2f + Random.Range (-0.2f, 0.2f)) ;
 				break;
 			case 1: 
+
 				//LFOOT
 				finderObject = findTargets [i];
+
+				//	while (CheckForFinderIntersections (randomPos, cam.transform.position + Vector3.up * height) && Vector3.Distance(randomPos, findTargets[0].transform.position ) > 10f) 
+				//		randomPos = new Vector3 (randomCirleUnits.x, height, randomCirleUnits.y);
+
 				finderObject.transform.position = randomPos;
-				yield return StartCoroutine(AddToObjectNormal (finderObject.transform, height));
-				finderObject.transform.position -= Vector3.up * 1.2f;
+				yield return StartCoroutine (SeparateAndAddToObjectNormal (finderObject.transform, height, i));
+				finderObject.transform.position -= Vector3.up * (1.2f  + Random.Range (-0.2f, 0.2f)) ;
 				break;
+
 			case 0:
 				//RFOOT
 				finderObject = findTargets [i];
+
 				finderObject.transform.position = randomPos;
-				yield return StartCoroutine (AddToObjectNormal (finderObject.transform, height));
-				finderObject.transform.position -= Vector3.up * 1.2f;
+				yield return StartCoroutine (SeparateAndAddToObjectNormal (finderObject.transform, height, i));
+				finderObject.transform.position -= Vector3.up * ( 1.2f  + Random.Range (-0.2f, 0.2f));
 				break;
 
 			}
-
+			
 			finderObject.GetComponent<Renderer> ().material.color = Color.magenta;
 			finderObject.GetComponent<Renderer> ().sharedMaterial.SetColor ("_EmissionColor", Color.yellow);//"_EmissionColor",
 
@@ -202,11 +226,10 @@ public class FinderSpawner : MonoBehaviour {
 
 			CheckForObstacleIntersections (Vector3.up * height, finderObject.transform.position);
 
-			//yield return null;
+		
 		
 	}
-		//foreach (GameObject fO in findTargets)
-			//fO.SetActive (true);
+
 	}
 	public void ActivateFinder(){
 
@@ -216,22 +239,55 @@ public class FinderSpawner : MonoBehaviour {
 	
 	}
 
-	public IEnumerator AddToObjectNormal(Transform finder, float height){
+	public IEnumerator SeparateAndAddToObjectNormal(Transform finder, float height, int finderID){
 	
 		//bool isObjectHit = false;
 		//finder.rotation = Quaternion.AngleAxis (camTransform.eulerAngles.y, Vector3.up);
 		Vector3 curPos = Vector3.up * height;
-		Vector2 randomCirleUnits;
+	//	Vector2 randomCirleUnits;
 		RaycastHit hit;
 
+
 		while (true) {
+			yield return null;
+
+			camPosWRandom = (new Vector2 (cam.transform.position.x, cam.transform.position.z) + Random.insideUnitCircle); 
+			randomCirleUnits = new Vector3(camPosWRandom.x,0,camPosWRandom.y);
+	
 			if (Physics.Raycast (curPos, (finder.position - curPos).normalized, out hit, 50f)) {
 
 				if (hit.transform.CompareTag ("Obstacle")) {
 
+				
+					if (finderID == 1) {
+						if (Vector3.Distance (finder.position, findTargets [0].transform.position) < 1.2f || CheckForFinderIntersections (finder.position, cam.transform.position + Vector3.up * height)) {
+					//	if (Vector3.Angle(finder.position, findTargets [0].transform.position) < 30f){ //findVector3.Distance (finder.transform.position, findTargets [0].transform.position) < 2f) {
 
-					finder.rotation = (Quaternion.FromToRotation (finder.up, hit.normal)) * finder.rotation;
+							finder.position = randomPos = new Vector3 (randomCirleUnits.x, height, randomCirleUnits.z);
+							continue;
+						}
+					} else if (finderID == 3) {
+					//	if (Vector3.Angle(finder.transform.position, findTargets [2].transform.position) < 30f){
+						if (Vector3.Distance (finder.position, findTargets [2].transform.position) < 1.2f || CheckForFinderIntersections (finder.position, cam.transform.position + Vector3.up * height)) {
+							finder.position = randomPos = new Vector3 (randomCirleUnits.x, height, randomCirleUnits.z);
+							continue;
+						}
+					}
+
+
+				
+					//finder.rotation = finder.rotation.SetLookRotation(cam.transform.position, Vector3.up) * finder.rotation;
+
+
+				//	finder.rotation = (Quaternion.FromToRotation (finder.up, hit.normal)) * finder.rotation;
 					finder.position = hit.point;
+					finder.LookAt (cam.transform);
+					//finder.LookAt (cam.transform, Vector3.up);
+					finder.rotation = (Quaternion.FromToRotation (finder.up, hit.normal)) * finder.rotation;
+				
+				//	finder.LookAt (cam.transform, Vector3.right);
+					//finder.rotation.SetLookRotation(new Vector3(cam.transform.position.x,0, 0));
+				//	finder.rotation.SetLookRotation(new Vector3(0,cam.transform.position.y, 0));
 					//finder.position += finder.up * 0.1f;
 					//	finder.position = hit.point - (finder.rotation * (Vector3.one)) ;
 					//	isObjectHit = true;
@@ -242,14 +298,11 @@ public class FinderSpawner : MonoBehaviour {
 
 
 			} 
-			Vector2 camPosWRandom = (new Vector2 (cam.transform.position.x, cam.transform.position.y) + Random.insideUnitCircle.normalized); 
-			Vector3 randomCirleUnit = new Vector3(camPosWRandom.x,0,camPosWRandom.y);
 
-			randomPos = new Vector3 (randomCirleUnit.x , height  , randomCirleUnit.y );
 
-				//randomCirleUnits = Random.insideUnitCircle.normalized;
-			//randomPos = new Vector3 (cam.transform.position.x + randomCirleUnits.x, curPos.y, cam.transform.position.z + randomCirleUnits.y);
-				finder.position = randomPos;
+			randomPos = new Vector3 (randomCirleUnits.x , height  , randomCirleUnits.z);
+
+			finder.position = randomPos;
 
 				yield return null;
 

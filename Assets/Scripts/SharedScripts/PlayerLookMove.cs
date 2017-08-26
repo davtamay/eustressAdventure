@@ -71,7 +71,10 @@ public class PlayerLookMove : MonoBehaviour {
 	// Update is called once per frame
 	float timer;
 	float amountOfFall;
-	//bool isInitialFalling;
+
+
+	bool isInitialFalling = false;
+
 
 	void Update () {
 
@@ -87,6 +90,11 @@ public class PlayerLookMove : MonoBehaviour {
 
 		if (isCharInGround ) {
 
+			if (isInitialFalling) {
+				AudioManager.Instance.PlayDirectSound ("Fall",true);
+				isInitialFalling = false;
+
+			}
 			rechargeTimer -= Time.deltaTime;
 
 		//	UIStressGage.Instance.stress = amountOfFall * magnitudeOfStressFromFalling;
@@ -99,6 +107,8 @@ public class PlayerLookMove : MonoBehaviour {
 				originalYPos = thisTransform.position.y;
 				isGoingDown = false;
 				isGoingUp = true;
+
+				isInitialFalling = true;
 				rechargeTimer = jumpRechargeTime;
 				//new
 				//isStayedLookingDown = false;
@@ -108,6 +118,7 @@ public class PlayerLookMove : MonoBehaviour {
 		}
 			
 		if (isGoingUp) {
+
 
 			if (!isSuperJumpAvailable) {
 				moveDirection.y += (jumpSpeed + gravity) * Time.deltaTime;
@@ -169,10 +180,18 @@ public class PlayerLookMove : MonoBehaviour {
 		
 		moveDirection.x *= velocity;
 		moveDirection.z *= velocity;
+		if (controller.isGrounded && controller.velocity.magnitude > 2f && !AudioManager.Instance.CheckIfAudioPlaying (AudioType._DIRECT, "Steps"))
+			AudioManager.Instance.PlayDirectSound ("Steps", true); //StartCoroutine (Step ());
 		controller.Move (moveDirection);
 
 	
 	}
+	//IEnumerator Step(){
+
+	//	yield return new WaitForSeconds (1);
+	//	SoundController.Instance.PlayDirectSound ("Step");
+	//}
+
 
 	IEnumerator JumpUp(){
 	

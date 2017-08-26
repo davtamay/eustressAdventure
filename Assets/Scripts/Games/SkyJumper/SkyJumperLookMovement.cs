@@ -61,6 +61,8 @@ public class SkyJumperLookMovement : MonoBehaviour {
 
 //		if (speed > 0) {
 		Quaternion manipulatedRotation = originalRotation;
+		manipulatedRotation *=  Quaternion.Euler(0,0,0);
+		gOToManipulateRotation.rotation = manipulatedRotation;
 
 			if (70.0f > CameraAngleFromRight () && CameraAngleFromRight () > 0.0f) {
 
@@ -107,7 +109,7 @@ public class SkyJumperLookMovement : MonoBehaviour {
 				//gOToManipulateRotation.eulerAngles = originalRotation - new Vector3(movement.y,0,0)  * Time.deltaTime *20;//jumpHeight * smoothJump;
 
 			}
-				
+			
 
 			movement *= Time.deltaTime;
 

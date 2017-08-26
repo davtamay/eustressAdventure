@@ -85,7 +85,7 @@ public class MusicController : MonoBehaviour
 	{
 		myTransform = transform;
 
-		DontDestroyOnLoad (gameObject);
+
 
 		if (Instance != null)
 			DestroyImmediate (gameObject);
@@ -93,12 +93,11 @@ public class MusicController : MonoBehaviour
 		else
 			Instance = this;
 
-
+		DontDestroyOnLoad (gameObject);
 	}
 
 	void Start()
 	{
-		DontDestroyOnLoad (gameObject);
 		musicObjectList = new List <MusicObject>();
 
 		foreach (AudioClip theMusic in musicList) 

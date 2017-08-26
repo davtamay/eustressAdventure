@@ -185,9 +185,11 @@ public class DogInteraction : InteractionBehaviour{
 		targetDirection = targetDistance.normalized;
 
 		if (thisRenderer.isVisible) {
-			if (Random.Range (0f, 100f) < chanceOfJump) 
+			if (Random.Range (0f, 100f) < chanceOfJump) {
 				thisAnimator.SetTrigger ("Jump");
-
+				if (!AudioManager.Instance.CheckIfAudioPlaying (AudioType._AMBIENT, "Bark"))
+					AudioManager.Instance.PlayAmbientSoundAndActivate ("Bark", true, true, 5f, thisTransform);
+			}
 
 
 		}
