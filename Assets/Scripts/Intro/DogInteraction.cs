@@ -187,7 +187,7 @@ public class DogInteraction : InteractionBehaviour{
 		if (thisRenderer.isVisible) {
 			if (Random.Range (0f, 100f) < chanceOfJump) {
 				thisAnimator.SetTrigger ("Jump");
-				if (!AudioManager.Instance.CheckIfAudioPlaying (AudioType._AMBIENT, "Bark"))
+				if (!AudioManager.Instance.CheckIfAudioPlaying (AudioManager.AudioReferanceType._AMBIENT, "Bark"))
 					AudioManager.Instance.PlayAmbientSoundAndActivate ("Bark", true, true, 5f, thisTransform);
 			}
 

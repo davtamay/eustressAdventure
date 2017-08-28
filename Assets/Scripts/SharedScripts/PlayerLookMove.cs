@@ -180,7 +180,9 @@ public class PlayerLookMove : MonoBehaviour {
 		
 		moveDirection.x *= velocity;
 		moveDirection.z *= velocity;
-		if (controller.isGrounded && controller.velocity.magnitude > 2f && !AudioManager.Instance.CheckIfAudioPlaying (AudioType._DIRECT, "Steps"))
+
+
+		if (!isGoingUp && controller.isGrounded && controller.velocity.magnitude > 2f && !AudioManager.Instance.CheckIfAudioPlaying (AudioManager.AudioReferanceType._DIRECT, "Steps"))
 			AudioManager.Instance.PlayDirectSound ("Steps", true); //StartCoroutine (Step ());
 		controller.Move (moveDirection);
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class RandomMoveAnimations : MonoBehaviour {
 
@@ -24,9 +25,12 @@ public class RandomMoveAnimations : MonoBehaviour {
 
 	public bool isFirstTime;
 
-//	bool isTurning = false;
 	Vector3 oldWayPoint;
 	Quaternion rotationToLookTo;
+
+	[SerializeField]private bool isPlayRandomAmbientAudio;
+	[SerializeField] private string[] randomAudioAmbientGONames;
+	[SerializeField] private int chanceOfPlayingClip;
 
 	void Awake(){
 
@@ -45,11 +49,28 @@ public class RandomMoveAnimations : MonoBehaviour {
 		StartCoroutine (OnUpdate());
 	}
 	Vector3 dir;
+	string tempRandomClipName;
+	//private
 	IEnumerator OnUpdate(){
 
 		while (true) {
 			yield return null;
 
+			if (isPlayRandomAmbientAudio) {
+			
+				if(Random.Range(0,chanceOfPlayingClip+1) == chanceOfPlayingClip-1 ? true : false){
+
+					tempRandomClipName = randomAudioAmbientGONames [Random.Range (0, randomAudioAmbientGONames.Length )];
+
+					if (!AudioManager.Instance.CheckIfAudioPlaying (AudioManager.AudioReferanceType._AMBIENT, tempRandomClipName))
+						//cant use  cow breath sound clip on other objects if cow breath referance is taken out...
+						AudioManager.Instance.PlayAmbientSoundAndActivate (tempRandomClipName, false, true, 5f, transform);
+				
+				}
+				
+						
+			
+			}
 
 			if (isRandomOn) {
 				

@@ -295,19 +295,23 @@ public class ButtonClickLook : MonoBehaviour {
 					switch (curMusicButton) {
 
 					case MusicPlayerButton.stop:
-						MusicController.Instance.StopM ();
+						//MusicController.Instance.StopM ();
+						AudioManager.Instance.StopM();
 						break;
 
 					case MusicPlayerButton.next:
-						MusicController.Instance.PlayMusicNext ();
+						//MusicController.Instance.PlayMusicNext ();
+						AudioManager.Instance.PlayMusicNext();
 						break;
 				
 					case MusicPlayerButton.previous:
-						MusicController.Instance.PlayMusicPrevious ();
+					//	MusicController.Instance.PlayMusicPrevious ();
+						AudioManager.Instance.PlayMusicPrevious();
 						break;
 
 					case MusicPlayerButton.play:
-						MusicController.Instance.PlayM ();
+						//MusicController.Instance.PlayM ();
+						AudioManager.Instance.PlayM();
 						break;
 
 					}

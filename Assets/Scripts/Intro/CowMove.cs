@@ -34,7 +34,7 @@ public class CowMove : MonoBehaviour {
 
 		if (other.CompareTag ("Player")) {
 
-			thisAnimator.SetBool (animIdleHash, false);
+			//thisAnimator.SetBool (animIdleHash, false);
 			//CrossFade("Walk",4f);
 			StopAllCoroutines ();
 			randMoveAnimScript.isRandomOn = false;

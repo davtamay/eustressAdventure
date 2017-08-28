@@ -24,6 +24,17 @@ public class TriggerGameSelection : MonoBehaviour {
 	
 		particleSys = GetComponent <ParticleSystem> ().main;
 		particleSys.startColor = new ParticleSystem.MinMaxGradient (Color.green);
+
+
+		//AudioGO.transform.position = transform.position;
+		//AudioManager.Instance.PlayAmbientSoundAndActivate ("Portal", false, false, 0, transform);
+	}
+	void Start(){
+	
+		GameObject AudioGO = AudioManager.Instance.MakeCopyOfAudioSourceGO (AudioManager.AudioReferanceType._AMBIENT, "Portal");
+		AudioGO.transform.SetParent (transform);
+		AudioGO.transform.localPosition = Vector3.zero;
+	
 	}
 
 

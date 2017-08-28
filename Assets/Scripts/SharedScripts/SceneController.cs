@@ -29,6 +29,8 @@ public class SceneController : MonoBehaviour {
 	public bool isCustomSavePosition = false;
 	public Vector3 customSavePosition = Vector3.zero;
 
+	private Canvas sceneCanvas;
+
 	void Awake()
 	{
 		
@@ -50,6 +52,8 @@ public class SceneController : MonoBehaviour {
 
 	void Start(){
 
+		sceneCanvas = GetComponentInChildren<Canvas> ();
+		sceneCanvas.worldCamera = Camera.main;
 	
 		stressMenu.SetActive (false);
 
@@ -69,6 +73,8 @@ public class SceneController : MonoBehaviour {
 
 	void OnLevelLoad(Scene scene, LoadSceneMode sceneMode){
 		
+		sceneCanvas = GetComponentInChildren<Canvas> ();
+		sceneCanvas.worldCamera = Camera.main;
 
 		SAssessment.Instance.OnLevelLoad ();
 

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AudioType {_MUSIC, _AMBIENT, _DIRECT, _INTERFACE}
+
 public class AudioManager : MonoBehaviour {
+
+	public enum AudioReferanceType {_MUSIC, _AMBIENT, _DIRECT, _INTERFACE}
 
 	[SerializeField] Transform _MusicAudioSourceParent;
 	[SerializeField] Transform _AmbientAudioSourceParent;
@@ -17,8 +19,14 @@ public class AudioManager : MonoBehaviour {
 
 	List<Transform> audioSourceGroupParent = new List<Transform>();
 
-
 	private AudioClip _loadedResource;
+
+	[Header("Music Settings")]
+	public List<AudioSource> musicList = new List<AudioSource>();
+
+	private int totalMusic;
+	public int curMusicIndex;
+	public bool isMusicOn = false;
 
 	private static AudioManager _Instance;
 
@@ -35,10 +43,6 @@ public class AudioManager : MonoBehaviour {
 		else
 			Instance = this;
 
-		//DontDestroyOnLoad (gameObject);
-
-
-		//int i = 0;
 		foreach(Transform aSParent in transform){
 
 			audioSourceGroupParent.Add(aSParent.GetComponent<Transform>());
@@ -53,16 +57,13 @@ public class AudioManager : MonoBehaviour {
 
 			AudioSource tempAS = aST.GetComponent<AudioSource> ();
 			_MusicAudioSourceDictionary.Add (aST.name, tempAS);
-
-
-
+			musicList.Add (tempAS);
 		}
+
 		foreach (Transform aST in _AmbientAudioSourceParent) {
 
 			AudioSource tempAS = aST.GetComponent<AudioSource> ();
 			_AmbientAudioSourceDictionary.Add (aST.name, tempAS);
-
-
 
 		}
 			
@@ -71,23 +72,92 @@ public class AudioManager : MonoBehaviour {
 			AudioSource tempAS = aST.GetComponent<AudioSource> ();
 			_DirectAudioSourceDictionary.Add (aST.name, tempAS);
 		
-		
-		
 		}
 		foreach (Transform aST in _InterfaceAudioSourceParent) {
 
 			AudioSource tempAS = aST.GetComponent<AudioSource> ();
 			_InterfaceAudioSourceDictionary.Add (aST.name, tempAS);
 
+		}
 
+	}
+	#region MUSIC_METHODS
+
+	public void StopM(){
+		musicList [curMusicIndex ].Stop ();
+		//_MusicAudioSourceDictionary
+		StopAllCoroutines ();
+		isMusicOn = false;
+
+
+	}
+	public void PlayM(){
+		musicList [curMusicIndex].Play ();
+		isMusicOn = true;
+
+	}
+
+	private AudioSource tempMusic;
+	public void PlayMusicNext (){
+
+
+		if (curMusicIndex >= musicList.Count -1) 
+		{
+			musicList [musicList.Count -1].Stop ();
+			Debug.LogWarning ("Trying to play invalid sound in array, replay tracks");
+			curMusicIndex = 0;
+
+			if (isMusicOn) 
+				musicList [curMusicIndex].Play();
+			return;
+		}
+
+		curMusicIndex++;
+
+		if (isMusicOn) {
+
+			musicList [curMusicIndex - 1].Stop ();
+			tempMusic = musicList [curMusicIndex];
+			tempMusic.Play();
 
 		}
 
+	}
+	public void PlayMusicPrevious (){
 
 
-		//StartCoroutine (OnUpdate ());
+		if (curMusicIndex <= 0) 
+		{
+			musicList [curMusicIndex +1].Stop ();
+			Debug.LogWarning ("Trying to play invalid sound in array, replay tracks");
+			curMusicIndex = musicList.Count -1;
+
+			if (isMusicOn) {
+				musicList [0].Stop ();
+				musicList [curMusicIndex].Play ();
+			}
+			return;
+		}
+
+		curMusicIndex--;
+
+		if (isMusicOn) {
+
+			musicList [curMusicIndex + 1].Stop ();
+			tempMusic = musicList [curMusicIndex];
+			tempMusic.Play ();
+
+		}
 
 	}
+
+	public string GetCurrentTrackName(){
+
+		return musicList [curMusicIndex].name;
+	}
+	#endregion
+
+	#region AMBIENT_METHODS
 	public void PlayAmbientSoundAndActivate (string nameOfAS, bool randomizeAudio = false, bool removeFromMemoryWhenDone = false, float nonUsageRemoveTime = 0f, Transform setParent = null){
 
 		AudioSource tempAS;
@@ -116,9 +186,12 @@ public class AudioManager : MonoBehaviour {
 		}
 
 		tempAS.transform.SetParent (setParent);
-		tempAS.transform.position = Vector3.zero;
+		tempAS.transform.localPosition = Vector3.zero;
 
 	}
+	#endregion
+
+	#region Direct_METHODS
 	public void PlayDirectSound (string nameOfAS, bool randomizeAudio = false, bool removeFromMemoryWhenDone = false, float nonUsageRemoveTime = 0f){
 	
 		AudioSource tempAS;
@@ -146,6 +219,9 @@ public class AudioManager : MonoBehaviour {
 
 	}
 
+	#endregion
+
+	#region Interface_METHODS
 	public void PlayInterfaceSound(string nameOfAS, bool randomizeAudio = false, bool removeFromMemoryWhenDone = false, float nonUsageRemoveTime = 0f){
 
 		AudioSource tempAS;
@@ -172,20 +248,60 @@ public class AudioManager : MonoBehaviour {
 		}
 
 	}
+	#endregion
 
-	/*public void PlayDirectSound (string resourceName, Vector3 position){
+	#region GlobalAudio_Methods
+	public GameObject MakeCopyOfAudioSourceGO(AudioReferanceType aRT, string nameOfGOAS){
+		GameObject tempGOASInstance = null;
+	
+		switch (aRT) {
+		case AudioReferanceType._MUSIC:
+
+			if(_MusicAudioSourceDictionary[nameOfGOAS].transform.IsChildOf(transform)){
+				tempGOASInstance = _MusicAudioSourceDictionary [nameOfGOAS].gameObject;
+				break;
+			}
+				
+			tempGOASInstance = Instantiate(_MusicAudioSourceDictionary[nameOfGOAS]).gameObject;
+
+			break;
+
+		case AudioReferanceType._AMBIENT:
+			
+			if(_AmbientAudioSourceDictionary[nameOfGOAS].transform.IsChildOf(transform)){
+				tempGOASInstance = _AmbientAudioSourceDictionary [nameOfGOAS].gameObject;
+				break;
+			}
+
+			tempGOASInstance = Instantiate(_AmbientAudioSourceDictionary[nameOfGOAS]).gameObject;
+			break;
+
+		case AudioReferanceType._DIRECT:
+
+			if(_DirectAudioSourceDictionary[nameOfGOAS].transform.IsChildOf(transform)){
+				tempGOASInstance = _DirectAudioSourceDictionary [nameOfGOAS].gameObject;
+				break;
+			}
+
+			tempGOASInstance = Instantiate(_DirectAudioSourceDictionary[nameOfGOAS]).gameObject;
+			break;
+
+		case AudioReferanceType._INTERFACE:
+
+			if(_InterfaceAudioSourceDictionary[nameOfGOAS].transform.IsChildOf(transform)){
+				tempGOASInstance = _InterfaceAudioSourceDictionary [nameOfGOAS].gameObject;
+				break;
+			}
+
+			tempGOASInstance = Instantiate(_InterfaceAudioSourceDictionary[nameOfGOAS]).gameObject;
+			break;
 
 
-		_loadedResource = Resources.Load (resourceName) as AudioClip;
-		_DirectAudioSourceParent.transform.position = position;
-
-		_DirectAudioSourceParent.pitch = 1.0f + Random.Range (-.1f, .1f);
-		_DirectAudioSourceParent.volume = 1.0f - Random.Range (0.0f, 0.25f);
-
-		_DirectAudioSourceParent.PlayOneShot (_loadedResource);
-
-
-	}*/
+		}
+		return tempGOASInstance;
+	
+	
+	}
 
 
 	IEnumerator ReleaseClipFromMemory(AudioSource aS, float notPlayingAmount = 0f){
@@ -214,29 +330,55 @@ public class AudioManager : MonoBehaviour {
 	
 	}
 
-
-	public bool CheckIfAudioPlaying(AudioType audioType, string nameOfASGO){
+	public AudioSource GetAudioSourceReferance(AudioReferanceType audioType, string nameOfASGO){
 
 		switch (audioType) {
-		case AudioType._MUSIC:
+		case AudioReferanceType._MUSIC:
+			return _MusicAudioSourceDictionary [nameOfASGO];
+				
+			break;
+		case AudioReferanceType._AMBIENT:
+			return _AmbientAudioSourceDictionary [nameOfASGO];
+
+			break;
+		case AudioReferanceType._DIRECT:
+			return _DirectAudioSourceDictionary [nameOfASGO];
+
+			break;
+		case AudioReferanceType._INTERFACE:
+			return _InterfaceAudioSourceDictionary [nameOfASGO];
+		
+			break;
+
+
+		}
+		return null;
+
+	}
+
+
+	public bool CheckIfAudioPlaying(AudioReferanceType audioType, string nameOfASGO){
+
+		switch (audioType) {
+		case AudioReferanceType._MUSIC:
 			if (_MusicAudioSourceDictionary [nameOfASGO].isPlaying)
 				return true;
 			else
 				return false;
 			break;
-		case AudioType._AMBIENT:
+		case AudioReferanceType._AMBIENT:
 			if (_AmbientAudioSourceDictionary [nameOfASGO].isPlaying)
 				return true;
 			else
 				return false;
 			break;
-		case AudioType._DIRECT:
+		case AudioReferanceType._DIRECT:
 			if (_DirectAudioSourceDictionary [nameOfASGO].isPlaying)
 				return true;
 			else
 				return false;
 			break;
-		case AudioType._INTERFACE:
+		case AudioReferanceType._INTERFACE:
 			if (_InterfaceAudioSourceDictionary [nameOfASGO].isPlaying)
 				return true;
 			else
@@ -248,34 +390,43 @@ public class AudioManager : MonoBehaviour {
 		return false;
 
 	}
-	//void CheckIfAudioIsPlaying (enum. dirent, interface, musi)
-	/*
-	IEnumerator OnUpdate(){
+	public bool StopAudioPlaying(AudioReferanceType audioType, string nameOfASGO){
 
-		while (true) {
-			yield return null;
-		
-			foreach (Transform aS in audioSourceGroupParent) {
+		AudioSource tempAS;
 
-				if (!aS.isPlaying && _loadedResource != null) {
-					Resources.UnloadAsset (_loadedResource);
-					_loadedResource = null;
-				
-				}
+		switch (audioType) {
+		case AudioReferanceType._MUSIC:
+			tempAS = _MusicAudioSourceDictionary [nameOfASGO];;
 
-				yield return new WaitForSecondsRealtime (3);
-			}
-		
+			tempAS.Stop ();
+			
+			break;
+		case AudioReferanceType._AMBIENT:
+			tempAS = _AmbientAudioSourceDictionary [nameOfASGO];;
+
+			tempAS.Stop ();
+
+			break;
+		case AudioReferanceType._DIRECT:
+			tempAS = _DirectAudioSourceDictionary [nameOfASGO];
+
+			tempAS.Stop ();
+
+			break;
+		case AudioReferanceType._INTERFACE:
+
+			tempAS = _InterfaceAudioSourceDictionary [nameOfASGO];;
+
+			tempAS.Stop ();
+
+			break;
+
+
 		}
+		return false;
 
-
-
-
-
-
-
-	}*/
-	
+	}
+	#endregion
 
 	}
 

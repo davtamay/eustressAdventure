@@ -17,21 +17,22 @@ public class MusicTrackName : MonoBehaviour {
 	
 	}
 
-	IEnumerator Start () {
+	void Update(){
+//	IEnumerator Start () {
 		
 
 
-		while (true) {
+	//	while (true) {
 		
-			yield return null;
+			//yield return null;
 			//Debug.Log ("testing this track");
-				trackText.text = "Track: "+ MusicController.Instance.GetCurrentTrackName();
+			trackText.text = "Track: "+ AudioManager.Instance.GetCurrentTrackName();//MusicController.Instance.GetCurrentTrackName();
 			//if I leave space, text does not show up and cannot use yield return WaitForSeconds ???
-
-
-		}
-	
 	}
+
+	//	}
+	
+//	}
 
 	
 
