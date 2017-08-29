@@ -21,6 +21,7 @@ AudioMixerController:
     - efe612f236d9c4b38b285c6e0417f650
     - 824d0e8e5f64d41df9ff9bf75182e65d
     - c3bf49d21e77e4a1786f7be1d5dd46f2
+    - f801f3fa7558547ffbb34524b0e9b43d
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -35,6 +36,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 243894815500907948}
   - {fileID: 243054188213275150}
+  - {fileID: 243106617869789948}
   m_Volume: 500883e965ab44e9aa05827478823498
   m_Pitch: 384cee64a16b546519763f6d960bccde
   m_Effects:
@@ -83,6 +85,23 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &243106617869789948
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Carefree
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: f801f3fa7558547ffbb34524b0e9b43d
+  m_Children: []
+  m_Volume: 2db92b9ff99aa4ad9af42ff6b85e74b0
+  m_Pitch: 32fb5da03ea0445d09e0ba0f1809fff6
+  m_Effects:
+  - {fileID: 244055276336440606}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &243894815500907948
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -100,6 +119,19 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &244055276336440606
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: bbe92eeeb3b144de7aa5000c40ee9ee2
+  m_EffectName: Attenuation
+  m_MixLevel: 48187ee820ed54b75ac6f855f6808743
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &244300005958713008
 AudioMixerEffectController:
   m_ObjectHideFlags: 3

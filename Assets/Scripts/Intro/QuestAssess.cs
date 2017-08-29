@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class QuestAssess : MonoBehaviour {
 
@@ -33,7 +34,7 @@ public class QuestAssess : MonoBehaviour {
 
 		cam = Camera.main.transform;
 
-		Transform tempParent = transform.parent.parent;
+		Transform tempParent = transform.parent.parent.parent;
 		//FIXME This may be causing errors to appear on console NullReferenceExemption(Null);
 		navigationButtons = tempParent.GetComponentsInChildren <Button>();
 		questScrollBar = tempParent.parent.GetComponentInChildren<Scrollbar> ();
@@ -74,17 +75,21 @@ public class QuestAssess : MonoBehaviour {
 		if(Physics.Raycast(cam.position, cam.rotation * Vector3.forward, out hit)){
 
 			if (string.Equals (hit.transform.name, navigationButtons [0].transform.name, System.StringComparison.CurrentCultureIgnoreCase)) {
-				questScrollBar.value += Time.unscaledDeltaTime * scrollSpeed;
-				//navigationButtons [0].animationTriggers.pressedTrigger.
-				navigationButtons[0].Select();
-				//navigationButtons[0].OnPointerDown(UnityEngine.EventSystems.ExecuteEvents.EX);
+				if (questScrollBar.value != 1) {
+					questScrollBar.value += Time.unscaledDeltaTime * scrollSpeed;
+					navigationButtons [0].Select ();
+				}
+
 			} else if (string.Equals (hit.transform.name, navigationButtons [1].transform.name, System.StringComparison.CurrentCultureIgnoreCase)) {
-				questScrollBar.value -= Time.unscaledDeltaTime * scrollSpeed;
-				navigationButtons[1].Select();
+				if (questScrollBar.value != 0) {
+					questScrollBar.value -= Time.unscaledDeltaTime * scrollSpeed;
+					navigationButtons [1].Select ();
+				}
 			}
 
 
 		}
+		EventSystem.current.SetSelectedGameObject (null);
 	
 	}
 

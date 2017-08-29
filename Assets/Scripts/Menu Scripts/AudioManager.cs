@@ -336,19 +336,19 @@ public class AudioManager : MonoBehaviour {
 		case AudioReferanceType._MUSIC:
 			return _MusicAudioSourceDictionary [nameOfASGO];
 				
-			break;
+		//	break;
 		case AudioReferanceType._AMBIENT:
 			return _AmbientAudioSourceDictionary [nameOfASGO];
 
-			break;
+		//	break;
 		case AudioReferanceType._DIRECT:
 			return _DirectAudioSourceDictionary [nameOfASGO];
 
-			break;
+		//	break;
 		case AudioReferanceType._INTERFACE:
 			return _InterfaceAudioSourceDictionary [nameOfASGO];
 		
-			break;
+		//	break;
 
 
 		}

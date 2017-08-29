@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class SceneController : MonoBehaviour {
 
@@ -12,6 +13,8 @@ public class SceneController : MonoBehaviour {
 		set{ curskybox = value;} 
 
 	}
+	[SerializeField] AudioMixer mainMixer;
+
 	public Material[] skyboxes;
 	private GameObject stressMenu;
 
@@ -33,6 +36,7 @@ public class SceneController : MonoBehaviour {
 
 	void Awake()
 	{
+
 		
 		RenderSettings.skybox = skyboxes [currentSkybox];
 
@@ -47,21 +51,28 @@ public class SceneController : MonoBehaviour {
 
 		stressMenu = GameObject.FindWithTag ("StressMenu");
 
+
 	}
 		
 
 	void Start(){
 
+	
+
+
 		sceneCanvas = GetComponentInChildren<Canvas> ();
 		sceneCanvas.worldCamera = Camera.main;
+
 	
+		if(stressMenu != null)
 		stressMenu.SetActive (false);
 
 		player = GameObject.FindWithTag ("Player").transform;
 
 		if (GetCurrentSceneName () == "Intro")
 		player.position = DataManager.Instance.LoadPosition ();
-		
+
+		if(UIStressGage.Instance != null)
 		UIStressGage.Instance.stress = DataManager.Instance.LoadStressLevel ();
 
 
@@ -72,9 +83,21 @@ public class SceneController : MonoBehaviour {
 	}
 
 	void OnLevelLoad(Scene scene, LoadSceneMode sceneMode){
-		
+
+		//Debug.Log ("MusicVolumePP :" + PlayerPrefs.GetFloat ("MusicVolume"));
+			
 		sceneCanvas = GetComponentInChildren<Canvas> ();
 		sceneCanvas.worldCamera = Camera.main;
+
+	//	Debug.Log ("MusicVolumePP :" + PlayerPrefs.GetFloat ("MusicVolume"));
+	//	Debug.Log ("SoundVolumePP :" + PlayerPrefs.GetFloat ("SoundVolume"));
+
+		//	mainMixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume"));
+		//	mainMixer.SetFloat("DirectVolume", PlayerPrefs.GetFloat("SoundVolume"));
+		//	mainMixer.SetFloat("AmbientVolume", PlayerPrefs.GetFloat("SoundVolume"));
+		//	mainMixer.SetFloat("InterfaceVolume", PlayerPrefs.GetFloat("SoundVolume"));
+
+			
 
 		SAssessment.Instance.OnLevelLoad ();
 
@@ -113,14 +136,14 @@ public class SceneController : MonoBehaviour {
 
 	}
 	IEnumerator TakeOffFade(){
-
+		
 		anim.SetTrigger ("FadeOut");
 
 		while (true) {
 			yield return null;
 
 			if (anim.GetCurrentAnimatorStateInfo (0).IsTag ("Clear")) {
-				
+
 				isSceneLoading = false;
 				yield break;
 			

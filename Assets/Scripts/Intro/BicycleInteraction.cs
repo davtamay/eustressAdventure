@@ -58,10 +58,11 @@ public class BicycleInteraction : InteractionBehaviour {
 
 
 
-	public float pitchModifier;
+
 
 	public float minPitch  = 1.0f;
 	public float maxPitch = 2.0f;
+	private float pitchModifier;
 	public float maxSpeed = 20.0f; 
 	IEnumerator DriveBike(){
 	
