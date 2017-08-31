@@ -21,7 +21,7 @@ public class RandomMoveAnimations : MonoBehaviour {
 	[SerializeField] private float disUntilWayPointChange;
 	public float distaceToSearch = 10;
 
-	public int perFrameChanceOfRandom = 1000;
+	public int randomAnimationParameterChance = 1000;
 
 	public bool isFirstTime;
 
@@ -53,12 +53,18 @@ public class RandomMoveAnimations : MonoBehaviour {
 	//private
 	IEnumerator OnUpdate(){
 
-		while (true) {
+		while (true ) {
 			yield return null;
+
+			if (GameController.Instance.Paused)
+				continue;
+		
 
 			if (isPlayRandomAmbientAudio) {
 			
-				if(Random.Range(0,chanceOfPlayingClip+1) == chanceOfPlayingClip-1 ? true : false){
+				int tempRandom = Random.Range (0, chanceOfPlayingClip + 1);
+
+				if(tempRandom == chanceOfPlayingClip-1 ? true : false){
 
 					tempRandomClipName = randomAudioAmbientGONames [Random.Range (0, randomAudioAmbientGONames.Length )];
 
@@ -137,7 +143,7 @@ public class RandomMoveAnimations : MonoBehaviour {
 
 					thisTransform.LookAt (curWayPoint, Vector3.up);
 
-					thisAnimator.SetInteger (animRandHash, Random.Range (0, perFrameChanceOfRandom));
+					thisAnimator.SetInteger (animRandHash, Random.Range (0, randomAnimationParameterChance));
 			
 				}
 			}

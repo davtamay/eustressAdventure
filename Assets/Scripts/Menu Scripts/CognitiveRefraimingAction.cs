@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class CognitiveRefraimingAction : MonoBehaviour {
 
@@ -25,6 +26,7 @@ public class CognitiveRefraimingAction : MonoBehaviour {
 
 		followAllongScript.scrollSpeed = Mathf.Clamp (followAllongScript.scrollSpeed, -5f, 40f);
 
+		EventSystem.current.SetSelectedGameObject (null);
 		if (Physics.Raycast (camTransform.position, camTransform.rotation * Vector3.forward, out hit)) {
 		
 			foreach (Button button in settingsButtons) {
@@ -63,6 +65,7 @@ public class CognitiveRefraimingAction : MonoBehaviour {
 
 
 				}
+			
 			
 			
 			

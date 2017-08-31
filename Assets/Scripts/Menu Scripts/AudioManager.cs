@@ -365,25 +365,25 @@ public class AudioManager : MonoBehaviour {
 				return true;
 			else
 				return false;
-			break;
+			
 		case AudioReferanceType._AMBIENT:
 			if (_AmbientAudioSourceDictionary [nameOfASGO].isPlaying)
 				return true;
 			else
 				return false;
-			break;
+		
 		case AudioReferanceType._DIRECT:
 			if (_DirectAudioSourceDictionary [nameOfASGO].isPlaying)
 				return true;
 			else
 				return false;
-			break;
+			
 		case AudioReferanceType._INTERFACE:
 			if (_InterfaceAudioSourceDictionary [nameOfASGO].isPlaying)
 				return true;
 			else
 				return false;
-			break;
+		
 
 
 		}

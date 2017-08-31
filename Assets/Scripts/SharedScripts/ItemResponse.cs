@@ -21,19 +21,22 @@ public class ItemResponse : MonoBehaviour {
 			
 			if (string.Equals (itemDescription, "Coin", System.StringComparison.CurrentCultureIgnoreCase)) {
 				playerManager.points = 1;
+				AudioManager.Instance.PlayDirectSound ("Reward", true);
 				Destroy (this.gameObject);
 			}
 			else if (string.Equals (itemDescription, "Armor", System.StringComparison.CurrentCultureIgnoreCase)) {
 				playerManager.AddArmor ();
+				AudioManager.Instance.PlayDirectSound ("Reward", true);
 				Destroy (this.gameObject);
 			}
 			else if (string.Equals (itemDescription, "Health", System.StringComparison.CurrentCultureIgnoreCase)) {
 				playerManager.health += 1;
+				AudioManager.Instance.PlayDirectSound ("Reward", true);
 				Destroy (this.gameObject);
 			}
 
 			else if (string.Equals (itemDescription, "Speed", System.StringComparison.CurrentCultureIgnoreCase)) {
-
+				AudioManager.Instance.PlayDirectSound ("Reward", true);
 				Destroy (this.gameObject);
 				EnemyManager.Instance.ReduceSpeed ();
 			}
@@ -43,47 +46,56 @@ public class ItemResponse : MonoBehaviour {
 		//		EnemyManager.Instance.ReduceSize ();
 		//	}
 			else if (string.Equals (itemDescription, "RunAway", System.StringComparison.CurrentCultureIgnoreCase)) {
-
+				AudioManager.Instance.PlayDirectSound ("Reward", true);
 				Destroy (this.gameObject);
 				EnemyManager.Instance.RunAway ();
 			}
 			else if (string.Equals (itemDescription, "PlayerSpeed", System.StringComparison.CurrentCultureIgnoreCase)) {
-
+				AudioManager.Instance.PlayDirectSound ("Reward", true);
 				StartCoroutine (SetCollectorPlayerSpeed (gameObject));
 
 
 			}
+
 
 		
 			//SkyWalker and GetThemDown
 
 
 			if (!playerManager.isInvulnerable) {
+				
 
 				if (string.Equals (itemDescription, "Bullet", System.StringComparison.CurrentCultureIgnoreCase)) {
 					playerManager.health -= 1;
+					AudioManager.Instance.PlayDirectSound ("Collision", true);
 					gameObject.SetActive (false);
 				}
 				if (string.Equals (itemDescription, "CO2", System.StringComparison.CurrentCultureIgnoreCase)) {
 					playerManager.health -= 1;
+					AudioManager.Instance.PlayDirectSound ("Collision", true);
 					Destroy (this.gameObject);
 				}
 				if (string.Equals (itemDescription, "AirPlane", System.StringComparison.CurrentCultureIgnoreCase)) {
 					playerManager.health -= 1;
+					AudioManager.Instance.PlayDirectSound ("Collision", true);
 					Destroy (this.gameObject);
 				}
 				if (string.Equals (itemDescription, "Bird", System.StringComparison.CurrentCultureIgnoreCase)) {
 					playerManager.health -= 1;
+					AudioManager.Instance.PlayDirectSound ("Collision", true);
 					Destroy (this.gameObject);
 				}
 				if (string.Equals (itemDescription, "Jet", System.StringComparison.CurrentCultureIgnoreCase)) {
 					playerManager.health -= 1;
+					AudioManager.Instance.PlayDirectSound ("Collision", true);
 					Destroy (this.gameObject);
 				}
 				if (string.Equals (itemDescription, "Satelite", System.StringComparison.CurrentCultureIgnoreCase)) {
 					playerManager.health -= 1;
+					AudioManager.Instance.PlayDirectSound ("Collision", true);
 					Destroy (this.gameObject);
 				}
+
 			}
 
 		}else if (other.CompareTag ("Bullet")) {

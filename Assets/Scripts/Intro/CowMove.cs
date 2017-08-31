@@ -86,7 +86,7 @@ public class CowMove : MonoBehaviour {
 
 		if(other.CompareTag("Player")){
 
-			thisAnimator.SetInteger (randAnimHash, Random.Range (0, randMoveAnimScript.perFrameChanceOfRandom));
+			thisAnimator.SetInteger (randAnimHash, Random.Range (0, randMoveAnimScript.randomAnimationParameterChance));
 			thisAnimator.SetBool (animIdleHash, false);
 
 			Vector3 playerRelativePos =(thisTransform.position - other.transform.position).normalized;

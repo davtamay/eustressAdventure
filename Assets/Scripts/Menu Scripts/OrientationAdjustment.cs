@@ -46,11 +46,6 @@ public class OrientationAdjustment : MonoBehaviour {
 
 
 
-		//dButton = myRectTransform.GetChild (1).gameObject;
-		//dButton.SetActive (false);
-
-
-
 
 	}
 
@@ -62,9 +57,6 @@ public class OrientationAdjustment : MonoBehaviour {
 	void Start(){
 		camTransform = Camera.main.transform;//cam.transform.parent;
 		camParent = camTransform.parent;//camHead.transform.parent;
-	//	myRectTransform = GetComponent<RectTransform> ();
-	//	StartCoroutine (UpdateGame());
-	//	camParent = //Vector3.SignedAngle(Vector3.forward, Vector3.forward - camTransform.forward, Vector3.up);
 	
 
 	}

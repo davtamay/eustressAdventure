@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.Playables;
 
 public class SceneController : MonoBehaviour {
 
@@ -14,7 +15,7 @@ public class SceneController : MonoBehaviour {
 
 	}
 	[SerializeField] AudioMixer mainMixer;
-
+	[SerializeField] PlayableDirector mainPD;
 	public Material[] skyboxes;
 	private GameObject stressMenu;
 
@@ -23,6 +24,7 @@ public class SceneController : MonoBehaviour {
 
 	private static SceneController instance = null;
 
+	public static bool isPlayingTimeLine;
 	public static bool isSceneLoading = false;
 
 	private Transform player;
@@ -83,21 +85,14 @@ public class SceneController : MonoBehaviour {
 	}
 
 	void OnLevelLoad(Scene scene, LoadSceneMode sceneMode){
-
-		//Debug.Log ("MusicVolumePP :" + PlayerPrefs.GetFloat ("MusicVolume"));
 			
 		sceneCanvas = GetComponentInChildren<Canvas> ();
 		sceneCanvas.worldCamera = Camera.main;
 
-	//	Debug.Log ("MusicVolumePP :" + PlayerPrefs.GetFloat ("MusicVolume"));
-	//	Debug.Log ("SoundVolumePP :" + PlayerPrefs.GetFloat ("SoundVolume"));
-
-		//	mainMixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume"));
-		//	mainMixer.SetFloat("DirectVolume", PlayerPrefs.GetFloat("SoundVolume"));
-		//	mainMixer.SetFloat("AmbientVolume", PlayerPrefs.GetFloat("SoundVolume"));
-		//	mainMixer.SetFloat("InterfaceVolume", PlayerPrefs.GetFloat("SoundVolume"));
-
-			
+		if (string.Equals (SceneManager.GetActiveScene ().name, "IntroTimeLine", System.StringComparison.CurrentCultureIgnoreCase)) {
+			mainPD = GameObject.FindGameObjectWithTag ("TimeLine").GetComponent<PlayableDirector> ();
+			StartCoroutine (ChangeSceneWhenTimeLineFinishes (mainPD.duration));
+		}
 
 		SAssessment.Instance.OnLevelLoad ();
 
@@ -126,14 +121,27 @@ public class SceneController : MonoBehaviour {
 
 			//this plays after the fact before it finishes loading the level....
 		//	OrientationAdjustment.Instance.OrientationChangeToGlobalFront ();
+			if(GameController.Instance != null)
 			GameController.Instance.Paused = true;
 
 		}
 
+
 		//if Async is available and not crashing unity deactivate this...
+		if(OrientationAdjustment.Instance != null)
 		OrientationAdjustment.Instance.OrientationChangeToGlobalFront ();
+		
 		StartCoroutine(TakeOffFade());
 
+	}
+	IEnumerator ChangeSceneWhenTimeLineFinishes(double duration){
+	
+	
+	
+		yield return new WaitForSeconds ((float)duration);
+		Load ("intro");
+	
+	
 	}
 	IEnumerator TakeOffFade(){
 		
@@ -148,17 +156,13 @@ public class SceneController : MonoBehaviour {
 				yield break;
 			
 			}
-				
-		
 		}
-	
 	
 	}
 
 	public void Load(string scene){
-	
+			
 		anim.SetTrigger ("FadeIn");
-
 
 
 		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {

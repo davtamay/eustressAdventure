@@ -104,6 +104,7 @@ public class PlayerLookMove : MonoBehaviour {
 			if (rechargeTimer < 0)
 			if (maxJumpAngleFromUp > CameraAngleFromUp() && CameraAngleFromUp() > minJumpAngleFromUp && isGoingDown){
 
+				AudioManager.Instance.PlayDirectSound ("Grunt", true);
 				originalYPos = thisTransform.position.y;
 				isGoingDown = false;
 				isGoingUp = true;

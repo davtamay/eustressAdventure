@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LOADSCENE : MonoBehaviour {
 
-	AsyncOperation aSync;
+	/*AsyncOperation aSync;
 	public void OnEnterScene(string name){
 
 		aSync = SceneManager.LoadSceneAsync(name);
@@ -20,6 +20,6 @@ public class LOADSCENE : MonoBehaviour {
 
 
 	//}
-
+*/
 
 }

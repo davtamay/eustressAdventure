@@ -86,8 +86,6 @@ public class ButtonClickLook : MonoBehaviour {
 
 		cam = Camera.main;
 
-	//	currentButton = this.gameObject;
-
 		//data = new PointerEventData (EventSystem.current);
 
 		if (isAllowWalk)
@@ -105,12 +103,6 @@ public class ButtonClickLook : MonoBehaviour {
 		if (SceneController.isSceneLoading)
 		return;
 	
-	//	if(!isSMenuOpener)
-	//	if (GameController.Instance.IsInfoBubbleActive) 
-	//		return;
-		
-
-		
 
 		Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
 
@@ -127,12 +119,7 @@ public class ButtonClickLook : MonoBehaviour {
 			
 			if (hit.transform.gameObject.CompareTag ("Button")) {
 
-
-
-
-				//if (!GameController.Instance.IsMenuActive) {
-
-					//hitButton = hit.transform.gameObject;
+				hit.transform.GetComponent<Button> ().Select ();
 
 				if (controller != null )
 				if (controller.state == CoroutineState.Running)
@@ -142,39 +129,21 @@ public class ButtonClickLook : MonoBehaviour {
 
 				if (controller == null ) {
 					this.StartCoroutineEx (ButtonLook (), out controller);
+					AudioManager.Instance.PlayInterfaceSound ("ButtonSelect");
+
 					return;
 				}
-					
-				Debug.Log (controller.state);
 
-
-
-
-				//} 
-			/*else{
-
-
-					if (((1 << hit.transform.gameObject.layer) & 1 << 5) != 0) {	
-
-					hitButton = hit.transform.gameObject;
-					buttonFill = hitButton.GetComponent<Image> ();
-
-					StartCoroutine ("ButtonLook");
-
-					return;
-
-					} 
-				
-				}*/
 	
 			}
+
+			EventSystem.current.SetSelectedGameObject (null);
 
 			} else {
 
 			if (controller != null)
 			if (controller.state == CoroutineState.Running)
 				controller = null;
-				//controller.state = CoroutineState.Finished;
 
 
 			//	ExecuteEvents.Execute<IPointerExitHandler> (currentButton, data, ExecuteEvents.pointerExitHandler);
@@ -214,7 +183,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 				countDown = timeToSelect;
 				buttonFill.fillAmount = 1.0f;
-				//hitButton = null;
+			
 
 				//has to be called to prevent multiple clicks when clicking on button....
 
@@ -232,10 +201,12 @@ public class ButtonClickLook : MonoBehaviour {
 			
 				} else if (isRestartProgress) {
 
+					//PlayerPrefs.SetInt ("MainGameEvent") == 0;
+
 					DataManager.Instance.DeleteHighScoreSlotandPositionData (homePosition);
 					DataManager.Instance.DeletePPDataTaskProgress ();
 					
-					LoadScene ("Intro");
+					LoadScene ("IntroTimeLine");
 					
 			
 			

@@ -40,7 +40,7 @@ public class SAssessment : MonoBehaviour
 			cRText = cRObject.GetComponentsInChildren<Text> (true);
 			cRTextRect = cRText [0].gameObject.GetComponent <RectTransform> ();
 	
-
+		}
 
 			if (instance) {
 				DestroyImmediate (gameObject);
@@ -49,7 +49,7 @@ public class SAssessment : MonoBehaviour
 			instance = this; 
 
 			DontDestroyOnLoad (gameObject);
-		}
+		
 	
 	}
 

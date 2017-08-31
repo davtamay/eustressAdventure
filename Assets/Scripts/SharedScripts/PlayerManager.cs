@@ -81,10 +81,10 @@ public class PlayerManager : MonoBehaviour {
 	void Start(){
 
 		if (GameObject.FindWithTag ("UIColor")) {
-			if (healthColorIndicator != null) {
+		//	if (healthColorIndicator != null) {
 				healthColorIndicator = GameObject.FindWithTag ("UIColor").GetComponent<Image> ();
 				healthColorIndicator.color = healthColor;
-			}
+		//	}
 		}
 
 	//FIXME Games may use Item game tag besided the intro, so check if there are no interuptions/bugs 5/13/17

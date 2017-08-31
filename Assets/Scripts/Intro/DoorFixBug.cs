@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class DoorFixBug : MonoBehaviour {
 
+	private AudioSource gateAS;
+	void Start(){
+		//gateAS = AudioManager.Instance.GetAudioSourceReferance (AudioManager.AudioReferanceType._AMBIENT, "Gate");
+	
+	
+	}
 	//private bool isFirstTime = false;
 	void OnTriggerEnter(){
 	
-	//	if (!isFirstTime) {
+	//	if (!isFirstTime) 
 			GetComponent<Rigidbody> ().WakeUp ();
-	//		isFirstTime = true;
+
+		AudioManager.Instance.PlayAmbientSoundAndActivate ("Gate", true, false, 0f, transform);
+
 	//	}
 	}
 }

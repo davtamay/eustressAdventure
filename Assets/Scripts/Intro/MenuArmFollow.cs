@@ -25,14 +25,27 @@ public class MenuArmFollow : MonoBehaviour {
 		//offset.z *= -1;
 	}
 	void Start(){
+
+		#if UNITY_ANDROID
+
+		MagnetSensor.OnCardboardTrigger += MagnetTrigger;
+
+		#endif
+
 		if(SceneController.Instance != null)
 			curSceneName = SceneController.Instance.GetCurrentSceneName ();
 		
 		thisTransform.GetChild(0).gameObject.SetActive(false);
-	
+
 	}
 	
 
+	bool isMagnetTriggered;
+
+	void MagnetTrigger(){
+	
+		isMagnetTriggered = true;
+	}
 
 	Quaternion rotation;
 
@@ -42,6 +55,7 @@ public class MenuArmFollow : MonoBehaviour {
 	bool isClosedClick = false;
 
 	public void BoolClosed(){
+		AudioManager.Instance.PlayDirectSound ("TakeOutMenu");
 		thisAnimator.SetBool ("Close", true);
 		isClosedClick = true;
 	}
@@ -51,13 +65,51 @@ public class MenuArmFollow : MonoBehaviour {
 	Vector3 curViewingAngle;
 
 	bool isLerping = false;
+
+
+	bool isButtonAvailable = true;
 	void LateUpdate () {
-		if (Input.GetMouseButton (0)) {
+
+#if UNITY_EDITOR
+
+		if (Input.GetMouseButton (0) && isButtonAvailable) {
+			isButtonAvailable = false;
+
+			AudioManager.Instance.PlayDirectSound ("TakeOutMenu");
+
 			if (isInitialClick) {
+				
 				thisAnimator.SetBool ("Close", false);
 				return;
 			}
-			
+
+			curViewingAngle = camTransform.forward;
+
+			thisTransform.GetChild(0).gameObject.SetActive(true);
+			oldViewingAngle =  Quaternion.Euler(0,90,0) * camTransform.forward ;
+			isInitialClick = true;
+
+			if (curSceneName != "intro")
+				GameController.Instance.Paused = true;
+
+		}
+#endif
+
+#if UNITY_ANDROID
+		//isMagnetTriggered = MagnetTrigger();
+
+		if (isMagnetTriggered && isButtonAvailable) {
+			isButtonAvailable = false;
+			isMagnetTriggered = false;
+
+			AudioManager.Instance.PlayDirectSound ("TakeOutMenu");
+
+			if (isInitialClick) {
+
+				thisAnimator.SetBool ("Close", false);
+				return;
+			}
+
 			curViewingAngle = camTransform.forward;
 
 			thisTransform.GetChild(0).gameObject.SetActive(true);
@@ -69,11 +121,16 @@ public class MenuArmFollow : MonoBehaviour {
 
 		}
 
+
+#endif
+
+
 		if (isInitialClick) {
-		
+
+
 			if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsTag ("Idle")) {
 
-
+				
 				stressMenu.SetActive (true);
 				isInitialClick = false;
 			
@@ -82,16 +139,19 @@ public class MenuArmFollow : MonoBehaviour {
 		
 		} else if (isClosedClick) {
 
-				
+
 
 			if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsTag ("Start")) {
 
-
 				isClosedClick = false;
+
+
 				thisAnimator.SetBool ("Close", false);
 				stressMenu.SetActive (false);
-				//thisAnimator.Rebind ();
+
 				thisTransform.GetChild(0).gameObject.SetActive(false);
+
+				isButtonAvailable = true;
 
 			}
 
