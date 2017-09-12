@@ -50,6 +50,6 @@ public class SliderButtonManipulator : MonoBehaviour {
 
 	void OnDisable(){
 		PlayerPrefs.SetFloat (nameOfPP, slider.value);
-
+		PlayerPrefs.Save ();
 	}
 }

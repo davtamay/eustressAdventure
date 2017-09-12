@@ -7,11 +7,10 @@ using System.Collections.Generic;
 
 public class WackGameManager : MonoBehaviour {
 
-
-
+	[SerializeField]public WaveController waveController;
+	[SerializeField]private WackBerryController wackBerryController;
 	public GameObject[] totalMoles;
 	public List<GameObject> activeMoles; 
-
 
 
 
@@ -31,12 +30,18 @@ public class WackGameManager : MonoBehaviour {
 		instance = this; 
 
 
+		totalMoles = waveController.GetAllGOInAllWaves ().ToArray();
+
+
 	}
 
+	public void ReduceBerry(){
 
-	//CheckifMolesAreActiveInHierarcy (AKA scene - taking into account parent active)
+		wackBerryController.ReduceOneBerry ();
+	}
+		
 
-	public void AddMolesToActiveList(){
+	public void UpdateMoleActiveList(){
 		
 		for (int i = 0; i < totalMoles.Length; i++) {
 
@@ -48,6 +53,6 @@ public class WackGameManager : MonoBehaviour {
 				   }
 	
 		}
-		Debug.Log ("Number of active moles: " + WackGameManager.Instance.activeMoles.Count);
+		//Debug.Log ("Number of active moles: " + WackGameManager.Instance.activeMoles.Count);
 	}
 }

@@ -20,6 +20,7 @@ public class SettingsControl : MonoBehaviour {
 
 		gameObject.SetActive (false);
 	}
+
 	void OnDisable(){
 	
 		ChangeMusicVol(PlayerPrefs.GetFloat("MusicVolume"));

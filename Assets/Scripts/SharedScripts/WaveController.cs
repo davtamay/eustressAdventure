@@ -43,6 +43,7 @@ public class WaveController : MonoBehaviour {
 	[SerializeField]UnityEvent onWaveFinished;
 
 
+	private List<GameObject> totalGOs;
 	private List<int> myIndices;
 
 	private float timer;
@@ -52,6 +53,8 @@ public class WaveController : MonoBehaviour {
 	void Awake(){
 		thisTransform = transform;
 
+		totalGOs = new List<GameObject> ();
+
 		firstWaveObject = thisTransform.GetChild(0);
 		secondWaveObject = thisTransform.GetChild(1);
 		thirdWaveObject = thisTransform.GetChild(2);
@@ -59,23 +62,46 @@ public class WaveController : MonoBehaviour {
 		fifthWaveObject = thisTransform.GetChild(4);
 		sixWaveObject = thisTransform.GetChild(5);
 	
-		foreach (Transform gO1 in firstWaveObject)
+		if(firstWaveObject != null)
+		foreach (Transform gO1 in firstWaveObject) {
+			totalGOs.Add (gO1.gameObject);
 			gO1.gameObject.SetActive (false);
 
-		foreach (Transform gO2 in secondWaveObject)
+		}
+	
+		if(secondWaveObject != null)
+		foreach (Transform gO2 in secondWaveObject) {
+			totalGOs.Add (gO2.gameObject);
 			gO2.gameObject.SetActive (false);
 
-		foreach (Transform gO3 in thirdWaveObject)
-			gO3.gameObject.SetActive (false);
+		}
 
-		foreach (Transform gO4 in fourthWaveObject)
+		if(thirdWaveObject != null)
+		foreach (Transform gO3 in thirdWaveObject) {
+			totalGOs.Add (gO3.gameObject);
+			gO3.gameObject.SetActive (false);
+		}
+
+		if(fourthWaveObject != null)
+		foreach (Transform gO4 in fourthWaveObject) {
+			totalGOs.Add (gO4.gameObject);
 			gO4.gameObject.SetActive (false);
 
-		foreach (Transform gO5 in fifthWaveObject)
+		}
+
+		if(fifthWaveObject != null)
+		foreach (Transform gO5 in fifthWaveObject) {
+			totalGOs.Add (gO5.gameObject);
 			gO5.gameObject.SetActive (false);
 
-		foreach (Transform gO6 in sixWaveObject)
+		}
+
+		if(sixWaveObject != null)
+		foreach (Transform gO6 in sixWaveObject) {
+			totalGOs.Add (gO6.gameObject);
 			gO6.gameObject.SetActive (false);
+
+		}
 
 
 	}
@@ -84,14 +110,21 @@ public class WaveController : MonoBehaviour {
 	void Start(){
 		GameController.Instance.TimeToAdd (ref isDone, timeUntilSecondWave);
 
+
 		RandomizeGOToEnable (GOToRespondFirstWave, firstWaveObject);
-		
+
 		foreach (int go1 in myIndices) 
 			firstWaveObject.GetChild (go1).gameObject.SetActive (true);
+
+	//	WackGameManager.Instance.AddMolesToActiveList ();
 		
 		//myIndices.Clear();
+
+		//dont add 2 add to active list crashes editor..
 		onGameStart.Invoke();
-	//	onWaveChange.Invoke ();
+		//onWaveChange.Invoke ();
+
+
 
 		StartCoroutine (OnUpdate ());
 	}
@@ -115,7 +148,6 @@ public class WaveController : MonoBehaviour {
 
 			GameController.Instance.TimeToAdd (ref isDone);
 
-		//yield return new WaitUntil (() => timer >= timeUntilSecondWave); 
 
 			if (isDone && isFirstWave) {
 				isDone = false;
@@ -136,6 +168,8 @@ public class WaveController : MonoBehaviour {
 					secondWaveObject.GetChild (go2).gameObject.SetActive (true);
 
 				onWaveChange.Invoke ();
+
+				if(secondWaveObject != null)
 				onSecondWaveStart.Invoke ();
 			//	myIndices.Clear();
 
@@ -168,6 +202,8 @@ public class WaveController : MonoBehaviour {
 
 			//	myIndices.Clear();
 				onWaveChange.Invoke ();
+
+				if(thirdWaveObject != null)
 				onThirdWaveStart.Invoke ();
 			//	timer = 0;
 				isSecondWave = false;
@@ -196,6 +232,8 @@ public class WaveController : MonoBehaviour {
 
 			//	myIndices.Clear();
 				onWaveChange.Invoke ();
+
+				if(fourthWaveObject != null)
 				onFourthWaveStart.Invoke ();
 			//	timer = 0;
 				isThirdWave = false;
@@ -224,6 +262,8 @@ public class WaveController : MonoBehaviour {
 
 				//myIndices.Clear();
 				onWaveChange.Invoke ();
+
+				if(fifthWaveObject != null)
 				onFifthWaveStart.Invoke ();
 		
 				isFourthWave = false;
@@ -296,5 +336,12 @@ public class WaveController : MonoBehaviour {
 
 	}
 }
+
+	public List<GameObject> GetAllGOInAllWaves(){
+	
+		return totalGOs;
+	
+	
+	}
 
 }
