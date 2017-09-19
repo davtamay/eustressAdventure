@@ -21,13 +21,14 @@ public class WackBerryController : MonoBehaviour {
 	}
 	public void ReduceOneBerry(){
 	
-		berriesLeft -= 1;
-		totalBerries [berriesLeft].sprite = null;
+		if (berriesLeft > 0) {
+			berriesLeft -= 1;
+			totalBerries [berriesLeft].sprite = null;
 
-		if (berriesLeft == 0)
-			GameController.Instance.isGameOver = true;
+			if (berriesLeft == 0)
+				GameController.Instance.isGameOver = true;
 	
-	
+		}
 	
 	}
 

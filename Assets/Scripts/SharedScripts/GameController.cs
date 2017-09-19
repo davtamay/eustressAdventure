@@ -120,7 +120,7 @@ public class GameController : MonoBehaviour {
 	//private bool isStartMenuActive;
 	public bool IsStartMenuActive{
 
-		get{ return gameStart.activeSelf; }
+		get{ return gameStart.activeInHierarchy; }
 
 	}
 	public void StartGame (){

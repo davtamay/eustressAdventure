@@ -26,7 +26,7 @@ public class MenuArmFollow : MonoBehaviour {
 	}
 	void Start(){
 
-		#if UNITY_ANDROID
+		#if PLATFORM_ANDROID
 
 		MagnetSensor.OnCardboardTrigger += MagnetTrigger;
 

@@ -15,7 +15,7 @@ public class SceneController : MonoBehaviour {
 
 	}
 	[SerializeField] AudioMixer mainMixer;
-	[SerializeField] PlayableDirector mainPD;
+	//[SerializeField] PlayableDirector mainPD;
 	public Material[] skyboxes;
 	private GameObject stressMenu;
 
@@ -89,10 +89,10 @@ public class SceneController : MonoBehaviour {
 		sceneCanvas = GetComponentInChildren<Canvas> ();
 		sceneCanvas.worldCamera = Camera.main;
 
-		if (string.Equals (SceneManager.GetActiveScene ().name, "IntroTimeLine", System.StringComparison.CurrentCultureIgnoreCase)) {
+	/*	if (string.Equals (SceneManager.GetActiveScene ().name, "IntroTimeLine", System.StringComparison.CurrentCultureIgnoreCase)) {
 			mainPD = GameObject.FindGameObjectWithTag ("TimeLine").GetComponent<PlayableDirector> ();
 			StartCoroutine (ChangeSceneWhenTimeLineFinishes (mainPD.duration));
-		}
+		}*/
 
 		SAssessment.Instance.OnLevelLoad ();
 
@@ -134,15 +134,7 @@ public class SceneController : MonoBehaviour {
 		StartCoroutine(TakeOffFade());
 
 	}
-	IEnumerator ChangeSceneWhenTimeLineFinishes(double duration){
-	
-	
-	
-		yield return new WaitForSeconds ((float)duration);
-		Load ("intro");
-	
-	
-	}
+
 	IEnumerator TakeOffFade(){
 		
 		anim.SetTrigger ("FadeOut");

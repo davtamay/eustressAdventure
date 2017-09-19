@@ -56,6 +56,10 @@ public class WackLookClick : MonoBehaviour {
 						GameObject temp = Instantiate(deadCloudActionGO, hit.point, Quaternion.LookRotation(cam.transform.position - hit.point, Vector3.up));
 						Destroy(temp, 5);
 
+						AudioSource tempAS = AudioManager.Instance.GetAudioSourceReferance (AudioManager.AudioReferanceType._DIRECT, "Pop");
+						tempAS.transform.position = hit.point;
+						tempAS.Play ();
+
 						yield return StartCoroutine (HitMole (hit.transform.gameObject));
 						
 
@@ -80,17 +84,23 @@ public class WackLookClick : MonoBehaviour {
 
 				if (timer > speedDifficulty) {
 
+				
+
+					
 			
 
-					timer = 0;
-			
+				currentMoleIndex = GetComparedRandomMoleIndex (currentMole);
 
+				while(WackGameManager.Instance.activeMoles [currentMoleIndex].GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).IsTag ("PopUp")) {
+					currentMole = WackGameManager.Instance.activeMoles [Random.Range (0, WackGameManager.Instance.activeMoles.Count)];
 					currentMoleIndex = GetComparedRandomMoleIndex (currentMole);
+					yield return null;
+				}
 					currentMole = WackGameManager.Instance.activeMoles [currentMoleIndex];
 					
 
 					yield return StartCoroutine (TurnOnMole (currentMole));
-
+					timer = 0;
 
 					//yield return null;
 
@@ -110,9 +120,10 @@ public class WackLookClick : MonoBehaviour {
 
 		foreach (GameObject mole in WackGameManager.Instance.activeMoles) {
 
-			Animator an = mole.GetComponent<Animator> ();
-		
-			an.SetTrigger (isIdleHash);
+			Animator an = mole.GetComponentInChildren<Animator> ();
+			mole.GetComponentInChildren<CapsuleCollider> ().enabled = false;
+
+		//	an.SetTrigger (isIdleHash);
 			an.SetBool (isPopupHash, false);
 	
 		}
@@ -132,9 +143,10 @@ public class WackLookClick : MonoBehaviour {
 		yield return new WaitForEndOfFrame ();
 		foreach (GameObject mole in WackGameManager.Instance.activeMoles) {
 			Animator an = mole.GetComponentInChildren<Animator> ();
+			mole.GetComponentInChildren<CapsuleCollider> ().enabled = false;
 
-			an.SetTrigger (isIdleHash);
-		
+			//an.SetTrigger (isIdleHash);
+			an.SetBool (isPopupHash, false);
 		
 		}
 			
@@ -147,7 +159,7 @@ public class WackLookClick : MonoBehaviour {
 
 		Animator an = mole.GetComponentInChildren<Animator> ();
 
-		an.SetTrigger (isIdleHash);
+		//an.SetTrigger (isIdleHash);
 		an.SetBool(isPopupHash, true);
 
 
@@ -160,9 +172,10 @@ public class WackLookClick : MonoBehaviour {
 
 
 		Animator an = mole.GetComponentInChildren<Animator> ();
+		mole.GetComponentInChildren<CapsuleCollider> ().enabled = false;
 
 		an.SetBool (isPopupHash, false);
-		an.SetTrigger (isIdleHash);
+		//an.SetTrigger (isIdleHash);
 
 
 		yield return null;
@@ -174,7 +187,7 @@ public class WackLookClick : MonoBehaviour {
 	IEnumerator HitMole (GameObject mole){
 
 
-		mole.GetComponentInChildren<Collider> ().enabled = false;
+		mole.GetComponentInChildren<CapsuleCollider> ().enabled = false;
 		Animator an = mole.GetComponentInChildren<Animator> ();
 
 		an.SetTrigger (isDeadHash);
