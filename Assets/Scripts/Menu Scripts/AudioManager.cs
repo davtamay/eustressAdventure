@@ -94,7 +94,6 @@ public class AudioManager : MonoBehaviour {
 	public void PlayM(){
 		musicList [curMusicIndex].Play ();
 		isMusicOn = true;
-
 	}
 
 	private AudioSource tempMusic;
@@ -188,6 +187,18 @@ public class AudioManager : MonoBehaviour {
 		tempAS.transform.SetParent (setParent);
 		tempAS.transform.localPosition = Vector3.zero;
 
+	}
+	public void PauseAmbientMusic(){
+
+		foreach (AudioSource tempAS in _AmbientAudioSourceDictionary.Values)
+			tempAS.Pause();
+		
+	}
+	public void UnPauseAmbientMusic(){
+
+		foreach (AudioSource tempAS in _AmbientAudioSourceDictionary.Values)
+			tempAS.UnPause();
+	
 	}
 	#endregion
 

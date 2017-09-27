@@ -30,7 +30,7 @@ public class FeetFollowPlayer : MonoBehaviour {
 	
 		if (Physics.Raycast (thisTransform.position, -thisTransform.up, out hit, 10f)) {
 
-
+			//thisTransform.position = hit.point + Vector3.up;
 			thisTransform.rotation = (Quaternion.FromToRotation (thisTransform.up, hit.normal)) * thisTransform.rotation;
 
 		}

@@ -14,7 +14,7 @@ public class SceneController : MonoBehaviour {
 		set{ curskybox = value;} 
 
 	}
-	[SerializeField] AudioMixer mainMixer;
+//	[SerializeField] AudioMixer mainMixer;
 	//[SerializeField] PlayableDirector mainPD;
 	public Material[] skyboxes;
 	private GameObject stressMenu;

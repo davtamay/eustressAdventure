@@ -111,4 +111,23 @@ public class CowMove : MonoBehaviour {
 	
 	
 	}
+	void OnCollisionEnter(Collision other){
+
+		if (other.collider.CompareTag ("Player")) {
+			Debug.Log ("COW COLLIDED");
+			
+		}
+			
+	
+	
+	}
+
+/*	void OnCollisionExit(Collision other){
+
+		if (!other.collider.CompareTag ("Player")) {
+		}
+
+
+
+	}*/
 }

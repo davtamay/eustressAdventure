@@ -11,6 +11,8 @@ public class LookInteraction : MonoBehaviour {
 	[SerializeField] float lookTime;
 	[SerializeField] float timeUntilImageDeactivate = 5f;
 	[SerializeField] float lookDistance;
+	[SerializeField] bool isLookAtPlayer = true;
+
 
 	[SerializeField]UnityEvent onLookClick;
 
@@ -19,8 +21,12 @@ public class LookInteraction : MonoBehaviour {
 
 
 	[SerializeField]bool isSpriteChangeOnClick = false;
-
 	[SerializeField]private Sprite spriteToChange;
+
+	[SerializeField]bool isColorChangeOnClick = false;
+	[SerializeField]private Color colorToChange;
+	private Color originalColor;
+
 
 	[SerializeField]UnityEvent onSecondaryLookClick;
 	[SerializeField] bool isFirstNotInvokedInsteadOffSecond;
@@ -50,6 +56,9 @@ public class LookInteraction : MonoBehaviour {
 		image = GetComponentInChildren<Image> ();
 		originalSprite = image.sprite;
 
+		if (isColorChangeOnClick)
+			originalColor = image.color;
+
 		imageGO = image.transform.parent.gameObject;
 		imageGO.SetActive (false);
 		thisCollider.enabled = false;
@@ -72,7 +81,7 @@ public class LookInteraction : MonoBehaviour {
 
 			yield return new WaitForEndOfFrame();
 			//yield return null
-
+			if(isLookAtPlayer)
 			imageGO.transform.LookAt (cam.transform);
 
 			timeActive -= Time.deltaTime;
@@ -135,11 +144,22 @@ public class LookInteraction : MonoBehaviour {
 					}	
 
 
+				isOriginalImage = !isOriginalImage;
+
 				if (isSpriteChangeOnClick) {
 					ChangeSprite ();
 
 				}
-					
+
+				if (isColorChangeOnClick) {
+
+					if (isOriginalImage)
+						image.color = originalColor;
+					else
+						image.color = colorToChange;
+				
+				
+				}
 			//	onLookClick.Invoke ();
 
 				isActive = false;
@@ -194,7 +214,7 @@ public class LookInteraction : MonoBehaviour {
 		else
 			image.sprite = originalSprite;
 
-		isOriginalImage = !isOriginalImage;
+
 	
 	
 	}

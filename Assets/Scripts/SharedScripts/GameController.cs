@@ -12,11 +12,6 @@ public class GameController : MonoBehaviour {
 	public GameObject newWaveGO;
 	private float timeUntilNewWave;
 
-
-
-	//private Camera[] cameras;
-	//private Camera cam;
-
 	private float timer;
 	private	bool isTimerOn;
 	[SerializeField] private float timerSpeed = 1.2f;
@@ -86,8 +81,11 @@ public class GameController : MonoBehaviour {
 			paused = value;
 			
 			if (paused) {
+				AudioManager.Instance.PauseAmbientMusic ();
 				Time.timeScale = 0;
 			} else {
+				AudioManager.Instance.UnPauseAmbientMusic ();
+				//SettingsControl.Instance.ChangeSoundVol(PlayerPrefs.GetFloat("SoundVolume"));
 				Time.timeScale = 1;
 			}
 		}

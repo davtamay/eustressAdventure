@@ -44,7 +44,7 @@ public class ButtonClickLook : MonoBehaviour {
 	public bool isMusicButton = false;
 
 
-	public bool isAllowWalk = false;
+	//public bool isAllowWalk = false;
 	private bool isWalking = false;
 
 	private Collider col;
@@ -88,8 +88,8 @@ public class ButtonClickLook : MonoBehaviour {
 
 		//data = new PointerEventData (EventSystem.current);
 
-		if (isAllowWalk)
-			buttonFill.color = Color.red;
+//		if (isAllowWalk)
+//			buttonFill.color = Color.red;
 
 
 	}
@@ -211,7 +211,7 @@ public class ButtonClickLook : MonoBehaviour {
 			
 			
 			
-				} else if (isAllowWalk) {
+				}/* else if (isAllowWalk) {
 			
 					isWalking = !isWalking;
 					if (isWalking) {
@@ -229,7 +229,7 @@ public class ButtonClickLook : MonoBehaviour {
 					}
 			
 			
-				} else if (isEnvChanger) {
+				} */else if (isEnvChanger) {
 
 					SceneController.Instance.ChangeSkyBox ();
 

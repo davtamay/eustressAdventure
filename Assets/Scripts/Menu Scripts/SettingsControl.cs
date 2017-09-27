@@ -8,18 +8,30 @@ public class SettingsControl : MonoBehaviour {
 
 	[SerializeField]AudioMixer mainMixer;
 
-/*	void Start(){
-		mainSlider = GetComponent<Slider> ();
-	
-		mainSlider.onValueChanged.AddListener(delegate(float arg0) {
-			ChangeMusicVol(mainSlider.value);
-		});
-	}*/
-	//SettingsControl(){ 
+
+	private static SettingsControl instance;
+	public static SettingsControl Instance {
+		get{ return instance; }
+
+	}
+
+	void Awake (){
+
+
+		if (instance != null) {
+			Debug.LogError ("There is two instances off SettingControl");
+			return;
+		} else {
+			instance = this;
+		}
+	}
+
+
 	void Start(){
 
 		gameObject.SetActive (false);
 	}
+		
 
 	void OnDisable(){
 	
@@ -28,20 +40,7 @@ public class SettingsControl : MonoBehaviour {
 	
 	
 	}
-	//void Start(){
-		//ChangeMusicVol(PlayerPrefs.GetFloat("MusicVolume"));
-		//ChangeSoundVol(PlayerPrefs.GetFloat("SoundVolume"));
-	//	mainMixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume"));
-	//	mainMixer.SetFloat("DirectVolume", PlayerPrefs.GetFloat("SoundVolume"));
-	//	mainMixer.SetFloat("AmbientVolume", PlayerPrefs.GetFloat("SoundVolume"));
-	//	mainMixer.SetFloat("InterfaceVolume", PlayerPrefs.GetFloat("SoundVolume"));
-	//	gameObject.SetActive (false);
 
-	//}
-	//void OnEnable(){
-		//gameObject.SetActive (false);
-
-	//}
 
 	public void ChangeMusicVol(float vol){
 
