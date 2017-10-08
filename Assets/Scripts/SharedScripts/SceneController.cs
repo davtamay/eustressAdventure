@@ -57,13 +57,31 @@ public class SceneController : MonoBehaviour {
 	}
 		
 
-	void Start(){
+	IEnumerator Start(){
 
-	
-
+		yield return null;
 
 		sceneCanvas = GetComponentInChildren<Canvas> ();
 		sceneCanvas.worldCamera = Camera.main;
+		sceneCanvas.planeDistance = 0.2f;
+	/*	sceneCanvas.GetComponentInChildren<Image> ().color = new Color (0, 0, 0, 1);
+	
+		while (!LocalizationManager.Instance.GetIsReady()) {
+
+			yield return null;
+
+		}*/
+		//TEST
+		var tempLTs	= GameObject.FindGameObjectsWithTag ("Text");
+
+		for (int i = 0; i < tempLTs.Length; i++) {
+
+			LocalizationManager.Instance.presentLocalizedTexts.Add(tempLTs[i].GetComponent<LocalizedText> ());
+		}
+			
+		LocalizationManager.Instance.LoadLocalizedText(PlayerPrefs.GetString("Language"));
+
+
 
 	
 		if(stressMenu != null)
@@ -82,6 +100,10 @@ public class SceneController : MonoBehaviour {
 		
 		anim = GetComponentInChildren<Animator>();
 
+
+
+	//	anim.SetTrigger ("FadeIn");
+
 	}
 
 	void OnLevelLoad(Scene scene, LoadSceneMode sceneMode){
@@ -89,6 +111,14 @@ public class SceneController : MonoBehaviour {
 		sceneCanvas = GetComponentInChildren<Canvas> ();
 		sceneCanvas.worldCamera = Camera.main;
 
+		//TEST
+		LocalizationManager.Instance.presentLocalizedTexts.Clear ();
+		var tempLTs	= GameObject.FindGameObjectsWithTag ("Text");
+
+		for (int i = 0; i < tempLTs.Length; i++) {
+
+			LocalizationManager.Instance.presentLocalizedTexts.Add(tempLTs[i].GetComponent<LocalizedText> ());
+		}
 	/*	if (string.Equals (SceneManager.GetActiveScene ().name, "IntroTimeLine", System.StringComparison.CurrentCultureIgnoreCase)) {
 			mainPD = GameObject.FindGameObjectWithTag ("TimeLine").GetComponent<PlayableDirector> ();
 			StartCoroutine (ChangeSceneWhenTimeLineFinishes (mainPD.duration));
@@ -152,8 +182,12 @@ public class SceneController : MonoBehaviour {
 	
 	}
 
+	private bool isFirstScene = true;
+
 	public void Load(string scene){
 			
+
+
 		anim.SetTrigger ("FadeIn");
 
 

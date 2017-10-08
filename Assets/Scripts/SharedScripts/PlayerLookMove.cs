@@ -11,7 +11,7 @@ public class PlayerLookMove : MonoBehaviour {
 	[SerializeField] private float jumpHeight;
 	[SerializeField] private float jumpFromGroundDis;
 	[SerializeField] private float jumpSpeed;
-	[SerializeField] private float jumpRechargeTime;
+	public float jumpRechargeTime;
 
 	[SerializeField]private bool isSuperJumpAvailable;
 	[SerializeField]private float superJumpHeightAdd;
@@ -23,7 +23,7 @@ public class PlayerLookMove : MonoBehaviour {
 	private CharacterController controller;
 	private Vector3 moveDirection;
 	private bool isGoingDown = true;
-	private bool isGoingUp;
+	public bool isGoingUp = false;
 
 	private Transform thisTransform;
 	private float originalYPos;
@@ -34,6 +34,9 @@ public class PlayerLookMove : MonoBehaviour {
 	[SerializeField] private float maxJumpAngleFromUp = 70.0f;
 
 	[SerializeField] private float magnitudeOfStressFromFalling;
+
+	[SerializeField] private GameObject feetGraphic;
+	//public bool isFeetShowing;
 
 
 
@@ -77,8 +80,6 @@ public class PlayerLookMove : MonoBehaviour {
 
 
 	void Update () {
-
-
 
 		isCharInGround = isCharGrounded();
 
@@ -187,6 +188,16 @@ public class PlayerLookMove : MonoBehaviour {
 			AudioManager.Instance.PlayDirectSound ("Steps", true); //StartCoroutine (Step ());
 		controller.Move (moveDirection);
 
+	
+	}
+
+	public void SetFeetDisplay(bool isShowing){
+	
+		if (isShowing)
+			feetGraphic.SetActive (true);
+		else
+			feetGraphic.SetActive(false);
+	
 	
 	}
 	//IEnumerator Step(){

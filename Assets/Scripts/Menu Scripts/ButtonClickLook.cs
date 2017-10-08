@@ -74,10 +74,6 @@ public class ButtonClickLook : MonoBehaviour {
 		if (isSMenuOpener)
 			StressMenu = GameObject.FindWithTag ("StressMenu");
 	
-	}
-
-	void Start () {
-		
 		buttonFill = GetComponent <Image> ();
 		buttonFill.fillAmount = 1.0f;
 
@@ -85,14 +81,8 @@ public class ButtonClickLook : MonoBehaviour {
 		col = GetComponent <Collider> ();
 
 		cam = Camera.main;
-
-		//data = new PointerEventData (EventSystem.current);
-
-//		if (isAllowWalk)
-//			buttonFill.color = Color.red;
-
-
 	}
+
 
 	private bool isLooking = false;
 	CoroutineController controller;
@@ -137,9 +127,11 @@ public class ButtonClickLook : MonoBehaviour {
 	
 			}
 
-			EventSystem.current.SetSelectedGameObject (null);
+			//EventSystem.current.SetSelectedGameObject (null);
 
 			} else {
+
+			EventSystem.current.SetSelectedGameObject (null);
 
 			if (controller != null)
 			if (controller.state == CoroutineState.Running)
@@ -211,25 +203,7 @@ public class ButtonClickLook : MonoBehaviour {
 			
 			
 			
-				}/* else if (isAllowWalk) {
-			
-					isWalking = !isWalking;
-					if (isWalking) {
-
-						buttonFill.color = Color.green;
-						GameController.Instance.Paused = false;
-						GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ().enabled = true;
-
-
-					} else {
-
-						buttonFill.color = Color.red;
-						GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ().enabled = false;
-				
-					}
-			
-			
-				} */else if (isEnvChanger) {
+				}else if (isEnvChanger) {
 
 					SceneController.Instance.ChangeSkyBox ();
 

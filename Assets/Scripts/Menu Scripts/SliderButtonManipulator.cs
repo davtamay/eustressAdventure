@@ -14,9 +14,14 @@ public class SliderButtonManipulator : MonoBehaviour {
 
 	void Awake () {
 
+
+
 		navigationButtons = GetComponentsInChildren <Button>();
 		slider = GetComponent<Slider> ();
 		slider.value = PlayerPrefs.GetFloat (nameOfPP);
+
+
+		Debug.Log ("MUSIC AND SOUND" + PlayerPrefs.GetFloat (nameOfPP, slider.value));
 
 		//slider.value += 0.00001f;//Invoke (string.Empty, 0);
 		cam = Camera.main.transform;

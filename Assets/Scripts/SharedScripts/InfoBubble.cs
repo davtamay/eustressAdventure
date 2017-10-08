@@ -20,14 +20,6 @@ public class InfoBubble : MonoBehaviour {
 
 
 
-	void Awake(){
-
-	
-
-		
-		}
-
-
 
 
 	void Start(){

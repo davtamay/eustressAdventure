@@ -10,17 +10,27 @@ public class HelpUIManager : MonoBehaviour {
 	public GameObject uIHelpGO;
 
 	private bool isUsingSprite;
+
+	public Text textOnSprite;
+
 	private SpriteRenderer spriteHelp;
 	private bool isUsingTextMesh;
 	private TextMesh textMeshHelp;
+
+
 
 	[SerializeField] private float fadingSpeed;
 
 	public Goal curGoal;
 
+	[Header("GoalBindings")]
 	[SerializeField]private GameObject armStressMenuForEnabled;
 	[SerializeField]private GameObject copingGOCheckForEnabled;
 	[SerializeField]private GameObject feetForEnabled;
+	//[SerializeField]private Button backToGameButton;
+
+	private PlayerLookMove playerLookMove;
+	private float originalRechargeTime;
 
 
 	public static HelpUIManager Instance
@@ -38,12 +48,23 @@ public class HelpUIManager : MonoBehaviour {
 		instance = this; 
 
 
-	
+		textOnSprite.transform.GetChild(0).gameObject.SetActive (false);
+			
+
+
 	}
 
 //	private bool canWalk;
+	private bool isFirstTime = true;
+	private float counter = 0;
 	IEnumerator Start () {
-		
+
+	
+
+		playerLookMove = GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ();
+		originalRechargeTime = playerLookMove.jumpRechargeTime;
+		playerLookMove.jumpRechargeTime = Mathf.Infinity;
+
 		armStressMenuForEnabled.SetActive (false);
 		feetForEnabled.SetActive (false);
 		//doesnt store dynamic value
@@ -55,13 +76,24 @@ public class HelpUIManager : MonoBehaviour {
 
 			if (uIHelpGO != null) {
 
+				if (isFirstTime) {
+					
+					counter = 0;
+					isFirstTime = false;
+
+
+				}
+				counter += Time.unscaledDeltaTime;
 				if (isUsingSprite) {
 					Color tempColor = spriteHelp.color;
-					tempColor.a = Mathf.PingPong (Time.realtimeSinceStartup * fadingSpeed, 1);
+					tempColor.a = Mathf.PingPong ((counter * fadingSpeed) * fadingSpeed, 1);
+				
 					spriteHelp.color = tempColor;
+
 				} else if (isUsingTextMesh) {
 					Color tempColor = textMeshHelp.color;
-					tempColor.a = Mathf.PingPong (Time.realtimeSinceStartup * fadingSpeed, 1);
+					tempColor.a = Mathf.PingPong ((counter * fadingSpeed) * fadingSpeed, 1);
+
 					textMeshHelp.color = tempColor;
 				}
 
@@ -75,7 +107,7 @@ public class HelpUIManager : MonoBehaviour {
 					
 							TurnOffHelpInfo ();
 							curGoal = Goal.NONE;
-					
+							
 						}
 					}
 					break;
@@ -92,14 +124,17 @@ public class HelpUIManager : MonoBehaviour {
 					break;
 
 				case Goal.WALK:
-					if (!feetForEnabled.activeInHierarchy)
+					if (!feetForEnabled.activeInHierarchy) {
+						
 						feetForEnabled.SetActive (true);
-					else {
 
+					}else {
+						
+						if(!GameController.Instance.IsMenuActive)
 						if (GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ().enabled) {
-					
+				
 							TurnOffHelpInfo ();
-							curGoal = Goal.NONE;
+							//curGoal = Goal.NONE;
 				
 						}
 					}
@@ -107,6 +142,16 @@ public class HelpUIManager : MonoBehaviour {
 					break;
 				
 				case Goal.JUMP:
+
+					if(playerLookMove.jumpRechargeTime == Mathf.Infinity)
+					playerLookMove.jumpRechargeTime = originalRechargeTime;
+					else{
+						if(playerLookMove.isGoingUp)
+							TurnOffHelpInfo ();
+						}
+
+
+
 					break;
 
 				case Goal.CLICK_ACTION:
@@ -121,6 +166,7 @@ public class HelpUIManager : MonoBehaviour {
 					curGoal = Goal.NONE;
 
 					break;
+
 				case Goal.NONE:
 					break;
 
@@ -139,14 +185,16 @@ public class HelpUIManager : MonoBehaviour {
 
 	private float waitTime = 0;
 	public void TurnOffHelpInfo(){
-	
-		if (waitTime <= 0) {
+
+		if (waitTime <= 0.0f) {
+
 			isUsingSprite = false;
 			isUsingTextMesh = false;
 
 			if (uIHelpGO != null) {
 				uIHelpGO.SetActive (false);
 				uIHelpGO = null;
+				textOnSprite.transform.GetChild(0).gameObject.SetActive (false);
 			//	curGoal = Goal.NONE;
 			}
 		}else
@@ -156,14 +204,29 @@ public class HelpUIManager : MonoBehaviour {
 
 	IEnumerator TurnOffHelpInfoAfterSeconds(float wait){
 		waitTime = 0;
+
 		yield return new WaitForSecondsRealtime (wait);
 
+	
 		//uIHelpGO.SetActive (false);
 		//curGoal = Goal.NONE;
 
 
 
 		if (uIHelpGO != null) {
+
+			if (isUsingSprite) {
+
+				while (spriteHelp.color.a > 0.03f)
+					yield return null;
+				
+			} else if (isUsingTextMesh) {
+			
+				while (textMeshHelp.color.a > 0.03f)
+					yield return null;
+			
+			}
+
 			curGoal = Goal.NONE;
 			uIHelpGO.SetActive (false);
 			uIHelpGO = null;
@@ -172,11 +235,13 @@ public class HelpUIManager : MonoBehaviour {
 		}
 		isUsingSprite = false;
 		isUsingTextMesh = false;
-
+		textOnSprite.transform.GetChild(0).gameObject.SetActive (false);
 	}
 
 
 	public void TurnOnHelpInfo(GameObject helpGO, bool isSprite, bool isTextMesh, float waitT = 0){
+
+
 
 		waitTime = waitT;
 		uIHelpGO = helpGO;
@@ -188,7 +253,21 @@ public class HelpUIManager : MonoBehaviour {
 			textMeshHelp = uIHelpGO.GetComponent<TextMesh> ();
 			isUsingTextMesh = true;
 		}
-		//uIBox.gameObject.SetActive (true);
+
+	}
+
+	public void AddText(string text, int size){
+		textOnSprite.transform.GetChild(0).gameObject.SetActive (true);
+		textOnSprite.text = text;
+		textOnSprite.fontSize = size;
+
+
+	
+	}
+	public void RemoveText(){
+
+		textOnSprite.text = string.Empty;
+
 	}
 
 }

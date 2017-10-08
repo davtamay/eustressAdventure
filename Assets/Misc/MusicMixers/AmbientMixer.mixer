@@ -32,6 +32,7 @@ AudioMixerController:
     - 7cc412720e4c3402db2206a74e4aaf45
     - ae66f388413b34e43922232bf195fb87
     - 733154c9043dc4147ac3157d7fa48879
+    - 8ef422954d88f4d76921ffd1dd29da22
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -268,6 +269,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 243394954891705886}
   - {fileID: 243758059810848676}
+  - {fileID: 243669124688042090}
   m_Volume: 0056abc3f9209482499bf856d506ed8a
   m_Pitch: a76f09fabac954d55a5e4d9939c31aac
   m_Effects:
@@ -311,6 +313,23 @@ AudioMixerGroupController:
   m_Pitch: dbd7b6e4e6164418e840a801d3f1f92c
   m_Effects:
   - {fileID: 244487923376499224}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &243669124688042090
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Talk
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 8ef422954d88f4d76921ffd1dd29da22
+  m_Children: []
+  m_Volume: 28c310e66a08d4ebb8579beff693bba4
+  m_Pitch: 7b6decbdb6d6045e4a28e0a003b955ee
+  m_Effects:
+  - {fileID: 244331525509119710}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -393,6 +412,19 @@ AudioMixerEffectController:
   m_EffectID: f2e423f25d9d14839adecc9e231f03b6
   m_EffectName: Attenuation
   m_MixLevel: 4b582975520684b1892d8d4a571eeb74
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244331525509119710
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 77d85d844de974a9a92b97c63ea5f6c4
+  m_EffectName: Attenuation
+  m_MixLevel: d06bacd6d7a844fce98a48635785b193
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0

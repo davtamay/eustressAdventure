@@ -14,7 +14,7 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 
 	public override void Start () {
 		
-		infoTextComponent.text = "BYE,BYE" + textAfterCompletion;
+		infoTextComponent.text = infoText;
 		thisAnimator = GetComponent<Animator> ();
 		thisSkinMeshRend = GetComponentInChildren<SkinnedMeshRenderer> ();
 		thisAnimator.SetBool ("Idle", false);

@@ -57,9 +57,11 @@ public class PlayerManager : MonoBehaviour {
 
 		thisTransform = transform;
 
+		UISlots = GameObject.FindWithTag ("UISlot");
+
 		allItemGOInScene = GameObject.FindGameObjectsWithTag ("Item");
 
-		UISlots = GameObject.FindWithTag ("UISlot");
+
 
 
 		healthColor.a = 0.0f; 
@@ -106,13 +108,13 @@ public class PlayerManager : MonoBehaviour {
 
 				StringToGODict[GO.name] =  GO;
 			
-				Debug.Log ("GOInEnvironment: " + GO.name);
+				//Debug.Log ("GOInEnvironment: " + GO.name);
 			}
 
 
 			int itemCount = 0;
 
-			if(0 > UISlots.transform.childCount)
+
 			foreach (Transform curTran in UISlots.transform) {
 
 
@@ -120,15 +122,16 @@ public class PlayerManager : MonoBehaviour {
 
 				itemCount++;
 
+				Debug.Log ("SLOTS:" + curTran.name);
 				curTran.gameObject.SetActive (false);
-				//Debug.Log ("SLOTS:" + curTran.name);
+				
 			}
 				
 			//Needs to initiate before using liststringnames
 			int loadItemListCount = DataManager.Instance.LoadItemList ().Count;
 
-		//	foreach (GameObject gO in DataManager.Instance.LoadItemList ())
-		//		Debug.Log("LOADED LIST + : " + gO.name);
+			foreach (GameObject gO in DataManager.Instance.LoadItemList ())
+				Debug.Log("LOADED LIST + : " + gO.name);
 			
 
 			if (loadItemListCount != 0) {
@@ -163,6 +166,7 @@ public class PlayerManager : MonoBehaviour {
 		//Debug.Log("When Adding playerITEMSLOTGOLIST :" + PlayerManager.Instance.playerItemSlotGOList.Count);
 
 		foreach (SpriteRenderer curSR in playerIntToSpriteUISlotsDict.Values) {
+
 			if(curSR.sprite != null)
 			if (curSR.sprite == totalGOToSpriteInSceneDict [GO].sprite) {
 				return;
@@ -175,7 +179,12 @@ public class PlayerManager : MonoBehaviour {
 			
 		}
 
+		if(playerIntToSpriteUISlotsDict.ContainsValue(playerIntToSpriteUISlotsDict [curSlot]))
 		playerIntToSpriteUISlotsDict [curSlot].sprite = totalGOToSpriteInSceneDict [GO].sprite;
+		else
+		playerIntToSpriteUISlotsDict.Add(curSlot, totalGOToSpriteInSceneDict [GO]);
+
+
 		GameObject mainObject = totalGOToSpriteInSceneDict [GO].transform.parent.parent.parent.gameObject;
 	
 		if(!playerItemSlotGOList.Contains(StringToGODict[mainObject.name]))

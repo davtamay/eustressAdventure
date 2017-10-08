@@ -34,7 +34,9 @@ public class RopeManager : MonoBehaviour {
 
 
 	IEnumerator RopeHoldOn(Transform player, Transform ropeSegmentTrans){
-		player.gameObject.GetComponent<PlayerLookMove> ().enabled = false;
+		var PlayerLook = player.gameObject.GetComponent<PlayerLookMove> ();
+		PlayerLook.SetFeetDisplay (false);
+		PlayerLook.enabled = false;
 		player.gameObject.GetComponent<CharacterController> ().enabled = false;
 		player.gameObject.GetComponent<CapsuleCollider> ().enabled = false;
 
@@ -89,7 +91,8 @@ public class RopeManager : MonoBehaviour {
 			
 				
 				if (Vector3.Dot (Camera.main.transform.forward, Vector3.down) > 0.7f) {
-					player.GetComponent<PlayerLookMove> ().enabled = true;
+					PlayerLook.SetFeetDisplay (true);
+					PlayerLook.enabled = true;
 					player.GetComponent<CharacterController> ().enabled = true;
 					player.gameObject.GetComponent<CapsuleCollider> ().enabled = true;
 			
@@ -117,6 +120,7 @@ public class RopeManager : MonoBehaviour {
 
 			if (Vector3.Dot (Camera.main.transform.forward, Vector3.down) > 0.7f) {
 				player.GetComponent<PlayerLookMove> ().enabled = true;
+
 				player.GetComponent<CharacterController> ().enabled = true;
 				player.gameObject.GetComponent<CapsuleCollider> ().enabled = true;
 

@@ -1,15 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class TimeLineOnEnableHelpStop : MonoBehaviour {
 
-	public TimeLineController timeLineController;
+	private TimeLineController timeLineController;
+	public UnityEvent onEnabled;
+	public UnityEvent onDisabled;
 	[SerializeField]private bool isUsingSprite;
 	[SerializeField]private bool isUsingTextMesh;
 	[SerializeField]private Goal thisGoal;
 
 	[SerializeField]private float waitTime = 0;
+
+
+	[SerializeField]private bool addingTextOnStop;
+	[SerializeField]private string helpText;
+	[SerializeField]private int helpTextSize;
+
+	private bool isDone;
 
 	void Awake(){
 	
@@ -18,14 +29,40 @@ public class TimeLineOnEnableHelpStop : MonoBehaviour {
 
 
 	void OnEnable () {
+		
+
+		if (isDone)
+			return;
+
+		onEnabled.Invoke ();
 
 		timeLineController.StopTimeLine ();
+
+		if(addingTextOnStop)
+			HelpUIManager.Instance.AddText (helpText,helpTextSize);
+		
 		HelpUIManager.Instance.TurnOnHelpInfo (this.gameObject,isUsingSprite,isUsingTextMesh, waitTime);
 		HelpUIManager.Instance.curGoal = thisGoal;
+
+	
 	}
 
 	void OnDisable(){
+		
+
+		if (isDone)
+			return;
+
+		isDone = true;
+
+		onDisabled.Invoke ();
+
+		if (addingTextOnStop)
+			HelpUIManager.Instance.RemoveText();
+		
+
 		timeLineController.ResumeTimeLine ();
+
 		//HelpUIManager.Instance.curGoal = Goal.NONE;
 
 

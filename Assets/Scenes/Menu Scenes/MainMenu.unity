@@ -122,9 +122,10 @@ GameObject:
   - component: {fileID: 27623050}
   - component: {fileID: 27623052}
   - component: {fileID: 27623051}
+  - component: {fileID: 27623053}
   m_Layer: 0
   m_Name: Text
-  m_TagString: Untagged
+  m_TagString: Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,6 +187,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 27623049}
+--- !u!114 &27623053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 27623049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a2ec9a3a14941e8902c67ce476128b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Menu_Credits
 --- !u!1 &40891425
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,7 +429,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -693,7 +705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &63029872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,7 +865,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -1050,7 +1061,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -1146,6 +1156,177 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 147198204}
+--- !u!1 &164216460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 164216461}
+  - component: {fileID: 164216466}
+  - component: {fileID: 164216465}
+  - component: {fileID: 164216464}
+  - component: {fileID: 164216463}
+  - component: {fileID: 164216462}
+  m_Layer: 0
+  m_Name: English
+  m_TagString: Button
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &164216461
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 164216460}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.79, y: 0.2800002, z: 0}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1374164965}
+  m_Father: {fileID: 386657553}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 3.21, y: 5.28}
+  m_SizeDelta: {x: 5, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!65 &164216462
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 164216460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &164216463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 164216460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  isClickEventCalled: 0
+  isSMenuOpener: 0
+  isSType: 0
+  isStressed: 0
+  isButtonInvoke: 1
+  isEnvChanger: 0
+  isGame: 0
+  gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 2, z: 0}
+  isRestartProgress: 0
+  isBackToIntroButton: 0
+  isStartButton: 0
+  isReplayButton: 0
+  isMusicButton: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
+  curMusicButton: 0
+  StressT: 0
+--- !u!114 &164216464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 164216460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 164216465}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1321188740}
+        m_MethodName: LoadLocalizedText
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: localization_en.json
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &164216465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 164216460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &164216466
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 164216460}
 --- !u!1 &184453851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,7 +1409,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -1485,7 +1665,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -1610,7 +1789,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 198460222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 70, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 642342810}
@@ -1929,8 +2108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979ce0496948247658a28cae12c381ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMixer: {fileID: 24100000, guid: 28a83fecd8f9f4eb6af70ea11e4b13da, type: 2}
-  mainPD: {fileID: 0}
   skyboxes:
   - {fileID: 2100000, guid: 99962ddbb4ad8451a91ee73c4e71f731, type: 2}
   - {fileID: 2100000, guid: 095f69b24a8824f84951403e690a9688, type: 2}
@@ -2040,7 +2217,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -2132,9 +2308,10 @@ GameObject:
   - component: {fileID: 344229181}
   - component: {fileID: 344229183}
   - component: {fileID: 344229182}
+  - component: {fileID: 344229184}
   m_Layer: 0
   m_Name: Text
-  m_TagString: Untagged
+  m_TagString: Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2196,6 +2373,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 344229180}
+--- !u!114 &344229184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 344229180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a2ec9a3a14941e8902c67ce476128b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Menu_NewGame
 --- !u!1 &344559515
 GameObject:
   m_ObjectHideFlags: 0
@@ -2561,7 +2750,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -2751,6 +2939,8 @@ RectTransform:
   - {fileID: 1564283704}
   - {fileID: 1979270530}
   - {fileID: 190951293}
+  - {fileID: 164216461}
+  - {fileID: 1009912474}
   m_Father: {fileID: 60045125}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2876,7 +3066,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -3475,9 +3664,10 @@ GameObject:
   - component: {fileID: 452467954}
   - component: {fileID: 452467956}
   - component: {fileID: 452467955}
+  - component: {fileID: 452467957}
   m_Layer: 0
-  m_Name: Text
-  m_TagString: Untagged
+  m_Name: ThanksTEXT
+  m_TagString: Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3539,6 +3729,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 452467953}
+--- !u!114 &452467957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 452467953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a2ec9a3a14941e8902c67ce476128b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Menu_Thanks
 --- !u!1 &464949347
 GameObject:
   m_ObjectHideFlags: 0
@@ -3770,7 +3972,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 4
@@ -4010,7 +4211,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -4435,7 +4635,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -4859,6 +5058,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 613028510}
+--- !u!1 &638880916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 638880917}
+  - component: {fileID: 638880920}
+  - component: {fileID: 638880919}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &638880917
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 638880916}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.2}
+  m_Children: []
+  m_Father: {fileID: 1009912474}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &638880919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 638880916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 0
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 5
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Spanish
+--- !u!222 &638880920
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 638880916}
 --- !u!1 &642342809
 GameObject:
   m_ObjectHideFlags: 0
@@ -5906,7 +6179,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -6218,7 +6490,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -6591,9 +6862,10 @@ GameObject:
   - component: {fileID: 923606670}
   - component: {fileID: 923606672}
   - component: {fileID: 923606671}
+  - component: {fileID: 923606673}
   m_Layer: 0
   m_Name: Text
-  m_TagString: Untagged
+  m_TagString: Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6655,6 +6927,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 923606669}
+--- !u!114 &923606673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 923606669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a2ec9a3a14941e8902c67ce476128b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Menu_Continue
 --- !u!1 &943222102
 GameObject:
   m_ObjectHideFlags: 0
@@ -6919,7 +7203,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -7208,7 +7491,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -7361,6 +7643,177 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1009231624}
+--- !u!1 &1009912473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1009912474}
+  - component: {fileID: 1009912479}
+  - component: {fileID: 1009912478}
+  - component: {fileID: 1009912477}
+  - component: {fileID: 1009912476}
+  - component: {fileID: 1009912475}
+  m_Layer: 0
+  m_Name: Spanish
+  m_TagString: Button
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1009912474
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1009912473}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.96000004, y: 0.2800002, z: 0}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_Children:
+  - {fileID: 638880917}
+  m_Father: {fileID: 386657553}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 5.96, y: 5.28}
+  m_SizeDelta: {x: 5, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!65 &1009912475
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1009912473}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1009912476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1009912473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  isClickEventCalled: 0
+  isSMenuOpener: 0
+  isSType: 0
+  isStressed: 0
+  isButtonInvoke: 1
+  isEnvChanger: 0
+  isGame: 0
+  gameScene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 2, z: 0}
+  isRestartProgress: 0
+  isBackToIntroButton: 0
+  isStartButton: 0
+  isReplayButton: 0
+  isMusicButton: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
+  curMusicButton: 0
+  StressT: 0
+--- !u!114 &1009912477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1009912473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1009912478}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1321188740}
+        m_MethodName: LoadLocalizedText
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: localization_sp.json
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1009912478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1009912473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1009912479
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1009912473}
 --- !u!1 &1029482985
 GameObject:
   m_ObjectHideFlags: 0
@@ -7523,7 +7976,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 4
@@ -7805,7 +8257,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -7912,9 +8363,10 @@ GameObject:
   - component: {fileID: 1109453736}
   - component: {fileID: 1109453735}
   - component: {fileID: 1109453734}
+  - component: {fileID: 1109453737}
   m_Layer: 0
-  m_Name: New Text
-  m_TagString: Untagged
+  m_Name: CreditsTEXT
+  m_TagString: Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8012,6 +8464,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1109453737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1109453732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a2ec9a3a14941e8902c67ce476128b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Menu_CreditsTEXT
 --- !u!1 &1112460804
 GameObject:
   m_ObjectHideFlags: 0
@@ -8219,7 +8683,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -8797,7 +9260,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -8945,6 +9407,47 @@ RectTransform:
   m_AnchoredPosition: {x: -9.3, y: 7.155003}
   m_SizeDelta: {x: 18.6, y: 14.309995}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1321188739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1321188741}
+  - component: {fileID: 1321188740}
+  m_Layer: 0
+  m_Name: LocalizationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1321188740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1321188739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d099a0c16da584365ac45254bbbfd6e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  presentLocalizedTexts: []
+--- !u!4 &1321188741
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1321188739}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.031201363, y: 3.4928193, z: -7.083807}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1338967641
 GameObject:
   m_ObjectHideFlags: 0
@@ -9094,7 +9597,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -9173,6 +9675,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1369654793}
+--- !u!1 &1374164964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1374164965}
+  - component: {fileID: 1374164968}
+  - component: {fileID: 1374164967}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1374164965
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1374164964}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.2}
+  m_Children: []
+  m_Father: {fileID: 164216461}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1374164967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1374164964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 0
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 5
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: English
+--- !u!222 &1374164968
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1374164964}
 --- !u!1 &1379315002
 GameObject:
   m_ObjectHideFlags: 0
@@ -9818,7 +10394,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -10059,7 +10634,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -10420,7 +10994,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -10848,7 +11421,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1669573451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 70, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2005517122}
@@ -11044,7 +11617,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -12036,7 +12608,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -12465,7 +13036,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 4
@@ -12938,7 +13508,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -13414,8 +13983,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1929840493}
   m_LocalRotation: {x: 0.042480137, y: -0.016564818, z: 0.0007044085, w: 0.9989598}
-  m_LocalPosition: {x: -0.03303528, y: 3.755104, z: -2.6841578}
-  m_LocalScale: {x: 0.002821662, y: 0.002821662, z: 0.002821662}
+  m_LocalPosition: {x: -0.03303528, y: 3.7551117, z: -2.6841578}
+  m_LocalScale: {x: 0.0023220892, y: 0.0023220892, z: 0.0023220892}
   m_Children:
   - {fileID: 1180069304}
   m_Father: {fileID: 282375707}
@@ -14113,7 +14682,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 0
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0
@@ -14414,7 +14982,6 @@ MonoBehaviour:
   isStartButton: 0
   isReplayButton: 1
   isMusicButton: 0
-  isAllowWalk: 0
   isStressModified: 0
   stressModifiedAmount: 0
   curMusicButton: 0

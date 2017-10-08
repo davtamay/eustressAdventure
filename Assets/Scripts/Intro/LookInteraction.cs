@@ -170,9 +170,14 @@ public class LookInteraction : MonoBehaviour {
 				
 				timeActive = 0;
 
-				if (isItemForSlot) 
-					PlayerManager.Instance.AddItemToSlot (transform.parent.gameObject);{
+				if (isItemForSlot) {
+					
+					PlayerManager.Instance.AddItemToSlot (transform.parent.gameObject);
+					var tempAS = AudioManager.Instance.GetAudioSourceReferance (AudioManager.AudioReferanceType._DIRECT,"PickUp");
+					tempAS.transform.position = transform.position;
+					AudioManager.Instance.PlayDirectSound ("PickUp");
 					//DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
+
 				}
 					
 			}

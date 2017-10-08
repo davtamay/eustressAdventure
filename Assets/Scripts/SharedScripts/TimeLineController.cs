@@ -11,6 +11,8 @@ public class TimeLineController : MonoBehaviour {
 	[SerializeField] bool isChangeLevelWhenComplete;
 	[SerializeField] string levelName;
 
+	[SerializeField]private int curStop = 0;
+
 	[SerializeField] UnityEvent onTimeLineStop1;
 	[SerializeField] UnityEvent onTimeLineStop2;
 	[SerializeField] UnityEvent onTimeLineStop3;
@@ -18,13 +20,12 @@ public class TimeLineController : MonoBehaviour {
 	[SerializeField] UnityEvent onTimeLineStop5;
 	[SerializeField] UnityEvent onTimeLineStop6;
 
-	private int curStop = 0;
-
 	[SerializeField] UnityEvent onTimeLineCompletion;
 
 	void Awake(){
-
+		
 		mainPD = GetComponent<PlayableDirector> ();//GameObject.FindGameObjectWithTag ("TimeLine").GetComponent<PlayableDirector> ();
+
 
 	}
 
@@ -54,7 +55,7 @@ public class TimeLineController : MonoBehaviour {
 
 	public void StopTimeLine ()
 	{
-
+		
 		switch (curStop) {
 		case 0:
 			onTimeLineStop1.Invoke ();

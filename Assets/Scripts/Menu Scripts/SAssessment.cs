@@ -2,8 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
-public class SAssessment : MonoBehaviour 
+public class SAssessment : MonoBehaviour
 {
 	
 	public string stressFeel;
