@@ -72,14 +72,14 @@ public class SceneController : MonoBehaviour {
 
 		}*/
 		//TEST
-		var tempLTs	= GameObject.FindGameObjectsWithTag ("Text");
+		/*var tempLTs	= GameObject.FindGameObjectsWithTag ("Text");
 
 		for (int i = 0; i < tempLTs.Length; i++) {
 
 			LocalizationManager.Instance.presentLocalizedTexts.Add(tempLTs[i].GetComponent<LocalizedText> ());
 		}
 			
-		LocalizationManager.Instance.LoadLocalizedText(PlayerPrefs.GetString("Language"));
+		LocalizationManager.Instance.LoadLocalizedText(PlayerPrefs.GetString("Language"));*/
 
 
 
@@ -111,14 +111,7 @@ public class SceneController : MonoBehaviour {
 		sceneCanvas = GetComponentInChildren<Canvas> ();
 		sceneCanvas.worldCamera = Camera.main;
 
-		//TEST
-		LocalizationManager.Instance.presentLocalizedTexts.Clear ();
-		var tempLTs	= GameObject.FindGameObjectsWithTag ("Text");
 
-		for (int i = 0; i < tempLTs.Length; i++) {
-
-			LocalizationManager.Instance.presentLocalizedTexts.Add(tempLTs[i].GetComponent<LocalizedText> ());
-		}
 	/*	if (string.Equals (SceneManager.GetActiveScene ().name, "IntroTimeLine", System.StringComparison.CurrentCultureIgnoreCase)) {
 			mainPD = GameObject.FindGameObjectWithTag ("TimeLine").GetComponent<PlayableDirector> ();
 			StartCoroutine (ChangeSceneWhenTimeLineFinishes (mainPD.duration));
@@ -269,7 +262,10 @@ public class SceneController : MonoBehaviour {
 
 
 		}
-		
+	//test
+		LocalizationManager.Instance.ResetReady();
+		LocalizationManager.Instance.ObtainTextReferences ();
+
 		//async.allowSceneActivation = true;
 		isSceneLoading = false;
 		Rimage.gameObject.SetActive (false);

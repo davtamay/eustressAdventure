@@ -256,9 +256,12 @@ public class HelpUIManager : MonoBehaviour {
 
 	}
 
-	public void AddText(string text, int size){
+	public void AddText(string key, int size){
 		textOnSprite.transform.GetChild(0).gameObject.SetActive (true);
-		textOnSprite.text = text;
+		var tempLocalizedText = textOnSprite.gameObject.GetComponent<LocalizedText> ();
+		tempLocalizedText.key = key;
+		tempLocalizedText.OnUpdate ();
+		//textOnSprite.text = LocalizationManager.Instance.GetLocalizedValue (key);
 		textOnSprite.fontSize = size;
 
 

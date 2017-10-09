@@ -13,18 +13,22 @@ public class TimeLineOnEnableHelpStop : MonoBehaviour {
 	[SerializeField]private bool isUsingTextMesh;
 	[SerializeField]private Goal thisGoal;
 
+
+	[SerializeField]private bool isStopTimeLine = true;
 	[SerializeField]private float waitTime = 0;
 
 
 	[SerializeField]private bool addingTextOnStop;
 	[SerializeField]private string helpText;
 	[SerializeField]private int helpTextSize;
+	[SerializeField]private string localizationKey;
 
 	private bool isDone;
 
 	void Awake(){
 	
 		timeLineController =  GameObject.FindGameObjectWithTag ("TimeLine").GetComponent<TimeLineController> ();
+
 	}
 
 
@@ -36,10 +40,11 @@ public class TimeLineOnEnableHelpStop : MonoBehaviour {
 
 		onEnabled.Invoke ();
 
+		if(isStopTimeLine)
 		timeLineController.StopTimeLine ();
 
 		if(addingTextOnStop)
-			HelpUIManager.Instance.AddText (helpText,helpTextSize);
+			HelpUIManager.Instance.AddText (localizationKey,helpTextSize);
 		
 		HelpUIManager.Instance.TurnOnHelpInfo (this.gameObject,isUsingSprite,isUsingTextMesh, waitTime);
 		HelpUIManager.Instance.curGoal = thisGoal;

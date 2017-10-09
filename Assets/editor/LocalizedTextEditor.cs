@@ -19,7 +19,7 @@ public class LocalizedTextEditor : EditorWindow
 	private void OnGUI()
 	{
 		EditorGUILayout.BeginVertical();
-		//scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Width(300), GUILayout.Height(300));
+		scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Width(300), GUILayout.Height(300));
 		
 
 
