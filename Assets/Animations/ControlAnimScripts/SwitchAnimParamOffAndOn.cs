@@ -10,7 +10,7 @@ public class SwitchAnimParamOffAndOn : MonoBehaviour {
 	[SerializeField]string nameOfParameter;
 
 
-	private Animator thisAnimator;
+	public Animator thisAnimator;
 
 	public bool isUsePDirectorSingleTrackClips = true;
 	[SerializeField]private PlayableDirector PDirectorReference;
@@ -23,7 +23,7 @@ public class SwitchAnimParamOffAndOn : MonoBehaviour {
 
 	void Awake(){
 
-		thisAnimator = transform.parent.GetComponentInParent<Animator> (); 
+		//thisAnimator = transform.parent.parent.parent.GetComponentInParent<Animator> (); 
 
 		if (isUsePDirectorSingleTrackClips) {
 			var timeLineAsset = PDirectorReference.playableAsset as TimelineAsset;
@@ -48,7 +48,7 @@ public class SwitchAnimParamOffAndOn : MonoBehaviour {
 	}
 
 	void OnEnable(){
-
+		Debug.Log ("THIS IS ENABLING ANIMATION");
 		thisAnimator.SetBool (nameOfParameter, true);
 
 		if(isUsePDirectorSingleTrackClips)
