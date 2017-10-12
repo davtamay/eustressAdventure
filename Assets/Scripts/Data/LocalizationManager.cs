@@ -68,6 +68,7 @@ public class LocalizationManager : MonoBehaviour {
 			localizedText = new Dictionary<string, string> ();
 			string filePath = Path.Combine (Application.streamingAssetsPath, fileName);
 
+#if UNITY_EDITOR
 			if (File.Exists (filePath)) {
 				string dataAsJson = File.ReadAllText (filePath);
 				LocalizationData loadedData = JsonUtility.FromJson<LocalizationData> (dataAsJson);
@@ -83,6 +84,32 @@ public class LocalizationManager : MonoBehaviour {
 			Debug.LogError ("Cannot find file!" + "at: " + fileName);
 
 			}
+
+
+#elif UNITY_ANDROID
+
+		filePath = "jar:file://" + Application.dataPath + "!/assets/" + fileName;
+		WWW wwwfile = new WWW (filePath);
+		while (!wwwfile.isDone) {}
+
+		//if (File.Exists (wwwfile)) {
+		string AdataAsJson = wwwfile.text ;
+		
+		LocalizationData AloadedData = JsonUtility.FromJson<LocalizationData> (AdataAsJson);
+
+		for (int i = 0; i < AloadedData.items.Length; i++) 
+		{
+			Debug.Log(AloadedData.items[i]);
+		localizedText.Add (AloadedData.items [i].key, AloadedData.items [i].value);   
+		}
+
+			Debug.Log ("Data loaded, dictionary contains: " + localizedText.Count + " entries");
+
+		//} else 
+		//	Debug.LogError ("Cannot find file!" + "at: " + fileName);
+
+		
+#endif
 
 			//isReady = true;
 		isTextReady = true;

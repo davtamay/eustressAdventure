@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
-public enum Goal{OPENMENU, CLICK_COPING, WALK, JUMP, CLICK_ACTION,CLICK_INFORMATION, WAITEXPLANATION, NONE};
+public enum Goal{OPENMENU, CLICK_COPING, WALK, JUMP, CLICK_ACTION,CLICK_INFORMATION, WAITEXPLANATION,WAITFORTIMELINE, NONE};
 public class HelpUIManager : MonoBehaviour {
 
 
@@ -11,7 +12,8 @@ public class HelpUIManager : MonoBehaviour {
 
 	private bool isUsingSprite;
 
-	public Text textOnSprite;
+	public Text textSpeech;
+
 
 	private SpriteRenderer spriteHelp;
 	private bool isUsingTextMesh;
@@ -27,6 +29,8 @@ public class HelpUIManager : MonoBehaviour {
 	[SerializeField]private GameObject armStressMenuForEnabled;
 	[SerializeField]private GameObject copingGOCheckForEnabled;
 	[SerializeField]private GameObject feetForEnabled;
+	[SerializeField]private PlayableDirector explanationPlayable;
+
 	//[SerializeField]private Button backToGameButton;
 
 	private PlayerLookMove playerLookMove;
@@ -48,7 +52,7 @@ public class HelpUIManager : MonoBehaviour {
 		instance = this; 
 
 
-		textOnSprite.transform.GetChild(0).gameObject.SetActive (false);
+		//textOnSprite.transform.GetChild(0).gameObject.SetActive (false);
 			
 
 
@@ -77,7 +81,8 @@ public class HelpUIManager : MonoBehaviour {
 			if (uIHelpGO != null) {
 
 				if (isFirstTime) {
-					
+
+				
 					counter = 0;
 					isFirstTime = false;
 
@@ -134,6 +139,7 @@ public class HelpUIManager : MonoBehaviour {
 						if (GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ().enabled) {
 				
 							TurnOffHelpInfo ();
+
 							//curGoal = Goal.NONE;
 				
 						}
@@ -167,6 +173,19 @@ public class HelpUIManager : MonoBehaviour {
 
 					break;
 
+				case Goal.WAITFORTIMELINE:
+
+					//if (isFirstTime)
+					//	explanationPlayable.Play ();
+					
+					if (explanationPlayable.duration <= explanationPlayable.time) {
+						TurnOffHelpInfo ();
+						TimeLineController.Instance.ResumeTimeLine ();
+
+						curGoal = Goal.NONE;
+					}
+					break;
+
 				case Goal.NONE:
 					break;
 
@@ -174,6 +193,7 @@ public class HelpUIManager : MonoBehaviour {
 
 
 				}
+					
 
 			}
 		
@@ -194,8 +214,9 @@ public class HelpUIManager : MonoBehaviour {
 			if (uIHelpGO != null) {
 				uIHelpGO.SetActive (false);
 				uIHelpGO = null;
-				textOnSprite.transform.GetChild(0).gameObject.SetActive (false);
-			//	curGoal = Goal.NONE;
+				if(textSpeech.isActiveAndEnabled)
+				textSpeech.transform.GetChild(0).gameObject.SetActive (false);
+				//curGoal = Goal.NONE;
 			}
 		}else
 			StartCoroutine(TurnOffHelpInfoAfterSeconds(waitTime));
@@ -235,11 +256,13 @@ public class HelpUIManager : MonoBehaviour {
 		}
 		isUsingSprite = false;
 		isUsingTextMesh = false;
-		textOnSprite.transform.GetChild(0).gameObject.SetActive (false);
+		if(textSpeech.isActiveAndEnabled)
+		textSpeech.transform.GetChild(0).gameObject.SetActive (false);
 	}
 
 
-	public void TurnOnHelpInfo(GameObject helpGO, bool isSprite, bool isTextMesh, float waitT = 0){
+	public void TurnOnHelpInfo(GameObject helpGO, bool isSprite = false, bool isTextMesh = false, float waitT = 0){
+
 
 
 
@@ -256,21 +279,27 @@ public class HelpUIManager : MonoBehaviour {
 
 	}
 
-	public void AddText(string key, int size){
-		textOnSprite.transform.GetChild(0).gameObject.SetActive (true);
-		var tempLocalizedText = textOnSprite.gameObject.GetComponent<LocalizedText> ();
+	public void AddText(string key){
+		Debug.Log ("THIS IS TEXTONSPRITE: " + textSpeech);
+		if(!textSpeech.isActiveAndEnabled)
+		textSpeech.transform.GetChild(0).gameObject.SetActive (true);
+		var tempLocalizedText = textSpeech.gameObject.GetComponent<LocalizedText> ();
 		tempLocalizedText.key = key;
 		tempLocalizedText.OnUpdate ();
 		//textOnSprite.text = LocalizationManager.Instance.GetLocalizedValue (key);
-		textOnSprite.fontSize = size;
+		//textOnSprite.fontSize = size;
 
 
 	
 	}
 	public void RemoveText(){
 
-		textOnSprite.text = string.Empty;
-
+	
+		if (textSpeech.isActiveAndEnabled) {
+			textSpeech.transform.GetChild (0).gameObject.SetActive (false);
+			textSpeech.text = string.Empty;
+		}
+		//textOnSprite.transform.GetChild(0).gameObject.SetActive (false);
 	}
 
 }

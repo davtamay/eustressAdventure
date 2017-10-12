@@ -26,11 +26,11 @@ public class MenuArmFollow : MonoBehaviour {
 	}
 	void Start(){
 
-		#if (UNITY_ANDROID)
+	//	#if (UNITY_ANDROID)
 
-		MagnetSensor.OnCardboardTrigger += MagnetTrigger;
+	//	MagnetSensor.OnCardboardTrigger += MagnetTrigger;
 
-		#endif
+	//	#endif
 
 		if(SceneController.Instance != null)
 			curSceneName = SceneController.Instance.GetCurrentSceneName ();
@@ -98,8 +98,8 @@ public class MenuArmFollow : MonoBehaviour {
 
 #if UNITY_ANDROID
 		//isMagnetTriggered = MagnetTrigger();
-
-		if (isMagnetTriggered && isButtonAvailable) {
+		if (Input.GetMouseButton (0) && isButtonAvailable) {
+		//if (isMagnetTriggered && isButtonAvailable) {
 			isButtonAvailable = false;
 			isMagnetTriggered = false;
 

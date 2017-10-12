@@ -22,8 +22,23 @@ public class TimeLineController : MonoBehaviour {
 
 	[SerializeField] UnityEvent onTimeLineCompletion;
 
-	void Awake(){
+	public static TimeLineController Instance
+	{ get { return instance; } }
+
+	private static TimeLineController instance = null;
+
+
+
 		
+
+	void Awake(){
+
+		if (instance) {
+			DestroyImmediate (gameObject);
+			return;
+		}
+		instance = this; 
+
 		mainPD = GetComponent<PlayableDirector> ();//GameObject.FindGameObjectWithTag ("TimeLine").GetComponent<PlayableDirector> ();
 
 

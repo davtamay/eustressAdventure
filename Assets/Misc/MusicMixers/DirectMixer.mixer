@@ -33,6 +33,7 @@ AudioMixerController:
     - 02ee30ca3194d4542be4e92fa3ba3080
     - c068544324a8a461a876b8f69392c94e
     - c2271b6dcdcea4a2680fa86a20beae05
+    - 895fc83b7b78c43fd8df71ad272640f2
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -377,6 +378,7 @@ AudioMixerGroupController:
   - {fileID: 243683012967535396}
   - {fileID: 243915926166537750}
   - {fileID: 243437726903195948}
+  - {fileID: 243933257907796608}
   m_Volume: c78fc21110f514cfb8f72a2014f8ab87
   m_Pitch: 4d80d10d9134142a8b8f7a2d5076b1cc
   m_Effects:
@@ -418,6 +420,23 @@ AudioMixerGroupController:
   - {fileID: 244154676071212630}
   - {fileID: 244026713463783946}
   - {fileID: 244908815047463610}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &243933257907796608
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Speak
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 895fc83b7b78c43fd8df71ad272640f2
+  m_Children: []
+  m_Volume: dfd218946c27c41788d1cdb017a2c728
+  m_Pitch: 1e32d99b75c2a4560b1b07d9594ec815
+  m_Effects:
+  - {fileID: 244287547049808038}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -531,6 +550,19 @@ AudioMixerEffectController:
     m_GUID: 85dd7e6eb3f49424d9bd8a871c64c161
   - m_ParameterName: Frequency gain
     m_GUID: a4f7bbe0eb54b43e3a87f6a3d595d78c
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244287547049808038
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 37f6fc3e25e3d4d24a80def08729cea1
+  m_EffectName: Attenuation
+  m_MixLevel: 92e521228b5b44e688342395e82e27ac
+  m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0

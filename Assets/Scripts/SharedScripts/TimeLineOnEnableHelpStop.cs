@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 
 public class TimeLineOnEnableHelpStop : MonoBehaviour {
-
-	private TimeLineController timeLineController;
+	
+	//private TimeLineController timeLineController;
 	public UnityEvent onEnabled;
 	public UnityEvent onDisabled;
 	[SerializeField]private bool isUsingSprite;
@@ -16,62 +16,83 @@ public class TimeLineOnEnableHelpStop : MonoBehaviour {
 
 	[SerializeField]private bool isStopTimeLine = true;
 	[SerializeField]private float waitTime = 0;
-
-
-	[SerializeField]private bool addingTextOnStop;
-	[SerializeField]private string helpText;
+	//ONLY USE FOR THOSE THAT STOP THE TIMELINE
+	[SerializeField]private bool checkForOnlyOneCall = true;
+	[SerializeField]private bool addingTextOnEnable = true;
+	//[SerializeField]private string helpText;
 	[SerializeField]private int helpTextSize;
-	[SerializeField]private string localizationKey;
+	[SerializeField]private string[] localizationKeyOrder;
 
 	private bool isDone;
 
-	void Awake(){
+	//void Awake(){
 	
-		timeLineController =  GameObject.FindGameObjectWithTag ("TimeLine").GetComponent<TimeLineController> ();
+		//timeLineController =  GameObject.FindGameObjectWithTag ("TimeLine").GetComponent<TimeLineController> ();
 
-	}
+	//}
 
-
+	int count = 0;
 	void OnEnable () {
 		
-
-		if (isDone)
+	//	Debug.Log ("ONENABLEDCALLED");
+		if (checkForOnlyOneCall)
+		if (isDone) 
 			return;
+		
+
 
 		onEnabled.Invoke ();
 
-		if(isStopTimeLine)
-		timeLineController.StopTimeLine ();
+		if (isStopTimeLine) {
+			Debug.Log ("isStopTime Called");
+			TimeLineController.Instance.StopTimeLine ();
 
-		if(addingTextOnStop)
-			HelpUIManager.Instance.AddText (localizationKey,helpTextSize);
-		
-		HelpUIManager.Instance.TurnOnHelpInfo (this.gameObject,isUsingSprite,isUsingTextMesh, waitTime);
-		HelpUIManager.Instance.curGoal = thisGoal;
+		}
+		if (addingTextOnEnable) {
+
+			if (localizationKeyOrder.Length - 1 >= count)
+				HelpUIManager.Instance.AddText (localizationKeyOrder [count]);
+			else {
+				Debug.LogWarning ("Amount of apperances of Text in TimeLine is more than text set up in component");
+				count = 0;
+			}
+
+			HelpUIManager.Instance.TurnOnHelpInfo (this.gameObject, isUsingSprite, isUsingTextMesh, waitTime);
+			count++;
+
+
+		}
+				
+				HelpUIManager.Instance.curGoal = thisGoal;
 
 	
 	}
 
 	void OnDisable(){
 		
-
-		if (isDone)
-			return;
-
+	
+		if(checkForOnlyOneCall)
+			if (isDone)
+				return;
+		Debug.Log ("ONEDisabledCALLED");
 		isDone = true;
 
 		onDisabled.Invoke ();
 
-		if (addingTextOnStop)
+		if (addingTextOnEnable)
 			HelpUIManager.Instance.RemoveText();
 		
 
-		timeLineController.ResumeTimeLine ();
+		TimeLineController.Instance.ResumeTimeLine ();
 
 		//HelpUIManager.Instance.curGoal = Goal.NONE;
 
 
 	}
-	
+	//public void ResumeTimeLine(){
+
+		//timeLineController.ResumeTimeLine ();
+
+	//}
 
 }
