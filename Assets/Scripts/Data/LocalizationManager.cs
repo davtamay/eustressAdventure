@@ -15,7 +15,7 @@ public class LocalizationManager : MonoBehaviour {
 
 		private string missingTextString = "Localized text not found";
 
-		public List<LocalizedText> presentLocalizedTexts;
+		public List<LocalizedText> registeredLocalizedTexts;
 
 		// Use this for initialization
 		void Awake ()
@@ -127,7 +127,7 @@ public class LocalizationManager : MonoBehaviour {
 		while (!GetIsReady())
 			yield return null;
 		
-		foreach (var lT in presentLocalizedTexts) {
+		foreach (var lT in registeredLocalizedTexts) {
 
 			lT.OnUpdate ();
 		}

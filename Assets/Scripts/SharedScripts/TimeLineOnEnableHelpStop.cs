@@ -44,7 +44,7 @@ public class TimeLineOnEnableHelpStop : MonoBehaviour {
 		onEnabled.Invoke ();
 
 		if (isStopTimeLine) {
-			Debug.Log ("isStopTime Called");
+			if(TimeLineController.Instance != null)
 			TimeLineController.Instance.StopTimeLine ();
 
 		}
@@ -85,7 +85,7 @@ public class TimeLineOnEnableHelpStop : MonoBehaviour {
 
 		TimeLineController.Instance.ResumeTimeLine ();
 
-		//HelpUIManager.Instance.curGoal = Goal.NONE;
+		HelpUIManager.Instance.curGoal = Goal.NONE;
 
 
 	}

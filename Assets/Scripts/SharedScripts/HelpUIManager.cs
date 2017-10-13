@@ -12,7 +12,9 @@ public class HelpUIManager : MonoBehaviour {
 
 	private bool isUsingSprite;
 
-	public Text textSpeech;
+	//public Text textSpeech;
+	public GameObject interactionTextGO;
+	private GeneralInteraction gInteraction;
 
 
 	private SpriteRenderer spriteHelp;
@@ -63,8 +65,7 @@ public class HelpUIManager : MonoBehaviour {
 	private float counter = 0;
 	IEnumerator Start () {
 
-	
-
+		gInteraction = interactionTextGO.GetComponent<GeneralInteraction> ();
 		playerLookMove = GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ();
 		originalRechargeTime = playerLookMove.jumpRechargeTime;
 		playerLookMove.jumpRechargeTime = Mathf.Infinity;
@@ -75,7 +76,8 @@ public class HelpUIManager : MonoBehaviour {
 	//	canWalk = GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ().enabled;
 
 		while (true) {
-			
+
+		//	Debug.Log ("THIS IS TEXT SPEECH" + textSpeech);
 			yield return null;
 
 			if (uIHelpGO != null) {
@@ -214,9 +216,7 @@ public class HelpUIManager : MonoBehaviour {
 			if (uIHelpGO != null) {
 				uIHelpGO.SetActive (false);
 				uIHelpGO = null;
-				if(textSpeech.isActiveAndEnabled)
-				textSpeech.transform.GetChild(0).gameObject.SetActive (false);
-				//curGoal = Goal.NONE;
+			
 			}
 		}else
 			StartCoroutine(TurnOffHelpInfoAfterSeconds(waitTime));
@@ -256,8 +256,7 @@ public class HelpUIManager : MonoBehaviour {
 		}
 		isUsingSprite = false;
 		isUsingTextMesh = false;
-		if(textSpeech.isActiveAndEnabled)
-		textSpeech.transform.GetChild(0).gameObject.SetActive (false);
+	
 	}
 
 
@@ -280,7 +279,9 @@ public class HelpUIManager : MonoBehaviour {
 	}
 
 	public void AddText(string key){
-		Debug.Log ("THIS IS TEXTONSPRITE: " + textSpeech);
+
+		gInteraction.SetTextLocalizedKey (key);
+		/*Debug.Log ("THIS IS TEXTSPEECH: " + textSpeech);
 		if(!textSpeech.isActiveAndEnabled)
 		textSpeech.transform.GetChild(0).gameObject.SetActive (true);
 		var tempLocalizedText = textSpeech.gameObject.GetComponent<LocalizedText> ();
@@ -288,18 +289,18 @@ public class HelpUIManager : MonoBehaviour {
 		tempLocalizedText.OnUpdate ();
 		//textOnSprite.text = LocalizationManager.Instance.GetLocalizedValue (key);
 		//textOnSprite.fontSize = size;
-
+		*/
 
 	
 	}
 	public void RemoveText(){
-
-	
-		if (textSpeech.isActiveAndEnabled) {
+		gInteraction.RemoveLocalizedKey ();
+	/*
+		if (textSpeech != null && textSpeech.isActiveAndEnabled) {
 			textSpeech.transform.GetChild (0).gameObject.SetActive (false);
 			textSpeech.text = string.Empty;
 		}
-		//textOnSprite.transform.GetChild(0).gameObject.SetActive (false);
+		//textOnSprite.transform.GetChild(0).gameObject.SetActive (false);*/
 	}
 
 }

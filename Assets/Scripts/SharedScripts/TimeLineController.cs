@@ -39,13 +39,14 @@ public class TimeLineController : MonoBehaviour {
 		}
 		instance = this; 
 
-		mainPD = GetComponent<PlayableDirector> ();//GameObject.FindGameObjectWithTag ("TimeLine").GetComponent<PlayableDirector> ();
+		//mainPD = GetComponent<PlayableDirector> ();//GameObject.FindGameObjectWithTag ("TimeLine").GetComponent<PlayableDirector> ();
 
 
 	}
 
 	IEnumerator Start () {
-	
+
+		mainPD = GetComponent<PlayableDirector> ();
 
 
 		while (true) {
@@ -70,7 +71,7 @@ public class TimeLineController : MonoBehaviour {
 
 	public void StopTimeLine ()
 	{
-		
+		/*
 		switch (curStop) {
 		case 0:
 			onTimeLineStop1.Invoke ();
@@ -92,16 +93,17 @@ public class TimeLineController : MonoBehaviour {
 			break;
 
 		}
-
+	*/
 		curStop++;
-		mainPD = GetComponent<PlayableDirector> ();
+		//mainPD = GetComponent<PlayableDirector> ();
 		mainPD.Pause ();
 
 
 	}
 	public void ResumeTimeLine(){
 	
-		mainPD = GetComponent<PlayableDirector> ();
+		//mainPD = GetComponent<PlayableDirector> ();
+		if(mainPD != null)
 		mainPD.Resume ();
 	
 	}

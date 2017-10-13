@@ -21,6 +21,9 @@ public class InteractionBehaviour : MonoBehaviour {
 	[SerializeField]protected float xInfoRotationOffset;
 	[SerializeField]protected float zInfoRotationOffset;
 	[SerializeField]protected Vector2 InfoSize;
+
+	private LineRendererGuide lRenderGuide;
+	[SerializeField]protected Transform lineRendererStart;
 	//[SerializeField]protected TextAlignment textAllignment = TextAlignment.Left;
 	[SerializeField]protected TextAnchor textAnchor = TextAnchor.UpperLeft;
 	[TextArea(0,15)][SerializeField]protected string infoText;
@@ -32,6 +35,7 @@ public class InteractionBehaviour : MonoBehaviour {
 
 
 	[Header("OnInfoPrefabDisable")] [SerializeField]protected UnityEvent onInfoDisable;
+	[SerializeField]protected bool isUseQuickDisable = false;
 	//[TextArea(0,15)][SerializeField]protected string informationText;
 
 	[Header("OnCompletion")] public UnityEvent onCompletion;
@@ -47,50 +51,59 @@ public class InteractionBehaviour : MonoBehaviour {
 	protected Animator infoCanvasAnimator;
 
 
-	protected ParticleSystem.MainModule thisParticleSystem;
+	//protected ParticleSystem.MainModule thisParticleSystem;
 
-
+	protected LocalizedText localizedText;
 	public virtual void Awake(){
 
 		thisTransform = transform;
 		player = GameObject.FindWithTag ("Player").transform;
 
+
 		if (infoCanvasPrefab != null) {
 
 			infoCanvasPrefab = Instantiate (infoCanvasPrefab, new Vector3(thisTransform.position.x + infoOffset.x, thisTransform.position.y + infoOffset.y, thisTransform.position.z + infoOffset.z), Quaternion.identity) ;
 
-			infoCanvasAnimator = infoCanvasPrefab.GetComponent<Animator> ();
 
+			infoCanvasAnimator = infoCanvasPrefab.GetComponent<Animator> ();
 
 			infoCanvasPrefab.transform.SetParent(thisTransform);
 
-			thisParticleSystem = infoCanvasPrefab.GetComponentInChildren<ParticleSystem> ().main;
-			thisParticleSystem.startColor = new ParticleSystem.MinMaxGradient (infoBackGround);
+			//thisParticleSystem = infoCanvasPrefab.GetComponentInChildren<ParticleSystem> ().main;
+			//thisParticleSystem.startColor = new ParticleSystem.MinMaxGradient (infoBackGround);
 
 			infoTextComponent = infoCanvasPrefab.GetComponentInChildren<Text> ();
 			infoTextComponent.alignment = textAnchor;//(TextAnchor)textAllignment;
-			infoTextComponent.text = infoText;
+		//	infoTextComponent.text = infoText;
+
+			localizedText = GetComponentInChildren<LocalizedText> (true);
 
 			//infoTextComponent.
 
-			RectTransform infoTextRect = infoTextComponent.transform.GetComponent<RectTransform> ();
-			infoTextRect.sizeDelta = new Vector2 (InfoSize.x,InfoSize.y);
+			//RectTransform infoTextRect = infoTextComponent.transform.GetComponent<RectTransform> ();
+			//infoTextRect.sizeDelta = new Vector2 (InfoSize.x,InfoSize.y);
 
-			thisParticleSystem.startSizeX = new ParticleSystem.MinMaxCurve(infoTextRect.sizeDelta.x/50 );
-			thisParticleSystem.startSizeY = new ParticleSystem.MinMaxCurve(infoTextRect.sizeDelta.y/50 );
+			//thisParticleSystem.startSizeX = new ParticleSystem.MinMaxCurve(infoTextRect.sizeDelta.x/50 );
+			//thisParticleSystem.startSizeY = new ParticleSystem.MinMaxCurve(infoTextRect.sizeDelta.y/50 );
 
+		//	thisParticleSystem.startSizeX = new ParticleSystem.MinMaxCurve(InfoSize.x/50 );
+		//	thisParticleSystem.startSizeY = new ParticleSystem.MinMaxCurve(InfoSize.y/50 );
 
 			infoCanvasPrefab.SetActive (false);
 		}
 
 
+
 	
 	}
+
 
 	//Coroutine infoActive; 
 	//private bool isResetTime;
 	public void TriggerInfo(){
 
+	
+			
 	/*	if (infoCanvasPrefab.activeInHierarchy) {
 			isResetTime = true;
 			return;
@@ -111,12 +124,12 @@ public class InteractionBehaviour : MonoBehaviour {
 
 		float time = 0;
 
-		while (true) {
+	//	if (lRenderGuide == null) {
+	//		lRenderGuide = infoCanvasPrefab.GetComponentInChildren<LineRendererGuide> (true);
+	//		lRenderGuide.startPos = lineRendererStart;
+	//	}
 
-		/*	if (isResetTime) {
-				time = 0;
-				isResetTime = false;
-			}*/
+		while (true) {
 
 			time += Time.deltaTime;
 
@@ -158,8 +171,12 @@ public class InteractionBehaviour : MonoBehaviour {
 	public void TakeOffInfo(){
 	
 	//	if (infoCanvasPrefab.activeInHierarchy) {
-
+		if	(!isUseQuickDisable)
 			timerForActivation = 0f;
+		else
+			infoCanvasAnimator.SetBool ("IsActive", false);
+		//new10/11/2017
+	//	infoCanvasAnimator.SetBool ("IsActive", false);
 			/*infoCanvasAnimator.SetBool ("IsActive", false);
 			if (infoCanvasAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
 			{
@@ -175,7 +192,20 @@ public class InteractionBehaviour : MonoBehaviour {
 	
 	
 	}
+	public void SetTextLocalizedKey(string nKey){
 
+		localizedText.key = nKey;
+		localizedText.OnUpdate ();
+
+	
+	}
+	public void RemoveLocalizedKey(){
+
+		localizedText.key = string.Empty;
+		localizedText.OnUpdate ();
+
+
+	}
 	void OnDrawGizmos(){
 
 		thisTransform = transform;

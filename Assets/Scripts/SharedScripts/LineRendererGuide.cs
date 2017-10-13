@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class LineRendererGuide : MonoBehaviour {
 
-	[SerializeField]private Transform startPos;
-	[SerializeField]private Transform endPos;
+	public Transform startPos;
+	public Transform endPos;
 	private LineRenderer lineRenderer;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
+		endPos = transform.parent;
 		lineRenderer = GetComponent<LineRenderer> ();
 		//startPos = transform.GetChild (0).position;
 		//lineRenderer.SetPosition (0, startPos);
@@ -18,8 +19,9 @@ public class LineRendererGuide : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		lineRenderer.SetPosition (0, startPos.transform.position);
-		lineRenderer.SetPosition (1, endPos.transform.position);
+		if(startPos != null)
+		lineRenderer.SetPosition (0, startPos.position);
+		lineRenderer.SetPosition (1, endPos.position);
 		
 	}
 }

@@ -31,7 +31,7 @@ public class LocalizedText : MonoBehaviour {
 	
 	}
 	void Start(){
-		LocalizationManager.Instance.presentLocalizedTexts.Add (this);
+		LocalizationManager.Instance.registeredLocalizedTexts.Add (this);
 	}
 	public void OnUpdate () 
 	{
@@ -42,6 +42,7 @@ public class LocalizedText : MonoBehaviour {
 			textMesh.text = textMesh.text.Replace ("\\n", "\n");
 
 		} else {
+		//	Debug.Log ("THISISKEY: " + LocalizationManager.Instance.GetLocalizedValue (key));
 			text.text = LocalizationManager.Instance.GetLocalizedValue (key);
 			text.text = text.text.Replace("\\n", "\n");
 		}
@@ -78,7 +79,7 @@ public class LocalizedText : MonoBehaviour {
 	}
 	protected void OnDestroy(){
 
-		LocalizationManager.Instance.presentLocalizedTexts.Remove (this);
+		LocalizationManager.Instance.registeredLocalizedTexts.Remove (this);
 
 
 	}

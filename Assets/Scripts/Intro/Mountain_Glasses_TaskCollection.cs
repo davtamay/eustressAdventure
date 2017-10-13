@@ -21,7 +21,7 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 		thisAnimator.SetBool ("Walk", true);
 
 		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1) {
-			thisParticleSystem.startColor = new ParticleSystem.MinMaxGradient (Color.green);
+		//	thisParticleSystem.startColor = new ParticleSystem.MinMaxGradient (Color.green);
 			infoTextComponent.text = textAfterCompletion;
 			glasses.SetActive (true);
 			collectObjParent.gameObject.SetActive (false);
