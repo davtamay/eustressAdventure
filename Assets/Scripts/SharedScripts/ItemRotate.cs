@@ -22,7 +22,7 @@ public class ItemRotate : MonoBehaviour {
 			StartCoroutine (scaledRotate ());
 	}
 
-	IEnumerator UnscaledRotate(){
+	IEnumerator scaledRotate(){
 
 		while (true) {
 			if (!this.gameObject.activeInHierarchy)
@@ -34,7 +34,7 @@ public class ItemRotate : MonoBehaviour {
 		}
 
 	}
-	IEnumerator scaledRotate(){
+	IEnumerator UnscaledRotate(){
 
 		while (true) {
 			if (!this.gameObject.activeInHierarchy)

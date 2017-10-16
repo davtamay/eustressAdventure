@@ -19,14 +19,14 @@ public class FeetFollowPlayer : MonoBehaviour {
 	}
 
 
-	void Update () {
+	void LateUpdate () {
 		
 
 
 		RaycastHit hit;
 
 		//ACTIVATE THIS TO ENABLE FOLLOWING CAMERA YROTATION
-		//thisTransform.rotation = Quaternion.AngleAxis (camTransform.eulerAngles.y, Vector3.up);
+		thisTransform.rotation = Quaternion.AngleAxis (camTransform.eulerAngles.y, Vector3.up);
 
 	
 		if (Physics.Raycast (thisTransform.position, -thisTransform.up, out hit, 10f)) {

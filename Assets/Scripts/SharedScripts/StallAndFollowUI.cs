@@ -82,7 +82,7 @@ public class StallAndFollowUI: MonoBehaviour {
 					oldViewingAngle = curViewingAngle;
 				}
 			}
-			Debug.Log (Vector3.Angle (oldViewingAngle, curViewingAngle));
+			//Debug.Log (Vector3.Angle (oldViewingAngle, curViewingAngle));
 		}
 
 
