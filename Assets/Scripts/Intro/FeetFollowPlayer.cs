@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Allows for the rotation adjustment from raycast normal and cameraYrotation.
 public class FeetFollowPlayer : MonoBehaviour {
 
 	private Transform camTransform;
@@ -24,8 +25,8 @@ public class FeetFollowPlayer : MonoBehaviour {
 
 		RaycastHit hit;
 
-
-		thisTransform.rotation = Quaternion.AngleAxis (camTransform.eulerAngles.y, Vector3.up);
+		//ACTIVATE THIS TO ENABLE FOLLOWING CAMERA YROTATION
+		//thisTransform.rotation = Quaternion.AngleAxis (camTransform.eulerAngles.y, Vector3.up);
 
 	
 		if (Physics.Raycast (thisTransform.position, -thisTransform.up, out hit, 10f)) {

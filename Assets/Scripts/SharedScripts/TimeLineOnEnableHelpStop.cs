@@ -74,13 +74,13 @@ public class TimeLineOnEnableHelpStop : MonoBehaviour {
 		if(checkForOnlyOneCall)
 			if (isDone)
 				return;
-		Debug.Log ("ONEDisabledCALLED");
+		
 		isDone = true;
 
 		onDisabled.Invoke ();
 
-		if (addingTextOnEnable)
-			HelpUIManager.Instance.RemoveText();
+		//if (addingTextOnEnable)
+		//	HelpUIManager.Instance.RemoveText();
 		
 
 		TimeLineController.Instance.ResumeTimeLine ();

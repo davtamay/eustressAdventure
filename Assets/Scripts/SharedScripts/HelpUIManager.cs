@@ -294,6 +294,8 @@ public class HelpUIManager : MonoBehaviour {
 	
 	}
 	public void RemoveText(){
+
+		if (gInteraction != null)
 		gInteraction.RemoveLocalizedKey ();
 	/*
 		if (textSpeech != null && textSpeech.isActiveAndEnabled) {

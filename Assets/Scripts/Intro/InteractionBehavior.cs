@@ -64,24 +64,35 @@ public class InteractionBehaviour : MonoBehaviour {
 
 			infoCanvasPrefab = Instantiate (infoCanvasPrefab, new Vector3(thisTransform.position.x + infoOffset.x, thisTransform.position.y + infoOffset.y, thisTransform.position.z + infoOffset.z), Quaternion.identity) ;
 
+			infoCanvasPrefab.transform.SetParent(thisTransform);
+
+
+			lRenderGuide = infoCanvasPrefab.GetComponentInChildren<LineRendererGuide> (true);
+			lRenderGuide.startPos = lineRendererStart;
+
 
 			infoCanvasAnimator = infoCanvasPrefab.GetComponent<Animator> ();
 
-			infoCanvasPrefab.transform.SetParent(thisTransform);
+			localizedText = GetComponentInChildren<LocalizedText> (true);
 
 			//thisParticleSystem = infoCanvasPrefab.GetComponentInChildren<ParticleSystem> ().main;
 			//thisParticleSystem.startColor = new ParticleSystem.MinMaxGradient (infoBackGround);
 
 			infoTextComponent = infoCanvasPrefab.GetComponentInChildren<Text> ();
 			infoTextComponent.alignment = textAnchor;//(TextAnchor)textAllignment;
-		//	infoTextComponent.text = infoText;
+			//infoTextComponent.text = infoText;
 
-			localizedText = GetComponentInChildren<LocalizedText> (true);
+			Transform infoRect = infoCanvasPrefab.transform;
+			infoRect.localScale = new Vector3 (InfoSize.x,InfoSize.y, 1);
+			//infoRect.sizeDelta = new Vector2 (InfoSize.x,InfoSize.y);
+			//	infoTextRect.sizeDelta = new Vector2 (InfoSize.x,InfoSize.y);
 
-			//infoTextComponent.
 
-			//RectTransform infoTextRect = infoTextComponent.transform.GetComponent<RectTransform> ();
-			//infoTextRect.sizeDelta = new Vector2 (InfoSize.x,InfoSize.y);
+		//	RectTransform infoTextRect = infoTextComponent.transform.GetComponent<RectTransform> ();
+		//	infoTextRect.sizeDelta = new Vector2 (InfoSize.x,InfoSize.y);
+
+			//RectTransform infoImageRect = infoTextComponent.transform.GetComponent<RectTransform> ();
+			//infoImageRect.sizeDelta = new Vector2 (InfoSize.x,InfoSize.y);
 
 			//thisParticleSystem.startSizeX = new ParticleSystem.MinMaxCurve(infoTextRect.sizeDelta.x/50 );
 			//thisParticleSystem.startSizeY = new ParticleSystem.MinMaxCurve(infoTextRect.sizeDelta.y/50 );
@@ -101,13 +112,9 @@ public class InteractionBehaviour : MonoBehaviour {
 	//Coroutine infoActive; 
 	//private bool isResetTime;
 	public void TriggerInfo(){
-
-	
+		
+		Debug.Log ("TRIGGERINGINFO");
 			
-	/*	if (infoCanvasPrefab.activeInHierarchy) {
-			isResetTime = true;
-			return;
-		}*/
 	
 		infoCanvasPrefab.SetActive (true);
 		infoCanvasAnimator.SetBool ("IsActive", true);
@@ -124,10 +131,6 @@ public class InteractionBehaviour : MonoBehaviour {
 
 		float time = 0;
 
-	//	if (lRenderGuide == null) {
-	//		lRenderGuide = infoCanvasPrefab.GetComponentInChildren<LineRendererGuide> (true);
-	//		lRenderGuide.startPos = lineRendererStart;
-	//	}
 
 		while (true) {
 
@@ -154,14 +157,14 @@ public class InteractionBehaviour : MonoBehaviour {
 			if (time > timerForActivation) {
 				infoCanvasAnimator.SetBool ("IsActive", false);
 
-				if (infoCanvasAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+				if (infoCanvasAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || isUseQuickDisable)
 				 {
 					onInfoDisable.Invoke ();
 					infoCanvasPrefab.SetActive (false);
 					timerForActivation = timeActive;
 					yield break;
 				}
-				//StopCoroutine (infoActive);
+
 			}
 
 			yield return null;
@@ -170,13 +173,14 @@ public class InteractionBehaviour : MonoBehaviour {
 	}
 	public void TakeOffInfo(){
 	
+		Debug.Log ("unTRIGGERINGINFO");
 	//	if (infoCanvasPrefab.activeInHierarchy) {
-		if	(!isUseQuickDisable)
+
 			timerForActivation = 0f;
-		else
-			infoCanvasAnimator.SetBool ("IsActive", false);
+
 		//new10/11/2017
-	//	infoCanvasAnimator.SetBool ("IsActive", false);
+		if(isUseQuickDisable)
+		infoCanvasAnimator.SetBool ("IsActive", false);
 			/*infoCanvasAnimator.SetBool ("IsActive", false);
 			if (infoCanvasAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
 			{
@@ -214,7 +218,7 @@ public class InteractionBehaviour : MonoBehaviour {
 		//Vector2 InfoScale = new Vector2 (InfoSize.x, InfoSize.y)//Info.GetComponent<RectTransform>().sizeDelta;
 	
 		Gizmos.color = Color.blue;
-		Gizmos.DrawWireCube (new Vector3(thisTransform.position.x + infoOffset.x, thisTransform.position.y + infoOffset.y, thisTransform.position.z + infoOffset.z),new Vector3(InfoSize.x/3, InfoSize.y/3, 1));// new Vector3(InfoScale.x + InfoSizeOffset.x, InfoScale.y + InfoSizeOffset.y, 1));
+		Gizmos.DrawWireCube (new Vector3(thisTransform.position.x + infoOffset.x, thisTransform.position.y + infoOffset.y, thisTransform.position.z + infoOffset.z),new Vector3(InfoSize.x, InfoSize.y, 1));// new Vector3(InfoScale.x + InfoSizeOffset.x, InfoScale.y + InfoSizeOffset.y, 1));
 	}
 
 

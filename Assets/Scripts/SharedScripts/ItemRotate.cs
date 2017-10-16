@@ -7,6 +7,7 @@ public class ItemRotate : MonoBehaviour {
 	public Vector3 initRotation;
 	public Vector3 turnSpeed;
 
+	[SerializeField]private bool isUseUnscaledTime;
 
 
 	void Start(){
@@ -15,14 +16,33 @@ public class ItemRotate : MonoBehaviour {
 
 		myTransform.localEulerAngles = initRotation;
 
-	
+		if (isUseUnscaledTime)
+			StartCoroutine (UnscaledRotate ());
+		else
+			StartCoroutine (scaledRotate ());
 	}
 
-	void FixedUpdate () {
+	IEnumerator UnscaledRotate(){
 
+		while (true) {
+			if (!this.gameObject.activeInHierarchy)
+				StopAllCoroutines ();
 
-		myTransform.Rotate (turnSpeed);
+			myTransform.Rotate (turnSpeed * Time.deltaTime);
 
+			yield return null;
+		}
 
+	}
+	IEnumerator scaledRotate(){
+
+		while (true) {
+			if (!this.gameObject.activeInHierarchy)
+			
+				myTransform.Rotate (turnSpeed * Time.unscaledDeltaTime);
+				StopAllCoroutines ();
+		
+			yield return null;
+		}
 	}
 }

@@ -22,15 +22,8 @@ public class MenuArmFollow : MonoBehaviour {
 		camTransform = Camera.main.transform;
 		offset = thisTransform.position - Camera.main.transform.position;
 
-		//offset.z *= -1;
 	}
 	void Start(){
-
-	//	#if (UNITY_ANDROID)
-
-	//	MagnetSensor.OnCardboardTrigger += MagnetTrigger;
-
-	//	#endif
 
 		if(SceneController.Instance != null)
 			curSceneName = SceneController.Instance.GetCurrentSceneName ();
@@ -50,7 +43,7 @@ public class MenuArmFollow : MonoBehaviour {
 
 	Quaternion rotation;
 
-	bool isInitialClick = false;
+	bool isInitialLook = false;
 
 	//this is checked off by button look click (BackToGame Button)
 	bool isClosedClick = false;
@@ -67,18 +60,45 @@ public class MenuArmFollow : MonoBehaviour {
 
 	bool isLerping = false;
 
-
 	bool isButtonAvailable = true;
-	void LateUpdate () {
 
-#if UNITY_EDITOR
-
-		if (Input.GetMouseButton (0) && isButtonAvailable) {
+	public void TriggerMenu(){
+	
+		if( isButtonAvailable) {
 			isButtonAvailable = false;
 
 			AudioManager.Instance.PlayDirectSound ("TakeOutMenu");
 
-			if (isInitialClick) {
+			if (isInitialLook) {
+
+				thisAnimator.SetBool ("Close", false);
+				return;
+			}
+
+			curViewingAngle = camTransform.forward;
+
+			thisTransform.GetChild(0).gameObject.SetActive(true);
+			oldViewingAngle =  Quaternion.Euler(0,90,0) * camTransform.forward ;
+			isInitialLook = true;
+
+			if (curSceneName != "intro")
+				GameController.Instance.Paused = true;
+
+		}
+	
+	}
+
+
+	void LateUpdate () {
+
+//#if UNITY_EDITOR
+
+		/*if (Input.GetMouseButton (0) && isButtonAvailable) {
+			isButtonAvailable = false;
+
+			AudioManager.Instance.PlayDirectSound ("TakeOutMenu");
+
+			if (isInitialLook) {
 				
 				thisAnimator.SetBool ("Close", false);
 				return;
@@ -88,15 +108,15 @@ public class MenuArmFollow : MonoBehaviour {
 
 			thisTransform.GetChild(0).gameObject.SetActive(true);
 			oldViewingAngle =  Quaternion.Euler(0,90,0) * camTransform.forward ;
-			isInitialClick = true;
+			isInitialLook = true;
 
 			if (curSceneName != "intro")
 				GameController.Instance.Paused = true;
 
-		}
-#endif
+		}*/
+//#endif
 
-#if UNITY_ANDROID
+/*#if UNITY_ANDROID
 		//isMagnetTriggered = MagnetTrigger();
 		if (Input.GetMouseButton (0) && isButtonAvailable) {
 		//if (isMagnetTriggered && isButtonAvailable) {
@@ -105,7 +125,7 @@ public class MenuArmFollow : MonoBehaviour {
 
 			AudioManager.Instance.PlayDirectSound ("TakeOutMenu");
 
-			if (isInitialClick) {
+			if (isInitialLook) {
 
 				thisAnimator.SetBool ("Close", false);
 				return;
@@ -115,7 +135,7 @@ public class MenuArmFollow : MonoBehaviour {
 
 			thisTransform.GetChild(0).gameObject.SetActive(true);
 			oldViewingAngle =  Quaternion.Euler(0,90,0) * camTransform.forward ;
-			isInitialClick = true;
+			isInitialLook = true;
 
 			if (curSceneName != "intro")
 				GameController.Instance.Paused = true;
@@ -123,17 +143,17 @@ public class MenuArmFollow : MonoBehaviour {
 		}
 
 
-#endif
+#endif*/
 
 
-		if (isInitialClick) {
+		if (isInitialLook) {
 
 
 			if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsTag ("Idle")) {
 
 				
 				stressMenu.SetActive (true);
-				isInitialClick = false;
+				isInitialLook = false;
 			
 			
 			}

@@ -35,7 +35,7 @@ public class LookInteraction : MonoBehaviour {
 	public Image image;
 
 	private Collider thisCollider;
-	public Collider parentCollider;
+	public Collider lookTriggerCollider;
 
 	private Animator thisAnimator;
 	private Camera cam;
@@ -51,7 +51,8 @@ public class LookInteraction : MonoBehaviour {
 			
 
 		//if(!isItemForSlot)
-			parentCollider = transform.parent.GetComponent<Collider> ();
+		if(lookTriggerCollider == null)
+			lookTriggerCollider = transform.parent.GetComponent<Collider> ();
 
 		image = GetComponentInChildren<Image> ();
 		originalSprite = image.sprite;
@@ -194,8 +195,8 @@ public class LookInteraction : MonoBehaviour {
 		}
 
 		//if(!isItemForSlot)
-		if(parentCollider != null)
-		if (parentCollider.Raycast (ray, out hit, lookDistance)) {
+		if(lookTriggerCollider != null)
+		if (lookTriggerCollider.Raycast (ray, out hit, lookDistance)) {
 
 			timeActive = timeUntilImageDeactivate;
 			//timer = lookTime;

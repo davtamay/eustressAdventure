@@ -4285,7 +4285,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1169058128}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &99067439
 MeshRenderer:
@@ -4647,6 +4647,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 110519420}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &112394692 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1847071340730920, guid: 07a5165714682477aba5dce34902d839,
+    type: 2}
+  m_PrefabInternal: {fileID: 969605412}
+--- !u!135 &112394694 stripped
+SphereCollider:
+  m_PrefabParentObject: {fileID: 135112468360546576, guid: 07a5165714682477aba5dce34902d839,
+    type: 2}
+  m_PrefabInternal: {fileID: 969605412}
+--- !u!114 &112394696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 112394692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda30e4fc219f41b7b5fe501ca5e455d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToRotate: {fileID: 539130567}
+  angleDistanceUntilRotateBack: 80
 --- !u!1 &112518828
 GameObject:
   m_ObjectHideFlags: 0
@@ -5194,7 +5217,7 @@ Transform:
   m_Children:
   - {fileID: 1480398850}
   m_Father: {fileID: 1169058128}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &128299107
 MonoBehaviour:
@@ -6738,7 +6761,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 1
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!95 &171250260
 Animator:
   serializedVersion: 3
@@ -6845,7 +6868,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!95 &173432580
 Animator:
   serializedVersion: 3
@@ -7575,6 +7598,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 112394694}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -13996,7 +14030,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!95 &321201807
 Animator:
   serializedVersion: 3
@@ -14158,6 +14192,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 20, y: 20}
+  lineRendererStart: {fileID: 0}
   textAnchor: 3
   infoText: "\n<size=1.5><b>Need a reason to start riding, try:</b></size>\n\n<size=1.2>\n
     \    *increased cardiovascular fitness\n     *increased muscle strength and flexibility\n
@@ -14190,6 +14225,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls: []
@@ -14894,6 +14930,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 10, y: 5}
+  lineRendererStart: {fileID: 0}
   textAnchor: 4
   infoText: <size=1>It seems that this can be chipped away.. but with what?</size>
   timeActive: 5
@@ -14909,6 +14946,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls: []
@@ -23984,6 +24022,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 100, y: 20}
+  lineRendererStart: {fileID: 0}
   textAnchor: 4
   infoText: <size=8>"Construction... hopefully it gets done soon.."</size>
   timeActive: 5
@@ -23999,6 +24038,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls: []
@@ -24293,7 +24333,7 @@ GameObject:
   - component: {fileID: 479593873}
   - component: {fileID: 479593874}
   m_Layer: 0
-  m_Name: LetWalk
+  m_Name: SelectionAppearBoundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24305,17 +24345,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 479593869}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.30999994, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children:
-  - {fileID: 969605413}
-  m_Father: {fileID: 539130567}
-  m_RootOrder: 0
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
+  m_LocalPosition: {x: -0.099999905, y: -0.2800002, z: 0.28275415}
+  m_LocalScale: {x: 0.34315214, y: 0.343152, z: 0.686304}
+  m_Children: []
+  m_Father: {fileID: 1169058128}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.31}
+  m_AnchoredPosition: {x: -0.1, y: -0.28}
   m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.68}
 --- !u!222 &479593873
@@ -24334,8 +24373,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8, y: 8, z: 0.5}
-  m_Center: {x: 0, y: 0.36, z: 0}
+  m_Size: {x: 10, y: 10, z: 0.4}
+  m_Center: {x: 0, y: 0, z: 0.83}
 --- !u!1 &481125649
 GameObject:
   m_ObjectHideFlags: 0
@@ -26729,9 +26768,8 @@ GameObject:
   - component: {fileID: 539130566}
   - component: {fileID: 539130565}
   - component: {fileID: 539130564}
-  - component: {fileID: 539130568}
   m_Layer: 0
-  m_Name: AllowWalk
+  m_Name: DirectMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26800,30 +26838,20 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 539130563}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.1, y: -1.36, z: 0.07}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1, y: -1.36, z: 1.7}
   m_LocalScale: {x: 0.68630373, y: 0.68630373, z: 0.68630373}
   m_Children:
-  - {fileID: 479593870}
+  - {fileID: 969605413}
+  - {fileID: 2060349927}
   m_Father: {fileID: 1169058128}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.1, y: -1.36}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &539130568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 539130563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a696c44c81c08405489a0d4ca133c021, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &540306598
 GameObject:
   m_ObjectHideFlags: 0
@@ -27901,6 +27929,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 90
   InfoSize: {x: 5, y: 5}
+  lineRendererStart: {fileID: 0}
   textAnchor: 4
   infoText: <color=white>"Go away!"</color>
   timeActive: 3
@@ -27916,6 +27945,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls: []
@@ -40404,6 +40434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initRotation: {x: -90, y: 0, z: 0}
   turnSpeed: {x: 0, y: 0, z: -2}
+  isUseUnscaledTime: 0
 --- !u!198 &745921347
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -47640,7 +47671,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!135 &763639037
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -53308,7 +53339,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!1 &815780846
 GameObject:
   m_ObjectHideFlags: 0
@@ -55305,6 +55336,293 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 862588015}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &862721187
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 539130567}
+    m_Modifications:
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.6999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 52.45499
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 23.313335
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 87.42499
+      objectReference: {fileID: 0}
+    - target: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b99e2865f98f34a06b38f1eaf88173ae,
+        type: 3}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1169058130}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: isSpriteChangeOnClick
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: spriteToChange
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1169058130}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: isFirstNotInvokedInsteadOffSecond
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: lookDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: lookTime
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: timeUntilImageDeactivate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: isLookAtPlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_FillMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224923016666327088, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224923016666327088, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224395012738568116, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224395012738568116, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1748868459}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_material
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Material, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: isColorChangeOnClick
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: colorToChange.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: colorToChange.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: colorToChange.b
+      value: 0.006896496
+      objectReference: {fileID: 0}
+    - target: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: colorToChange.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224923016666327088, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224923016666327088, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224923016666327088, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 135112468360546576, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_FillOrigin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: lookTriggerCollider
+      value: 
+      objectReference: {fileID: 479593874}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1847071340730920, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1847071340730920, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_Name
+      value: InteractionSelect (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 07a5165714682477aba5dce34902d839, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &865348787
 GameObject:
   m_ObjectHideFlags: 0
@@ -57160,6 +57478,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 100, y: 20}
+  lineRendererStart: {fileID: 0}
   textAnchor: 4
   infoText: <size=10> You will die need transportation </size>
   timeActive: 10
@@ -57175,6 +57494,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls: []
@@ -58049,7 +58369,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 498412, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114000013210091632, guid: 970dd4b9371394fb4890965f608d46fd,
         type: 2}
@@ -58502,6 +58822,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 5, y: 5}
+  lineRendererStart: {fileID: 0}
   textAnchor: 4
   infoText: <size=1>"This is a test"</size>
   timeActive: 5
@@ -58517,6 +58838,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls: []
@@ -58976,7 +59298,7 @@ RectTransform:
   - {fileID: 630293631}
   - {fileID: 1647845140}
   m_Father: {fileID: 1169058128}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -59886,20 +60208,25 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 479593870}
+    m_TransformParent: {fileID: 539130567}
     m_Modifications:
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
       propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.04
       objectReference: {fileID: 0}
     - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.6999999
       objectReference: {fileID: 0}
     - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
       propertyPath: m_LocalPosition.z
@@ -59911,7 +60238,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
       propertyPath: m_LocalRotation.z
@@ -59919,7 +60246,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
       propertyPath: m_RootOrder
@@ -59927,31 +60254,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
       propertyPath: m_LocalScale.x
-      value: 104.90994
+      value: 52.45499
       objectReference: {fileID: 0}
     - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
       propertyPath: m_LocalScale.y
-      value: 46.62666
+      value: 23.313334
       objectReference: {fileID: 0}
     - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
       propertyPath: m_LocalScale.z
-      value: 87.42498
+      value: 87.42499
       objectReference: {fileID: 0}
     - target: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b99e2865f98f34a06b38f1eaf88173ae,
+      objectReference: {fileID: 21300000, guid: 14a95bd5dbd9746dabe95aa6ea44434f,
         type: 3}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1169058130}
+      objectReference: {fileID: 128299107}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_enabled
+      value: TriggerMenu
       objectReference: {fileID: 0}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -59966,7 +60293,7 @@ Prefab:
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -59977,16 +60304,16 @@ Prefab:
         type: 2}
       propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1169058130}
+      objectReference: {fileID: 1169058127}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_enabled
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -59996,7 +60323,7 @@ Prefab:
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -60015,7 +60342,7 @@ Prefab:
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: lookTime
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -60030,7 +60357,7 @@ Prefab:
     - target: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: m_FillMethod
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224923016666327088, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -60085,7 +60412,7 @@ Prefab:
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: isColorChangeOnClick
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -60110,7 +60437,7 @@ Prefab:
     - target: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -60120,7 +60447,7 @@ Prefab:
     - target: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224923016666327088, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -60140,12 +60467,71 @@ Prefab:
     - target: {fileID: 135112468360546576, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: m_Radius
-      value: 0.016
+      value: 0.012
       objectReference: {fileID: 0}
     - target: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: m_FillOrigin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: lookTriggerCollider
+      value: 
+      objectReference: {fileID: 479593874}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 112394694}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1847071340730920, guid: 07a5165714682477aba5dce34902d839, type: 2}
+      propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_FillClockwise
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224923016666327088, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224923016666327088, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224395012738568116, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 07a5165714682477aba5dce34902d839, type: 2}
@@ -61631,7 +62017,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!95 &1010079775
 Animator:
   serializedVersion: 3
@@ -62113,6 +62499,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 30, y: 20}
+  lineRendererStart: {fileID: 0}
   textAnchor: 0
   infoText: "<size=1.5><b>Fear does not have to be \na negative thing, fear can be
     a sign \nthat you are \"changing and growing\" by: </b></size>\n<size=1.2>\n  *Beeing
@@ -62134,6 +62521,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls: []
@@ -62884,6 +63272,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 50, y: 28}
+  lineRendererStart: {fileID: 0}
   textAnchor: 0
   infoText: "<size=1.5><b> Adrenaline rush can help you in reacting to \"flight or
     fight\" senarios as a response to stress through: </b></size>\n<size=1.2>\n   *Increasing
@@ -62920,6 +63309,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls: []
@@ -67569,6 +67959,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 5, y: 5}
+  lineRendererStart: {fileID: 0}
   textAnchor: 0
   infoText: aaaa
   timeActive: 10
@@ -67584,6 +67975,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls: []
@@ -68567,6 +68959,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1079059055}
+  - {fileID: 479593870}
   - {fileID: 539130567}
   - {fileID: 950088493}
   - {fileID: 128299105}
@@ -71230,6 +71623,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 20, y: 20}
+  lineRendererStart: {fileID: 0}
   textAnchor: 0
   infoText: "<size=1.5><b>Why are dogs humans best friend, well:</b></size>\n\n<size=1.2>\n
     \  *You'll exercise more.\n   *You'll feel less stressed.\n   *Your social life
@@ -71262,6 +71656,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls:
@@ -72432,6 +72827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initRotation: {x: -90, y: 0, z: 0}
   turnSpeed: {x: 0, y: 0, z: -2}
+  isUseUnscaledTime: 0
 --- !u!198 &1277797373
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -76222,6 +76618,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 5, y: 5}
+  lineRendererStart: {fileID: 0}
   textAnchor: 0
   infoText: What to do?
   timeActive: 10
@@ -76237,6 +76634,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls:
@@ -83054,6 +83452,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 5, y: 5}
+  lineRendererStart: {fileID: 0}
   textAnchor: 1
   infoText: '"During obtaining the obdonospheres"'
   timeActive: 10
@@ -83069,6 +83468,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls: []
@@ -83800,6 +84200,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 0, y: 0}
+  lineRendererStart: {fileID: 0}
   textAnchor: 0
   infoText: mirror test
   timeActive: 100
@@ -83815,6 +84216,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls: []
@@ -84376,7 +84778,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!95 &1417589478
 Animator:
   serializedVersion: 3
@@ -84464,6 +84866,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 30, y: 20}
+  lineRendererStart: {fileID: 0}
   textAnchor: 0
   infoText: "<size=1.5><b>Want to improve your life style? Look towards a greener
     environment since it: </b></size>\n<size=1.2>\n  *has shown to improve self esteem,
@@ -84496,6 +84899,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls: []
@@ -89696,6 +90100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initRotation: {x: -90, y: 0, z: 0}
   turnSpeed: {x: 0, y: 0, z: -2}
+  isUseUnscaledTime: 0
 --- !u!198 &1473108827
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -98897,7 +99302,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1529781937}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 256, y: 100.5, z: 0}
+  m_LocalPosition: {x: 256, y: 111, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 637704315}
@@ -99310,6 +99715,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 8, y: 8}
+  lineRendererStart: {fileID: 0}
   textAnchor: 4
   infoText: Not Done
   timeActive: 100
@@ -99327,6 +99733,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls: []
@@ -103381,7 +103788,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1552754247}
-  m_LocalRotation: {x: -0.34611753, y: -0.5470279, z: -0.2649207, w: 0.71468896}
+  m_LocalRotation: {x: -0.3461175, y: -0.5470278, z: -0.26492068, w: 0.7146889}
   m_LocalPosition: {x: 0.00062, y: 0.01405, z: -0.00227}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -105917,7 +106324,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!95 &1618786988
 Animator:
   serializedVersion: 3
@@ -108146,6 +108553,7 @@ MonoBehaviour:
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
   InfoSize: {x: 5, y: 5}
+  lineRendererStart: {fileID: 0}
   textAnchor: 0
   infoText: '"They STOLE MY FOOD. I tried to catch up but he was too fast.'
   timeActive: 5
@@ -108161,6 +108569,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls: []
@@ -110306,6 +110715,12 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1748725311}
+--- !u!114 &1748868459 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
+    type: 2}
+  m_PrefabInternal: {fileID: 862721187}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1749194799
 GameObject:
   m_ObjectHideFlags: 0
@@ -112982,7 +113397,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!95 &1825043354
 Animator:
   serializedVersion: 3
@@ -113580,7 +113995,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!95 &1840318535
 Animator:
   serializedVersion: 3
@@ -114300,7 +114715,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!95 &1853392337
 Animator:
   serializedVersion: 3
@@ -114987,7 +115402,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!95 &1870370398
 Animator:
   serializedVersion: 3
@@ -120881,7 +121296,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 1
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!95 &2046311878
 Animator:
   serializedVersion: 3
@@ -121588,6 +122003,11 @@ Transform:
   m_Father: {fileID: 86238035}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2060349927 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839,
+    type: 2}
+  m_PrefabInternal: {fileID: 862721187}
 --- !u!1 &2060501383
 GameObject:
   m_ObjectHideFlags: 0
@@ -122028,7 +122448,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!95 &2064456620
 Animator:
   serializedVersion: 3
@@ -124609,7 +125029,7 @@ MonoBehaviour:
   isFirstNotInvokedInsteadOffSecond: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
-  parentCollider: {fileID: 0}
+  lookTriggerCollider: {fileID: 0}
 --- !u!95 &2126393888
 Animator:
   serializedVersion: 3
@@ -125219,7 +125639,7 @@ Transform:
   m_Children:
   - {fileID: 962087825}
   m_Father: {fileID: 1169058128}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2146620838 stripped
 Transform:
