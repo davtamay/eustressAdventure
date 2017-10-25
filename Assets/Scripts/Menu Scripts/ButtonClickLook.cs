@@ -194,6 +194,7 @@ public class ButtonClickLook : MonoBehaviour {
 				} else if (isRestartProgress) {
 
 					//PlayerPrefs.SetInt ("MainGameEvent") == 0;
+					AudioManager.Instance.PlayInterfaceSound("SpecialSelect");
 
 					DataManager.Instance.DeleteHighScoreSlotandPositionData (homePosition);
 					DataManager.Instance.DeletePPDataTaskProgress ();
@@ -220,8 +221,11 @@ public class ButtonClickLook : MonoBehaviour {
 			
 				} else if (isStartButton) {
 
+					AudioManager.Instance.PlayInterfaceSound("SpecialSelect");
+
 					GameController.Instance.StartGame ();
-					GameController.Instance.Paused = false;
+				//	10/24/17
+					//GameController.Instance.Paused = false;
 					
 
 

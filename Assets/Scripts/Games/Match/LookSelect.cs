@@ -106,13 +106,6 @@ public class LookSelect : MonoBehaviour {
 			}
 
 		
-	}else{
-
-			/*if (!isFirstCard || !isSecondCard) {
-
-				StopCoroutine ("CardSelect");
-
-			} */
 	}
    }
 	IEnumerator CardSelect(){
@@ -122,6 +115,7 @@ public class LookSelect : MonoBehaviour {
 			isFirstCard = true;
 			firstCard = selectedCard;
 
+			AudioManager.Instance.PlayInterfaceSound ("CardSelect");
 			StartCoroutine (RotateCard (firstCard));
 		
 			yield break;
@@ -133,6 +127,7 @@ public class LookSelect : MonoBehaviour {
 
 			secondCard = selectedCard;
 
+			AudioManager.Instance.PlayInterfaceSound ("CardSelect");
 			StartCoroutine (TestCards (firstCard, secondCard));
 			StartCoroutine (RotateCard (secondCard));
 
@@ -190,6 +185,8 @@ public class LookSelect : MonoBehaviour {
 
 			Debug.Log ("we have a match!");
 
+			AudioManager.Instance.PlayDirectSound ("SmallWin");
+				
 			spawnedCards -= 2;
 
 			PlayerManager.Instance.points = 1;
@@ -202,6 +199,8 @@ public class LookSelect : MonoBehaviour {
 			if (spawnedCards == 0) {
 
 				opponentAnimator.SetTrigger ("Fall1");
+				AudioManager.Instance.PlayDirectSound ("MediumWin");
+
 				GameController.Instance.StopTimer ();
 				StartCoroutine (GameController.Instance.NewWave ());
 
@@ -211,7 +210,8 @@ public class LookSelect : MonoBehaviour {
 			
 				if (cardSpawner.GetWave == 0) {
 
-				
+					AudioManager.Instance.PlayDirectSound ("MediumWin");
+
 					cardSpawner.ChangeWave (Difficulty.medium);
 					GameController.Instance.TimeToAdd (ref isTimerDone, timeToBeatSecondLevel);
 					spawnedCards = cardSpawner.GetSpawned;

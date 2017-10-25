@@ -40,7 +40,7 @@ public class GvrEditorEmulator : MonoBehaviour {
   [Tooltip("Camera to track")]
   public Camera m_camera;
 
-#if UNITY_EDITOR && UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_IOS)
+	#if UNITY_WEBGL || UNITY_EDITOR && UNITY_HAS_GOOGLEVR && ( UNITY_ANDROID || UNITY_IOS)
   void Start()
   {
     GvrRecenterOnlyController controllerOnlyRecenter =
@@ -64,6 +64,21 @@ public class GvrEditorEmulator : MonoBehaviour {
 
     Quaternion rot;
     bool rolled = false;
+	//10/24/17
+	#if UNITY_WEBGL
+
+	if (true) {
+		m_mouseX += Input.GetAxis(AXIS_MOUSE_X) * 5;
+		if (m_mouseX <= -180) {
+		m_mouseX += 360;
+		} else if (m_mouseX > 180) {
+		m_mouseX -= 360;
+		}
+		m_mouseY -= Input.GetAxis(AXIS_MOUSE_Y) * 2.4f;
+		m_mouseY = Mathf.Clamp(m_mouseY, -85, 85);
+	} 
+
+	#else
     if (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt)) {
       m_mouseX += Input.GetAxis(AXIS_MOUSE_X) * 5;
       if (m_mouseX <= -180) {
@@ -73,7 +88,11 @@ public class GvrEditorEmulator : MonoBehaviour {
       }
       m_mouseY -= Input.GetAxis(AXIS_MOUSE_Y) * 2.4f;
       m_mouseY = Mathf.Clamp(m_mouseY, -85, 85);
-    } else if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) {
+    } 
+
+	#endif
+
+	else if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) {
       rolled = true;
       m_mouseZ += Input.GetAxis(AXIS_MOUSE_X) * 5;
       m_mouseZ = Mathf.Clamp(m_mouseZ, -85, 85);
@@ -91,6 +110,8 @@ public class GvrEditorEmulator : MonoBehaviour {
     m_camera.transform.localRotation = rot;
   }
 #endif  // UNITY_EDITOR && UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_IOS)
+
+
 
   public void Recenter()
   {

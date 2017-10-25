@@ -124,6 +124,7 @@ public class GameController : MonoBehaviour {
 	public void StartGame (){
 	
 		gameStart.SetActive (false);
+		Paused = false;
 	
 	}
 	/// <summary>

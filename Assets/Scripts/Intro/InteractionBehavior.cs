@@ -73,7 +73,7 @@ public class InteractionBehaviour : MonoBehaviour {
 
 			infoCanvasAnimator = infoCanvasPrefab.GetComponent<Animator> ();
 
-			localizedText = GetComponentInChildren<LocalizedText> (true);
+			localizedText = GetComponentInChildren<LocalizedText> ();
 
 			//thisParticleSystem = infoCanvasPrefab.GetComponentInChildren<ParticleSystem> ().main;
 			//thisParticleSystem.startColor = new ParticleSystem.MinMaxGradient (infoBackGround);
