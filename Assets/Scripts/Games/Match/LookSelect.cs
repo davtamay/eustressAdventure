@@ -174,7 +174,7 @@ public class LookSelect : MonoBehaviour {
 	
 	}
 	IEnumerator TestCards(GameObject a, GameObject b){
-	
+		Debug.Log ("TESTINGTESTCARDCALL");
 		yield return new WaitForSeconds (1.4f);
 		if (string.Equals(a.name,b.name, System.StringComparison.CurrentCultureIgnoreCase))
 		{
@@ -191,15 +191,10 @@ public class LookSelect : MonoBehaviour {
 
 			PlayerManager.Instance.points = 1;
 
-		//	particles.Play();
-		//	yield return new WaitForSeconds (3);
-		//	particles.Stop();
-
 
 			if (spawnedCards == 0) {
 
 				opponentAnimator.SetTrigger ("Fall1");
-				AudioManager.Instance.PlayDirectSound ("MediumWin");
 
 				GameController.Instance.StopTimer ();
 				StartCoroutine (GameController.Instance.NewWave ());
@@ -219,6 +214,7 @@ public class LookSelect : MonoBehaviour {
 
 				} else if (cardSpawner.GetWave == 1) {
 
+					AudioManager.Instance.PlayDirectSound ("MediumWin");
 
 					cardSpawner.ChangeWave (Difficulty.hard);
 					GameController.Instance.TimeToAdd (ref isTimerDone, timeToBeatThirdLevel);
@@ -226,6 +222,7 @@ public class LookSelect : MonoBehaviour {
 
 				}else if (cardSpawner.GetWave == 2) {
 					opponentAnimator.SetTrigger ("Fall2");
+					AudioManager.Instance.PlayDirectSound ("BigWin");
 					GameController.Instance.isGameOver = true;
 
 				}

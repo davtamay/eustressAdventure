@@ -22,7 +22,8 @@ public class PlayerManager : MonoBehaviour {
 	public Color hurtColor;
 	public Color addHealthColor;
 	public Color healthColor;
-	public Color armorColor;
+	[SerializeField] public GameObject armorGO;
+	//public Color armorColor;
 	public int armorTime;
 	public bool isArmorOn = false;
 	public Text coinText;
@@ -83,10 +84,10 @@ public class PlayerManager : MonoBehaviour {
 	void Start(){
 
 		if (GameObject.FindWithTag ("UIColor")) {
-		//	if (healthColorIndicator != null) {
+
 				healthColorIndicator = GameObject.FindWithTag ("UIColor").GetComponent<Image> ();
 				healthColorIndicator.color = healthColor;
-		//	}
+				armorGO.SetActive (false);
 		}
 
 	//FIXME Games may use Item game tag besided the intro, so check if there are no interuptions/bugs 5/13/17
@@ -276,7 +277,8 @@ public class PlayerManager : MonoBehaviour {
 		StopAllCoroutines ();
 		isArmorOn = true;
 		isInvulnerable = true;
-		healthColorIndicator.color = armorColor;
+		armorGO.SetActive (true);
+	//	healthColorIndicator.color = armorColor;
 		StartCoroutine (AddArmorTime());
 
 
@@ -292,20 +294,15 @@ public class PlayerManager : MonoBehaviour {
 			yield return null;
 		}
 
-		//yield return new WaitForSeconds (armorTime);
+		armorGO.SetActive (false);
+
 		isInvulnerable = false;
 		isArmorOn = false;
 		healthColorIndicator.color = healthColor;
 
 	}
 	IEnumerator HealthReduceColor (Color col){
-	
-		if (isArmorOn) {
-		
-			healthColorIndicator.color = armorColor;
-			yield break;
-		
-		}
+
 		
 
 		healthColorIndicator.color = col;
@@ -317,12 +314,6 @@ public class PlayerManager : MonoBehaviour {
 	}
 	IEnumerator HealthAddColor (Color col){
 
-		if (isArmorOn) {
-		
-			healthColorIndicator.color = armorColor;
-			yield break;
-
-		}
 
 		healthColorIndicator.color = col;
 

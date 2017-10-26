@@ -7,6 +7,8 @@ public class ItemResponse : MonoBehaviour {
 	private PlayerManager playerManager;
 	public string itemDescription = string.Empty;
 
+	[SerializeField]private int healthEffect;
+
 
 	void Awake(){
 		player = GameObject.FindWithTag ("Player");
@@ -21,7 +23,7 @@ public class ItemResponse : MonoBehaviour {
 			
 			if (string.Equals (itemDescription, "Coin", System.StringComparison.CurrentCultureIgnoreCase)) {
 				playerManager.points = 1;
-				AudioManager.Instance.PlayDirectSound ("Reward", true);
+				AudioManager.Instance.PlayDirectSound ("SmallWin", true);
 				Destroy (this.gameObject);
 			}
 			else if (string.Equals (itemDescription, "Armor", System.StringComparison.CurrentCultureIgnoreCase)) {
@@ -65,38 +67,20 @@ public class ItemResponse : MonoBehaviour {
 			if (!playerManager.isInvulnerable) {
 				
 
-				if (string.Equals (itemDescription, "Bullet", System.StringComparison.CurrentCultureIgnoreCase)) {
-					playerManager.health -= 1;
+				if (string.Equals (itemDescription, "Obstacle", System.StringComparison.CurrentCultureIgnoreCase)) {
+				
+					playerManager.health -= healthEffect;
 					AudioManager.Instance.PlayDirectSound ("Collision", true);
-					gameObject.SetActive (false);
-				}
-				if (string.Equals (itemDescription, "CO2", System.StringComparison.CurrentCultureIgnoreCase)) {
-					playerManager.health -= 1;
-					AudioManager.Instance.PlayDirectSound ("Collision", true);
-					Destroy (this.gameObject);
-				}
-				if (string.Equals (itemDescription, "AirPlane", System.StringComparison.CurrentCultureIgnoreCase)) {
-					playerManager.health -= 1;
-					AudioManager.Instance.PlayDirectSound ("Collision", true);
-					Destroy (this.gameObject);
-				}
-				if (string.Equals (itemDescription, "Bird", System.StringComparison.CurrentCultureIgnoreCase)) {
-					playerManager.health -= 1;
-					AudioManager.Instance.PlayDirectSound ("Collision", true);
-					Destroy (this.gameObject);
-				}
-				if (string.Equals (itemDescription, "Jet", System.StringComparison.CurrentCultureIgnoreCase)) {
-					playerManager.health -= 1;
-					AudioManager.Instance.PlayDirectSound ("Collision", true);
-					Destroy (this.gameObject);
-				}
-				if (string.Equals (itemDescription, "Satelite", System.StringComparison.CurrentCultureIgnoreCase)) {
-					playerManager.health -= 1;
-					AudioManager.Instance.PlayDirectSound ("Collision", true);
-					Destroy (this.gameObject);
+					Vector3 HitLocation = other.transform.position;
+					StartCoroutine( GameController.Instance.HitEffectLocation (HitLocation));
+
 				}
 
-			}
+
+
+			}else
+				Destroy (this.gameObject);
+				
 
 		}else if (other.CompareTag ("Bullet")) {
 
