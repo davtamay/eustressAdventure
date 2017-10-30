@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class WackSpawner : MonoBehaviour {
 
-	[SerializeField] private Transform[] bushLocations;
+
 	private Transform closestBush;
+
+	[SerializeField] private float initPosRandomOffsetMinLimits;
+	[SerializeField] private float initPosRandomOffsetMaxLimits;
 
 	[SerializeField] private float speed;
 	[SerializeField] private float distanceBushOffset;
@@ -14,62 +17,75 @@ public class WackSpawner : MonoBehaviour {
 	private Transform playerTransform;
 
 	private Transform thisTransform;
-	//private Transform ghostTransform;
 	private Animator thisAnimator;
 	private Collider thisCollider;
-	private Vector3 initPos;
+	[SerializeField]private Vector3 initPos;
 
 
 	void Awake(){
 
 
 		thisTransform = transform;
-		initPos = thisTransform.position;
+		//initPos = thisTransform.position;
 		thisCollider = GetComponent<Collider> ();
-		thisAnimator = GetComponent<Animator> ();
+		thisAnimator = GetComponentInChildren<Animator> ();
 
 		playerTransform = GameObject.FindWithTag ("Player").transform;
-	//	ghostTransform = thisTransform.GetChild (0);
+
 	
 	}
-	void OnEnable(){
-	
-		float closestBushDistance = Mathf.Infinity;
-		
-		foreach (Transform bs in bushLocations) {
-		
-			if (Vector3.Distance (thisTransform.position, bs.position) < closestBushDistance) {
+	//10/28/17 changed from onenable to prevent errors
+	void Start(){
+		initPos = thisTransform.position;
+
 			
+		StopAllCoroutines ();
+		ChooseAndSeekClosestBush ();
+		SetRandomPos ();
+	}
+
+	public void ChooseAndSeekClosestBush(){
+
+		
+		float closestBushDistance = Mathf.Infinity;
+
+		foreach (Transform bs in WackGameManager.Instance.totalBranches) {
+
+			if (Vector3.Distance (thisTransform.position, bs.position) < closestBushDistance) {
+
+				if (!WackGameManager.Instance.BranchHasBerries (bs))
+					continue;
+
 				closestBush = bs;
 				closestBushDistance = Vector3.Distance (thisTransform.position, bs.position);
-			
+
 			}
-	
-		
+
 		}
 		StartCoroutine (SeekBush ());
 	
-	
 	}
-	//bool isSeekingBush;
+
 	Vector3 dir;
 	IEnumerator SeekBush(){
 
+
 		while(true){
 
+			if (!closestBush)
+				closestBush = WackGameManager.Instance.totalBranches [0];
+				
 			if(thisAnimator.GetCurrentAnimatorStateInfo (0).IsName ("Idle")){
 				yield return null;
 				continue;
-
 			}
-
+			//Debug.Log (gameObject.name + Vector3.Distance (thisTransform.position, closestBush.position));
 			yield return null;
 			dir = closestBush.position - thisTransform.position;
 			dir.y = 0;
 			thisTransform.position += dir.normalized * Time.deltaTime * speed;
 			thisTransform.rotation = Quaternion.LookRotation (dir, Vector3.up);
-		//	ghostTransform.rotation = Quaternion.LookRotation (playerTransform.position - ghostTransform.position, Vector3.up);
-
+		
 			if (Vector3.Distance (thisTransform.position, closestBush.position) < distanceBushOffset) {
 				StartCoroutine (EatFruit ());
 				thisAnimator.SetTrigger("IsEating");
@@ -81,29 +97,33 @@ public class WackSpawner : MonoBehaviour {
 	private float timer;
 	IEnumerator EatFruit(){
 
+		timer = 0;
 		while(true){
 
 			yield return null;
 			timer += Time.deltaTime;
 
 			if (timer > timeUntilOneLessBerry) {
-			
-				WackGameManager.Instance.ReduceBerry ();
-				//Debug.Log ("ONE LESS BERRY");
-				timer = 0;
+				
+				WackGameManager.Instance.ReduceBerry (closestBush);
+				ChooseAndSeekClosestBush ();
+				break;
 			}
 
 		}
 
 	}
-	public void BackToInitialPosition(){
+	public void SetRandomPos(){
 
-	//	ghostTransform.GetComponent<Animator> ().SetTrigger ("IsDead");
-
-	//	thisAnimator.Play ("Idle");
 		StopAllCoroutines ();
-		thisTransform.position = initPos;
-	//	thisCollider.enabled = true;
+		float randomX = Random.Range(initPosRandomOffsetMinLimits, initPosRandomOffsetMaxLimits);
+		float randomZ = Random.Range(initPosRandomOffsetMinLimits, initPosRandomOffsetMaxLimits);
+
+		Vector3 initTo =  WackGameManager.Instance.centerPos.position + new Vector3 (randomX, 0, randomZ);
+		initTo.y = transform.position.y;
+
+		thisTransform.position = initTo;
+
 		StartCoroutine (SeekBush ());
 
 	//	thisTransform.gameObject.SetActive (true);

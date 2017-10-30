@@ -305,13 +305,13 @@ public class DataManager : MonoBehaviour {
 		List<GameObject> sList = new List<GameObject> ();
 
 
-		foreach (string str in PlayerManager.Instance.StringToGODict.Keys){
+		foreach (string str in PlayerInventory.Instance.StringToGODict.Keys){
 			
 			for (int i = 0; i < slotListItemNames.Count; i++)
 				if (str == slotListItemNames [i]) {
 
 			//	Debug.Log ("LOADITEMLIST SLOTLISTSTRINGS :" + slotListStrings[i]);
-					sList.Add (PlayerManager.Instance.StringToGODict [str]);
+					sList.Add (PlayerInventory.Instance.StringToGODict [str]);
 
 				}
 			

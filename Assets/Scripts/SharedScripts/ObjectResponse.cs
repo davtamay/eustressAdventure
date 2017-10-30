@@ -1,85 +1,85 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ItemResponse : MonoBehaviour {
+public class ObjectResponse : MonoBehaviour {
 
 	private GameObject player;
-	private PlayerManager playerManager;
+
+	//private PlayerManager playerManager;
 	public string itemDescription = string.Empty;
+	[Tooltip("If Clicking isObstacle you can leave itemDescription Empty")]
+	[SerializeField]private bool isObstacle = false;
 
 	[SerializeField]private int healthEffect;
 
 
+
 	void Awake(){
 		player = GameObject.FindWithTag ("Player");
-		playerManager = player.GetComponent<PlayerManager>();
+	//	playerManager = player.GetComponent<PlayerManager>();
 	}
-
-	//private int curEnemy = 0;
 
 	void OnTriggerEnter (Collider other){
 
 		if (other.CompareTag ("Player")) {
-			
-			if (string.Equals (itemDescription, "Coin", System.StringComparison.CurrentCultureIgnoreCase)) {
-				playerManager.points = 1;
-				AudioManager.Instance.PlayDirectSound ("SmallWin", true);
-				Destroy (this.gameObject);
-			}
-			else if (string.Equals (itemDescription, "Armor", System.StringComparison.CurrentCultureIgnoreCase)) {
-				playerManager.AddArmor ();
-				AudioManager.Instance.PlayDirectSound ("Reward", true);
-				Destroy (this.gameObject);
-			}
-			else if (string.Equals (itemDescription, "Health", System.StringComparison.CurrentCultureIgnoreCase)) {
-				playerManager.health += 1;
-				AudioManager.Instance.PlayDirectSound ("Reward", true);
-				Destroy (this.gameObject);
-			}
 
-			else if (string.Equals (itemDescription, "Speed", System.StringComparison.CurrentCultureIgnoreCase)) {
-				AudioManager.Instance.PlayDirectSound ("Reward", true);
-				Destroy (this.gameObject);
-				EnemyManager.Instance.ReduceSpeed ();
-			}
+			if (!isObstacle) {
+				if (string.Equals (itemDescription, "Coin", System.StringComparison.CurrentCultureIgnoreCase)) {
+					PlayerManager.Instance.points = 1;
+					AudioManager.Instance.PlayDirectSound ("SmallWin", true);
+					Destroy (this.gameObject);
+				} else if (string.Equals (itemDescription, "Armor", System.StringComparison.CurrentCultureIgnoreCase)) {
+					PlayerManager.Instance.AddArmor ();
+					AudioManager.Instance.PlayDirectSound ("Reward", true);
+					Destroy (this.gameObject);
+				} else if (string.Equals (itemDescription, "Health", System.StringComparison.CurrentCultureIgnoreCase)) {
+					PlayerManager.Instance.health += 1;
+					AudioManager.Instance.PlayDirectSound ("Reward", true);
+					Destroy (this.gameObject);
+				} else if (string.Equals (itemDescription, "Speed", System.StringComparison.CurrentCultureIgnoreCase)) {
+					AudioManager.Instance.PlayDirectSound ("Reward", true);
+					Destroy (this.gameObject);
+					EnemyManager.Instance.ReduceSpeed ();
+				}
 	//		else if (string.Equals (itemDescription, "Size", System.StringComparison.CurrentCultureIgnoreCase)) {
-
 		//		Destroy (this.gameObject);
 		//		EnemyManager.Instance.ReduceSize ();
 		//	}
 			else if (string.Equals (itemDescription, "RunAway", System.StringComparison.CurrentCultureIgnoreCase)) {
-				AudioManager.Instance.PlayDirectSound ("Reward", true);
-				Destroy (this.gameObject);
-				EnemyManager.Instance.RunAway ();
-			}
-			else if (string.Equals (itemDescription, "PlayerSpeed", System.StringComparison.CurrentCultureIgnoreCase)) {
-				AudioManager.Instance.PlayDirectSound ("Reward", true);
-				StartCoroutine (SetCollectorPlayerSpeed (gameObject));
+					AudioManager.Instance.PlayDirectSound ("Reward", true);
+					Destroy (this.gameObject);
+					EnemyManager.Instance.RunAway ();
+				} else if (string.Equals (itemDescription, "PlayerSpeed", System.StringComparison.CurrentCultureIgnoreCase)) {
+					AudioManager.Instance.PlayDirectSound ("Reward", true);
+					StartCoroutine (SetCollectorPlayerSpeed (gameObject));
 
-
-			}
-
-
-		
-			//SkyWalker and GetThemDown
-
-
-			if (!playerManager.isInvulnerable) {
-				
-
-				if (string.Equals (itemDescription, "Obstacle", System.StringComparison.CurrentCultureIgnoreCase)) {
-				
-					playerManager.health -= healthEffect;
-					AudioManager.Instance.PlayDirectSound ("Collision", true);
-					Vector3 HitLocation = other.transform.position;
-					StartCoroutine( GameController.Instance.HitEffectLocation (HitLocation));
 
 				}
+				return;
+			}
+			//SkyWalker and GetThemDown
+
+			if (!PlayerManager.Instance.isInvulnerable && isObstacle) {
+				
+
+			//	if (string.Equals (itemDescription, "Obstacle", System.StringComparison.CurrentCultureIgnoreCase)) {
+				
+					PlayerManager.Instance.health -= healthEffect;
+					AudioManager.Instance.PlayDirectSound ("Collision", true);
+					Vector3 HitLocation = transform.position;
+					StartCoroutine (GameController.Instance.HitEffectLocation (HitLocation));
+					Destroy (gameObject);
+				//}
 
 
 
-			}else
-				Destroy (this.gameObject);
+			} else {
+				
+				Vector3 HitLocation = transform.position;
+				StartCoroutine( GameController.Instance.HitEffectLocation (HitLocation));
+				Destroy (gameObject);
+			}
+	
 				
 
 		}else if (other.CompareTag ("Bullet")) {

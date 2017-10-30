@@ -401,30 +401,64 @@ public class AudioManager : MonoBehaviour {
 		return false;
 
 	}
-	public bool StopAudioPlaying(AudioReferanceType audioType, string nameOfASGO){
+	/// <summary>
+	/// Stop specific AudioSources from playing or leave nameOfAS empty to stop all AS under specific AudioReferenceType
+	/// </summary>
+	/// <returns><c>true</c>,not working yet, <c>false</c> otherwise.</returns>
+	/// <param name="audioType">Audio type.</param>
+	/// <param name="nameOfASGO">Name of specifit AudioSource or leave empty to turn of all under ReferenceType</param>
+	public bool StopAudioPlaying(AudioReferanceType audioType, string nameOfASGO = ""){
 
 		AudioSource tempAS;
 
 		switch (audioType) {
+
 		case AudioReferanceType._MUSIC:
+
+			if(nameOfASGO == ""){
+				foreach (AudioSource aS in _MusicAudioSourceDictionary.Values)
+					aS.Stop ();
+					return true;
+					}
+
 			tempAS = _MusicAudioSourceDictionary [nameOfASGO];;
 
 			tempAS.Stop ();
 			
 			break;
 		case AudioReferanceType._AMBIENT:
+		
+			if(nameOfASGO == ""){
+				foreach (AudioSource aS in _AmbientAudioSourceDictionary.Values)
+					aS.Stop ();
+				return true;
+			}
+
 			tempAS = _AmbientAudioSourceDictionary [nameOfASGO];;
 
 			tempAS.Stop ();
 
 			break;
 		case AudioReferanceType._DIRECT:
+
+			if(nameOfASGO == ""){
+				foreach (AudioSource aS in _DirectAudioSourceDictionary.Values)
+					aS.Stop ();
+				return true;
+			}
+
 			tempAS = _DirectAudioSourceDictionary [nameOfASGO];
 
 			tempAS.Stop ();
 
 			break;
 		case AudioReferanceType._INTERFACE:
+
+			if(nameOfASGO == ""){
+				foreach (AudioSource aS in _InterfaceAudioSourceDictionary.Values)
+					aS.Stop ();
+				return true;
+			}
 
 			tempAS = _InterfaceAudioSourceDictionary [nameOfASGO];;
 

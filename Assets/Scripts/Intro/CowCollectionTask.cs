@@ -36,7 +36,7 @@ public class CowCollectionTask : CollectTaskInteraction {
 			SaveTaskCompletion();
 
 			if (objectToGive != null) 
-				PlayerManager.Instance.AddItemToSlot (objectToGive);
+				PlayerInventory.Instance.AddItemToSlot (objectToGive);
 
 			UIStressGage.Instance.stress = -180;
 		//	PlayerPrefs.SetInt(nameForPlayerPref,1);

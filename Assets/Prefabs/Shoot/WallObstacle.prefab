@@ -213,7 +213,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013023395926}
   m_LocalRotation: {x: -0, y: -0.10322654, z: -0, w: 0.99465793}
-  m_LocalPosition: {x: -212.22, y: 54.3, z: -345.9}
+  m_LocalPosition: {x: 86.42287, y: 13.332265, z: 325.60312}
   m_LocalScale: {x: 0.59999996, y: 0.59999996, z: 5}
   m_Children:
   - {fileID: 4000011318041836}
@@ -247,6 +247,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -262,6 +263,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -279,6 +281,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -294,6 +297,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -311,6 +315,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -326,6 +331,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -343,6 +349,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -358,6 +365,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -375,6 +383,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -390,6 +399,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -407,6 +417,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -422,6 +433,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -567,10 +579,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012986092224}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e48ca59e069b44cbb663b51833768ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 255e87593345647f0aedc14ef652f984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDescription: Bullet
+  itemDescription: 
+  healthEffect: 1
+  isObstacle: 1
 --- !u!114 &114000012311197858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -579,10 +593,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000014018025782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e48ca59e069b44cbb663b51833768ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 255e87593345647f0aedc14ef652f984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDescription: Bullet
+  itemDescription: 
+  healthEffect: 1
+  isObstacle: 1
 --- !u!114 &114000012325352242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -591,10 +607,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012638222742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e48ca59e069b44cbb663b51833768ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 255e87593345647f0aedc14ef652f984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDescription: Bullet
+  itemDescription: 
+  healthEffect: 1
+  isObstacle: 1
 --- !u!114 &114000013784677016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -603,10 +621,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010001422014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e48ca59e069b44cbb663b51833768ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 255e87593345647f0aedc14ef652f984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDescription: Bullet
+  itemDescription: 
+  healthEffect: 1
+  isObstacle: 1
 --- !u!114 &114000014072109158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -615,10 +635,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012568798594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e48ca59e069b44cbb663b51833768ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 255e87593345647f0aedc14ef652f984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDescription: Bullet
+  itemDescription: 
+  healthEffect: 1
+  isObstacle: 1
 --- !u!114 &114000014171798488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -627,7 +649,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000013800180734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e48ca59e069b44cbb663b51833768ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 255e87593345647f0aedc14ef652f984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDescription: Bullet
+  itemDescription: 
+  healthEffect: 1
+  isObstacle: 1

@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReduceBerry_AnimBehavior : StateMachineBehaviour {
+public class Wack_AnimBehavior_ReturnToInitPos : StateMachineBehaviour {
 
-	//public int popupTimesForBerryReduction;
-	//public int curPopUpTimes;
+	[SerializeField] private float initPosRandomOffsetMinLimits;
+	[SerializeField] private float initPosRandomOffsetMaxLimits;
+
+	[SerializeField] private bool isAppearOnClosestBranchWithBerries;
+
 	public bool isFirstTime;
 	public Vector3 initPos;
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -13,13 +16,47 @@ public class ReduceBerry_AnimBehavior : StateMachineBehaviour {
 
 		if (!isFirstTime) {
 			isFirstTime = true;
-			initPos = animator.transform.position;
+			initPos = animator.transform.parent.position;
 		
 		}
 			
 		if (stateInfo.IsName ("Idle")) {
-		
-			animator.transform.position = initPos;
+
+			float randomX = Random.Range(initPosRandomOffsetMinLimits, initPosRandomOffsetMaxLimits);
+			float randomZ = Random.Range(initPosRandomOffsetMinLimits, initPosRandomOffsetMaxLimits);
+
+			Vector3 initTo;
+			Transform closestBush = null;
+			if (isAppearOnClosestBranchWithBerries) {
+				float closestBushDistance = Mathf.Infinity;
+
+				foreach (Transform bs in WackGameManager.Instance.totalBranches) {
+
+					if (Vector3.Distance (animator.transform.parent.position, bs.position) < closestBushDistance) {
+
+						if (!WackGameManager.Instance.BranchHasBerries (bs))
+							continue;
+
+						closestBush = bs;
+						closestBushDistance = Vector3.Distance (animator.transform.parent.position, bs.position);
+
+					}
+
+				}
+				if (closestBush != null)
+					initTo = closestBush.position + new Vector3 (randomX, 0, randomZ);
+				else
+					initTo = WackGameManager.Instance.totalBranches [0].position;
+			}else
+				initTo =  WackGameManager.Instance.centerPos.position + new Vector3 (randomX, 0, randomZ);
+
+
+
+
+			initTo.y = animator.transform.parent.position.y;
+
+			animator.transform.parent.position = initTo;
+
 		
 		}
 			

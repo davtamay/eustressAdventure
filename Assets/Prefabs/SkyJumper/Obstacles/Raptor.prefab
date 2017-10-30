@@ -16,14 +16,14 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013864198778}
-  - 33: {fileID: 33000012137941160}
-  - 23: {fileID: 23000013034856506}
-  - 114: {fileID: 114000012525597874}
-  - 65: {fileID: 65000012135601544}
-  - 114: {fileID: 114000014038966394}
+  - component: {fileID: 4000013864198778}
+  - component: {fileID: 33000012137941160}
+  - component: {fileID: 23000013034856506}
+  - component: {fileID: 114000012525597874}
+  - component: {fileID: 65000012135601544}
+  - component: {fileID: 114000014038966394}
   m_Layer: 0
   m_Name: Raptor
   m_TagString: Untagged
@@ -38,12 +38,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011866149144}
   m_LocalRotation: {x: 1, y: -0, z: 0, w: 0.000000021855694}
-  m_LocalPosition: {x: -15.008004, y: 0.7744713, z: -5.800181}
+  m_LocalPosition: {x: -13.966667, y: 2.4376383, z: -20.39294}
   m_LocalScale: {x: 50, y: 50, z: 50}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23000013034856506
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -53,12 +53,15 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 68f216c25de1c490a860593684a1e3e7, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -66,12 +69,14 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_StitchSeams: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33000012137941160
 MeshFilter:
@@ -118,8 +123,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000011866149144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e48ca59e069b44cbb663b51833768ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 255e87593345647f0aedc14ef652f984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDescription: Jet
-  isFirst: 0
+  itemDescription: Obstacle
+  healthEffect: 1
+  isObstacle: 1

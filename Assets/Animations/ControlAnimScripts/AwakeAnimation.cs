@@ -5,11 +5,23 @@ using UnityEngine;
 public class AwakeAnimation : MonoBehaviour {
 
 	[SerializeField]string animParamName;
+	[SerializeField]private bool isSubmitParameterWhenOnTrigger = true;
+
+	private Animator animator;
+	void Awake(){
+
+		animator = GetComponentInChildren<Animator> ();
+
+		if(!isSubmitParameterWhenOnTrigger)
+			animator.SetTrigger (animParamName);
+
+	}
 
 	void OnTriggerEnter(){
 
-		Animator animator = GetComponentInChildren<Animator> ();
-		animator.SetTrigger (animParamName);
-	
+		if (isSubmitParameterWhenOnTrigger) {
+			
+			animator.SetTrigger (animParamName);
+		}
 	}
 }

@@ -54,6 +54,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -69,6 +70,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -121,10 +123,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000013166382608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e48ca59e069b44cbb663b51833768ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 255e87593345647f0aedc14ef652f984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemDescription: Bullet
+  healthEffect: 0
+  isObstacle: 0
 --- !u!135 &135000013777591660
 SphereCollider:
   m_ObjectHideFlags: 1

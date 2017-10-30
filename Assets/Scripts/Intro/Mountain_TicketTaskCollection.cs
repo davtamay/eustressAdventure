@@ -13,11 +13,11 @@ public class Mountain_TicketTaskCollection : CollectTaskInteraction {
 		//PlayerPrefs.DeleteAll ();
 		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1) {
 			gOToChangeIsKinematic.isKinematic = false;
-			for (int i = 0; i < PlayerManager.Instance.playerItemSlotGOList.Count; i++) {
+			for (int i = 0; i < PlayerInventory.Instance.playerItemSlotGOList.Count; i++) {
 				//foreach(GameObject gO in PlayerManager.Instance.playerItemSlotGOList){
-				Debug.Log ("ITEMSLOTGOLIST" + i + PlayerManager.Instance.playerItemSlotGOList [i]);
-				if (string.Equals (PlayerManager.Instance.playerItemSlotGOList [i].name, nameOfItemNeeded, System.StringComparison.CurrentCultureIgnoreCase))
-					PlayerManager.Instance.RemoveItemFromSlot (PlayerManager.Instance.playerItemSlotGOList [i]);
+				Debug.Log ("ITEMSLOTGOLIST" + i + PlayerInventory.Instance.playerItemSlotGOList [i]);
+				if (string.Equals (PlayerInventory.Instance.playerItemSlotGOList [i].name, nameOfItemNeeded, System.StringComparison.CurrentCultureIgnoreCase))
+					PlayerInventory.Instance.RemoveItemFromSlot (PlayerInventory.Instance.playerItemSlotGOList [i]);
 			}
 		}
 	}
@@ -39,15 +39,15 @@ public class Mountain_TicketTaskCollection : CollectTaskInteraction {
 	{
 		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1)
 			return;
-		for(int i = 0; i < PlayerManager.Instance.playerItemSlotGOList.Count; i++){
+		for(int i = 0; i < PlayerInventory.Instance.playerItemSlotGOList.Count; i++){
 		//foreach(GameObject gO in PlayerManager.Instance.playerItemSlotGOList){
 			//Debug.Log (gO.name);
-			if (string.Equals (PlayerManager.Instance.playerItemSlotGOList[i].name, nameOfItemNeeded, System.StringComparison.CurrentCultureIgnoreCase)) {
+			if (string.Equals (PlayerInventory.Instance.playerItemSlotGOList[i].name, nameOfItemNeeded, System.StringComparison.CurrentCultureIgnoreCase)) {
 
 				gOToChangeIsKinematic.isKinematic = false;
 
 
-				PlayerManager.Instance.RemoveItemFromSlot (PlayerManager.Instance.playerItemSlotGOList[i]);
+				PlayerInventory.Instance.RemoveItemFromSlot (PlayerInventory.Instance.playerItemSlotGOList[i]);
 
 				SaveTaskCompletion();
 				//Debug.Log ("NAMEOFOBJECTTOBEERASED" + gO.name);

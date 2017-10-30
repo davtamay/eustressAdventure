@@ -78,7 +78,7 @@ public class SetGameScore : MonoBehaviour {
 				break;
 
 			case Game.SHOOT:
-				curTextMesh.text = "HighScore: " + DataManager.Instance.LoadShootScore();
+				curText.text = "HighScore: " + DataManager.Instance.LoadShootScore();
 				break;
 
 			case Game.HIT:

@@ -10,8 +10,8 @@ public class WackLookClick : MonoBehaviour {
 	public static float speedDifficulty = 1f;
 	private float timer;
 
-	private int isIdleHash = Animator.StringToHash("IsIdle"); 
-	private int isPopupHash = Animator.StringToHash("IsPopup");
+	//private int isIdleHash = Animator.StringToHash("IsIdle"); 
+	private int isPopupHash = Animator.StringToHash("IsPopUp");
 	private int	isDeadHash = Animator.StringToHash ("IsDead");
 
 
@@ -24,13 +24,15 @@ public class WackLookClick : MonoBehaviour {
 
 	void Start () {
 		cam = Camera.main;
-		StartCoroutine (UpdateGame ());
+		StartCoroutine (UpdateLookRaycast ());
+
+		StartCoroutine (TurnOnController ());
 	}
 
 
 
 
-	IEnumerator UpdateGame(){
+	IEnumerator UpdateLookRaycast(){
 		
 		yield return new WaitForEndOfFrame();
 		currentMole = WackGameManager.Instance.activeMoles [0];
@@ -41,17 +43,17 @@ public class WackLookClick : MonoBehaviour {
 
 				RaycastHit hit;
 
-				if (Physics.SphereCast (ray, 0.2f, out hit, 500, 1 << 13)) {
+			//	if(Physics.Raycast(ray,out hit, 600f)){
+			if (Physics.SphereCast (ray, 0.1f, out hit, 500, 1 << 13) ){
 
-					if (hit.transform.CompareTag ("Ground")) {
-						yield return null;
-					}
-					
-					if (hit.transform.CompareTag ("Wacked")) {
+				Debug.Log ("1ST CALLS BEFORE COMPARETAG");
+				Debug.Log (hit.collider.gameObject.name);
+					if (hit.collider.CompareTag ("Wacked")) {
 
-						Debug.Log ("is Wacked");
-
-						//hit.collider.enabled = false;
+					Debug.Log (hit.collider.gameObject.name);
+				
+					Debug.Log ("2ND CALLS BEFORE COMPARETAG");
+					//	hit.collider.enabled = false;
 
 						GameObject temp = Instantiate(deadCloudActionGO, hit.point, Quaternion.LookRotation(cam.transform.position - hit.point, Vector3.up));
 						Destroy(temp, 5);
@@ -60,108 +62,121 @@ public class WackLookClick : MonoBehaviour {
 						tempAS.transform.position = hit.point;
 						tempAS.Play ();
 
-						yield return StartCoroutine (HitMole (hit.transform.gameObject));
+					//	yield return 
+						StartCoroutine (HitMole (hit.transform.gameObject));
 						
-
-
 
 					}
 					
-					if (hit.transform.CompareTag ("PowerUp")) {
+				/*	if (hit.transform.CompareTag ("PowerUp")) {
 
 					hit.transform.GetComponent<PowerUpResponse> ().Response();
 					//hit.transform.GetComponent<Collider> ().enabled = false;
 
-					}
+					}*/
 
 
-				} else {
-					yield return null;
 				} 
 
 
-				timer += Time.deltaTime;
-
-				if (timer > speedDifficulty) {
-
-				
-
-					
-			
-
-				currentMoleIndex = GetComparedRandomMoleIndex (currentMole);
-
-				while(WackGameManager.Instance.activeMoles [currentMoleIndex].GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).IsTag ("PopUp")) {
-					currentMole = WackGameManager.Instance.activeMoles [Random.Range (0, WackGameManager.Instance.activeMoles.Count)];
-					currentMoleIndex = GetComparedRandomMoleIndex (currentMole);
-					yield return null;
-				}
-					currentMole = WackGameManager.Instance.activeMoles [currentMoleIndex];
-					
-
-					yield return StartCoroutine (TurnOnMole (currentMole));
-					timer = 0;
-
-					//yield return null;
-
-
-				}
 			yield return null;
 
 			}
 		
 	}
 		
-	//make this turn off all for a bit
-	public void TurnOffAllMoles(){
-		
-		Debug.Log ("Turn off is being called");
-		StopAllCoroutines ();
+	private bool isAllowPopUps = true;
+	public IEnumerator TurnOnController(){
 
-		foreach (GameObject mole in WackGameManager.Instance.activeMoles) {
+		while(true ){
 
-			Animator an = mole.GetComponentInChildren<Animator> ();
-			mole.GetComponentInChildren<CapsuleCollider> ().enabled = false;
+			if (!isAllowPopUps) {
+				yield return null;
+				continue;
+			
+			}
 
-		//	an.SetTrigger (isIdleHash);
-			an.SetBool (isPopupHash, false);
+			timer += Time.deltaTime;
+
+			if (timer > speedDifficulty) {
+
+				currentMoleIndex = GetComparedRandomMoleIndex (currentMole);
+				while(WackGameManager.Instance.activeMoles [currentMoleIndex].GetComponentInChildren<Animator> ().GetBool(isPopupHash)){
+					//while(WackGameManager.Instance.activeMoles [currentMoleIndex].GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).IsName("Idle")){
+					//while(WackGameManager.Instance.activeMoles [currentMoleIndex].GetComponentInChildren<Animator> ().GetCurrentAnimatorStateInfo (0).IsTag ("PopUp")) {
+					currentMole = WackGameManager.Instance.activeMoles [Random.Range (0, WackGameManager.Instance.activeMoles.Count)];
+					currentMoleIndex = GetComparedRandomMoleIndex (currentMole);
+					yield return null;
+				}
+				currentMole = WackGameManager.Instance.activeMoles [currentMoleIndex];
+
+
+				yield return StartCoroutine (TurnOnMole (currentMole));
+				timer = 0;
+
+				yield return null;
+
+
+			}
 	
 		}
+	
+	
+	}
+	//make this turn off all for a bit
+	public void TurnOffAllMoles(){
+
+		isAllowPopUps = false;
+
+		Debug.Log ("Turn off is being called");
+
+		Animator an = null;;
+		foreach (GameObject mole in WackGameManager.Instance.activeMoles) {
+
+			an = mole.GetComponentInChildren<Animator> ();
+			mole.GetComponentInChildren<CapsuleCollider> ().enabled = false;
+			an.ResetTrigger (isPopupHash);
+			an.SetTrigger (isDeadHash);
+			//an.SetTrigger (isPopupHash);
+	
+		}
+
 		float timeOff = GameController.Instance.GetNewWaveTime;
 		StartCoroutine (TurnOffAll(timeOff));
-		
 
 	
 	}
 
 	public IEnumerator TurnOffAll(float offTime){
 		
-
+	
 		yield return new WaitForSeconds (offTime);
-			StartCoroutine (UpdateGame());
+			StartCoroutine (UpdateLookRaycast());
 
 		yield return new WaitForEndOfFrame ();
 		foreach (GameObject mole in WackGameManager.Instance.activeMoles) {
 			Animator an = mole.GetComponentInChildren<Animator> ();
 			mole.GetComponentInChildren<CapsuleCollider> ().enabled = false;
 
-			//an.SetTrigger (isIdleHash);
-			an.SetBool (isPopupHash, false);
+			an.ResetTrigger (isPopupHash);
+			an.SetTrigger (isDeadHash);
+		//	an.SetBool (isPopupHash, false);
 		
 		}
+			isAllowPopUps = true;
 			
 		}
 
 
 	IEnumerator TurnOnMole(GameObject mole){
-		//mole.GetComponent<Collider> ().enabled = true;
+		
 		mole.GetComponentInChildren<CapsuleCollider> ().enabled = true;
 
 		Animator an = mole.GetComponentInChildren<Animator> ();
 
-		//an.SetTrigger (isIdleHash);
-		an.SetBool(isPopupHash, true);
 
+		//an.SetBool(isPopupHash, true);
+		an.SetTrigger (isPopupHash);
 
 		yield return null;
 
@@ -173,9 +188,9 @@ public class WackLookClick : MonoBehaviour {
 
 		Animator an = mole.GetComponentInChildren<Animator> ();
 		mole.GetComponentInChildren<CapsuleCollider> ().enabled = false;
+	//	an.SetTrigger(isDeadHash);
+		//an.SetBool (isPopupHash, false);
 
-		an.SetBool (isPopupHash, false);
-		//an.SetTrigger (isIdleHash);
 
 
 		yield return null;
@@ -191,7 +206,6 @@ public class WackLookClick : MonoBehaviour {
 		Animator an = mole.GetComponentInChildren<Animator> ();
 
 		an.SetTrigger (isDeadHash);
-		an.SetBool (isPopupHash, false);
 	
 
 		string moleType = mole.GetComponent<MoleType> ().moleDescription;

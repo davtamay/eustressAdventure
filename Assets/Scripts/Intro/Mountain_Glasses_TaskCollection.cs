@@ -89,7 +89,7 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 		int itemsCollected = 0;
 		int cCount = collectObjParent.childCount;
 
-		foreach(GameObject gO in PlayerManager.Instance.playerItemSlotGOList){
+		foreach(GameObject gO in PlayerInventory.Instance.playerItemSlotGOList){
 
 			for(int i = 0; i < cCount; i++){
 
@@ -107,11 +107,11 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 
 
 			for (int i = 0; i < cCount; i++) {
-				PlayerManager.Instance.RemoveItemFromSlot (collectObjParent.GetChild(i).gameObject);
+				PlayerInventory.Instance.RemoveItemFromSlot (collectObjParent.GetChild(i).gameObject);
 			}
 
 			if (objectToGive != null) 
-				PlayerManager.Instance.AddItemToSlot (objectToGive);
+				PlayerInventory.Instance.AddItemToSlot (objectToGive);
 
 			UIStressGage.Instance.stress = -180;
 

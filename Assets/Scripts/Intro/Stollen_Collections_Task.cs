@@ -43,14 +43,14 @@ public class Stollen_Collections_Task : CollectTaskInteraction {
 
 
 	public override void CheckForTaskCompletion ()
-	{	for(int i = 0; i < PlayerManager.Instance.playerItemSlotGOList.Count; i++){
+	{	for(int i = 0; i < PlayerInventory.Instance.playerItemSlotGOList.Count; i++){
 		//foreach (GameObject GO in PlayerManager.Instance.playerItemSlotGOList) {
 		
-			if (string.Equals (nameOfGONeededForCompletion, PlayerManager.Instance.playerItemSlotGOList[i].name, System.StringComparison.CurrentCultureIgnoreCase))
+			if (string.Equals (nameOfGONeededForCompletion, PlayerInventory.Instance.playerItemSlotGOList[i].name, System.StringComparison.CurrentCultureIgnoreCase))
 				SaveTaskCompletion();
 
 			thisAnimator.SetTrigger ("Complete");
-			PlayerManager.Instance.AddItemToSlot (objectToGive);
+			PlayerInventory.Instance.AddItemToSlot (objectToGive);
 			//thiefGO.SetActive(true);
 			Destroy (thiefGO);
 		}

@@ -29,7 +29,7 @@ public class LookInteraction : MonoBehaviour {
 
 
 	[SerializeField]UnityEvent onSecondaryLookClick;
-	[SerializeField] bool isFirstNotInvokedInsteadOffSecond;
+	[SerializeField] bool isSecondLookEventCalled;
 
 	public Sprite originalSprite;
 	public Image image;
@@ -134,7 +134,7 @@ public class LookInteraction : MonoBehaviour {
 					onLookClick.Invoke ();
 				else{
 
-					if (isFirstNotInvokedInsteadOffSecond)
+					if (isSecondLookEventCalled)
 						onSecondaryLookClick.Invoke ();
 					
 					else {
@@ -173,7 +173,7 @@ public class LookInteraction : MonoBehaviour {
 
 				if (isItemForSlot) {
 					
-					PlayerManager.Instance.AddItemToSlot (transform.parent.gameObject);
+					PlayerInventory.Instance.AddItemToSlot (transform.parent.gameObject);
 					var tempAS = AudioManager.Instance.GetAudioSourceReferance (AudioManager.AudioReferanceType._DIRECT,"PickUp");
 					tempAS.transform.position = transform.position;
 					AudioManager.Instance.PlayDirectSound ("PickUp");

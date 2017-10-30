@@ -193,7 +193,7 @@ public class SceneController : MonoBehaviour {
 
 			}
 			DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
-			DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
+			DataManager.Instance.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
 
 		}
 
@@ -270,7 +270,7 @@ public class SceneController : MonoBehaviour {
 		isSceneLoading = false;
 		Rimage.gameObject.SetActive (false);
 			
-		//OrientationAdjustment.Instance.OrientationChangeToGlobalFront ();
+		OrientationAdjustment.Instance.OrientationChangeToGlobalFront ();
 	
 		yield return null;
 	
@@ -319,7 +319,7 @@ public class SceneController : MonoBehaviour {
 		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
 			DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
 			DataManager.Instance.SavePosition (player.position);
-			DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
+			DataManager.Instance.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
 
 
 

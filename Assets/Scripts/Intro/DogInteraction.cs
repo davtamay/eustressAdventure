@@ -95,7 +95,7 @@ public class DogInteraction : InteractionBehaviour{
 
 		if (other.CompareTag ("Player")) {
 
-			foreach(GameObject gO in PlayerManager.Instance.playerItemSlotGOList){
+			foreach(GameObject gO in PlayerInventory.Instance.playerItemSlotGOList){
 
 
 
