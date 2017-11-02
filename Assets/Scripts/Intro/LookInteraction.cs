@@ -10,6 +10,7 @@ public class LookInteraction : MonoBehaviour {
 	[SerializeField] GameObject imageGO;
 	[SerializeField] float lookTime;
 	[SerializeField] float timeUntilImageDeactivate = 5f;
+	[SerializeField] bool isUnscaledTime;
 	[SerializeField] float lookDistance;
 	[SerializeField] bool isLookAtPlayer = true;
 
@@ -62,10 +63,13 @@ public class LookInteraction : MonoBehaviour {
 
 		imageGO = image.transform.parent.gameObject;
 		imageGO.SetActive (false);
-		thisCollider.enabled = false;
-		
-	}
+		//thisCollider.enabled = false;
 
+
+	}
+	void Start(){
+		StartCoroutine (OnUpdate ());
+	}
 
 	private float timeActive;
 
@@ -74,18 +78,21 @@ public class LookInteraction : MonoBehaviour {
 		timeActive = timeUntilImageDeactivate;
 		isActive = true;
 		imageGO.SetActive (true);
-		thisCollider.enabled = true;
+		//thisCollider.enabled = true;
 
 		thisAnimator.SetBool ("IsActive", true);
 
 		while (0 < timeActive) {
 
 			yield return new WaitForEndOfFrame();
-			//yield return null
+			//yield return new WaitForSecondsRealtime(1
 			if(isLookAtPlayer)
 			imageGO.transform.LookAt (cam.transform);
 
-			timeActive -= Time.deltaTime;
+			if (isUnscaledTime)
+				timeActive -= Time.unscaledDeltaTime;
+			else
+				timeActive -= Time.deltaTime;
 
 		}
 		thisAnimator.SetBool ("IsActive", false);
@@ -96,17 +103,31 @@ public class LookInteraction : MonoBehaviour {
 			
 		isActive = false;
 		imageGO.SetActive (false);
-		thisCollider.enabled = false;
+	//	thisCollider.enabled = false;
 	}
+
+	public void DisableImage(){
+		imageGO.SetActive (false);
+	}
+
+
 
 	private bool isActive;
 	private bool isOriginalImage = true;
-	void Update () {
+	IEnumerator OnUpdate () {
+		
+		while(true){
+			yield return null;
 
+				if(GameController.Instance.Paused && !isUnscaledTime)
+					continue;
+			
 		RaycastHit hit;
 		Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
-		
+
+
 		if (thisCollider.Raycast (ray, out hit, lookDistance)) {
+	//	if (thisCollider.Raycast (ray, out hit, lookDistance)) {
 
 			timeActive = timeUntilImageDeactivate;
 
@@ -121,14 +142,15 @@ public class LookInteraction : MonoBehaviour {
 			
 			}
 
-
-			timer -= Time.deltaTime;
+			if (isUnscaledTime)
+				timer -= Time.unscaledDeltaTime;
+			else
+				timer -= Time.deltaTime;
+				
 			image.fillAmount = timer / lookTime;
 
 			if (0f > timer) {
 				timer = lookTime;
-
-
 
 				if(isOriginalImage)
 					onLookClick.Invoke ();
@@ -139,10 +161,9 @@ public class LookInteraction : MonoBehaviour {
 					
 					else {
 						onLookClick.Invoke ();
-						//onSecondaryLookClick.Invoke ();
 					}
 						
-					}	
+				}	
 
 
 				isOriginalImage = !isOriginalImage;
@@ -165,7 +186,7 @@ public class LookInteraction : MonoBehaviour {
 
 				isActive = false;
 				imageGO.SetActive (false);
-				thisCollider.enabled = false;
+				//thisCollider.enabled = false;
 
 
 				
@@ -209,7 +230,7 @@ public class LookInteraction : MonoBehaviour {
 		}
 
 
-
+	}
 
 		}
 

@@ -28,7 +28,7 @@ public class Mountain_Cave_TaskCollection : CollectTaskInteraction {
 			foreach (GameObject gO in GOToActivateOnCompletion)
 				gO.SetActive (true);
 			//infoCanvasPrefab.SetActive (true);
-			infoTextComponent.text = textAfterCompletion;
+//FIXME commented this out for localization implementation ---			infoTextComponent.text = textAfterCompletion;
 			return;
 		}
 

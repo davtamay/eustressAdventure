@@ -10,12 +10,26 @@ public class SetGameScore : MonoBehaviour {
 
 	public Game curGame;
 	private TextMesh curTextMesh;
-	private Text curText; 
+	[SerializeField]private Text curText; 
 
 	[SerializeField] private bool isUsingTextMesh;
 
 
-	void Start () {
+	//void Start () {
+	/*void Awake(){
+		if (isUsingTextMesh)
+			curTextMesh = GetComponent<TextMesh> ();
+		else
+			curText = GetComponent<Text> ();
+	}*/
+	void Start(){
+		if (isUsingTextMesh)
+			curTextMesh = GetComponent<TextMesh> ();
+		else
+			curText = GetComponent<Text> ();
+
+	}
+	void OnEnable(){
 
 		if (isUsingTextMesh) {
 			curTextMesh = GetComponent<TextMesh> ();
@@ -55,7 +69,16 @@ public class SetGameScore : MonoBehaviour {
 
 
 		} else {
+
+			//Debug.Log (curText);
+
+			if (curText == null)
+				return;
+			
 			curText = GetComponent<Text> ();
+
+
+			//	Debug.LogWarning ("Set Game Score is not registering Text component on Enable");
 			switch (curGame) {
 
 			case Game.FINDER:

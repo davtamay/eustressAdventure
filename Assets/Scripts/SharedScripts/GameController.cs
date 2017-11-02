@@ -72,20 +72,31 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	private bool isMenuPause;
 	private bool paused;
 	public bool Paused {
 
 		get { return paused; }
 
 		set {
-			paused = value;
+
+			if (paused == true && IsMenuActive)
+				isMenuPause = true;
 			
+			paused = value;
+		
 			if (paused) {
+
+				
 				AudioManager.Instance.PauseAmbientMusic ();
 				Time.timeScale = 0;
 			} else {
+
+				if (isMenuPause) {
+					isMenuPause = false;
+					return;
+				}
 				AudioManager.Instance.UnPauseAmbientMusic ();
-				//SettingsControl.Instance.ChangeSoundVol(PlayerPrefs.GetFloat("SoundVolume"));
 				Time.timeScale = 1;
 			}
 		}
@@ -98,13 +109,13 @@ public class GameController : MonoBehaviour {
 		
 	}
 
-	private bool isInfoBubbleActive;
-	public bool IsInfoBubbleActive{
+	//private bool isInfoBubbleActive;
+	/*public bool IsInfoBubbleActive{
 
 		get{ return isInfoBubbleActive;}
 
 		set { isInfoBubbleActive = value;}
-	}
+	}*/
 
 	
 
@@ -117,8 +128,12 @@ public class GameController : MonoBehaviour {
 
 	//private bool isStartMenuActive;
 	public bool IsStartMenuActive{
+		
+		get{ 
+			if(gameStart == null)
+				gameStart = GameObject.FindWithTag ("GameStart");
 
-		get{ return gameStart.activeInHierarchy; }
+			return gameStart.activeInHierarchy; }
 
 	}
 	public void StartGame (){
@@ -213,11 +228,15 @@ public class GameController : MonoBehaviour {
 
 	                       
 	public bool isGameOver{
-		set{ gameOver.SetActive (value);
-			if (true == value)
-				MakeOnlyUIVisible ();
-			else
-				MakeEverythingVisible ();
+		set{ 
+			DataManager.Instance.CheckHighScore (SceneController.Instance.GetCurrentSceneName(),PlayerManager.Instance.points);
+			gameOver.SetActive (value);
+			if (true == value) {
+			//	MakeOnlyUIVisible ();
+
+			} else {
+			//	MakeEverythingVisible ();
+			}
 		
 		}
 

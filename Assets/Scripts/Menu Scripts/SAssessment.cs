@@ -8,9 +8,6 @@ public class SAssessment : MonoBehaviour
 {
 	
 	public string stressFeel;
-	//public GameObject typeOfFeeling;
-
-	//public GameSuggest gSuggest;
 
 	public TextAsset[] cognitiveRefraimingText;
 

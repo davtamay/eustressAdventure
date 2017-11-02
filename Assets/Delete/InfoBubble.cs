@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class InfoBubble : MonoBehaviour {
-
+	/*
 	private Button infoButton;
 	private Image infoButtonImage;
 	private Camera cam;
@@ -19,13 +19,10 @@ public class InfoBubble : MonoBehaviour {
 	[SerializeField] private InfoType infoType;
 
 
-
-
-
 	void Start(){
 
 		
-		GameController.Instance.IsInfoBubbleActive = true;
+		//GameController.Instance.IsInfoBubbleActive = true;
 
 
 		switch (infoType) {
@@ -117,5 +114,5 @@ public class InfoBubble : MonoBehaviour {
 
 		GameController.Instance.IsInfoBubbleActive = false;
 	}
-
+*/
 }

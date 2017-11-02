@@ -30,6 +30,15 @@ public class GameTimer : MonoBehaviour {
 		textToShow = text;
 	
 	}
+
+	public void SetGameOver(string text){
+
+		GameController.Instance.StopTimer ();
+		timerText.color = originalColor;
+		timerText.text = text;
+		StopAllCoroutines ();
+
+	}
 	
 	IEnumerator OnUpdate(){
 

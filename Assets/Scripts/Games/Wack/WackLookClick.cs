@@ -39,6 +39,12 @@ public class WackLookClick : MonoBehaviour {
 	
 			while (true) {
 
+			if (GameController.Instance.IsMenuActive ) {
+				yield return null;
+					continue;
+			
+			}
+				
 				Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
 
 				RaycastHit hit;
@@ -88,13 +94,17 @@ public class WackLookClick : MonoBehaviour {
 	private bool isAllowPopUps = true;
 	public IEnumerator TurnOnController(){
 
-		while(true ){
+		while(true){
+			
+			yield return null;
 
-			if (!isAllowPopUps) {
-				yield return null;
+			if (GameController.Instance.IsMenuActive || GameController.Instance.IsStartMenuActive) 
+				continue;
+
+			if (!isAllowPopUps) 
 				continue;
 			
-			}
+
 
 			timer += Time.deltaTime;
 
@@ -130,14 +140,13 @@ public class WackLookClick : MonoBehaviour {
 
 		Debug.Log ("Turn off is being called");
 
-		Animator an = null;;
 		foreach (GameObject mole in WackGameManager.Instance.activeMoles) {
 
-			an = mole.GetComponentInChildren<Animator> ();
+			Animator an = mole.GetComponentInChildren<Animator> ();
 			mole.GetComponentInChildren<CapsuleCollider> ().enabled = false;
-			an.ResetTrigger (isPopupHash);
+		//	an.ResetTrigger (isPopupHash);
 			an.SetTrigger (isDeadHash);
-			//an.SetTrigger (isPopupHash);
+		
 	
 		}
 
@@ -149,9 +158,10 @@ public class WackLookClick : MonoBehaviour {
 
 	public IEnumerator TurnOffAll(float offTime){
 		
-	
+		isAllowPopUps = false;
+
 		yield return new WaitForSeconds (offTime);
-			StartCoroutine (UpdateLookRaycast());
+		StartCoroutine (UpdateLookRaycast());
 
 		yield return new WaitForEndOfFrame ();
 		foreach (GameObject mole in WackGameManager.Instance.activeMoles) {
@@ -163,6 +173,9 @@ public class WackLookClick : MonoBehaviour {
 		//	an.SetBool (isPopupHash, false);
 		
 		}
+			//yield return new WaitForSeconds (offTime);
+			//StartCoroutine (UpdateLookRaycast());
+
 			isAllowPopUps = true;
 			
 		}
@@ -188,8 +201,9 @@ public class WackLookClick : MonoBehaviour {
 
 		Animator an = mole.GetComponentInChildren<Animator> ();
 		mole.GetComponentInChildren<CapsuleCollider> ().enabled = false;
-	//	an.SetTrigger(isDeadHash);
-		//an.SetBool (isPopupHash, false);
+		an.ResetTrigger (isPopupHash);
+		an.SetTrigger(isDeadHash);
+	//	an.SetBool (isPopupHash, false);
 
 
 

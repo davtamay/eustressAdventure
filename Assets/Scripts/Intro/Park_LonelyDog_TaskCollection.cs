@@ -76,6 +76,7 @@ public class Park_LonelyDog_TaskCollection : CollectTaskInteraction {
 		//if (!PlayerPrefs.HasKey (nameForPlayerPref)) {
 			SaveTaskIdentified ();
 	//	}
+//FIXME commented this out for localization implementation ---		infoTextComponent.text = infoText;
 
 		TriggerInfo ();
 		CheckForTaskCompletion ();

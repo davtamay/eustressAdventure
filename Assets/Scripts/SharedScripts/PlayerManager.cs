@@ -113,7 +113,7 @@ public class PlayerManager : MonoBehaviour {
 
 				if (healthColor.a >= .91f) {
 					StartCoroutine (HealthReduceColor (healthColor));
-					DataManager.Instance.CheckHighScore (curSceneName, _points);
+					//DataManager.Instance.CheckHighScore (curSceneName, _points);
 					GameController.Instance.isGameOver = true;
 					GameController.Instance.Paused = true;
 					AudioManager.Instance.StopAudioPlaying (AudioManager.AudioReferanceType._DIRECT);
@@ -224,6 +224,16 @@ public class PlayerManager : MonoBehaviour {
 
 		thisTransform.localPosition = origPosition;
 	
+	}
+	public void PlayDirectAudio(string audioName){
+
+		AudioManager.Instance.PlayDirectSound (audioName, true);
+	
+	}
+	public void PlayAmbianceAudio(string audioName){
+
+		AudioManager.Instance.PlayAmbientSoundAndActivate(audioName, true, false,0, this.transform);
+
 	}
 	/*public IEnumerator ShowUISlots(){
 

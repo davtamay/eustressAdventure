@@ -33,6 +33,7 @@ AudioMixerController:
     - ae66f388413b34e43922232bf195fb87
     - 733154c9043dc4147ac3157d7fa48879
     - 8ef422954d88f4d76921ffd1dd29da22
+    - 5dd8f4179a09849e19436cebfed7434f
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -270,6 +271,7 @@ AudioMixerGroupController:
   - {fileID: 243394954891705886}
   - {fileID: 243758059810848676}
   - {fileID: 243669124688042090}
+  - {fileID: 243939199254482154}
   m_Volume: 0056abc3f9209482499bf856d506ed8a
   m_Pitch: a76f09fabac954d55a5e4d9939c31aac
   m_Effects:
@@ -348,6 +350,23 @@ AudioMixerGroupController:
   m_Effects:
   - {fileID: 244815572969665386}
   - {fileID: 244549205728636252}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &243939199254482154
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: FallingRocks
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 5dd8f4179a09849e19436cebfed7434f
+  m_Children: []
+  m_Volume: 062f12847761b4ae69561ef9e7e5b61a
+  m_Pitch: 221788a70bf25483eaf9a6a92f2283e9
+  m_Effects:
+  - {fileID: 244488705392733368}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -485,6 +504,19 @@ AudioMixerEffectController:
   m_EffectID: 80fa9541806274ab09e7fd1fb47f5e68
   m_EffectName: Attenuation
   m_MixLevel: 459c1adf881df467abacf925203da2aa
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244488705392733368
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 3df78ab2a8c164136ae5b9d077c4aee5
+  m_EffectName: Attenuation
+  m_MixLevel: db9c173bed0554983a0214a0ed698ec8
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0

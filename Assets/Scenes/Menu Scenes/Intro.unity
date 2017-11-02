@@ -1348,7 +1348,6 @@ GameObject:
   m_Component:
   - component: {fileID: 30376909}
   - component: {fileID: 30376908}
-  - component: {fileID: 30376907}
   - component: {fileID: 30376906}
   - component: {fileID: 30376905}
   m_Layer: 0
@@ -1386,17 +1385,6 @@ MonoBehaviour:
   stressLevel: 0
   position: {x: 0, y: 0, z: 0}
   slotListItemNames: []
---- !u!114 &30376907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 30376904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81a804b71330948f48467bca4d781b72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &30376908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1429,7 +1417,7 @@ Transform:
   m_Children:
   - {fileID: 1529781938}
   m_Father: {fileID: 0}
-  m_RootOrder: 39
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &31474100
 GameObject:
@@ -2720,7 +2708,7 @@ Transform:
   - {fileID: 276197966}
   - {fileID: 474615311}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &61929208
 GameObject:
@@ -2953,6 +2941,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -2962,6 +2955,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -3237,6 +3231,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -3246,6 +3245,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -4595,6 +4595,37 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 106106950}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &107434092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 107434093}
+  m_Layer: 0
+  m_Name: Boundaries
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &107434093
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 107434092}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 246434621}
+  - {fileID: 593006648}
+  - {fileID: 1379611424}
+  m_Father: {fileID: 0}
+  m_RootOrder: 38
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &110519420
 GameObject:
   m_ObjectHideFlags: 0
@@ -5120,6 +5151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -5129,6 +5165,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -6751,6 +6788,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 10
   isLookAtPlayer: 1
   onLookClick:
@@ -6869,6 +6907,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 10
   isLookAtPlayer: 1
   onLookClick:
@@ -7617,6 +7656,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -7641,14 +7685,15 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 0
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isClickEventCalled: 1
   isSMenuOpener: 1
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isEnvChanger: 0
   isGame: 0
   gameScene: 
@@ -7702,7 +7747,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 186568817}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 479593874}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &186568817
@@ -7824,34 +7880,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 187697892}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &189776982
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 1503085975}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 189776983}
-  m_Layer: 0
-  m_Name: Missing Prefab
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &189776983
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 1503085975}
-  m_GameObject: {fileID: 189776982}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 32
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &191410396
 GameObject:
   m_ObjectHideFlags: 0
@@ -7917,6 +7945,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -7926,6 +7959,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 1
   isEnvChanger: 0
   isGame: 0
@@ -10429,6 +10463,47 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!1 &246434620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 246434621}
+  - component: {fileID: 246434622}
+  m_Layer: 0
+  m_Name: Intro-Main
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &246434621
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 246434620}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 107434093}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &246434622
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 246434620}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 197.4366, y: 30, z: 353.9911}
+  m_Center: {x: -1.2817001, y: 10, z: 186.24359}
 --- !u!1 &247479946
 GameObject:
   m_ObjectHideFlags: 0
@@ -13002,6 +13077,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -13011,6 +13091,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 1
   isEnvChanger: 0
   isGame: 0
@@ -13634,7 +13715,7 @@ Transform:
   - {fileID: 976037669}
   - {fileID: 1936703880}
   m_Father: {fileID: 0}
-  m_RootOrder: 38
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &310165697
 GameObject:
@@ -14083,6 +14164,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 15
   isLookAtPlayer: 1
   onLookClick:
@@ -14284,11 +14366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c029f49cadf449d9b030eaf403a5dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: 8, y: 3.32, z: -0.18}
@@ -14300,21 +14377,29 @@ MonoBehaviour:
   InfoSize: {x: 20, y: 20}
   lineRendererStart: {fileID: 0}
   textAnchor: 3
-  infoText: "\n<size=1.5><b>Need a reason to start riding, try:</b></size>\n\n<size=1.2>\n
-    \    *increased cardiovascular fitness\n     *increased muscle strength and flexibility\n
-    \    *improved joint mobility\n     *decreased stress levels\n     *improved posture
-    and coordination\n     *strengthened bones\n     *decreased body fat levels\n
-    \    *prevention or management of disease\n     *reduced anxiety and depression.
-    \n\n\n</size> <size=1><b>Reference:</b> \"Cycling - Health Benefits\", \n<i> Better
-    Health Channel</i>,  2013</size>"
+  keyLocalizationList: []
   timeActive: 10
   infoBackGround: {r: 0, g: 1, b: 1, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: 
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls:
@@ -14332,12 +14417,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
   positionToMoveTo: {fileID: 639618181}
   positionToGetOut: {fileID: 789151768}
@@ -14613,7 +14692,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4489835150705330, guid: 82f17a8cdbf8b409384b27e625f7d0b1, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1748795897515328, guid: 82f17a8cdbf8b409384b27e625f7d0b1, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -14711,6 +14790,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -14720,6 +14804,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 1
   isEnvChanger: 0
   isGame: 0
@@ -14949,7 +15034,7 @@ Transform:
   m_Children:
   - {fileID: 473161728}
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &336821076
 GameObject:
@@ -15111,11 +15196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f65d329d4df14123ad8ba3d1bb36f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: -2.86, y: 0, z: 0}
@@ -15127,29 +15207,36 @@ MonoBehaviour:
   InfoSize: {x: 10, y: 5}
   lineRendererStart: {fileID: 0}
   textAnchor: 4
-  infoText: <size=1>It seems that this can be chipped away.. but with what?</size>
+  keyLocalizationList: []
   timeActive: 5
   infoBackGround: {r: 0, g: 1, b: 1, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: 
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
-  textAfterCompletion: 
   objectToGive: {fileID: 0}
   nameForPlayerPref: test3
   nameOfItemNeeded: RockPick
@@ -17426,10 +17513,23 @@ Transform:
   m_Father: {fileID: 1321493094}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 13.383303, y: 20.12878, z: 173.92262}
---- !u!4 &395502214 stripped
+--- !u!4 &395502214
 Transform:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: b4b6fb7db28f847fab34339c5548ab16, type: 3}
   m_PrefabInternal: {fileID: 275740269}
+  m_GameObject: {fileID: 1143461166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1528458776}
+  - {fileID: 1796692642}
+  - {fileID: 1921537736}
+  - {fileID: 694262636}
+  m_Father: {fileID: 1780543803}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &399401775
 GameObject:
   m_ObjectHideFlags: 0
@@ -23048,6 +23148,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 451359150}
   m_Mesh: {fileID: 4300004, guid: 0887c72d9dae941a89ffe3f0cbd9adff, type: 3}
+--- !u!1 &451822942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1686757079}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2128968128}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &455422132
 GameObject:
   m_ObjectHideFlags: 0
@@ -24147,7 +24262,7 @@ Prefab:
     - target: {fileID: 114683126768222906, guid: 7e446ca4fdd3b4d25bb3b39f83fca310,
         type: 2}
       propertyPath: gameSceneName
-      value: 0
+      value: Wack
       objectReference: {fileID: 0}
     - target: {fileID: 114683126768222906, guid: 7e446ca4fdd3b4d25bb3b39f83fca310,
         type: 2}
@@ -24277,11 +24392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d80b2bd83dc4447b3ccfd3ef77da59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: -8.92, y: 3.04, z: 0}
@@ -24293,27 +24403,35 @@ MonoBehaviour:
   InfoSize: {x: 100, y: 20}
   lineRendererStart: {fileID: 0}
   textAnchor: 4
-  infoText: <size=8>"Construction... hopefully it gets done soon.."</size>
+  keyLocalizationList: []
   timeActive: 5
   infoBackGround: {r: 1, g: 0.76551723, b: 0, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: 
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
 --- !u!65 &476727653
 BoxCollider:
@@ -24549,48 +24667,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.003, y: 0.04, z: 0.02}
   m_Center: {x: -0.0024066623, y: 0.007226689, z: 0.040737104}
---- !u!1001 &479261021
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400078, guid: d6b0d374086774868b640fd354334ed4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.1086824
-      objectReference: {fileID: 0}
-    - target: {fileID: 400078, guid: d6b0d374086774868b640fd354334ed4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.50856626
-      objectReference: {fileID: 0}
-    - target: {fileID: 400078, guid: d6b0d374086774868b640fd354334ed4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.7788967
-      objectReference: {fileID: 0}
-    - target: {fileID: 400078, guid: d6b0d374086774868b640fd354334ed4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400078, guid: d6b0d374086774868b640fd354334ed4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400078, guid: d6b0d374086774868b640fd354334ed4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400078, guid: d6b0d374086774868b640fd354334ed4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400078, guid: d6b0d374086774868b640fd354334ed4, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: d6b0d374086774868b640fd354334ed4, type: 3}
-  m_IsPrefabParent: 0
 --- !u!1 &479593869
 GameObject:
   m_ObjectHideFlags: 0
@@ -24740,6 +24816,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -24749,6 +24830,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 1
@@ -25747,7 +25829,7 @@ Transform:
   m_Children:
   - {fileID: 1989538224}
   m_Father: {fileID: 0}
-  m_RootOrder: 34
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &518015403
 GameObject:
@@ -27036,7 +27118,6 @@ GameObject:
   - component: {fileID: 539130567}
   - component: {fileID: 539130566}
   - component: {fileID: 539130565}
-  - component: {fileID: 539130564}
   m_Layer: 0
   m_Name: DirectMenu
   m_TagString: Untagged
@@ -27044,22 +27125,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &539130564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 539130563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 3
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &539130565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27108,8 +27173,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 539130563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 0.32, z: 0.55}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0.2}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.2}
   m_Children:
   - {fileID: 969605413}
   - {fileID: 2060349927}
@@ -27118,7 +27183,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.11, y: 0.32}
+  m_AnchoredPosition: {x: 0, y: 0.6}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &540306598
@@ -27898,6 +27963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curGame: 2
+  curText: {fileID: 0}
   isUsingTextMesh: 1
 --- !u!102 &553154489
 TextMesh:
@@ -28184,11 +28250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027a171170c7b40568988a51d43b1b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: -3.54, y: -1.95, z: -9.89}
@@ -28200,29 +28261,36 @@ MonoBehaviour:
   InfoSize: {x: 5, y: 5}
   lineRendererStart: {fileID: 0}
   textAnchor: 4
-  infoText: <color=white>"Go away!"</color>
+  keyLocalizationList: []
   timeActive: 3
   infoBackGround: {r: 1, g: 0.5019608, b: 0.50980395, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: 
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
-  textAfterCompletion: ThankYOU!!!!!
   objectToGive: {fileID: 0}
   nameForPlayerPref: test6
   wackScoreToBeat: 6
@@ -28745,6 +28813,47 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 589272920}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &593006647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 593006648}
+  - component: {fileID: 593006649}
+  m_Layer: 0
+  m_Name: Intro-AmuzementPark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &593006648
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 593006647}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 107434093}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &593006649
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 593006647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 197.4366, y: 30, z: 353.9911}
+  m_Center: {x: -1.2817001, y: 10, z: 186.24359}
 --- !u!1 &596125377
 GameObject:
   m_ObjectHideFlags: 0
@@ -29733,6 +29842,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -29742,6 +29856,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -31004,11 +31119,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1038325332754176, guid: 82f17a8cdbf8b409384b27e625f7d0b1,
     type: 2}
   m_PrefabInternal: {fileID: 332066559}
---- !u!1 &662709811 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1847071340730920, guid: 07a5165714682477aba5dce34902d839,
-    type: 2}
-  m_PrefabInternal: {fileID: 1259816327}
 --- !u!1 &663563997
 GameObject:
   m_ObjectHideFlags: 0
@@ -31374,6 +31484,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -31383,6 +31498,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -31834,6 +31950,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1189606643}
   m_Script: {fileID: 11500000, guid: 43c07e43e55a74892a0548af33721a51, type: 3}
+--- !u!1 &691558097 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1169966896797110, guid: 07a5165714682477aba5dce34902d839,
+    type: 2}
+  m_PrefabInternal: {fileID: 862721187}
 --- !u!1 &693107091
 GameObject:
   m_ObjectHideFlags: 0
@@ -48074,6 +48195,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 6
   isLookAtPlayer: 1
   onLookClick:
@@ -49127,7 +49249,6 @@ GameObject:
   - component: {fileID: 792711887}
   - component: {fileID: 792711889}
   - component: {fileID: 792711888}
-  - component: {fileID: 792711890}
   - component: {fileID: 792711892}
   - component: {fileID: 792711891}
   m_Layer: 0
@@ -49191,19 +49312,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 792711886}
---- !u!114 &792711890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 792711886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 820c787e4540449b09410f5224a00876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToSelect: 1.5
-  infoType: 0
 --- !u!114 &792711891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49464,6 +49572,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -49473,6 +49586,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -53732,6 +53846,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 15
   isLookAtPlayer: 1
   onLookClick:
@@ -55351,6 +55466,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -55360,6 +55480,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -55900,7 +56021,7 @@ Prefab:
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: lookDistance
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -56030,7 +56151,7 @@ Prefab:
     - target: {fileID: 135112468360546576, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: m_Radius
-      value: 0.012
+      value: 0.002
       objectReference: {fileID: 0}
     - target: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -56054,6 +56175,16 @@ Prefab:
     - target: {fileID: 1847071340730920, guid: 07a5165714682477aba5dce34902d839, type: 2}
       propertyPath: m_Name
       value: InteractionSelect (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 135112468360546576, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: isUnscaledTime
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 07a5165714682477aba5dce34902d839, type: 2}
@@ -57972,11 +58103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d80b2bd83dc4447b3ccfd3ef77da59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: -0.75, y: 0, z: -13.72}
@@ -57988,27 +58114,35 @@ MonoBehaviour:
   InfoSize: {x: 100, y: 20}
   lineRendererStart: {fileID: 0}
   textAnchor: 4
-  infoText: <size=10> You will die need transportation </size>
+  keyLocalizationList: []
   timeActive: 10
   infoBackGround: {r: 1, g: 0.68275857, b: 0, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: 
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
 --- !u!65 &917014453
 BoxCollider:
@@ -59316,11 +59450,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8236df4e57c40e3a0f0b2467c7fe35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: 0, y: 1.31, z: 1.2}
@@ -59332,29 +59461,36 @@ MonoBehaviour:
   InfoSize: {x: 5, y: 5}
   lineRendererStart: {fileID: 0}
   textAnchor: 4
-  infoText: <size=1>"This is a test"</size>
+  keyLocalizationList: []
   timeActive: 5
   infoBackGround: {r: 0, g: 1, b: 1, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: 
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
-  textAfterCompletion: '"ThisIsComplete"'
   objectToGive: {fileID: 847967326}
   nameForPlayerPref: test1
   collectObjParent: {fileID: 460712095}
@@ -60192,6 +60328,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -60201,6 +60342,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 1
   isEnvChanger: 0
   isGame: 0
@@ -60479,34 +60621,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 959165648}
   m_Mesh: {fileID: 4300006, guid: bed4b15f6efec4ac58258297b21cd986, type: 3}
---- !u!1 &959341582
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 479261021}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 959341583}
-  m_Layer: 0
-  m_Name: Missing Prefab
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &959341583
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 479261021}
-  m_GameObject: {fileID: 959341582}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 33
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &959605328
 GameObject:
   m_ObjectHideFlags: 0
@@ -60753,7 +60867,7 @@ Prefab:
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -60808,7 +60922,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 14a95bd5dbd9746dabe95aa6ea44434f,
+      objectReference: {fileID: 21300000, guid: a1a19abf0a7004c859175dc82a79f833,
         type: 3}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -60877,7 +60991,7 @@ Prefab:
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: lookDistance
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -61007,7 +61121,7 @@ Prefab:
     - target: {fileID: 135112468360546576, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: m_Radius
-      value: 0.012
+      value: 0.002
       objectReference: {fileID: 0}
     - target: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
@@ -61038,7 +61152,7 @@ Prefab:
         type: 2}
       propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 112394694}
+      objectReference: {fileID: 479593874}
     - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
         type: 2}
       propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -61072,6 +61186,46 @@ Prefab:
         type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95401643254744378, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: isUnscaledTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 135112468360546576, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 691558097}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 07a5165714682477aba5dce34902d839, type: 2}
@@ -62515,6 +62669,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 10
   isLookAtPlayer: 1
   onLookClick:
@@ -63025,11 +63180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d80b2bd83dc4447b3ccfd3ef77da59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: -10.6, y: 106, z: 9.8}
@@ -63041,33 +63191,35 @@ MonoBehaviour:
   InfoSize: {x: 30, y: 20}
   lineRendererStart: {fileID: 0}
   textAnchor: 0
-  infoText: "<size=1.5><b>Fear does not have to be \na negative thing, fear can be
-    a sign \nthat you are \"changing and growing\" by: </b></size>\n<size=1.2>\n  *Beeing
-    a sign that you are doing something that\u2019s important to you.\n  *Indicating
-    that you are learning something very new.\n  *Confirming that you are outside
-    of your \n   comfort zone.\n  *Giving you creative energy and ideas.\n  *Causing
-    you to act on something that \n    you know is important.\n</size>\n\n<size=1><b>Reference:</b>
-    \"Five Reasons Why Fear Can Make You Better\", \n<i> Success</i>,  2013</size>"
+  keyLocalizationList: []
   timeActive: 10
   infoBackGround: {r: 0, g: 1, b: 1, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: 
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
 --- !u!64 &1030977016
 MeshCollider:
@@ -63798,11 +63950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d80b2bd83dc4447b3ccfd3ef77da59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: 3.41, y: 0.5, z: 5.25}
@@ -63814,25 +63961,29 @@ MonoBehaviour:
   InfoSize: {x: 50, y: 28}
   lineRendererStart: {fileID: 0}
   textAnchor: 0
-  infoText: "<size=1.5><b> Adrenaline rush can help you in reacting to \"flight or
-    fight\" senarios as a response to stress through: </b></size>\n<size=1.2>\n   *Increasing
-    heart rate (meaning more blood flow)\n   *Increasing blood pressure (the results
-    of increased blood flow)\n   *Enlarging of the pupil (to enable the eye to see
-    and respond more quickly)\n   *Expanding of the air passages in the lungs (to
-    make it possible to oxygenate the blood more efficiently)\n   * Speeding up of
-    the body's metabolism (to produce more energy for the \"fight or flight\")\n   *Redistributing
-    blood to the muscles (ensuring the muscles have all they need for the coming physical
-    exertion)\n   *Maximizing glucose levels (providing the body with quick-acting
-    energy for immediate use)\n</size>\n<size=1><b>Reference:</b> \"Understanding
-    Adrenaline\", <i> FitDay</i>,  N/A</size>"
+  keyLocalizationList: []
   timeActive: 10
   infoBackGround: {r: 0, g: 1, b: 1, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: 
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls:
@@ -63850,12 +64001,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
 --- !u!23 &1054183543
 MeshRenderer:
@@ -63937,7 +64082,7 @@ Transform:
   m_Children:
   - {fileID: 995643098}
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055687145
 GameObject:
@@ -64347,6 +64492,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -64433,6 +64583,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -64602,6 +64753,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -64611,6 +64767,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 1
   isEnvChanger: 0
   isGame: 0
@@ -65035,6 +65192,7 @@ GameObject:
   - component: {fileID: 1079059054}
   - component: {fileID: 1079059053}
   - component: {fileID: 1079059052}
+  - component: {fileID: 1079059056}
   m_Layer: 5
   m_Name: Info
   m_TagString: Untagged
@@ -65096,8 +65254,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1811995675
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1079059055
 RectTransform:
@@ -65119,6 +65277,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 3}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1079059056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1079059051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda30e4fc219f41b7b5fe501ca5e455d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToRotate: {fileID: 1079059055}
+  angleDistanceUntilRotateBack: 80
 --- !u!1 &1079673293
 GameObject:
   m_ObjectHideFlags: 0
@@ -65303,6 +65474,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -65312,6 +65488,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -65515,7 +65692,7 @@ Transform:
   m_Children:
   - {fileID: 1627202600}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1084298064
 GameObject:
@@ -65579,6 +65756,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -65588,6 +65770,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -66292,7 +66475,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: a9169ffcd955342a2be7dcc6da938f7b, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400040, guid: a9169ffcd955342a2be7dcc6da938f7b, type: 3}
       propertyPath: m_LocalRotation.x
@@ -68565,11 +68748,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd44e92b829d34e68b62527698f4252a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: -2.15, y: 2.86, z: 0}
@@ -68581,29 +68759,36 @@ MonoBehaviour:
   InfoSize: {x: 5, y: 5}
   lineRendererStart: {fileID: 0}
   textAnchor: 0
-  infoText: aaaa
+  keyLocalizationList: []
   timeActive: 10
   infoBackGround: {r: 0, g: 1, b: 1, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: 
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
-  textAfterCompletion: 
   objectToGive: {fileID: 0}
   nameForPlayerPref: test5
   nameOfItemNeeded: Ticket
@@ -68693,6 +68878,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1142632526}
   m_Mesh: {fileID: 4300006, guid: 1f002386c2c3b46be9e928c9c18e4c9f, type: 3}
+--- !u!1 &1143461166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 275740269}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 395502214}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1148243410
 GameObject:
   m_ObjectHideFlags: 0
@@ -69777,52 +69977,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerItemSlotGOList: []
   allItemGOInScene: []
---- !u!1001 &1169553460
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400068, guid: 72a21cf6e08db46a7812f12b2e0ee8a2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -10.354492
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: 72a21cf6e08db46a7812f12b2e0ee8a2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.00000023841858
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: 72a21cf6e08db46a7812f12b2e0ee8a2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 46.934288
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: 72a21cf6e08db46a7812f12b2e0ee8a2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: 72a21cf6e08db46a7812f12b2e0ee8a2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: 72a21cf6e08db46a7812f12b2e0ee8a2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: 72a21cf6e08db46a7812f12b2e0ee8a2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: 72a21cf6e08db46a7812f12b2e0ee8a2, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 72a21cf6e08db46a7812f12b2e0ee8a2, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 3fa4857bd0aa7492084c83b6f5a89e32, type: 2}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 72a21cf6e08db46a7812f12b2e0ee8a2, type: 3}
-  m_IsPrefabParent: 0
 --- !u!1 &1170296786
 GameObject:
   m_ObjectHideFlags: 0
@@ -71302,7 +71456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1207857896
 Transform:
   m_ObjectHideFlags: 0
@@ -72403,11 +72557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f81b89ef57d40c889a617112b75251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: -4.57, y: -0.19, z: 2.22}
@@ -72419,38 +72568,19 @@ MonoBehaviour:
   InfoSize: {x: 20, y: 20}
   lineRendererStart: {fileID: 0}
   textAnchor: 0
-  infoText: "<size=1.5><b>Why are dogs humans best friend, well:</b></size>\n\n<size=1.2>\n
-    \  *You'll exercise more.\n   *You'll feel less stressed.\n   *Your social life
-    may improve. \n   *Your kids will be less likely to have\n     allergies.\n   *Your
-    heart will be healthier. \n   *You're less likely to feel depressed.\n   *You
-    can grow old gracefully.\n   *Your risk for general illness decreases.\n   *You\u2019ll
-    feel safer.</size>\n\n <size=1><b>Reference:</b>\"10 Surprising Benefits Of Having
-    A Dog You Didn't Know About\",  <i> Better Health Channel</i>, 2013</size>"
+  keyLocalizationList: []
   timeActive: 14
   infoBackGround: {r: 0, g: 1, b: 1, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: 
-  onInfoDisable:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 688718739}
-        m_MethodName: SetToOriginalSprite
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  isUseQuickDisable: 0
   onCompletion:
     m_PersistentCalls:
       m_Calls:
@@ -72478,7 +72608,28 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  completionText: 
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoDisable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 688718739}
+        m_MethodName: SetToOriginalSprite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  isUseQuickDisable: 0
   timerForActivation: 0
   walkingSpeed: 4.4
   maxDistance: 2.75
@@ -72748,6 +72899,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1288883428}
     m_Modifications:
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2.24
@@ -72817,6 +72973,36 @@ Prefab:
     - target: {fileID: 4410880211456432, guid: 07a5165714682477aba5dce34902d839, type: 2}
       propertyPath: m_LocalScale.z
       value: 30.000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: isSecondLookEventCalled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1288883429}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TakeOffInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 07a5165714682477aba5dce34902d839, type: 2}
@@ -77398,12 +77584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca84d60906814cb79e49ad6b3464fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
+  infoCanvasPrefab: {fileID: 1768661711262548, guid: a486f68d53e804807823901f728b6209,
     type: 2}
   infoOffset: {x: 2.04, y: 1.41, z: 0}
   isAutomaticRotation: 1
@@ -77411,43 +77592,52 @@ MonoBehaviour:
   yInfoRotationOffset: 0
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
-  InfoSize: {x: 5, y: 5}
+  InfoSize: {x: 1, y: 1}
   lineRendererStart: {fileID: 0}
-  textAnchor: 0
-  infoText: What to do?
-  timeActive: 10
+  textAnchor: 4
+  keyLocalizationList:
+  - Settings_Spanish
+  - Settings_English
+  timeActive: 50
   infoBackGround: {r: 0, g: 1, b: 1, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: 
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1288883429}
+        m_MethodName: SetTextLocalizedKey
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Settings_Spanish
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 662709811}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
-  textAfterCompletion: 
   objectToGive: {fileID: 0}
   nameForPlayerPref: test7
   headBone: {fileID: 940476355}
@@ -83313,6 +83503,47 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1373413468}
   m_Mesh: {fileID: 4300002, guid: 2ef5c192737f04b6b86ab67615e8ba5c, type: 3}
+--- !u!1 &1379611423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1379611424}
+  - component: {fileID: 1379611425}
+  m_Layer: 0
+  m_Name: Intro-Desert
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1379611424
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1379611423}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 107434093}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1379611425
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1379611423}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 197.4366, y: 30, z: 353.9911}
+  m_Center: {x: -1.2817001, y: 10, z: 186.24359}
 --- !u!1 &1380463815
 GameObject:
   m_ObjectHideFlags: 0
@@ -84232,11 +84463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099580bba15db4bd7aeeaa07a30d997f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: -2.1, y: 3.97, z: 2.18}
@@ -84248,29 +84474,36 @@ MonoBehaviour:
   InfoSize: {x: 5, y: 5}
   lineRendererStart: {fileID: 0}
   textAnchor: 1
-  infoText: '"During obtaining the obdonospheres"'
+  keyLocalizationList: []
   timeActive: 10
   infoBackGround: {r: 0, g: 1, b: 1, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: AAAA
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
-  textAfterCompletion: 
   objectToGive: {fileID: 0}
   nameForPlayerPref: test4
   scoreNeededForTask: 5
@@ -84448,6 +84681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curGame: 4
+  curText: {fileID: 0}
   isUsingTextMesh: 1
 --- !u!102 &1397149122
 TextMesh:
@@ -85119,11 +85353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d80b2bd83dc4447b3ccfd3ef77da59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: 0, y: 0, z: 0}
@@ -85135,27 +85364,35 @@ MonoBehaviour:
   InfoSize: {x: 0, y: 0}
   lineRendererStart: {fileID: 0}
   textAnchor: 0
-  infoText: mirror test
+  keyLocalizationList: []
   timeActive: 100
   infoBackGround: {r: 0, g: 1, b: 1, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: 
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
 --- !u!65 &1412198049
 BoxCollider:
@@ -85440,6 +85677,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -85449,6 +85691,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -85680,6 +85923,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 6
   isLookAtPlayer: 1
   onLookClick:
@@ -85785,11 +86029,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d80b2bd83dc4447b3ccfd3ef77da59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: -1.43, y: 4.92, z: -4.96}
@@ -85801,21 +86040,29 @@ MonoBehaviour:
   InfoSize: {x: 30, y: 20}
   lineRendererStart: {fileID: 0}
   textAnchor: 0
-  infoText: "<size=1.5><b>Want to improve your life style? Look towards a greener
-    environment since it: </b></size>\n<size=1.2>\n  *has shown to improve self esteem,
-    reduce negative reactions, and\n    vandalism.\n  *demonstrates mental benefits
-    in children through thinking clearly\n    improving function and coping.\n  *
-    reduce blood pressure, muscle tension, feelings of fear,\n     aggression and
-    improve attention.\n  * assist in community cohesion.\n  * aid in medical recovery.\n</size>\n\n<size=1><b>Reference:</b>
-    \"Lifestyle Benefits of Green Spaces\", \n<i> ProjectEverGreen</i>,  N/A</size>"
+  keyLocalizationList: []
   timeActive: 5
   infoBackGround: {r: 0, g: 1, b: 1, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: 
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls:
@@ -85833,12 +86080,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
 --- !u!114 &1417800555
 MonoBehaviour:
@@ -98864,52 +99105,6 @@ Transform:
   m_Father: {fileID: 708205144}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1503085975
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400078, guid: 136a23e1e6b3f4274970c8caf1fa0f0a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 22.472015
-      objectReference: {fileID: 0}
-    - target: {fileID: 400078, guid: 136a23e1e6b3f4274970c8caf1fa0f0a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.0000009536743
-      objectReference: {fileID: 0}
-    - target: {fileID: 400078, guid: 136a23e1e6b3f4274970c8caf1fa0f0a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 287.56192
-      objectReference: {fileID: 0}
-    - target: {fileID: 400078, guid: 136a23e1e6b3f4274970c8caf1fa0f0a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400078, guid: 136a23e1e6b3f4274970c8caf1fa0f0a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400078, guid: 136a23e1e6b3f4274970c8caf1fa0f0a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400078, guid: 136a23e1e6b3f4274970c8caf1fa0f0a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400078, guid: 136a23e1e6b3f4274970c8caf1fa0f0a, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 136a23e1e6b3f4274970c8caf1fa0f0a, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 3fa4857bd0aa7492084c83b6f5a89e32, type: 2}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 136a23e1e6b3f4274970c8caf1fa0f0a, type: 3}
-  m_IsPrefabParent: 0
 --- !u!1 &1504045002
 GameObject:
   m_ObjectHideFlags: 0
@@ -100239,7 +100434,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1529781937}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 201, y: 125, z: 0}
+  m_LocalPosition: {x: 258.5, y: 111, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 637704315}
@@ -100638,11 +100833,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd1e64125c0e44ed87b440d3368c3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: -4.12, y: 0.53, z: 0}
@@ -100654,31 +100844,36 @@ MonoBehaviour:
   InfoSize: {x: 8, y: 8}
   lineRendererStart: {fileID: 0}
   textAnchor: 4
-  infoText: Not Done
+  keyLocalizationList: []
   timeActive: 100
   infoBackGround: {r: 0, g: 1, b: 1, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: '
-
-'
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
-  textAfterCompletion: " \t\tDONE DEAL"
   objectToGive: {fileID: 1788751887}
   nameForPlayerPref: test2
   cowsNeededToCollect:
@@ -104732,6 +104927,35 @@ Transform:
   m_Father: {fileID: 314475868}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -51.681004, y: -74.861, z: 0}
+--- !u!1 &1553511723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1686757079}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1553511724}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1553511724
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1686757079}
+  m_GameObject: {fileID: 1553511723}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2128968128}
+  m_Father: {fileID: 2050706071}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1553830596
 GameObject:
   m_ObjectHideFlags: 0
@@ -105721,6 +105945,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -105730,6 +105959,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 1
   isEnvChanger: 0
   isGame: 0
@@ -107218,6 +107448,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 10
   isLookAtPlayer: 1
   onLookClick:
@@ -107883,6 +108114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -107903,6 +108139,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -108291,7 +108528,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1653405276
 GameObject:
@@ -109580,11 +109817,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685f1d7c481e2462e89c122859824a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInitialInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   infoCanvasPrefab: {fileID: 1826203431715618, guid: 087b785f94c8942b0a2c5dd43131d221,
     type: 2}
   infoOffset: {x: 2.21, y: 1.03, z: 0}
@@ -109596,29 +109828,36 @@ MonoBehaviour:
   InfoSize: {x: 5, y: 5}
   lineRendererStart: {fileID: 0}
   textAnchor: 0
-  infoText: '"They STOLE MY FOOD. I tried to catch up but he was too fast.'
+  keyLocalizationList: []
   timeActive: 5
   infoBackGround: {r: 0, g: 1, b: 1, a: 1}
+  onInitialInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onActionSelect:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  ActionText: 
+  onCompletion:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInfoEnable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInfoDisable:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
-  onCompletion:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  completionText: 
   timerForActivation: 0
-  textAfterCompletion: 
   objectToGive: {fileID: 497029523}
   nameForPlayerPref: test8
   thiefGO: {fileID: 1972324165}
@@ -110247,6 +110486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curGame: 1
+  curText: {fileID: 0}
   isUsingTextMesh: 1
 --- !u!102 &1719512875
 TextMesh:
@@ -110909,6 +111149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -110918,6 +111163,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -111254,6 +111500,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -111263,6 +111514,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 1
   isEnvChanger: 0
   isGame: 0
@@ -112421,6 +112673,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -112430,6 +112687,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -112727,6 +112985,35 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1780056773}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1780543802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 275740269}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1780543803}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1780543803
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 275740269}
+  m_GameObject: {fileID: 1780543802}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 395502214}
+  m_Father: {fileID: 2050706071}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1780601973
 GameObject:
   m_ObjectHideFlags: 0
@@ -113032,6 +113319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curGame: 0
+  curText: {fileID: 0}
   isUsingTextMesh: 0
 --- !u!114 &1787428140
 MonoBehaviour:
@@ -113334,7 +113622,7 @@ Transform:
   m_Children:
   - {fileID: 1106593956}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: -77.395004, y: 91.062004, z: 3.877}
 --- !u!1 &1796692641
 GameObject:
@@ -114407,6 +114695,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 4
   isLookAtPlayer: 1
   onLookClick:
@@ -115005,6 +115294,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 15
   isLookAtPlayer: 1
   onLookClick:
@@ -115464,7 +115754,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4489835150705330, guid: 82f17a8cdbf8b409384b27e625f7d0b1, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1976904307142028, guid: 82f17a8cdbf8b409384b27e625f7d0b1, type: 2}
       propertyPath: m_Name
@@ -115798,6 +116088,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 15
   isLookAtPlayer: 1
   onLookClick:
@@ -115884,7 +116175,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c5ed152ca7f504b2394546423e3248e1, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5ed152ca7f504b2394546423e3248e1, type: 3}
@@ -116485,6 +116776,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 4
   isLookAtPlayer: 1
   onLookClick:
@@ -116792,7 +117084,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4489835150705330, guid: 82f17a8cdbf8b409384b27e625f7d0b1, type: 2}
       propertyPath: m_RootOrder
-      value: 29
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1976904307142028, guid: 82f17a8cdbf8b409384b27e625f7d0b1, type: 2}
       propertyPath: m_Name
@@ -117989,34 +118281,6 @@ Transform:
   m_Father: {fileID: 1228790284}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -41.720264, y: -4.351984, z: -30.61155}
---- !u!1 &1915540018
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 1169553460}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1915540019}
-  m_Layer: 0
-  m_Name: Missing Prefab
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1915540019
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 1169553460}
-  m_GameObject: {fileID: 1915540018}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 31
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1916670764
 GameObject:
   m_ObjectHideFlags: 0
@@ -120575,7 +120839,7 @@ Transform:
   m_Children:
   - {fileID: 425942437}
   m_Father: {fileID: 0}
-  m_RootOrder: 37
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1985061151
 GameObject:
@@ -120639,6 +120903,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 539130563}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1652203623}
+        m_MethodName: set_Paused
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -120648,7 +120939,8 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
+  isOnStartInvoke: 1
+  isButtonInvoke: 1
   isEnvChanger: 0
   isGame: 0
   gameScene: Intro
@@ -120701,7 +120993,40 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1985061156}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1079059051}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 539130563}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1652203623}
+        m_MethodName: set_Paused
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1985061156
@@ -120727,10 +121052,10 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 0
-  m_FillOrigin: 2
+  m_FillOrigin: 1
 --- !u!222 &1985061157
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -121508,7 +121833,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4489835150705330, guid: 82f17a8cdbf8b409384b27e625f7d0b1, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1976904307142028, guid: 82f17a8cdbf8b409384b27e625f7d0b1, type: 2}
       propertyPath: m_Name
@@ -122721,6 +123046,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 10
   isLookAtPlayer: 1
   onLookClick:
@@ -123070,8 +123396,8 @@ Transform:
   - {fileID: 383950707}
   - {fileID: 1849058279}
   - {fileID: 789151768}
-  - {fileID: 395502214}
-  - {fileID: 2128968128}
+  - {fileID: 1780543803}
+  - {fileID: 1553511724}
   - {fileID: 1536009581}
   - {fileID: 845300974}
   m_Father: {fileID: 322935500}
@@ -123139,6 +123465,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -123148,6 +123479,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -123873,6 +124205,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 10
   isLookAtPlayer: 1
   onLookClick:
@@ -125203,6 +125536,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -125212,6 +125550,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 0
   isEnvChanger: 0
   isGame: 0
@@ -125949,6 +126288,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -125958,6 +126302,7 @@ MonoBehaviour:
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
+  isOnStartInvoke: 0
   isButtonInvoke: 1
   isEnvChanger: 0
   isGame: 0
@@ -126230,7 +126575,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 40
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2121311226
 Transform:
@@ -126508,6 +126853,7 @@ MonoBehaviour:
   imageGO: {fileID: 0}
   lookTime: 1.5
   timeUntilImageDeactivate: 2
+  isUnscaledTime: 0
   lookDistance: 4
   isLookAtPlayer: 1
   onLookClick:
@@ -126791,10 +127137,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2128882462}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &2128968128 stripped
+--- !u!4 &2128968128
 Transform:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: b4b6fb7db28f847fab34339c5548ab16, type: 3}
   m_PrefabInternal: {fileID: 1686757079}
+  m_GameObject: {fileID: 451822942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 402290102}
+  - {fileID: 521718424}
+  - {fileID: 1309361062}
+  - {fileID: 2122652893}
+  m_Father: {fileID: 1553511724}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2132129748
 GameObject:
   m_ObjectHideFlags: 0

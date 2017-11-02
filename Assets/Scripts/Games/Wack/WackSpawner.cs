@@ -21,6 +21,8 @@ public class WackSpawner : MonoBehaviour {
 	private Collider thisCollider;
 	[SerializeField]private Vector3 initPos;
 
+	//[SerializeField]private bool isStable;
+
 
 	void Awake(){
 
@@ -36,15 +38,19 @@ public class WackSpawner : MonoBehaviour {
 	}
 	//10/28/17 changed from onenable to prevent errors
 	void Start(){
+		//if(!isStable){
 		initPos = thisTransform.position;
 
 			
 		StopAllCoroutines ();
-		ChooseAndSeekClosestBush ();
+		closestBush = WackGameManager.Instance.GetClosestBush (thisTransform);
+		StartCoroutine (SeekBush());
 		SetRandomPos ();
+
+	//	}
 	}
 
-	public void ChooseAndSeekClosestBush(){
+	/*public void ChooseAndSeekClosestBush(){
 
 		
 		float closestBushDistance = Mathf.Infinity;
@@ -64,7 +70,7 @@ public class WackSpawner : MonoBehaviour {
 		}
 		StartCoroutine (SeekBush ());
 	
-	}
+	}*/
 
 	Vector3 dir;
 	IEnumerator SeekBush(){
@@ -106,7 +112,11 @@ public class WackSpawner : MonoBehaviour {
 			if (timer > timeUntilOneLessBerry) {
 				
 				WackGameManager.Instance.ReduceBerry (closestBush);
-				ChooseAndSeekClosestBush ();
+				closestBush = WackGameManager.Instance.GetClosestBush (thisTransform);
+				StartCoroutine (SeekBush());
+
+				//closestBush = WackGameManager.Instance.GetClosestBush (thisTransform); //ChooseAndSeekClosestBush ();
+			//	StartCoroutine(SeekBush());
 				break;
 			}
 

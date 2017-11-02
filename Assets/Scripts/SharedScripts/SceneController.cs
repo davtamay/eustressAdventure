@@ -89,7 +89,8 @@ public class SceneController : MonoBehaviour {
 
 		player = GameObject.FindWithTag ("Player").transform;
 
-		if (GetCurrentSceneName () == "Intro")
+		//if (GetCurrentSceneName () == "Intro") 
+		if(GetCurrentSceneName().Contains("Intro"))
 		player.position = DataManager.Instance.LoadPosition ();
 
 		if(UIStressGage.Instance != null)
@@ -133,7 +134,8 @@ public class SceneController : MonoBehaviour {
 		//	anim.SetTrigger ("FadeOut");
 
 			
-		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
+	//	if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
+		if(GetCurrentSceneName().Contains("Intro")){
 			GameController.Instance.Paused = false;
 			player = GameObject.FindWithTag ("Player").transform;
 
@@ -175,7 +177,7 @@ public class SceneController : MonoBehaviour {
 	
 	}
 
-	private bool isFirstScene = true;
+	//private bool isFirstScene = true;
 
 	public void Load(string scene){
 			
@@ -184,7 +186,8 @@ public class SceneController : MonoBehaviour {
 		anim.SetTrigger ("FadeIn");
 
 
-		if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
+		//if (string.Equals (SceneManager.GetActiveScene ().name, "Intro", System.StringComparison.CurrentCultureIgnoreCase)) {
+		if(GetCurrentSceneName().Contains("Intro")){
 			if (!isCustomSavePosition)
 				DataManager.Instance.SavePosition (player.position);
 			else {
@@ -233,8 +236,12 @@ public class SceneController : MonoBehaviour {
 				if (!isSceneLoading) {
 					
 					isSceneLoading = true;
+
 					async = SceneManager.LoadSceneAsync (scene);
+
 					//async.allowSceneActivation = false;
+
+
 					StartCoroutine (WhileSceneIsLoading ());
 
 					yield break;

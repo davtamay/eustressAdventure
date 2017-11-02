@@ -41,7 +41,7 @@ public class DataManager : MonoBehaviour {
 		//DeletePPDataTaskProgress ();
 		//PlayerPrefs.DeleteAll();
 		if (instance) {
-			Debug.Log ("There are two HighScoreManagers");
+			Debug.Log ("There are two DataManagers");
 			return;
 		}
 		instance = this; 

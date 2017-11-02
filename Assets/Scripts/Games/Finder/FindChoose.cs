@@ -12,10 +12,13 @@ public class FindChoose : MonoBehaviour {
 	private PlayerManager playerManager;
 
 	public Image timer;
-	public float timeAmount;
+	public float timeSpeedMultiplier;
+	public float SpeedUpTimePerWinning;
 
-	public int amountUntilGameOver;
+	public int levelToHitForGameOver;
 	public int currentLevel;
+
+	[SerializeField]private ParticleSystem rockFallingPS;
 
 	private Transform player;
 	private Animator playerAnimator;
@@ -39,8 +42,6 @@ public class FindChoose : MonoBehaviour {
 		playerAnimator = player.GetComponent<Animator> ();
 		playerManager = player.GetComponent <PlayerManager> () as PlayerManager;
 
-
-
 		spawner = GetComponent<FinderSpawner>();
 		amountOfFinders = spawner.GetAmountOfFindTargets();
 
@@ -51,9 +52,6 @@ public class FindChoose : MonoBehaviour {
 	//int waveMultiplier = 0;
 	IEnumerator OnUpdate(){
 
-	//	originalPos = player.position;
-
-
 		while (true) {
 
 			yield return null;
@@ -61,7 +59,7 @@ public class FindChoose : MonoBehaviour {
 			if (GameController.Instance.IsStartMenuActive)
 				continue;
 
-			time += timeAmount * Time.deltaTime;
+			time += timeSpeedMultiplier * Time.deltaTime;
 
 			timer.fillAmount -= time;
 
@@ -71,6 +69,9 @@ public class FindChoose : MonoBehaviour {
 
 				spawner.TriggerObjects (500, player.parent.position.y -10 );
 			
+				timeSpeedMultiplier -= SpeedUpTimePerWinning;
+
+				rockFallingPS.Play ();
 				yield return StartCoroutine(spawner.TriggerFinderObjects (player.parent.position.y - 10 ));
 				playerAnimator.Play ("Fall");
 
@@ -86,23 +87,21 @@ public class FindChoose : MonoBehaviour {
 			//	playerAnimator.applyRootMotion = false;
 				yield return new WaitForEndOfFrame ();
 
-				spawner.ActivateFinder ();
-
-
-
-
-
-				//spawner.TriggerFinderObjects (player.parent.position.y);
-
-
-			
-
+				StartCoroutine(spawner.ActivateFinder ());
 
 
 				timer.fillAmount = 1;
 				time = 0;
 				currentLevel -= 1;
 
+				if (currentLevel == levelToHitForGameOver) {
+
+					DataManager.Instance.CheckHighScore (curScene, currentLevel);
+					GameController.Instance.isGameOver = true;
+					GameController.Instance.Paused = true;
+
+
+				}
 			
 			}
 
@@ -117,6 +116,7 @@ public class FindChoose : MonoBehaviour {
 
 				if (hit.transform.gameObject.CompareTag ("FinderObject")) {
 
+					AudioManager.Instance.PlayDirectSound ("SmallWin");
 					hit.transform.GetComponent<Renderer> ().sharedMaterial.SetColor("_EmissionColor", Color.green);
 
 					hit.transform.GetComponent<Collider> ().enabled = false;
@@ -124,28 +124,34 @@ public class FindChoose : MonoBehaviour {
 
 
 					if (objectsFound == amountOfFinders) {
+						rockFallingPS.Stop ();
+						rockFallingPS.Play ();
+
 						pastMovePos = player.position;
 						objectsFound = 0;
 
 						spawner.TriggerObjects (500, player.parent.position.y + 10);
+
+
 						yield return new WaitForSeconds (0.5f);
 						yield return StartCoroutine(spawner.TriggerFinderObjects (player.parent.position.y + 10));
 
+
+						timeSpeedMultiplier += SpeedUpTimePerWinning;
+						/*
 						if (timer.fillAmount > 0.70f)
 							UpdateCoinText (3);
 						else if (timer.fillAmount > 0.35f)
 							UpdateCoinText (2);
 						else if (timer.fillAmount > 0.00f)
 							UpdateCoinText (1);
-
-					
-
+						*/
 
 						playerAnimator.Play ("ClimbUp");
 
 						yield return new WaitUntil (() => playerAnimator.GetCurrentAnimatorStateInfo (0).IsName("Stop"));//playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !playerAnimator.IsInTransition(0));
 					
-						spawner.ActivateFinder ();
+						StartCoroutine(spawner.ActivateFinder ());
 
 						playerAnimator.SetTrigger ("Reset");
 						playerAnimator.applyRootMotion = true;
@@ -156,29 +162,15 @@ public class FindChoose : MonoBehaviour {
 						Vector3 differenceUp = Vector3.zero;
 						differenceUp.y = player.position.y - pastMovePos.y;//player.parent.position.y - originalPos.y ;
 
-
-
 						player.parent.position += differenceUp;
-						//spawner.TriggerFinderObjects (player.parent.position.y);
 
 						yield return null;
 						playerAnimator.applyRootMotion = false;
 					
-
-		
 						timer.fillAmount = 1;
 						time = 0;
 						currentLevel += 1;
-					/*	if (currentLevel == amountUntilGameOver) {
 
-							DataManager.Instance.CheckHighScore (curScene, playerManager.points);
-							GameController.Instance.isGameOver = true;
-							GameController.Instance.Paused = true;
-
-					
-						}*/
-
-						//continue;
 
 					}
 				}	

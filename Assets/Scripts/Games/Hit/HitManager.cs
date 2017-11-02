@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class CoinManager : MonoBehaviour {
+public class HitManager : MonoBehaviour {
 
-	private static CoinManager instance;
-	public static CoinManager Instance {
+	private static HitManager instance;
+	public static HitManager Instance {
 		get{ return instance; }
 	}
+
+	//public List<GameObject> gONotInGround;
 
 	void Awake(){
 	
@@ -17,7 +20,10 @@ public class CoinManager : MonoBehaviour {
 			instance = this;
 		}
 	
+		//gONotInGround = new List<GameObject> ();
+	
 	}
+		
 
 	public void UpdateCoinText(int amountOfPoints){
 

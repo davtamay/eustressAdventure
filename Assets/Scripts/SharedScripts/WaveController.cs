@@ -107,26 +107,77 @@ public class WaveController : MonoBehaviour {
 	}
 
 
-	void Start(){
-		GameController.Instance.TimeToAdd (ref isDone, timeUntilSecondWave);
+	IEnumerator Start(){
 
+		yield return null;
 
 		RandomizeGOToEnable (GOToRespondFirstWave, firstWaveObject);
 
 		foreach (int go1 in myIndices) 
 			firstWaveObject.GetChild (go1).gameObject.SetActive (true);
 
-	//	WackGameManager.Instance.AddMolesToActiveList ();
+		onGameStart.Invoke();
+
+		foreach (int go1 in myIndices) 
+			firstWaveObject.GetChild (go1).gameObject.SetActive (false);
+
+		while (GameController.Instance.IsStartMenuActive)
+			yield return null;
+
+		foreach (int go1 in myIndices) 
+			firstWaveObject.GetChild (go1).gameObject.SetActive (true);
 		
 		//myIndices.Clear();
 
 		//dont add 2 add to active list crashes editor..
-		onGameStart.Invoke();
+		//do not add update moleactivelist here it crashes game on load....
+
 		//onWaveChange.Invoke ();
 
 
 
 		StartCoroutine (OnUpdate ());
+	}
+
+	public void StopWaveAndDisableObjects(){
+
+		StopAllCoroutines ();
+
+		if(firstWaveObject != null)
+			foreach (Transform gO1 in firstWaveObject) {
+				gO1.gameObject.SetActive (false);
+
+			}
+
+		if(secondWaveObject != null)
+			foreach (Transform gO2 in secondWaveObject) {
+				gO2.gameObject.SetActive (false);
+
+			}
+
+		if(thirdWaveObject != null)
+			foreach (Transform gO3 in thirdWaveObject) {
+				gO3.gameObject.SetActive (false);
+			}
+
+		if(fourthWaveObject != null)
+			foreach (Transform gO4 in fourthWaveObject) {
+				gO4.gameObject.SetActive (false);
+
+			}
+
+		if(fifthWaveObject != null)
+			foreach (Transform gO5 in fifthWaveObject) {
+				gO5.gameObject.SetActive (false);
+
+			}
+
+		if(sixWaveObject != null)
+			foreach (Transform gO6 in sixWaveObject) {
+				gO6.gameObject.SetActive (false);
+
+			}
+
 	}
 
 
@@ -139,6 +190,11 @@ public class WaveController : MonoBehaviour {
 		bool isFourthWave = false;
 		bool isFifthWave = false;
 	//	bool isSixWave = false;
+
+
+		
+		GameController.Instance.TimeToAdd (ref isDone, timeUntilSecondWave);
+	
 
 		onFirstWaveStart.Invoke ();
 
@@ -171,15 +227,12 @@ public class WaveController : MonoBehaviour {
 
 				if(secondWaveObject != null)
 				onSecondWaveStart.Invoke ();
-			//	myIndices.Clear();
+			//myIndices.Clear();
 
 				isFirstWave = false;
 				isSecondWave = true;
 
-			}	
-			
-		
-			if (isDone && isSecondWave) {
+			}	else if (isDone && isSecondWave) {
 				isDone = false;
 
 				if (!isRemainAfterWave)
@@ -212,8 +265,7 @@ public class WaveController : MonoBehaviour {
 			
 
 
-			}
-			if (isDone && isThirdWave) {
+			}else if (isDone && isThirdWave) {
 				isDone = false;
 
 				if (!isRemainAfterWave)
@@ -242,8 +294,7 @@ public class WaveController : MonoBehaviour {
 
 
 
-			}
-			if (isDone && isFourthWave) {
+			} else if (isDone && isFourthWave) {
 
 				if (!isRemainAfterWave)
 				fourthWaveObject.gameObject.SetActive (false);
@@ -271,8 +322,7 @@ public class WaveController : MonoBehaviour {
 
 
 
-			}
-			if (isDone && isFifthWave) {
+			} else if (isDone && isFifthWave) {
 				isDone = false;
 			
 
@@ -316,7 +366,7 @@ public class WaveController : MonoBehaviour {
 			Debug.LogWarning ("numToRespawn/GOToRespond can't be bigger than available childCount");
 			return;
 		}
-		//Debug.Log (ChildCount);
+
 		myIndices = new List<int> (ChildCount);
 
 		for (int i = 0; i < numToRespawn; i++) {

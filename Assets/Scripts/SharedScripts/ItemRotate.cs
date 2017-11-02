@@ -38,9 +38,10 @@ public class ItemRotate : MonoBehaviour {
 
 		while (true) {
 			if (!this.gameObject.activeInHierarchy)
+				StopAllCoroutines ();
 			
 				myTransform.Rotate (turnSpeed * Time.unscaledDeltaTime);
-				StopAllCoroutines ();
+
 		
 			yield return null;
 		}

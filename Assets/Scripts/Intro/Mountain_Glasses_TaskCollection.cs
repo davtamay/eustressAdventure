@@ -14,7 +14,7 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 
 	public override void Start () {
 		
-		infoTextComponent.text = infoText;
+//FIXME commented this out for localization implementation ---	infoTextComponent.text = infoText;
 		thisAnimator = GetComponent<Animator> ();
 		thisSkinMeshRend = GetComponentInChildren<SkinnedMeshRenderer> ();
 		thisAnimator.SetBool ("Idle", false);
@@ -22,11 +22,11 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 
 		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1) {
 		//	thisParticleSystem.startColor = new ParticleSystem.MinMaxGradient (Color.green);
-			infoTextComponent.text = textAfterCompletion;
+//FIXME commented this out for localization implementation ---			infoTextComponent.text = textAfterCompletion;
 			glasses.SetActive (true);
 			collectObjParent.gameObject.SetActive (false);
 			thisAnimator.SetBool ("IsNotLooking", true);
-			infoTextComponent.text = textAfterCompletion;
+//FIXME commented this out for localization implementation ---			infoTextComponent.text = textAfterCompletion;
 			thisSkinMeshRend.SetBlendShapeWeight (0, 20);
 			thisSkinMeshRend.SetBlendShapeWeight (1, 90);
 			thisSkinMeshRend.SetBlendShapeWeight (3, 0);
@@ -103,7 +103,7 @@ public class Mountain_Glasses_TaskCollection : CollectTaskInteraction {
 
 			SaveTaskCompletion ();
 
-			infoTextComponent.text = textAfterCompletion;
+//FIXME commented this out for localization implementation ---			infoTextComponent.text = textAfterCompletion;
 
 
 			for (int i = 0; i < cCount; i++) {

@@ -6,6 +6,7 @@ public class EnemyShooter : MonoBehaviour {
 
 	//public GameObject bullet;
 	public float bulletDelay;
+	[SerializeField]private float magnitudeOffsetDelay;
 	public float bulletSpeed;
 	public GameObject playerTarget;
 	public bool isDirectShoot;
@@ -22,8 +23,8 @@ public class EnemyShooter : MonoBehaviour {
 	IEnumerator OnUpdate(){
 
 		while (true) {
-
-			yield return new WaitForSeconds(bulletDelay);	
+			
+			yield return new WaitForSeconds(bulletDelay + Random.Range(-magnitudeOffsetDelay, magnitudeOffsetDelay));	
 
 
 			if (isDirectShoot) 

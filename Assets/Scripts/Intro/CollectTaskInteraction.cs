@@ -6,7 +6,7 @@ public class CollectTaskInteraction : InteractionBehaviour {
 
 
 	//[SerializeField]protected Transform collectObjParent;
-	[TextArea(0,15)][SerializeField]protected string textAfterCompletion;
+	//[TextArea(0,15)][SerializeField]protected string textAfterCompletion;
 	[SerializeField]protected GameObject objectToGive;
 	[SerializeField]protected string nameForPlayerPref;
 
@@ -16,8 +16,8 @@ public class CollectTaskInteraction : InteractionBehaviour {
 		if (PlayerPrefs.GetInt (nameForPlayerPref) == 1) {
 			//collectObjParent.gameObject.SetActive (false);
 
-			infoTextComponent.text = textAfterCompletion;
-		}//else if( PlayerPrefs.GetInt (nameForPlayerPref) == 0)
+//FIXME commented this out for localization implementation --- infoTextComponent.text = textAfterCompletion;
+		}//else if( Playe		rPrefs.GetInt (nameForPlayerPref) == 0)
 		//	PlayerPrefs.SetInt(nameForPlayerPref,0);
 		//else if(PlayerPrefs.HasKey(!nameForPlayerPref)
 			

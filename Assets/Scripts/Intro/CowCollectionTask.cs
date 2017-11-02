@@ -31,7 +31,7 @@ public class CowCollectionTask : CollectTaskInteraction {
 	{
 		
 		if (CowHomeTrigger.totalCows == cowsNeededToCollect.Length) {
-			infoTextComponent.text = textAfterCompletion;
+//FIXME commented this out for localization implementation ---			infoTextComponent.text = textAfterCompletion;
 			//Debug.Log ("CowCollTrigger : " + CowHomeTrigger.totalCows);
 			SaveTaskCompletion();
 

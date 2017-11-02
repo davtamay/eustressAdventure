@@ -124,7 +124,7 @@ public class FinderSpawner : MonoBehaviour {
 */
 	
 		yield return StartCoroutine(TriggerFinderObjects (0));
-		ActivateFinder ();
+		StartCoroutine(ActivateFinder ());
 				
 
 
@@ -145,6 +145,7 @@ public class FinderSpawner : MonoBehaviour {
 	Vector3 randomCirleUnits;
 
 	Vector2 camPosWRandom;
+	private bool isFirstTime = true;
 	public IEnumerator TriggerFinderObjects (float height){
 
 
@@ -153,9 +154,7 @@ public class FinderSpawner : MonoBehaviour {
 			fO.SetActive (false);
 
 		}
-		
-
-
+	
 		for (int i = 0; i < findTargets.Length; i++){
 
 			camPosWRandom = (new Vector2 (cam.transform.position.x, cam.transform.position.z) + Random.insideUnitCircle); 
@@ -169,41 +168,39 @@ public class FinderSpawner : MonoBehaviour {
 				
 				//LHANDl
 				finderObject = findTargets [i];
-
-
-
 				finderObject.transform.position = randomPos;
 				yield return StartCoroutine (SeparateAndAddToObjectNormal (finderObject.transform, height, i));
-				finderObject.transform.position += Vector3.up * (2f  + Random.Range (-0.5f, 0.5f));
-				//height -= 2f;
+				finderObject.transform.position += Vector3.up * (2f + Random.Range (-0.5f, 0.5f));
 
-			//	while (CheckForFinderIntersections (randomPos, cam.transform.position + Vector3.up * height) && (Vector3.Distance(randomPos, findTargets[2].transform.position ) < 8f)) 
-			//		randomPos = new Vector3 (randomCirleUnits.x, height, randomCirleUnits.y);
+				if (isFirstTime) {
+					finderObject.transform.rotation *= Quaternion.AngleAxis (180, Vector3.up);
+					finderObject.transform.rotation *= Quaternion.AngleAxis (180, Vector3.forward);
+					isFirstTime = false;
+				}
 
-				Debug.Log ("DISTANCE FROM LHANDRANDOM POS TO RHAND : " + Vector3.Distance (finderObject.transform.position, findTargets [2].transform.position) );
-				Debug.Log("RandomPos " + finderObject.transform.position  + "findTargets2" + findTargets[2].transform.position );
+				//Debug.Log ("DISTANCE FROM LHANDRANDOM POS TO RHAND : " + Vector3.Distance (finderObject.transform.position, findTargets [2].transform.position) );
+				//Debug.Log("RandomPos " + finderObject.transform.position  + "findTargets2" + findTargets[2].transform.position );
 
 				break;
 			case 2:
 				
 				//RHAND
 				finderObject = findTargets [i];
-
-			//	while (CheckForFinderIntersections (randomPos, cam.transform.position + Vector3.up * height)) 
-			///		randomPos = new Vector3 (randomCirleUnits.x, height, randomCirleUnits.y);
-				
 				finderObject.transform.position = randomPos;
 				yield return StartCoroutine (SeparateAndAddToObjectNormal (finderObject.transform, height, i));
 				finderObject.transform.position += Vector3.up * (2f + Random.Range (-0.2f, 0.2f)) ;
+
+				if (isFirstTime) {
+
+					finderObject.transform.rotation *= Quaternion.AngleAxis (180, Vector3.up);
+					finderObject.transform.rotation *= Quaternion.AngleAxis (180, Vector3.forward);
+
+				}
 				break;
 			case 1: 
 
 				//LFOOT
 				finderObject = findTargets [i];
-
-				//	while (CheckForFinderIntersections (randomPos, cam.transform.position + Vector3.up * height) && Vector3.Distance(randomPos, findTargets[0].transform.position ) > 10f) 
-				//		randomPos = new Vector3 (randomCirleUnits.x, height, randomCirleUnits.y);
-
 				finderObject.transform.position = randomPos;
 				yield return StartCoroutine (SeparateAndAddToObjectNormal (finderObject.transform, height, i));
 				finderObject.transform.position -= Vector3.up * (1.2f  + Random.Range (-0.2f, 0.2f)) ;
@@ -212,7 +209,6 @@ public class FinderSpawner : MonoBehaviour {
 			case 0:
 				//RFOOT
 				finderObject = findTargets [i];
-
 				finderObject.transform.position = randomPos;
 				yield return StartCoroutine (SeparateAndAddToObjectNormal (finderObject.transform, height, i));
 				finderObject.transform.position -= Vector3.up * ( 1.2f  + Random.Range (-0.2f, 0.2f));
@@ -233,22 +229,24 @@ public class FinderSpawner : MonoBehaviour {
 	}
 
 	}
-	public void ActivateFinder(){
+	public IEnumerator ActivateFinder(){
 
+		while (GameController.Instance.IsStartMenuActive)
+			yield return null;
+		
 		foreach (GameObject fO in findTargets)
 			fO.SetActive (true);
 	
 	
 	}
 
+
 	public IEnumerator SeparateAndAddToObjectNormal(Transform finder, float height, int finderID){
 		bool IsGoingDown = false;
 
-		//if(Mathf.Sign(height) == -1)
-		if(player.parent.position.y  > height)
+		if (player.parent.position.y > height)
 			IsGoingDown = true;
 
-	
 		Vector3 curPos = Vector3.up * height;
 	
 		RaycastHit hit;
@@ -264,16 +262,12 @@ public class FinderSpawner : MonoBehaviour {
 
 				if (hit.transform.CompareTag ("Obstacle")) {
 
-				
 					if (finderID == 1) {
 						if (Vector3.Distance (finder.position, findTargets [0].transform.position) < 1.2f || CheckForFinderIntersections (finder.position, cam.transform.position + Vector3.up * height)) {
-					//	if (Vector3.Angle(finder.position, findTargets [0].transform.position) < 30f){ //findVector3.Distance (finder.transform.position, findTargets [0].transform.position) < 2f) {
-
 							finder.position = randomPos = new Vector3 (randomCirleUnits.x, height, randomCirleUnits.z);
 							continue;
 						}
 					} else if (finderID == 3) {
-					//	if (Vector3.Angle(finder.transform.position, findTargets [2].transform.position) < 30f){
 						if (Vector3.Distance (finder.position, findTargets [2].transform.position) < 1.2f || CheckForFinderIntersections (finder.position, cam.transform.position + Vector3.up * height)) {
 							finder.position = randomPos = new Vector3 (randomCirleUnits.x, height, randomCirleUnits.z);
 							continue;
@@ -281,22 +275,28 @@ public class FinderSpawner : MonoBehaviour {
 					}
 				
 					finder.position = hit.point;
-
-
-					//finder.rotation = (Quaternion.FromToRotation (finder.up, hit.normal)) * finder.rotation;
-					//if(!IsGoingDown)
 					finder.LookAt (cam.transform);
-				//	else
+
+					/*var direction = (cam.transform.position - finder.transform.position).normalized;
+
+					if (Vector3.Dot (finder.up, direction) < 0.90f) {
+						finder.LookAt (2* direction);
+
+					
+					}*/
+
 					if (IsGoingDown) {
 						finder.rotation *= Quaternion.AngleAxis (180, Vector3.up);
 						finder.rotation *= Quaternion.AngleAxis (180, Vector3.forward);
-					}
-					//	finder.LookAt (2 *  finder.transform.position - cam.transform.position);
-					yield break;
-				}
+					} 
+
 					
 
 
+
+					yield break;
+				}
+					
 			} 
 
 
@@ -307,14 +307,10 @@ public class FinderSpawner : MonoBehaviour {
 
 				yield return null;
 
-
+		
 		}
 
-
-	//	thisTransform.rotation *= Quaternion.Euler (Vector3.right* 90);
-	
-	
-	
+			
 	}
 	public void CheckForObstacleIntersections (Vector3 from, Vector3 to){
 	

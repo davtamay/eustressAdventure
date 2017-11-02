@@ -9,7 +9,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof (Collider))]
 public class ButtonClickLook : MonoBehaviour {
 	//currently only have meditation on this event;
+	[SerializeField]private UnityEvent OnStart;
 	[SerializeField]private UnityEvent OnClick;
+
 	[SerializeField] bool isClickEventCalled = false;
 
 
@@ -27,6 +29,8 @@ public class ButtonClickLook : MonoBehaviour {
 	public bool isSType = false;
 
 	public bool isStressed = false;
+
+	public bool isOnStartInvoke = false;
 	public bool isButtonInvoke = false;
 
 	public bool isEnvChanger = false;
@@ -55,7 +59,7 @@ public class ButtonClickLook : MonoBehaviour {
 
 
 	public enum StressTypes{angry, anxious, dissapointed, frustrated, sad, worried, none};
-	//public enum MenuCoping {breathing, counting, refraiming, music, paint, meditation, none};
+
 
 	public enum MusicPlayerButton{play,stop,next,previous, none}
 	public MusicPlayerButton curMusicButton;
@@ -81,13 +85,14 @@ public class ButtonClickLook : MonoBehaviour {
 		col = GetComponent <Collider> ();
 
 		cam = Camera.main;
+
+		if (isOnStartInvoke)
+			OnStart.Invoke ();
 	}
 
 
 	private bool isLooking = false;
 	CoroutineController controller;
-
-
 	void Update(){
 
 		if (SceneController.isSceneLoading)
@@ -194,7 +199,7 @@ public class ButtonClickLook : MonoBehaviour {
 				} else if (isRestartProgress) {
 
 					//PlayerPrefs.SetInt ("MainGameEvent") == 0;
-					AudioManager.Instance.PlayInterfaceSound("SpecialSelect");
+					AudioManager.Instance.PlayInterfaceSound ("SpecialSelect");
 
 					DataManager.Instance.DeleteHighScoreSlotandPositionData (homePosition);
 					DataManager.Instance.DeletePPDataTaskProgress ();
@@ -204,7 +209,7 @@ public class ButtonClickLook : MonoBehaviour {
 			
 			
 			
-				}else if (isEnvChanger) {
+				} else if (isEnvChanger) {
 
 					SceneController.Instance.ChangeSkyBox ();
 
@@ -221,17 +226,19 @@ public class ButtonClickLook : MonoBehaviour {
 			
 				} else if (isStartButton) {
 
-					AudioManager.Instance.PlayInterfaceSound("SpecialSelect");
+					AudioManager.Instance.PlayInterfaceSound ("SpecialSelect");
 
 					GameController.Instance.StartGame ();
-				//	10/24/17
+					//	10/24/17
 					//GameController.Instance.Paused = false;
 					
 
 
-				} else if (isReplayButton)
+				} else if (isReplayButton){
+					//DOESN NOT CRASS WITH INTRO BUT DOES WITH WACK, IT IS SPECIFIC TO SCENE:WACK
+					//LoadScene ("Intro");
 					SceneController.Instance.ResetCurrentGame ();
-				else if (isResetPositiontoHome) {
+				}else if (isResetPositiontoHome) {
 
 			
 					SceneController.Instance.isCustomSavePosition = true;

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public class WackGameManager : MonoBehaviour {
 
 	[SerializeField]public WaveController waveController;
+//	[SerializeField]public WackLookClick wacklookClick;
 
 	public Transform centerPos;
 	//[SerializeField]private WackBerryController wackBerryController;
@@ -17,7 +18,8 @@ public class WackGameManager : MonoBehaviour {
 	public Transform[]totalBranches;
 	private List<Transform> totalBerries;
 	[SerializeField]private int berriesLeft;
-
+	[SerializeField]private Text berriesText;
+	[SerializeField]private GameTimer gameTimer;
 
 
 	public static WackGameManager Instance
@@ -52,6 +54,7 @@ public class WackGameManager : MonoBehaviour {
 		}
 
 		berriesLeft = totalBerries.Count;
+		berriesText.text = ": " + berriesLeft; 
 	
 	
 	}
@@ -79,8 +82,15 @@ public class WackGameManager : MonoBehaviour {
 				totalBerries.Remove (be);
 				berriesLeft -= 1;
 
-				if (berriesLeft == 0)
+				if (berriesLeft == 0) {
 					GameController.Instance.isGameOver = true;
+					gameTimer.SetGameOver ("No More Berries :(");
+					StartCoroutine (GetComponent<WackLookClick>().TurnOffAll (Mathf.Infinity));
+					waveController.StopWaveAndDisableObjects ();
+					//text = "No More Berries :(";
+				}
+
+				berriesText.text = ": " + berriesLeft; 
 
 				break;
 			}
@@ -88,15 +98,41 @@ public class WackGameManager : MonoBehaviour {
 		}
 	}
 
+	public Transform GetClosestBush(Transform moleTrans){
+		Transform closestBush = null;
+
+		float closestBushDistance = Mathf.Infinity;
+
+		foreach (Transform bs in WackGameManager.Instance.totalBranches) {
+
+			if (Vector3.Distance (moleTrans.position, bs.position) < closestBushDistance) {
+
+				if (!BranchHasBerries (bs))
+					continue;
+
+				closestBush = bs;
+				closestBushDistance = Vector3.Distance (moleTrans.position, bs.position);
+
+			}
+
+		}
+		return closestBush;
+	//	StartCoroutine (SeekBush ());
+
+	}
+
 		
 
 	public void UpdateMoleActiveList(){
+
+		if (totalMoles.Length == 0)
+			return;
 		
 		for (int i = 0; i < totalMoles.Length; i++) {
 
 			if (totalMoles [i].activeInHierarchy) {
-				if(activeMoles.Contains(totalMoles[i]))
-				   continue;
+				if (activeMoles.Contains (totalMoles [i]))
+					continue;
 				else
 				activeMoles.Add (totalMoles [i]);
 				   }
@@ -104,4 +140,6 @@ public class WackGameManager : MonoBehaviour {
 		}
 		//Debug.Log ("Number of active moles: " + WackGameManager.Instance.activeMoles.Count);
 	}
+
+	//public void Sto
 }

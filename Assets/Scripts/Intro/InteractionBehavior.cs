@@ -9,7 +9,7 @@ using UnityEngine;
 public class InteractionBehaviour : MonoBehaviour {
 
 	//[SerializeField]
-	public UnityEvent onInitialInteraction;
+
 
 	[Header("UI Text Settings")]
 	[SerializeField]protected GameObject infoCanvasPrefab;
@@ -26,20 +26,28 @@ public class InteractionBehaviour : MonoBehaviour {
 	[SerializeField]protected Transform lineRendererStart;
 	//[SerializeField]protected TextAlignment textAllignment = TextAlignment.Left;
 	[SerializeField]protected TextAnchor textAnchor = TextAnchor.UpperLeft;
-	[TextArea(0,15)][SerializeField]protected string infoText;
+	[SerializeField] protected string[] keyLocalizationList;
+
+	//[TextArea(0,15)][SerializeField]protected string infoText;
 	[SerializeField]protected float timeActive;
 	[SerializeField]protected Color infoBackGround = Color.cyan;
 
-	[Header("Action")] [SerializeField]protected UnityEvent onActionSelect;
-	[TextArea(0,15)][SerializeField]protected string ActionText;
+	[Header("MainInteractions")]
+	public UnityEvent onInitialInteraction;
+	[SerializeField]protected UnityEvent onActionSelect;
+	//[TextArea(0,15)][SerializeField]protected string ActionText;
+	public UnityEvent onCompletion;
 
 
-	[Header("OnInfoPrefabDisable")] [SerializeField]protected UnityEvent onInfoDisable;
+
+	[Header("InfoPrefabInteractions")] 
+	[SerializeField]protected UnityEvent onInfoEnable;
+	[SerializeField]protected UnityEvent onInfoDisable;
 	[SerializeField]protected bool isUseQuickDisable = false;
 	//[TextArea(0,15)][SerializeField]protected string informationText;
 
-	[Header("OnCompletion")] public UnityEvent onCompletion;
-	[TextArea(0,15)][SerializeField]protected string completionText;
+
+	//[TextArea(0,15)][SerializeField]protected string completionText;
 
 
 	protected Text infoTextComponent;
@@ -54,6 +62,7 @@ public class InteractionBehaviour : MonoBehaviour {
 	//protected ParticleSystem.MainModule thisParticleSystem;
 
 	protected LocalizedText localizedText;
+
 	public virtual void Awake(){
 
 		thisTransform = transform;
@@ -114,7 +123,7 @@ public class InteractionBehaviour : MonoBehaviour {
 	public void TriggerInfo(){
 		
 		Debug.Log ("TRIGGERINGINFO");
-			
+		onInfoEnable.Invoke ();
 	
 		infoCanvasPrefab.SetActive (true);
 		infoCanvasAnimator.SetBool ("IsActive", true);
@@ -123,6 +132,7 @@ public class InteractionBehaviour : MonoBehaviour {
 
 	
 	}
+		
 
 	public float timerForActivation;
 	public IEnumerator InfoActive(){

@@ -33,13 +33,13 @@ public class MenuArmFollow : MonoBehaviour {
 	}
 	
 
-	bool isMagnetTriggered;
+	/*bool isMagnetTriggered;
 
 	void MagnetTrigger(){
 	
 		Handheld.Vibrate ();
 		isMagnetTriggered = true;
-	}
+	}*/
 
 	Quaternion rotation;
 

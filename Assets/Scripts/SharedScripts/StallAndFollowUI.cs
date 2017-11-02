@@ -8,6 +8,7 @@ public class StallAndFollowUI: MonoBehaviour {
 	//private Transform thisTransform;
 	[SerializeField]private Transform objectToRotate;
 	[SerializeField]private int angleDistanceUntilRotateBack = 80;
+
 	//private Animator thisAnimator;
 
 	private Transform camTransform;
