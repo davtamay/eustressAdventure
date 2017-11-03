@@ -44,7 +44,7 @@ public class PowerUpResponse : MonoBehaviour {
 		} else if(other.CompareTag("Obstacle")){
 
 			if (string.Equals (powerUpType, "Coin", System.StringComparison.CurrentCultureIgnoreCase)) {
-				PlayerManager.Instance.points += 5;
+				PlayerManager.Instance.points = 1;
 				Destroy (gameObject);
 			}
 		#endregion
