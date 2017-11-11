@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 public class WackGameManager : MonoBehaviour {
 
-	[SerializeField]public WaveController waveController;
+	//[SerializeField]public WaveManager waveController;
 //	[SerializeField]public WackLookClick wacklookClick;
 
 	public Transform centerPos;
@@ -38,7 +38,8 @@ public class WackGameManager : MonoBehaviour {
 		instance = this; 
 
 
-		totalMoles = waveController.GetAllGOInAllWaves ().ToArray();
+		totalMoles = WaveManager.Instance.GetAllGOInAllWaves ().ToArray();
+			//waveController.GetAllGOInAllWaves ().ToArray();
 
 
 	}
@@ -86,8 +87,9 @@ public class WackGameManager : MonoBehaviour {
 					GameController.Instance.isGameOver = true;
 					gameTimer.SetGameOver ("No More Berries :(");
 					StartCoroutine (GetComponent<WackLookClick>().TurnOffAll (Mathf.Infinity));
-					waveController.StopWaveAndDisableObjects ();
-					//text = "No More Berries :(";
+					GetComponent<WackLookClick> ().isAllowPopUps = false;
+					WaveManager.Instance.EndWavesAndDisableAllObjects ();
+
 				}
 
 				berriesText.text = ": " + berriesLeft; 

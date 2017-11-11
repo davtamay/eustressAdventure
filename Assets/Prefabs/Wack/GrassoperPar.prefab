@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4183123970274926}
-  - component: {fileID: 114118261950380408}
   m_Layer: 0
   m_Name: GrassoperPar
   m_TagString: Untagged
@@ -37,7 +36,6 @@ GameObject:
   - component: {fileID: 4175538771662472}
   - component: {fileID: 33477554860203200}
   - component: {fileID: 23776274357371512}
-  - component: {fileID: 136946095916437904}
   m_Layer: 0
   m_Name: model_grassoper
   m_TagString: Untagged
@@ -55,7 +53,8 @@ GameObject:
   - component: {fileID: 4678279104916906}
   - component: {fileID: 95486584143771006}
   - component: {fileID: 114027663804675658}
-  - component: {fileID: 136969848015103722}
+  - component: {fileID: 136166577881309814}
+  - component: {fileID: 114839190011524152}
   m_Layer: 13
   m_Name: Grassoper
   m_TagString: Wacked
@@ -71,7 +70,7 @@ Transform:
   m_GameObject: {fileID: 1333973162750394}
   m_LocalRotation: {x: 0.000000020575257, y: -0.000000010607573, z: 0.09329976, w: 0.9956381}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.32305712, y: 1.9409573, z: 0.38994735}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4678279104916906}
   m_RootOrder: 0
@@ -83,8 +82,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1150243301503642}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3190002, y: -0.6, z: 0}
-  m_LocalScale: {x: 1, y: 0.9999999, z: 1}
+  m_LocalPosition: {x: 10.348177, y: -0.26, z: -0.643837}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4678279104916906}
   m_Father: {fileID: 0}
@@ -170,41 +169,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 1354657119230546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8546e9b8606b4ce48f5c35b658a9cab, type: 3}
+  m_Script: {fileID: 11500000, guid: 915afbd5ad5d24ed58fa560704eed514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moleDescription: Mole
---- !u!114 &114118261950380408
+  hitPoints: 3
+--- !u!114 &114839190011524152
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1150243301503642}
+  m_GameObject: {fileID: 1354657119230546}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3309da027afc141c08a29f7477fb9204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPosRandomOffsetMinLimits: 0
-  initPosRandomOffsetMaxLimits: 0
-  speed: 1
+  initXZPosOffsetMinLimits: {x: -20, y: -20}
+  initXZPosOffsetMaxLimits: {x: 15, y: 15}
+  speed: 1.5
   distanceBushOffset: 1.5
   timeUntilOneLessBerry: 4
   initPos: {x: 0, y: 0, z: 0}
---- !u!136 &136946095916437904
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1333973162750394}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.14343579
-  m_Height: 0.14293833
-  m_Direction: 1
-  m_Center: {x: -0.059520576, y: -0.008097805, z: 0}
---- !u!136 &136969848015103722
+  isUseParentRootTransform: 1
+  isAllowYVector: 0
+  YInitStart: 0
+--- !u!136 &136166577881309814
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -213,7 +202,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.06
-  m_Height: 0.31
-  m_Direction: 1
-  m_Center: {x: -0.03, y: -0.008097805, z: 0}
+  m_Radius: 0.2
+  m_Height: 0
+  m_Direction: 0
+  m_Center: {x: -0.06, y: 0, z: 0}

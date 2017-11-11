@@ -188,13 +188,13 @@ public class AudioManager : MonoBehaviour {
 		tempAS.transform.localPosition = Vector3.zero;
 
 	}
-	public void PauseAmbientMusic(){
+	public void PauseAmbientAS(){
 
 		foreach (AudioSource tempAS in _AmbientAudioSourceDictionary.Values)
 			tempAS.Pause();
 		
 	}
-	public void UnPauseAmbientMusic(){
+	public void UnPauseAmbientAS(){
 
 		foreach (AudioSource tempAS in _AmbientAudioSourceDictionary.Values)
 			tempAS.UnPause();
@@ -227,6 +227,18 @@ public class AudioManager : MonoBehaviour {
 			StartCoroutine (ReleaseClipFromMemory (tempAS, nonUsageRemoveTime ));
 		
 		}
+
+	}
+	public void PauseDirectAS(){
+
+		foreach (AudioSource tempAS in _DirectAudioSourceDictionary.Values)
+			tempAS.Pause();
+
+	}
+	public void UnPauseDirectAS(){
+
+		foreach (AudioSource tempAS in _DirectAudioSourceDictionary.Values)
+			tempAS.UnPause();
 
 	}
 

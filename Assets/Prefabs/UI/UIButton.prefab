@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 224956797637692874}
   - component: {fileID: 222721610693507964}
   - component: {fileID: 114509852224133416}
+  - component: {fileID: 114081170621484732}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -133,6 +134,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 1, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114081170621484732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297806234002214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a2ec9a3a14941e8902c67ce476128b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 
+  isTextMesh: 0
 --- !u!114 &114113351260944696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,15 +272,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: Intro
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -276,6 +290,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &114487598481295516
@@ -323,15 +339,15 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 54
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Try to get as much coins as possible by hitting them to collect them
+  m_Text: 'Avoid the obstacles, obtain the power ups
 
-'
+    and collect the ozondones. Good Luck!'
 --- !u!114 &114528959398554608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -559,7 +575,7 @@ RectTransform:
   m_GameObject: {fileID: 1136323700085364}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0039999997, y: 0.0039999997, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224956797637692874}
   m_Father: {fileID: 224303978143216488}
@@ -578,7 +594,7 @@ RectTransform:
   m_GameObject: {fileID: 1012844997667474}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.04, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 224253476076485256}
   m_Father: {fileID: 0}
@@ -615,7 +631,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1889185887810622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -108.86, z: 0}
+  m_LocalPosition: {x: 130, y: -108.86, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
   - {fileID: 224801990959016578}
@@ -634,7 +650,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1297806234002214}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: -0.0000054892153, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224868790397969340}
@@ -645,4 +661,4 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.0000054892153, y: 0}
   m_SizeDelta: {x: 260, y: 200}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}

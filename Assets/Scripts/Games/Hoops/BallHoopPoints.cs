@@ -15,13 +15,14 @@ public class BallHoopPoints : MonoBehaviour {
 
 		if(other.CompareTag("Bullet")){
 		if (isPersist) {
-			
+				AudioManager.Instance.PlayDirectSound("SmallWin");
 				PlayerManager.Instance.points = points;
 				other.gameObject.SetActive (false);
 
 		} else {
 			--livesUntilDisable;
 			if (livesUntilDisable < 1) {
+				AudioManager.Instance.PlayDirectSound("SmallWin");
 				PlayerManager.Instance.points = points;
 				other.gameObject.SetActive (false);
 				gameObject.SetActive (false);

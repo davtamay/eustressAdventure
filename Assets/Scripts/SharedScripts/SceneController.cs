@@ -270,7 +270,7 @@ public class SceneController : MonoBehaviour {
 
 		}
 	//test
-		LocalizationManager.Instance.ResetReady();
+		//LocalizationManager.Instance.ResetReady();
 		LocalizationManager.Instance.ObtainTextReferences ();
 
 		//async.allowSceneActivation = true;

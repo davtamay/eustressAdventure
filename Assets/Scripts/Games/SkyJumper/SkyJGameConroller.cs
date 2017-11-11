@@ -62,7 +62,8 @@ public class SkyJGameConroller : MonoBehaviour {
 					obstacleRespondTime -= newWaveObstacleRespondTimeDecrement * PlayerManager.Instance.points;
 					newObsTime = 0.0f;
 
-					yield return StartCoroutine (GameController.Instance.NewWave ());
+					yield return StartCoroutine (WaveManager.Instance.NewWaveIntermission ());
+				//	yield return StartCoroutine (GameController.Instance.NewWave ());
 					AudioManager.Instance.PlayDirectSound ("MediumWin");
 					++currentObs;
 					continue;

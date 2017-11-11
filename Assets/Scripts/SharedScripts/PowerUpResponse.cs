@@ -124,11 +124,11 @@ public class PowerUpResponse : MonoBehaviour {
 	}
 	IEnumerator MoleRate(){
 		
-		float origSpeed = WackLookClick.speedDifficulty;
+		//float origSpeed = WackLookClick.speedDifficulty;
 		gameObject.transform.position = new Vector3 (0, -100, 0);
-		WackLookClick.speedDifficulty = 0.6f;
+		//WackLookClick.speedDifficulty = 0.6f;
 		yield return new WaitForSeconds(10); 
-		WackLookClick.speedDifficulty = origSpeed;
+		//WackLookClick.speedDifficulty = origSpeed;
 		Destroy (gameObject);
 
 

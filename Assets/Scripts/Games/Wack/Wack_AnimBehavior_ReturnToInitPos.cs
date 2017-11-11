@@ -36,6 +36,7 @@ public class Wack_AnimBehavior_ReturnToInitPos : StateMachineBehaviour {
 			Vector3 initTo;
 			closestBush = null;
 			if (isAppearOnClosestBranchWithBerries) {
+				//closestBush = WackGameManager.Instance.GetClosestBush (animator.transform.parent);
 				float closestBushDistance = Mathf.Infinity;
 
 				foreach (Transform bs in WackGameManager.Instance.totalBranches) {

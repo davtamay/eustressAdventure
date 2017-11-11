@@ -30,6 +30,7 @@ public class MenuArmFollow : MonoBehaviour {
 		
 		thisTransform.GetChild(0).gameObject.SetActive(false);
 
+		stressMenu.SetActive (false);
 	}
 	
 

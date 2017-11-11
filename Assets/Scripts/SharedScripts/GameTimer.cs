@@ -21,7 +21,8 @@ public class GameTimer : MonoBehaviour {
 	void Start () {
 		timerText = GetComponent<Text> ();
 		originalColor = timerText.color;
-		timerText.text = GameController.Instance.TimeToAdd(ref isDone);
+		//timerText.text = GameController.Instance.TimeToAdd(ref isDone);
+		timerText.text = WaveManager.Instance.TimeToAdd (ref isDone);
 		StartCoroutine (OnUpdate ());
 	}
 
@@ -33,7 +34,9 @@ public class GameTimer : MonoBehaviour {
 
 	public void SetGameOver(string text){
 
-		GameController.Instance.StopTimer ();
+		WaveManager.Instance.StopTimer ();
+		//GameController.Instance.StopTimer ();
+
 		timerText.color = originalColor;
 		timerText.text = text;
 		StopAllCoroutines ();
@@ -45,15 +48,17 @@ public class GameTimer : MonoBehaviour {
 
 		while (true) {
 		
-
-			timerText.text = GameController.Instance.TimeToAdd(ref isDone);
+			timerText.text = WaveManager.Instance.TimeToAdd(ref isDone);
+			//timerText.text = GameController.Instance.TimeToAdd(ref isDone);
 		
 
 			timerText.color = originalColor;
-
-			if (GameController.Instance.GetCurrentTime () <= 10f )
+			if (WaveManager.Instance.GetCurrentTime() <= 10f)
+		//	if (GameController.Instance.GetCurrentTime () <= 10f )
 				timerText.color = Color.red;
-			else if (GameController.Instance.GetCurrentTime () <= 25f)
+
+			else if (WaveManager.Instance.GetCurrentTime () <= 25f)
+		//	else if (GameController.Instance.GetCurrentTime () <= 25f)
 				timerText.color = Color.yellow;
 
 
@@ -78,14 +83,5 @@ public class GameTimer : MonoBehaviour {
 	
 	
 	}
-/*	void Update () {
-		timerText.text = GameController.Instance.TimeToAdd(ref isDone);
 
-
-		if (isDone) {
-			timerText.text = "TimeUp!";
-			isDone = false;
-		}
-
-	}*/
 }

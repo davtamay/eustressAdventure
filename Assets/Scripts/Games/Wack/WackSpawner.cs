@@ -7,8 +7,11 @@ public class WackSpawner : MonoBehaviour {
 
 	private Transform closestBush;
 
-	[SerializeField] private float initPosRandomOffsetMinLimits;
-	[SerializeField] private float initPosRandomOffsetMaxLimits;
+	[SerializeField] private Vector2 initXZPosOffsetMinLimits;
+	[SerializeField] private Vector2 initXZPosOffsetMaxLimits;
+
+	//[SerializeField] private float initPosRandomOffsetMinLimits;
+	//[SerializeField] private float initPosRandomOffsetMaxLimits;
 
 	[SerializeField] private float speed;
 	[SerializeField] private float distanceBushOffset;
@@ -16,20 +19,28 @@ public class WackSpawner : MonoBehaviour {
 
 	private Transform playerTransform;
 
-	private Transform thisTransform;
+	private Transform rootMoveTransform;
 	private Animator thisAnimator;
-	private Collider thisCollider;
+	//private Collider thisCollider;
 	[SerializeField]private Vector3 initPos;
+	[SerializeField]private bool isUseParentRootTransform;
+
+	[Tooltip("For FLying Creatures that use the y coordinate system")]
+	[SerializeField]private bool isAllowYVector;
+	[SerializeField]private float YInitStart;
+
 
 	//[SerializeField]private bool isStable;
 
 
 	void Awake(){
 
-
-		thisTransform = transform;
+		if(isUseParentRootTransform)
+			rootMoveTransform = transform.parent;
+		else
+			rootMoveTransform = transform;
 		//initPos = thisTransform.position;
-		thisCollider = GetComponent<Collider> ();
+		//thisCollider = GetComponent<Collider> ();
 		thisAnimator = GetComponentInChildren<Animator> ();
 
 		playerTransform = GameObject.FindWithTag ("Player").transform;
@@ -39,12 +50,12 @@ public class WackSpawner : MonoBehaviour {
 	//10/28/17 changed from onenable to prevent errors
 	void Start(){
 		//if(!isStable){
-		initPos = thisTransform.position;
+		initPos = rootMoveTransform.position;
 
 			
-		StopAllCoroutines ();
-		closestBush = WackGameManager.Instance.GetClosestBush (thisTransform);
-		StartCoroutine (SeekBush());
+	//	StopAllCoroutines ();
+		//closestBush = WackGameManager.Instance.GetClosestBush (thisTransform);
+		//StartCoroutine (SeekBush());
 		SetRandomPos ();
 
 	//	}
@@ -76,34 +87,55 @@ public class WackSpawner : MonoBehaviour {
 	IEnumerator SeekBush(){
 
 
+
+
 		while(true){
 
 			if (!closestBush)
 				closestBush = WackGameManager.Instance.totalBranches [0];
 				
+		//	if (thisAnimator.GetBool ("IsDead"))
+			//	StopAllCoroutines ();
+
+
 			if(thisAnimator.GetCurrentAnimatorStateInfo (0).IsName ("Idle")){
 				yield return null;
 				continue;
 			}
-			//Debug.Log (gameObject.name + Vector3.Distance (thisTransform.position, closestBush.position));
+
+		//	if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsName ("Dead"))
+		//		break;
+
 			yield return null;
-			dir = closestBush.position - thisTransform.position;
-			dir.y = 0;
-			thisTransform.position += dir.normalized * Time.deltaTime * speed;
-			thisTransform.rotation = Quaternion.LookRotation (dir, Vector3.up);
+			dir = closestBush.position - rootMoveTransform.position;
 		
-			if (Vector3.Distance (thisTransform.position, closestBush.position) < distanceBushOffset) {
-				StartCoroutine (EatFruit ());
-				thisAnimator.SetTrigger("IsEating");
-				break;
-			}
+			if(!isAllowYVector)
+			dir.y = 0;
+
+				rootMoveTransform.position += dir.normalized * Time.deltaTime * speed;
+				rootMoveTransform.rotation = Quaternion.LookRotation (dir, Vector3.up);
+				if (Vector3.Distance (rootMoveTransform.position, closestBush.position) < distanceBushOffset) {
+					StartCoroutine (EatFruit ());
+					thisAnimator.SetTrigger("IsEating");
+					break;
+				}
+
+			
+
 		}
 	
 	}
 	private float timer;
 	IEnumerator EatFruit(){
 
+		Transform oldBush;
 		timer = 0;
+
+
+	//	if (thisAnimator.GetBool ("IsDead"))
+	//		StopAllCoroutines ();
+
+
 		while(true){
 
 			yield return null;
@@ -112,11 +144,14 @@ public class WackSpawner : MonoBehaviour {
 			if (timer > timeUntilOneLessBerry) {
 				
 				WackGameManager.Instance.ReduceBerry (closestBush);
-				closestBush = WackGameManager.Instance.GetClosestBush (thisTransform);
-				StartCoroutine (SeekBush());
+			//	oldBush = closestBush;
+				closestBush = WackGameManager.Instance.GetClosestBush (rootMoveTransform);
 
-				//closestBush = WackGameManager.Instance.GetClosestBush (thisTransform); //ChooseAndSeekClosestBush ();
-			//	StartCoroutine(SeekBush());
+			/*	if (oldBush.GetInstanceID() != closestBush.GetInstanceID())
+				if(thisAnimator.HasParameter ("IsWalk"))
+					thisAnimator.SetTrigger("IsWalk");*/
+		
+				StartCoroutine (SeekBush());
 				break;
 			}
 
@@ -125,20 +160,29 @@ public class WackSpawner : MonoBehaviour {
 	}
 	public void SetRandomPos(){
 
+		//thisCollider.enabled = true;
+
 		StopAllCoroutines ();
-		float randomX = Random.Range(initPosRandomOffsetMinLimits, initPosRandomOffsetMaxLimits);
-		float randomZ = Random.Range(initPosRandomOffsetMinLimits, initPosRandomOffsetMaxLimits);
 
-		Vector3 initTo =  WackGameManager.Instance.centerPos.position + new Vector3 (randomX, 0, randomZ);
-		initTo.y = transform.position.y;
+		float randomX = Random.Range(initXZPosOffsetMinLimits.x, initXZPosOffsetMaxLimits.x);
+		float randomZ = Random.Range(initXZPosOffsetMinLimits.y, initXZPosOffsetMaxLimits.y);
 
-		thisTransform.position = initTo;
+		//float randomX = Random.Range(initPosRandomOffsetMinLimits, initPosRandomOffsetMaxLimits);
+		//float randomZ = Random.Range(initPosRandomOffsetMinLimits, initPosRandomOffsetMaxLimits);
+		Vector3 initTo = Vector3.zero;
+		if (!isAllowYVector) {
+			initTo = WackGameManager.Instance.centerPos.position + new Vector3 (randomX, 0, randomZ);
+			initTo.y = transform.position.y;
+		} else {
+			initTo = WackGameManager.Instance.centerPos.position + new Vector3 (randomX, 0, randomZ);
+			initTo.y = YInitStart;
+		
+		}
+
+		rootMoveTransform.position = initTo;
+
 
 		StartCoroutine (SeekBush ());
-
-	//	thisTransform.gameObject.SetActive (true);
-	//	ghostTransform.gameObject.SetActive (false);
-
 
 	}
 

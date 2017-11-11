@@ -36,6 +36,8 @@ public class LookInteraction : MonoBehaviour {
 	public Image image;
 
 	private Collider thisCollider;
+
+	[SerializeField]private bool isOnFromStart;
 	public Collider lookTriggerCollider;
 
 	private Animator thisAnimator;
@@ -52,8 +54,11 @@ public class LookInteraction : MonoBehaviour {
 			
 
 		//if(!isItemForSlot)
-		if(lookTriggerCollider == null)
+
+		if(!isOnFromStart && lookTriggerCollider == null)
 			lookTriggerCollider = transform.parent.GetComponent<Collider> ();
+
+	
 
 		image = GetComponentInChildren<Image> ();
 		originalSprite = image.sprite;
@@ -62,12 +67,20 @@ public class LookInteraction : MonoBehaviour {
 			originalColor = image.color;
 
 		imageGO = image.transform.parent.gameObject;
-		imageGO.SetActive (false);
+
 		//thisCollider.enabled = false;
 
+		if (isOnFromStart) {
+			lookTriggerCollider = null;
+			imageGO.SetActive (true);
+		}else
+			imageGO.SetActive (false);
 
 	}
 	void Start(){
+
+
+		
 		StartCoroutine (OnUpdate ());
 	}
 
@@ -182,11 +195,10 @@ public class LookInteraction : MonoBehaviour {
 				
 				
 				}
-			//	onLookClick.Invoke ();
+			
 
 				isActive = false;
 				imageGO.SetActive (false);
-				//thisCollider.enabled = false;
 
 
 				

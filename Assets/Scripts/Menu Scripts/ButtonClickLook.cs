@@ -12,7 +12,10 @@ public class ButtonClickLook : MonoBehaviour {
 	[SerializeField]private UnityEvent OnStart;
 	[SerializeField]private UnityEvent OnClick;
 
-	[SerializeField] bool isClickEventCalled = false;
+	[SerializeField] private bool isOnClickEventCalled = false;
+	[SerializeField] private bool isOnStartInvoke = false;
+	[SerializeField] private bool isButtonInvoke = false;
+
 
 
 	public bool isSMenuOpener = false;
@@ -30,13 +33,12 @@ public class ButtonClickLook : MonoBehaviour {
 
 	public bool isStressed = false;
 
-	public bool isOnStartInvoke = false;
-	public bool isButtonInvoke = false;
+
 
 	public bool isEnvChanger = false;
 
-	public bool isGame = false;
-	[SerializeField] private string gameScene;
+	public bool isSceneChange = false;
+	[SerializeField] private string scene;
 	[SerializeField] private bool isResetPositiontoHome;
 	[SerializeField] private Vector3 homePosition;
 
@@ -55,6 +57,10 @@ public class ButtonClickLook : MonoBehaviour {
 
 	[SerializeField] private bool isStressModified;
 	[SerializeField] private float stressModifiedAmount;
+
+	[SerializeField] private bool isLocalizedButton;
+	private enum localizationLanguage{LANGUAGE_ENGLISH, LANGUAGE_SPANISH}
+	[SerializeField]private localizationLanguage language;
 
 
 
@@ -198,16 +204,9 @@ public class ButtonClickLook : MonoBehaviour {
 			
 				} else if (isRestartProgress) {
 
-					//PlayerPrefs.SetInt ("MainGameEvent") == 0;
 					AudioManager.Instance.PlayInterfaceSound ("SpecialSelect");
-
 					DataManager.Instance.DeleteHighScoreSlotandPositionData (homePosition);
 					DataManager.Instance.DeletePPDataTaskProgress ();
-					
-					LoadScene ("IntroTimeLine");
-					
-			
-			
 			
 				} else if (isEnvChanger) {
 
@@ -235,8 +234,6 @@ public class ButtonClickLook : MonoBehaviour {
 
 
 				} else if (isReplayButton){
-					//DOESN NOT CRASS WITH INTRO BUT DOES WITH WACK, IT IS SPECIFIC TO SCENE:WACK
-					//LoadScene ("Intro");
 					SceneController.Instance.ResetCurrentGame ();
 				}else if (isResetPositiontoHome) {
 
@@ -311,19 +308,33 @@ public class ButtonClickLook : MonoBehaviour {
 
 					}
 
-				} else if (isGame && !isSMenuOpener) {
+				}else if (isLocalizedButton){
 
-					LoadScene (gameScene);
-		
+					if(LocalizationManager.Instance == null){
+						Debug.LogError ("There is no LocalizationManager available in scene Setting language does not work on click.");
+						break;
+					}
+					switch(language){
+
+					case localizationLanguage.LANGUAGE_ENGLISH:
+						LocalizationManager.Instance.LoadLocalizedText ("localization_en.json");
+						break;
+					case localizationLanguage.LANGUAGE_SPANISH:
+						LocalizationManager.Instance.LoadLocalizedText ("localization_sp.json");
+						break;
+
+					}
 
 				}
+
+				if (isSceneChange)
+					LoadScene (scene);
 
 				if (isButtonInvoke) 
 					button.onClick.Invoke ();
 				
-				if (isClickEventCalled)
+				if (isOnClickEventCalled)
 					OnClick.Invoke ();
-
 
 
 				countDown = timeToSelect;

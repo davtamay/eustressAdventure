@@ -61,7 +61,7 @@ public class InteractionBehaviour : MonoBehaviour {
 
 	//protected ParticleSystem.MainModule thisParticleSystem;
 
-	protected LocalizedText localizedText;
+	[SerializeField]protected LocalizedText localizedText;
 
 	public virtual void Awake(){
 
@@ -82,7 +82,7 @@ public class InteractionBehaviour : MonoBehaviour {
 
 			infoCanvasAnimator = infoCanvasPrefab.GetComponent<Animator> ();
 
-			localizedText = GetComponentInChildren<LocalizedText> ();
+			localizedText = infoCanvasPrefab.GetComponentInChildren<LocalizedText> ();
 
 			//thisParticleSystem = infoCanvasPrefab.GetComponentInChildren<ParticleSystem> ().main;
 			//thisParticleSystem.startColor = new ParticleSystem.MinMaxGradient (infoBackGround);

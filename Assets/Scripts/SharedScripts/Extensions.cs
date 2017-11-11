@@ -108,6 +108,27 @@ public class CoroutineController
 
 		state = CoroutineState.Running;
 	}
+
+}
+public static class Extensions_Animator{
+public static bool HasParameter(this Animator animator, string paramName)
+{
+	foreach (AnimatorControllerParameter param in animator.parameters)
+	{
+		if (param.name == paramName) 
+			return true;
+	}
+	return false;
+}
+public static bool HasParameter(this Animator animator, int id)
+{
+	foreach (AnimatorControllerParameter param in animator.parameters)
+	{
+		if (param.GetHashCode () == id) 
+			return true;
+	}
+	return false;
 }
 
 
+}

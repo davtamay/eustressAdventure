@@ -42,9 +42,10 @@ public class LookSelect : MonoBehaviour {
 		cam = Camera.main;
 
 		spawnedCards = cardSpawner.GetSpawned;
-		//spawnedCards = CardSpawner.GetSpawned;
 
-		GameController.Instance.TimeToAdd (ref isTimerDone, timeToBeatFirstLevel);
+		//WaveManager.Instance.StopTimer ();
+		//WaveManager.Instance.TimeToAdd(ref isTimerDone, timeToBeatFirstLevel);
+		//GameController.Instance.TimeToAdd (ref isTimerDone, timeToBeatFirstLevel);
 	}
 	bool isTimerDone = false;
 	void Update(){
@@ -63,22 +64,13 @@ public class LookSelect : MonoBehaviour {
 	
 		if (isTimerAFactor) {
 		
-
-			GameController.Instance.TimeToAdd (ref isTimerDone);
+			WaveManager.Instance.TimeToAdd (ref isTimerDone);
+			//GameController.Instance.TimeToAdd (ref isTimerDone);
 
 
 		}
-	
-
-
-
-
-	
 
 	Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
-
-
-	
 
 	RaycastHit hit;
 
@@ -86,17 +78,9 @@ public class LookSelect : MonoBehaviour {
 		
 			if (hit.transform.gameObject.CompareTag ("Card")) {
 
-				//Debug.Log (selectedCard.transform.gameObject.name);
-
 				if (hit.transform.gameObject.GetInstanceID () == selectedCard.GetInstanceID () || isSecondCard)
 					return;
 			
-
-
-
-				
-			
-
 
 				selectedCard = hit.transform.gameObject;
 
@@ -195,9 +179,10 @@ public class LookSelect : MonoBehaviour {
 			if (spawnedCards == 0) {
 
 				opponentAnimator.SetTrigger ("Fall1");
-
-				GameController.Instance.StopTimer ();
-				StartCoroutine (GameController.Instance.NewWave ());
+				WaveManager.Instance.StopTimer ();
+			//	GameController.Instance.StopTimer ();
+			//	StartCoroutine (GameController.Instance.NewWave ());
+				WaveManager.Instance.ChangeTONextWaveAndAddTime ();
 
 				particles.Play ();
 				yield return new WaitForSeconds (3);
@@ -208,7 +193,11 @@ public class LookSelect : MonoBehaviour {
 					AudioManager.Instance.PlayDirectSound ("MediumWin");
 
 					cardSpawner.ChangeWave (Difficulty.medium);
-					GameController.Instance.TimeToAdd (ref isTimerDone, timeToBeatSecondLevel);
+				//	WaveManager.Instance.StopTimer ();
+					//WaveManager.Instance.ResetTimer ();
+					//WaveManager.Instance.TimeToAdd(ref isTimerDone)
+					//GameController.Instance.TimeToAdd (ref isTimerDone, timeToBeatSecondLevel);
+
 					spawnedCards = cardSpawner.GetSpawned;
 
 
@@ -217,8 +206,9 @@ public class LookSelect : MonoBehaviour {
 					AudioManager.Instance.PlayDirectSound ("MediumWin");
 
 					cardSpawner.ChangeWave (Difficulty.hard);
-					GameController.Instance.TimeToAdd (ref isTimerDone, timeToBeatThirdLevel);
+				//	GameController.Instance.TimeToAdd (ref isTimerDone, timeToBeatThirdLevel);
 					spawnedCards = cardSpawner.GetSpawned;
+				
 
 				}else if (cardSpawner.GetWave == 2) {
 					opponentAnimator.SetTrigger ("Fall2");
@@ -226,8 +216,8 @@ public class LookSelect : MonoBehaviour {
 					GameController.Instance.isGameOver = true;
 
 				}
-
-				GameController.Instance.ResumeTimer ();
+				WaveManager.Instance.ResumeTimer ();
+				//GameController.Instance.ResumeTimer ();
 			}
 
 		}else {

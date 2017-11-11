@@ -48,11 +48,11 @@ public class DataManager : MonoBehaviour {
 
 	//	dataCollected = new DataCollection ();
 
-		string skyWalkerPath = Application.persistentDataPath + @"/skyWalkerScore.json";
+		string skyFlightPath = Application.persistentDataPath + @"/skyFlightScore.json";
 
-		if(!File.Exists(skyWalkerPath)){
+		if(!File.Exists(skyFlightPath)){
 
-			StreamWriter Writer = new StreamWriter (skyWalkerPath);
+			StreamWriter Writer = new StreamWriter (skyFlightPath);
 			Writer.WriteLine (JsonUtility.ToJson (this));
 			Writer.Close ();
 		}

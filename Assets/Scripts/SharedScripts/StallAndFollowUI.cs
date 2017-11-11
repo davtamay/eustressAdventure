@@ -35,6 +35,11 @@ public class StallAndFollowUI: MonoBehaviour {
 
 		//thisTransform = GetComponent<Transform> ();
 		camTransform = Camera.main.transform;
+
+		if (objectToRotate == null)
+			objectToRotate = camTransform;
+
+
 		offset = objectToRotate.position - camTransform.position;
 
 	}

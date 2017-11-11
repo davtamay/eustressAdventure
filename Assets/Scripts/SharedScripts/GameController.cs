@@ -52,12 +52,12 @@ public class GameController : MonoBehaviour {
 		gameStart = GameObject.FindWithTag ("GameStart");
 		gameOver = GameObject.FindWithTag ("GameOver");
 
-		if (GameObject.FindWithTag ("NewWave")) {
+	/*	if (GameObject.FindWithTag ("NewWave")) {
 			//newWaveGO = null;
 			newWaveGO = GameObject.FindWithTag ("NewWave");
-			timeUntilNewWave = newWaveGO.transform.GetComponent<NewWave> ().timeUntilDisapear;
+			timeUntilNewWave = newWaveGO.transform.GetComponent<NewWaveTransition> ().timeUntilDisapear;
 			newWaveGO.gameObject.SetActive (false);
-		}
+		}*/
 
 		if (hitEffect == null) {
 		
@@ -70,6 +70,8 @@ public class GameController : MonoBehaviour {
 
 			gameOver.SetActive (false);
 		}
+
+		Paused = true;
 	}
 
 	private bool isMenuPause;
@@ -87,8 +89,7 @@ public class GameController : MonoBehaviour {
 		
 			if (paused) {
 
-				
-				AudioManager.Instance.PauseAmbientMusic ();
+				AudioManager.Instance.PauseAmbientAS();
 				Time.timeScale = 0;
 			} else {
 
@@ -96,7 +97,7 @@ public class GameController : MonoBehaviour {
 					isMenuPause = false;
 					return;
 				}
-				AudioManager.Instance.UnPauseAmbientMusic ();
+				AudioManager.Instance.UnPauseAmbientAS ();
 				Time.timeScale = 1;
 			}
 		}
@@ -108,17 +109,6 @@ public class GameController : MonoBehaviour {
 		get{ return stressMenu.activeInHierarchy; }
 		
 	}
-
-	//private bool isInfoBubbleActive;
-	/*public bool IsInfoBubbleActive{
-
-		get{ return isInfoBubbleActive;}
-
-		set { isInfoBubbleActive = value;}
-	}*/
-
-	
-
 
 
 	public void SetMenuActive(){
@@ -203,7 +193,6 @@ public class GameController : MonoBehaviour {
 	
 	
 	}
-
 	bool isWaveImageOn;
 	public IEnumerator NewWave(){
 		isWaveImageOn = true;

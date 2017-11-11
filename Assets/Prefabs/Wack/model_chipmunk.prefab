@@ -379,15 +379,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1372214900891404}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.67700005, y: -0.63434345, z: -1.684}
-  m_LocalScale: {x: 0.05409562, y: 0.41145453, z: 0.08018504}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 5.9108496, y: -0.5, z: 11.941818}
+  m_LocalScale: {x: 0.30695, y: 0.30695, z: 0.30695}
   m_Children:
   - {fileID: 4793111142677576}
   - {fileID: 4182445978294164}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4235055070006846
 Transform:
   m_ObjectHideFlags: 1
@@ -581,8 +581,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3309da027afc141c08a29f7477fb9204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPosRandomOffsetMinLimits: -15
-  initPosRandomOffsetMaxLimits: 15
+  initXZPosOffsetMinLimits: {x: -20, y: -20}
+  initXZPosOffsetMaxLimits: {x: 15, y: 15}
   speed: 1.5
   distanceBushOffset: 1.5
   timeUntilOneLessBerry: 4
@@ -595,10 +595,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1372214900891404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8546e9b8606b4ce48f5c35b658a9cab, type: 3}
+  m_Script: {fileID: 11500000, guid: 915afbd5ad5d24ed58fa560704eed514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moleDescription: Mole
+  hitPoints: 2
 --- !u!136 &136055413310210210
 CapsuleCollider:
   m_ObjectHideFlags: 1

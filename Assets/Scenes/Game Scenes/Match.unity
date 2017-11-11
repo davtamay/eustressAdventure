@@ -210,7 +210,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 7534875}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 258.5, y: 111.5, z: 0}
+  m_LocalPosition: {x: 216.5, y: 126, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 66900150}
@@ -485,19 +485,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -507,6 +513,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &29168821
@@ -5578,6 +5586,34 @@ Transform:
   m_Father: {fileID: 1603396908}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &281461979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 281461980}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &281461980
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 281461979}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1900565089}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &296590791
 GameObject:
   m_ObjectHideFlags: 0
@@ -5768,19 +5804,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 1
-  gameScene: MainMenu
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -5790,6 +5832,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &306408917
@@ -6097,19 +6141,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: SkyJumper
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -6119,6 +6169,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &343058531
@@ -6341,12 +6393,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 352159622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 901326cd8b8fb47d3800c1a8cac1c6d7, type: 3}
+  m_Script: {fileID: 11500000, guid: df3fc19509a7c4bc69904a9847d68319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: -100
   timeUntilDisapear: 8
-  objectToRotateAround: {fileID: 861071150}
+  objectToRotateAround: {fileID: 0}
   fadeSpeed: 6
   isEnableAndDisablePause: 0
 --- !u!212 &352159625
@@ -7001,19 +7053,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -7023,6 +7081,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &411048084
@@ -7246,19 +7306,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -7268,6 +7334,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &422412851
@@ -7559,6 +7627,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -7641,14 +7714,15 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 1
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -7658,6 +7732,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &460579628
@@ -8068,19 +8144,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -8090,6 +8172,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &485261463
@@ -8740,19 +8824,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -8762,6 +8852,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 4
 --- !u!114 &551795629
@@ -9920,19 +10012,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -9942,6 +10040,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 3
 --- !u!114 &721099352
@@ -10394,19 +10494,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 1
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -10416,6 +10522,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &739257712
@@ -10495,6 +10603,111 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 739257708}
+--- !u!1 &752122015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 752122016}
+  - component: {fileID: 752122017}
+  m_Layer: 0
+  m_Name: Wave Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &752122016
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 752122015}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 72.456635, y: 11.569759, z: 14.239572}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1974649200}
+  - {fileID: 1612488787}
+  - {fileID: 1900565089}
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &752122017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 752122015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39b399efcc95472886774d8922c30be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGameStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onGameCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onWaveEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onWaveStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onWaveChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  newWaveIntermissionIndicator: {fileID: 0}
+  newWaveIntermissionTime: 3
+  isDeactivateIndicatorAfterIntermission: 0
+  leaveWavesActiveWhenDone: 0
+  timerSpeed: 1.2
+  currentWave: 0
+  waveEvents:
+  - InstanceID: 116860
+    waveNumber: 0
+    waveTransformParent: {fileID: 1974649200}
+    onIndividualWaveStart:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    numberToSpawn: 1
+    timeUntilNextWave: 100
+  - InstanceID: 116610
+    waveNumber: 1
+    waveTransformParent: {fileID: 1612488787}
+    onIndividualWaveStart:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    numberToSpawn: 1
+    timeUntilNextWave: 100
+  - InstanceID: 116828
+    waveNumber: 2
+    waveTransformParent: {fileID: 1900565089}
+    onIndividualWaveStart:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    numberToSpawn: 1
+    timeUntilNextWave: 100
 --- !u!1 &766642807
 GameObject:
   m_ObjectHideFlags: 0
@@ -11279,7 +11492,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
-  isFirstCard: 0
+  isFirstCard: 1
   isSecondCard: 0
   setCompleted: 0
   particles: {fileID: 239826499}
@@ -11797,19 +12010,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -11819,6 +12038,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &908345468
@@ -12037,19 +12258,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -12059,6 +12286,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 1
 --- !u!114 &916664495
@@ -12312,19 +12541,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -12334,6 +12569,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &985277413
@@ -13820,19 +14057,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 0
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 1
   homePosition: {x: 0, y: 2, z: 0}
   isRestartProgress: 0
@@ -13842,6 +14085,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &1098721792
@@ -14350,19 +14595,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -14372,6 +14623,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 0
 --- !u!114 &1148757397
@@ -14722,6 +14975,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1166827091}
+--- !u!1 &1180319894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1180319895}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1180319895
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1180319894}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1974649200}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1191212017
 GameObject:
   m_ObjectHideFlags: 0
@@ -15351,6 +15632,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -15367,14 +15653,15 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 1
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -15384,6 +15671,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1264152725
@@ -15853,19 +16142,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: Intro
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -15875,6 +16170,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1311977810
@@ -15941,10 +16238,10 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 0
-  m_FillOrigin: 2
+  m_FillOrigin: 0
 --- !u!222 &1311977812
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16956,19 +17253,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -16978,6 +17281,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1402175259
@@ -17063,7 +17368,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1407851754}
   - component: {fileID: 1407851753}
-  - component: {fileID: 1407851752}
   - component: {fileID: 1407851751}
   - component: {fileID: 1407851750}
   m_Layer: 0
@@ -17101,17 +17405,6 @@ MonoBehaviour:
   stressLevel: 0
   position: {x: 0, y: 0, z: 0}
   slotListItemNames: []
---- !u!114 &1407851752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1407851749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81a804b71330948f48467bca4d781b72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1407851753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17196,6 +17489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curGame: 3
+  curText: {fileID: 0}
   isUsingTextMesh: 0
 --- !u!114 &1423585393
 MonoBehaviour:
@@ -17529,6 +17823,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -17545,14 +17844,15 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 1
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 1
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -17562,6 +17862,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1459024603
@@ -17775,19 +18077,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -17797,6 +18105,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1466660332
@@ -18082,19 +18392,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -18104,6 +18420,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1476558880
@@ -18242,19 +18560,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -18264,6 +18588,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 2
 --- !u!114 &1479629665
@@ -18582,6 +18908,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1492405217}
+--- !u!1 &1509235315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1509235316}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1509235316
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1509235315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1612488787}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1509243697
 GameObject:
   m_ObjectHideFlags: 0
@@ -19058,19 +19412,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -19080,6 +19440,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1603356766
@@ -19437,6 +19799,35 @@ CanvasRenderer:
 Transform:
   m_PrefabParentObject: {fileID: 400010, guid: bbe0e985ffabd418f9b8dc675156b183, type: 3}
   m_PrefabInternal: {fileID: 1907289356}
+--- !u!1 &1612488786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1612488787}
+  m_Layer: 0
+  m_Name: Medium
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1612488787
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1612488786}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1509235316}
+  m_Father: {fileID: 752122016}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1625565360
 GameObject:
   m_ObjectHideFlags: 0
@@ -19501,19 +19892,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -19523,6 +19920,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1625565364
@@ -20223,6 +20622,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -20239,14 +20643,15 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 1
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -20256,6 +20661,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1763746333
@@ -20540,19 +20947,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -20562,6 +20975,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 1
   stressModifiedAmount: -180
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1789233396
@@ -21675,6 +22090,35 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1887566427}
+--- !u!1 &1900565088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1900565089}
+  m_Layer: 0
+  m_Name: Hard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1900565089
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1900565088}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 281461980}
+  m_Father: {fileID: 752122016}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1901916503
 GameObject:
   m_ObjectHideFlags: 0
@@ -21737,19 +22181,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -21759,6 +22209,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 5
 --- !u!114 &1901916507
@@ -22392,6 +22844,35 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -0.65}
   m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.68}
+--- !u!1 &1974649199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1974649200}
+  m_Layer: 0
+  m_Name: Easy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1974649200
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1974649199}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1180319895}
+  m_Father: {fileID: 752122016}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1984759952
 GameObject:
   m_ObjectHideFlags: 0

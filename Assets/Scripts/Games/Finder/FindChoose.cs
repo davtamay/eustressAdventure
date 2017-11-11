@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.PostProcessing;
 
 public class FindChoose : MonoBehaviour {
 
@@ -31,6 +32,9 @@ public class FindChoose : MonoBehaviour {
 	private GameObject newWave;
 	private float timeUntilNewWave;
 
+	private PostProcessingProfile pPProfile;
+
+
 	void Start () {
 		cam = Camera.main;
 
@@ -44,6 +48,12 @@ public class FindChoose : MonoBehaviour {
 
 		spawner = GetComponent<FinderSpawner>();
 		amountOfFinders = spawner.GetAmountOfFindTargets();
+
+		pPProfile = Camera.main.transform.GetComponent<PostProcessingBehaviour> ().profile;
+
+		var intensity = pPProfile.vignette.settings;
+		intensity.intensity = 0;
+		pPProfile.vignette.settings = intensity;
 
 		StartCoroutine (OnUpdate ());
 
@@ -76,21 +86,29 @@ public class FindChoose : MonoBehaviour {
 				playerAnimator.Play ("Fall");
 
 				playerAnimator.SetTrigger ("Reset");
+				StartCoroutine (RechargeTimer ());
 				yield return new WaitUntil (() => playerAnimator.GetCurrentAnimatorStateInfo (0).IsName("Stop"));//playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !playerAnimator.IsInTransition(0));
 
 			
+				var intensity = pPProfile.vignette.settings;
+				//var Intensity2	=	pPProfile.motionBlur.settings;
+				intensity.intensity += 0.2f;
+				//Intensity2.shutterAngle += 10;
+				pPProfile.vignette.settings = intensity;
+				//pPProfile.motionBlur.settings = Intensity2;
+
 				Vector3 differenceUp = Vector3.zero;
 				differenceUp.y = 10;//player.parent.position.y - pastMovePos.y;//player.parent.position.y - originalPos.y ;
 
 
 				player.parent.position -= differenceUp;
-			//	playerAnimator.applyRootMotion = false;
+			
 				yield return new WaitForEndOfFrame ();
 
 				StartCoroutine(spawner.ActivateFinder ());
 
 
-				timer.fillAmount = 1;
+				//timer.fillAmount = 1;
 				time = 0;
 				currentLevel -= 1;
 
@@ -134,6 +152,7 @@ public class FindChoose : MonoBehaviour {
 
 
 						yield return new WaitForSeconds (0.5f);
+						StartCoroutine (RechargeTimer ());
 						yield return StartCoroutine(spawner.TriggerFinderObjects (player.parent.position.y + 10));
 
 
@@ -156,7 +175,6 @@ public class FindChoose : MonoBehaviour {
 						playerAnimator.SetTrigger ("Reset");
 						playerAnimator.applyRootMotion = true;
 
-
 						yield return new WaitForEndOfFrame ();
 
 						Vector3 differenceUp = Vector3.zero;
@@ -174,16 +192,23 @@ public class FindChoose : MonoBehaviour {
 
 					}
 				}	
-				//Debug.Log ("amountoffinders:" + amountOfFinders);
-				//Debug.Log ("objectsfound:" + objectsFound);
-
-			
 
 			}
 
 		}
 	
 	}
+
+	IEnumerator RechargeTimer(){
+
+		while (timer.fillAmount <= 0.95f) {
+			yield return null;
+			timer.fillAmount += Time.deltaTime * 0.8f;
+		}
+		timer.fillAmount = 1f;
+
+	}
+
 	void UpdateCoinText(int coins){
 
 

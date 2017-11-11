@@ -12,7 +12,6 @@ public class LocalizedText : MonoBehaviour {
 	private TextMesh textMesh;
 	[SerializeField] private bool isTextMesh = false;
 
-	private string[] lineArray;
 
 	void Awake(){
 	
@@ -27,8 +26,7 @@ public class LocalizedText : MonoBehaviour {
 				Debug.LogWarning ("Cannot get LocalizedText Text Component");
 			
 		}
-
-	
+			
 	}
 	void Start(){
 		LocalizationManager.Instance.registeredLocalizedTexts.Add (this);
@@ -36,34 +34,17 @@ public class LocalizedText : MonoBehaviour {
 	public void OnUpdate () 
 	{
 
-
 		if (isTextMesh) {
 			textMesh.text = LocalizationManager.Instance.GetLocalizedValue (key);
 			textMesh.text = textMesh.text.Replace ("\\n", "\n");
 
 		} else {
-		//	Debug.Log ("THISISKEY: " + LocalizationManager.Instance.GetLocalizedValue (key));
 			text.text = LocalizationManager.Instance.GetLocalizedValue (key);
 			text.text = text.text.Replace("\\n", "\n");
 		}
-		
-	//	StartCoroutine (SetText ());
-		//text.text = LocalizationManager.Instance.GetLocalizedValue (key);
+
 	}
 	private bool isFirstTime = true;
-
-	/*public void OnEnable(){
-	
-		OnUpdate ();
-	
-	}*/
-	/*void OnDisable(){
-
-		StartCoroutine (SetText ());
-	
-
-	
-	}*/
 
 	IEnumerator SetText(){
 

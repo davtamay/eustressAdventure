@@ -6,8 +6,8 @@ public class AudioManagerTarget : MonoBehaviour {
 
 	[SerializeField] private AudioManager.AudioReferanceType currentAudioReferance;
 	[SerializeField] private string nameOfTrack = string.Empty;
-	[SerializeField] private bool isSoundRandomPitchAndVolume = false;
-	[SerializeField] private bool isReleaseFromMemory = false;
+//	[SerializeField] private bool isSoundRandomPitchAndVolume = false;
+//	[SerializeField] private bool isReleaseFromMemory = false;
 	[SerializeField] private float releaseAfterSeconds = 0f;
 	[SerializeField] private Transform transformOfAudio = null;
 

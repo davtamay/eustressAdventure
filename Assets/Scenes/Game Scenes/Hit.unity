@@ -742,15 +742,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 0
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 1
   homePosition: {x: 0, y: 2, z: 0}
   isRestartProgress: 0
@@ -760,6 +760,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &75947875
@@ -1155,15 +1157,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -1173,6 +1175,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &102754401
@@ -1820,13 +1824,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 160477992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 901326cd8b8fb47d3800c1a8cac1c6d7, type: 3}
+  m_Script: {fileID: 11500000, guid: df3fc19509a7c4bc69904a9847d68319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: -40
+  moveSpeed: -100
   timeUntilDisapear: 8
   objectToRotateAround: {fileID: 0}
-  fadeSpeed: 10
+  fadeSpeed: 6
   isEnableAndDisablePause: 0
 --- !u!212 &160477995
 SpriteRenderer:
@@ -2819,15 +2823,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: Intro
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -2837,6 +2841,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &246039079
@@ -3063,15 +3069,15 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 1
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -3081,6 +3087,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &259206041
@@ -4251,15 +4259,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -4269,6 +4277,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 2
 --- !u!114 &336543284
@@ -5078,15 +5088,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -5096,6 +5106,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 1
 --- !u!114 &435143406
@@ -6365,15 +6377,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -6383,6 +6395,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 5
 --- !u!114 &546086810
@@ -7123,15 +7137,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -7141,6 +7155,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &634583875
@@ -9556,15 +9572,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -9574,6 +9590,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 3
 --- !u!114 &811193659
@@ -9743,15 +9761,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 1
-  gameScene: MainMenu
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -9761,6 +9779,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &820654799
@@ -10182,15 +10202,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -10200,6 +10220,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &899166875
@@ -10704,15 +10726,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -10722,6 +10744,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &916639585
@@ -11969,15 +11993,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -11987,6 +12011,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &1004039265
@@ -13286,15 +13312,15 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 1
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -13304,6 +13330,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1106939292
@@ -14666,15 +14694,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 1
-  gameScene: Match
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -14684,6 +14712,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1183380353
@@ -16047,15 +16077,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: Intro
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -16065,6 +16095,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1334368190
@@ -16636,15 +16668,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -16654,6 +16686,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &1367532085
@@ -18504,15 +18538,15 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 1
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 1
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -18522,6 +18556,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1529450655
@@ -18918,15 +18954,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -18936,6 +18972,8 @@ MonoBehaviour:
   isMusicButton: 1
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 2
   StressT: 0
 --- !u!114 &1558960537
@@ -19084,15 +19122,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -19102,6 +19140,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 4
 --- !u!114 &1566279420
@@ -20138,15 +20178,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -20156,6 +20196,8 @@ MonoBehaviour:
   isMusicButton: 1
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 1
   StressT: 0
 --- !u!114 &1666601051
@@ -21083,15 +21125,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -21101,6 +21143,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 0
 --- !u!114 &1742822545
@@ -21913,15 +21957,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -21931,6 +21975,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &1781532285
@@ -23678,15 +23724,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -23696,6 +23742,8 @@ MonoBehaviour:
   isMusicButton: 1
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 3
   StressT: 0
 --- !u!114 &1913016344
@@ -25722,15 +25770,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -25740,6 +25788,8 @@ MonoBehaviour:
   isMusicButton: 1
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &2072667731
@@ -26276,15 +26326,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -26294,6 +26344,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &2111562070

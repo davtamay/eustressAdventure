@@ -53,6 +53,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -68,6 +69,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -109,7 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27a5b724d6664e6fbba3df0c1f88f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dissableTime: 4
+  dissableTime: 2
+  volumeRatio: 18
+  pitchRatio: 3
 --- !u!135 &135526298819904684
 SphereCollider:
   m_ObjectHideFlags: 1

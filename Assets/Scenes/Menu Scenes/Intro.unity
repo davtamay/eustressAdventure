@@ -317,6 +317,74 @@ RectTransform:
   m_AnchoredPosition: {x: -28.699997, y: 9.9000025}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &7474125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 7474126}
+  - component: {fileID: 7474128}
+  - component: {fileID: 7474127}
+  m_Layer: 0
+  m_Name: English
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7474126
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 7474125}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -58.9, y: -6, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_Children:
+  - {fileID: 1012389682}
+  m_Father: {fileID: 1558988616}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -6}
+  m_SizeDelta: {x: 11, y: 6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7474127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 7474125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &7474128
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 7474125}
 --- !u!1 &8359514
 GameObject:
   m_ObjectHideFlags: 0
@@ -2489,18 +2557,19 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 57072889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2650032, y: -0.5550003, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.007, z: 0.094138645}
+  m_LocalPosition: {x: -1.607, y: -0.544, z: 0}
+  m_LocalScale: {x: 0.005, y: 0.005, z: 0.094138645}
   m_Children:
   - {fileID: 1931808015}
   - {fileID: 1182614708}
+  - {fileID: 1558988616}
   m_Father: {fileID: 1741431967}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.265, y: -0.555}
-  m_SizeDelta: {x: 118.950005, y: 128.7}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1.607, y: -0.544}
+  m_SizeDelta: {x: 0.2, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &57072891
 MonoBehaviour:
@@ -2951,15 +3020,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -2969,6 +3038,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 3
 --- !u!114 &63622140
@@ -3241,15 +3312,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -3259,6 +3330,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &73901847
@@ -3868,6 +3941,74 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 88152221}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &88849902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 88849903}
+  - component: {fileID: 88849905}
+  - component: {fileID: 88849904}
+  m_Layer: 0
+  m_Name: Spanish (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &88849903
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 88849902}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 58.9, y: -6, z: -0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_Children:
+  - {fileID: 1320888013}
+  m_Father: {fileID: 1558988616}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -6}
+  m_SizeDelta: {x: 11, y: 6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &88849904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 88849902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &88849905
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 88849902}
 --- !u!1 &90603404
 GameObject:
   m_ObjectHideFlags: 0
@@ -3892,7 +4033,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 90603404}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.26000977, y: -9.894897, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 792711887}
@@ -3929,20 +4070,16 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "                                 Hello, welcome to Destressor!\n\nRemember
-    take a break every few minutes or when you start feeling tired.\n\nWe've all been
-    there: difficult days, anxiety about tomorrow, \nor simply forgetting something
-    important.\n\nWith the understanding that not all stress is bad, but prollonged
-    \nstress is, the goal for this experience is to assist you in practicing types
-    of coping\nwith the hope that you will feel comfortable using them in those times
-    of need.\n\nWhat better medium to practice such coping than during the playing
-    of \tgames!\n\n"
+  m_Text: '                          Hello, welcome to Destressor!
+
+
+'
 --- !u!222 &90603407
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4626,6 +4763,117 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &109009266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 109009267}
+  - component: {fileID: 109009268}
+  m_Layer: 0
+  m_Name: SpecialSelect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &109009267
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109009266}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1936703880}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &109009268
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109009266}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243212623433492564, guid: 28a83fecd8f9f4eb6af70ea11e4b13da,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: e96340969659345c38817141378afd96, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1.22
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  m_ExtensionPropertyValues: []
 --- !u!1 &110519420
 GameObject:
   m_ObjectHideFlags: 0
@@ -5161,15 +5409,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -5179,6 +5427,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &125028188
@@ -5577,6 +5827,94 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &140259146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 140259147}
+  - component: {fileID: 140259150}
+  - component: {fileID: 140259149}
+  - component: {fileID: 140259148}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &140259147
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140259146}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.3, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.2}
+  m_Children: []
+  m_Father: {fileID: 1012389682}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.3}
+  m_SizeDelta: {x: 10, y: 2}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &140259148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140259146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a2ec9a3a14941e8902c67ce476128b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Settings_English
+  isTextMesh: 0
+--- !u!114 &140259149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140259146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 0
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 5
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: English
+--- !u!222 &140259150
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140259146}
 --- !u!1 &141372781
 GameObject:
   m_ObjectHideFlags: 0
@@ -6087,7 +6425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &159484464
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6100,7 +6438,7 @@ RectTransform:
   m_Children:
   - {fileID: 742318351}
   m_Father: {fileID: 1079059055}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6831,6 +7169,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!95 &171250260
 Animator:
@@ -6939,6 +7278,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!95 &173432580
 Animator:
@@ -7686,17 +8026,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 0
+      - m_Target: {fileID: 691558097}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 1
+  isOnClickEventCalled: 1
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 1
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -7706,6 +8057,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &186568816
@@ -7955,15 +8308,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -7973,6 +8326,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &191410400
@@ -9310,7 +9665,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 214389951}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -108.65, y: 40, z: 0}
+  m_LocalPosition: {x: -108.65, y: -40, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1284151487}
@@ -13087,15 +13442,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -13105,6 +13460,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &293676001
@@ -13578,6 +13935,94 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &306076832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 306076833}
+  - component: {fileID: 306076836}
+  - component: {fileID: 306076835}
+  - component: {fileID: 306076834}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &306076833
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 306076832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.3, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.2}
+  m_Children: []
+  m_Father: {fileID: 1320888013}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.3}
+  m_SizeDelta: {x: 10, y: 2}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &306076834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 306076832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a2ec9a3a14941e8902c67ce476128b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Settings_Spanish
+  isTextMesh: 0
+--- !u!114 &306076835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 306076832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 0
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 5
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Spanish
+--- !u!222 &306076836
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 306076832}
 --- !u!1 &307549006
 GameObject:
   m_ObjectHideFlags: 0
@@ -14218,6 +14663,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!95 &321201807
 Animator:
@@ -14417,6 +14863,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
   positionToMoveTo: {fileID: 639618181}
   positionToGetOut: {fileID: 789151768}
@@ -14800,15 +15247,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -14818,6 +15265,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &333239302
@@ -15236,6 +15685,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
   objectToGive: {fileID: 0}
   nameForPlayerPref: test3
@@ -24560,6 +25010,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
 --- !u!65 &476727653
 BoxCollider:
@@ -24954,15 +25405,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 1
-  gameScene: MainMenu
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -24972,6 +25423,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &481381501
@@ -28418,6 +28871,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
   objectToGive: {fileID: 0}
   nameForPlayerPref: test6
@@ -28982,6 +29436,85 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 197.4366, y: 30, z: 353.9911}
   m_Center: {x: -1.2817001, y: 10, z: 186.24359}
+--- !u!1 &593353178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1012844997667474, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 797478239}
+  - component: {fileID: 593353181}
+  - component: {fileID: 593353180}
+  - component: {fileID: 593353179}
+  m_Layer: 5
+  m_Name: UIButton
+  m_TagString: GameStart
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &593353179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114113351260944696, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 593353178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &593353180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114232007958925824, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 593353178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 2
+--- !u!223 &593353181
+Canvas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 223779043715619290, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 593353178}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 1142524427
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &596125377
 GameObject:
   m_ObjectHideFlags: 0
@@ -29980,15 +30513,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -29998,6 +30531,8 @@ MonoBehaviour:
   isMusicButton: 1
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 3
   StressT: 0
 --- !u!114 &623679180
@@ -31622,15 +32157,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -31640,6 +32175,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 2
 --- !u!114 &674019830
@@ -41059,6 +41596,87 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 742824050}
+--- !u!1 &745854397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1297806234002214, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 745854398}
+  - component: {fileID: 745854400}
+  - component: {fileID: 745854399}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &745854398
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224956797637692874, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 745854397}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -108.25, y: 5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1416108382}
+  m_Father: {fileID: 1199766542}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0000054892153, y: 0}
+  m_SizeDelta: {x: 260, y: 200}
+  m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &745854399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114509852224133416, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 745854397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 2ae8c03cf76ce480ea1e48abf2ab2e2d, type: 3}
+    m_FontSize: 7
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 54
+    m_Alignment: 0
+    m_AlignByGeometry: 1
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "<size=10><b>Welcome to Destressor!</b></size>\n\n<color=yellow>Words of
+    caution:</color>\n1. Take a brake if your eyes become tired or if phone becomes
+    hot.\n2. Talk to your doctor about using VR.\n3. \n"
+--- !u!222 &745854400
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222721610693507964, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 745854397}
 --- !u!1 &745921343
 GameObject:
   m_ObjectHideFlags: 0
@@ -48355,6 +48973,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!135 &763639037
 SphereCollider:
@@ -49385,7 +50004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &792711887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49400,7 +50019,7 @@ RectTransform:
   - {fileID: 90603405}
   - {fileID: 245252275}
   m_Father: {fileID: 1079059055}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -49638,6 +50257,26 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2bd761f29d9b47d6a78aabde6b48dc3, type: 3}
   m_IsPrefabParent: 0
+--- !u!224 &797478239
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224303978143216488, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 593353178}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_Children:
+  - {fileID: 1199766542}
+  m_Father: {fileID: 1079059055}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &797696758
 GameObject:
   m_ObjectHideFlags: 0
@@ -49710,15 +50349,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -49728,6 +50367,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 1
 --- !u!114 &797696762
@@ -54017,6 +54658,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!1 &815780846
 GameObject:
@@ -55604,15 +56246,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -55622,6 +56264,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &852209832
@@ -56577,6 +57221,192 @@ Transform:
   m_Father: {fileID: 2134954801}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -4.8890157, y: 7.9169645, z: -118.664665}
+--- !u!1 &877268513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1367848897166412, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 877268514}
+  - component: {fileID: 877268519}
+  - component: {fileID: 877268518}
+  - component: {fileID: 877268517}
+  - component: {fileID: 877268516}
+  - component: {fileID: 877268515}
+  m_Layer: 0
+  m_Name: UIButton
+  m_TagString: Button
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &877268514
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224801990959016578, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 877268513}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.97, y: 0.85, z: 1}
+  m_Children:
+  - {fileID: 1632721312}
+  m_Father: {fileID: 1416108382}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.5}
+  m_SizeDelta: {x: 5, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!65 &877268515
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 65641098603530842, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 877268513}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &877268516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114256044319370680, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 877268513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
+  isSMenuOpener: 0
+  isSType: 0
+  isStressed: 0
+  isEnvChanger: 0
+  isSceneChange: 0
+  scene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 0, z: 0}
+  isRestartProgress: 0
+  isBackToIntroButton: 0
+  isStartButton: 1
+  isReplayButton: 0
+  isMusicButton: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
+  curMusicButton: 0
+  StressT: 0
+--- !u!114 &877268517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114528959398554608, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 877268513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 877268518}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 593353178}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &877268518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114219667379797584, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 877268513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: e555aaa2e768247feb98e3b6ad5958ae, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 0
+  m_FillOrigin: 1
+--- !u!222 &877268519
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222524123650367242, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 877268513}
 --- !u!1 &880125013
 GameObject:
   m_ObjectHideFlags: 0
@@ -58271,6 +59101,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
 --- !u!65 &917014453
 BoxCollider:
@@ -59618,6 +60449,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
   objectToGive: {fileID: 847967326}
   nameForPlayerPref: test1
@@ -60466,15 +61298,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -60484,6 +61316,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &958669942
@@ -62048,7 +62882,7 @@ Prefab:
     - target: {fileID: 114683126768222906, guid: 7e446ca4fdd3b4d25bb3b39f83fca310,
         type: 2}
       propertyPath: gameSceneName
-      value: SkyJumper
+      value: SkyFlight
       objectReference: {fileID: 0}
     - target: {fileID: 114683126768222906, guid: 7e446ca4fdd3b4d25bb3b39f83fca310,
         type: 2}
@@ -62840,6 +63674,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!95 &1010079775
 Animator:
@@ -62985,6 +63820,174 @@ Transform:
   m_Father: {fileID: 708392592}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -0.952, y: 90.00201, z: 89.9}
+--- !u!1 &1012389681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1012389682}
+  - component: {fileID: 1012389687}
+  - component: {fileID: 1012389686}
+  - component: {fileID: 1012389685}
+  - component: {fileID: 1012389684}
+  - component: {fileID: 1012389683}
+  m_Layer: 0
+  m_Name: English
+  m_TagString: Button
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1012389682
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1012389681}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0000052452087, y: 0.6000055, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_Children:
+  - {fileID: 140259147}
+  m_Father: {fileID: 7474126}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 5.4999948, y: 0.6000055}
+  m_SizeDelta: {x: 10, y: 2}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!65 &1012389683
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1012389681}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1012389684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1012389681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
+  isSMenuOpener: 0
+  isSType: 0
+  isStressed: 0
+  isEnvChanger: 0
+  isSceneChange: 0
+  scene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 2, z: 0}
+  isRestartProgress: 0
+  isBackToIntroButton: 0
+  isStartButton: 0
+  isReplayButton: 0
+  isMusicButton: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
+  isLocalizedButton: 1
+  language: 0
+  curMusicButton: 0
+  StressT: 0
+--- !u!114 &1012389685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1012389681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1012389686}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1012389686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1012389681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: e87d8a6fd7c66476888ac42900acf768, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 1
+--- !u!222 &1012389687
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1012389681}
 --- !u!1 &1014267063
 GameObject:
   m_ObjectHideFlags: 0
@@ -63348,6 +64351,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
 --- !u!64 &1030977016
 MeshCollider:
@@ -64129,6 +65133,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
 --- !u!23 &1054183543
 MeshRenderer:
@@ -64707,15 +65712,15 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 1
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -64725,6 +65730,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1066098032
@@ -64891,15 +65898,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -64909,6 +65916,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &1067751325
@@ -65395,6 +66404,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 3, z: 8}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
+  - {fileID: 797478239}
   - {fileID: 792711887}
   - {fileID: 159484464}
   m_Father: {fileID: 1169058128}
@@ -65612,15 +66622,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -65630,6 +66640,8 @@ MonoBehaviour:
   isMusicButton: 1
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 1
   StressT: 0
 --- !u!114 &1081816659
@@ -65894,15 +66906,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -65912,6 +66924,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 5
 --- !u!114 &1084298068
@@ -68916,6 +69930,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
   objectToGive: {fileID: 0}
   nameForPlayerPref: test5
@@ -70486,7 +71501,7 @@ RectTransform:
   m_GameObject: {fileID: 1182614707}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -29, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 1.2, z: 1}
   m_Children:
   - {fileID: 257144370}
   - {fileID: 281063368}
@@ -71301,6 +72316,118 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1199387106}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1199766541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1136323700085364, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1199766542}
+  - component: {fileID: 1199766546}
+  - component: {fileID: 1199766545}
+  - component: {fileID: 1199766544}
+  - component: {fileID: 1199766543}
+  m_Layer: 0
+  m_Name: GameStartInfo (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1199766542
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224253476076485256, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1199766541}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.0039999997, y: 0.0039999997, z: 1}
+  m_Children:
+  - {fileID: 745854398}
+  m_Father: {fileID: 797478239}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 236.5, y: 53.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1199766543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114583367735127676, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1199766541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
+--- !u!114 &1199766544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114721022326493872, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1199766541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297475563, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 20
+    m_Right: 20
+    m_Top: 10
+    m_Bottom: 20
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+--- !u!114 &1199766545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114625178547262650, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1199766541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.34901962, g: 0.57254905, b: 0.61960787, a: 0.984}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1199766546
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222523215374828796, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1199766541}
 --- !u!1 &1200810765
 GameObject:
   m_ObjectHideFlags: 0
@@ -72758,6 +73885,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
   walkingSpeed: 4.4
   maxDistance: 2.75
@@ -77765,6 +78893,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
   objectToGive: {fileID: 0}
   nameForPlayerPref: test7
@@ -77991,6 +79120,174 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1309361061}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1320888012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1320888013}
+  - component: {fileID: 1320888018}
+  - component: {fileID: 1320888017}
+  - component: {fileID: 1320888016}
+  - component: {fileID: 1320888015}
+  - component: {fileID: 1320888014}
+  m_Layer: 0
+  m_Name: Spanish
+  m_TagString: Button
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1320888013
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1320888012}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0000052452087, y: 0.6000055, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_Children:
+  - {fileID: 306076833}
+  m_Father: {fileID: 88849903}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -5.5000052, y: 0.6000055}
+  m_SizeDelta: {x: 10, y: 2}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!65 &1320888014
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1320888012}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1320888015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1320888012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d5ac98f8fd848879cc3bd891ae0c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
+  isSMenuOpener: 0
+  isSType: 0
+  isStressed: 0
+  isEnvChanger: 0
+  isSceneChange: 0
+  scene: 
+  isResetPositiontoHome: 0
+  homePosition: {x: 0, y: 2, z: 0}
+  isRestartProgress: 0
+  isBackToIntroButton: 0
+  isStartButton: 0
+  isReplayButton: 0
+  isMusicButton: 0
+  isStressModified: 0
+  stressModifiedAmount: 0
+  isLocalizedButton: 1
+  language: 1
+  curMusicButton: 0
+  StressT: 0
+--- !u!114 &1320888016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1320888012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1320888017}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1320888017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1320888012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 145904df8b05c4176b690a339f1497ed, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 1
+--- !u!222 &1320888018
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1320888012}
 --- !u!1 &1321493093
 GameObject:
   m_ObjectHideFlags: 0
@@ -84631,6 +85928,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
   objectToGive: {fileID: 0}
   nameForPlayerPref: test4
@@ -85521,6 +86819,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
 --- !u!65 &1412198049
 BoxCollider:
@@ -85743,6 +87042,100 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1415346198}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1416108381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1889185887810622, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1416108382}
+  - component: {fileID: 1416108385}
+  - component: {fileID: 1416108384}
+  - component: {fileID: 1416108383}
+  m_Layer: 0
+  m_Name: ReadyButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1416108382
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224868790397969340, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1416108381}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 108.25, y: -42.36, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_Children:
+  - {fileID: 877268514}
+  m_Father: {fileID: 745854398}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: -8.86}
+  m_SizeDelta: {x: 5, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1416108383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114487598481295516, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1416108381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1679637790, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
+--- !u!114 &1416108384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114216711827908178, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1416108381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.007352948, g: 0.46549806, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 096b482ad816a4adeb9898009532dd0b, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1416108385
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222102820225584322, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1416108381}
 --- !u!1 &1416314739
 GameObject:
   m_ObjectHideFlags: 0
@@ -85815,15 +87208,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -85833,6 +87226,8 @@ MonoBehaviour:
   isMusicButton: 1
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 2
   StressT: 0
 --- !u!114 &1416314743
@@ -86083,6 +87478,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!95 &1417589478
 Animator:
@@ -86208,6 +87604,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
 --- !u!114 &1417800555
 MonoBehaviour:
@@ -100562,7 +101959,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1529781937}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 258.5, y: 111, z: 0}
+  m_LocalPosition: {x: 260, y: 126, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 637704315}
@@ -101001,6 +102398,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
   objectToGive: {fileID: 1788751887}
   nameForPlayerPref: test2
@@ -105197,6 +106595,98 @@ Transform:
   m_Father: {fileID: 790489007}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 78.26117, y: -127.767845, z: -131.19788}
+--- !u!1 &1558988615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1558988616}
+  - component: {fileID: 1558988619}
+  - component: {fileID: 1558988618}
+  - component: {fileID: 1558988617}
+  m_Layer: 0
+  m_Name: Languages
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1558988616
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1558988615}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 222, y: 6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7474126}
+  - {fileID: 88849903}
+  m_Father: {fileID: 57072890}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 222, y: 5.8999996}
+  m_SizeDelta: {x: 117.8, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1558988617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1558988615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a2ec9a3a14941e8902c67ce476128b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Settings_Language
+  isTextMesh: 0
+--- !u!114 &1558988618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1558988615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 15
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Language
+
+'
+--- !u!222 &1558988619
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1558988615}
 --- !u!1 &1559692889
 GameObject:
   m_ObjectHideFlags: 0
@@ -106083,15 +107573,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -106101,6 +107591,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &1591370950
@@ -107652,6 +109144,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!95 &1618786988
 Animator:
@@ -108028,6 +109521,103 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1632187397}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1632721311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1122758552714344, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1632721312}
+  - component: {fileID: 1632721315}
+  - component: {fileID: 1632721314}
+  - component: {fileID: 1632721313}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1632721312
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224067017321833250, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1632721311}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.00000023841858, z: 0}
+  m_LocalScale: {x: 0.07352942, y: 0.049999997, z: 0.2}
+  m_Children: []
+  m_Father: {fileID: 877268514}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -0.00000023841858}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1632721313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114119406777325522, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1632721311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a2ec9a3a14941e8902c67ce476128b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: GeneralText_GotIt
+  isTextMesh: 0
+--- !u!114 &1632721314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114554062209666524, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1632721311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 0
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 5
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: '
+
+    Got It!
+
+'
+--- !u!222 &1632721315
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222386912627324778, guid: 4eccfcebdc51d454182737e492a8f184,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1632721311}
 --- !u!1 &1637541165
 GameObject:
   m_ObjectHideFlags: 0
@@ -108263,15 +109853,15 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 1
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -108281,6 +109871,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1639577252
@@ -109985,6 +111577,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isUseQuickDisable: 0
+  localizedText: {fileID: 0}
   timerForActivation: 0
   objectToGive: {fileID: 497029523}
   nameForPlayerPref: test8
@@ -111287,15 +112880,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -111305,6 +112898,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 4
 --- !u!114 &1735935710
@@ -111638,15 +113233,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: Intro
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -111656,6 +113251,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1741431970
@@ -112076,8 +113673,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_HandleRect: {fileID: 0}
   m_Direction: 2
-  m_Value: 0.9999992
-  m_Size: 0.39999977
+  m_Value: 0.99999994
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -112811,15 +114408,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -112829,6 +114426,8 @@ MonoBehaviour:
   isMusicButton: 1
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1774248359
@@ -114855,6 +116454,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!95 &1825043354
 Animator:
@@ -115454,6 +117054,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!95 &1840318535
 Animator:
@@ -116248,6 +117849,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!95 &1853392337
 Animator:
@@ -116936,6 +118538,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!95 &1870370398
 Animator:
@@ -119008,7 +120611,7 @@ RectTransform:
   m_GameObject: {fileID: 1931808014}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 19.4, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 1.2, z: 1}
   m_Children:
   - {fileID: 820058848}
   - {fileID: 1413483457}
@@ -119207,6 +120810,7 @@ Transform:
   m_Children:
   - {fileID: 520820808}
   - {fileID: 74998049}
+  - {fileID: 109009267}
   m_Father: {fileID: 307770580}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -121063,15 +122667,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 1
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 1
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: Intro
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -121081,6 +122685,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 0
   StressT: 0
 --- !u!114 &1985061155
@@ -123217,6 +124823,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!95 &2046311878
 Animator:
@@ -123605,15 +125212,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 1
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -123623,6 +125230,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 0
 --- !u!114 &2051762680
@@ -124378,6 +125987,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!95 &2064456620
 Animator:
@@ -125530,7 +127140,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2097201055}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 275.07, y: -42.3, z: 0}
+  m_LocalPosition: {x: 78, y: -2.3, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
   - {fileID: 1397459031}
@@ -125676,15 +127286,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 0
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 0
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 0
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 1
   homePosition: {x: 0, y: 2, z: 0}
   isRestartProgress: 0
@@ -125694,6 +127304,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &2097295967
@@ -126428,15 +128040,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  isClickEventCalled: 0
+  isOnClickEventCalled: 0
+  isOnStartInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
   isSType: 0
   isStressed: 0
-  isOnStartInvoke: 0
-  isButtonInvoke: 1
   isEnvChanger: 0
-  isGame: 0
-  gameScene: 
+  isSceneChange: 0
+  scene: 
   isResetPositiontoHome: 0
   homePosition: {x: 0, y: 0, z: 0}
   isRestartProgress: 0
@@ -126446,6 +128058,8 @@ MonoBehaviour:
   isMusicButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
+  isLocalizedButton: 0
+  language: 0
   curMusicButton: 4
   StressT: 6
 --- !u!114 &2118590203
@@ -127015,6 +128629,7 @@ MonoBehaviour:
   isSecondLookEventCalled: 0
   originalSprite: {fileID: 0}
   image: {fileID: 0}
+  isOnFromStart: 0
   lookTriggerCollider: {fileID: 0}
 --- !u!95 &2126393888
 Animator:

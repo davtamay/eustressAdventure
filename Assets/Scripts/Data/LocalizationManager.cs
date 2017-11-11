@@ -5,24 +5,25 @@ using System.IO;
 
 public class LocalizationManager : MonoBehaviour {
 	
-		public static LocalizationManager Instance;
-
+		
 		private Dictionary<string, string> localizedText;
 		
-	//	private bool isReady = false;
-		public bool isReferencesReady = false;
-		public bool isTextReady = false;
+		[SerializeField]private bool isLocalizedTextReady = false;
+
+		[SerializeField]private string stringDefault = "localization_en.json";
 
 		private string missingTextString = "Localized text not found";
 
 		public List<LocalizedText> registeredLocalizedTexts;
 
-		// Use this for initialization
+		public static LocalizationManager Instance;
+
 		void Awake ()
 		{
-		if (Instance == null) {
+		if (!Instance) {
 			Instance = this;
 		} else if (Instance != this) {
+			Debug.LogWarning("There are two localizationManagers in scene - deleting late instance.");
 			Destroy (gameObject);
 		}
 
@@ -33,41 +34,26 @@ public class LocalizationManager : MonoBehaviour {
 		}
 
 		public void ObtainTextReferences(){
+				
+			ResetLocalizationTextReady ();
 
-		/*	presentLocalizedTexts.Clear ();
-			var tempLTs	= GameObject.FindGameObjectsWithTag ("Text");
-
-			for (int i = 0; i < tempLTs.Length; i++) {
-
-			presentLocalizedTexts.Add(tempLTs[i].GetComponentInChildren<LocalizedText> (true));
-			}*/
-			
-		var stringDefault = "localization_en.json";
+		//IF THERE ISN'T A PLAYERPREF FOR "LANGUAGE" LOAD DEFAULT LOCALIZED FILE,  IF THERE IS THEN USE LANGUAGE THAT WAS LAST SET
 		if (PlayerPrefs.HasKey ("Language"))
 			LoadLocalizedText (PlayerPrefs.GetString ("Language"));
 		else {
 			PlayerPrefs.SetString("Language",stringDefault);
 			LoadLocalizedText (PlayerPrefs.GetString ("Language"));
 		}
-			
-		//	LoadLocalizedText(PlayerPrefs.SetString("Language",stringDefault));
-
-			isReferencesReady = true;
-	
 	
 		}
-
-	
-	
 
 
 		public void LoadLocalizedText(string fileName)
 		{
 
-
 			localizedText = new Dictionary<string, string> ();
 			string filePath = Path.Combine (Application.streamingAssetsPath, fileName);
-
+//DIRECTORY OF STREAMING ASSETS VARY BETWEEN ANDROID AND USING OTHER PLATFORMS THUS DIFFERENT LOOK UP
 #if UNITY_EDITOR
 			if (File.Exists (filePath)) {
 				string dataAsJson = File.ReadAllText (filePath);
@@ -92,7 +78,6 @@ public class LocalizationManager : MonoBehaviour {
 		WWW wwwfile = new WWW (filePath);
 		while (!wwwfile.isDone) {}
 
-		//if (File.Exists (wwwfile)) {
 		string AdataAsJson = wwwfile.text ;
 		
 		LocalizationData AloadedData = JsonUtility.FromJson<LocalizationData> (AdataAsJson);
@@ -104,15 +89,9 @@ public class LocalizationManager : MonoBehaviour {
 		}
 
 			Debug.Log ("Data loaded, dictionary contains: " + localizedText.Count + " entries");
-
-		//} else 
-		//	Debug.LogError ("Cannot find file!" + "at: " + fileName);
-
-		
 #endif
 
-			//isReady = true;
-		isTextReady = true;
+		isLocalizedTextReady = true;
 
 
 		PlayerPrefs.SetString ("Language", fileName);
@@ -122,6 +101,7 @@ public class LocalizationManager : MonoBehaviour {
 		
 		}
 
+//UPDATED ALL AVAILABLE LOCALIZEDTEXT COMPONENTS REGISTERED TO SET THEIR TEXT COMPONENTS;
 	IEnumerator SetLocalizedTextUpdate(){
 	
 		while (!GetIsReady())
@@ -131,9 +111,6 @@ public class LocalizationManager : MonoBehaviour {
 
 			lT.OnUpdate ();
 		}
-
-		//isTextReady = false;
-		//isReferencesReady = false;
 
 	}
 
@@ -148,18 +125,20 @@ public class LocalizationManager : MonoBehaviour {
 		return result;
 
 	}
+	//CHECK FOR OBTAINING FILE NAME AND LOCALIZEDTEXT BEING SET UP
+	public bool GetIsReady()
+	{
+	
+	//return isReferencesReady && isTextReady;
+		return isLocalizedTextReady;
+	}
 
-		public bool GetIsReady()
-		{
+	public void ResetLocalizationTextReady()
+	{
+		
+	isLocalizedTextReady = false;
 
-		return isReferencesReady && isTextReady;
-		//isReady;
-		}
-		public void ResetReady()
-		{
-		isReferencesReady = false;
-		isTextReady = false;
-		}
+	}
 
 	
 }
