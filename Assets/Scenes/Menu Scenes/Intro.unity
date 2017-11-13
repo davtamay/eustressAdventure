@@ -1471,8 +1471,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f3133efae6a5847fdb1497685c53ac9c, type: 2}
   - {fileID: 2100000, guid: a9a3211e1608041a880367f00560e667, type: 2}
   - {fileID: 2100000, guid: 81747865f4b5147c4a51d900c6ce80af, type: 2}
-  isCustomSavePosition: 0
-  customSavePosition: {x: 0, y: 0, z: 0}
 --- !u!4 &30376909
 Transform:
   m_ObjectHideFlags: 0
@@ -3022,9 +3020,8 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
   isOnStartInvoke: 0
-  isButtonInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 1
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -3041,7 +3038,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 3
 --- !u!114 &63622140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3097,7 +3093,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 63622142}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 906382576}
+        m_MethodName: StressFeelChoice
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: FRUSTRATED
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &63622142
@@ -3316,7 +3323,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -3333,7 +3339,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &73901847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4980,7 +4985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToRotate: {fileID: 539130567}
-  angleDistanceUntilRotateBack: 80
+  angleDistanceUntilRotateBack: 40
 --- !u!1 &112518828
 GameObject:
   m_ObjectHideFlags: 0
@@ -5413,7 +5418,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -5430,7 +5434,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &125028188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8005,7 +8008,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 128299107}
-        m_MethodName: BoolClosed
+        m_MethodName: CloseMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8043,7 +8046,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 1
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -8060,7 +8062,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &186568816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8312,7 +8313,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -8329,7 +8329,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &191410400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13446,7 +13445,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -13463,7 +13461,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &293676001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15251,7 +15248,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -15268,7 +15264,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &333239302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25409,7 +25404,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -25426,7 +25420,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &481381501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30517,7 +30510,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -30534,7 +30526,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 3
-  StressT: 0
 --- !u!114 &623679180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32159,9 +32150,8 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
   isOnStartInvoke: 0
-  isButtonInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 1
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -32178,7 +32168,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 2
 --- !u!114 &674019830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32234,7 +32223,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 674019832}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 906382576}
+        m_MethodName: StressFeelChoice
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: DISAPPOINTED
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &674019832
@@ -50351,9 +50351,8 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
   isOnStartInvoke: 0
-  isButtonInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 1
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -50370,7 +50369,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 1
 --- !u!114 &797696762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50426,7 +50424,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 797696764}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 906382576}
+        m_MethodName: StressFeelChoice
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ANXIOUS
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &797696764
@@ -56250,7 +56259,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -56267,7 +56275,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &852209832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57301,7 +57308,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -57318,7 +57324,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &877268517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58358,6 +58363,12 @@ MonoBehaviour:
   messageLength: 0
   scrollSpeed: 2.5
   scrollb: {fileID: 0}
+  stressFeel: 
+  cRTextSO: {fileID: 11400000, guid: 15b218c13b72a4902875baf248ff435c, type: 2}
+  cRTextRect: {fileID: 0}
+  cRText: []
+  folowAllong: {fileID: 0}
+  storeText: 
 --- !u!114 &906382577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61302,7 +61313,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -61319,7 +61329,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &958669942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63896,7 +63905,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -63913,7 +63921,6 @@ MonoBehaviour:
   isLocalizedButton: 1
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &1012389685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65716,7 +65723,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -65733,7 +65739,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &1066098032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65902,7 +65907,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -65919,7 +65923,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &1067751325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66626,7 +66629,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -66643,7 +66645,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 1
-  StressT: 0
 --- !u!114 &1081816659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66908,9 +66909,8 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
   isOnStartInvoke: 0
-  isButtonInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 1
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -66927,7 +66927,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 5
 --- !u!114 &1084298068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66983,7 +66982,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1084298070}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 906382576}
+        m_MethodName: StressFeelChoice
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: WORRIED
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1084298070
@@ -71077,6 +71087,8 @@ MonoBehaviour:
   isArmorOn: 0
   coinText: {fileID: 0}
   isInvulnerable: 0
+  isCustomSavePosition: 0
+  customSavePosition: {x: 0, y: 0, z: 0}
   isShakeWhenHit: 0
   shakeTime: 2
   shakeAmount: 3
@@ -71196,6 +71208,46 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1170296786}
+--- !u!1 &1170696462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1170696464}
+  - component: {fileID: 1170696463}
+  m_Layer: 0
+  m_Name: EventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1170696463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1170696462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e7b38b6f710426fb38e66e9babd046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1170696464
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1170696462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 53.71361, y: -2.8616023, z: 99.39159}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 39
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1173916736
 GameObject:
   m_ObjectHideFlags: 0
@@ -79196,7 +79248,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -79213,7 +79264,6 @@ MonoBehaviour:
   isLocalizedButton: 1
   language: 1
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &1320888016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87212,7 +87262,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -87229,7 +87278,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 2
-  StressT: 0
 --- !u!114 &1416314743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87619,8 +87667,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAudioReferance: 1
   nameOfTrack: Fountain
-  isSoundRandomPitchAndVolume: 0
-  isReleaseFromMemory: 0
   releaseAfterSeconds: 0
   transformOfAudio: {fileID: 0}
 --- !u!1 &1425540536
@@ -106446,7 +106492,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1552754247}
-  m_LocalRotation: {x: -0.3461175, y: -0.5470278, z: -0.26492068, w: 0.7146889}
+  m_LocalRotation: {x: -0.34611753, y: -0.5470279, z: -0.2649207, w: 0.71468896}
   m_LocalPosition: {x: 0.00062, y: 0.01405, z: -0.00227}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -107577,7 +107623,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -107594,7 +107639,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &1591370950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109857,7 +109901,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -109874,7 +109917,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &1639577252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110158,11 +110200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901326cd8b8fb47d3800c1a8cac1c6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  timeUntilDisapear: 0
-  objectToRotateAround: {fileID: 0}
-  fadeSpeed: 4
-  isEnableAndDisablePause: 0
 --- !u!212 &1647845142
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -112882,9 +112919,8 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
   isOnStartInvoke: 0
-  isButtonInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 1
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -112901,7 +112937,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 4
 --- !u!114 &1735935710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112957,7 +112992,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1735935712}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 906382576}
+        m_MethodName: StressFeelChoice
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SAD
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1735935712
@@ -113237,7 +113283,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -113254,7 +113299,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &1741431970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114412,7 +114456,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -114429,7 +114472,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &1774248359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122294,7 +122336,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1980591512}
-  - component: {fileID: 1980591511}
   m_Layer: 0
   m_Name: StressAssess
   m_TagString: StressAssess
@@ -122302,31 +122343,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1980591511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1980591510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc67b68d68af64248a879ead9a44df41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stressFeel: 
-  cognitiveRefraimingText:
-  - {fileID: 4900000, guid: f438c10a14e70410ea1771c602ae56b7, type: 3}
-  - {fileID: 4900000, guid: 7044b9a4ed857406bab97575addfec8a, type: 3}
-  - {fileID: 4900000, guid: 4af05f5d7e0c14512b9c150a117d8775, type: 3}
-  - {fileID: 4900000, guid: a024aa0038e9f41e1bff33b7acce0725, type: 3}
-  - {fileID: 4900000, guid: 95f556b20997440c3affaeb8934febd5, type: 3}
-  - {fileID: 4900000, guid: 80a2390ff59424b59ada5c76ef82cc4f, type: 3}
-  cRObject: {fileID: 0}
-  cRTextRect: {fileID: 0}
-  cRText: []
-  folowAllong: {fileID: 0}
-  storeText: 
-  sMenu: {fileID: 0}
 --- !u!224 &1980591512
 RectTransform:
   m_ObjectHideFlags: 0
@@ -122671,7 +122687,6 @@ MonoBehaviour:
   isOnStartInvoke: 1
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -122688,7 +122703,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &1985061155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125151,7 +125165,6 @@ GameObject:
   - component: {fileID: 2051762683}
   - component: {fileID: 2051762682}
   - component: {fileID: 2051762681}
-  - component: {fileID: 2051762680}
   - component: {fileID: 2051762679}
   - component: {fileID: 2051762678}
   m_Layer: 5
@@ -125214,9 +125227,8 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
   isOnStartInvoke: 0
-  isButtonInvoke: 0
+  isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 1
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -125233,24 +125245,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 0
---- !u!114 &2051762680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2051762676}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 895f5dde9d2f24c65a8779fead27b431, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xSpeed: 0.3
-  xAmplitude: 90
-  ySpeed: 0.3
-  yAmplitude: 90
-  offset: 0
-  rect: {fileID: 0}
 --- !u!114 &2051762681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125289,7 +125283,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2051762682}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 906382576}
+        m_MethodName: StressFeelChoice
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ANGRY
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2051762682
@@ -127290,7 +127295,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -127307,7 +127311,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &2097295967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128044,7 +128047,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -128061,7 +128063,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &2118590203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128305,8 +128306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d099a0c16da584365ac45254bbbfd6e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isReferencesReady: 0
-  isTextReady: 0
+  isLocalizedTextReady: 0
+  stringDefault: localization_en.json
   registeredLocalizedTexts: []
 --- !u!4 &2119694395
 Transform:

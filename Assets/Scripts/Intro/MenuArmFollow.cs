@@ -15,22 +15,28 @@ public class MenuArmFollow : MonoBehaviour {
 	private string curSceneName;
 
 	void Awake(){
-		stressMenu = GameObject.FindWithTag ("StressMenu");
-		thisTransform = GetComponent<Transform> ();
+		
+		thisTransform = transform;
 		thisAnimator = GetComponentInChildren<Animator> ();
+
+
+
+	}
+	void Start(){
 
 		camTransform = Camera.main.transform;
 		offset = thisTransform.position - Camera.main.transform.position;
 
-	}
-	void Start(){
+		stressMenu = GameObject.FindWithTag ("StressMenu");
 
 		if(SceneController.Instance != null)
 			curSceneName = SceneController.Instance.GetCurrentSceneName ();
 		
 		thisTransform.GetChild(0).gameObject.SetActive(false);
 
-		stressMenu.SetActive (false);
+		EventManager.Instance.AddListener (EVENT_TYPE.SCENE_LOADED, OnEvent);
+	
+
 	}
 	
 
@@ -49,10 +55,18 @@ public class MenuArmFollow : MonoBehaviour {
 	//this is checked off by button look click (BackToGame Button)
 	bool isClosedClick = false;
 
-	public void BoolClosed(){
+	public void CloseMenu(){
 		AudioManager.Instance.PlayDirectSound ("TakeOutMenu");
 		thisAnimator.SetBool ("Close", true);
+
+		GameController.Instance.Paused = false;
+		stressMenu.SetActive (false);
+
+		EventManager.Instance.PostNotification (EVENT_TYPE.STRESSMENU_CLOSED, this,null);
+
 		isClosedClick = true;
+
+
 	}
 
 
@@ -76,13 +90,13 @@ public class MenuArmFollow : MonoBehaviour {
 				return;
 			}
 
-			curViewingAngle = camTransform.forward;
+			curViewingAngle = camTransform.rotation * Vector3.forward;
 
 			thisTransform.GetChild(0).gameObject.SetActive(true);
 			oldViewingAngle =  Quaternion.Euler(0,90,0) * camTransform.forward ;
 			isInitialLook = true;
 
-			if (curSceneName != "intro")
+			//if (curSceneName != "intro")
 				GameController.Instance.Paused = true;
 
 		}
@@ -92,88 +106,38 @@ public class MenuArmFollow : MonoBehaviour {
 
 	void LateUpdate () {
 
-//#if UNITY_EDITOR
-
-		/*if (Input.GetMouseButton (0) && isButtonAvailable) {
-			isButtonAvailable = false;
-
-			AudioManager.Instance.PlayDirectSound ("TakeOutMenu");
-
-			if (isInitialLook) {
-				
-				thisAnimator.SetBool ("Close", false);
-				return;
-			}
-
-			curViewingAngle = camTransform.forward;
-
-			thisTransform.GetChild(0).gameObject.SetActive(true);
-			oldViewingAngle =  Quaternion.Euler(0,90,0) * camTransform.forward ;
-			isInitialLook = true;
-
-			if (curSceneName != "intro")
-				GameController.Instance.Paused = true;
-
-		}*/
-//#endif
-
-/*#if UNITY_ANDROID
-		//isMagnetTriggered = MagnetTrigger();
-		if (Input.GetMouseButton (0) && isButtonAvailable) {
-		//if (isMagnetTriggered && isButtonAvailable) {
-			isButtonAvailable = false;
-			isMagnetTriggered = false;
-
-			AudioManager.Instance.PlayDirectSound ("TakeOutMenu");
-
-			if (isInitialLook) {
-
-				thisAnimator.SetBool ("Close", false);
-				return;
-			}
-
-			curViewingAngle = camTransform.forward;
-
-			thisTransform.GetChild(0).gameObject.SetActive(true);
-			oldViewingAngle =  Quaternion.Euler(0,90,0) * camTransform.forward ;
-			isInitialLook = true;
-
-			if (curSceneName != "intro")
-				GameController.Instance.Paused = true;
-
-		}
-
-
-#endif*/
-
 
 		if (isInitialLook) {
 
 
 			if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsTag ("Idle")) {
 
-				
+				EventManager.Instance.PostNotification (EVENT_TYPE.STRESSMENU_OPENED, this, null);
 				stressMenu.SetActive (true);
 				isInitialLook = false;
+
+				//ALLOW FOR INITIAL SET UP OF MENU TO PLAYERS FACE
+				isLerping = true;
 			
 			
 			}
 		
 		} else if (isClosedClick) {
 
-
+		
 
 			if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsTag ("Start")) {
 
 				isClosedClick = false;
 
-
 				thisAnimator.SetBool ("Close", false);
-				stressMenu.SetActive (false);
 
 				thisTransform.GetChild(0).gameObject.SetActive(false);
 
 				isButtonAvailable = true;
+
+
+				//
 
 			}
 
@@ -181,6 +145,7 @@ public class MenuArmFollow : MonoBehaviour {
 		}
 
 		if (GameController.Instance.IsMenuActive) {
+
 
 			curViewingAngle = camTransform.forward;
 
@@ -205,5 +170,25 @@ public class MenuArmFollow : MonoBehaviour {
 		}
 			
 		
+	}
+
+
+	public void OnEvent(EVENT_TYPE Event_Type, Component Sender, object Param = null ){
+
+
+		switch(Event_Type){
+
+		case EVENT_TYPE.SCENE_LOADED:
+			
+
+			stressMenu.SetActive (false);
+
+			break;
+
+		
+
+		}
+
+
 	}
 }

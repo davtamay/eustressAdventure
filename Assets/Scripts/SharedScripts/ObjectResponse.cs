@@ -26,7 +26,9 @@ public class ObjectResponse : MonoBehaviour {
 			if (!isObstacle) {
 				if (string.Equals (itemDescription, "Coin", System.StringComparison.CurrentCultureIgnoreCase)) {
 					PlayerManager.Instance.points = 1;
-					AudioManager.Instance.PlayDirectSound ("SmallWin", true);
+					//EventManager.Instance.PostNotification (EVENT_TYPE.POINTS_ADD, this, 1);
+
+					//AudioManager.Instance.PlayDirectSound ("SmallWin", true);
 					Destroy (this.gameObject);
 				} else if (string.Equals (itemDescription, "Armor", System.StringComparison.CurrentCultureIgnoreCase)) {
 					PlayerManager.Instance.AddArmor ();

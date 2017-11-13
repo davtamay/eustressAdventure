@@ -81,6 +81,31 @@ public class AudioManager : MonoBehaviour {
 		}
 
 	}
+
+	void Start()
+	{
+
+		EventManager.Instance.AddListener (EVENT_TYPE.SCENE_CHANGING,OnEvent);
+
+
+	}
+	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
+	
+		switch(Event_Type){
+
+		case EVENT_TYPE.SCENE_CHANGING:
+
+			aSQueue1.Clear ();
+
+			break;
+
+
+		}
+	
+	
+	
+	
+	}
 	#region MUSIC_METHODS
 
 	public void StopM(){
@@ -324,6 +349,65 @@ public class AudioManager : MonoBehaviour {
 		return tempGOASInstance;
 	
 	
+	}
+
+	public Queue<AudioSource> aSQueue1 = new Queue <AudioSource> ();
+
+	public Queue<AudioSource> CreateTempAudioSourcePoolQueue(AudioReferanceType aRT, string nameOfGOAS, int amount){
+
+		AudioSource tempASInstance = null;
+		GameObject tempParent = new GameObject();
+		tempParent.name = "QueueAudioSources";
+		tempParent.transform.SetParent (tempASInstance.transform);
+		tempParent.transform.SetAsLastSibling ();
+
+		switch (aRT) {
+		case AudioReferanceType._MUSIC:
+				
+			for (int i = 0; i < amount; i++) {
+				tempASInstance = Instantiate(_MusicAudioSourceDictionary[nameOfGOAS]).GetComponent<AudioSource>();
+				tempParent.transform.SetParent (tempASInstance.transform);
+				aSQueue1.Enqueue (tempASInstance);
+
+			}
+				
+			break;
+
+		case AudioReferanceType._AMBIENT:
+			
+			for (int i = 0; i < amount; i++) {
+				tempASInstance = Instantiate (_AmbientAudioSourceDictionary [nameOfGOAS]).GetComponent<AudioSource>();
+				tempParent.transform.SetParent (tempASInstance.transform);
+				aSQueue1.Enqueue (tempASInstance);
+			}
+
+			break;
+
+		case AudioReferanceType._DIRECT:
+			
+			for (int i = 0; i < amount; i++) {
+				tempASInstance = Instantiate(_DirectAudioSourceDictionary[nameOfGOAS]).GetComponent<AudioSource>();
+				tempParent.transform.SetParent (tempASInstance.transform);
+				aSQueue1.Enqueue (tempASInstance);
+			}
+
+			break;
+
+		case AudioReferanceType._INTERFACE:
+
+			for (int i = 0; i < amount; i++) {
+				tempASInstance = Instantiate(_InterfaceAudioSourceDictionary[nameOfGOAS]).GetComponent<AudioSource>();
+				tempParent.transform.SetParent (tempASInstance.transform);
+				aSQueue1.Enqueue (tempASInstance);
+			}
+
+			break;
+
+
+		}
+		return aSQueue1;
+
+
 	}
 
 

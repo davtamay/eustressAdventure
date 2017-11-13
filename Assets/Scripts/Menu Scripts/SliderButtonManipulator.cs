@@ -23,9 +23,13 @@ public class SliderButtonManipulator : MonoBehaviour {
 
 		Debug.Log ("MUSIC AND SOUND" + PlayerPrefs.GetFloat (nameOfPP, slider.value));
 
-		//slider.value += 0.00001f;//Invoke (string.Empty, 0);
 		cam = Camera.main.transform;
-	//	transform.parent.gameObject.SetActive (false);// = false;
+	
+	}
+	void Start()
+	{
+		EventManager.Instance.AddListener (EVENT_TYPE.APPLICATION_QUIT, OnEvent);
+
 	}
 	
 	// Update is called once per frame
@@ -57,8 +61,17 @@ public class SliderButtonManipulator : MonoBehaviour {
 		PlayerPrefs.SetFloat (nameOfPP, slider.value);
 		PlayerPrefs.Save ();
 	}
-	void OnApplicationQuit(){
-		PlayerPrefs.SetFloat (nameOfPP, slider.value);
+
+	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
+		switch(Event_Type){
+
+		case EVENT_TYPE.APPLICATION_QUIT:
+			PlayerPrefs.SetFloat (nameOfPP, slider.value);
+			break;
+
+		}
+
+
 
 	}
 }

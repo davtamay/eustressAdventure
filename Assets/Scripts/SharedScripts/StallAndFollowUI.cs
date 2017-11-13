@@ -66,6 +66,8 @@ public class StallAndFollowUI: MonoBehaviour {
 
 		//	oldViewingAngle =  Quaternion.Euler(0,90,0) * camTransform.forward ;
 			oldViewingAngle =  camTransform.forward ;
+			//SetUpInitialLook
+			isLerping = true;
 
 		}else{
 

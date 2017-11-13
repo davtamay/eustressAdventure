@@ -37,17 +37,10 @@ public class GameController : MonoBehaviour {
 		stressMenu = GameObject.FindWithTag ("StressMenu");
 
 
-	//	if (string.Equals (SceneController.Instance.GetCurrentSceneName(), "MainMenu", System.StringComparison.CurrentCultureIgnoreCase))
-	//		stressMenu.SetActive (false);
-		
-		//cam = GameObject.FindWithTag ("MainCamera").GetComponent<Camera> ();
-		//cam = Camera.main;
-	//	cameras = cam.GetComponentsInChildren<Camera> ();
-
 	}
 
 	void Start(){
-
+		
 
 		gameStart = GameObject.FindWithTag ("GameStart");
 		gameOver = GameObject.FindWithTag ("GameOver");
@@ -89,19 +82,27 @@ public class GameController : MonoBehaviour {
 		
 			if (paused) {
 
+				EventManager.Instance.PostNotification (EVENT_TYPE.GAME_PAUSED, this, null);
 				AudioManager.Instance.PauseAmbientAS();
 				Time.timeScale = 0;
-			} else {
+
+
+			}else {
 
 				if (isMenuPause) {
 					isMenuPause = false;
 					return;
 				}
-				AudioManager.Instance.UnPauseAmbientAS ();
-				Time.timeScale = 1;
+
+					EventManager.Instance.PostNotification (EVENT_TYPE.GAME_UNPAUSED, this, null);
+					AudioManager.Instance.UnPauseAmbientAS ();
+					Time.timeScale = 1;
+
+				}
+
 			}
 		}
-	}
+
 
 	private bool isMenuActive;
 	public bool IsMenuActive{
@@ -111,10 +112,10 @@ public class GameController : MonoBehaviour {
 	}
 
 
-	public void SetMenuActive(){
+	/*public void SetMenuActive(){
 	
 		stressMenu.SetActive (true);
-	}
+	}*/
 
 	//private bool isStartMenuActive;
 	public bool IsStartMenuActive{
@@ -128,6 +129,7 @@ public class GameController : MonoBehaviour {
 	}
 	public void StartGame (){
 	
+		EventManager.Instance.PostNotification (EVENT_TYPE.GAME_START, this, null);
 		gameStart.SetActive (false);
 		Paused = false;
 	
@@ -220,27 +222,10 @@ public class GameController : MonoBehaviour {
 		set{ 
 			DataManager.Instance.CheckHighScore (SceneController.Instance.GetCurrentSceneName(),PlayerManager.Instance.points);
 			gameOver.SetActive (value);
-			if (true == value) {
-			//	MakeOnlyUIVisible ();
-
-			} else {
-			//	MakeEverythingVisible ();
-			}
+			EventManager.Instance.PostNotification (EVENT_TYPE.GAME_LOST, this,null);
 		
 		}
 
-	}
-	public void MakeOnlyUIVisible(){
-
-		//foreach (Camera c in cameras) 
-		//	c.cullingMask = 1 << 5;
-
-		
-	
-	}
-	public void MakeEverythingVisible(){
-		//foreach (Camera c in cameras) 
-		//	c.cullingMask = -1;
 	}
 
 	public IEnumerator HitEffectLocation(Vector3 hitLoc){
@@ -253,6 +238,7 @@ public class GameController : MonoBehaviour {
 	
 	
 	}
+
 
 		
 

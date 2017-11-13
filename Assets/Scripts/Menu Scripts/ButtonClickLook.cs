@@ -25,11 +25,11 @@ public class ButtonClickLook : MonoBehaviour {
 	private float countDown = 2.0f;
 	private Image buttonFill;
 	private Button button;
-	private GameObject StressMenu;
+	private GameObject stressMenu;
 
 	private SAssessment sAsses;
 
-	public bool isSType = false;
+
 
 	public bool isStressed = false;
 
@@ -62,27 +62,14 @@ public class ButtonClickLook : MonoBehaviour {
 	private enum localizationLanguage{LANGUAGE_ENGLISH, LANGUAGE_SPANISH}
 	[SerializeField]private localizationLanguage language;
 
-
-
-	public enum StressTypes{angry, anxious, dissapointed, frustrated, sad, worried, none};
-
-
 	public enum MusicPlayerButton{play,stop,next,previous, none}
 	public MusicPlayerButton curMusicButton;
 
-	public StressTypes StressT;
 
-
-
-
-	//static GameObject hitButton;
 
 	PointerEventData data;
 
 	void Awake(){
-
-		if (isSMenuOpener)
-			StressMenu = GameObject.FindWithTag ("StressMenu");
 	
 		buttonFill = GetComponent <Image> ();
 		buttonFill.fillAmount = 1.0f;
@@ -96,6 +83,23 @@ public class ButtonClickLook : MonoBehaviour {
 			OnStart.Invoke ();
 	}
 
+	void Start(){
+
+		if (isSMenuOpener) 
+			stressMenu = GameObject.FindWithTag ("StressMenu");
+
+
+//		EventManager.Instance.AddListener (EVENT_TYPE.GAME_INIT, OnEvent);
+//		EventManager.Instance.AddListener (EVENT_TYPE.GAME_PAUSED, OnEvent);
+//		EventManager.Instance.AddListener (EVENT_TYPE.STRESSMENU_CLOSED, OnEvent);
+//		EventManager.Instance.AddListener (EVENT_TYPE.POINTS_ADD, OnEvent);
+//		EventManager.Instance.AddListener (EVENT_TYPE.PROGRESS_RESTART_POSITION, OnEvent);
+//		EventManager.Instance.AddListener (EVENT_TYPE.PROGRESS_RESTART_ALL, OnEvent);
+//		EventManager.Instance.AddListener (EVENT_TYPE.RETURN_SCENE_MAIN, OnEvent);
+	
+
+
+	}
 
 	private bool isLooking = false;
 	CoroutineController controller;
@@ -103,20 +107,13 @@ public class ButtonClickLook : MonoBehaviour {
 
 		if (SceneController.isSceneLoading)
 		return;
-	
 
 		Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
 
 
 		RaycastHit hit;
-		//hitButton = null;
-
-
+	
 			if (col.Raycast (ray, out hit, 400)) {
-
-
-
-				
 			
 			if (hit.transform.gameObject.CompareTag ("Button")) {
 
@@ -138,8 +135,6 @@ public class ButtonClickLook : MonoBehaviour {
 	
 			}
 
-			//EventSystem.current.SetSelectedGameObject (null);
-
 			} else {
 
 			EventSystem.current.SetSelectedGameObject (null);
@@ -148,17 +143,10 @@ public class ButtonClickLook : MonoBehaviour {
 			if (controller.state == CoroutineState.Running)
 				controller = null;
 
-
-			//	ExecuteEvents.Execute<IPointerExitHandler> (currentButton, data, ExecuteEvents.pointerExitHandler);
-			//previousHitButton = currentButton;
-			//	StopCoroutine("ButtonLook");
-				//previousHitButton = null;
-			//	hitButton = null;
-			//StopCoroutine(buttonCoroutine);
 				isLooking = false;
 				countDown = timeToSelect;
 				buttonFill.fillAmount = 1.0f;
-				//previousHitButton = null;
+	
 			}
 
 	}	
@@ -179,135 +167,68 @@ public class ButtonClickLook : MonoBehaviour {
 			buttonFill.fillAmount = countDown / timeToSelect;
 
 
-			if (countDown < 0.0f){ //&& hitButton == currentButton) {
-
-				//	if(!isMenuCope)
-				//	ExecuteEvents.Execute<IPointerClickHandler> (hitButton, data, ExecuteEvents.pointerClickHandler);
+			if (countDown < 0.0f){ 
 
 				countDown = timeToSelect;
 				buttonFill.fillAmount = 1.0f;
-			
-
-				//has to be called to prevent multiple clicks when clicking on button....
-
-//FIXME ButtonOnClick clicks multiple times once it completes countdown.. It is not iterative it is one select				//StartCoroutine(DisableAndEnableCollider(col));
-
 
 
 				//UnityEngine.Profiling.Profiler.BeginSample ("ButtonPress");
 				if (isSMenuOpener) {
-
-					StressMenu.SetActive (false);
 					GameController.Instance.Paused = false;
-
-					//	UnityEngine.Profiling.Profiler.EndSample ();
-			
 				} else if (isRestartProgress) {
 
 					AudioManager.Instance.PlayInterfaceSound ("SpecialSelect");
 					DataManager.Instance.DeleteHighScoreSlotandPositionData (homePosition);
 					DataManager.Instance.DeletePPDataTaskProgress ();
-			
-				} else if (isEnvChanger) {
 
+					EventManager.Instance.PostNotification (EVENT_TYPE.PROGRESS_RESTART_ALL, this, null);
+
+				} else if (isEnvChanger)
 					SceneController.Instance.ChangeSkyBox ();
-
-				} else if (isBackToIntroButton) {
-
+				else if (isBackToIntroButton) {
 
 					if (PlayerManager.Instance != null && DataManager.Instance != null) {
 						DataManager.Instance.CheckHighScore (SceneController.Instance.GetCurrentSceneName (), PlayerManager.Instance.points);
 					}
 					LoadScene ("Intro");
+					EventManager.Instance.PostNotification (EVENT_TYPE.RETURN_SCENE_MAIN, this, null);
 
-					//SceneController.Instance.ResetGame ("Intro");
-
-			
-				} else if (isStartButton) {
-
-					AudioManager.Instance.PlayInterfaceSound ("SpecialSelect");
-
-					GameController.Instance.StartGame ();
-					//	10/24/17
-					//GameController.Instance.Paused = false;
+				}else if (isStartButton) {
 					
+					AudioManager.Instance.PlayInterfaceSound ("SpecialSelect");
+					GameController.Instance.Paused = false;
 
-
-				} else if (isReplayButton){
+				} else if (isReplayButton) {
 					SceneController.Instance.ResetCurrentGame ();
-				}else if (isResetPositiontoHome) {
-
-			
-					SceneController.Instance.isCustomSavePosition = true;
-					SceneController.Instance.customSavePosition = homePosition;
-
+				} else if (isResetPositiontoHome) {
+				
+					PlayerManager.Instance.isCustomSavePosition = true;
+					PlayerManager.Instance.customSavePosition = homePosition;
 					LoadScene ("Intro");
 
-				} else if (isMusicButton) {
+					EventManager.Instance.PostNotification (EVENT_TYPE.PROGRESS_RESTART_POSITION, this, null);
+				}else if (isMusicButton) {
 
 					switch (curMusicButton) {
 
 					case MusicPlayerButton.stop:
-						//MusicController.Instance.StopM ();
 						AudioManager.Instance.StopM();
 						break;
 
 					case MusicPlayerButton.next:
-						//MusicController.Instance.PlayMusicNext ();
 						AudioManager.Instance.PlayMusicNext();
 						break;
 				
 					case MusicPlayerButton.previous:
-					//	MusicController.Instance.PlayMusicPrevious ();
 						AudioManager.Instance.PlayMusicPrevious();
 						break;
 
 					case MusicPlayerButton.play:
-						//MusicController.Instance.PlayM ();
 						AudioManager.Instance.PlayM();
 						break;
 
 					}
-
-
-				} else if (isSType) { //&& !isMenuActive) {
-
-					if (sAsses == null)
-						sAsses = GameObject.FindWithTag ("StressAssess").GetComponent<SAssessment> ();
-				
-				
-					switch (StressT) {
-
-					case StressTypes.angry:
-						sAsses.StressFeelChoice (SAssessment.TypeOfStress.angry);
-						break;
-						
-					case StressTypes.anxious:
-						sAsses.StressFeelChoice (SAssessment.TypeOfStress.anxious);
-						break;
-				
-
-					case StressTypes.dissapointed:
-						sAsses.StressFeelChoice (SAssessment.TypeOfStress.dissapointed);
-						break;
-					case StressTypes.frustrated:
-						sAsses.StressFeelChoice (SAssessment.TypeOfStress.frustrated);
-						break;
-
-
-					case StressTypes.sad:
-						sAsses.StressFeelChoice (SAssessment.TypeOfStress.sad);
-						break;
-
-					case StressTypes.worried:
-						sAsses.StressFeelChoice (SAssessment.TypeOfStress.worried);
-						break;
-
-					case StressTypes.none:
-						break;
-
-					}
-
 				}else if (isLocalizedButton){
 
 					if(LocalizationManager.Instance == null){
@@ -350,6 +271,8 @@ public class ButtonClickLook : MonoBehaviour {
 		}
 
 	}
+
+
 
 	void LoadScene(string scene){
 		col.enabled = false;

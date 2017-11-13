@@ -69,7 +69,7 @@ public class SpawnCollections : MonoBehaviour {
 			if (isFirstWave) {
 		
 				if (EnemyManager.Instance.activeEnemies.Count == 0) {
-						StartCoroutine (GameController.Instance.NewWave ());
+						StartCoroutine (WaveManager.Instance.NewWaveIntermission());
 						isFirstWave = false;
 						isSecondWave = true;
 						for (int i = 0; i < amountOfEnemies1; i++){
@@ -84,7 +84,7 @@ public class SpawnCollections : MonoBehaviour {
 			if (isSecondWave) {
 
 					if (EnemyManager.Instance.activeEnemies.Count == 0) {
-						StartCoroutine (GameController.Instance.NewWave ());
+						StartCoroutine (WaveManager.Instance.NewWaveIntermission());
 						isSecondWave = false;
 					//	isThirdWave = true;
 						for (int i = 0; i < amountOfEnemies2; i++){

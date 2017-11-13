@@ -9,6 +9,7 @@ public class LookInteraction : MonoBehaviour {
 
 	[SerializeField] GameObject imageGO;
 	[SerializeField] float lookTime;
+
 	[SerializeField] float timeUntilImageDeactivate = 5f;
 	[SerializeField] bool isUnscaledTime;
 	[SerializeField] float lookDistance;
@@ -38,6 +39,7 @@ public class LookInteraction : MonoBehaviour {
 	private Collider thisCollider;
 
 	[SerializeField]private bool isOnFromStart;
+	[SerializeField] bool isStayOn;
 	public Collider lookTriggerCollider;
 
 	private Animator thisAnimator;
@@ -74,6 +76,7 @@ public class LookInteraction : MonoBehaviour {
 			lookTriggerCollider = null;
 			imageGO.SetActive (true);
 		}else
+			if(!isStayOn)
 			imageGO.SetActive (false);
 
 	}
@@ -115,11 +118,14 @@ public class LookInteraction : MonoBehaviour {
 			
 			
 		isActive = false;
+
+		if(!isStayOn)
 		imageGO.SetActive (false);
 	//	thisCollider.enabled = false;
 	}
 
 	public void DisableImage(){
+		if(!isStayOn)
 		imageGO.SetActive (false);
 	}
 
@@ -198,6 +204,7 @@ public class LookInteraction : MonoBehaviour {
 			
 
 				isActive = false;
+					if(!isStayOn)
 				imageGO.SetActive (false);
 
 
@@ -210,7 +217,7 @@ public class LookInteraction : MonoBehaviour {
 					var tempAS = AudioManager.Instance.GetAudioSourceReferance (AudioManager.AudioReferanceType._DIRECT,"PickUp");
 					tempAS.transform.position = transform.position;
 					AudioManager.Instance.PlayDirectSound ("PickUp");
-					//DataManager.Instance.SaveItemList (PlayerManager.Instance.playerItemSlotGOList);
+					
 
 				}
 					

@@ -36,6 +36,7 @@ public class LookHoop : MonoBehaviour {
 
 	void Start(){
 
+		//AudioManager.Instance.cr
 		previousCameraLook = CameraLook ();
 		cam = Camera.main;
 		focusDial = GetComponentInChildren<Image> ();

@@ -18,12 +18,14 @@ public class PlayerManager : MonoBehaviour {
 	[SerializeField] private Material additionalHealthIndicator;
 	private int propertyID = Shader.PropertyToID ("_TintColor");
 	[SerializeField] private GameObject armorGO;
-	//public Color armorColor;
 	public int armorTime;
 	public bool isArmorOn = false;
 	public Text coinText;
 	public bool isInvulnerable;
 	private Image healthColorIndicator;
+
+	public bool isCustomSavePosition = false;
+	public Vector3 customSavePosition = Vector3.zero;
 
 	[SerializeField]private bool isShakeWhenHit = false;
 	[SerializeField]private float shakeTime = 2.0f;
@@ -40,30 +42,41 @@ public class PlayerManager : MonoBehaviour {
 
 	void Awake (){
 
-
-
-		//new
 		if (instance != null) {
 			Debug.LogError ("There is two instances off PlayerManager");
 			return;
 		} else {
 			instance = this;
 		}
-
-		if(SceneController.Instance != null)
-			curSceneName = SceneController.Instance.GetCurrentSceneName ();
-		
+			
 		thisTransform = transform;
 
 		healthColor.a = 0.0f; 
 
-		health = 0;
-		points = 0;
+
 
 
 	}
 	void Start(){
 
+		EventManager.Instance.AddListener (EVENT_TYPE.GAME_LOST, OnEvent);
+		//EventManager.Instance.AddListener (EVENT_TYPE.HEALTH_ADD, OnEvent);
+		//EventManager.Instance.AddListener (EVENT_TYPE.HEALTH_REDUCE, OnEvent);
+		EventManager.Instance.AddListener (EVENT_TYPE.SCENE_CHANGING, OnEvent);
+		EventManager.Instance.AddListener (EVENT_TYPE.APPLICATION_QUIT, OnEvent);
+
+
+		if(GameObject.FindWithTag ("PointText"))
+		coinText = GameObject.FindWithTag ("PointText").GetComponent<Text>();
+
+		curSceneName = SceneController.Instance.GetCurrentSceneName ();
+
+		health = 0;
+		points = 0;
+
+		if(curSceneName.Contains("Intro"))
+			thisTransform.position = DataManager.Instance.LoadPosition ();
+		
 		if (GameObject.FindWithTag ("UIColor")) {
 
 				healthColorIndicator = GameObject.FindWithTag ("UIColor").GetComponent<Image> ();
@@ -86,8 +99,7 @@ public class PlayerManager : MonoBehaviour {
 		}
 
 	}
-
-
+		
 
 	private int _health = 0;
 
@@ -96,11 +108,12 @@ public class PlayerManager : MonoBehaviour {
 
 
 		set{ if (value + _health < _health) {
+
 				StartCoroutine (HealthReduceColor (hurtColor));
 
 				if(isShakeWhenHit)
-				StartCoroutine (Shake ());
-				
+					StartCoroutine (Shake ());
+
 				healthColor.a += 0.1f;
 
 				if (isUseAdditionalHealthIndicator) {
@@ -111,33 +124,40 @@ public class PlayerManager : MonoBehaviour {
 
 				}
 
-				if (healthColor.a >= .91f) {
-					StartCoroutine (HealthReduceColor (healthColor));
-					//DataManager.Instance.CheckHighScore (curSceneName, _points);
-					GameController.Instance.isGameOver = true;
-					GameController.Instance.Paused = true;
-					AudioManager.Instance.StopAudioPlaying (AudioManager.AudioReferanceType._DIRECT);
+				EventManager.Instance.PostNotification (EVENT_TYPE.HEALTH_REDUCE, this, null);
 
-				};
+				if (healthColor.a >= .91f) 
+					EventManager.Instance.PostNotification (EVENT_TYPE.GAME_LOST, this, null);
+
+				
+			}else if (value + _health > _health && !(healthColor.a == 0.0f)){
+				StartCoroutine(HealthAddColor (addHealthColor));
+				healthColor.a -= 0.1f;
+				EventManager.Instance.PostNotification (EVENT_TYPE.HEALTH_ADD, this, null);
 			}
-				if (value + _health > _health && !(healthColor.a == 0.0f)){
-					StartCoroutine(HealthAddColor (addHealthColor));
-					healthColor.a -= 0.1f;
-				}
+				
+		
+
 				;}
 	}
 
 	private int _points;
-	public int points{
-		get{return _points;}
+	public int points {
+		get{ return _points; }
 
-		//5/13/17
 
-		set{
+		set {
+
 			if (coinText != null) {
 				coinText.text = ":";
 				_points += value;
+
+				if (_points == 0)
+					return;
+
 				coinText.text += _points.ToString ();
+
+				EventManager.Instance.PostNotification (EVENT_TYPE.POINTS_ADD, this, value);
 			}
 		}
 	}
@@ -153,9 +173,7 @@ public class PlayerManager : MonoBehaviour {
 		isArmorOn = true;
 		isInvulnerable = true;
 		armorGO.SetActive (true);
-	//	healthColorIndicator.color = armorColor;
 		StartCoroutine (AddArmorTime());
-
 
 	}
 
@@ -187,8 +205,6 @@ public class PlayerManager : MonoBehaviour {
 	}
 	IEnumerator HealthReduceColor (Color col){
 
-		
-
 		healthColorIndicator.color = col;
 
 		yield return new WaitForSeconds (1.0f);
@@ -197,7 +213,6 @@ public class PlayerManager : MonoBehaviour {
 
 	}
 	IEnumerator HealthAddColor (Color col){
-
 
 		healthColorIndicator.color = col;
 
@@ -235,12 +250,68 @@ public class PlayerManager : MonoBehaviour {
 		AudioManager.Instance.PlayAmbientSoundAndActivate(audioName, true, false,0, this.transform);
 
 	}
-	/*public IEnumerator ShowUISlots(){
 
-		UISlots.SetActive(true);
-		yield return new WaitForSeconds (4f);
-		UISlots.SetActive(false);
+	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
+
+		switch(Event_Type){
+
+		case EVENT_TYPE.SCENE_CHANGING:
+		
+			if(curSceneName.Contains("Intro")){
+				if (!isCustomSavePosition)
+					DataManager.Instance.SavePosition (thisTransform.position);
+				else {
+					DataManager.Instance.SavePosition (customSavePosition);
+					isCustomSavePosition = false;
+
+				}
+				DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
+				DataManager.Instance.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
+
+			}
+			break;
+
+		case EVENT_TYPE.SCENE_LOADED:
+			
 
 
-	}*/
+
+
+			break;
+
+		case EVENT_TYPE.APPLICATION_QUIT:
+			
+			if(curSceneName.Contains("Intro")){
+				DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
+				DataManager.Instance.SavePosition (thisTransform.position);
+				DataManager.Instance.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
+			}
+			break;
+	
+
+		case EVENT_TYPE.HEALTH_ADD:
+
+			StartCoroutine(HealthAddColor (addHealthColor));
+			healthColor.a -= 0.1f;
+
+			break;
+
+		
+		case EVENT_TYPE.GAME_LOST:
+			StartCoroutine (HealthReduceColor (healthColor));
+			GameController.Instance.isGameOver = true;
+			GameController.Instance.Paused = true;
+			AudioManager.Instance.StopAudioPlaying (AudioManager.AudioReferanceType._DIRECT);
+
+			break;
+		
+		
+
+		}
+
+
+
+
+	}
+
 }

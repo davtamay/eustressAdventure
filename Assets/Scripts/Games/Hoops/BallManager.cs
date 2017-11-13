@@ -29,8 +29,11 @@ public class BallManager : MonoBehaviour {
 
 	}
 
-
+	public Queue<AudioSource> aSHitQueue;
 	IEnumerator Start () {
+
+		aSHitQueue = AudioManager.Instance.CreateTempAudioSourcePoolQueue (AudioManager.AudioReferanceType._DIRECT, "fall", 3);
+
 
 		ballPrefabList = new GameObject [amountOfBallObjects];
 
