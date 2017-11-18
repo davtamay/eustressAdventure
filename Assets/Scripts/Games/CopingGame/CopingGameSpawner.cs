@@ -12,6 +12,8 @@ public class CopingGameSpawner : MonoBehaviour {
 
 	private Transform thisTransform;
 
+	[SerializeField] private GameObject spawnedParent;
+
 	[SerializeField] private GameObject[] objectsToSpawn;
 
 	[SerializeField] private float startSpawnSpeed;
@@ -19,6 +21,7 @@ public class CopingGameSpawner : MonoBehaviour {
 
 	[SerializeField] private float timeUntilPointSpawn;
 	[SerializeField] private GameObject foodPointGO;
+	[SerializeField] private Vector2 foodSpawnDeviationFromCenter = new Vector2(120f, 46f);
 	[SerializeField] private float timeUntilAddCar;
 	[SerializeField] private int carsOnSameTime = 1;
 
@@ -28,6 +31,7 @@ public class CopingGameSpawner : MonoBehaviour {
 
 	[SerializeField] private GameObject gameOverCanvas;
 	[SerializeField] private Text GameScoreText;
+	private LocalizedText localizationText;
 
 	public bool isGameOver;
 
@@ -42,7 +46,9 @@ public class CopingGameSpawner : MonoBehaviour {
 		get{ return _score;}
 		set{
 			_score = value;
-			GameScoreText.text = "Score: " + score;
+			GameScoreText.text = string.Empty;
+			localizationText.OnUpdate ();
+			GameScoreText.text += " " + score;
 		}
 
 	}
@@ -71,6 +77,8 @@ public class CopingGameSpawner : MonoBehaviour {
 
 		thisTransform = transform;
 
+		localizationText = GameScoreText.GetComponent<LocalizedText> ();
+		localizationText.OnUpdate ();
 		spawnLocations = new Transform[transform.childCount];
 		for (int i = 0; i < transform.childCount; i++)
 			spawnLocations[i] = transform.GetChild (i);
@@ -111,7 +119,6 @@ public class CopingGameSpawner : MonoBehaviour {
 
 			}
 
-		//	LookControl.isLooking = false;
 			gameOverCanvas.SetActive (true);
 			StartCoroutine (StartGameAgain ());
 
@@ -125,22 +132,37 @@ public class CopingGameSpawner : MonoBehaviour {
 
 		if (pointTimer > timeUntilPointSpawn) {
 			pointTimer = 0;
-			GameObject tempGO = Instantiate(foodPointGO, new Vector3 (mainScreen.position.x +  Random.Range(-0.12f, 0.12f),  mainScreen.position.y +  Random.Range(-0.085f, 0.085f), mainScreen.position.z -0.0001f) , Quaternion.identity);
+			GameObject tempGO = Instantiate (foodPointGO, Vector3.zero, Quaternion.identity);//mainScreen.position.z - 0.0001f), mainScreen.rotation);//Quaternion.identity);
+		
 			tempGO.transform.SetParent(thisTransform.parent);
-			//tempGO.SetActive (false);
+
+			//PROJECT COINS ONTO THE PLAYING PLANE
+			tempGO.transform.localPosition = Vector3.ProjectOnPlane (tempGO.transform.position, mainScreen.TransformPoint(Vector3.forward));
+
+			//SET DISPERSION FROM CENTER
+			tempGO.transform.localPosition += new Vector3 (Random.Range (-foodSpawnDeviationFromCenter.x, foodSpawnDeviationFromCenter.x), Random.Range (-foodSpawnDeviationFromCenter.y, foodSpawnDeviationFromCenter.y),0);//tempGO.transform.position = new Vector3 (mainScreen.position.x + Random.Range (-0.12f, 0.12f), mainScreen.position.y + Random.Range (-0.085f, 0.085f),0);
+			//new Vector3 (mainScreen.position.x + Random.Range (-0.12f, 0.12f), mainScreen.position.y + Random.Range (-0.085f, 0.085f), mainScreen.position.z);tempGO.transform.position = new Vector3 (mainScreen.position.x + Random.Range (-0.12f, 0.12f), mainScreen.position.y + Random.Range (-0.085f, 0.085f),0);
+
+			tempGO.transform.localRotation = Quaternion.identity;
+
+
+			//tempGO.transform.position (Vector3.ProjectOnPlane())
+//			Vector3 tempPos = tempGO.transform.position;
+//			tempPos.z = mainScreen.position.z;
+//			tempGO.transform.position = tempPos;
+
+			//tempGO
 			tempSessionList.Add (tempGO);
 		}
+
 
 
 		if (timer > spawnSpeed) {
 
 			timer = 0;
-			//AddObstacle ();
 		
 			StartCoroutine (AddObstacle ());
 		
-			//Invoke ("AddObstacle()", 1f);//Random.Range(0f, 2f));
-
 		}
 
 		if (AddCarTimer > timeUntilAddCar) {
@@ -159,6 +181,20 @@ public class CopingGameSpawner : MonoBehaviour {
 		}
 			
 
+//				foreach (GameObject temp in tempSessionList) {
+//					if(temp != null)
+//					{
+//						if (temp.name != "Coin")
+//							return;
+//						
+//						Vector3 tempPos = temp.transform.position;
+//						tempPos.z = mainScreen.position.z;//thisTransform.position.z;
+//						temp.transform.position = tempPos;
+//		
+//					}
+//		
+//				}
+
 
 		
 		
@@ -171,8 +207,10 @@ public class CopingGameSpawner : MonoBehaviour {
 
 		foreach (int cN in myIndices) {
 		GameObject tempGO = Instantiate (objectsToSpawn [Random.Range (0, objectsToSpawn.Length)], spawnLocations[cN].position, Quaternion.identity);
-
+		
 		tempGO.transform.SetParent (thisTransform.parent);
+		tempGO.transform.localRotation = Quaternion.identity;
+
 		tempSessionList.Add (tempGO);
 
 			yield return new WaitForSecondsRealtime (Random.Range (0f, 2f));

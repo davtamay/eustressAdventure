@@ -63,10 +63,6 @@ public class RandomTransform : MonoBehaviour {
 					curRandomPos.z = thisTransform.position.z;
 			
 
-
-			
-			
-	
 			}
 		
 			thisTransform.position += (curRandomPos - thisTransform.position).normalized * Time.deltaTime * speed ;
@@ -83,5 +79,10 @@ public class RandomTransform : MonoBehaviour {
 		
 
 			
+	}
+
+	void OnTriggerEnter(){
+
+		isFirstSearch = false;
 	}
 }

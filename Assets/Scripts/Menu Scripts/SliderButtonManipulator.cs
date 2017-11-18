@@ -26,11 +26,7 @@ public class SliderButtonManipulator : MonoBehaviour {
 		cam = Camera.main.transform;
 	
 	}
-	void Start()
-	{
-		EventManager.Instance.AddListener (EVENT_TYPE.APPLICATION_QUIT, OnEvent);
 
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -61,17 +57,23 @@ public class SliderButtonManipulator : MonoBehaviour {
 		PlayerPrefs.SetFloat (nameOfPP, slider.value);
 		PlayerPrefs.Save ();
 	}
-
-	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
-		switch(Event_Type){
-
-		case EVENT_TYPE.APPLICATION_QUIT:
-			PlayerPrefs.SetFloat (nameOfPP, slider.value);
-			break;
-
-		}
+	void OnApplicationQuit(){
 
 
 
+		PlayerPrefs.SetFloat (nameOfPP, slider.value);
 	}
+
+//	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
+//		switch(Event_Type){
+//
+//		case EVENT_TYPE.APPLICATION_QUIT:
+//			
+//			break;
+//
+//		}
+//
+//
+//
+//	}
 }

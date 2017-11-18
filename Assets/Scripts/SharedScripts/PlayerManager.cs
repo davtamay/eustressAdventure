@@ -59,11 +59,11 @@ public class PlayerManager : MonoBehaviour {
 	}
 	void Start(){
 
-		EventManager.Instance.AddListener (EVENT_TYPE.GAME_LOST, OnEvent);
+		//EventManager.Instance.AddListener (EVENT_TYPE.GAME_LOST, OnEvent);
 		//EventManager.Instance.AddListener (EVENT_TYPE.HEALTH_ADD, OnEvent);
 		//EventManager.Instance.AddListener (EVENT_TYPE.HEALTH_REDUCE, OnEvent);
 		EventManager.Instance.AddListener (EVENT_TYPE.SCENE_CHANGING, OnEvent);
-		EventManager.Instance.AddListener (EVENT_TYPE.APPLICATION_QUIT, OnEvent);
+		//EventManager.Instance.AddListener (EVENT_TYPE.APPLICATION_QUIT, OnEvent);
 
 
 		if(GameObject.FindWithTag ("PointText"))
@@ -126,8 +126,17 @@ public class PlayerManager : MonoBehaviour {
 
 				EventManager.Instance.PostNotification (EVENT_TYPE.HEALTH_REDUCE, this, null);
 
-				if (healthColor.a >= .91f) 
+				if (healthColor.a >= .91f) {
+
+					StartCoroutine (HealthReduceColor (healthColor));
+					GameController.Instance.isGameOver = true;
+					GameController.Instance.Paused = true;
+					AudioManager.Instance.StopAudioPlaying (AudioManager.AudioReferanceType._DIRECT);
+
 					EventManager.Instance.PostNotification (EVENT_TYPE.GAME_LOST, this, null);
+
+				}
+					
 
 				
 			}else if (value + _health > _health && !(healthColor.a == 0.0f)){
@@ -156,7 +165,7 @@ public class PlayerManager : MonoBehaviour {
 					return;
 
 				coinText.text += _points.ToString ();
-
+				AudioManager.Instance.PlayDirectSound ("SmallWin", true);
 				EventManager.Instance.PostNotification (EVENT_TYPE.POINTS_ADD, this, value);
 			}
 		}
@@ -250,6 +259,16 @@ public class PlayerManager : MonoBehaviour {
 		AudioManager.Instance.PlayAmbientSoundAndActivate(audioName, true, false,0, this.transform);
 
 	}
+	public void OnApplicationQuit(){
+	
+		if(curSceneName.Contains("Intro")){
+			DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
+			DataManager.Instance.SavePosition (thisTransform.position);
+			DataManager.Instance.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
+		}
+
+
+	}
 
 	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
 
@@ -271,39 +290,9 @@ public class PlayerManager : MonoBehaviour {
 			}
 			break;
 
-		case EVENT_TYPE.SCENE_LOADED:
-			
-
-
-
-
-			break;
-
-		case EVENT_TYPE.APPLICATION_QUIT:
-			
-			if(curSceneName.Contains("Intro")){
-				DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
-				DataManager.Instance.SavePosition (thisTransform.position);
-				DataManager.Instance.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
-			}
-			break;
-	
-
-		case EVENT_TYPE.HEALTH_ADD:
-
-			StartCoroutine(HealthAddColor (addHealthColor));
-			healthColor.a -= 0.1f;
-
-			break;
 
 		
-		case EVENT_TYPE.GAME_LOST:
-			StartCoroutine (HealthReduceColor (healthColor));
-			GameController.Instance.isGameOver = true;
-			GameController.Instance.Paused = true;
-			AudioManager.Instance.StopAudioPlaying (AudioManager.AudioReferanceType._DIRECT);
 
-			break;
 		
 		
 

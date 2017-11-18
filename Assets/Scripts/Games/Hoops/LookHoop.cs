@@ -44,8 +44,8 @@ public class LookHoop : MonoBehaviour {
 
 	void Update () {
 
-		if (GameController.Instance.IsStartMenuActive)
-			return;
+	//	if (GameController.Instance.IsStartMenuActive)
+	//		return;
 
 		/*if (GameController.Instance.GetWaveActiveState ()) {
 			focusDial.enabled = false;

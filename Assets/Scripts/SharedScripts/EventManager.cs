@@ -76,7 +76,7 @@ public class EventManager : MonoBehaviour
 	}
 	public void OnManagerEvent(EVENT_TYPE Event_Type, Component Sender, object Param){
 	
-
+		if(Event_Type == EVENT_TYPE.SCENE_LOADED)
 		RemoveRedundancies();
 	
 

@@ -12,24 +12,28 @@ public class GameTimer : MonoBehaviour {
 	private bool isDone;
 
 	[SerializeField] private bool isShowTextWhenDone = true;
-	[SerializeField] private string textToShow = "TimeUp!";
+	[SerializeField] private string textToShow;
 	[SerializeField] private bool isPauseGameWhenDone = false;
 
 	//private string timer;
 
 	// Use this for initialization
 	void Start () {
+		
 		timerText = GetComponent<Text> ();
+		SetUpcomingTimerDoneTextToShow(textToShow);
+
+		timerText.text = LocalizationManager.Instance.GetLocalizedValue (textToShow);
 		originalColor = timerText.color;
-		//timerText.text = GameController.Instance.TimeToAdd(ref isDone);
 		timerText.text = WaveManager.Instance.TimeToAdd (ref isDone);
 		StartCoroutine (OnUpdate ());
 	}
 
-	public void SetUpcomingTimerDoneTextToShow(string text){
+	public void SetUpcomingTimerDoneTextToShow(string key){
 	
-		textToShow = text;
-	
+		textToShow = LocalizationManager.Instance.GetLocalizedValue (key);//key;
+		//new
+		//return textToShow;
 	}
 
 	public void SetGameOver(string text){
@@ -45,6 +49,8 @@ public class GameTimer : MonoBehaviour {
 	
 	IEnumerator OnUpdate(){
 
+		timerText.text = textToShow;
+		yield return new WaitForSeconds (0.5f);
 
 		while (true) {
 		
@@ -54,20 +60,17 @@ public class GameTimer : MonoBehaviour {
 
 			timerText.color = originalColor;
 			if (WaveManager.Instance.GetCurrentTime() <= 10f)
-		//	if (GameController.Instance.GetCurrentTime () <= 10f )
 				timerText.color = Color.red;
 
 			else if (WaveManager.Instance.GetCurrentTime () <= 25f)
-		//	else if (GameController.Instance.GetCurrentTime () <= 25f)
 				timerText.color = Color.yellow;
 
 
-			if (isDone) {
+			if (WaveManager.Instance.GetCurrentTime () <= 0f){ //|| isDone) {
 
 				if (isShowTextWhenDone) {
 					timerText.color = originalColor;
 					timerText.text = textToShow;
-
 				}
 
 				if (isPauseGameWhenDone)
@@ -76,8 +79,8 @@ public class GameTimer : MonoBehaviour {
 				isDone = false;
 			}
 		
-		
-			yield return new WaitForSeconds (0.2f);
+			yield return null;
+		//	yield return new WaitForSeconds (0.2f);
 		}
 
 	

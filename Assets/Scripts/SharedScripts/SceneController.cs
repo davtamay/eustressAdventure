@@ -90,7 +90,7 @@ public class SceneController : MonoBehaviour {
 
 		EventManager.Instance.PostNotification (EVENT_TYPE.SCENE_LOADED, this, null);
 
-		StartCoroutine(TakeOffFade());
+		//StartCoroutine(TakeOffFade());
 	}
 
 
@@ -224,14 +224,7 @@ public class SceneController : MonoBehaviour {
 		return SceneManager.GetActiveScene ().name;
 	
 	}
-
-	public void OnApplicationQuit(){
-
-		EventManager.Instance.PostNotification (EVENT_TYPE.APPLICATION_QUIT, this, null);
-
-
-
-	}
+		
 
 
 

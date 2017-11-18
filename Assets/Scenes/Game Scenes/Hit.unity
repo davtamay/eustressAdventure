@@ -746,7 +746,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -763,7 +762,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &75947875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1161,7 +1159,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -1178,7 +1175,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &102754401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1653,6 +1649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countDownTime: 10
   countDownSpeed: 1
+  localizedKeys: []
 --- !u!114 &131861500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2827,7 +2824,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -2844,7 +2840,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &246039079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3073,7 +3068,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -3090,7 +3084,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &259206041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4263,7 +4256,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 1
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -4280,7 +4272,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 2
 --- !u!114 &336543284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4759,10 +4750,10 @@ MonoBehaviour:
   focusTime: 1
   isFocused: 0
   isMovingSlow: 0
-  isColorChaged: 0
+  previewImageColor: {fileID: 0}
   amountToUndo: 10
   camDir: {x: 0, y: 0, z: 0}
-  curCollor: {r: 0, g: 0, b: 0, a: 1}
+  curColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &390020260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5016,6 +5007,46 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 420582357}
+--- !u!1 &421240967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 421240969}
+  - component: {fileID: 421240968}
+  m_Layer: 0
+  m_Name: EventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &421240968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 421240967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e7b38b6f710426fb38e66e9babd046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &421240969
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 421240967}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 53.71361, y: -2.8616023, z: 99.39159}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &435143402
 GameObject:
   m_ObjectHideFlags: 0
@@ -5092,7 +5123,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 1
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -5109,7 +5139,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 1
 --- !u!114 &435143406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6381,7 +6410,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 1
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -6398,7 +6426,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 5
 --- !u!114 &546086810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6666,6 +6693,8 @@ MonoBehaviour:
   isArmorOn: 0
   coinText: {fileID: 1521732964}
   isInvulnerable: 0
+  isCustomSavePosition: 0
+  customSavePosition: {x: 0, y: 0, z: 0}
   isShakeWhenHit: 0
   shakeTime: 2
   shakeAmount: 3
@@ -7141,7 +7170,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -7158,7 +7186,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &634583875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9576,7 +9603,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 1
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -9593,7 +9619,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 3
 --- !u!114 &811193659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9765,7 +9790,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -9782,7 +9806,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &820654799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10206,7 +10229,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -10223,7 +10245,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &899166875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10730,7 +10751,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -10747,7 +10767,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &916639585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11997,7 +12016,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -12014,7 +12032,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &1004039265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13316,7 +13333,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -13333,7 +13349,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &1106939292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13826,8 +13841,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1772867809}
+  m_Children: []
   m_Father: {fileID: 489621778}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14698,7 +14712,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -14715,7 +14728,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &1183380353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15340,6 +15352,49 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.6}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1268277343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1268277345}
+  - component: {fileID: 1268277344}
+  m_Layer: 0
+  m_Name: LocalizationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1268277344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1268277343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d099a0c16da584365ac45254bbbfd6e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLocalizedTextReady: 0
+  stringDefault: localization_en.json
+  registeredLocalizedTexts: []
+--- !u!4 &1268277345
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1268277343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.031201363, y: 3.4928193, z: -7.083807}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1283136747
 GameObject:
   m_ObjectHideFlags: 0
@@ -15911,6 +15966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfcb9069ac994e969077d69c2b48616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnedParent: {fileID: 0}
   objectsToSpawn:
   - {fileID: 1731293652335292, guid: af0c2bf07ccc94b4e9a8cfe561333eaa, type: 2}
   - {fileID: 1097357451538358, guid: eba4cc94307474312a66264353abf8bf, type: 2}
@@ -15919,6 +15975,7 @@ MonoBehaviour:
   timeUntilPointSpawn: 3
   foodPointGO: {fileID: 1347037539178218, guid: cd56244063b904feea29e24cd8847447,
     type: 2}
+  foodSpawnDeviationFromCenter: {x: 120, y: 46}
   timeUntilAddCar: 10
   carsOnSameTime: 1
   mainScreen: {fileID: 1249916693}
@@ -16081,7 +16138,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -16098,7 +16154,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &1334368190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16672,7 +16727,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -16689,7 +16743,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &1367532085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17517,6 +17570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedModifier: 4
   settingsButtons: []
+  speedDisplay: {fileID: 0}
 --- !u!1 &1417545162
 GameObject:
   m_ObjectHideFlags: 0
@@ -18542,7 +18596,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 1
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -18559,7 +18612,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &1529450655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18958,7 +19010,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -18975,7 +19026,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 2
-  StressT: 0
 --- !u!114 &1558960537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19126,7 +19176,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 1
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -19143,7 +19192,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 4
 --- !u!114 &1566279420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19284,6 +19332,12 @@ MonoBehaviour:
   messageLength: 0
   scrollSpeed: 2.5
   scrollb: {fileID: 0}
+  stressFeel: 
+  cRTextSO: {fileID: 0}
+  cRTextRect: {fileID: 0}
+  cRText: []
+  folowAllong: {fileID: 0}
+  storeText: 
 --- !u!114 &1574471337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20182,7 +20236,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -20199,7 +20252,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 1
-  StressT: 0
 --- !u!114 &1666601051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21129,7 +21181,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 1
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -21146,7 +21197,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 0
 --- !u!114 &1742822545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21315,117 +21365,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1768478185}
---- !u!1 &1772867808
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1772867809}
-  - component: {fileID: 1772867810}
-  m_Layer: 0
-  m_Name: Audio Source
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1772867809
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1772867808}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1139475698}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1772867810
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1772867808}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243758059810848676, guid: fa8e33ea9392642aab6b1f26e4c02af6,
-    type: 2}
-  m_audioClip: {fileID: 8300000, guid: deef71d0a6d8e4c2ba949f34df930fc9, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  m_ExtensionPropertyValues: []
 --- !u!1001 &1772929657
 Prefab:
   m_ObjectHideFlags: 0
@@ -21591,151 +21530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c35e4665f819452280613d312fb807e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onGameStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onWaveShowStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onWaveShowEnd:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onWaveChange:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1109888321}
-        m_MethodName: set_Paused
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  firstWaveObject: {fileID: 0}
-  secondWaveObject: {fileID: 0}
-  thirdWaveObject: {fileID: 0}
-  fourthWaveObject: {fileID: 0}
-  fifthWaveObject: {fileID: 0}
-  sixWaveObject: {fileID: 0}
-  isRemainAfterWave: 0
-  GOToRespondFirstWave: 4
-  onFirstWaveStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  GOToRespondSecondWave: 2
-  timeUntilSecondWave: 10
-  onSecondWaveStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1974079046}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  GOToRespondThirdWave: 1
-  timeUntilThirdWave: 10
-  onThirdWaveStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1974079046}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1716505477}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 496216629}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  GOToRespondFourthWave: 1
-  timeUntilFourthWave: 10
-  onFourthWaveStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1716505477}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 496216629}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  GOToRespondFifthWave: 1
-  timeUntilFifthWave: 10
-  onFifthWaveStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  GOToRespondSixthWave: 1
-  timeUntilSixthWave: 10
-  onWaveFinished:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1777415654
 GameObject:
   m_ObjectHideFlags: 0
@@ -21961,7 +21755,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 1
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -21978,7 +21771,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 4
-  StressT: 6
 --- !u!114 &1781532285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23728,7 +23520,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -23745,7 +23536,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 3
-  StressT: 0
 --- !u!114 &1913016344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25774,7 +25564,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -25791,7 +25580,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &2072667731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26330,7 +26118,6 @@ MonoBehaviour:
   isOnStartInvoke: 0
   isButtonInvoke: 0
   isSMenuOpener: 0
-  isSType: 0
   isStressed: 0
   isEnvChanger: 0
   isSceneChange: 0
@@ -26347,7 +26134,6 @@ MonoBehaviour:
   isLocalizedButton: 0
   language: 0
   curMusicButton: 0
-  StressT: 0
 --- !u!114 &2111562070
 MonoBehaviour:
   m_ObjectHideFlags: 0

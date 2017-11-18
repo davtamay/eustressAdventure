@@ -24,14 +24,7 @@ public class BallControl : MonoBehaviour {
 			var pitch = magnitude / pitchRatio;
 			var tempAS = new AudioSource();
 
-//			BallManager.Instance.aSHitQueue.c
-//			for (int i = 0; i < 3; i++) {
-//				tempAS = AudioManager.Instance.GetAudioSourceReferance (AudioManager.AudioReferanceType._DIRECT, "Fall"+i);
-//
-//				if (!tempAS.isPlaying)
-//					break;
-//			}
-
+			tempAS = AudioManager.Instance.GetAvailableASourceInQueue (BallManager.Instance.audioSourceHitQueue);
 			tempAS.volume = volume;
 			tempAS.pitch = pitch;
 			tempAS.transform.position = collision.contacts [0].point;

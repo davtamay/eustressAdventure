@@ -7,6 +7,7 @@ using System.Linq;
 [ExecuteInEditMode]
 public class WaveManager : MonoBehaviour {
 
+#region PROPERTIES AND FIELDS
 	private Transform thisTransform;
 
 	[Header("Main Game Events")]
@@ -41,27 +42,10 @@ public class WaveManager : MonoBehaviour {
 	public static WaveManager Instance
 	{ get { return instance; } }
 
-	void Awake(){
+#endregion
 
-		if (instance) {
-			Debug.LogWarning ("There are two WaveManagers in scene - deleting late instance.");
-			DestroyImmediate(this.gameObject);
-			return;
-		}
-		instance = this; 
-		
-		thisTransform = transform;
-
-		totalGOs = new List<GameObject> ();
-
-		foreach (Transform gOP in transform) {
-			foreach (Transform gOC in gOP) {
-				totalGOs.Add (gOC.gameObject);
-				gOC.gameObject.SetActive (false);
-			}
-		}
-}
-		
+//THIS IS WHERE WE SET UP THE EDITOR TO UPDATE BASED ON CHILDREN PLACED IN THIS COMPONENT'S TRANSFORM
+#region EDITOR SETUP
 #if UNITY_EDITOR
 //INSPECTOR SET UP TO SHOW WAVE OBJECTS DEPENDING ON PRESENT CHILDREN IN PARENT 
 	void Update(){
@@ -117,6 +101,9 @@ public class WaveManager : MonoBehaviour {
 	}
 //THIS IS THE CUSTOM DATA BLOCK FOR EACH WAVE
 #endif
+#endregion
+//THIS IS WHAT THE INSPECTOR SHOWS FOR EACH CHILD PARENTED TO THIS COMPONENT
+#region CustomClassForWaves
 	[System.Serializable]
 	public class WaveObject{
 
@@ -128,7 +115,33 @@ public class WaveManager : MonoBehaviour {
 		public UnityEvent onIndividualWaveStart;
 		public int numberToSpawn;
 		public int timeUntilNextWave;
+		[Header("Change Wave ADDITIONAL Settings")]
+		public bool isChangeWaveWhenAllDisabled;
+		public bool isResetTime;
 
+	}
+#endregion
+
+#region WAVEINITIATION AND UPDATER
+	void Awake(){
+
+		if (instance) {
+			Debug.LogWarning ("There are two WaveManagers in scene - deleting late instance.");
+			DestroyImmediate(this.gameObject);
+			return;
+		}
+		instance = this; 
+
+		thisTransform = transform;
+
+		totalGOs = new List<GameObject> ();
+
+		foreach (Transform gOP in transform) {
+			foreach (Transform gOC in gOP) {
+				totalGOs.Add (gOC.gameObject);
+				gOC.gameObject.SetActive (false);
+			}
+		}
 	}
 
 
@@ -152,11 +165,12 @@ public class WaveManager : MonoBehaviour {
 	}
 
 
-	private float timer;
+
 	private bool isDone;
 	private bool isByPassIsDoneCheck = false;
 
 	IEnumerator OnUpdate(){
+		onGameStart.Invoke ();
 
 		//ADD TIME FOR FIRST WAVE
 		TimeToAdd (ref isDone, waveEvents [0].timeUntilNextWave);
@@ -168,7 +182,8 @@ public class WaveManager : MonoBehaviour {
 		foreach(int gO in myIndices)
 			waveEvents [0].waveTransformParent.GetChild (gO).gameObject.SetActive (true);
 
-		onGameStart.Invoke ();
+
+		waveEvents[0].onIndividualWaveStart.Invoke ();
 
 		while (true) {
 			yield return null;
@@ -179,8 +194,35 @@ public class WaveManager : MonoBehaviour {
 			else
 				isByPassIsDoneCheck = false;
 
+			//ALLOW FOR WAVE END ONCE NO MORE OBJECTS PRESSENT
+			if(waveEvents[currentWave].isChangeWaveWhenAllDisabled){
+
+				int EnabledCount = 0;
+				int childCount = waveEvents [currentWave].waveTransformParent.childCount;
+
+				for (int i = 0; i < childCount; i++) {
+
+					if (waveEvents [currentWave].waveTransformParent.GetChild (i).gameObject.activeInHierarchy)
+						EnabledCount += 1;
+
+				}
+				if (EnabledCount == 0) {
+					isDone = true;
+					//TimeToAdd (ref isDone);
+					//CHECK WHETER TO RESET TIMER
+					if (waveEvents [currentWave].isResetTime)
+						CompleteTimer ();
+
+
+				}
+
+			}
+				
+
 			if (isDone){ 
 				isDone = false;
+
+				StopTimer ();
 
 				if (!leaveWavesActiveWhenDone)
 					transform.GetChild (currentWave).gameObject.SetActive (false);
@@ -198,6 +240,7 @@ public class WaveManager : MonoBehaviour {
 
 				++currentWave;
 
+				waveEvents[currentWave].onIndividualWaveStart.Invoke ();
 				TimeToAdd (ref isDone, waveEvents [currentWave].timeUntilNextWave);
 
 				RandomizeGOToEnable (waveEvents [currentWave].numberToSpawn, waveEvents [currentWave].waveTransformParent);
@@ -207,12 +250,23 @@ public class WaveManager : MonoBehaviour {
 
 				onNewWaveObjectsEnabled.Invoke ();
 
-				waveEvents[currentWave].onIndividualWaveStart.Invoke ();
+				//waveEvents[currentWave].onIndividualWaveStart.Invoke ();
 			
+				ResumeTimer();
 			}
 	}
 		
 	}
+
+#endregion
+
+#region WAVEOBJECTS METHODS
+	public List<GameObject> GetAllGOInAllWaves(){
+
+		return totalGOs;
+
+	}
+
 	/// <summary>
 	/// Stop all waves and deactivate all active GameObjects in waves.
 	/// </summary>
@@ -259,13 +313,10 @@ public class WaveManager : MonoBehaviour {
 
 	}
 }
+#endregion
 
-	public List<GameObject> GetAllGOInAllWaves(){
-	
-		return totalGOs;
-	
-	}
-
+#region TIMER & METHODS
+	private float timer;
 	bool isTimerOn = false;
 	float timerTimeScale = 1;
 	Coroutine timerCoroutine;
@@ -294,7 +345,8 @@ public class WaveManager : MonoBehaviour {
 		string minutes = Mathf.Floor(timer /60).ToString("00");
 		string seconds = Mathf.Floor (timer % 60).ToString ("00");
 
-		if (timer < 0f) {
+		if (timer <= 0f) {
+			timer = 0f;
 			isDone = true;
 			isTimerOn = false;
 		}
@@ -338,6 +390,9 @@ public class WaveManager : MonoBehaviour {
 
 		return timer;
 	}
+#endregion
+
+#region WAVEINDICATOR METHODS
 
 	bool isWaveIndicatorOn;
 	public IEnumerator NewWaveIntermission(){
@@ -345,7 +400,8 @@ public class WaveManager : MonoBehaviour {
 
 		if (newWaveIntermissionIndicator != null) {
 			newWaveIntermissionIndicator.SetActive (true);
-			yield return new WaitForSeconds (newWaveIntermissionTime);
+			//WAVEINDICATOR CONTINUES TO SHOW WHEN TIMESCALE IS 0 BECAUSE OF THIS.
+			yield return new WaitForSecondsRealtime (newWaveIntermissionTime);
 			if (isDeactivateIndicatorAfterIntermission)
 				newWaveIntermissionIndicator.SetActive (false);
 		}else
@@ -368,6 +424,7 @@ public class WaveManager : MonoBehaviour {
 
 	}
 
+#endregion
 
 
 

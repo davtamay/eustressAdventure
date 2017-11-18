@@ -53,10 +53,7 @@ public class SkyJGameConroller : MonoBehaviour {
 				addPiece.AddNewObstacle (currentObs);
 				obsTime = 0.0f;
 
-
-
 				if (newWaveTime < newObsTime) {
-
 
 
 					obstacleRespondTime -= newWaveObstacleRespondTimeDecrement * PlayerManager.Instance.points;

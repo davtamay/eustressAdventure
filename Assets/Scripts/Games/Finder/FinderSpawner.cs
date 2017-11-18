@@ -103,9 +103,15 @@ public class FinderSpawner : MonoBehaviour {
 			}
 
 		}
+
 		TriggerObjects (600,cam.transform.position.y);
 
-	/*	int obstacletypes = obstacles.Length;
+		//Remove rocks blocking startMenu;
+		float tempOpeningOriginal = radiusOfFinderOpening;
+		radiusOfFinderOpening = 1f;
+		CheckForObstacleIntersections (cam.transform.position, cam.transform.position + (Vector3.forward * 0.7f));
+		radiusOfFinderOpening = tempOpeningOriginal;
+		/*	int obstacletypes = obstacles.Length;
 
 		for (int i = 0; i < numberOfObstacles; i++) {
 		
@@ -238,6 +244,11 @@ public class FinderSpawner : MonoBehaviour {
 			fO.SetActive (true);
 	
 	
+	}
+	public void DeactivateAllFinders(){
+
+		foreach (GameObject fO in findTargets)
+			fO.SetActive (false);
 	}
 
 
@@ -394,6 +405,8 @@ public class FinderSpawner : MonoBehaviour {
 		//distanceAgregate++;
 
 }
+
+
 }
 
 

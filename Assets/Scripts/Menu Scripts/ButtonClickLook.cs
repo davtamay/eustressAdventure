@@ -195,7 +195,7 @@ public class ButtonClickLook : MonoBehaviour {
 					EventManager.Instance.PostNotification (EVENT_TYPE.RETURN_SCENE_MAIN, this, null);
 
 				}else if (isStartButton) {
-					
+					GameController.Instance.StartGame ();
 					AudioManager.Instance.PlayInterfaceSound ("SpecialSelect");
 					GameController.Instance.Paused = false;
 

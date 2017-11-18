@@ -52,6 +52,17 @@ public class GameController : MonoBehaviour {
 			newWaveGO.gameObject.SetActive (false);
 		}*/
 
+//		if(SceneController.Instance.GetCurrentSceneName().Contains("Intro")){
+//			gameStart.SetActive (false);
+//
+//		}
+
+		if (gameOver != null) {
+
+			gameOver.SetActive (false);
+		}
+
+
 		if (hitEffect == null) {
 		
 			hitEffect = Resources.Load ("HitEffect") as GameObject;//GameObject.FindWithTag ("HitEffect");
@@ -59,10 +70,7 @@ public class GameController : MonoBehaviour {
 		
 		}
 	
-		if (gameOver != null) {
 
-			gameOver.SetActive (false);
-		}
 
 		Paused = true;
 	}
@@ -75,12 +83,15 @@ public class GameController : MonoBehaviour {
 
 		set {
 
-			if (paused == true && IsMenuActive)
-				isMenuPause = true;
+			//if (paused == true && IsMenuActive)
+				
 			
 			paused = value;
 		
 			if (paused) {
+
+				if(isMenuActive)
+					isMenuPause = true;
 
 				EventManager.Instance.PostNotification (EVENT_TYPE.GAME_PAUSED, this, null);
 				AudioManager.Instance.PauseAmbientAS();
@@ -89,7 +100,7 @@ public class GameController : MonoBehaviour {
 
 			}else {
 
-				if (isMenuPause) {
+				if (isMenuPause || IsStartMenuActive) {
 					isMenuPause = false;
 					return;
 				}
@@ -110,12 +121,7 @@ public class GameController : MonoBehaviour {
 		get{ return stressMenu.activeInHierarchy; }
 		
 	}
-
-
-	/*public void SetMenuActive(){
-	
-		stressMenu.SetActive (true);
-	}*/
+		
 
 	//private bool isStartMenuActive;
 	public bool IsStartMenuActive{

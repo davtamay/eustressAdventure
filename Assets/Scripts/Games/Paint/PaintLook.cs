@@ -26,7 +26,8 @@ public class PaintLook : MonoBehaviour {
 	public bool isFocused;
 	public bool isMovingSlow;
 
-	public bool isColorChaged;
+//	public bool isColorChaged;
+	[SerializeField]private Image previewImageColor;
 
 
 
@@ -37,7 +38,7 @@ public class PaintLook : MonoBehaviour {
 	private Vector3 previousCameraLook;
 	public Vector3 camDir;
 
-	public Color curCollor = Color.black;
+	public Color curColor = Color.black;
 
 
 	void Start(){
@@ -49,6 +50,8 @@ public class PaintLook : MonoBehaviour {
 
 		//focusDial = focusDialCanvas.GetComponentInChildren<Image> (); new
 		focusDial = GetComponentInChildren<Image> ();
+
+		previewImageColor.color = curColor;
 	}
 	void Update () {
 
@@ -127,7 +130,7 @@ public class PaintLook : MonoBehaviour {
 
 			//	if (!hit.transform.CompareTag ("Paint"))//!DetectNotMoving())//
 
-			PaintOn (PointInSurface, curCollor);
+			PaintOn (PointInSurface, curColor);
 
 		} else if (Physics.Raycast (ray, out hit, 20, layerMaskDrawTool)) {
 
@@ -161,32 +164,37 @@ public class PaintLook : MonoBehaviour {
 				}
 					
 			} else if (string.Equals (typeOfTool, "Red", System.StringComparison.CurrentCultureIgnoreCase)) {
-				isColorChaged = !isColorChaged;
+//				isColorChaged = !isColorChaged;
 
-				if (isColorChaged) {
-					curCollor = Color.red;
+//				if (isColorChaged) {
+					curColor = Color.red;
+					previewImageColor.color = curColor;
 					timer = 0;
-				} //else {
+
+				
+//				} //else {
 					//curCollor = Color.black;
 					//timer = 0;
 				//}
 			}else if (string.Equals (typeOfTool, "Blue", System.StringComparison.CurrentCultureIgnoreCase)) {
-				isColorChaged = !isColorChaged;
+//				isColorChaged = !isColorChaged;
 
-				if (isColorChaged) {
-					curCollor = Color.blue;
+//				if (isColorChaged) {
+					curColor = Color.blue;
+					previewImageColor.color = curColor;
 					timer = 0;
-				} //else {
+//				} //else {
 				//curCollor = Color.black;
 				//timer = 0;
 				//}
 			}else if (string.Equals (typeOfTool, "Black", System.StringComparison.CurrentCultureIgnoreCase)) {
-				isColorChaged = !isColorChaged;
-
-				if (isColorChaged) {
-					curCollor = Color.black;
+//				isColorChaged = !isColorChaged;
+//
+//				if (isColorChaged) {
+					curColor = Color.black;
+					previewImageColor.color = curColor;
 					timer = 0;
-				} //else {
+//				} //else {
 				//curCollor = Color.black;
 				//timer = 0;
 				//}

@@ -9,6 +9,8 @@ public class BallManager : MonoBehaviour {
 	private GameObject[] ballPrefabList;
 	private Queue <Transform> queue = new Queue<Transform>();
 
+
+	private Queue <Transform> audioQueue = new Queue<Transform>();
 	[SerializeField]private float ballForce; 
 
 
@@ -29,10 +31,10 @@ public class BallManager : MonoBehaviour {
 
 	}
 
-	public Queue<AudioSource> aSHitQueue;
+	public Queue<AudioSource> audioSourceHitQueue;
 	IEnumerator Start () {
 
-		aSHitQueue = AudioManager.Instance.CreateTempAudioSourcePoolQueue (AudioManager.AudioReferanceType._DIRECT, "fall", 3);
+		audioSourceHitQueue = AudioManager.Instance.CreateTempAudioSourcePoolQueue (AudioManager.AudioReferanceType._AMBIENT, "BallHit", 3);
 
 
 		ballPrefabList = new GameObject [amountOfBallObjects];
@@ -70,4 +72,6 @@ public class BallManager : MonoBehaviour {
 
 
 	}
+
+
 }

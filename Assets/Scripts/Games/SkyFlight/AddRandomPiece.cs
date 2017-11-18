@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public class AddRandomPiece : MonoBehaviour {
@@ -11,11 +12,15 @@ public class AddRandomPiece : MonoBehaviour {
 	private int obstacleNumb;
 	//private int itemNumb;
 
+	private List<GameObject> totalObstacles;
 
 
-	void Awake(){
+	void Start(){
 	
+		totalObstacles = WaveManager.Instance.GetAllGOInAllWaves ();
+
 		obstacleNumb = obstacles.Length;
+
 		//itemNumb = items.Length;
 	}
 

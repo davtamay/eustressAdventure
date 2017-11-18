@@ -17,24 +17,28 @@ public class MenuArmFollow : MonoBehaviour {
 	void Awake(){
 		
 		thisTransform = transform;
-		thisAnimator = GetComponentInChildren<Animator> ();
+
 
 
 
 	}
 	void Start(){
 
+
 		camTransform = Camera.main.transform;
+		thisAnimator = GetComponentInChildren<Animator> ();
 		offset = thisTransform.position - Camera.main.transform.position;
 
 		stressMenu = GameObject.FindWithTag ("StressMenu");
 
 		if(SceneController.Instance != null)
-			curSceneName = SceneController.Instance.GetCurrentSceneName ();
+		curSceneName = SceneController.Instance.GetCurrentSceneName ();
 		
 		thisTransform.GetChild(0).gameObject.SetActive(false);
 
-		EventManager.Instance.AddListener (EVENT_TYPE.SCENE_LOADED, OnEvent);
+		//if use close Menu makes closing sound in the beginign.
+		CloseMenu (false);
+		//EventManager.Instance.AddListener (EVENT_TYPE.SCENE_LOADED, OnEvent);
 	
 
 	}
@@ -55,15 +59,17 @@ public class MenuArmFollow : MonoBehaviour {
 	//this is checked off by button look click (BackToGame Button)
 	bool isClosedClick = false;
 
-	public void CloseMenu(){
+	public void CloseMenu(bool hasSound = true){
+		EventManager.Instance.PostNotification (EVENT_TYPE.STRESSMENU_CLOSED, this,null);
+
+		if(hasSound)
 		AudioManager.Instance.PlayDirectSound ("TakeOutMenu");
+	
+		if(thisAnimator.isActiveAndEnabled)
 		thisAnimator.SetBool ("Close", true);
 
 		GameController.Instance.Paused = false;
 		stressMenu.SetActive (false);
-
-		EventManager.Instance.PostNotification (EVENT_TYPE.STRESSMENU_CLOSED, this,null);
-
 		isClosedClick = true;
 
 
@@ -107,6 +113,10 @@ public class MenuArmFollow : MonoBehaviour {
 	void LateUpdate () {
 
 
+		if (!thisAnimator.gameObject.activeInHierarchy)
+			return;
+
+
 		if (isInitialLook) {
 
 
@@ -125,7 +135,6 @@ public class MenuArmFollow : MonoBehaviour {
 		} else if (isClosedClick) {
 
 		
-
 			if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsTag ("Start")) {
 
 				isClosedClick = false;
@@ -157,7 +166,7 @@ public class MenuArmFollow : MonoBehaviour {
 
 				thisTransform.position = Vector3.Lerp (thisTransform.position, camTransform.position - (rotation * (offset * -1)), Time.unscaledDeltaTime * 3f);
 
-				thisTransform.LookAt (2 * thisTransform.position - camTransform.position, camTransform.up);
+				thisTransform.LookAt (2 * thisTransform.position - camTransform.position, Vector3.up);
 			
 
 
@@ -171,24 +180,5 @@ public class MenuArmFollow : MonoBehaviour {
 			
 		
 	}
-
-
-	public void OnEvent(EVENT_TYPE Event_Type, Component Sender, object Param = null ){
-
-
-		switch(Event_Type){
-
-		case EVENT_TYPE.SCENE_LOADED:
-			
-
-			stressMenu.SetActive (false);
-
-			break;
-
 		
-
-		}
-
-
-	}
 }

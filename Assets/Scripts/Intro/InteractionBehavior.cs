@@ -49,7 +49,7 @@ public class InteractionBehaviour : MonoBehaviour {
 
 	//[TextArea(0,15)][SerializeField]protected string completionText;
 
-
+	protected Image infoImageComponent;
 	protected Text infoTextComponent;
 	protected Transform thisTransform;
 	protected float distanceToInteraction;
@@ -84,6 +84,8 @@ public class InteractionBehaviour : MonoBehaviour {
 
 			localizedText = infoCanvasPrefab.GetComponentInChildren<LocalizedText> ();
 
+			infoImageComponent = infoCanvasPrefab.GetComponentInChildren<Image> (true);
+			infoImageComponent.color = infoBackGround;
 			//thisParticleSystem = infoCanvasPrefab.GetComponentInChildren<ParticleSystem> ().main;
 			//thisParticleSystem.startColor = new ParticleSystem.MinMaxGradient (infoBackGround);
 

@@ -29,6 +29,7 @@ public class CopeGameObstacles : MonoBehaviour {
 	void Start () {
 
 		thisTransform = transform;
+		//transform.localRotation = Quaternion.identity;
 		target = transform.parent.GetChild (0);
 	}
 	

@@ -8,13 +8,26 @@ public class CountingDownS : MonoBehaviour {
 	public int countDownTime = 10;
 	public float countDownSpeed = 1.0f ;
 
+	private LocalizedText localizedText;
+	[SerializeField]private string[] localizedKeys;
+
 	private float time;
 	void Start () {
 
-		countingT = GetComponentInChildren <Text>();
+		countingT = GetComponent<Text>();
+		localizedText = GetComponent<LocalizedText> ();
+
 		countingT.text = "10";
 		time = countDownTime;
 		}
+
+	public void ResetTime()
+	{
+
+		time = 10f;
+
+
+	}
 
 	void Update(){
 
@@ -36,18 +49,24 @@ public class CountingDownS : MonoBehaviour {
 
 				countingT.fontSize = 28;
 				countingT.text = "Everything is well";
+				localizedText.key = localizedKeys [0];
+				localizedText.OnUpdate ();
 				break;
 
 			case 3:
 
 				countingT.fontSize = 28;
 				countingT.text = "You are well";
+				localizedText.key = localizedKeys [1];
+				localizedText.OnUpdate ();
 				break;
 
 			case 0:
 
 				countingT.fontSize = 28;
 				countingT.text = "Everything is OKAY!";
+				localizedText.key = localizedKeys [2];
+				localizedText.OnUpdate ();
 				break;
 				
 			default:

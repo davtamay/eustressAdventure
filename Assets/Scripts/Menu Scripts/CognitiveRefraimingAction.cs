@@ -13,18 +13,21 @@ public class CognitiveRefraimingAction : MonoBehaviour {
 
 	private Transform camTransform;
 
+	public Text speedDisplay;
 
 	void Start () {
 		camTransform = Camera.main.transform;
 		settingsButtons = GetComponentsInChildren<Button> ();
 		followAllongScript = GetComponentInParent<FolowAllong> ();
+
+		//speedDisplay.text = (followAllongScript.scrollb.value/40f).ToString("P0");
 	}
 	
 	RaycastHit hit; 
 
 	void Update () {
 
-		followAllongScript.scrollSpeed = Mathf.Clamp (followAllongScript.scrollSpeed, -5f, 40f);
+		followAllongScript.scrollSpeed = Mathf.Clamp (followAllongScript.scrollSpeed, -5f, 35f);
 
 		EventSystem.current.SetSelectedGameObject (null);
 		if (Physics.Raycast (camTransform.position, camTransform.rotation * Vector3.forward, out hit)) {
@@ -39,14 +42,22 @@ public class CognitiveRefraimingAction : MonoBehaviour {
 					switch (button.name) {
 
 					case "AddSpeed":
+						speedDisplay.text = string.Empty;
 
 						followAllongScript.scrollSpeed += Time.unscaledDeltaTime * speedModifier;
-
+						speedDisplay.text = (followAllongScript.scrollSpeed/35f).ToString("P0");
+						if ((followAllongScript.scrollSpeed /35f) >= 1f)
+							speedDisplay.text = "100%";
 						break;
 
 					case "ReduceSpeed":
 
 						followAllongScript.scrollSpeed -= Time.unscaledDeltaTime * speedModifier;
+
+						speedDisplay.text = (followAllongScript.scrollSpeed/35f).ToString("P0");
+
+						if ((followAllongScript.scrollSpeed / 35f) <= 0f)
+							speedDisplay.text = "0%";
 						//Mathf.Clamp (followAllongScript.scrollSpeed, 0f, 5f);
 						break;
 

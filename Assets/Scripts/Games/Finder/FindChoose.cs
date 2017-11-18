@@ -66,8 +66,8 @@ public class FindChoose : MonoBehaviour {
 
 			yield return null;
 		
-			if (GameController.Instance.IsStartMenuActive)
-				continue;
+			//if (GameController.Instance.IsStartMenuActive)
+			//	continue;
 
 			time += timeSpeedMultiplier * Time.deltaTime;
 
@@ -113,6 +113,8 @@ public class FindChoose : MonoBehaviour {
 				currentLevel -= 1;
 
 				if (currentLevel == levelToHitForGameOver) {
+
+					spawner.DeactivateAllFinders ();
 
 					DataManager.Instance.CheckHighScore (curScene, currentLevel);
 					GameController.Instance.isGameOver = true;
