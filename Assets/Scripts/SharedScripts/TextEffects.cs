@@ -74,7 +74,7 @@ public class TextEffects : MonoBehaviour {
 		
 
 		if(isRotateEffectOn)
-			thisTransform.rotation = Quaternion.Lerp (thisTransform.rotation, Quaternion.LookRotation(rotateToGoal), Time.deltaTime * rotateSpeed);
+			thisTransform.localEulerAngles = Vector3.Lerp (thisTransform.localEulerAngles, rotateToGoal, Time.deltaTime * rotateSpeed);
 
 		if(isShakingEffectOn){
 

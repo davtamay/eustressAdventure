@@ -27,22 +27,22 @@ public class StressEffects : MonoBehaviour {
 	
 	}
 	
-
-	void LateUpdate () {
-		//Debug.Log ("PlayerVeloc" + playerMoveScript.velocity);
-		normalizedStress = UIStressGage.Instance.stress / 180;
-		playerMoveScript.velocity = originalVelocity - normalizedStress * originalVelocity    ;//magnitudeOfWalkEffect; 
-
-
-		var intensity = pPV.vignette.settings;
-
-		intensity.intensity = normalizedStress;
-		pPV.vignette.settings = intensity;
-
-
-	
-	//	Debug.Log ((UIStressGage.Instance.stress / 180));
-		
-	}
+	//COMMENTED THIS OUT ON 18TH OF NOV 2018, DUE TO IT CONFLICTING WITH COLLECTION GAME CHANGING VELOCITY
+//	void LateUpdate () {
+//		
+//		normalizedStress = UIStressGage.Instance.stress / 180;
+//		playerMoveScript.velocity = originalVelocity - normalizedStress * originalVelocity    ;//magnitudeOfWalkEffect; 
+//
+//
+//		var intensity = pPV.vignette.settings;
+//
+//		intensity.intensity = normalizedStress;
+//		pPV.vignette.settings = intensity;
+//
+//
+//	
+//	//	Debug.Log ((UIStressGage.Instance.stress / 180));
+//		
+//	}
 
 }

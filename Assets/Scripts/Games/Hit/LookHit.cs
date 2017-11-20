@@ -21,10 +21,14 @@ public class LookHit : MonoBehaviour {
 
 	private Camera cam;
 
+	private AudioSource ballHitAS;
+
 
 	void Start(){
 	
 		cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+
+		ballHitAS = AudioManager.Instance.GetAudioSourceReferance (AudioManager.AudioReferanceType._AMBIENT, "BallHit");
 
 		if (isGame)
 			timerUntilExplode = 0.0f;
@@ -47,9 +51,11 @@ public class LookHit : MonoBehaviour {
 				ExplodeTime = 0;
 				return;
 			}
-				
-			
-		
+			//AudioManager.Instance.GetAudioSourceReferance(AudioManager.AudioReferanceType._AMBIENT,"BallHit")
+			//AudioSource.PlayClipAtPoint (AudioManager.Instance.GetAudioSourceReferance(AudioManager.AudioReferanceType._AMBIENT,"BallHit").clip, hit.point);
+			ballHitAS.transform.position = hit.point;
+			ballHitAS.Play ();
+
 			ExplodeTime += Time.deltaTime;
 
 			if(isGame)//hit.normal.back try it!!!

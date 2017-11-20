@@ -6,7 +6,7 @@ using System.Linq;
 
 [ExecuteInEditMode]
 public class WaveManager : MonoBehaviour {
-
+	
 #region PROPERTIES AND FIELDS
 	private Transform thisTransform;
 
@@ -48,7 +48,7 @@ public class WaveManager : MonoBehaviour {
 #region EDITOR SETUP
 #if UNITY_EDITOR
 //INSPECTOR SET UP TO SHOW WAVE OBJECTS DEPENDING ON PRESENT CHILDREN IN PARENT 
-	void Update(){
+	void OnRenderObject(){
 
 	if(!Application.isPlaying)
 		if (transform.hasChanged) {
@@ -124,14 +124,7 @@ public class WaveManager : MonoBehaviour {
 
 #region WAVEINITIATION AND UPDATER
 	void Awake(){
-
-		if (instance) {
-			Debug.LogWarning ("There are two WaveManagers in scene - deleting late instance.");
-			DestroyImmediate(this.gameObject);
-			return;
-		}
-		instance = this; 
-
+		
 		thisTransform = transform;
 
 		totalGOs = new List<GameObject> ();
@@ -142,11 +135,23 @@ public class WaveManager : MonoBehaviour {
 				gOC.gameObject.SetActive (false);
 			}
 		}
+
+		if (Application.isPlaying) {
+			
+			if (instance) {
+				Debug.LogWarning ("There are two WaveManagers in scene - deleting late instance.");
+				DestroyImmediate (this.gameObject);
+				return;
+			}
+			instance = this; 
+		}
 	}
 
 
 	void Start(){
-		
+
+		transform.hasChanged = true;
+
 		if (Application.isPlaying) {
 			//CHECK FOR PRESENCE OF WAVE INDICATOR IN SCENE
 			if (GameObject.FindWithTag ("NewWave")) {
@@ -182,7 +187,7 @@ public class WaveManager : MonoBehaviour {
 		foreach(int gO in myIndices)
 			waveEvents [0].waveTransformParent.GetChild (gO).gameObject.SetActive (true);
 
-
+		onNewWaveObjectsEnabled.Invoke ();
 		waveEvents[0].onIndividualWaveStart.Invoke ();
 
 		while (true) {
@@ -212,7 +217,6 @@ public class WaveManager : MonoBehaviour {
 					//CHECK WHETER TO RESET TIMER
 					if (waveEvents [currentWave].isResetTime)
 						CompleteTimer ();
-
 
 				}
 
@@ -249,8 +253,6 @@ public class WaveManager : MonoBehaviour {
 					waveEvents [currentWave].waveTransformParent.GetChild (gO).gameObject.SetActive (true);
 
 				onNewWaveObjectsEnabled.Invoke ();
-
-				//waveEvents[currentWave].onIndividualWaveStart.Invoke ();
 			
 				ResumeTimer();
 			}

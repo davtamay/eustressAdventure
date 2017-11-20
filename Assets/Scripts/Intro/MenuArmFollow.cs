@@ -6,38 +6,45 @@ public class MenuArmFollow : MonoBehaviour {
 
 	// Use this for initialization
 	private Transform thisTransform;
-	private Animator thisAnimator;
+	[SerializeField]private Animator armAnimator;
 
 	private Transform camTransform;
 	private GameObject stressMenu;
+	private GameObject directMenu;
 
 	private Vector3 offset;
 	private string curSceneName;
 
+	//last item in hierarchy (tablet case "Cube")
+	private GameObject tablet;
+
 	void Awake(){
 		
 		thisTransform = transform;
-
-
-
 
 	}
 	void Start(){
 
 
 		camTransform = Camera.main.transform;
-		thisAnimator = GetComponentInChildren<Animator> ();
+		//armAnimator = GetComponentInChildren<Animator> (());
 		offset = thisTransform.position - Camera.main.transform.position;
 
 		stressMenu = GameObject.FindWithTag ("StressMenu");
+		directMenu = GameObject.FindWithTag ("DirectMenu");
 
 		if(SceneController.Instance != null)
 		curSceneName = SceneController.Instance.GetCurrentSceneName ();
 		
 		thisTransform.GetChild(0).gameObject.SetActive(false);
 
+		tablet = thisTransform.FindDeepChild ("Cube").gameObject;
 		//if use close Menu makes closing sound in the beginign.
+
+
+
 		CloseMenu (false);
+		TriggerWithoutMenu ();
 		//EventManager.Instance.AddListener (EVENT_TYPE.SCENE_LOADED, OnEvent);
 	
 
@@ -60,20 +67,39 @@ public class MenuArmFollow : MonoBehaviour {
 	bool isClosedClick = false;
 
 	public void CloseMenu(bool hasSound = true){
+
+		directMenu.SetActive (false);
 		EventManager.Instance.PostNotification (EVENT_TYPE.STRESSMENU_CLOSED, this,null);
+
 
 		if(hasSound)
 		AudioManager.Instance.PlayDirectSound ("TakeOutMenu");
 	
-		if(thisAnimator.isActiveAndEnabled)
-		thisAnimator.SetBool ("Close", true);
+		if(armAnimator.isActiveAndEnabled)
+		armAnimator.SetBool ("Close", true);
 
 		GameController.Instance.Paused = false;
 		stressMenu.SetActive (false);
 		isClosedClick = true;
 
 
+		//new
+
+
 	}
+
+	public void CloseWithNoMenu(){
+		
+		if(armAnimator.isActiveAndEnabled)
+			armAnimator.SetBool ("Close", true);
+
+		directMenu.SetActive (false);
+			isClosedClick = true;
+
+		//thisTransform.GetChild(0).gameObject.SetActive(false);
+
+	}
+
 
 
 	Vector3 oldViewingAngle;
@@ -83,8 +109,49 @@ public class MenuArmFollow : MonoBehaviour {
 
 	bool isButtonAvailable = true;
 
+
+	private bool hasMenu;
 	public void TriggerMenu(){
-	
+	//new
+		GameController.Instance.Paused = true;
+		CloseWithNoMenu ();
+		StartCoroutine (TriggerMenuWait ());
+//
+//		if( isButtonAvailable) {
+//			isButtonAvailable = false;
+//
+//			AudioManager.Instance.PlayDirectSound ("TakeOutMenu");
+//
+//			if (isInitialLook) {
+//
+//				armAnimator.SetBool ("Close", false);
+//				return;
+//			}
+//
+//			curViewingAngle = camTransform.rotation * Vector3.forward;
+//
+//			thisTransform.GetChild(0).gameObject.SetActive(true);
+//
+//			tablet.SetActive(true);
+//
+//			oldViewingAngle =  Quaternion.Euler(0,90,0) * camTransform.forward ;
+//			isInitialLook = true;
+//			hasMenu = true;
+//			//if (curSceneName != "intro")
+//				GameController.Instance.Paused = true;
+//
+//		}
+//	
+	}
+	IEnumerator TriggerMenuWait(){
+
+
+
+		while (!armAnimator.GetCurrentAnimatorStateInfo (0).IsName ("Idle"))
+			yield return null;
+		
+
+
 		if( isButtonAvailable) {
 			isButtonAvailable = false;
 
@@ -92,38 +159,92 @@ public class MenuArmFollow : MonoBehaviour {
 
 			if (isInitialLook) {
 
-				thisAnimator.SetBool ("Close", false);
-				return;
+				armAnimator.SetBool ("Close", false);
+				yield break;
 			}
 
 			curViewingAngle = camTransform.rotation * Vector3.forward;
 
 			thisTransform.GetChild(0).gameObject.SetActive(true);
+			directMenu.SetActive (false);
+
+			tablet.SetActive(true);
+
 			oldViewingAngle =  Quaternion.Euler(0,90,0) * camTransform.forward ;
 			isInitialLook = true;
-
+			hasMenu = true;
 			//if (curSceneName != "intro")
-				GameController.Instance.Paused = true;
+
 
 		}
-	
+
+
+	}
+	public void TriggerWithoutMenu(){
+
+		//if (!armAnimator.isActiveAndEnabled)
+		//	return;
+
+		StartCoroutine (TriggerWithoutMenuWait ());
+			
+
+
+			curViewingAngle = camTransform.rotation * Vector3.forward;
+
+			thisTransform.GetChild(0).gameObject.SetActive(true);
+			
+			
+		directMenu.SetActive (false);
+			tablet.SetActive(false);
+
+
+
+
+			oldViewingAngle =  Quaternion.Euler(0,90,0) * camTransform.forward ;
+
+			hasMenu = false;
+
+
+
+
+	}
+	IEnumerator TriggerWithoutMenuWait(){
+
+		while (!armAnimator.isActiveAndEnabled)
+			yield return null;
+
+		armAnimator.SetBool ("Close", false);
+
+		while (!armAnimator.GetCurrentAnimatorStateInfo (0).IsTag ("Idle"))
+			yield return null;
+
+		directMenu.SetActive (true);
+
+
+
+
 	}
 
 
 	void LateUpdate () {
 
 
-		if (!thisAnimator.gameObject.activeInHierarchy)
+		if (!armAnimator.gameObject.activeInHierarchy)
 			return;
 
 
 		if (isInitialLook) {
 
 
-			if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsTag ("Idle")) {
+			if (armAnimator.GetCurrentAnimatorStateInfo (0).IsTag ("Idle")) {
 
-				EventManager.Instance.PostNotification (EVENT_TYPE.STRESSMENU_OPENED, this, null);
-				stressMenu.SetActive (true);
+				if (hasMenu) {
+					EventManager.Instance.PostNotification (EVENT_TYPE.STRESSMENU_OPENED, this, null);
+					stressMenu.SetActive (true);
+
+				}
+
+
 				isInitialLook = false;
 
 				//ALLOW FOR INITIAL SET UP OF MENU TO PLAYERS FACE
@@ -135,15 +256,18 @@ public class MenuArmFollow : MonoBehaviour {
 		} else if (isClosedClick) {
 
 		
-			if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsTag ("Start")) {
+			if (armAnimator.GetCurrentAnimatorStateInfo (0).IsTag ("Start")) {
 
 				isClosedClick = false;
 
-				thisAnimator.SetBool ("Close", false);
+				armAnimator.SetBool ("Close", false);
 
 				thisTransform.GetChild(0).gameObject.SetActive(false);
 
+
 				isButtonAvailable = true;
+				//new
+				TriggerWithoutMenu ();
 
 
 				//
@@ -153,12 +277,12 @@ public class MenuArmFollow : MonoBehaviour {
 		
 		}
 
-		if (GameController.Instance.IsMenuActive) {
+	//	if (GameController.Instance.IsMenuActive) {
 
 
 			curViewingAngle = camTransform.forward;
 
-			if (Vector3.Angle (oldViewingAngle, curViewingAngle) > 80 || isLerping) {
+			if (Vector3.Angle (oldViewingAngle, curViewingAngle) > 45 || isLerping) {
 
 				isLerping = true;
 
@@ -176,7 +300,7 @@ public class MenuArmFollow : MonoBehaviour {
 					}
 			}
 			//Debug.Log (Vector3.Distance(thisTransform.position, camTransform.position - (rotation * (offset * -1))));
-		}
+	//	}
 			
 		
 	}

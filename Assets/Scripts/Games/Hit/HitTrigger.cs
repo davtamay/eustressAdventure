@@ -8,12 +8,21 @@ public class HitTrigger : MonoBehaviour {
 
 	[SerializeField]private bool isGround;
 
+	[SerializeField]private Color originalColor;
+	[SerializeField]private Color triggeredChangeColor1;
+	[SerializeField]private Color triggeredChangeColor2;
+	[SerializeField]private Color triggeredChangeColor3;
+
+
 	public GameObject triggerGO = null;
 
 	[SerializeField]private HitTrigger[] hitTriggers;
 
+	[SerializeField]private bool isAllowPersist = true;
+
 	void Start(){
 
+		//originalColor = transform.GetComponent<MeshRenderer> ().material.color;
 		if(isGround)
 		hitTriggers = GetComponentsInChildren<HitTrigger> ();
 
@@ -24,10 +33,20 @@ public class HitTrigger : MonoBehaviour {
 		//	if(HitManager.Instance.gONotInGround.Contains (other.gameObject))
 		//	HitManager.Instance.gONotInGround.Remove (other.gameObject);
 			//foreach(Transform t in transform)
+			if (!other.CompareTag ("Obstacle"))
+				return;
 
-			foreach (HitTrigger h in hitTriggers)
-				if (h.triggerGO == other.gameObject)
+
+			other.GetComponent<MeshRenderer> ().material.color = originalColor;
+
+			foreach (HitTrigger h in hitTriggers) {
+				
+				if (h.triggerGO.GetInstanceID() == other.gameObject.GetInstanceID()) {
+					
 					h.triggerGO = null;
+
+				}
+			}
 				
 
 		}
@@ -35,7 +54,30 @@ public class HitTrigger : MonoBehaviour {
 		if (triggerGO == null || triggerGO.GetInstanceID () != other.gameObject.GetInstanceID()) {
 			HitManager.Instance.UpdateCoinText (pointsForCollider);
 			triggerGO = other.gameObject;
+		
+			switch(pointsForCollider){
+
+			case 1:
+				triggerGO.transform.GetComponent<MeshRenderer> ().material.color = triggeredChangeColor1;
+				break;
+
+			case 2:
+				triggerGO.transform.GetComponent<MeshRenderer> ().material.color = triggeredChangeColor2;
+				break;
+
+			case 3:
+				triggerGO.transform.GetComponent<MeshRenderer> ().material.color = triggeredChangeColor3;
+				break;
+
+
+
+			}
+		
+		
 		}
+
+		//if (!isAllowPersist)
+		//	other.gameObject.SetActive (false);
 	
 	}
 

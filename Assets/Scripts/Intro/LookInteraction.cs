@@ -80,10 +80,11 @@ public class LookInteraction : MonoBehaviour {
 			imageGO.SetActive (false);
 
 	}
-	void Start(){
 
+	void OnEnable(){
 
-		
+		StopAllCoroutines ();
+
 		StartCoroutine (OnUpdate ());
 	}
 
@@ -146,6 +147,7 @@ public class LookInteraction : MonoBehaviour {
 
 
 		if (thisCollider.Raycast (ray, out hit, lookDistance)) {
+				Debug.Log ("IAMHITTING: " + hit.collider.name);
 	//	if (thisCollider.Raycast (ray, out hit, lookDistance)) {
 
 			timeActive = timeUntilImageDeactivate;

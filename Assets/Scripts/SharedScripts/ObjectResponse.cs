@@ -16,7 +16,7 @@ public class ObjectResponse : MonoBehaviour {
 
 	void Awake(){
 		player = GameObject.FindWithTag ("Player");
-	//	playerManager = player.GetComponent<PlayerManager>();
+
 	}
 
 	void OnTriggerEnter (Collider other){
@@ -26,20 +26,17 @@ public class ObjectResponse : MonoBehaviour {
 			if (!isObstacle) {
 				if (string.Equals (itemDescription, "Coin", System.StringComparison.CurrentCultureIgnoreCase)) {
 					PlayerManager.Instance.points = 1;
-					//EventManager.Instance.PostNotification (EVENT_TYPE.POINTS_ADD, this, 1);
-
-					//AudioManager.Instance.PlayDirectSound ("SmallWin", true);
 					Destroy (this.gameObject);
 				} else if (string.Equals (itemDescription, "Armor", System.StringComparison.CurrentCultureIgnoreCase)) {
 					PlayerManager.Instance.AddArmor ();
-					AudioManager.Instance.PlayDirectSound ("Reward", true);
+					AudioManager.Instance.PlayInterfaceSound ("Reward");
 					Destroy (this.gameObject);
 				} else if (string.Equals (itemDescription, "Health", System.StringComparison.CurrentCultureIgnoreCase)) {
 					PlayerManager.Instance.health += 1;
-					AudioManager.Instance.PlayDirectSound ("Reward", true);
+					AudioManager.Instance.PlayInterfaceSound ("Reward");
 					Destroy (this.gameObject);
 				} else if (string.Equals (itemDescription, "Speed", System.StringComparison.CurrentCultureIgnoreCase)) {
-					AudioManager.Instance.PlayDirectSound ("Reward", true);
+					AudioManager.Instance.PlayInterfaceSound ("Reward");
 					Destroy (this.gameObject);
 					EnemyManager.Instance.ReduceSpeed ();
 				}
@@ -48,11 +45,11 @@ public class ObjectResponse : MonoBehaviour {
 		//		EnemyManager.Instance.ReduceSize ();
 		//	}
 			else if (string.Equals (itemDescription, "RunAway", System.StringComparison.CurrentCultureIgnoreCase)) {
-					AudioManager.Instance.PlayDirectSound ("Reward", true);
+					AudioManager.Instance.PlayInterfaceSound ("Reward");
 					Destroy (this.gameObject);
 					EnemyManager.Instance.RunAway ();
 				} else if (string.Equals (itemDescription, "PlayerSpeed", System.StringComparison.CurrentCultureIgnoreCase)) {
-					AudioManager.Instance.PlayDirectSound ("Reward", true);
+					AudioManager.Instance.PlayInterfaceSound ("Reward");
 					StartCoroutine (SetCollectorPlayerSpeed (gameObject));
 
 
@@ -145,6 +142,8 @@ public class ObjectResponse : MonoBehaviour {
 	IEnumerator SetCollectorPlayerSpeed(GameObject GOtoDestroy){
 
 		PlayerLookMove coll = player.GetComponent<PlayerLookMove>();
+		//	playerManager = player.GetComponent<PlayerManager>();
+
 		float CurrentVelocity = coll.velocity;
 		coll.velocity = 60;
 

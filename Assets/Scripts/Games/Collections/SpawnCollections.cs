@@ -6,7 +6,6 @@ public class SpawnCollections : MonoBehaviour {
 
 	public GameObject[] collectionObjs;
 
-
 	public Transform[] spawnLocations;
 
 	public float spawnTime;
@@ -39,6 +38,7 @@ public class SpawnCollections : MonoBehaviour {
 		StartCoroutine (OnUpdate ());
 	
 	}
+	int spawnLocRandom;
 	IEnumerator OnUpdate () {
 		//Debug.DrawRay (tempCollObj.transform.position + Vector3.down * 3, Vector3.up * 5, Color.black);
 
@@ -48,54 +48,48 @@ public class SpawnCollections : MonoBehaviour {
 
 		if (spawnTime < timePass) {
 
-			int spawnLocRandom = Random.Range (0, spawnLoc.Count);
+			spawnLocRandom = Random.Range (0, spawnLoc.Count);
+				if(spawnLoc [spawnLocRandom].childCount == 0){
 
-			timePass = 0.0f;
-
-			tempCollObj = Instantiate (collectionObjs [Random.Range (0, collectionObjs.Length)], spawnLoc [spawnLocRandom].position, Quaternion.identity) as GameObject;
-			RaycastHit[] hits;
-			RaycastHit hit;
-			hits = Physics.RaycastAll (tempCollObj.transform.position + Vector3.down * 3, Vector3.up, 10, itemLayerMask);
-			for (int i = 0; i < hits.Length; i++) {
-					
-				hit = hits [i];
-				if (hit.transform.gameObject.GetInstanceID () != tempCollObj.GetInstanceID ())
-					Destroy (tempCollObj);
-			}
-	
+					timePass = 0.0f;
+					tempCollObj = Instantiate (collectionObjs [Random.Range (0, collectionObjs.Length)], spawnLoc [spawnLocRandom].position, Quaternion.identity) as GameObject; 
+					tempCollObj.transform.parent = spawnLoc [spawnLocRandom];
 
 
-	
-			if (isFirstWave) {
+				}
 		
-				if (EnemyManager.Instance.activeEnemies.Count == 0) {
-						StartCoroutine (WaveManager.Instance.NewWaveIntermission());
-						isFirstWave = false;
-						isSecondWave = true;
-						for (int i = 0; i < amountOfEnemies1; i++){
-							
-							EnemyManager.Instance.InitiateEnemy(spawnLoc [spawnLocRandom].position + Vector3.up * 4);
-							yield return null;
-						}
-				}
 
-			
-			}
-			if (isSecondWave) {
-
-					if (EnemyManager.Instance.activeEnemies.Count == 0) {
-						StartCoroutine (WaveManager.Instance.NewWaveIntermission());
-						isSecondWave = false;
-					//	isThirdWave = true;
-						for (int i = 0; i < amountOfEnemies2; i++){
-							
-							EnemyManager.Instance.InitiateEnemy(spawnLoc [spawnLocRandom].position + Vector3.up * 4);
-							yield return null;
-						}
-					}
-
-
-				}
+	
+//			if (isFirstWave) {
+//		
+//				if (EnemyManager.Instance.activeEnemies.Count == 0) {
+//						StartCoroutine (WaveManager.Instance.NewWaveIntermission());
+//						isFirstWave = false;
+//						isSecondWave = true;
+//						for (int i = 0; i < amountOfEnemies1; i++){
+//							
+//							EnemyManager.Instance.InitiateEnemy(spawnLoc [spawnLocRandom].position + Vector3.up * 4);
+//							yield return null;
+//						}
+//				}
+//
+//			
+//			}
+//			if (isSecondWave) {
+//
+//					if (EnemyManager.Instance.activeEnemies.Count == 0) {
+//						StartCoroutine (WaveManager.Instance.NewWaveIntermission());
+//						isSecondWave = false;
+//					//	isThirdWave = true;
+//						for (int i = 0; i < amountOfEnemies2; i++){
+//							
+//							EnemyManager.Instance.InitiateEnemy(spawnLoc [spawnLocRandom].position + Vector3.up * 4);
+//							yield return null;
+//						}
+//					}
+//
+//
+//				}
 			/*
 				spawnLoc.RemoveAt (spawnLocRandom);
 	
@@ -108,9 +102,17 @@ public class SpawnCollections : MonoBehaviour {
 
 		}
 		}
-		}
+	}
+
+//	public void SpawnEnemy()
+//	{
+//		spawnLocRandom = Random.Range (0, spawnLoc.Count);
+//		EnemyManager.Instance.InitiateEnemy(spawnLoc [spawnLocRandom].position + Vector3.up * 4);
+//
+//
+//	}
+
+
 
 
 }
-
-

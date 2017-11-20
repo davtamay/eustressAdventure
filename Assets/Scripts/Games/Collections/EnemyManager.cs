@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour {
 
 	private static EnemyManager instance = null;
 
-
+	public Dictionary<Enemy,NavMeshAgent> registeredEnemies;
 	public Vector3 changeSize;
 	//private Transform thisTransform;
 	public GameObject enemyPrefab;
@@ -22,7 +22,7 @@ public class EnemyManager : MonoBehaviour {
 	public Vector3[] wayPoints;
 
 	public List <GameObject> enemies;
-	public List <GameObject> activeEnemies;
+	//public List <GameObject> activeEnemies;
 
 	[SerializeField]private Transform currentEnemiesUI;
 
@@ -37,18 +37,19 @@ public class EnemyManager : MonoBehaviour {
 		}
 		instance = this; 
 
-
+		registeredEnemies = new Dictionary<Enemy, NavMeshAgent> ();
 	//	thisTransform = transform;
 	
-		player = GameObject.FindWithTag ("Player").transform;
+
 	}
 
 	void Start(){
+		player = GameObject.FindWithTag ("Player").transform;
 
 		for (int i = 0; i < currentEnemiesUI.childCount; i++)
 			currentEnemiesUI.GetChild (i).gameObject.SetActive (false);
 
-
+		/*
 		enemies = new List<GameObject> ();
 
 		for (int i = 0; i < enemiesToCreate; i++) {
@@ -61,7 +62,7 @@ public class EnemyManager : MonoBehaviour {
 		
 		
 		}
-
+*/
 
 		wayPoints = new Vector3[wayPointParent.childCount];
 
@@ -71,49 +72,42 @@ public class EnemyManager : MonoBehaviour {
 				
 
 		}
-		//enemies.Add(GameObject.FindWithTag("Enemy"));
 
 	}
 
+public void InitiateEnemy()
+{
+		SetCurrentEnemies ();
 
-	public void InitiateEnemy(Vector3 pos){
+		foreach (Enemy e in registeredEnemies.Keys) {
+			if (!e.gameObject.activeInHierarchy)
+				return;
 
-		for (int i = 0; i < enemies.Count; i++) {
-		
-			if (!enemies [i].activeInHierarchy) {
+			NavMeshHit closestHit;
 
-				enemies [i].SetActive (true);
-				//enemies [i].transform.position = pos;
-				Vector3 sourcePostion = pos;//thisTransform.position;//The position you want to place your agent
-				NavMeshHit closestHit;
-			
-				if(NavMesh.SamplePosition(  sourcePostion, out closestHit, 500, 1 ) ){
-					transform.position = closestHit.position;
-					if (enemies[i].GetComponent<NavMeshAgent>() == null)
-					enemies[i].AddComponent<NavMeshAgent>();
-
-				}
-				else
-					Debug.LogError("Could not find position on NavMesh!");
-
-				activeEnemies.Add(enemies[i]);
-
-				SetCurrentEnemies();
-				//currentEnemiesText.text = activeEnemies.Count.ToString();
-			
-				break;
-			}
-		
-		}
+			if (NavMesh.SamplePosition (e.transform.position, out closestHit, 20f, NavMesh.AllAreas)) {
+				transform.position = closestHit.position;
+			} else
+				Debug.LogError ("Could not find position on NavMesh!");
 
 
 	}
+
+}
+				
+
 	/// <summary>
 	/// Call to set the current enemies into PlayerUI.
 	/// </summary>
 	public void SetCurrentEnemies(){
+		int ActiveCount = 0;
+		foreach (var e in registeredEnemies.Keys) {
+			if (e.gameObject.activeInHierarchy)
+				++ActiveCount;
+		}
 
-		int CurrentActiveEnemies = activeEnemies.Count;
+
+		int CurrentActiveEnemies = ActiveCount;//activeEnemies.Count;
 		int EnemyImagesCount = currentEnemiesUI.childCount;
 
 		if (CurrentActiveEnemies == 0) {
@@ -226,30 +220,19 @@ public class EnemyManager : MonoBehaviour {
 
 		float originalNavSpeed = 0f;
 
-		for (int i = 0; i < enemies.Count; i++) {
+		foreach(var e in registeredEnemies){
+			originalNavSpeed = e.Value.speed;
+			e.Value.speed = 2.0f;
+			e.Key.speed = 2.0f;
 
-			if (enemies [i].activeSelf) {
-
-				Enemy curEnemy = enemies [i].GetComponent<Enemy> ();
-				NavMeshAgent curNavAgent = curEnemy.GetComponent<NavMeshAgent> ();
-				originalNavSpeed = curNavAgent.speed;
-				curNavAgent.speed = 2.0F;
-				curEnemy.speed = 2.0f;
-
-				}
 		}
 		yield return new WaitForSeconds (8);
 
-			for (int e = 0; e < enemies.Count; e++) {
+		foreach(var e in registeredEnemies){
+			e.Value.speed = originalNavSpeed;
+			e.Key.speed = 20.0f;
 
-			if (enemies [e].activeSelf) {
-				Enemy curEnemy = enemies [e].GetComponent<Enemy> ();
-				NavMeshAgent curNavAgent = curEnemy.GetComponent<NavMeshAgent> ();
-				curNavAgent.speed = originalNavSpeed;
-				curEnemy.speed = 20.0f;
-			}
-			}
-
+		}
 
 	}
 
@@ -259,14 +242,12 @@ public class EnemyManager : MonoBehaviour {
 
 	}
 	IEnumerator EnemyRunAway(){
-
-		for (int i = 0; i < activeEnemies.Count; i++) {
-
-				Enemy curEnemy = activeEnemies [i].GetComponent<Enemy> ();
-				curEnemy.currentState = EnemyState.RunAway;
-				curEnemy.EnemyRunAway ();
-			
+		foreach (var e in registeredEnemies.Keys) {
+			e.currentState = EnemyState.RunAway;
+			e.EnemyRunAway ();
+		
 		}
+
 		yield return null;
 	}
 	public void ReduceSize(){

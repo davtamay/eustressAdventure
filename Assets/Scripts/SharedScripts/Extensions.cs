@@ -30,6 +30,7 @@ public class Extensions : ScriptableObject {
 
 	//thisisnew
 }
+#region CoroutineExtensions
 public static class CoroutineExtensions
 {
 	public static Coroutine StartCoroutineEx(this MonoBehaviour monoBehaviour, IEnumerator routine, out CoroutineController coroutineController)
@@ -110,6 +111,8 @@ public class CoroutineController
 	}
 
 }
+#endregion
+#region AnimatorExtensions	
 public static class Extensions_Animator{
 public static bool HasParameter(this Animator animator, string paramName)
 {
@@ -132,3 +135,27 @@ public static bool HasParameter(this Animator animator, int id)
 
 
 }
+#endregion
+#region TransformExtensions
+
+public static class TransformDeepChildExtension
+{
+	//Breadth-first search
+	public static Transform FindDeepChild(this Transform aParent, string aName)
+	{
+		var result = aParent.Find(aName);
+		if (result != null)
+			return result;
+		foreach(Transform child in aParent)
+		{
+			result = child.FindDeepChild(aName);
+			if (result != null)
+				return result;
+		}
+		return null;
+	}
+}
+#endregion
+
+
+

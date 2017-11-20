@@ -8,6 +8,7 @@ public class StallAndFollowUI: MonoBehaviour {
 	//private Transform thisTransform;
 	[SerializeField]private Transform objectToRotate;
 	[SerializeField]private int angleDistanceUntilRotateBack = 80;
+	[SerializeField]private bool isUseCameraWorldUp =true;
 
 	//private Animator thisAnimator;
 
@@ -52,7 +53,10 @@ public class StallAndFollowUI: MonoBehaviour {
 
 		objectToRotate.position =  camTransform.position - (rotation * (offset * -1));
 
+		if(isUseCameraWorldUp) 
 		objectToRotate.LookAt (2 * objectToRotate.position - camTransform.position, camTransform.up);
+		else
+			objectToRotate.LookAt (2 * objectToRotate.position - camTransform.position, Vector3.up);
 	}
 
 	void LateUpdate () {
@@ -81,7 +85,10 @@ public class StallAndFollowUI: MonoBehaviour {
 
 				objectToRotate.position = Vector3.Lerp (objectToRotate.position, camTransform.position - (rotation * (offset * -1)), Time.unscaledDeltaTime * 3f);
 
-				objectToRotate.LookAt (2 * objectToRotate.position - camTransform.position, camTransform.up);
+				if(isUseCameraWorldUp) 
+					objectToRotate.LookAt (2 * objectToRotate.position - camTransform.position, camTransform.up);
+				else
+					objectToRotate.LookAt (2 * objectToRotate.position - camTransform.position, Vector3.up);
 
 
 				//controlls the smooth step of the rotation;

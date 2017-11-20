@@ -109,11 +109,11 @@ public class PlayerManager : MonoBehaviour {
 
 		set{ if (value + _health < _health) {
 
-				StartCoroutine (HealthReduceColor (hurtColor));
 
 				if(isShakeWhenHit)
 					StartCoroutine (Shake ());
 
+				StartCoroutine (HealthReduceColor (hurtColor));
 				healthColor.a += 0.1f;
 
 				if (isUseAdditionalHealthIndicator) {
@@ -157,15 +157,28 @@ public class PlayerManager : MonoBehaviour {
 
 		set {
 
+			if (value == 0)
+				return;
+			
 			if (coinText != null) {
 				coinText.text = ":";
+
+
+//				if (value == 0)
+//					return;
+
+
+
+				if(value <= 2)
+				AudioManager.Instance.PlayInterfaceSound ("SmallWin");
+					else if(value >= 3 && value <= 6)
+						AudioManager.Instance.PlayInterfaceSound ("MediumWin");
+						else if(value > 7)
+								AudioManager.Instance.PlayInterfaceSound ("BigWin");
+
 				_points += value;
-
-				if (_points == 0)
-					return;
-
 				coinText.text += _points.ToString ();
-				AudioManager.Instance.PlayDirectSound ("SmallWin", true);
+
 				EventManager.Instance.PostNotification (EVENT_TYPE.POINTS_ADD, this, value);
 			}
 		}

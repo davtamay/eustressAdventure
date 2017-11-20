@@ -105,8 +105,10 @@ public class ButtonClickLook : MonoBehaviour {
 	CoroutineController controller;
 	void Update(){
 
-		if (SceneController.isSceneLoading)
-		return;
+		if (SceneController.isSceneLoading){
+			StopAllCoroutines ();
+			return;
+		}
 
 		Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
 

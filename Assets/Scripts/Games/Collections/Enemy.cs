@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour {
 	Transform playerTransform;
 	public float speed;
 	public float deltaTimeMoveTowards;
+	public float fOVAngleDot = 0.7f;
 	public float followDistance;
 	public float attackDistance;
 	public float runAwayDistance;
@@ -47,58 +48,86 @@ public class Enemy : MonoBehaviour {
 		thisCollider = GetComponent<Collider> ();
 		thisRigidbody = GetComponent<Rigidbody> ();
 		thisRenderer = GetComponent<Renderer> ();
+		//thisAgent = GetComponent<NavMeshAgent> ();
 
+
+	}
+	void OnEnable(){
+		if(EnemyManager.Instance){
+			thisAgent = GetComponent<NavMeshAgent> ();
+		
+				thisAgent.speed = 15f;
+				originalSpeed = thisAgent.speed;
+				thisAgent.stoppingDistance = 6;
+				originalStopingDistance = thisAgent.stoppingDistance;
+				originalAngularSpeed = thisAgent.angularSpeed;
+						//originalAcceleration = thisAgent.acceleration;
+				thisAgent.baseOffset = 4.5f;
+
+			EnemyManager.Instance.registeredEnemies.Add (this, thisAgent);
+		
+		
+		}
+			
 
 
 	}
 
-
-
-	void OnEnable (){
-
+	void Start(){
+		
 		groundLM = 1 << 8;//LayerMask.NameToLayer ("Ground");
 		playerTransform = GameObject.FindWithTag ("Player").transform;
 		playerManager = playerTransform.GetComponent <PlayerManager> ();
 		originalColor = thisRenderer.material.color;
 
+
 		StartCoroutine (State_Idle());
+
+	}
+
+		
+	void OnDestroy(){
+
+		EnemyManager.Instance.registeredEnemies.Remove (this);
+
 	}
 
 	#region Enemy_Idle
 	public IEnumerator State_Idle (){
-		
 
-
+	//	while (thisAgent == null)
+	//		yield return null;
 
 		currentState = EnemyState.Idle;
 		//canSeePlayer = false;
 		yield return new WaitForSeconds (1);
 		currentState = EnemyState.Search;
 
-		if (thisAgent == null) {
-			thisAgent = GetComponent <NavMeshAgent> ();
-			thisAgent.speed = 15f;
-			originalSpeed = thisAgent.speed;
-			thisAgent.stoppingDistance = 6;
-			originalStopingDistance = thisAgent.stoppingDistance;
-			originalAngularSpeed = thisAgent.angularSpeed;
-			//originalAcceleration = thisAgent.acceleration;
-			thisAgent.baseOffset = 4.5f;
-
-		} else {
+//		if (thisAgent == null) {
+//			//thisAgent = GetComponent <NavMeshAgent> ();
+//			thisAgent.speed = 15f;
+//			originalSpeed = thisAgent.speed;
+//			thisAgent.stoppingDistance = 6;
+//			originalStopingDistance = thisAgent.stoppingDistance;
+//			originalAngularSpeed = thisAgent.angularSpeed;
+//			//originalAcceleration = thisAgent.acceleration;
+//			thisAgent.baseOffset = 4.5f;
+//
+//		} else {
 		
 			thisAgent.speed = originalSpeed;
 			thisAgent.angularSpeed = originalAngularSpeed;
 			thisAgent.stoppingDistance = originalStopingDistance;
 		
 		
-		}
+//		}
 
 		StartCoroutine (State_Search ());
 
 		}
 	#endregion
 	#region Enemy_Search
+	float timer;
 	public IEnumerator State_Search(){
 		
 		int tempWayPoint;
@@ -106,13 +135,15 @@ public class Enemy : MonoBehaviour {
 		while (currentState == EnemyState.Search) {
 			yield return null;
 
-			tempWayPoint = Random.Range (0, EnemyManager.Instance.wayPoints.Length);
-	
 
-		
 
-				if(thisAgent.remainingDistance < 3f)
+			if (thisAgent.remainingDistance < 3f || timer > 7f) {
+				tempWayPoint = Random.Range (0, EnemyManager.Instance.wayPoints.Length);
 				thisAgent.SetDestination (EnemyManager.Instance.wayPoints [tempWayPoint]);
+				timer = 0;
+			} else
+				timer += Time.deltaTime;
+				
 		//	if (thisAgent.pathPending) 
 
 			
@@ -121,6 +152,14 @@ public class Enemy : MonoBehaviour {
 				float distanceSqrd = (thisTransform.position - playerTransform.position).sqrMagnitude;
 			
 				if (distanceSqrd < followDistance * followDistance){
+
+				//VISION CHECK
+				NavMeshHit hit;
+				if (Vector3.Dot (thisTransform.forward, (playerTransform.position - thisTransform.position).normalized) > fOVAngleDot ||
+				//	Physics.Linecast(thisTransform.position, playerManager.transform.position))
+					NavMesh.Raycast(thisTransform.position, playerTransform.position,out hit,NavMesh.AllAreas))
+					continue;
+				
 					currentState = EnemyState.Chase;
 					//canSeePlayer = true;
 
@@ -218,7 +257,7 @@ public class Enemy : MonoBehaviour {
 		while (currentState == EnemyState.RunAway) {
 
 			float distanceSqrd = (thisTransform.position - playerTransform.position).sqrMagnitude;
-
+			thisTransform.LookAt (thisAgent.steeringTarget, Vector3.up);
 	
 			if (thisAgent.remainingDistance < 15f){// || thisAgent.path.status == NavMeshPathStatus.PathInvalid || thisAgent.path.status == NavMeshPathStatus.PathPartial) {
 			
@@ -241,8 +280,10 @@ public class Enemy : MonoBehaviour {
 				thisRenderer.material.color = originalColor;
 
 				StartCoroutine (State_Idle ());
-				EnemyManager.Instance.activeEnemies.Remove (this.gameObject);
-				gameObject.SetActive (false);
+
+				//EnemyManager.Instance.activeEnemies.Remove (this.gameObject);
+				//gameObject.SetActive (false);
+				Destroy (gameObject);
 
 				PlayerManager.Instance.points = 3;
 				EnemyManager.Instance.SetCurrentEnemies ();

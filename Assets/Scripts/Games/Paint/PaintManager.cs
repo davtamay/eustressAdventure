@@ -8,6 +8,7 @@ public class PaintManager : MonoBehaviour {
 	public int amountOfPaintObjects;
 	public GameObject paintPrefab;
 	public GameObject[] paintPrefabList;
+	[SerializeField]private float paintSize;
 	public Queue <Transform> queue = new Queue<Transform>();
 	public static Stack <Transform> stack = new Stack<Transform> ();
 
@@ -38,6 +39,8 @@ public class PaintManager : MonoBehaviour {
 			Transform prefabTrans = paintPrefabList [i].GetComponent<Transform> ();
 			//just make the prefab into layer 10 then remove this
 		//	prefabTrans.gameObject.layer = 5;
+			prefabTrans.localRotation = Quaternion.identity;
+			prefabTrans.localScale = new Vector3 (paintSize, paintSize, paintSize);
 			prefabTrans.parent = transform;
 			queue.Enqueue (prefabTrans);
 
@@ -57,6 +60,7 @@ public class PaintManager : MonoBehaviour {
 		spawnedPrefab.GetComponent<SpriteRenderer> ().color = col;
 		spawnedPrefab.gameObject.SetActive (true);
 		spawnedPrefab.position = pos; 
+
 
 		Instance.queue.Enqueue (spawnedPrefab);
 

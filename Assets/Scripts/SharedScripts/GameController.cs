@@ -71,7 +71,6 @@ public class GameController : MonoBehaviour {
 		}
 	
 
-
 		Paused = true;
 	}
 
@@ -89,6 +88,8 @@ public class GameController : MonoBehaviour {
 			paused = value;
 		
 			if (paused) {
+				
+
 
 				if(isMenuActive)
 					isMenuPause = true;
@@ -100,6 +101,9 @@ public class GameController : MonoBehaviour {
 
 			}else {
 
+				if (IsGameOver)
+					return;
+				
 				if (isMenuPause || IsStartMenuActive) {
 					isMenuPause = false;
 					return;
@@ -223,13 +227,19 @@ public class GameController : MonoBehaviour {
 	}
 
 
-	                       
+	private bool IsGameOver;                 
 	public bool isGameOver{
+
+		get{ return IsGameOver;}
+
 		set{ 
-			DataManager.Instance.CheckHighScore (SceneController.Instance.GetCurrentSceneName(),PlayerManager.Instance.points);
-			gameOver.SetActive (value);
-			EventManager.Instance.PostNotification (EVENT_TYPE.GAME_LOST, this,null);
-		
+			if (value) {
+				DataManager.Instance.CheckHighScore (SceneController.Instance.GetCurrentSceneName (), PlayerManager.Instance.points);
+				gameOver.SetActive (value);
+				IsGameOver = value;
+				EventManager.Instance.PostNotification (EVENT_TYPE.GAME_LOST, this, null);
+
+			}
 		}
 
 	}

@@ -67,7 +67,7 @@ public class SettingsControl : MonoBehaviour {
 		if (!isAudioReady)
 			return;
 		
-		AudioManager.Instance.PlayDirectSound ("SmallWin");
+		AudioManager.Instance.PlayInterfaceSound ("SmallWin");
 	}
 
 

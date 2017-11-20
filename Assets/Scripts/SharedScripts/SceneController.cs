@@ -114,11 +114,19 @@ public class SceneController : MonoBehaviour {
 
 	public void Load(string scene){
 			
+		if (!isSceneLoading) 
+			isSceneLoading = true;
+		else {
+			Debug.LogWarning ("There is more that one scene attempting to load.");
+			return;
+		}
+	
 		EventManager.Instance.PostNotification (EVENT_TYPE.SCENE_CHANGING, this, null);
 
 		anim.SetTrigger ("FadeIn");
 
 		StartCoroutine (ChangeScene (scene));
+
 
 	}
 	
@@ -127,6 +135,7 @@ public class SceneController : MonoBehaviour {
 	AsyncOperation async;
 	public IEnumerator ChangeScene (string scene){
 
+
 		while (true) {
 			
 			yield return null;
@@ -134,17 +143,17 @@ public class SceneController : MonoBehaviour {
 			if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Faded")) {
 
 
-				if (!isSceneLoading) {
-					
-					isSceneLoading = true;
+//				if (!isSceneLoading) {
+//					
+//					isSceneLoading = true;
 
 					async = SceneManager.LoadSceneAsync (scene);
 
 					StartCoroutine (WhileSceneIsLoading ());
 
 					yield break;
-				
-				}
+//				
+//				}
 					
 			}
 		}

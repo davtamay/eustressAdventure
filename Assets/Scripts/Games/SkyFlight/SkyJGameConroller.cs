@@ -61,7 +61,7 @@ public class SkyJGameConroller : MonoBehaviour {
 
 					yield return StartCoroutine (WaveManager.Instance.NewWaveIntermission ());
 				//	yield return StartCoroutine (GameController.Instance.NewWave ());
-					AudioManager.Instance.PlayDirectSound ("MediumWin");
+				//	AudioManager.Instance.PlayInterfaceSound("MediumWin");
 					++currentObs;
 					continue;
 				

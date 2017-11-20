@@ -34,7 +34,8 @@ public class LookSelect : MonoBehaviour {
 
 
 	void Start (){
-
+		EventManager.Instance.AddListener (EVENT_TYPE.GAME_PAUSED, OnEvent);
+		EventManager.Instance.AddListener (EVENT_TYPE.GAME_UNPAUSED, OnEvent);
 
 		selectedCard = notNullOnSelected;
 
@@ -47,10 +48,31 @@ public class LookSelect : MonoBehaviour {
 		//WaveManager.Instance.TimeToAdd(ref isTimerDone, timeToBeatFirstLevel);
 		//GameController.Instance.TimeToAdd (ref isTimerDone, timeToBeatFirstLevel);
 	}
+
+	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
+
+		switch(Event_Type){
+
+		case EVENT_TYPE.GAME_PAUSED:
+
+			WaveManager.Instance.StopTimer ();
+			break;
+
+		case EVENT_TYPE.GAME_UNPAUSED:
+
+			WaveManager.Instance.ResumeTimer ();
+			break;
+
+
+		}
+
+	}
+
 	bool isTimerDone = false;
 	void Update(){
 
-	
+		//if (GameController.Instance.IsMenuActive)
+		//	return;
 
 		if (isTimerDone) {
 
@@ -70,27 +92,27 @@ public class LookSelect : MonoBehaviour {
 
 		}
 
-	Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
+		Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
 
-	RaycastHit hit;
+		RaycastHit hit;
 
-	if (Physics.Raycast (ray, out hit, 120)) {
-		
-			if (hit.transform.gameObject.CompareTag ("Card")) {
-
-				if (hit.transform.gameObject.GetInstanceID () == selectedCard.GetInstanceID () || isSecondCard)
-					return;
+		if (Physics.Raycast (ray, out hit, 120)) {
 			
+				if (hit.transform.gameObject.CompareTag ("Card")) {
 
-				selectedCard = hit.transform.gameObject;
+					if (hit.transform.gameObject.GetInstanceID () == selectedCard.GetInstanceID () || isSecondCard)
+						return;
+				
+
+					selectedCard = hit.transform.gameObject;
+
+				
+				
+					StartCoroutine ("CardSelect");
+				}
 
 			
-			
-				StartCoroutine ("CardSelect");
-			}
-
-		
-	}
+		}
    }
 	IEnumerator CardSelect(){
 
