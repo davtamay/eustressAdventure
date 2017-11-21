@@ -121,16 +121,20 @@ public class Park_LonelyDog_TaskCollection : CollectTaskInteraction {
 	}
 	public override void OnTriggerEnter(Collider other){
 
-		if (DogInteraction.curDogInteraction != null)
-			target = DogInteraction.curDogInteraction.dogTransform;
-		return;
+		if (other.CompareTag ("Player")) {
+			if (DogInteraction.curDogInteraction != null)
+				target = DogInteraction.curDogInteraction.dogTransform;
+
+			onTriggerEnter.Invoke ();
+
+		}
 	}
 
 	public override void OnTriggerExit(Collider other){
+		if (other.CompareTag ("Player")) {
+			onTriggerExit.Invoke ();
 
-		//target = player;
-
-		return;
+		}
 
 	}
 

@@ -33,6 +33,7 @@ public class CollectTaskInteraction : InteractionBehaviour {
 				return;
 			
 		}
+		onTriggerEnter.Invoke ();
 
 	}
 	public virtual void OnTriggerExit(Collider other){
@@ -42,6 +43,7 @@ public class CollectTaskInteraction : InteractionBehaviour {
 			infoCanvasPrefab.SetActive (false);
 
 		}
+		onTriggerExit.Invoke ();
 	}
 
 	public virtual void OnTriggerStay(Collider other){

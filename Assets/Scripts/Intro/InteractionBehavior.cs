@@ -34,7 +34,10 @@ public class InteractionBehaviour : MonoBehaviour {
 
 	[Header("MainInteractions")]
 	public UnityEvent onInitialInteraction;
+	[SerializeField]protected UnityEvent onTriggerEnter;
+	[SerializeField]protected UnityEvent onTriggerExit;
 	[SerializeField]protected UnityEvent onActionSelect;
+
 	//[TextArea(0,15)][SerializeField]protected string ActionText;
 	public UnityEvent onCompletion;
 

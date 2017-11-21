@@ -1,34 +1,72 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(Collider))]
-public class OnLookFireAnimParameters : MonoBehaviour {
+using UnityEngine.Events;
+//using UnityEngine.EventSystems;
+//[RequireComponent(typeof(Collider))]
+public class OnLookFireAnimParameters : MonoBehaviour
+{
 
 	[SerializeField]private Animator animatorToTrigger;
 	[SerializeField]private string nameOfBool;
+	private int boolHash;
 
+	[SerializeField]private float minAngleFromDown;
+	[SerializeField]private float maxAngleFromDown;
 
 	private Collider thisCollider;
 	private Transform camTransform;
 
+
+	[SerializeField]private UnityEvent onSee;
+	[SerializeField]private UnityEvent onUnSee;
+	[SerializeField]private UnityEvent onStart;
+
 	void Start () {
 		
-		thisCollider = GetComponent<Collider> ();
+		onStart.Invoke();
+		boolHash = Animator.StringToHash (nameOfBool);
+		//thisCollider = GetComponent<Collider> ();
 		camTransform = Camera.main.transform;
+		//animatorToTrigger.SetBool (nameOfBool, true);
+		//animatorToTrigger.SetBool (nameOfBool, false);
 	}
 
+//	public void OnPointerEnter(PointerEventData eventData){
+//		
+//		animatorToTrigger.SetBool (nameOfBool, true);
+//		onSee.Invoke ();
+//	}
+//	public void OnPointerExit(PointerEventData eventData){
+//		animatorToTrigger.SetBool (nameOfBool, false);
+//		onUnSee.Invoke ();
+//	}
 	void Update () {
-	
-		RaycastHit hit;
-		Ray ray = new Ray (camTransform.position, camTransform.rotation * Vector3.forward);
 
-		if (thisCollider.Raycast (ray, out hit, 50f)) 
-			animatorToTrigger.SetBool (nameOfBool, true);
-		else
-			animatorToTrigger.SetBool (nameOfBool, false);
-		
-		
+
+		if (maxAngleFromDown > CameraAngleFromDown () && CameraAngleFromDown () > minAngleFromDown) {
+			onSee.Invoke ();
+			animatorToTrigger.SetBool (boolHash, true);
+
+		} else {
+			
+			animatorToTrigger.SetBool (boolHash, false);
+			onUnSee.Invoke ();
+		}
+//		RaycastHit hit;
+//		Ray ray = new Ray (camTransform.position, camTransform.rotation * Vector3.forward);
+//
+//		if (thisCollider.Raycast (ray, out hit, 50f)) {
+//			animatorToTrigger.SetBool (nameOfBool, true);
+//			onSee.Invoke ();
+//		} else {
+//			
+//			animatorToTrigger.SetBool (nameOfBool, false);
+//			onUnSee.Invoke ();
+//		}
+//		
 
 }
-
+	private float CameraAngleFromDown(){
+		return Vector3.Angle (Vector3.down, camTransform.rotation * Vector3.forward);}
 }

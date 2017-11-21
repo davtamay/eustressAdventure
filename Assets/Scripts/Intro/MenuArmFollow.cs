@@ -23,7 +23,7 @@ public class MenuArmFollow : MonoBehaviour {
 		thisTransform = transform;
 
 	}
-	void Start(){
+	IEnumerator Start(){
 
 
 		camTransform = Camera.main.transform;
@@ -42,10 +42,17 @@ public class MenuArmFollow : MonoBehaviour {
 		//if use close Menu makes closing sound in the beginign.
 
 
-
 		CloseMenu (false);
-		TriggerWithoutMenu ();
+		yield return null;
+
+		//yield return StartCoroutine (TriggerWithoutMenuWait ());
+	//	StartCoroutine (menu);
+		//CloseMenu (false);
+	//	TriggerWithoutMenu ();
+		//CloseWithNoMenu ();
+	//	yield return null;
 		//EventManager.Instance.AddListener (EVENT_TYPE.SCENE_LOADED, OnEvent);
+		//armAnimator.SetBool ("Close", true);
 	
 
 	}
