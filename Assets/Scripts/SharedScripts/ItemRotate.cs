@@ -10,23 +10,33 @@ public class ItemRotate : MonoBehaviour {
 	[SerializeField]private bool isUseUnscaledTime;
 
 
-	void Start(){
+	void Awake(){
 
 		myTransform = transform;
 
 		myTransform.localEulerAngles = initRotation;
 
+	
+	}
+
+	void OnEnable(){
+
 		if (isUseUnscaledTime)
 			StartCoroutine (UnscaledRotate ());
 		else
 			StartCoroutine (scaledRotate ());
+
+
+	}
+	void OnDisable(){
+
+		StopAllCoroutines ();
+
 	}
 
 	IEnumerator scaledRotate(){
 
 		while (true) {
-			if (!this.gameObject.activeInHierarchy)
-				StopAllCoroutines ();
 
 			myTransform.Rotate (turnSpeed * Time.deltaTime);
 
@@ -37,13 +47,11 @@ public class ItemRotate : MonoBehaviour {
 	IEnumerator UnscaledRotate(){
 
 		while (true) {
-			if (!this.gameObject.activeInHierarchy)
-				StopAllCoroutines ();
 			
 				myTransform.Rotate (turnSpeed * Time.unscaledDeltaTime);
 
 		
-			yield return null;
+			yield return new WaitForSecondsRealtime(0.01f);
 		}
 	}
 }

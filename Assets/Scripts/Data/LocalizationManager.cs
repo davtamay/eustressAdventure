@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class LocalizationManager : MonoBehaviour {
+[CreateAssetMenu(fileName ="Localization_Manager", menuName = "CustomSO/Managers/Localisation_Manager")]
+public class LocalizationManager : ScriptableObject {
 	
 		
 		private Dictionary<string, string> localizedText;
@@ -18,16 +19,16 @@ public class LocalizationManager : MonoBehaviour {
 
 		public static LocalizationManager Instance;
 
-		void Awake ()
+		void OnEnable ()
 		{
 		if (!Instance) {
 			Instance = this;
 		} else if (Instance != this) {
 			Debug.LogWarning("There are two localizationManagers in scene - deleting late instance.");
-			Destroy (gameObject);
+			//Destroy (gameObject);
 		}
 
-		DontDestroyOnLoad (gameObject);
+		//DontDestroyOnLoad (gameObject);
 
 		ObtainTextReferences ();
 
@@ -97,23 +98,34 @@ public class LocalizationManager : MonoBehaviour {
 		PlayerPrefs.SetString ("Language", fileName);
 		PlayerPrefs.Save ();
 
-		StartCoroutine (SetLocalizedTextUpdate ());
-		
+		//UPDATED AS OF 11.29.17 TO SCRIPTABLE OBJECT
+		//StartCoroutine (SetLocalizedTextUpdate ());
+		SetLocalizedTextUpdate ();
 		}
 
 //UPDATED ALL AVAILABLE LOCALIZEDTEXT COMPONENTS REGISTERED TO SET THEIR TEXT COMPONENTS;
-	IEnumerator SetLocalizedTextUpdate(){
-	
-		while (!GetIsReady())
-			yield return null;
-		
+
+	//UPDATED AS OF 11.29.17 TO SCRIPTABLE OBJECT
+//	IEnumerator SetLocalizedTextUpdate(){
+//	
+//		while (!GetIsReady())
+//			yield return null;
+//		
+//		foreach (var lT in registeredLocalizedTexts) {
+//
+//			lT.OnUpdate ();
+//		}
+//
+//	}
+	void SetLocalizedTextUpdate()
+	{
+			
 		foreach (var lT in registeredLocalizedTexts) {
 
 			lT.OnUpdate ();
 		}
 
 	}
-
 	public string GetLocalizedValue(string key)
 	{
 		string result = missingTextString;

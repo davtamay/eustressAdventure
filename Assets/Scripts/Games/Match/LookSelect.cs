@@ -30,12 +30,14 @@ public class LookSelect : MonoBehaviour {
 
 	[SerializeField] Animator opponentAnimator;
 
-
+	[Header("References")]
+	[SerializeField]private DataManager DATA_MANAGER;
+	//[SerializeField]private 
 
 
 	void Start (){
-		EventManager.Instance.AddListener (EVENT_TYPE.GAME_PAUSED, OnEvent);
-		EventManager.Instance.AddListener (EVENT_TYPE.GAME_UNPAUSED, OnEvent);
+//		EventManager.Instance.AddListener (EVENT_TYPE.GAME_PAUSED, OnEvent);
+//		EventManager.Instance.AddListener (EVENT_TYPE.GAME_UNPAUSED, OnEvent);
 
 		selectedCard = notNullOnSelected;
 
@@ -49,24 +51,24 @@ public class LookSelect : MonoBehaviour {
 		//GameController.Instance.TimeToAdd (ref isTimerDone, timeToBeatFirstLevel);
 	}
 
-	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
-
-		switch(Event_Type){
-
-		case EVENT_TYPE.GAME_PAUSED:
-
-			WaveManager.Instance.StopTimer ();
-			break;
-
-		case EVENT_TYPE.GAME_UNPAUSED:
-
-			WaveManager.Instance.ResumeTimer ();
-			break;
-
-
-		}
-
-	}
+//	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
+//
+//		switch(Event_Type){
+//
+//		case EVENT_TYPE.GAME_PAUSED:
+//
+//			WaveManager.Instance.StopTimer ();
+//			break;
+//
+//		case EVENT_TYPE.GAME_UNPAUSED:
+//
+//			WaveManager.Instance.ResumeTimer ();
+//			break;
+//
+//
+//		}
+//
+//	}
 
 	bool isTimerDone = false;
 	void Update(){
@@ -76,7 +78,7 @@ public class LookSelect : MonoBehaviour {
 
 		if (isTimerDone) {
 
-			DataManager.Instance.CheckHighScore (SceneController.Instance.GetCurrentSceneName(), PlayerManager.Instance.points);
+			DATA_MANAGER.CheckHighScore ();
 			GameController.Instance.isGameOver = true;
 			//GameController.Instance.Paused = true;
 			this.enabled = false;

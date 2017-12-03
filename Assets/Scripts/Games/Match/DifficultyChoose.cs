@@ -36,15 +36,15 @@ public class DifficultyChoose : MonoBehaviour {
 		if (col.Raycast (ray, out hit, 400)) {
 
 			if (hit.transform.gameObject.CompareTag ("Button")) {
-
-				if (!GameController.Instance.IsMenuActive) {
+				//USE SCRIPTABLE CHECKER
+				//if (!GameController.Instance.IsMenuActive) {
 
 
 
 					StartCoroutine ("ButtonLook");
 
 
-				} 
+			//	} 
 
 			}
 

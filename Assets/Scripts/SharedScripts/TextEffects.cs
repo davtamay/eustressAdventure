@@ -51,8 +51,8 @@ public class TextEffects : MonoBehaviour {
 	Coroutine shakeCoroutine;
 	void Update()
 	{
-		if (GameController.Instance.IsStartMenuActive)
-			return;
+		//if (GameController.Instance.IsStartMenuActive)
+		//	return;
 		
 		timer += Time.deltaTime;
 
@@ -61,7 +61,6 @@ public class TextEffects : MonoBehaviour {
 		
 		if (isColorEffectOn) 
 			origText.color = Color.Lerp (origText.color, fadeToColor, Time.deltaTime * fadeSpeed);
-	
 	
 
 		if (isSizeEffectOn) 

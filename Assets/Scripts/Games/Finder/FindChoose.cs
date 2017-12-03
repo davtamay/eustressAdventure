@@ -12,6 +12,7 @@ public class FindChoose : MonoBehaviour {
 	private FinderSpawner spawner;
 	private PlayerManager playerManager;
 
+
 	public Image timer;
 	public float timeSpeedMultiplier;
 	public float SpeedUpTimePerWinning;
@@ -34,6 +35,8 @@ public class FindChoose : MonoBehaviour {
 
 	private PostProcessingProfile pPProfile;
 
+	[Header("References")]
+	[SerializeField]private DataManager DATA_MANAGER;
 
 	void Start () {
 		cam = Camera.main;
@@ -116,7 +119,7 @@ public class FindChoose : MonoBehaviour {
 
 					spawner.DeactivateAllFinders ();
 
-					DataManager.Instance.CheckHighScore (curScene, currentLevel);
+					DATA_MANAGER.CheckHighScore ();
 					GameController.Instance.isGameOver = true;
 					GameController.Instance.Paused = true;
 

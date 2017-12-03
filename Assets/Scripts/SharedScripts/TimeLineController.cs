@@ -107,8 +107,12 @@ public class TimeLineController : MonoBehaviour {
 		mainPD.Resume ();
 	
 	}
-		
-
+//	public void IsTimeLinePaused(){
+//
+//		mainPD.i
+//	}
+//		
+//
 	//while ( mainPD.state != PlayState.Playing)
 	//{
 

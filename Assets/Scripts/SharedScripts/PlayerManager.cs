@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 
 public class PlayerManager : MonoBehaviour {
@@ -20,19 +21,32 @@ public class PlayerManager : MonoBehaviour {
 	[SerializeField] private GameObject armorGO;
 	public int armorTime;
 	public bool isArmorOn = false;
-	public Text coinText;
+
+
 	public bool isInvulnerable;
 	private Image healthColorIndicator;
 
 	public bool isCustomSavePosition = false;
 	public Vector3 customSavePosition = Vector3.zero;
+	public Vector3 homePosition = new Vector3(0,2,0);
 
+	[Header("Events")]
+	[SerializeField]private UnityEvent onPointAdd;
+	[SerializeField]private UnityEvent onHealthAdd;
+	[SerializeField]private UnityEvent onHealthLoss;
+	[SerializeField]private UnityEvent onDead;
+
+	[Header("Hit Effect")]
 	[SerializeField]private bool isShakeWhenHit = false;
 	[SerializeField]private float shakeTime = 2.0f;
 	[SerializeField]private float shakeAmount = 3.0f;
 	[SerializeField]private float shakeSpeed = 2.0f;
 
 	private string curSceneName;
+
+	[Header("References")]
+	[SerializeField]private DataManager DATA_MANAGER;
+	[SerializeField]private IntVariable playerPoints;
 
 	private static PlayerManager instance;
 	public static PlayerManager Instance {
@@ -54,28 +68,16 @@ public class PlayerManager : MonoBehaviour {
 		healthColor.a = 0.0f; 
 
 
-
-
 	}
 	void Start(){
-
-		//EventManager.Instance.AddListener (EVENT_TYPE.GAME_LOST, OnEvent);
-		//EventManager.Instance.AddListener (EVENT_TYPE.HEALTH_ADD, OnEvent);
-		//EventManager.Instance.AddListener (EVENT_TYPE.HEALTH_REDUCE, OnEvent);
-		EventManager.Instance.AddListener (EVENT_TYPE.SCENE_CHANGING, OnEvent);
-		//EventManager.Instance.AddListener (EVENT_TYPE.APPLICATION_QUIT, OnEvent);
-
-
-		if(GameObject.FindWithTag ("PointText"))
-		coinText = GameObject.FindWithTag ("PointText").GetComponent<Text>();
-
+		
 		curSceneName = SceneController.Instance.GetCurrentSceneName ();
 
 		health = 0;
 		points = 0;
 
-		if(curSceneName.Contains("Intro"))
-			thisTransform.position = DataManager.Instance.LoadPosition ();
+		if (curSceneName.Contains ("Intro"))
+			thisTransform.position = DATA_MANAGER.LoadPosition ();
 		
 		if (GameObject.FindWithTag ("UIColor")) {
 
@@ -123,8 +125,8 @@ public class PlayerManager : MonoBehaviour {
 					additionalHealthIndicator.SetColor (propertyID, tempHealthColor);
 
 				}
-
-				EventManager.Instance.PostNotification (EVENT_TYPE.HEALTH_REDUCE, this, null);
+				onHealthLoss.Invoke ();
+			
 
 				if (healthColor.a >= .91f) {
 
@@ -133,7 +135,7 @@ public class PlayerManager : MonoBehaviour {
 					GameController.Instance.Paused = true;
 					AudioManager.Instance.StopAudioPlaying (AudioManager.AudioReferanceType._DIRECT);
 
-					EventManager.Instance.PostNotification (EVENT_TYPE.GAME_LOST, this, null);
+					onDead.Invoke ();
 
 				}
 					
@@ -142,7 +144,8 @@ public class PlayerManager : MonoBehaviour {
 			}else if (value + _health > _health && !(healthColor.a == 0.0f)){
 				StartCoroutine(HealthAddColor (addHealthColor));
 				healthColor.a -= 0.1f;
-				EventManager.Instance.PostNotification (EVENT_TYPE.HEALTH_ADD, this, null);
+				onHealthAdd.Invoke ();
+				//EventManager.Instance.PostNotification (EVENT_TYPE.HEALTH_ADD, this, null);
 			}
 				
 		
@@ -160,15 +163,6 @@ public class PlayerManager : MonoBehaviour {
 			if (value == 0)
 				return;
 			
-			if (coinText != null) {
-				coinText.text = ":";
-
-
-//				if (value == 0)
-//					return;
-
-
-
 				if(value <= 2)
 				AudioManager.Instance.PlayInterfaceSound ("SmallWin");
 					else if(value >= 3 && value <= 6)
@@ -177,15 +171,22 @@ public class PlayerManager : MonoBehaviour {
 								AudioManager.Instance.PlayInterfaceSound ("BigWin");
 
 				_points += value;
-				coinText.text += _points.ToString ();
+				playerPoints.SetValue (_points);
 
-				EventManager.Instance.PostNotification (EVENT_TYPE.POINTS_ADD, this, value);
-			}
+				onPointAdd.Invoke ();
+
 		}
 	}
 		
 
+	public void ResetPositionToHome(){
 
+//		isCustomSavePosition = true;
+//		customSavePosition = homePosition;
+		DATA_MANAGER.SavePosition (homePosition);
+	//	LoadScene ("Intro");
+
+	}
 
 
 	public static float armorTimer = 0f;
@@ -275,45 +276,63 @@ public class PlayerManager : MonoBehaviour {
 	public void OnApplicationQuit(){
 	
 		if(curSceneName.Contains("Intro")){
-			DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
-			DataManager.Instance.SavePosition (thisTransform.position);
-			DataManager.Instance.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
+			DATA_MANAGER.SaveStressLevel (UIStressGage.Instance.stress);
+			DATA_MANAGER.SavePosition (thisTransform.position);
+			DATA_MANAGER.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
 		}
 
 
 	}
+	public void OnSaveState(){
 
-	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
-
-		switch(Event_Type){
-
-		case EVENT_TYPE.SCENE_CHANGING:
-		
-			if(curSceneName.Contains("Intro")){
-				if (!isCustomSavePosition)
-					DataManager.Instance.SavePosition (thisTransform.position);
-				else {
-					DataManager.Instance.SavePosition (customSavePosition);
-					isCustomSavePosition = false;
-
-				}
-				DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
-				DataManager.Instance.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
-
-			}
-			break;
-
-
-		
-
-		
-		
+		if (!isCustomSavePosition) {
+			if (thisTransform == null)
+				DATA_MANAGER.SavePosition (GameObject.FindWithTag ("Player").transform.position);
+			else
+				DATA_MANAGER.SavePosition (thisTransform.position);
+		}else {
+			DATA_MANAGER.SavePosition (customSavePosition);
+			isCustomSavePosition = false;
 
 		}
-
-
-
+		DATA_MANAGER.SaveStressLevel (UIStressGage.Instance.stress);
+		//DATA_MANAGER.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
 
 	}
+//	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
+//
+//		switch(Event_Type){
+//
+//		case EVENT_TYPE.SCENE_CHANGING:
+//		
+//			if(curSceneName.Contains("Intro")){
+//				if (!isCustomSavePosition) {
+//					if (thisTransform == null)
+//						DataManager.Instance.SavePosition (GameObject.FindWithTag ("Player").transform.position);
+//					else
+//					DataManager.Instance.SavePosition (thisTransform.position);
+//				}else {
+//					DataManager.Instance.SavePosition (customSavePosition);
+//					isCustomSavePosition = false;
+//
+//				}
+//				DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
+//				DataManager.Instance.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
+//
+//			}
+//			break;
+//
+//
+//		
+//
+//		
+//		
+//
+//		}
+
+
+
+
+//	}
 
 }

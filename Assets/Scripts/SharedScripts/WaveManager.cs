@@ -27,6 +27,8 @@ public class WaveManager : MonoBehaviour {
 	[SerializeField]private bool leaveWavesActiveWhenDone;
 
 	[Header("Timer Settings")]
+	[SerializeField]private BoolVariable isStartUIActive;
+	[SerializeField]TimerClass TIMER;
 	[SerializeField]float timerSpeed = 1.2f;
 
 	[Header("Waves (Based on children)")]
@@ -48,7 +50,8 @@ public class WaveManager : MonoBehaviour {
 #region EDITOR SETUP
 #if UNITY_EDITOR
 //INSPECTOR SET UP TO SHOW WAVE OBJECTS DEPENDING ON PRESENT CHILDREN IN PARENT 
-	void OnRenderObject(){
+
+	void Update(){
 
 	if(!Application.isPlaying)
 		if (transform.hasChanged) {
@@ -165,6 +168,7 @@ public class WaveManager : MonoBehaviour {
 			if (waveEvents.Count == 0)
 				return;
 		
+
 			StartCoroutine (OnUpdate ());
 		}
 	}
@@ -174,11 +178,14 @@ public class WaveManager : MonoBehaviour {
 	private bool isDone;
 	private bool isByPassIsDoneCheck = false;
 
+	private float timeLeft;
+	private float timeElapsed;
 	IEnumerator OnUpdate(){
 		onGameStart.Invoke ();
 
 		//ADD TIME FOR FIRST WAVE
-		TimeToAdd (ref isDone, waveEvents [0].timeUntilNextWave);
+	//	TimeToAdd (ref isDone, waveEvents [0].timeUntilNextWave);
+		timeLeft = waveEvents [0].timeUntilNextWave;
 
 		//GET RANDOMIZED INDEX LIST OF CHILDREN
 		RandomizeGOToEnable (waveEvents [0].numberToSpawn, waveEvents [0].waveTransformParent);
@@ -190,12 +197,28 @@ public class WaveManager : MonoBehaviour {
 		onNewWaveObjectsEnabled.Invoke ();
 		waveEvents[0].onIndividualWaveStart.Invoke ();
 
+		TIMER.ResetTimer ();
+		TIMER.SetTimeToDisplay (timeLeft);
+		TIMER.StopTimer ();
+
+		//yield return new WaitUntil (() => !isStartUIActive.isOn);
+
+		TIMER.StartTimer ();
+	
 		while (true) {
 			yield return null;
-		
-			//CHECK TIMER FOR COMPLETION OR BYPASS THE CHECK TO SET COMPLETION YOURSELF
+
+				timeElapsed = TIMER.GetTime ();
+				
+
 			if (!isByPassIsDoneCheck)
-				TimeToAdd (ref isDone);
+			{
+				
+				yield return null;
+
+
+			}
+				//TimeToAdd (ref isDone);
 			else
 				isByPassIsDoneCheck = false;
 
@@ -216,17 +239,19 @@ public class WaveManager : MonoBehaviour {
 					//TimeToAdd (ref isDone);
 					//CHECK WHETER TO RESET TIMER
 					if (waveEvents [currentWave].isResetTime)
-						CompleteTimer ();
+						TIMER.ResetTimer ();
+						//CompleteTimer ();
 
 				}
 
 			}
 				
-
-			if (isDone){ 
-				isDone = false;
-
-				StopTimer ();
+			if(timeElapsed > timeLeft){
+			//if (isDone){ 
+			//	isDone = false;
+				TIMER.StopTimer ();
+				TIMER.ResetTimer ();
+			//	StopTimer ();
 
 				if (!leaveWavesActiveWhenDone)
 					transform.GetChild (currentWave).gameObject.SetActive (false);
@@ -245,7 +270,8 @@ public class WaveManager : MonoBehaviour {
 				++currentWave;
 
 				waveEvents[currentWave].onIndividualWaveStart.Invoke ();
-				TimeToAdd (ref isDone, waveEvents [currentWave].timeUntilNextWave);
+				timeLeft = waveEvents [currentWave].timeUntilNextWave;
+				//TimeToAdd (ref isDone, waveEvents [currentWave].timeUntilNextWave);
 
 				RandomizeGOToEnable (waveEvents [currentWave].numberToSpawn, waveEvents [currentWave].waveTransformParent);
 
@@ -254,7 +280,9 @@ public class WaveManager : MonoBehaviour {
 
 				onNewWaveObjectsEnabled.Invoke ();
 			
-				ResumeTimer();
+				//ResumeTimer();
+				TIMER.SetTimeToDisplay (timeLeft);
+				TIMER.StartTimer ();
 			}
 	}
 		

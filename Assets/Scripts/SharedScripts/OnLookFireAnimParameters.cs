@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class OnLookFireAnimParameters : MonoBehaviour
 {
 
-	[SerializeField]private Animator animatorToTrigger;
+
 	[SerializeField]private string nameOfBool;
 	private int boolHash;
 
@@ -17,14 +17,18 @@ public class OnLookFireAnimParameters : MonoBehaviour
 	private Collider thisCollider;
 	private Transform camTransform;
 
-
+	[Header("Events")]
 	[SerializeField]private UnityEvent onSee;
 	[SerializeField]private UnityEvent onUnSee;
-	[SerializeField]private UnityEvent onStart;
+//	[SerializeField]private UnityEvent onStart;
+
+	[Header("References")]
+	[SerializeField]private BoolVariable isStressMenuActive;
+	[SerializeField]private Animator animatorToTrigger;
 
 	void Start () {
 		
-		onStart.Invoke();
+		//onStart.Invoke();
 		boolHash = Animator.StringToHash (nameOfBool);
 		//thisCollider = GetComponent<Collider> ();
 		camTransform = Camera.main.transform;
@@ -43,6 +47,11 @@ public class OnLookFireAnimParameters : MonoBehaviour
 //	}
 	void Update () {
 
+		if (isStressMenuActive.isOn){
+			animatorToTrigger.SetBool (boolHash, true);
+			return;
+		}
+			
 
 		if (maxAngleFromDown > CameraAngleFromDown () && CameraAngleFromDown () > minAngleFromDown) {
 			onSee.Invoke ();

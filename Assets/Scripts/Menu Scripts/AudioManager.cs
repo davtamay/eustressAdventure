@@ -193,12 +193,14 @@ public class AudioManager : MonoBehaviour {
 
 		foreach (AudioSource tempAS in _AmbientAudioSourceDictionary.Values)
 			tempAS.Pause();
+			//tempAS.gameObject.SetActive (false);
 		
 	}
 	public void UnPauseAmbientAS(){
 
 		foreach (AudioSource tempAS in _AmbientAudioSourceDictionary.Values)
 			tempAS.UnPause();
+			//tempAS.gameObject.SetActive (false);
 	
 	}
 	#endregion
@@ -275,49 +277,96 @@ public class AudioManager : MonoBehaviour {
 	#endregion
 
 	#region GlobalAudio_Methods
-	public GameObject MakeCopyOfAudioSourceGO(AudioReferanceType aRT, string nameOfGOAS){
+	public GameObject MakeCopyOfAudioSourceGO(AudioReferanceType aRT, string nameOfGOAS, Transform parent = null){
 		GameObject tempGOASInstance = null;
 	
+		GameObject temp;
+		int count = 0;
+
 		switch (aRT) {
 		case AudioReferanceType._MUSIC:
 
-			if(_MusicAudioSourceDictionary[nameOfGOAS].transform.IsChildOf(transform)){
-				tempGOASInstance = _MusicAudioSourceDictionary [nameOfGOAS].gameObject;
-				break;
+
+//			if(_MusicAudioSourceDictionary[nameOfGOAS].transform.IsChildOf(transform)){
+//				tempGOASInstance = _MusicAudioSourceDictionary [nameOfGOAS].gameObject;
+//				break;
+//			}
+			temp = _MusicAudioSourceDictionary [nameOfGOAS].gameObject;
+			tempGOASInstance = Instantiate (temp, temp.transform.parent).gameObject;
+
+		
+			foreach(Transform aSD in _MusicAudioSourceParent){
+
+				if (aSD.name.Contains (nameOfGOAS))
+					++count;
+
 			}
-				
-			tempGOASInstance = Instantiate(_MusicAudioSourceDictionary[nameOfGOAS]).gameObject;
+			_MusicAudioSourceDictionary.Add (nameOfGOAS + count, tempGOASInstance.GetComponent<AudioSource> ());
 
 			break;
 
 		case AudioReferanceType._AMBIENT:
 			
-			if(_AmbientAudioSourceDictionary[nameOfGOAS].transform.IsChildOf(transform)){
-				tempGOASInstance = _AmbientAudioSourceDictionary [nameOfGOAS].gameObject;
-				break;
-			}
+//			if(_AmbientAudioSourceDictionary[nameOfGOAS].transform.IsChildOf(transform)){
+//				tempGOASInstance = _AmbientAudioSourceDictionary [nameOfGOAS].gameObject;
+//				break;
+//			}
 
-			tempGOASInstance = Instantiate(_AmbientAudioSourceDictionary[nameOfGOAS]).gameObject;
+			temp = _AmbientAudioSourceDictionary[nameOfGOAS].gameObject;
+			tempGOASInstance = Instantiate(temp, temp.transform.parent).gameObject;
+
+		
+			foreach(Transform aSD in _AmbientAudioSourceParent){
+
+				if (aSD.name.Contains (nameOfGOAS))
+					++count;
+
+			}
+			_AmbientAudioSourceDictionary.Add (nameOfGOAS + count, tempGOASInstance.GetComponent<AudioSource> ());
+//			_AmbientAudioSourceDictionary.Add (nameOfGOAS, tempGOASInstance.GetComponent<AudioSource> ());
+//			tempGOASInstance = Instantiate(_AmbientAudioSourceDictionary[nameOfGOAS],).gameObject;
 			break;
 
 		case AudioReferanceType._DIRECT:
 
-			if(_DirectAudioSourceDictionary[nameOfGOAS].transform.IsChildOf(transform)){
-				tempGOASInstance = _DirectAudioSourceDictionary [nameOfGOAS].gameObject;
-				break;
-			}
+//			if(_DirectAudioSourceDictionary[nameOfGOAS].transform.IsChildOf(transform)){
+//				tempGOASInstance = _DirectAudioSourceDictionary [nameOfGOAS].gameObject;
+//				break;
+//			}
+			temp = _DirectAudioSourceDictionary[nameOfGOAS].gameObject;
+			tempGOASInstance = Instantiate(temp, temp.transform.parent).gameObject;
 
-			tempGOASInstance = Instantiate(_DirectAudioSourceDictionary[nameOfGOAS]).gameObject;
+		
+			foreach(Transform aSD in _DirectAudioSourceParent){
+
+				if (aSD.name.Contains (nameOfGOAS))
+					++count;
+
+			}
+			_DirectAudioSourceDictionary.Add (nameOfGOAS + count, tempGOASInstance.GetComponent<AudioSource> ());
+//			_DirectAudioSourceDictionary.Add (nameOfGOAS, tempGOASInstance.GetComponent<AudioSource> ());
+			//tempGOASInstance = Instantiate(_DirectAudioSourceDictionary[nameOfGOAS]).gameObject;
 			break;
 
 		case AudioReferanceType._INTERFACE:
 
-			if(_InterfaceAudioSourceDictionary[nameOfGOAS].transform.IsChildOf(transform)){
-				tempGOASInstance = _InterfaceAudioSourceDictionary [nameOfGOAS].gameObject;
-				break;
-			}
+//			if(_InterfaceAudioSourceDictionary[nameOfGOAS].transform.IsChildOf(transform)){
+//				tempGOASInstance = _InterfaceAudioSourceDictionary [nameOfGOAS].gameObject;
+//				break;
+//			}
 
-			tempGOASInstance = Instantiate(_InterfaceAudioSourceDictionary[nameOfGOAS]).gameObject;
+			temp = _InterfaceAudioSourceDictionary[nameOfGOAS].gameObject;
+			tempGOASInstance = Instantiate(temp, temp.transform.parent).gameObject;
+//			_InterfaceAudioSourceDictionary.Add (nameOfGOAS, tempGOASInstance.GetComponent<AudioSource> ());
+
+			foreach(Transform aSD in _InterfaceAudioSourceParent){
+
+				if (aSD.name.Contains (nameOfGOAS))
+					++count;
+
+			}
+			_InterfaceAudioSourceDictionary.Add (nameOfGOAS + count, tempGOASInstance.GetComponent<AudioSource> ());
+//			tempGOASInstance = Instantiate(_InterfaceAudioSourceDictionary[nameOfGOAS]).gameObject;
 			break;
 
 

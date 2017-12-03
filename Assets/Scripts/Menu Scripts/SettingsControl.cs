@@ -28,24 +28,24 @@ public class SettingsControl : MonoBehaviour {
 
 
 	void Start(){
-		EventManager.Instance.AddListener (EVENT_TYPE.SCENE_LOADED,OnEvent);
+	//	EventManager.Instance.AddListener (EVENT_TYPE.SCENE_LOADED,OnEvent);
 		gameObject.SetActive (false);
 		ChangeMusicVol(PlayerPrefs.GetFloat("MusicVolume"));
 		ChangeSoundVol(PlayerPrefs.GetFloat("SoundVolume"));
 	}
-	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
-
-		switch(Event_Type){
-
-		case EVENT_TYPE.SCENE_LOADED:
-			
-			isAudioReady = true;
-
-			break;
-
-
-		}
-	}
+//	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
+//
+//		switch(Event_Type){
+//
+//		case EVENT_TYPE.SCENE_LOADED:
+//			
+//			isAudioReady = true;
+//
+//			break;
+//
+//
+//		}
+//	}
 		
 
 	public void ChangeMusicVol(float vol){
@@ -64,8 +64,11 @@ public class SettingsControl : MonoBehaviour {
 	private bool isAudioReady;
 	public void TrySoundSampler(){
 			
-		if (!isAudioReady)
+		if (!isAudioReady){
+			isAudioReady = true;
 			return;
+		}
+			
 		
 		AudioManager.Instance.PlayInterfaceSound ("SmallWin");
 	}
@@ -75,9 +78,8 @@ public class SettingsControl : MonoBehaviour {
 
 	
 		
+		//if (isAudioReady && !AudioManager.Instance.isMusicOn) {
 		if (isAudioReady && !AudioManager.Instance.isMusicOn) {
-
-			//isSampleMusicPlaying = true;
 			if (!AudioManager.Instance.GetAudioSourceReferance (AudioManager.AudioReferanceType._MUSIC, "Clouds"))
 				return;
 			

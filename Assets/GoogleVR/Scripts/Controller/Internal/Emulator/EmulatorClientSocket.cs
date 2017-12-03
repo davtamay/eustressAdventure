@@ -146,7 +146,7 @@ namespace Gvr.Internal {
       }
       // Caught by phoneEventSocketLoop.
       throw new Exception(
-        String.Format(
+			String.Format(
           "Failed to setup port forwarding." +
           " Exit code {0} returned by process: {1} {2}\n{3}",
           exitCode, processFilename, processArguments, standardError));

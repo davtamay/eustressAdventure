@@ -110,12 +110,14 @@ public class HelpUIManager : MonoBehaviour {
 					if (!armStressMenuForEnabled.activeInHierarchy)
 						armStressMenuForEnabled.SetActive (true);
 					else {
-						if (GameController.Instance.IsMenuActive) {
-					
-							TurnOffHelpInfo ();
-							curGoal = Goal.NONE;
-							
-						}
+						//USE SCRIPTABLE CHECKER
+						yield return null;
+//						if (GameController.Instance.IsMenuActive) {
+//					
+//							TurnOffHelpInfo ();
+//							curGoal = Goal.NONE;
+//							
+//						}
 					}
 					break;
 
@@ -136,8 +138,8 @@ public class HelpUIManager : MonoBehaviour {
 						feetForEnabled.SetActive (true);
 
 					}else {
-						
-						if(!GameController.Instance.IsMenuActive)
+						//USE SCRIPTABLE CHECKER
+						//if(!GameController.Instance.IsMenuActive)
 						if (GameObject.FindWithTag ("Player").GetComponent<PlayerLookMove> ().enabled) {
 				
 							TurnOffHelpInfo ();
@@ -181,6 +183,7 @@ public class HelpUIManager : MonoBehaviour {
 					//	explanationPlayable.Play ();
 					
 					if (explanationPlayable.duration <= explanationPlayable.time) {
+						
 						TurnOffHelpInfo ();
 						TimeLineController.Instance.ResumeTimeLine ();
 

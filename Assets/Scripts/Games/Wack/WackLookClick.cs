@@ -41,11 +41,12 @@ public class WackLookClick : MonoBehaviour {
 	
 			while (true) {
 
-			if (GameController.Instance.IsMenuActive ) {
-				yield return null;
-					continue;
-			
-			}
+			//USE SCRIPTABLE CHECKER
+//			if (GameController.Instance.IsMenuActive ) {
+//				yield return null;
+//					continue;
+//			
+//			}
 				
 				Ray ray = new Ray (cam.transform.position, cam.transform.rotation * Vector3.forward);
 
@@ -88,9 +89,9 @@ public class WackLookClick : MonoBehaviour {
 		while(true){
 			
 			yield return null;
-
-			if (GameController.Instance.IsMenuActive || GameController.Instance.IsStartMenuActive) 
-				continue;
+			//USE SCRIPTABLE CHECKER
+//			if (GameController.Instance.IsMenuActive || GameController.Instance.IsStartMenuActive) 
+//				continue;
 
 			if (!isAllowPopUps) 
 				continue;

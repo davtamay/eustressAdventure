@@ -28,8 +28,9 @@ public class CursorPositioner : MonoBehaviour {
 		RaycastHit hit;
 		if (Physics.Raycast(ray, out hit, 8 ,-1, QueryTriggerInteraction.Ignore)){
 
-			thisTransform.localScale = crosshairOriginalScale * ( originalDistance/ hit.distance);
+			//thisTransform.localScale = crosshairOriginalScale * ( (originalDistance - 0.6f)/ hit.distance);
 				 
+
 		if (hit.distance <= defaultPosZ) {
 				thisTransform.localPosition = new Vector3 (0, 0, hit.distance - zOffset);
 		} else {

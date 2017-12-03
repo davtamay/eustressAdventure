@@ -9,6 +9,9 @@ public class Mountain_Cave_TaskCollection : CollectTaskInteraction {
 	[SerializeField] private int wackScoreToBeat;
 	[SerializeField] private GameObject[] GOToActivateOnCompletion;
 
+	[Header("References")]
+	[SerializeField]private DataManager DATA_MANAGER;
+
 	public override void Start(){
 
 		thisAnimator = GetComponent<Animator> ();
@@ -68,7 +71,7 @@ public class Mountain_Cave_TaskCollection : CollectTaskInteraction {
 
 		SaveTaskIdentified ();
 
-		if (DataManager.Instance.LoadWackScore () > wackScoreToBeat) {
+		if (DATA_MANAGER.LoadScore () > wackScoreToBeat) {
 			SaveTaskCompletion ();
 
 			foreach (GameObject gO in GOToActivateOnCompletion)

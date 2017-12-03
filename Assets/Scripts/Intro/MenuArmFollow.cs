@@ -18,13 +18,15 @@ public class MenuArmFollow : MonoBehaviour {
 	//last item in hierarchy (tablet case "Cube")
 	private GameObject tablet;
 
+	[SerializeField]private BoolVariable isStressMenuDisplayed;
+
 	void Awake(){
 		
 		thisTransform = transform;
 
 	}
 	IEnumerator Start(){
-
+		isStressMenuDisplayed.SetValue (false);
 
 		camTransform = Camera.main.transform;
 		//armAnimator = GetComponentInChildren<Animator> (());
@@ -35,8 +37,6 @@ public class MenuArmFollow : MonoBehaviour {
 
 		if(SceneController.Instance != null)
 		curSceneName = SceneController.Instance.GetCurrentSceneName ();
-		
-		thisTransform.GetChild(0).gameObject.SetActive(false);
 
 		tablet = thisTransform.FindDeepChild ("Cube").gameObject;
 		//if use close Menu makes closing sound in the beginign.
@@ -76,7 +76,8 @@ public class MenuArmFollow : MonoBehaviour {
 	public void CloseMenu(bool hasSound = true){
 
 		directMenu.SetActive (false);
-		EventManager.Instance.PostNotification (EVENT_TYPE.STRESSMENU_CLOSED, this,null);
+		isStressMenuDisplayed.SetValue (false);
+		//EventManager.Instance.PostNotification (EVENT_TYPE.STRESSMENU_CLOSED, this,null);
 
 
 		if(hasSound)
@@ -246,7 +247,8 @@ public class MenuArmFollow : MonoBehaviour {
 			if (armAnimator.GetCurrentAnimatorStateInfo (0).IsTag ("Idle")) {
 
 				if (hasMenu) {
-					EventManager.Instance.PostNotification (EVENT_TYPE.STRESSMENU_OPENED, this, null);
+					isStressMenuDisplayed.SetValue (true);
+				//	EventManager.Instance.PostNotification (EVENT_TYPE.STRESSMENU_OPENED, this, null);
 					stressMenu.SetActive (true);
 
 				}

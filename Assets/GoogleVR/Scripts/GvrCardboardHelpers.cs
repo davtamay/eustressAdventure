@@ -34,7 +34,7 @@ public class GvrCardboardHelpers {
   /// Set the Cardboard viewer params.
   /// Example URI for 2015 Cardboard Viewer V2:
   /// http://google.com/cardboard/cfg?p=CgZHb29nbGUSEkNhcmRib2FyZCBJL08gMjAxNR0rGBU9JQHegj0qEAAASEIAAEhCAABIQgAASEJYADUpXA89OggeZnc-Ej6aPlAAYAM
-  public static void SetViewerProfile(String viewerProfileUri) {
+  public static void SetViewerProfile(StringVariable viewerProfileUri) {
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
     gvr_set_default_viewer_profile(XRDevice.GetNativePtr(), viewerProfileUri);
 #endif  // (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR

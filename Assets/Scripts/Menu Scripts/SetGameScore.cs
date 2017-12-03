@@ -2,119 +2,115 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum Game {FINDER, WACK, SKYJUMPER, MATCH, HIT, COLLECTIONS, SHOOT, HOOP}
 
 public class SetGameScore : MonoBehaviour {
 
 
-	public Game curGame;
+	//public Game curGame;
 	private TextMesh curTextMesh;
 	[SerializeField]private Text curText; 
 
 	[SerializeField] private bool isUsingTextMesh;
 
+	[SerializeField] private string curSceneName;
 
-	//void Start () {
-	/*void Awake(){
-		if (isUsingTextMesh)
-			curTextMesh = GetComponent<TextMesh> ();
-		else
-			curText = GetComponent<Text> ();
-	}*/
-	void Start(){
+	[Header("References")]
+	[SerializeField]private DataManager DATA_MANAGER;
+
+
+	void Awake(){
+
+		curSceneName = SceneManager.GetActiveScene ().name;
+
 		if (isUsingTextMesh)
 			curTextMesh = GetComponent<TextMesh> ();
 		else
 			curText = GetComponent<Text> ();
 
 	}
+
 	void OnEnable(){
-
+	 
 		if (isUsingTextMesh) {
-			curTextMesh = GetComponent<TextMesh> ();
-			switch (curGame) {
+//			curTextMesh = GetComponent<TextMesh> ();
 
-			case Game.FINDER:
-				curTextMesh.text = "HighScore: " + DataManager.Instance.LoadFinderScore ();
-				break;
-
-			case Game.SKYJUMPER:
-				curTextMesh.text = "HighScore: " + DataManager.Instance.LoadSkyWalkerScore ();
-				break;
-
-			case Game.COLLECTIONS:
-				curTextMesh.text = "HighScore: " + DataManager.Instance.LoadCollectionsScore ();
-				break;
-
-			case Game.WACK:
-				curTextMesh.text = "HighScore: " + DataManager.Instance.LoadWackScore ();
-				break;
-			case Game.MATCH:
-				curTextMesh.text = "HighScore: " + DataManager.Instance.LoadMatchScore ();
-				break;
-
-			case Game.SHOOT:
-				curTextMesh.text = "HighScore: " + DataManager.Instance.LoadShootScore ();
-				break;
-
-			case Game.HIT:
-				curTextMesh.text = "HighScore: " + DataManager.Instance.LoadHitScore ();
-				break;
-
-			case Game.HOOP:
-				curTextMesh.text = "HighScore: " + DataManager.Instance.LoadHoopScore ();
-				break;
-			}
+			curTextMesh.text = "HighScore:" + DATA_MANAGER.LoadScore();
+//			switch (curSceneName) {
+//
+//			case "Game.FINDER":
+//				curTextMesh.text = "HighScore: " + DATA_MANAGER.LoadFinderScore ();
+//				break;
+//
+//			case "SkyFlight":
+//				curTextMesh.text = "HighScore: " + DATA_MANAGER.LoadSkyWalkerScore ();
+//				break;
+//
+//			case "Collections":
+//				curTextMesh.text = "HighScore: " + DATA_MANAGER.LoadCollectionsScore ();
+//				break;
+//
+//			case "BerryScary":
+//				curTextMesh.text = "HighScore: " + DATA_MANAGER.LoadWackScore ();
+//				break;
+//			case "Match":
+//				curTextMesh.text = "HighScore: " + DATA_MANAGER.LoadMatchScore ();
+//				break;
+//
+//			case "Shoot":
+//				curTextMesh.text = "HighScore: " + DATA_MANAGER.LoadShootScore ();
+//				break;
+//
+//			case "Hit":
+//				curTextMesh.text = "HighScore: " + DATA_MANAGER.LoadHitScore ();
+//				break;
+//
+//			case "Hoops":
+//				curTextMesh.text = "HighScore: " + DATA_MANAGER.LoadHoopScore ();
+//				break;
+//			}
 
 
 		} else {
-
-			//Debug.Log (curText);
-
-			if (curText == null)
-				return;
-			
-			curText = GetComponent<Text> ();
+			curText.text = "HighScore:" + DATA_MANAGER.LoadScore();
 
 
 			//	Debug.LogWarning ("Set Game Score is not registering Text component on Enable");
-			switch (curGame) {
-
-			case Game.FINDER:
-				curText.text = "HighScore: " + DataManager.Instance.LoadFinderScore();
-				break;
-
-			case Game.SKYJUMPER:
-				curText.text = "HighScore: " + DataManager.Instance.LoadSkyWalkerScore();
-				break;
-
-			case Game.COLLECTIONS:
-				curText.text = "HighScore: " + DataManager.Instance.LoadCollectionsScore();
-				break;
-
-			case Game.WACK:
-				curText.text = "HighScore: " + DataManager.Instance.LoadWackScore();
-				break;
-			case Game.MATCH:
-				curText.text = "HighScore: " + DataManager.Instance.LoadMatchScore();
-				break;
-
-			case Game.SHOOT:
-				curText.text = "HighScore: " + DataManager.Instance.LoadShootScore();
-				break;
-
-			case Game.HIT:
-				curText.text = "HighScore: " + DataManager.Instance.LoadHitScore();
-				break;
-
-			case Game.HOOP:
-				curText.text = "HighScore: " + DataManager.Instance.LoadHoopScore();
-				break;
-
-
-
-		}
+//			switch (curSceneName) {
+//			case "Game.FINDER":
+//				curText.text = "HighScore: " + DATA_MANAGER.LoadFinderScore ();
+//				break;
+//
+//			case "SkyFlight":
+//				curText.text = "HighScore: " + DATA_MANAGER.LoadSkyWalkerScore ();
+//				break;
+//
+//			case "Collections":
+//				curText.text = "HighScore: " + DATA_MANAGER.LoadCollectionsScore ();
+//				break;
+//
+//			case "BerryScary":
+//				curText.text = "HighScore: " + DATA_MANAGER.LoadWackScore ();
+//				break;
+//			case "Match":
+//				curText.text = "HighScore: " + DATA_MANAGER.LoadMatchScore ();
+//				break;
+//
+//			case "Shoot":
+//				curText.text = "HighScore: " + DATA_MANAGER.LoadShootScore ();
+//				break;
+//
+//			case "Hit":
+//				curText.text = "HighScore: " + DATA_MANAGER.LoadHitScore ();
+//				break;
+//
+//			case "Hoops":
+//				curText.text = "HighScore: " + DATA_MANAGER.LoadHoopScore ();
+//				break;
+//
+//		}
 		
 		
 		

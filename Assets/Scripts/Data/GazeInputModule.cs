@@ -36,9 +36,13 @@ public class GazeInputModule : PointerInputModule
 			pointerEventData = new PointerEventData(eventSystem);
 		}
 		// fake a pointer always being at the center of the screen
+#if UNITY_EDITOR
 		pointerEventData.position = new Vector2(Screen.width/2, Screen.height/2);
-		//pointerEventData.position = new Vector2 (XRSettings.eyeTextureWidth/2, XRSettings.eyeTextureHeight/2);
+#elif UNITY_ANDROID
+		pointerEventData.position = new Vector2 (XRSettings.eyeTextureWidth/2, XRSettings.eyeTextureHeight/2);
+#endif
 		pointerEventData.delta = Vector2.zero;
+
 		List<RaycastResult> raycastResults = new List<RaycastResult>();
 		eventSystem.RaycastAll(pointerEventData, raycastResults);
 		pointerEventData.pointerCurrentRaycast = FindFirstRaycast(raycastResults);

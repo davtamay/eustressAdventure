@@ -21,6 +21,8 @@ public class LookInteraction : MonoBehaviour,IPointerEnterHandler,IPointerExitHa
 
 	//Check for bugs since I invalidated this in script
 	[SerializeField] bool isItemForSlot;
+	//[SerializeField] ItemInventoryRunTimeSet itemInventory;
+	//[SerializeField] Item item;
 
 
 	[SerializeField]bool isSpriteChangeOnClick = false;
@@ -49,7 +51,9 @@ public class LookInteraction : MonoBehaviour,IPointerEnterHandler,IPointerExitHa
 	private Camera cam;
 	float timer;
 
-	//private Coroutine enableDisableCoroutine;
+	[Header("References")]
+	[SerializeField]private BoolVariable isSceneLoading;
+
 	void Awake () {
 
 		cam = Camera.main;
@@ -87,6 +91,21 @@ public class LookInteraction : MonoBehaviour,IPointerEnterHandler,IPointerExitHa
 			imageGO.SetActive (false);
 
 	}
+
+//	void OnEnable(){
+//
+//		if (isItemForSlot){
+//
+//		}
+//			//itemInventory.Add (item, transform.parent.gameObject);
+//	}
+//
+//	void OnDisable(){
+//
+//		if (isItemForSlot)
+//			itemInventory.Remove (item);
+//
+//	}
 //	void Start(){
 
 //		if(lookTriggerCollider){
@@ -226,10 +245,10 @@ public class LookInteraction : MonoBehaviour,IPointerEnterHandler,IPointerExitHa
 			//	Debug.Log("I AM ONNNNNBUTTON!!!!!!" +  eventData.selectedObject.name);
 
 			//	buttonFill.fillAmount = 1;
-			if (SceneController.isSceneLoading) {
-				StopAllCoroutines ();
-				return;
-			}
+//			if (isSceneLoading) {
+//				StopAllCoroutines ();
+//				return;
+//			}
 
 //			if (lookTriggerCollider != null && EventSystem.current.gameObject != null)
 //			if (lookTriggerCollider.gameObject.GetInstanceID () == EventSystem.current.gameObject.GetInstanceID ()) {
@@ -349,6 +368,7 @@ public class LookInteraction : MonoBehaviour,IPointerEnterHandler,IPointerExitHa
 		if (isItemForSlot) {
 
 			PlayerInventory.Instance.AddItemToSlot (transform.parent.gameObject);
+		//	Debug.Log (transform.parent.gameObject.name);
 			var tempAS = AudioManager.Instance.GetAudioSourceReferance (AudioManager.AudioReferanceType._DIRECT,"PickUp");
 			tempAS.transform.position = transform.position;
 			AudioManager.Instance.PlayDirectSound ("PickUp");

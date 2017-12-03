@@ -14,7 +14,7 @@ public class LockManager : MonoBehaviour {
 	public static bool isShootAvailable;
 	public static bool isHoopAvailable;
 
-	//public Game curGame = Game.COLLECTIONS;
+	public Game curGame = Game.COLLECTIONS;
 	[SerializeField]private bool finderScoreToBeat;
 	[SerializeField]private bool wackScoreToBeat;
 	[SerializeField]private bool skyJumperScoreToBeat;
@@ -24,7 +24,7 @@ public class LockManager : MonoBehaviour {
 	[SerializeField]private bool shootScoreToBeat;
 	[SerializeField]private bool hoopScoreToBeat;
 
-	[SerializeField] private Game curGame;
+
 
 
 	//private Collider GameAssessCollider;

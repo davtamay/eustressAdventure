@@ -34,6 +34,7 @@ public class TriggerGameSelection : MonoBehaviour {
 		GameObject AudioGO = AudioManager.Instance.MakeCopyOfAudioSourceGO (AudioManager.AudioReferanceType._AMBIENT, "Portal");
 		AudioGO.transform.SetParent (transform);
 		AudioGO.transform.localPosition = Vector3.zero;
+		AudioGO.transform.SetParent (AudioManager.Instance.GetAudioSourceReferance(AudioManager.AudioReferanceType._AMBIENT, "Portal").transform.parent);
 	
 	}
 

@@ -26,8 +26,12 @@ public class PlayerLookMove : MonoBehaviour {
 	public bool isGoingUp = false;
 
 	private Transform thisTransform;
+	[SerializeField]private Vector3 homePosition = new Vector3 (0, 2, 0);
+	[SerializeField]private Vector3Variable currentPosition;
+
 	private float originalYPos;
 
+	//[Header("Looking ")]
 	[SerializeField] private float minMoveAngleFromUp = 89.0f;
 	[SerializeField] private float maxMoveAngleFromUp = 180.0f;
 	[SerializeField] private float minJumpAngleFromUp = 0.0f;
@@ -67,7 +71,7 @@ public class PlayerLookMove : MonoBehaviour {
 		thisTransform = transform;
 		originalYPos = thisTransform.position.y;
 
-
+		currentPosition.Value = thisTransform.position;
 	}
 
 	
@@ -188,6 +192,7 @@ public class PlayerLookMove : MonoBehaviour {
 			AudioManager.Instance.PlayDirectSound ("Steps", true); //StartCoroutine (Step ());
 		controller.Move (moveDirection);
 
+		currentPosition.Value = thisTransform.position;
 	
 	}
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 /*
 [SerializeField]
@@ -19,7 +20,8 @@ public class DataCollection{
 	}
 
 }*/
-public class DataManager : MonoBehaviour {
+[CreateAssetMenu(fileName = "DataManager", menuName = "CustomSO/Managers/DataManager")]
+public class DataManager : ScriptableObject{
 
 	public static DataManager Instance
 	{ get { return instance; } }
@@ -31,12 +33,22 @@ public class DataManager : MonoBehaviour {
 	public Vector3 position = Vector3.zero;
 	public List<string> slotListItemNames = new List<string>();
 
-//	public DataCollection dataCollected;
+	private string curScene;
+
+	[Header("References")]
+	[SerializeField]private InventoryList playerInventory;
+	[SerializeField]private IntVariable playerPoints;
+	[SerializeField]private Vector3 originalPlayerPosition = new Vector3 (0,2,0);
 
 
 
 
-	void Awake(){
+	public void Awake(){
+		curScene = SceneManager.GetActiveScene ().name;
+
+	}
+
+	void OnEnable(){
 		
 		//DeletePPDataTaskProgress ();
 		//PlayerPrefs.DeleteAll();
@@ -46,120 +58,19 @@ public class DataManager : MonoBehaviour {
 		}
 		instance = this; 
 
-	//	dataCollected = new DataCollection ();
+		//	dataCollected = new DataCollection ();
 
-		string skyFlightPath = Application.persistentDataPath + @"/skyFlightScore.json";
+		string Path = "/" + curScene + "Score.json";
 
-		if(!File.Exists(skyFlightPath)){
+		string FullPath = Application.persistentDataPath + Path;
 
-			StreamWriter Writer = new StreamWriter (skyFlightPath);
+		if(!File.Exists(FullPath)){
+
+			StreamWriter Writer = new StreamWriter (FullPath);
 			Writer.WriteLine (JsonUtility.ToJson (this));
 			Writer.Close ();
 		}
 
-		string collectionsPath = Application.persistentDataPath + @"/collectionsScore.json";
-
-
-		if (!File.Exists(collectionsPath)) {
-
-			StreamWriter Writer = new StreamWriter (collectionsPath);
-			Writer.WriteLine (JsonUtility.ToJson (this));
-			Writer.Close ();
-
-		}
-
-		string finderPath = Application.persistentDataPath + @"/finderScore.json";
-
-
-		if (!File.Exists(finderPath)) {
-
-			StreamWriter Writer = new StreamWriter (finderPath);
-			Writer.WriteLine (JsonUtility.ToJson (this));
-			Writer.Close ();
-
-		}
-		string wackPath = Application.persistentDataPath + @"/wackScore.json";
-
-		if(!File.Exists(wackPath)){
-
-			StreamWriter Writer = new StreamWriter (wackPath);
-			Writer.WriteLine (JsonUtility.ToJson (this));
-			Writer.Close ();
-		}
-
-		string matchPath = Application.persistentDataPath + @"/matchScore.json";
-
-
-		if (!File.Exists(matchPath)) {
-
-			StreamWriter Writer = new StreamWriter (matchPath);
-			Writer.WriteLine (JsonUtility.ToJson (this));
-			Writer.Close ();
-
-		}
-
-		string shootPath = Application.persistentDataPath + @"/shootScore.json";
-
-
-		if (!File.Exists(shootPath)) {
-
-			StreamWriter Writer = new StreamWriter (shootPath);
-			Writer.WriteLine (JsonUtility.ToJson (this));
-			Writer.Close ();
-
-		}
-		string hitPath = Application.persistentDataPath + @"/hitScore.json";
-
-
-		if (!File.Exists(hitPath)) {
-
-			StreamWriter Writer = new StreamWriter (hitPath);
-			Writer.WriteLine (JsonUtility.ToJson (this));
-			Writer.Close ();
-
-		}
-
-		string hoopPath = Application.persistentDataPath + @"/hoopScore.json";
-
-
-		if (!File.Exists(hoopPath)) {
-
-			StreamWriter Writer = new StreamWriter (hoopPath);
-			Writer.WriteLine (JsonUtility.ToJson (this));
-			Writer.Close ();
-
-		}
-
-		string position = Application.persistentDataPath + @"/playerpos.json";
-
-		if (!File.Exists(position)) {
-
-			StreamWriter Writer = new StreamWriter (position);
-			Writer.WriteLine (JsonUtility.ToJson (this));
-			Writer.Close ();
-
-		}
-
-		string items = Application.persistentDataPath + @"/curItems.json";
-
-		if (!File.Exists(items)) {
-
-			StreamWriter Writer = new StreamWriter (items);
-			Writer.WriteLine (JsonUtility.ToJson (this));
-			Writer.Close ();
-
-		}
-
-
-		string stressLevel = Application.persistentDataPath + @"/stressLevel.json";
-
-		if (!File.Exists(stressLevel)) {
-
-			StreamWriter Writer = new StreamWriter (stressLevel);
-			Writer.WriteLine (JsonUtility.ToJson (this));
-			Writer.Close ();
-
-		}
 		/*
 		string playerDataCollection= Application.persistentDataPath + @"/playerData.json";
 
@@ -250,17 +161,48 @@ public class DataManager : MonoBehaviour {
 */
 	
 //TEST
-	public void DeleteHighScoreSlotandPositionData(Vector3 originalPos){
+	public void DeleteAllData(){
+		DeletePlayerPositionData ();
+		DeleteHighScoreData ();
+		DeletePPDataTaskProgress ();
+		DeletePlayerInventoryData ();
 
-		//slotListStrings.Clear ();
-		SavePosition(originalPos);
+	}
+	public void DeletePlayerPositionData(){
+
+		SavePosition (originalPlayerPosition);
+
+	}
+	public void DeletePlayerInventoryData(){
+
 		SaveItemList(new List<GameObject>());
-		SaveSkyWalkerScore (0);	
-		SaveCollectionsScore (0);
-		SaveHitScore (0);
-		SaveHoopScore (0);
-		SaveMatchScore (0);
-		SaveWackScore (0);
+
+	}
+	public void DeleteHighScoreData(){
+
+	for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++) {
+			
+		string sceneName = SceneManager.GetSceneByBuildIndex (i).name;
+			
+		string Path = "/" + sceneName + "Score.json";
+
+		string OutputPath = Application.persistentDataPath + Path;
+
+		highScore = 0;
+
+		StreamWriter Writer = new StreamWriter (OutputPath);
+		Writer.WriteLine (JsonUtility.ToJson (this));
+		Writer.Close();
+		Debug.Log("output to:" + OutputPath);
+		
+		}
+//
+//		SaveSkyWalkerScore (0);	
+//		SaveCollectionsScore (0);
+//		SaveHitScore (0);
+//		SaveHoopScore (0);
+//		SaveMatchScore (0);
+//		SaveWackScore (0);
 
 	}
 	public void DeletePPDataTaskProgress(){
@@ -305,17 +247,24 @@ public class DataManager : MonoBehaviour {
 		List<GameObject> sList = new List<GameObject> ();
 
 
-		foreach (string str in PlayerInventory.Instance.StringToGODict.Keys){
-			
-			for (int i = 0; i < slotListItemNames.Count; i++)
-				if (str == slotListItemNames [i]) {
-
-			//	Debug.Log ("LOADITEMLIST SLOTLISTSTRINGS :" + slotListStrings[i]);
-					sList.Add (PlayerInventory.Instance.StringToGODict [str]);
-
-				}
-			
+		foreach(Item item in playerInventory.Items){
+		for (int i = 0; i < slotListItemNames.Count; i++)
+			if(item.itemName == slotListItemNames[i] ){
+				sList.Add (item.itemGO);
 			}
+			
+		}
+//		foreach (string str in PlayerInventory.Instance.StringToGODict.Keys){
+//			
+//			for (int i = 0; i < slotListItemNames.Count; i++)
+//				if (str == slotListItemNames [i]) {
+//
+//			//	Debug.Log ("LOADITEMLIST SLOTLISTSTRINGS :" + slotListStrings[i]);
+//					sList.Add (PlayerInventory.Instance.StringToGODict [str]);
+//
+//				}
+//			
+//			}
 
 
 	//	Debug.Log ("LOAD : " + "String to Dict Count: " + PlayerManager.Instance.StringToGODict.Count + "SlotListStrings: " + slotListStrings.Count + "SList : " + sList.Count);
@@ -384,42 +333,11 @@ public class DataManager : MonoBehaviour {
 
 	}
 
+	public void SaveScore(int score){
 
-	public void SaveSkyWalkerScore(int score){
+		string Path = "/" + curScene + "Score.json";
 
-		string OutputPath = Application.persistentDataPath + @"/skyWalkerScore.json";
-
-		highScore = score;
-
-		StreamWriter Writer = new StreamWriter (OutputPath);
-		Writer.WriteLine (JsonUtility.ToJson (this));
-		Writer.Close();
-		Debug.Log("output to:" + OutputPath);
-	}
-
-	public int LoadSkyWalkerScore (){
-
-
-		string InputPath = Application.persistentDataPath + @"/skyWalkerScore.json";
-		Debug.Log (InputPath);
-		StreamReader Reader = new StreamReader (InputPath);
-		string JSonString = Reader.ReadToEnd ();
-		Debug.Log ("Reading:" + JSonString);
-		JsonUtility.FromJsonOverwrite (JSonString, this);
-		Reader.Close();
-
-		int HighScore = 0;
-
-		HighScore = highScore;
-
-		return HighScore;
-
-
-	}
-
-	public void SaveCollectionsScore(int score){
-
-		string OutputPath = Application.persistentDataPath + @"/collectionsScore.json";
+		string OutputPath = Application.persistentDataPath + Path;
 
 		highScore = score;
 
@@ -428,10 +346,22 @@ public class DataManager : MonoBehaviour {
 		Writer.Close();
 		Debug.Log("output to:" + OutputPath);
 	}
+/// <summary>
+/// Loads the score for active scene or input scene name to load specific score.
+/// </summary>
+/// <returns>The score.</returns>
+/// <param name="scene">Scene.</param>
+	public int LoadScore (string scene = ""){
+		
+		string sceneToLoad = curScene;
+		
+		if (scene != "")
+			sceneToLoad = scene;
 
-	public int LoadCollectionsScore (){
+		//string curSceneName = SceneManager.GetActiveScene ().name;
+			string Path = "/" + sceneToLoad + "Score.json";
 
-		string InputPath = Application.persistentDataPath + @"/collectionsScore.json";
+		string InputPath = Application.persistentDataPath + Path;
 
 		StreamReader Reader = new StreamReader (InputPath);
 		string JSonString = Reader.ReadToEnd ();
@@ -441,187 +371,10 @@ public class DataManager : MonoBehaviour {
 
 		int HighScore = 0;
 
-		HighScore = highScore;
 
-		return HighScore;
-
-
-	}
-	public void SaveFinderScore(int score){
-
-		string OutputPath = Application.persistentDataPath + @"/finderScore.json";
-
-		highScore = score;
-
-		StreamWriter Writer = new StreamWriter (OutputPath);
-		Writer.WriteLine (JsonUtility.ToJson (this));
-		Writer.Close();
-		Debug.Log("output to:" + OutputPath);
-	}
-
-	public int LoadFinderScore (){
-
-		string InputPath = Application.persistentDataPath + @"/finderScore.json";
-
-		StreamReader Reader = new StreamReader (InputPath);
-		string JSonString = Reader.ReadToEnd ();
-		Debug.Log ("Reading:" + JSonString);
-		JsonUtility.FromJsonOverwrite (JSonString, this);
-		Reader.Close();
-
-		int HighScore = 0;
-
-		HighScore = highScore;
-
-		return HighScore;
-
-
-	}
-
-	public void SaveWackScore(int score){
-
-		string OutputPath = Application.persistentDataPath + @"/wackScore.json";
-
-		highScore = score;
-
-		StreamWriter Writer = new StreamWriter (OutputPath);
-		Writer.WriteLine (JsonUtility.ToJson (this));
-		Writer.Close();
-		Debug.Log("output to:" + OutputPath);
-	}
-
-	public int LoadWackScore (){
-
-		string InputPath = Application.persistentDataPath + @"/wackScore.json";
-
-		StreamReader Reader = new StreamReader (InputPath);
-		string JSonString = Reader.ReadToEnd ();
-		Debug.Log ("Reading:" + JSonString);
-		JsonUtility.FromJsonOverwrite (JSonString, this);
-		Reader.Close();
-
-		int HighScore = 0;
-
-		HighScore = highScore;
-
-		return HighScore;
-
-
-	}
-	public void SaveMatchScore(int score){
-
-		string OutputPath = Application.persistentDataPath + @"/matchScore.json";
-
-		highScore = score;
-
-		StreamWriter Writer = new StreamWriter (OutputPath);
-		Writer.WriteLine (JsonUtility.ToJson (this));
-		Writer.Close();
-		Debug.Log("output to:" + OutputPath);
-	}
-
-	public int LoadMatchScore (){
-
-		string InputPath = Application.persistentDataPath + @"/matchScore.json";
-
-		StreamReader Reader = new StreamReader (InputPath);
-		string JSonString = Reader.ReadToEnd ();
-		Debug.Log ("Reading:" + JSonString);
-		JsonUtility.FromJsonOverwrite (JSonString, this);
-		Reader.Close();
-
-		int HighScore = 0;
-
-		HighScore = highScore;
-
-		return HighScore;
-
-
-	}
-	public void SaveShootScore(int score){
-
-		string OutputPath = Application.persistentDataPath + @"/shootScore.json";
-
-		highScore = score;
-
-		StreamWriter Writer = new StreamWriter (OutputPath);
-		Writer.WriteLine (JsonUtility.ToJson (this));
-		Writer.Close();
-		Debug.Log("output to:" + OutputPath);
-	}
-
-	public int LoadShootScore (){
-
-		string InputPath = Application.persistentDataPath + @"/shootScore.json";
-
-		StreamReader Reader = new StreamReader (InputPath);
-		string JSonString = Reader.ReadToEnd ();
-		Debug.Log ("Reading:" + JSonString);
-		JsonUtility.FromJsonOverwrite (JSonString, this);
-		Reader.Close();
-
-		int HighScore = 0;
-
-		HighScore = highScore;
-
-		return HighScore;
-
-
-	}
-	public void SaveHitScore(int score){
-
-		string OutputPath = Application.persistentDataPath + @"/hitScore.json";
-
-		highScore = score;
-
-		StreamWriter Writer = new StreamWriter (OutputPath);
-		Writer.WriteLine (JsonUtility.ToJson (this));
-		Writer.Close();
-		Debug.Log("output to:" + OutputPath);
-	}
-
-	public int LoadHitScore (){
-
-		string InputPath = Application.persistentDataPath + @"/hitScore.json";
-
-		StreamReader Reader = new StreamReader (InputPath);
-		string JSonString = Reader.ReadToEnd ();
-		Debug.Log ("Reading:" + JSonString);
-		JsonUtility.FromJsonOverwrite (JSonString, this);
-		Reader.Close();
-
-		int HighScore = 0;
-
-		HighScore = highScore;
-
-		return HighScore;
-
-
-	}
-	public void SaveHoopScore(int score){
-
-		string OutputPath = Application.persistentDataPath + @"/hoopScore.json";
-
-		highScore = score;
-
-		StreamWriter Writer = new StreamWriter (OutputPath);
-		Writer.WriteLine (JsonUtility.ToJson (this));
-		Writer.Close();
-		Debug.Log("output to:" + OutputPath);
-	}
-
-	public int LoadHoopScore (){
-
-		string InputPath = Application.persistentDataPath + @"/hoopScore.json";
-
-		StreamReader Reader = new StreamReader (InputPath);
-		string JSonString = Reader.ReadToEnd ();
-		Debug.Log ("Reading:" + JSonString);
-		JsonUtility.FromJsonOverwrite (JSonString, this);
-		Reader.Close();
-
-		int HighScore = 0;
-
+		if (highScore == 0)
+			return playerPoints;
+	
 		HighScore = highScore;
 
 		return HighScore;
@@ -630,59 +383,15 @@ public class DataManager : MonoBehaviour {
 	}
 
 
-	public void CheckHighScore(string sceneName, int score){
 
-		Debug.Log (sceneName);
-		if (string.Equals(sceneName,"SkyJumper", System.StringComparison.CurrentCultureIgnoreCase)) {
+	public void CheckHighScore(){
 
-			if (score > LoadSkyWalkerScore ()) {
-				//have to set up file before usage ex: add 0 to Save at Start and then erase
-				SaveSkyWalkerScore (score);
-				return;
-			} 
+		if (playerPoints.Value > LoadScore ()) {
+			//have to set up file before usage ex: add 0 to Save at Start and then erase
+			SaveScore (playerPoints.Value);
+			return;
+		} 
 
-		} else if (string.Equals(sceneName,"Collections", System.StringComparison.CurrentCultureIgnoreCase)) {
 
-			if (score > LoadCollectionsScore ()) {
-				SaveCollectionsScore (score);
-				return;
-			} 
-		} else if (string.Equals(sceneName,"Finder", System.StringComparison.CurrentCultureIgnoreCase)) {
-
-			if (score > LoadFinderScore ()) {
-				SaveFinderScore (score);
-				return;
-			} 
-		}else if (string.Equals(sceneName,"Wack", System.StringComparison.CurrentCultureIgnoreCase)) {
-
-			if (score > LoadWackScore ()) {
-				SaveWackScore (score);
-				return;
-			} 
-		} else if (string.Equals(sceneName,"Match", System.StringComparison.CurrentCultureIgnoreCase)) {
-
-			if (score > LoadMatchScore ()) {
-				SaveMatchScore (score);
-				return;
-			} 
-		}else if (string.Equals(sceneName,"Shoot", System.StringComparison.CurrentCultureIgnoreCase)) {
-
-			if (score > LoadShootScore ()) {
-				SaveShootScore (score);
-				return;
-			} 
-		} else if (string.Equals(sceneName,"Hit", System.StringComparison.CurrentCultureIgnoreCase)) {
-
-			if (score > LoadHitScore ()) {
-				SaveHitScore (score);
-				return;
-			} 
-		}else if (string.Equals(sceneName,"Hoops", System.StringComparison.CurrentCultureIgnoreCase)) {
-
-			if (score > LoadHoopScore ()) {
-				SaveHoopScore (score);
-				return;
-			} 
-		}
 	}
 }

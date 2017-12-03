@@ -17,6 +17,10 @@ public class Mountain_Injuredtask : CollectTaskInteraction {
 	[SerializeField] bool isLooking = false;
 	private Animator thisAnimator;
 
+
+	[Header("References")]
+	[SerializeField]private DataManager DATA_MANAGER;
+
 	public override void Awake ()
 	{
 		thisAnimator = GetComponent<Animator> ();
@@ -95,7 +99,8 @@ public class Mountain_Injuredtask : CollectTaskInteraction {
 			SaveTaskIdentified ();
 		//PlayerPrefs.SetInt (nameForPlayerPref, 0);
 
-		if (DataManager.Instance.LoadSkyWalkerScore () <= scoreNeededForTask) {
+
+		if (DATA_MANAGER.LoadScore ("SkyFlight") <= scoreNeededForTask) {
 			SaveTaskCompletion ();
 		}
 		/*foreach(GameObject gO in PlayerManager.Instance.playerSlotGOList){

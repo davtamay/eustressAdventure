@@ -12,8 +12,13 @@ public class LocalizedText : MonoBehaviour {
 	private TextMesh textMesh;
 	[SerializeField] private bool isTextMesh = false;
 
+	[Header("References")]
+	[SerializeField]private LocalizationManager localizationManager;
 
-	void Awake(){
+
+
+	void OnEnable(){
+
 	
 		if (isTextMesh) {
 			textMesh = GetComponent<TextMesh> ();
@@ -26,20 +31,33 @@ public class LocalizedText : MonoBehaviour {
 				Debug.LogWarning ("Cannot get LocalizedText Text Component");
 			
 		}
+
+	//	localizationManager = FindObjectOfType<LocalizationManager> ();
 			
+		localizationManager.registeredLocalizedTexts.Add (this);
 	}
-	void Start(){
-		LocalizationManager.Instance.registeredLocalizedTexts.Add (this);
+
+	public void OnDisable(){
+
+		localizationManager.registeredLocalizedTexts.Remove (this);
 	}
+	//IS NOT CALLED FOR DISABLED OBJECTS....
+//	public void OnDestroy(){
+//
+//		localizationManager.registeredLocalizedTexts.Remove (this);
+//
+//
+//	}
+
 	public void OnUpdate () 
 	{
 
 		if (isTextMesh) {
-			textMesh.text = LocalizationManager.Instance.GetLocalizedValue (key);
+			textMesh.text = localizationManager.GetLocalizedValue (key);
 			textMesh.text = textMesh.text.Replace ("\\n", "\n");
 
 		} else {
-			text.text = LocalizationManager.Instance.GetLocalizedValue (key);
+			text.text =  localizationManager.GetLocalizedValue (key);
 			text.text = text.text.Replace("\\n", "\n");
 		}
 
@@ -48,21 +66,16 @@ public class LocalizedText : MonoBehaviour {
 
 	IEnumerator SetText(){
 
-		while (!LocalizationManager.Instance.GetIsReady ())
+		while (! localizationManager.GetIsReady ())
 			yield return null;
 
 	if(isTextMesh)
-		textMesh.text = LocalizationManager.Instance.GetLocalizedValue (key);
+			textMesh.text =  localizationManager.GetLocalizedValue (key);
 	else
-		text.text = LocalizationManager.Instance.GetLocalizedValue (key);
+			text.text =  localizationManager.GetLocalizedValue (key);
 		
 
 	}
-	protected void OnDestroy(){
 
-		LocalizationManager.Instance.registeredLocalizedTexts.Remove (this);
-
-
-	}
 
 }

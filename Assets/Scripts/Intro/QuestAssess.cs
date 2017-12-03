@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class QuestAssess : MonoBehaviour {
+public class QuestAssess : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
 
 	[SerializeField] string[] playerPrefTaskNames;
 	[SerializeField] string[] questDescriptions;
-
+	[SerializeField] private Transform questSlotsParent;
 	private Dictionary<string,string> taskDictionary;
 	private Text[] qTextSpaces;
 
@@ -21,8 +21,8 @@ public class QuestAssess : MonoBehaviour {
 
 	[SerializeField]private float scrollSpeed;
 
-	private Button[] navigationButtons;
-	private Scrollbar questScrollBar;
+	[SerializeField]private Button[] navigationButtons;
+	[SerializeField]private Scrollbar questScrollBar;
 
 	 void Awake(){
 
@@ -36,7 +36,10 @@ public class QuestAssess : MonoBehaviour {
 
 		Transform tempParent = transform.parent.parent.parent;
 		//FIXME This may be causing errors to appear on console NullReferenceExemption(Null);
+		if(navigationButtons.Length == 0)
 		navigationButtons = tempParent.GetComponentsInChildren <Button>();
+
+		if (questScrollBar == null)
 		questScrollBar = tempParent.parent.GetComponentInChildren<Scrollbar> ();
 
 		taskDictionary = new Dictionary<string, string>();
@@ -45,15 +48,17 @@ public class QuestAssess : MonoBehaviour {
 			taskDictionary.Add (playerPrefTaskNames[i], questDescriptions[i]);// [tn].aquestDescriptions;
 
 		int e = 0;
-		qTextSpaces = new Text[transform.childCount];
+		if (qTextSpaces != null) {
+			qTextSpaces = new Text[questSlotsParent.childCount];
 
-		foreach (Transform child in transform) {
+			foreach (Transform child in questSlotsParent) {
 
-			qTextSpaces [e] = child.GetComponent<Text>();
-			e++;
+				qTextSpaces [e] = child.GetComponent<Text> ();
+				e++;
 
+			}
+			Debug.Log ("TEXT SPASES: " + qTextSpaces.Length);
 		}
-		Debug.Log("TEXT SPASES: " + qTextSpaces.Length);
 	}
 		
 
@@ -65,33 +70,73 @@ public class QuestAssess : MonoBehaviour {
 		OnUpdate ();
 	
 	}
+//	void OnEnable(){
+//
+//		questScrollBar.value = ;
+//
+//	}
+	public void OnPointerEnter(PointerEventData eventData){
+		Debug.LogFormat("PointerData : {0}, ChildrenData : {1}", eventData.pointerCurrentRaycast.gameObject.name,navigationButtons [0].gameObject.name ) ;
+		if (eventData.pointerCurrentRaycast.gameObject.name == navigationButtons [0].gameObject.name)
+			StartCoroutine (SliderAdjust (true));
+		else if(eventData.pointerCurrentRaycast.gameObject.name == navigationButtons [1].gameObject.name)
+			StartCoroutine (SliderAdjust (false));
 
-	void Update(){
+	}
 
+	IEnumerator SliderAdjust(bool isAdding){
 
-
-		RaycastHit hit;
-
-		if(Physics.Raycast(cam.position, cam.rotation * Vector3.forward, out hit)){
-
-			if (string.Equals (hit.transform.name, navigationButtons [0].transform.name, System.StringComparison.CurrentCultureIgnoreCase)) {
+		while(true){
+			yield return null;
+			if(isAdding){
 				if (questScrollBar.value != 1) {
 					questScrollBar.value += Time.unscaledDeltaTime * scrollSpeed;
 					navigationButtons [0].Select ();
 				}
-
-			} else if (string.Equals (hit.transform.name, navigationButtons [1].transform.name, System.StringComparison.CurrentCultureIgnoreCase)) {
+			}else{
 				if (questScrollBar.value != 0) {
 					questScrollBar.value -= Time.unscaledDeltaTime * scrollSpeed;
 					navigationButtons [1].Select ();
 				}
+
 			}
 
 
 		}
-		EventSystem.current.SetSelectedGameObject (null);
-	
+
 	}
+
+	public void OnPointerExit(PointerEventData eventData){
+		StopAllCoroutines ();
+		EventSystem.current.SetSelectedGameObject (null);
+	}
+
+//	void Update(){
+//
+//
+//
+//		RaycastHit hit;
+//
+//		if(Physics.Raycast(cam.position, cam.rotation * Vector3.forward, out hit)){
+//
+//			if (string.Equals (hit.transform.name, navigationButtons [0].transform.name, System.StringComparison.CurrentCultureIgnoreCase)) {
+//				if (questScrollBar.value != 1) {
+//					questScrollBar.value += Time.unscaledDeltaTime * scrollSpeed;
+//					navigationButtons [0].Select ();
+//				}
+//
+//			} else if (string.Equals (hit.transform.name, navigationButtons [1].transform.name, System.StringComparison.CurrentCultureIgnoreCase)) {
+//				if (questScrollBar.value != 0) {
+//					questScrollBar.value -= Time.unscaledDeltaTime * scrollSpeed;
+//					navigationButtons [1].Select ();
+//				}
+//			}
+//
+//
+//		}
+//		EventSystem.current.SetSelectedGameObject (null);
+//	
+//	}
 
 	public void OnUpdate(){
 		 count = 0;
@@ -110,8 +155,7 @@ public class QuestAssess : MonoBehaviour {
 	bool EvaluatePlayerPref(string pPName){
 
 		if (!PlayerPrefs.HasKey (pPName)) {
-		//	Debug.Log ("PlayerPrefAssess: there is no " + pPName);
-		//	qTextSpaces [count].text = string.Empty;
+	
 			return false;
 		}else{
 		
