@@ -13,44 +13,38 @@ public class ButtonClickLook : MonoBehaviour, IPointerEnterHandler,IPointerExitH
 	public Vector3_UnityEvent vector3_UnityEvent;
 	public Vector3 vector3_UnityEvent_Parameter;
 
-
-
-	[SerializeField]private UnityEvent OnStart;
+//	[SerializeField]private UnityEvent OnStart;
 	[SerializeField]private UnityEvent OnClick;
 
 	[SerializeField] private bool isOnClickEventCalled = false;
-	[SerializeField] private bool isOnStartInvoke = false;
+//	[SerializeField] private bool isOnStartInvoke = false;
 
-	private float timeToSelect = 2.0f;
-	private float countDown = 2.0f;
+//	private float timeToSelect = 2.0f;
+//	private float countDown = 2.0f;
 	private Image buttonFill;
 	private Button button;
 
-	public bool isStressed = false;
+//	public bool isStressed = false;
+//
+//	public bool isEnvChanger = false;
 
-	public bool isEnvChanger = false;
-
-	public bool isSceneChange = false;
-	[SerializeField] private string scene;
-	[SerializeField] private bool isResetPositiontoHome;
-
-
-	[SerializeField] private bool isRestartProgress;
-
-	public bool isBackToIntroButton = false;
-	public bool isStartButton = false;
-	public bool isReplayButton = false;
+//	public bool isSceneChange = false;
+//	[SerializeField] private string scene;
+//	[SerializeField] private bool isResetPositiontoHome;
 
 
-	private bool isWalking = false;
-
-	private Collider col;
-
+//	[SerializeField] private bool isRestartProgress;
+//
+//	public bool isBackToIntroButton = false;
+//	public bool isStartButton = false;
+//	public bool isReplayButton = false;
+//
+//
+//
+//	private Collider col;
+//
 	[SerializeField] private bool isStressModified;
 	[SerializeField] private float stressModifiedAmount;
-
-//	public enum MusicPlayerButton{play,stop,next,previous, none}
-//	public MusicPlayerButton curMusicButton;
 
 	private float secondsUntilClick;
 
@@ -60,8 +54,8 @@ public class ButtonClickLook : MonoBehaviour, IPointerEnterHandler,IPointerExitH
 	[SerializeField]private float originalTime;
 
 	[Header("References")]
-	[SerializeField]private DataManager DATA_MANAGER;
-	[SerializeField]private AudioManager AUDIO_MANAGER;
+	//[SerializeField]private DataManager DATA_MANAGER;
+	//[SerializeField]private AudioManager AUDIO_MANAGER;
 	[SerializeField]private BoolVariable isSceneLoading;
 
 
@@ -73,12 +67,12 @@ public class ButtonClickLook : MonoBehaviour, IPointerEnterHandler,IPointerExitH
 		secondsUntilClick = GazeInputModule.GazeTimeInSeconds;
 			
 		button = GetComponent <Button> ();
-		col = GetComponent <Collider> ();
+//		col = GetComponent <Collider> ();
 
 		//cam = Camera.main;
 
-		if (isOnStartInvoke)
-			OnStart.Invoke ();
+//		if (isOnStartInvoke)
+//			OnStart.Invoke ();
 
 
 	}
@@ -149,40 +143,39 @@ public class ButtonClickLook : MonoBehaviour, IPointerEnterHandler,IPointerExitH
 
 		if (isCustomTime) {
 			GazeInputModule.GazeTimeInSeconds = originalTime;
-//			secondsUntilClick = GazeInputModule.GazeTimeInSeconds;
 		}
-
-		else if (isEnvChanger)
-			SceneController.Instance.ChangeSkyBox ();
-		else if (isBackToIntroButton) {
-
-			DATA_MANAGER.CheckHighScore ();
-				
-			
-			LoadScene ("Intro");
-
-		}else if (isStartButton) {
-			GameController.Instance.StartGame ();
-			AUDIO_MANAGER.PlayInterfaceSound ("SpecialSelect");
-			GameController.Instance.Paused = false;
-
-		} else if (isReplayButton) {
-			SceneController.Instance.ResetCurrentGame ();
-		}
-
-		if (isSceneChange)
-			LoadScene (scene);
-		
+//
+//		else if (isEnvChanger)
+//			SceneController.Instance.ChangeSkyBox ();
+//		else if (isBackToIntroButton) {
+//
+//			DATA_MANAGER.CheckHighScore ();
+//		
+//			LoadScene ("Intro");
+//
+//		}
+//		else if (isStartButton) {
+//			GameController.Instance.StartGame ();
+//			AUDIO_MANAGER.PlayInterfaceSound ("SpecialSelect");
+//			GameController.Instance.Paused = false;
+//
+//		} else if (isReplayButton) {
+//			SceneController.Instance.ResetCurrentGame ();
+//		}
+//
+//		if (isSceneChange)
+//			LoadScene (scene);
+//		
 		if (isOnClickEventCalled)
 			OnClick.Invoke ();
 
 	}
 		
-	void LoadScene(string scene){
-
-		SceneController.Instance.Load (scene);
-	
-	}
+//	void LoadScene(string scene){
+//
+//		SceneController.Instance.Load (scene);
+//	
+//	}
 	public void LoadURL(string url){
 
 		if (isStressModified)

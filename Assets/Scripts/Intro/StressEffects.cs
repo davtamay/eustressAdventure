@@ -18,6 +18,7 @@ public class StressEffects : MonoBehaviour {
 	void Start () {
 		player = GameObject.FindWithTag ("Player").transform;
 		playerMoveScript = player.GetComponent<PlayerLookMove> ();
+		if (playerMoveScript != null)
 		originalVelocity = playerMoveScript.velocity;
 		//PlayerLookMove.
 

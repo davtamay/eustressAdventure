@@ -132,81 +132,81 @@ public class GameController : MonoBehaviour {
 	/// <returns>Current Time in string 00:00</returns>
 	/// <param name="isDone">Add Ref bool local variable to have reference to current timer completion.</param>
 	/// <param name="time">Add time to current game timer could be left out if only checking isDone.</param>
-	public string TimeToAdd(ref bool isDone, float time = 0f){
-
-		timer += time;
-
-		if (time > 0f) {
-
-			isTimerOn = true;
-			StopAllCoroutines ();
-			StartCoroutine (StartTimer ());
-		}
-
-		string minutes = Mathf.Floor(timer /60).ToString("00");
-		string seconds = Mathf.Floor (timer % 60).ToString ("00");
-
-		if (timer < 0f) {
-			isDone = true;
-			isTimerOn = false;
-		}
-
-		return minutes + ":" + seconds;
-	
-	
-	}
-	public float GetCurrentTime(){
-
-		return timer;
-	}
-
-	float timerTimeScale = 1;
-	public void StopTimer(){
-
-
-		timerTimeScale = 0;
-
-	}
-	public void ResumeTimer(){
-
-
-		timerTimeScale = 1;
-	}
-
-	private IEnumerator StartTimer(){
-		
-
-		while (isTimerOn) {
-
-			timer -= Time.deltaTime * timerSpeed * timerTimeScale;
-
-			yield return null;
-		}
-
-		yield break;
-	
-	
-	}
-	bool isWaveImageOn;
-	public IEnumerator NewWave(){
-		isWaveImageOn = true;
-		newWaveGO.SetActive (true);
-		yield return new WaitForSeconds (timeUntilNewWave);
-		isWaveImageOn = false;
-	}
-	public bool GetWaveActiveState(){
-
-		if (isWaveImageOn)
-			return true;
-
-		return false;
-	
-	
-	}
-	public float GetNewWaveTime{
-	
-		get{return timeUntilNewWave;}	
-	}
+//	public string TimeToAdd(ref bool isDone, float time = 0f){
+//
+//		timer += time;
+//
+//		if (time > 0f) {
+//
+//			isTimerOn = true;
+//			StopAllCoroutines ();
+//			StartCoroutine (StartTimer ());
+//		}
+//
+//		string minutes = Mathf.Floor(timer /60).ToString("00");
+//		string seconds = Mathf.Floor (timer % 60).ToString ("00");
+//
+//		if (timer < 0f) {
+//			isDone = true;
+//			isTimerOn = false;
+//		}
+//
+//		return minutes + ":" + seconds;
+//	
+//	
+//	}
+//	public float GetCurrentTime(){
+//
+//		return timer;
+//	}
+//
+//	float timerTimeScale = 1;
+//	public void StopTimer(){
+//
+//
+//		timerTimeScale = 0;
+//
+//	}
+//	public void ResumeTimer(){
+//
+//
+//		timerTimeScale = 1;
+//	}
+//
+//	private IEnumerator StartTimer(){
+//		
+//
+//		while (isTimerOn) {
+//
+//			timer -= Time.deltaTime * timerSpeed * timerTimeScale;
+//
+//			yield return null;
+//		}
+//
+//		yield break;
+//	
+//	
+//	}
+//	bool isWaveImageOn;
+//	public IEnumerator NewWave(){
+//		isWaveImageOn = true;
+//		newWaveGO.SetActive (true);
+//		yield return new WaitForSeconds (timeUntilNewWave);
+//		isWaveImageOn = false;
+//	}
+//	public bool GetWaveActiveState(){
+//
+//		if (isWaveImageOn)
+//			return true;
+//
+//		return false;
+//	
+//	
+//	}
+//	public float GetNewWaveTime{
+//	
+//		get{return timeUntilNewWave;}	
+//	}
 
 
 	private bool IsGameOver;                 

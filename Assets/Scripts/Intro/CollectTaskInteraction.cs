@@ -7,9 +7,15 @@ public class CollectTaskInteraction : InteractionBehaviour {
 
 	//[SerializeField]protected Transform collectObjParent;
 	//[TextArea(0,15)][SerializeField]protected string textAfterCompletion;
+
+
+
 	[SerializeField]protected GameObject objectToGive;
 	[SerializeField]protected string nameForPlayerPref;
 
+	[Header("References")]
+	public DataManager DATA_MANAGER;
+	[SerializeField]protected Task task;
 	public virtual void Start(){
 
 
@@ -92,14 +98,14 @@ public class CollectTaskInteraction : InteractionBehaviour {
 	}
 	public void SaveTaskIdentified(){
 
-		if (PlayerPrefs.HasKey (nameForPlayerPref) == false) {
-			PlayerPrefs.SetInt (nameForPlayerPref, 0);
-			PlayerPrefs.Save ();
-			QuestAssess.Instance.OnUpdate ();
-
-
-		}
-
+//		if (PlayerPrefs.HasKey (nameForPlayerPref) == false) {
+//			PlayerPrefs.SetInt (nameForPlayerPref, 0);
+//			PlayerPrefs.Save ();
+//			QuestAssess.Instance.OnUpdate ();
+//
+//
+//		}
+//
 	}
 
 	public bool IsTaskIdentified(){
@@ -111,9 +117,9 @@ public class CollectTaskInteraction : InteractionBehaviour {
 	}
 	public void SaveTaskCompletion(){
 
-		PlayerPrefs.SetInt (nameForPlayerPref, 1);
-		PlayerPrefs.Save ();
-		QuestAssess.Instance.OnUpdate ();
+//		PlayerPrefs.SetInt (nameForPlayerPref, 1);
+//		PlayerPrefs.Save ();
+//		QuestAssess.Instance.OnUpdate ();
 	
 	}
 	public bool IsTaskCompleted(){

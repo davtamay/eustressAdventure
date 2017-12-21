@@ -108,7 +108,7 @@ public class PowerUpResponse : MonoBehaviour {
 
 		if (string.Equals (powerUpType, "AddTime", System.StringComparison.CurrentCultureIgnoreCase)) {
 
-			GameController.Instance.TimeToAdd (ref isDone, 10f);
+		//	GameController.Instance.TimeToAdd (ref isDone, 10f);
 			Destroy (gameObject);
 		}
 		if (string.Equals (powerUpType, "MoleRate", System.StringComparison.CurrentCultureIgnoreCase)) {

@@ -9,8 +9,8 @@ public class Mountain_Cave_TaskCollection : CollectTaskInteraction {
 	[SerializeField] private int wackScoreToBeat;
 	[SerializeField] private GameObject[] GOToActivateOnCompletion;
 
-	[Header("References")]
-	[SerializeField]private DataManager DATA_MANAGER;
+//	[Header("References")]
+//	[SerializeField]private DataManager DATA_MANAGER;
 
 	public override void Start(){
 

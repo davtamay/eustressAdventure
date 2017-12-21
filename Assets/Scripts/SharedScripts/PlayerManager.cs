@@ -273,16 +273,7 @@ public class PlayerManager : MonoBehaviour {
 		AudioManager.Instance.PlayAmbientSoundAndActivate(audioName, true, false,0, this.transform);
 
 	}
-	public void OnApplicationQuit(){
-	
-		if(curSceneName.Contains("Intro")){
-			DATA_MANAGER.SaveStressLevel (UIStressGage.Instance.stress);
-			DATA_MANAGER.SavePosition (thisTransform.position);
-			DATA_MANAGER.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
-		}
 
-
-	}
 	public void OnSaveState(){
 
 		if (!isCustomSavePosition) {
@@ -299,40 +290,15 @@ public class PlayerManager : MonoBehaviour {
 		//DATA_MANAGER.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
 
 	}
-//	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
-//
-//		switch(Event_Type){
-//
-//		case EVENT_TYPE.SCENE_CHANGING:
-//		
-//			if(curSceneName.Contains("Intro")){
-//				if (!isCustomSavePosition) {
-//					if (thisTransform == null)
-//						DataManager.Instance.SavePosition (GameObject.FindWithTag ("Player").transform.position);
-//					else
-//					DataManager.Instance.SavePosition (thisTransform.position);
-//				}else {
-//					DataManager.Instance.SavePosition (customSavePosition);
-//					isCustomSavePosition = false;
-//
-//				}
-//				DataManager.Instance.SaveStressLevel (UIStressGage.Instance.stress);
-//				DataManager.Instance.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
-//
-//			}
-//			break;
-//
-//
-//		
-//
-//		
-//		
-//
-//		}
+	public void OnApplicationQuit(){
+
+		if(curSceneName.Contains("Intro")){
+			//DATA_MANAGER.SaveStressLevel (UIStressGage.Instance.stress);
+			DATA_MANAGER.SavePosition (thisTransform.position);
+			//	DATA_MANAGER.SaveItemList (PlayerInventory.Instance.playerItemSlotGOList);
+		}
 
 
-
-
-//	}
+	}
 
 }

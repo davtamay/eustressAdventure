@@ -26,7 +26,10 @@ public class CowCollectionTask : CollectTaskInteraction {
 	
 	
 	}
-
+//	public override void OnTriggerEnter (Collider other)
+//	{
+//		DATA_MANAGER.SaveTaskStatus (task, Task_Status.IDENTIFIED);
+//	}
 	public override void CheckForTaskCompletion ()
 	{
 		
@@ -49,18 +52,19 @@ public class CowCollectionTask : CollectTaskInteraction {
 			//QuestAssess.Instance.OnUpdate ();
 		}
 	}
-	public override void OnTriggerStay(Collider other){
-	
-		return;
-	
-	}
-	public override void OnTriggerEnter(Collider other){
-
-		return;
-	//	if (other.CompareTag ("Player")) {
-
-
-			//transform.LookAt (player, Vector3.up);
-	//	}
-	}
+//	public override void OnTriggerStay(Collider other){
+//	
+//		return;
+//	
+//	}
+//	public override void OnTriggerEnter(Collider other){
+//
+//
+//		return;
+//	//	if (other.CompareTag ("Player")) {
+//
+//
+//			//transform.LookAt (player, Vector3.up);
+//	//	}
+//	}
 }

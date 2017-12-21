@@ -21,6 +21,8 @@ public class Park_LonelyDog_TaskCollection : CollectTaskInteraction {
 	[SerializeField] Transform dogFollowing;
 	DogInteraction dogInteractionScript;
 
+
+
 	public override void Awake ()
 	{
 		thisAnimator = GetComponent<Animator> ();
@@ -122,6 +124,9 @@ public class Park_LonelyDog_TaskCollection : CollectTaskInteraction {
 	public override void OnTriggerEnter(Collider other){
 
 		if (other.CompareTag ("Player")) {
+
+			DATA_MANAGER.SaveTaskStatus (task, Task_Status.IDENTIFIED);
+
 			if (DogInteraction.curDogInteraction != null)
 				target = DogInteraction.curDogInteraction.dogTransform;
 

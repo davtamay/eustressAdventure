@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class WackLookClick : MonoBehaviour {
+public class WackLookClick : MonoBehaviour{
 
 	private Camera cam;
 
 	public float speedDifficulty = 1f;
 	private float timer;
 
-	//private int isIdleHash = Animator.StringToHash("IsIdle"); 
+
 	private int isPopUpHash = Animator.StringToHash("IsPopUp");
 	private int	isDeadHash = Animator.StringToHash ("IsDead");
 	private int	isEatingHash = Animator.StringToHash ("IsEating");
@@ -24,11 +25,20 @@ public class WackLookClick : MonoBehaviour {
 	public GameObject currentMole = null;
 	public bool isAllowPopUps = true;
 
+	public float changeWaveTurnOffTime;
+//	[Header("References")]
+//	WackGameManager WACK_GAME_MANAGER;
+
 	void Start () {
 		cam = Camera.main;
 		StartCoroutine (UpdateLookRaycast ());
 
 		StartCoroutine (TurnOnController ());
+	}
+
+	public void OnPointerEnter(PointerEventData eventData){
+
+
 	}
 
 
@@ -124,16 +134,24 @@ public class WackLookClick : MonoBehaviour {
 	
 	
 	}
+	public void DisableAllMoles(float time){
+
+		StartCoroutine	(TurnOffAll (time));
+
+	}
 	//make this turn off all for a bit
 	public void TurnOffAllMolesForWaveChange(){
 
-		isAllowPopUps = false;
+//		isAllowPopUps = false;
+//
+//		foreach (GameObject mole in WackGameManager.Instance.activeMoles) 
+//			StartCoroutine (TurnOffMole (mole));
 
-		foreach (GameObject mole in WackGameManager.Instance.activeMoles) 
-			StartCoroutine (TurnOffMole (mole));
-		
-		float timeOff = GameController.Instance.GetNewWaveTime;
-		StartCoroutine (TurnOnAllowPopUps (timeOff));//TurnOffAll(timeOff));
+		//new 12/05/17
+		StartCoroutine	(TurnOffAll (changeWaveTurnOffTime));
+		//FIXME How do you get new wave transitionTime
+	//	float timeOff = GameController.Instance.GetNewWaveTime;
+	//	StartCoroutine (TurnOnAllowPopUps (timeOff));//TurnOffAll(timeOff));
 
 	}
 	IEnumerator TurnOnAllowPopUps(float tOff){

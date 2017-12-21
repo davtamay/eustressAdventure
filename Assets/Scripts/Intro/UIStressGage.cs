@@ -20,6 +20,10 @@ public class UIStressGage : MonoBehaviour {
 	
 	//180 to down
 
+	[Header("References")]
+	[SerializeField]private DataManager DATA_MANAGER;
+
+
 	void Awake(){
 		
 		if (instance) {
@@ -91,8 +95,12 @@ public class UIStressGage : MonoBehaviour {
 	
 	//}
 
+	public void OnApplicationQuit(){
+
+		DATA_MANAGER.SaveStressLevel (stress);
 
 
+	}
 
 
 }

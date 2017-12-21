@@ -1651,7 +1651,18 @@ MonoBehaviour:
   loadingSceneActivator: {fileID: 1159376065}
   onSceneChange:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: ff6acb6260b5749d3b1f23bb48fd96ca, type: 2}
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
@@ -2392,7 +2403,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 47179155}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -115.51998, z: -0.00008685382}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: -0.00008685382}
   m_LocalScale: {x: 1.0012945, y: 0.997878, z: 1.0043231}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -3384,34 +3395,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &73901847
 MonoBehaviour:
@@ -4213,7 +4207,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1169058128}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &99067439
 MeshRenderer:
@@ -4549,16 +4543,16 @@ RectTransform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 108068983}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 81.344315, y: -667.66583, z: 0.000018239107}
-  m_LocalScale: {x: 0.36035866, y: 4.3363204, z: 0.80579996}
+  m_LocalRotation: {x: -0, y: -0, z: 9.868527e-17, w: 1}
+  m_LocalPosition: {x: 269.99994, y: -59.899597, z: 0}
+  m_LocalScale: {x: 0.79, y: 0.7900009, z: 0.7900002}
   m_Children: []
-  m_Father: {fileID: 986773782}
+  m_Father: {fileID: 958189126}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 81.344315, y: -667.66583}
+  m_AnchoredPosition: {x: 269.99994, y: -59.899597}
   m_SizeDelta: {x: 50, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &108068986
@@ -4579,15 +4573,10 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 603305773}
+      - m_Target: {fileID: 1261561622}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -4667,23 +4656,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 1
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &108068987
 MonoBehaviour:
@@ -5381,34 +5358,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &125028188
 MonoBehaviour:
@@ -5546,7 +5506,7 @@ Transform:
   m_Children:
   - {fileID: 1480398850}
   m_Father: {fileID: 1169058128}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &128299106
 Animator:
@@ -6238,7 +6198,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 147317754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -134.55997, z: -0.00009687541}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: -0.00009687541}
   m_LocalScale: {x: 1.0012945, y: 0.997878, z: 1.0043231}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -6433,6 +6393,7 @@ GameObject:
   - component: {fileID: 153256634}
   - component: {fileID: 153256633}
   - component: {fileID: 153256632}
+  - component: {fileID: 153256635}
   m_Layer: 5
   m_Name: ESelections
   m_TagString: Untagged
@@ -6525,6 +6486,31 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 153256630}
+--- !u!114 &153256635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 153256630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b78bc50ec03747bdadbfbe334c891a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  copingBoolToCheck:
+  - {fileID: 11400000, guid: c21e936639b554d7194bf469fc989038, type: 2}
+  - {fileID: 11400000, guid: 28f8fbf4ce29f444abddd58f17b8ff7a, type: 2}
+  - {fileID: 11400000, guid: f08b179ec4d6e4dec9518746e3aa430c, type: 2}
+  - {fileID: 11400000, guid: d63fee554f0324322a8a0f6b7eeff578, type: 2}
+  - {fileID: 11400000, guid: 7fb4dc5891b8d48c990d115f4844311d, type: 2}
+  - {fileID: 11400000, guid: 6c57c05f4d1554545a12441b51155b10, type: 2}
+  selectionEffect:
+  - {fileID: 562860083}
+  - {fileID: 1371774470}
+  - {fileID: 1885879458}
+  - {fileID: 1467447099}
+  - {fileID: 2109190102}
+  - {fileID: 719884466}
 --- !u!1 &155407173
 GameObject:
   m_ObjectHideFlags: 0
@@ -7594,7 +7580,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 174367029}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 70, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1016635962}
@@ -7869,6 +7855,161 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 182761122}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &183249423
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 630551284}
+    m_Modifications:
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.95998
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.060001373
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.0299983
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.9599817
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.059999704
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1288883429}
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: lookTriggerCollider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 30.000023
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalScale.z
+      value: 30.000023
+      objectReference: {fileID: 0}
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TakeOffInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 51ae49240a40a49bab13b86fef079982, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &184004153
 GameObject:
   m_ObjectHideFlags: 0
@@ -7945,34 +8086,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &184004158
 MonoBehaviour:
@@ -8038,6 +8162,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 11400000, guid: 8074a052a2362487baa787a1f2e175ae, type: 2}
         m_MethodName: SetValue
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1652203623}
+        m_MethodName: set_Paused
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9703,34 +9838,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &228242189
 MonoBehaviour:
@@ -10039,7 +10157,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 238454134}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -125.03999, z: -0.00009687541}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: -0.00009687541}
   m_LocalScale: {x: 1.0012945, y: 0.997878, z: 1.0043231}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -12175,7 +12293,9 @@ Transform:
   m_LocalPosition: {x: -47.4, y: 0, z: 58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1288883428}
+  - {fileID: 1853392334}
+  - {fileID: 319610785}
+  - {fileID: 630551284}
   - {fileID: 1792588175}
   - {fileID: 1713648356}
   - {fileID: 1163761366}
@@ -12705,7 +12825,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 286026190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -67.92, z: 0.000010856727}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: 0.000010856727}
   m_LocalScale: {x: 1.0012945, y: 0.997878, z: 1.0043231}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -13914,7 +14034,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 315044418}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -48.88, z: 0}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -14013,6 +14133,91 @@ Transform:
   m_Father: {fileID: 1878586229}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -53.33382, y: 1.5533638, z: -0.119930744}
+--- !u!1 &319610784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 319610785}
+  - component: {fileID: 319610788}
+  - component: {fileID: 319610787}
+  - component: {fileID: 319610786}
+  m_Layer: 0
+  m_Name: Farmer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &319610785
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 319610784}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 112.69527, y: 2.41, z: 216.63}
+  m_LocalScale: {x: 1, y: 4, z: 1}
+  m_Children:
+  - {fileID: 1539684278}
+  m_Father: {fileID: 272834542}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &319610786
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 319610784}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &319610787
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 319610784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &319610788
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 319610784}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &320682665
 GameObject:
   m_ObjectHideFlags: 0
@@ -14244,34 +14449,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &322227670
 MonoBehaviour:
@@ -14368,7 +14556,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 603305773}
+      - m_Target: {fileID: 1261561622}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -14678,7 +14866,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onTriggerEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onTriggerExit:
@@ -14912,7 +15111,7 @@ RectTransform:
   - {fileID: 1189233237}
   - {fileID: 2066894894}
   m_Father: {fileID: 986773782}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15230,7 +15429,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 338571447}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -182.16, z: -0.00009687541}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: -0.00009687541}
   m_LocalScale: {x: 1.0012945, y: 0.997878, z: 1.0043231}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -15369,6 +15568,8 @@ MonoBehaviour:
   timerForActivation: 0
   objectToGive: {fileID: 0}
   nameForPlayerPref: test3
+  DATA_MANAGER: {fileID: 0}
+  task: {fileID: 0}
   nameOfItemNeeded: RockPick
   gOImagetoUnlockAndActivate: {fileID: 1618786984}
 --- !u!65 &339202575
@@ -17274,34 +17475,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &394177312
 MonoBehaviour:
@@ -17398,7 +17582,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 603305773}
+      - m_Target: {fileID: 1261561622}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -17534,7 +17718,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 395632973}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -86.95999, z: -0.00004008638}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: -0.00004008638}
   m_LocalScale: {x: 1.0012945, y: 0.997878, z: 1.0043231}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -18368,7 +18552,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1297450255}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.40000007
+  m_Size: 0.39999992
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -18872,7 +19056,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 425463593}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -10.8, z: 0}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -19304,34 +19488,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 1
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 1
   customTime: 2
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &426618953
 MonoBehaviour:
@@ -19450,42 +19617,6 @@ Transform:
   m_Father: {fileID: 1308049586}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 6.090653, y: -6.156245, z: 51.665085}
---- !u!1 &433049464
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1169966896797110, guid: 07a5165714682477aba5dce34902d839,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 433049465}
-  m_Layer: 0
-  m_Name: LookConfirmation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &433049465
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224395012738568116, guid: 07a5165714682477aba5dce34902d839,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 433049464}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000019073486, y: 0.0000038146973, z: 0}
-  m_LocalScale: {x: 0.02000002, y: 0.020000001, z: 0.020000018}
-  m_Children:
-  - {fileID: 1754303519}
-  m_Father: {fileID: 1641574201}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 50.00002, y: 50.000004}
-  m_SizeDelta: {x: 2, y: 2}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &435208334
 GameObject:
   m_ObjectHideFlags: 0
@@ -23844,7 +23975,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 450634810}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -105.999985, z: -0.00008685382}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: -0.00008685382}
   m_LocalScale: {x: 1.0012945, y: 0.997878, z: 1.0043231}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -25576,34 +25707,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &474628927
 MonoBehaviour:
@@ -25700,7 +25814,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 603305773}
+      - m_Target: {fileID: 1261561622}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -26483,7 +26597,7 @@ RectTransform:
   m_Children:
   - {fileID: 917434843}
   m_Father: {fileID: 986773782}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -26908,7 +27022,7 @@ RectTransform:
   m_Children:
   - {fileID: 1595438552}
   m_Father: {fileID: 986773782}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -29384,7 +29498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curText: {fileID: 0}
   isUsingTextMesh: 1
-  curSceneName: 
+  sceneToLoadScoreFrom: Hoops
   DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
 --- !u!102 &553154489
 TextMesh:
@@ -29899,6 +30013,8 @@ MonoBehaviour:
   timerForActivation: 0
   objectToGive: {fileID: 0}
   nameForPlayerPref: test6
+  DATA_MANAGER: {fileID: 0}
+  task: {fileID: 0}
   wackScoreToBeat: 6
   GOToActivateOnCompletion:
   - {fileID: 528919017}
@@ -29906,7 +30022,6 @@ MonoBehaviour:
   - {fileID: 1552754247}
   - {fileID: 813804679}
   - {fileID: 1830932476}
-  DATA_MANAGER: {fileID: 0}
 --- !u!1 &570469689
 GameObject:
   m_ObjectHideFlags: 0
@@ -30701,7 +30816,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 585707995}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -58.399998, z: -0.00000022866949}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: -0.00000022866949}
   m_LocalScale: {x: 1, y: 0.99999917, z: 0.99999624}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -31384,34 +31499,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &598077736
 MonoBehaviour:
@@ -31728,6 +31826,7 @@ GameObject:
   - component: {fileID: 603195138}
   - component: {fileID: 603195141}
   - component: {fileID: 603195140}
+  - component: {fileID: 603195139}
   m_Layer: 16
   m_Name: LookConfirmation
   m_TagString: Untagged
@@ -31754,6 +31853,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &603195139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 603195137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &603195140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32408,6 +32523,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &630551283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100042, guid: c1072374a9d044942916d3d8a272d4ef, type: 3}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 630551284}
+  m_Layer: 2
+  m_Name: Human_DogFindTask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &630551284
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400042, guid: c1072374a9d044942916d3d8a272d4ef, type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 630551283}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 17.609985, y: 2.26, z: 51.64}
+  m_LocalScale: {x: 0.50000024, y: 0.5, z: 0.50000024}
+  m_Children:
+  - {fileID: 1641574201}
+  - {fileID: 1288883428}
+  m_Father: {fileID: 272834542}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &631532805
 GameObject:
   m_ObjectHideFlags: 0
@@ -34126,34 +34271,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &684643177
 MonoBehaviour:
@@ -34450,7 +34578,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 689220663}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -153.59998, z: -0.00009687541}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: -0.00009687541}
   m_LocalScale: {x: 1.0012945, y: 0.997878, z: 1.0043231}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -39650,7 +39778,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 723428798}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -39.36, z: 0}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -39859,7 +39987,7 @@ Transform:
   m_LocalScale: {x: 8.2026005, y: 5.2934513, z: 9.587233}
   m_Children: []
   m_Father: {fileID: 1277127847}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &732600578
 GameObject:
@@ -50540,7 +50668,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 758373544}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -96.47999, z: -0.00008685382}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: -0.00008685382}
   m_LocalScale: {x: 1.0012945, y: 0.997878, z: 1.0043231}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -51119,7 +51247,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 769862593}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: -2.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1344151171}
@@ -51533,7 +51661,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 777704959}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1344151171}
@@ -53167,7 +53295,7 @@ Transform:
   m_Children:
   - {fileID: 1255383566}
   m_Father: {fileID: 2039080769}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &811830349
 MonoBehaviour:
@@ -53183,6 +53311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAddStress: 0
   isReduceStress: 0
+  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
 --- !u!212 &811830350
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -53286,34 +53415,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &812934010
 MonoBehaviour:
@@ -57713,7 +57825,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 841117197}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -20.32, z: 0}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -58568,34 +58680,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &852209832
 MonoBehaviour:
@@ -59443,6 +59538,74 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 880125013}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &880247593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 880247594}
+  - component: {fileID: 880247596}
+  - component: {fileID: 880247595}
+  m_Layer: 5
+  m_Name: IntroView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &880247594
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 880247593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 10.799999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2039080769}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 10.8}
+  m_SizeDelta: {x: 180, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &880247595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 880247593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &880247596
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 880247593}
 --- !u!1 &881352637
 GameObject:
   m_ObjectHideFlags: 0
@@ -59657,7 +59820,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 887407271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -108.65, y: 40, z: 0}
+  m_LocalPosition: {x: -108.65, y: -40, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1776889791}
@@ -60874,34 +61037,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 2, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 1
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &917434846
 MonoBehaviour:
@@ -62040,6 +62186,8 @@ MonoBehaviour:
   timerForActivation: 0
   objectToGive: {fileID: 0}
   nameForPlayerPref: test1
+  DATA_MANAGER: {fileID: 0}
+  task: {fileID: 0}
   collectObjParent: {fileID: 460712095}
   glasses: {fileID: 464123405}
 --- !u!4 &945008402
@@ -62395,7 +62543,7 @@ RectTransform:
   - {fileID: 630293631}
   - {fileID: 1647845140}
   m_Father: {fileID: 1169058128}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -62735,6 +62883,42 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 956433704}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &958189125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 958189126}
+  m_Layer: 5
+  m_Name: Quest View
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &958189126
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 958189125}
+  m_LocalRotation: {x: 0.000000014901158, y: -0.000000006622658, z: 0.0000000087560945,
+    w: 1}
+  m_LocalPosition: {x: -38.61624, y: 16.812618, z: -0.00012456335}
+  m_LocalScale: {x: 0.4561502, y: 0.548901, z: 1.0200001}
+  m_Children:
+  - {fileID: 108068984}
+  - {fileID: 1261561624}
+  m_Father: {fileID: 2039080769}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -38.616238, y: 16.812618}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &959165648
 GameObject:
   m_ObjectHideFlags: 0
@@ -62933,6 +63117,7 @@ MonoBehaviour:
   scrollSpeed: 0.5
   nameOfPP: MusicVolume
   navigationButtons: []
+  slider: {fileID: 962436279}
 --- !u!114 &962436279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62980,7 +63165,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1189233235}
+      - m_Target: {fileID: 1256675399}
         m_MethodName: ChangeMusicVol
         m_Mode: 0
         m_Arguments:
@@ -62991,7 +63176,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1189233235}
+      - m_Target: {fileID: 1256675399}
         m_MethodName: TryMusicSampler
         m_Mode: 1
         m_Arguments:
@@ -63037,7 +63222,7 @@ Transform:
   m_Children:
   - {fileID: 1822233852}
   m_Father: {fileID: 1288883428}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &965261287
 GameObject:
@@ -63353,13 +63538,12 @@ RectTransform:
   m_LocalPosition: {x: 3.199997, y: 50.7, z: 0}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children:
-  - {fileID: 108068984}
   - {fileID: 331145716}
   - {fileID: 511279056}
   - {fileID: 498119708}
   - {fileID: 1805056182}
   m_Father: {fileID: 2039080769}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -64022,7 +64206,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 997699588}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -163.12, z: -0.00009687541}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: -0.00009687541}
   m_LocalScale: {x: 1.0012945, y: 0.997878, z: 1.0043231}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -64424,6 +64608,7 @@ MonoBehaviour:
   scrollSpeed: 0.5
   nameOfPP: SoundVolume
   navigationButtons: []
+  slider: {fileID: 1009856012}
 --- !u!114 &1009856012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64471,7 +64656,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1189233235}
+      - m_Target: {fileID: 1256675399}
         m_MethodName: ChangeSoundVol
         m_Mode: 0
         m_Arguments:
@@ -64482,7 +64667,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1189233235}
+      - m_Target: {fileID: 1256675399}
         m_MethodName: TrySoundSampler
         m_Mode: 1
         m_Arguments:
@@ -65051,34 +65236,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 1
-  scene: MainMenu
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &1015211750
 MonoBehaviour:
@@ -67288,7 +67456,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1288883428}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1085747743
 SkinnedMeshRenderer:
@@ -70391,6 +70559,8 @@ MonoBehaviour:
   timerForActivation: 0
   objectToGive: {fileID: 0}
   nameForPlayerPref: test5
+  DATA_MANAGER: {fileID: 0}
+  task: {fileID: 0}
   nameOfItemNeeded: Ticket
   gOToChangeIsKinematic: {fileID: 1158582904}
 --- !u!65 &1142381336
@@ -70710,11 +70880,6 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -70732,23 +70897,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &1147027070
 MonoBehaviour:
@@ -71458,7 +71611,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1288883428}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1163213259
 GameObject:
@@ -71757,6 +71910,7 @@ GameObject:
   - component: {fileID: 1169058131}
   - component: {fileID: 1169058134}
   - component: {fileID: 1169058133}
+  - component: {fileID: 1169058135}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -71774,7 +71928,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1667721816}
   - {fileID: 1991411359}
   - {fileID: 950088493}
   - {fileID: 128299105}
@@ -71927,7 +72080,7 @@ MonoBehaviour:
   shakeAmount: 3
   shakeSpeed: 2
   DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  playerPoints: {fileID: 0}
+  playerPoints: {fileID: 11400000, guid: 52266f855668f4928ba7dc5b674eed59, type: 2}
 --- !u!136 &1169058132
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -71966,9 +72119,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerItemSlotGOList: []
+  UIItemSlotsParent: {fileID: 1344151170}
   slotSpots: []
   playerInventory: {fileID: 11400000, guid: 72ec2b0ba3cdb46078be2df043589151, type: 2}
   DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
+--- !u!114 &1169058135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1169058127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb94c872cb4142a0a6e44feb819ec16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: ff6acb6260b5749d3b1f23bb48fd96ca, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1169058131}
+        m_MethodName: OnSaveState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1170875636
 GameObject:
   m_ObjectHideFlags: 0
@@ -72767,27 +72949,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1189233237}
   - component: {fileID: 1189233236}
-  - component: {fileID: 1189233235}
   m_Layer: 5
   m_Name: SettingsPanel(HASTOBEON)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1189233235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114717510340183206, guid: 49aff40de3d31444cab9e8eef8cea76c,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1189233234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 530e8124c2c6b4cf28e103a81afcdf5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMixer: {fileID: 24100000, guid: 28a83fecd8f9f4eb6af70ea11e4b13da, type: 2}
+  m_IsActive: 0
 --- !u!222 &1189233236
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -75854,6 +76022,7 @@ GameObject:
   - component: {fileID: 1256675396}
   - component: {fileID: 1256675397}
   - component: {fileID: 1256675398}
+  - component: {fileID: 1256675399}
   m_Layer: 5
   m_Name: Menus
   m_TagString: Untagged
@@ -75922,6 +76091,23 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 2
+--- !u!114 &1256675399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1256675395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530e8124c2c6b4cf28e103a81afcdf5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMixer: {fileID: 24100000, guid: 28a83fecd8f9f4eb6af70ea11e4b13da, type: 2}
+  soundToSample: SmallWin
+  musicToSample: Clouds
+  AUDIO_MANAGER: {fileID: 307770579}
+  musicButtonManipulator: {fileID: 962436278}
+  soundButtonManipulator: {fileID: 1009856011}
 --- !u!1 &1258053659
 GameObject:
   m_ObjectHideFlags: 0
@@ -76102,12 +76288,12 @@ GameObject:
   - component: {fileID: 1261561623}
   - component: {fileID: 1261561625}
   m_Layer: 5
-  m_Name: Quests(HASTOBEON)
+  m_Name: Quests
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &1261561623
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -76122,19 +76308,19 @@ RectTransform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1261561622}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.616257, y: 16.812588, z: 0}
-  m_LocalScale: {x: 0.45615023, y: 0.54890084, z: 1.0199997}
+  m_LocalRotation: {x: -0, y: -0, z: 9.868527e-17, w: 1}
+  m_LocalPosition: {x: -0.000038146973, y: 0.000011444092, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1209689737}
   - {fileID: 826674662}
   - {fileID: 603305777}
-  m_Father: {fileID: 2039080769}
-  m_RootOrder: 0
+  m_Father: {fileID: 958189126}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.28367174, y: 0.7035414}
   m_AnchorMax: {x: 0.28367174, y: 0.7035414}
-  m_AnchoredPosition: {x: 3.2, y: -9.2}
+  m_AnchoredPosition: {x: 21.632788, y: -20.35413}
   m_SizeDelta: {x: 129, y: 102.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1261561625
@@ -76148,34 +76334,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3791d6b16d3fa494e9770f85a3d78ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefTaskNames:
-  - test1
-  - test2
-  - test3
-  - test4
-  - test5
-  - test6
-  - test7
-  - test8
-  - test9
-  - test10
-  questDescriptions:
-  - TASK 1 THIS IS
-  - TASK 2 THIS IS
-  - TASK 3 THIS IS
-  - TASK 4 THIS IS
-  - TASK 5 THIS IS
-  - TASK 6 THIS IS
-  - TASK 7 THIS IS
-  - TASK 8 THIS IS
-  - TASK 9 THIS IS
-  - TASK 10 THIS IS
   questSlotsParent: {fileID: 1194425066}
+  qTextSpaces: []
   scrollSpeed: 0.5
   navigationButtons:
   - {fileID: 826674664}
   - {fileID: 1209689739}
   questScrollBar: {fileID: 0}
+  currentTaskList: []
+  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
 --- !u!1001 &1263657240
 Prefab:
   m_ObjectHideFlags: 0
@@ -76908,7 +77075,6 @@ Transform:
   - {fileID: 27270445}
   - {fileID: 1772542810}
   - {fileID: 2124200672}
-  - {fileID: 1539684278}
   - {fileID: 731222228}
   m_Father: {fileID: 1908828466}
   m_RootOrder: 6
@@ -80510,7 +80676,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1281002026}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -144.07999, z: -0.00009687541}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: -0.00009687541}
   m_LocalScale: {x: 1.0012945, y: 0.997878, z: 1.0043231}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -80922,9 +81088,9 @@ GameObject:
   - component: {fileID: 1288883428}
   - component: {fileID: 1288883434}
   - component: {fileID: 1288883431}
-  - component: {fileID: 1288883432}
-  - component: {fileID: 1288883429}
   - component: {fileID: 1288883430}
+  - component: {fileID: 1288883429}
+  - component: {fileID: 1288883432}
   m_Layer: 2
   m_Name: model_MaleHuman
   m_TagString: Untagged
@@ -80938,16 +81104,15 @@ Transform:
   m_PrefabParentObject: {fileID: 400042, guid: c1072374a9d044942916d3d8a272d4ef, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1288883427}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 17.609985, y: 0.44, z: 53.479996}
-  m_LocalScale: {x: 0.5000006, y: 0.5000002, z: 0.5000008}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.67, y: -3.6399999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1161649488}
-  - {fileID: 1641574201}
   - {fileID: 962664672}
+  - {fileID: 1161649488}
   - {fileID: 1085747742}
-  m_Father: {fileID: 272834542}
-  m_RootOrder: 0
+  m_Father: {fileID: 630551284}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1288883429
 MonoBehaviour:
@@ -81060,6 +81225,8 @@ MonoBehaviour:
   timerForActivation: 0
   objectToGive: {fileID: 0}
   nameForPlayerPref: test7
+  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
+  task: {fileID: 11400000, guid: 42c1a46be26c649a8a7d1f703db180da, type: 2}
   headBone: {fileID: 940476355}
   weight: 1
   dampTime: 0.12
@@ -81104,8 +81271,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 20, y: 10, z: 20}
-  m_Center: {x: 0, y: 4.09, z: 9.07}
+  m_Size: {x: 22.2, y: 8.5, z: 20}
+  m_Center: {x: 0, y: 5.13, z: 9.07}
 --- !u!95 &1288883434
 Animator:
   serializedVersion: 3
@@ -81223,7 +81390,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1297450254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 18.300014, z: 0}
+  m_LocalPosition: {x: -0.11499977, y: -30.50003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1863876835}
@@ -81357,34 +81524,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &1308373339
 MonoBehaviour:
@@ -85774,7 +85924,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1330006223}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: -5.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1344151171}
@@ -86406,7 +86556,7 @@ RectTransform:
   - {fileID: 1698532260}
   - {fileID: 153256631}
   m_Father: {fileID: 2039080769}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -86537,7 +86687,7 @@ GameObject:
   - component: {fileID: 1344151173}
   - component: {fileID: 1344151172}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: ItemSlotParent
   m_TagString: UISlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86551,7 +86701,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1344151170}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000006198883, y: 3.5750008, z: -0.000007803483}
+  m_LocalPosition: {x: 0.0000060081484, y: 3.5750008, z: -0.000007803483}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 769862594}
@@ -86938,7 +87088,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 29b184cf5c7874f44b03f2574c595a77, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 29b184cf5c7874f44b03f2574c595a77, type: 3}
       propertyPath: m_LocalScale.x
@@ -87364,7 +87514,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1368570226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -172.63998, z: -0.00009687541}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: -0.00009687541}
   m_LocalScale: {x: 1.0012945, y: 0.997878, z: 1.0043231}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -88753,6 +88903,8 @@ MonoBehaviour:
   timerForActivation: 0
   objectToGive: {fileID: 0}
   nameForPlayerPref: test4
+  DATA_MANAGER: {fileID: 0}
+  task: {fileID: 0}
   scoreNeededForTask: 5
   headBone: {fileID: 226064325}
   weight: 1
@@ -88760,7 +88912,6 @@ MonoBehaviour:
   maxAngle: 85
   additionalRotation: {x: 0, y: 0, z: -90}
   isLooking: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
 --- !u!65 &1395536748
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -88930,7 +89081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curText: {fileID: 0}
   isUsingTextMesh: 1
-  curSceneName: 
+  sceneToLoadScoreFrom: Hit
   DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
 --- !u!102 &1397149122
 TextMesh:
@@ -90448,7 +90599,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1433336254}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1344151171}
@@ -103277,34 +103428,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &1502955350
 MonoBehaviour:
@@ -103533,7 +103667,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1504635658}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -29.84, z: 0}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -103675,56 +103809,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: set_Paused
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 1
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &1504897210
 MonoBehaviour:
@@ -104942,7 +105037,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1529781937}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 361.5, y: 114.5, z: 0}
+  m_LocalPosition: {x: 272.5, y: 167.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 637704315}
@@ -105331,9 +105426,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1539684278}
-  - component: {fileID: 1539684277}
-  - component: {fileID: 1539684276}
-  - component: {fileID: 1539684275}
   - component: {fileID: 1539684279}
   - component: {fileID: 1539684274}
   m_Layer: 8
@@ -105356,13 +105448,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infoCanvasPrefab: {fileID: 1768661711262548, guid: a486f68d53e804807823901f728b6209,
     type: 2}
-  infoOffset: {x: -4.12, y: 0.53, z: 0}
+  infoOffset: {x: 0, y: 0, z: 0}
   isAutomaticRotation: 1
-  isAutomaticStayUpRight: 1
+  isAutomaticStayUpRight: 0
   yInfoRotationOffset: 0
   xInfoRotationOffset: 0
   zInfoRotationOffset: 0
-  InfoSize: {x: 8, y: 8}
+  InfoSize: {x: 0.5, y: 0.5}
   lineRendererStart: {fileID: 0}
   textAnchor: 4
   keyLocalizationList: []
@@ -105375,12 +105467,45 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onTriggerEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1617973622}
+        m_MethodName: TriggerSelections
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onTriggerExit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1617973622}
+        m_MethodName: RemoveSelections
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1539684274}
+        m_MethodName: TakeOffInfo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onActionSelect:
@@ -105408,75 +105533,24 @@ MonoBehaviour:
   timerForActivation: 0
   objectToGive: {fileID: 0}
   nameForPlayerPref: test2
+  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
+  task: {fileID: 11400000, guid: 9940162dbe6e942e8a881bafc3c70280, type: 2}
   cowsNeededToCollect:
   - {fileID: 336821076}
---- !u!23 &1539684275
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539684273}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!65 &1539684276
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539684273}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1539684277
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539684273}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1539684278
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1539684273}
-  m_LocalRotation: {x: -0.0010074766, y: 0.99890494, z: -0.03899638, w: 0.025832796}
-  m_LocalPosition: {x: -83.84284, y: -8.860174, z: -5.0459347}
-  m_LocalScale: {x: 6.000026, y: 6, z: 6.000029}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.65}
+  m_LocalScale: {x: 1, y: 0.25, z: 1}
   m_Children:
-  - {fileID: 1853392334}
-  m_Father: {fileID: 1277127847}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  - {fileID: 1617973623}
+  m_Father: {fileID: 319610785}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1539684279
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -105487,8 +105561,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.71, y: 2.6, z: 8.87}
-  m_Center: {x: 0, y: 1.16, z: 1.3}
+  m_Size: {x: 20, y: 5, z: 20}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1539720603
 GameObject:
   m_ObjectHideFlags: 0
@@ -109901,34 +109975,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &1563493545
 MonoBehaviour:
@@ -111054,7 +111111,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1595364611}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 70, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 161700116}
@@ -111137,7 +111194,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4674646649066782, guid: 7f2cea15d1c1d4810afd1489f8cfff45, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 23475770032563392, guid: 7f2cea15d1c1d4810afd1489f8cfff45,
         type: 2}
@@ -111209,11 +111266,6 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -111231,23 +111283,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &1595438555
 MonoBehaviour:
@@ -112400,6 +112440,192 @@ Transform:
   m_Father: {fileID: 1926957476}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1617973621
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1539684278}
+    m_Modifications:
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.3199997
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TakeOffInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onSecondaryLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1539684274}
+    - target: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: onLookClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 224980980605719096, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224980980605719096, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224980980605719096, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224980980605719096, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000038146973
+      objectReference: {fileID: 0}
+    - target: {fileID: 224980980605719096, guid: 51ae49240a40a49bab13b86fef079982,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.000019073486
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 51ae49240a40a49bab13b86fef079982, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &1617973622 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
+    type: 2}
+  m_PrefabInternal: {fileID: 1617973621}
+  m_Script: {fileID: 11500000, guid: 43c07e43e55a74892a0548af33721a51, type: 3}
+--- !u!224 &1617973623 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+    type: 2}
+  m_PrefabInternal: {fileID: 1617973621}
 --- !u!1 &1618786984
 GameObject:
   m_ObjectHideFlags: 0
@@ -112805,34 +113031,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &1627338164
 MonoBehaviour:
@@ -112929,7 +113138,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 603305773}
+      - m_Target: {fileID: 1261561622}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -113163,34 +113372,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &1632038753
 MonoBehaviour:
@@ -113628,99 +113820,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1639587431}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1641574199
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1847071340730920, guid: 07a5165714682477aba5dce34902d839,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1641574201}
-  - component: {fileID: 1641574203}
-  - component: {fileID: 1641574202}
-  - component: {fileID: 1724287512}
-  - component: {fileID: 1641574200}
-  m_Layer: 0
-  m_Name: InteractionSelect
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!95 &1641574200
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 95401643254744378, guid: 07a5165714682477aba5dce34902d839,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1641574199}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 524560456b80a4a789e6f798d7cf552b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!224 &1641574201
+--- !u!224 &1641574201 stripped
 RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1641574199}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 2.2400017, y: 3.7000008, z: 1.03}
-  m_LocalScale: {x: 30.000008, y: 30, z: 30.000008}
-  m_Children:
-  - {fileID: 433049465}
-  m_Father: {fileID: 1288883428}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.24, y: 3.7}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1641574202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1641574199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 0
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!223 &1641574203
-Canvas:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1641574199}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
+  m_PrefabParentObject: {fileID: 224896056121585848, guid: 51ae49240a40a49bab13b86fef079982,
+    type: 2}
+  m_PrefabInternal: {fileID: 183249423}
 --- !u!1 &1641680627
 GameObject:
   m_ObjectHideFlags: 0
@@ -113747,7 +113851,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1641680627}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: -5.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1344151171}
@@ -114421,34 +114525,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &1667686561
 MonoBehaviour:
@@ -114545,7 +114632,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 603305773}
+      - m_Target: {fileID: 1261561622}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -114637,63 +114724,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1667686557}
---- !u!1 &1667721815
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1667721816}
-  - component: {fileID: 1667721817}
-  m_Layer: 0
-  m_Name: PlayerManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1667721816
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1667721815}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1169058128}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1667721817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1667721815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffb94c872cb4142a0a6e44feb819ec16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: ff6acb6260b5749d3b1f23bb48fd96ca, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1169058131}
-        m_MethodName: OnSaveState
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1667964518
 GameObject:
   m_ObjectHideFlags: 0
@@ -115348,7 +115378,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1685249621}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: -2.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1344151171}
@@ -115996,7 +116026,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d0b5672f06b814677a3773e8cfc32822, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d0b5672f06b814677a3773e8cfc32822, type: 3}
       propertyPath: m_LocalScale.x
@@ -116197,6 +116227,8 @@ MonoBehaviour:
   timerForActivation: 0
   objectToGive: {fileID: 0}
   nameForPlayerPref: test8
+  DATA_MANAGER: {fileID: 0}
+  task: {fileID: 0}
   thiefGO: {fileID: 1972324165}
   nameOfGONeededForCompletion: TESTDROPOBJECT
 --- !u!65 &1704435162
@@ -116542,7 +116574,7 @@ Transform:
   - {fileID: 708205144}
   - {fileID: 160947004}
   m_Father: {fileID: 272834542}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!154 &1713648357
 TerrainCollider:
@@ -116783,7 +116815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curText: {fileID: 0}
   isUsingTextMesh: 1
-  curSceneName: 
+  sceneToLoadScoreFrom: BerryScary
   DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
 --- !u!102 &1719512875
 TextMesh:
@@ -116973,71 +117005,12 @@ Transform:
   m_Father: {fileID: 141372782}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1724287512
+--- !u!114 &1724287512 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114028893072984470, guid: 07a5165714682477aba5dce34902d839,
+  m_PrefabParentObject: {fileID: 114395407896254386, guid: 51ae49240a40a49bab13b86fef079982,
     type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1641574199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_PrefabInternal: {fileID: 183249423}
   m_Script: {fileID: 11500000, guid: 43c07e43e55a74892a0548af33721a51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imageGO: {fileID: 0}
-  lookTime: 2
-  timeUntilImageDeactivate: 3
-  isUnscaledTime: 0
-  lookDistance: 15
-  isLookAtPlayer: 1
-  onLookClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1288883429}
-        m_MethodName: OnSpeak
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  isItemForSlot: 0
-  isSpriteChangeOnClick: 0
-  spriteToChange: {fileID: 0}
-  isColorChangeOnClick: 0
-  colorToChange: {r: 0, g: 0, b: 0, a: 0}
-  alternativeImageToChangeColor: {fileID: 0}
-  onSecondaryLookClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1288883429}
-        m_MethodName: TakeOffInfo
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  isSecondLookEventCalled: 0
-  originalSprite: {fileID: 0}
-  image: {fileID: 0}
-  isOnFromStart: 0
-  isStayOn: 0
-  lookTriggerCollider: {fileID: 1288883431}
-  isSceneLoading: {fileID: 0}
-  isCustomTime: 0
-  customTime: 0
 --- !u!1 &1724970859
 GameObject:
   m_ObjectHideFlags: 0
@@ -118080,78 +118053,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1749506120}
---- !u!1 &1754303518
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1462233303883414, guid: 07a5165714682477aba5dce34902d839,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1754303519}
-  - component: {fileID: 1754303521}
-  - component: {fileID: 1754303520}
-  m_Layer: 0
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1754303519
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224923016666327088, guid: 07a5165714682477aba5dce34902d839,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1754303518}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 433049465}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2, y: 2}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1754303520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114048886736636390, guid: 07a5165714682477aba5dce34902d839,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1754303518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5ed17d10435544ef9bfe77baeb6c8b2c, type: 3}
-  m_Type: 3
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 0
-  m_FillOrigin: 0
---- !u!222 &1754303521
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 222997153930146390, guid: 07a5165714682477aba5dce34902d839,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1754303518}
 --- !u!1 &1756518421
 GameObject:
   m_ObjectHideFlags: 0
@@ -119314,7 +119215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curText: {fileID: 0}
   isUsingTextMesh: 0
-  curSceneName: 
+  sceneToLoadScoreFrom: 
   DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
 --- !u!114 &1787428140
 MonoBehaviour:
@@ -119384,7 +119285,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1787460945}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -77.439995, z: -0.00004008638}
+  m_LocalPosition: {x: -73.149994, y: -6.4000015, z: -0.00004008638}
   m_LocalScale: {x: 1.0012945, y: 0.997878, z: 1.0043231}
   m_Children: []
   m_Father: {fileID: 1194425066}
@@ -119654,7 +119555,7 @@ Transform:
   - {fileID: 917014451}
   - {fileID: 476727651}
   m_Father: {fileID: 272834542}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1794101969
 GameObject:
@@ -120204,7 +120105,7 @@ RectTransform:
   m_Children:
   - {fileID: 1015211747}
   m_Father: {fileID: 986773782}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -120304,34 +120205,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &1808930204
 MonoBehaviour:
@@ -121070,34 +120954,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &1827805614
 MonoBehaviour:
@@ -121194,7 +121061,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 603305773}
+      - m_Target: {fileID: 1261561622}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -122315,7 +122182,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1853392334}
   - component: {fileID: 1853392336}
-  - component: {fileID: 1853392335}
   - component: {fileID: 1853392337}
   m_Layer: 16
   m_Name: SpeakSelect
@@ -122323,7 +122189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1853392334
 Transform:
   m_ObjectHideFlags: 0
@@ -122331,25 +122197,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1853392333}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.841, y: 0, z: 0.85}
-  m_LocalScale: {x: 10.322232, y: 10.32222, z: 10.322232}
+  m_LocalPosition: {x: 109.45402, y: 1.4699135, z: 221.37146}
+  m_LocalScale: {x: 30.966698, y: 30.96666, z: 30.966698}
   m_Children:
   - {fileID: 603195138}
-  m_Father: {fileID: 1539684278}
+  m_Father: {fileID: 272834542}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1853392335
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1853392333}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.02
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1853392336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127831,7 +127685,7 @@ RectTransform:
   - {fileID: 2132116986}
   - {fileID: 1415989833}
   m_Father: {fileID: 1169058128}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -127909,34 +127763,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &1994706397
 MonoBehaviour:
@@ -128452,34 +128289,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &2005334935
 MonoBehaviour:
@@ -130001,16 +129821,17 @@ RectTransform:
   m_LocalPosition: {x: -1.3259811, y: 0.11834717, z: -0.4572751}
   m_LocalScale: {x: 0.0024999997, y: 0.0036000027, z: 0.0009869242}
   m_Children:
-  - {fileID: 1261561624}
+  - {fileID: 880247594}
+  - {fileID: 958189126}
   - {fileID: 986773782}
   - {fileID: 811830348}
   - {fileID: 1341862024}
   m_Father: {fileID: 1256675396}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 48.674023, y: 50.118347}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1.3259773, y: 0.11834717}
   m_SizeDelta: {x: 193.3, y: 127.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2040876841
@@ -130325,34 +130146,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &2045324106
 MonoBehaviour:
@@ -130449,7 +130253,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 603305773}
+      - m_Target: {fileID: 1261561622}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -131938,34 +131742,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &2066894897
 MonoBehaviour:
@@ -133708,34 +133495,17 @@ MonoBehaviour:
     m_TypeName: Vector3_UnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   vector3_UnityEvent_Parameter: {x: 0, y: 0, z: 0}
-  OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnClick:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isOnClickEventCalled: 0
-  isOnStartInvoke: 0
-  isStressed: 0
-  isEnvChanger: 0
-  isSceneChange: 0
-  scene: 
-  isResetPositiontoHome: 0
-  isRestartProgress: 0
-  isBackToIntroButton: 0
-  isStartButton: 0
-  isReplayButton: 0
   isStressModified: 0
   stressModifiedAmount: 0
   isCustomTime: 0
   customTime: 0
   originalTime: 0
-  DATA_MANAGER: {fileID: 11400000, guid: e54916603ecb64a50867f2b4f21ce315, type: 2}
-  AUDIO_MANAGER: {fileID: 307770579}
   isSceneLoading: {fileID: 11400000, guid: 3484cbddf940c4c3fbc746b23aed9ab4, type: 2}
 --- !u!114 &2108575763
 MonoBehaviour:
@@ -135229,7 +134999,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5adb713dabbb04436b98215e65387c59, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5adb713dabbb04436b98215e65387c59, type: 3}
       propertyPath: m_LocalScale.x
@@ -135433,7 +135203,7 @@ Transform:
   m_Children:
   - {fileID: 962087825}
   m_Father: {fileID: 1169058128}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2146620838 stripped
 Transform:

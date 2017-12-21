@@ -30,9 +30,9 @@ public class IntVariable : ScriptableObject {
 	}
 
 
-	public static implicit operator int(IntVariable reference){
-
-		return reference.Value;
-	}
+//	public static implicit operator int(IntVariable reference){
+//
+//		return Value;
+//	}
 }
 

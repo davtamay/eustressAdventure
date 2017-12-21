@@ -58,24 +58,24 @@ public class OrientationAdjustment : MonoBehaviour {
 		camTransform = Camera.main.transform;//cam.transform.parent;
 		camParent = camTransform.parent;//camHead.transform.parent;
 	
-
+		OrientationChangeToGlobalFront ();
 	}
 	public void OrientationChangeToGlobalFront(){
-		camTransform = Camera.main.transform;
-		camParent = camTransform.parent;
-	
-		currentDirection = Vector3.zero;
-		currentDirection.y = camTransform.eulerAngles.y;
-		if (Mathf.Sign (currentDirection.y) == 0)
-			camParent.eulerAngles += currentDirection;
-		else
-			camParent.eulerAngles -= currentDirection;
+//		camTransform = Camera.main.transform;
+//		camParent = camTransform.parent;
+//	
+//		currentDirection = Vector3.zero;
+//		currentDirection.y = camTransform.eulerAngles.y;
+//		if (Mathf.Sign (currentDirection.y) == 0)
+//			camParent.eulerAngles += currentDirection;
+//		else
+//			camParent.eulerAngles -= currentDirection;
 
 
-		//StartCoroutine(OrientationToWorlFront());
+		StartCoroutine(OrientationToWorlFront());
 
 	}
-	/*IEnumerator OrientationToWorlFront(){
+	IEnumerator OrientationToWorlFront(){
 		//why does this stay at 0 and then next frame changes?
 		Debug.Log (camTransform.eulerAngles);
 		yield return new WaitForSecondsRealtime (0.2f);
@@ -87,7 +87,7 @@ public class OrientationAdjustment : MonoBehaviour {
 		else
 			camParent.eulerAngles -= currentDirection;
 		
-	}*/
+	}
 
 
 

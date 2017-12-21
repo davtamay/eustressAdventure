@@ -22,8 +22,11 @@ public class GameTimer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
+
 		timerText = GetComponent<Text> ();
+
+
 		//SetUpcomingTimerDoneTextToShow(textToShow);
 
 		//timerText.text = LocalizationManager.GetLocalizedValue (textToShow);
@@ -33,7 +36,8 @@ public class GameTimer : MonoBehaviour {
 		timerText.text = TIMER_CLASS.GetFormattedTime ();//WaveManager.Instance.TimeToAdd (ref isDone);
 
 
-		StartCoroutine (OnUpdate ());
+		//StartCoroutine (OnUpdate ());
+//		InvokeRepeating("TimerUpdate", 0, 0.1f);
 	}
 
 	public void SetUpcomingTimerDoneTextToShow(string key){
@@ -55,7 +59,23 @@ public class GameTimer : MonoBehaviour {
 
 	}
 
-	
+	void TimerUpdate(){
+
+		timerText.text = TIMER_CLASS.GetFormattedTime ();
+//		string seconds = timerText.text.Substring (6,2).Replace(timerText.text.Substring (6,2), "<size=5>" + timerText.text.Substring (6,2) + "</size>");
+		string seconds = timerText.text.Substring (6, 2);
+		timerText.text = timerText.text.Remove (6, 2);
+
+		timerText.text = timerText.text.Insert (6, "<size=12>" + seconds + "</size>");
+
+	}
+	void OnEnable(){
+		InvokeRepeating("TimerUpdate", 0, 0.06f);
+	}
+	void OnDisable(){
+		CancelInvoke ("TimerUpdate");
+
+	}
 	IEnumerator OnUpdate(){
 
 		timerText.text = textToShow;

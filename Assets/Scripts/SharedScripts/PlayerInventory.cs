@@ -11,9 +11,7 @@ public class PlayerInventory : MonoBehaviour {
 
 	public List<GameObject> playerItemSlotGOList;
 
-	//public GameObject[] allItemGOInScene;
-
-	private GameObject UISlots;
+	[SerializeField]private GameObject UIItemSlotsParent;
 	public List<SpriteRenderer> slotSpots;
 
 	private int curSlot;
@@ -46,14 +44,14 @@ public class PlayerInventory : MonoBehaviour {
 			curSceneName = SceneController.Instance.GetCurrentSceneName ();
 	
 		allItemsInScene = new Dictionary<string, GameObject> ();
-		UISlots = GameObject.FindWithTag ("UISlot");
+		//UISlotsParent = GameObject.FindWithTag ("UISlot");
 	}
 
 
 	void Start()
 	{
 
-		foreach(Transform s in UISlots.transform)
+		foreach(Transform s in UIItemSlotsParent.transform)
 			slotSpots.Add (s.GetComponent<SpriteRenderer> ());
 
 		itemContainer = new GameObject ("Item Container");
@@ -82,7 +80,7 @@ public class PlayerInventory : MonoBehaviour {
 				foreach(var item in playerInventory.Items)
 				{
 
-					if (DATA_MANAGER.slotListItemNames [i] == item.itemName ) 
+					if (DATA_MANAGER.playerData.slotListItemNames [i] == item.itemName ) 
 					{
 						
 						playerItemSlotGOList.Add (allItemsInScene[item.itemName]);

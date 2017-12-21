@@ -4,18 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+public enum Task_Status {NOT_IDENTIFIED, IDENTIFIED, COMPLETED}
+
 public class QuestAssess : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
 
-	[SerializeField] string[] playerPrefTaskNames;
-	[SerializeField] string[] questDescriptions;
+	//[SerializeField] string[] playerPrefTaskNames;
+	//[SerializeField] string[] questDescriptions;
 	[SerializeField] private Transform questSlotsParent;
-	private Dictionary<string,string> taskDictionary;
-	private Text[] qTextSpaces;
+	//private Dictionary<string,string> taskDictionary;
+	[SerializeField]private Text[] qTextSpaces;
 
-	public static QuestAssess Instance
-	{ get { return instance; } }
-
-	private static QuestAssess instance = null;
+//	public static QuestAssess Instance
+//	{ get { return instance; } }
+//
+//	private static QuestAssess instance = null;
 
 	private Transform cam;
 
@@ -24,13 +26,18 @@ public class QuestAssess : MonoBehaviour,IPointerEnterHandler,IPointerExitHandle
 	[SerializeField]private Button[] navigationButtons;
 	[SerializeField]private Scrollbar questScrollBar;
 
+	[SerializeField]private List<Task> currentTaskList;
+
+	[Header("References")]
+	[SerializeField]private DataManager DATA_MANAGER;
+
 	 void Awake(){
 
-		if (instance) {
-			DestroyImmediate (gameObject);
-			return;
-		}
-		instance = this; 
+//		if (instance) {
+//			DestroyImmediate (gameObject);
+//			return;
+//		}
+//		instance = this; 
 
 		cam = Camera.main.transform;
 
@@ -42,10 +49,10 @@ public class QuestAssess : MonoBehaviour,IPointerEnterHandler,IPointerExitHandle
 		if (questScrollBar == null)
 		questScrollBar = tempParent.parent.GetComponentInChildren<Scrollbar> ();
 
-		taskDictionary = new Dictionary<string, string>();
+		//taskDictionary = new Dictionary<string, string>();
 
-			for(int i = 0; i < playerPrefTaskNames.Length; i++)
-			taskDictionary.Add (playerPrefTaskNames[i], questDescriptions[i]);// [tn].aquestDescriptions;
+		//	for(int i = 0; i < playerPrefTaskNames.Length; i++)
+		//	taskDictionary.Add (playerPrefTaskNames[i], questDescriptions[i]);// [tn].aquestDescriptions;
 
 		int e = 0;
 		if (qTextSpaces != null) {
@@ -65,8 +72,9 @@ public class QuestAssess : MonoBehaviour,IPointerEnterHandler,IPointerExitHandle
 	int count = 0;
 
 
-	void Start(){
+	void OnEnable(){
 
+		currentTaskList = DATA_MANAGER.LoadTaskStatusList();
 		OnUpdate ();
 	
 	}
@@ -143,37 +151,59 @@ public class QuestAssess : MonoBehaviour,IPointerEnterHandler,IPointerExitHandle
 		//for(int i = 0; i < qTextSpaces.Length; i++)
 		//	qTextSpaces[i].text = string.Empty;
 
-		foreach (string pPN in taskDictionary.Keys) {
+//		foreach (string pPN in taskDictionary.Keys) {
+//
+//			if (EvaluatePlayerPref (pPN))
+//				count++;
+//
+//		}	
+		foreach(KeyValuePair<Task,Task_Status> t in DATA_MANAGER.playerData.taskDictionary){
 
-			if (EvaluatePlayerPref (pPN))
-				count++;
+			if(Task_Status.IDENTIFIED == t.Value){
 
-		}	
-
-	}
-
-	bool EvaluatePlayerPref(string pPName){
-
-		if (!PlayerPrefs.HasKey (pPName)) {
-	
-			return false;
-		}else{
-		
-			if (PlayerPrefs.GetInt (pPName) == 0) {
-			//	Debug.Log ("PlayerPrefAssess: have but not completed " + pPName);
-				qTextSpaces [count].text = taskDictionary [pPName];//questDescriptions [qID];
+				qTextSpaces [count].text = t.Key.taskDescription;
 				qTextSpaces [count].color = Color.gray;
-
-			} else if (PlayerPrefs.GetInt (pPName) == 1) {
-			//	Debug.Log ("PlayerPrefAssess: completed " + pPName);
-				qTextSpaces [count].text = taskDictionary [pPName];//questDescriptions [qID];
-				qTextSpaces [count].color = Color.green;
 
 
 			}
-			return true;
+
+			if(Task_Status.COMPLETED == t.Value){
+			
+				qTextSpaces [count].text = t.Key.taskDescription;
+				qTextSpaces [count].color = Color.green;
+
+			}
+			count++;
+		
+		
 		}
-	
-	
+
+
 	}
+//	void EvaluateTaskList( )
+
+//	bool EvaluatePlayerPref(string pPName){
+//
+//		if (!PlayerPrefs.HasKey (pPName)) {
+//	
+//			return false;
+//		}else{
+//		
+//			if (PlayerPrefs.GetInt (pPName) == 0) {
+//			//	Debug.Log ("PlayerPrefAssess: have but not completed " + pPName);
+//				qTextSpaces [count].text = taskDictionary [pPName];//questDescriptions [qID];
+//				qTextSpaces [count].color = Color.gray;
+//
+//			} else if (PlayerPrefs.GetInt (pPName) == 1) {
+//			//	Debug.Log ("PlayerPrefAssess: completed " + pPName);
+//				qTextSpaces [count].text = taskDictionary [pPName];//questDescriptions [qID];
+//				qTextSpaces [count].color = Color.green;
+//
+//
+//			}
+//			return true;
+//		}
+//	
+//	
+//	}
 }

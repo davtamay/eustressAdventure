@@ -18,8 +18,8 @@ public class Mountain_Injuredtask : CollectTaskInteraction {
 	private Animator thisAnimator;
 
 
-	[Header("References")]
-	[SerializeField]private DataManager DATA_MANAGER;
+//	[Header("References")]
+//	[SerializeField]private DataManager DATA_MANAGER;
 
 	public override void Awake ()
 	{
@@ -100,9 +100,9 @@ public class Mountain_Injuredtask : CollectTaskInteraction {
 		//PlayerPrefs.SetInt (nameForPlayerPref, 0);
 
 
-		if (DATA_MANAGER.LoadScore ("SkyFlight") <= scoreNeededForTask) {
-			SaveTaskCompletion ();
-		}
+//		if (DATA_MANAGER.LoadScore ("SkyFlight") <= scoreNeededForTask) {
+//			SaveTaskCompletion ();
+//		}
 		/*foreach(GameObject gO in PlayerManager.Instance.playerSlotGOList){
 			Debug.Log (gO.name);
 			if (string.Equals (gO.name, nameOfItemNeeded, System.StringComparison.CurrentCultureIgnoreCase)) 

@@ -7,32 +7,40 @@ using UnityEngine.Audio;
 public class SettingsControl : MonoBehaviour {
 
 	[SerializeField]AudioMixer mainMixer;
+	[SerializeField] string soundToSample = "SmallWin";
+	[SerializeField] string musicToSample = "Clouds";
 
+	[Header("References")]
+	[SerializeField]private AudioManager AUDIO_MANAGER;
+	[SerializeField]private SliderButtonManipulator musicButtonManipulator;
+	[SerializeField]private SliderButtonManipulator soundButtonManipulator;
 
-	private static SettingsControl instance;
-	public static SettingsControl Instance {
-		get{ return instance; }
+//
+	IEnumerator Start (){
+		while (musicButtonManipulator.slider == null)
+			yield return null;
 
-	}
+//		Debug.Log ("THISISMUSICVOLUME" + PlayerPrefs.GetFloat ("MusicVolume"));
 
-	void Awake (){
-
-
-		if (instance != null) {
-			Debug.LogError ("There is two instances off SettingControl");
-			return;
-		} else {
-			instance = this;
+		if (!PlayerPrefs.HasKey ("MusicVolume")) 
+		{
+			PlayerPrefs.SetFloat ("MusicVolume" ,0.5f);
+			PlayerPrefs.SetFloat ("SoundVolume", 0.5f);
+		
 		}
+
+			musicButtonManipulator.slider.value = PlayerPrefs.GetFloat ("MusicVolume");
+			soundButtonManipulator.slider.value = PlayerPrefs.GetFloat ("SoundVolume");
+
+
 	}
 
 
-	void Start(){
-	//	EventManager.Instance.AddListener (EVENT_TYPE.SCENE_LOADED,OnEvent);
-		gameObject.SetActive (false);
-		ChangeMusicVol(PlayerPrefs.GetFloat("MusicVolume"));
-		ChangeSoundVol(PlayerPrefs.GetFloat("SoundVolume"));
-	}
+//
+//	void Start(){
+//	//	EventManager.Instance.AddListener (EVENT_TYPE.SCENE_LOADED,OnEvent);
+//
+//	}
 //	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
 //
 //		switch(Event_Type){
@@ -52,6 +60,10 @@ public class SettingsControl : MonoBehaviour {
 		
 		mainMixer.SetFloat ("MusicVolume", Mathf.Log10 (vol) * 20f);
 
+//		if (musicButtonManipulator.slider == null)
+//			return;
+		PlayerPrefs.SetFloat ("MusicVolume", vol);
+//		musicSliderValue = musicButtonManipulator.slider.value;
 	}
 
 	public void ChangeSoundVol(float vol){
@@ -60,30 +72,41 @@ public class SettingsControl : MonoBehaviour {
 		mainMixer.SetFloat ("AmbientVolume", Mathf.Log10 (vol) * 20f);
 		mainMixer.SetFloat ("InterfaceVolume", Mathf.Log10 (vol) * 20f);
 
+//		if (soundButtonManipulator.slider == null)
+//			return;
+		PlayerPrefs.SetFloat ("SoundVolume", vol);
+//		soundSliderValue = soundButtonManipulator.slider.value;
+
 	}
-	private bool isAudioReady;
+
+	private bool isInitialSoundSkip;
 	public void TrySoundSampler(){
 			
-		if (!isAudioReady){
-			isAudioReady = true;
+		if (!isInitialSoundSkip){
+			isInitialSoundSkip = true;
 			return;
 		}
+
+
 			
 		
-		AudioManager.Instance.PlayInterfaceSound ("SmallWin");
+		AUDIO_MANAGER.PlayInterfaceSound (soundToSample);
 	}
 
-
+	private bool isInitialMusicSkip;
 	public void TryMusicSampler(){
 
-	
-		
-		//if (isAudioReady && !AudioManager.Instance.isMusicOn) {
-		if (isAudioReady && !AudioManager.Instance.isMusicOn) {
-			if (!AudioManager.Instance.GetAudioSourceReferance (AudioManager.AudioReferanceType._MUSIC, "Clouds"))
+		if (!isInitialMusicSkip) {
+			isInitialMusicSkip = true;
+			return;
+		}
+
+		if( !AUDIO_MANAGER.isMusicOn) {
+			
+			if (!AUDIO_MANAGER.GetAudioSourceReferance (AudioManager.AudioReferanceType._MUSIC, musicToSample))
 				return;
 			
-			AudioSource tempAS = AudioManager.Instance.GetAudioSourceReferance(AudioManager.AudioReferanceType._MUSIC,"Clouds");
+			AudioSource tempAS = AUDIO_MANAGER.GetAudioSourceReferance(AudioManager.AudioReferanceType._MUSIC, musicToSample);
 
 			if (tempAS == null || tempAS.isPlaying)
 				return;
@@ -99,7 +122,7 @@ public class SettingsControl : MonoBehaviour {
 
 	IEnumerator StopMusic(){
 		yield return new WaitForSecondsRealtime (5f);
-		AudioSource tempAS = AudioManager.Instance.GetAudioSourceReferance(AudioManager.AudioReferanceType._MUSIC,"Clouds");
+		AudioSource tempAS = AUDIO_MANAGER.GetAudioSourceReferance(AudioManager.AudioReferanceType._MUSIC,musicToSample);
 		tempAS.Stop ();
 		//isSampleMusicPlaying = false;
 

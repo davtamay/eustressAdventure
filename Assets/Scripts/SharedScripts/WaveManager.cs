@@ -16,12 +16,13 @@ public class WaveManager : MonoBehaviour {
 
 	[Header("Wave Transition Events")]
 	[SerializeField]UnityEvent onWaveEnd;
+	[SerializeField]private float newWaveIntermissionTime = 3;
 	[SerializeField]UnityEvent onNewWaveStart;
 	[SerializeField]UnityEvent onNewWaveObjectsEnabled;
 
-	[SerializeField]private GameObject newWaveIntermissionIndicator;
-	[SerializeField]private float newWaveIntermissionTime = 3;
-	[SerializeField]private bool isDeactivateIndicatorAfterIntermission;
+	//[SerializeField]private GameObject newWaveIntermissionIndicator;
+
+	//[SerializeField]private bool isDeactivateIndicatorAfterIntermission;
 
 	[Tooltip("Do you want to leave wave on for the next wave?")]
 	[SerializeField]private bool leaveWavesActiveWhenDone;
@@ -157,13 +158,13 @@ public class WaveManager : MonoBehaviour {
 
 		if (Application.isPlaying) {
 			//CHECK FOR PRESENCE OF WAVE INDICATOR IN SCENE
-			if (GameObject.FindWithTag ("NewWave")) {
-				newWaveIntermissionIndicator = GameObject.FindWithTag ("NewWave");
-				//OBTAIN INDICATORS OWN TIME UNTIL DISAPEAR - USEFUL FOR INDICATORS THAT USE FADING EFFECTS
-				if(newWaveIntermissionIndicator.transform.GetComponent<NewWaveTransition> () != null)
-					newWaveIntermissionTime = newWaveIntermissionIndicator.transform.GetComponent<NewWaveTransition> ().timeUntilDisapear;
-				newWaveIntermissionIndicator.gameObject.SetActive (false);
-			}
+//			if (GameObject.FindWithTag ("NewWave")) {
+//				newWaveIntermissionIndicator = GameObject.FindWithTag ("NewWave");
+//				//OBTAIN INDICATORS OWN TIME UNTIL DISAPEAR - USEFUL FOR INDICATORS THAT USE FADING EFFECTS
+//				if(newWaveIntermissionIndicator.transform.GetComponent<NewWaveTransition> () != null)
+//					newWaveIntermissionTime = newWaveIntermissionIndicator.transform.GetComponent<NewWaveTransition> ().timeUntilDisapear;
+//				newWaveIntermissionIndicator.gameObject.SetActive (false);
+//			}
 
 			if (waveEvents.Count == 0)
 				return;
@@ -264,7 +265,9 @@ public class WaveManager : MonoBehaviour {
 				}
 
 				onWaveEnd.Invoke ();
-				yield return StartCoroutine (NewWaveIntermission ());
+				//yield return StartCoroutine (NewWaveIntermission ());
+				yield return new WaitForSecondsRealtime (newWaveIntermissionTime);
+				//StartCoroutine (NewWaveIntermission ());newWaveIntermissionTime
 				onNewWaveStart.Invoke ();
 
 				++currentWave;
@@ -423,37 +426,37 @@ public class WaveManager : MonoBehaviour {
 #endregion
 
 #region WAVEINDICATOR METHODS
-
-	bool isWaveIndicatorOn;
-	public IEnumerator NewWaveIntermission(){
-		isWaveIndicatorOn = true;
-
-		if (newWaveIntermissionIndicator != null) {
-			newWaveIntermissionIndicator.SetActive (true);
-			//WAVEINDICATOR CONTINUES TO SHOW WHEN TIMESCALE IS 0 BECAUSE OF THIS.
-			yield return new WaitForSecondsRealtime (newWaveIntermissionTime);
-			if (isDeactivateIndicatorAfterIntermission)
-				newWaveIntermissionIndicator.SetActive (false);
-		}else
-			yield return new WaitForSeconds (newWaveIntermissionTime);
-
-		isWaveIndicatorOn = false;
-	}
-
-	public float GetNewWaveTime{
-
-		get{return newWaveIntermissionTime;}	
-	}
-
-	public bool GetNewWaveTransitionState(){
-
-		if (isWaveIndicatorOn)
-			return true;
-
-		return false;
-
-	}
-
+//
+//	bool isWaveIndicatorOn;
+//	public IEnumerator NewWaveIntermission(){
+//		isWaveIndicatorOn = true;
+//
+//		if (newWaveIntermissionIndicator != null) {
+//			newWaveIntermissionIndicator.SetActive (true);
+//			//WAVEINDICATOR CONTINUES TO SHOW WHEN TIMESCALE IS 0 BECAUSE OF THIS.
+//			yield return new WaitForSecondsRealtime (newWaveIntermissionTime);
+//			if (isDeactivateIndicatorAfterIntermission)
+//				newWaveIntermissionIndicator.SetActive (false);
+//		}else
+//			yield return new WaitForSeconds (newWaveIntermissionTime);
+//
+//		isWaveIndicatorOn = false;
+//	}
+//
+//	public float GetNewWaveTime{
+//
+//		get{return newWaveIntermissionTime;}	
+//	}
+//
+//	public bool GetNewWaveTransitionState(){
+//
+//		if (isWaveIndicatorOn)
+//			return true;
+//
+//		return false;
+//
+//	}
+//
 #endregion
 
 

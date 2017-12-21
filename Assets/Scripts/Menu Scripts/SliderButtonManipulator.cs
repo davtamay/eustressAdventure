@@ -6,24 +6,25 @@ using UnityEngine.UI;
 public class SliderButtonManipulator : MonoBehaviour,IPointerExitHandler,IPointerEnterHandler {
 
 	[SerializeField] private float scrollSpeed;
-	[SerializeField] private string nameOfPP;
+	public string nameOfPP;
 
 	[SerializeField]private Button[] navigationButtons;
-	private Slider slider;
+	public Slider slider;
 	private Transform cam;
 
 	void Awake () {
 
+		//slider = GetComponent<Slider> ();
+		//slider.value = PlayerPrefs.GetFloat (nameOfPP);
 
 		if(navigationButtons.Length == 0)
 		navigationButtons = GetComponentsInChildren <Button>();
-		slider = GetComponent<Slider> ();
-		slider.value = PlayerPrefs.GetFloat (nameOfPP);
+		
 
+//
+//		Debug.Log ("MUSIC AND SOUND" + PlayerPrefs.GetFloat (nameOfPP, slider.value));
 
-		Debug.Log ("MUSIC AND SOUND" + PlayerPrefs.GetFloat (nameOfPP, slider.value));
-
-		cam = Camera.main.transform;
+		///cam = Camera.main.transform;
 	
 	}
 
@@ -85,16 +86,16 @@ public class SliderButtonManipulator : MonoBehaviour,IPointerExitHandler,IPointe
 //		
 //	}
 //
-	void OnDisable(){
-		PlayerPrefs.SetFloat (nameOfPP, slider.value);
-		PlayerPrefs.Save ();
-	}
-	void OnApplicationQuit(){
-
-
-
-		PlayerPrefs.SetFloat (nameOfPP, slider.value);
-	}
+//	void OnDisable(){
+//		PlayerPrefs.SetFloat (nameOfPP, slider.value);
+//		PlayerPrefs.Save ();
+//	}
+//	void OnApplicationQuit(){
+//
+//
+//
+//		PlayerPrefs.SetFloat (nameOfPP, slider.value);
+//	}
 
 //	void OnEvent(EVENT_TYPE Event_Type, Component Sender, params object[] Param){
 //		switch(Event_Type){

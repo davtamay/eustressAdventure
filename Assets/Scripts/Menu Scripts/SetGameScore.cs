@@ -15,7 +15,7 @@ public class SetGameScore : MonoBehaviour {
 
 	[SerializeField] private bool isUsingTextMesh;
 
-	[SerializeField] private string curSceneName;
+	[SerializeField] private string sceneToLoadScoreFrom;
 
 	[Header("References")]
 	[SerializeField]private DataManager DATA_MANAGER;
@@ -23,21 +23,24 @@ public class SetGameScore : MonoBehaviour {
 
 	void Awake(){
 
-		curSceneName = SceneManager.GetActiveScene ().name;
 
 		if (isUsingTextMesh)
 			curTextMesh = GetComponent<TextMesh> ();
 		else
 			curText = GetComponent<Text> ();
 
+
+
 	}
 
 	void OnEnable(){
 	 
 		if (isUsingTextMesh) {
-//			curTextMesh = GetComponent<TextMesh> ();
+			if(curTextMesh == null)
+			curTextMesh = GetComponent<TextMesh> ();
 
-			curTextMesh.text = "HighScore:" + DATA_MANAGER.LoadScore();
+
+			curTextMesh.text = "HighScore:" + DATA_MANAGER.LoadScore(sceneToLoadScoreFrom);
 //			switch (curSceneName) {
 //
 //			case "Game.FINDER":
@@ -74,7 +77,12 @@ public class SetGameScore : MonoBehaviour {
 
 
 		} else {
-			curText.text = "HighScore:" + DATA_MANAGER.LoadScore();
+
+			if(curText == null)
+			curText = GetComponent<Text> ();
+
+
+			curText.text = "HighScore:" + DATA_MANAGER.LoadScore(sceneToLoadScoreFrom);
 
 
 			//	Debug.LogWarning ("Set Game Score is not registering Text component on Enable");

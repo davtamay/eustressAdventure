@@ -7,6 +7,7 @@ public class StressModifierGeneral : MonoBehaviour {
 	[SerializeField]private float stressEffect;
 	[SerializeField]private float timeUntilStressEffect;
 
+
 	float timer = 0;
 	void Update () {
 
@@ -21,6 +22,7 @@ public class StressModifierGeneral : MonoBehaviour {
 
 
 	}
+
 
 
 }
