@@ -50,8 +50,25 @@ public class RandomMoveAnimations : MonoBehaviour {
 	}
 	Vector3 dir;
 	string tempRandomClipName;
-	//private
-	IEnumerator OnUpdate(){
+
+    /* public void OnCollisionEnter(Collision other)
+     {
+
+         StopAllCoroutines();
+
+     }
+
+     public void OnCollisionExit(Collision collision)
+     {
+         StartCoroutine(OnUpdate());
+     }*/
+    Vector3 movePosition;
+
+    public Vector3 GetMoveMagnitude()
+    {
+        return movePosition;
+    }
+    IEnumerator OnUpdate(){
 
 		while (true ) {
 			yield return null;
@@ -60,7 +77,8 @@ public class RandomMoveAnimations : MonoBehaviour {
 				continue;
 		
 
-			if (isPlayRandomAmbientAudio) {
+			if (isPlayRandomAmbientAudio)
+            {
 			
 				int tempRandom = Random.Range (0, chanceOfPlayingClip + 1);
 
@@ -72,20 +90,18 @@ public class RandomMoveAnimations : MonoBehaviour {
 						//cant use  cow breath sound clip on other objects if cow breath referance is taken out...
 						AudioManager.Instance.PlayAmbientSoundAndActivate (tempRandomClipName, false, true, 5f, transform);
 				
-				}
-				
-						
+				}		
 			
 			}
 
-			if (isRandomOn) {
-				
-
-
+			if (isRandomOn)
+            {
+	
 				if (thisAnimator.GetCurrentAnimatorStateInfo (0).IsName ("Walk")) {
 			
 			
-					if (!isFirstTime) {
+					if (!isFirstTime)
+                    {
 						
 						curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
 						curWayPoint.y = initialPos.y; 
@@ -101,20 +117,18 @@ public class RandomMoveAnimations : MonoBehaviour {
 					}
 
 					//RaycastHit hit;
-					if (Physics.Raycast (thisTransform.position, thisTransform.forward, 5)) {
-
+					if (Physics.Raycast (thisTransform.position, thisTransform.forward, 5))
+                    {
+  
 						curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
-						curWayPoint.y = initialPos.y; 
-					
+						curWayPoint.y = initialPos.y;
+
 					}
 
 					if (Vector3.Distance (thisTransform.position, curWayPoint) < disUntilWayPointChange) {
 
-
-
 						curWayPoint = initialPos + Random.insideUnitSphere * distaceToSearch;
 						curWayPoint.y = initialPos.y; 
-
 
 						dir = (curWayPoint - transform.position).normalized;
 
@@ -136,7 +150,7 @@ public class RandomMoveAnimations : MonoBehaviour {
 					dir = (curWayPoint - thisTransform.position).normalized;
 
 
-					Vector3 movePosition = dir * Time.deltaTime * moveForwardSpeed;
+					movePosition = dir * Time.deltaTime * moveForwardSpeed;
 					movePosition.y = 0;
 
 					thisTransform.position += movePosition;
@@ -149,7 +163,7 @@ public class RandomMoveAnimations : MonoBehaviour {
 			}
 		}
 		
-		}
+	}
 
 	public IEnumerator Turn(Vector3 toRotation){
 
@@ -176,8 +190,37 @@ public class RandomMoveAnimations : MonoBehaviour {
 		}
 	}
 
-	
-	
+    public IEnumerator TurnUntilNoForwardObstacles(Vector3 toRotation)
+    {
+
+        Quaternion targetRotation = Quaternion.LookRotation(toRotation - thisTransform.position);
+        float timer = 0;
+
+        Ray ray = new Ray(thisTransform.position, thisTransform.forward);
+        while (Physics.SphereCast(ray, 2,2))
+        {
+            timer += Time.deltaTime;
+
+            thisTransform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
+
+            thisTransform.eulerAngles = new Vector3(0, thisTransform.eulerAngles.y);
+
+            if (Vector3.Dot(thisTransform.forward, dir) >= 0.99f || timer > 7)
+                yield break;
+
+            /*	transform.rotation = Quaternion.RotateTowards (transform.rotation, targetRotation,3f);
+
+                if (Quaternion.Dot (transform.rotation, targetRotation) >= 0.99 || timer > 7) 
+                    yield break;*/
+
+            yield return null;
+
+        }
+    }
+
+
+
+
 }
 
 

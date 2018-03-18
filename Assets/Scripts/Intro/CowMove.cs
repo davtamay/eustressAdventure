@@ -50,20 +50,7 @@ public class CowMove : MonoBehaviour {
 	}
 
 	//Coroutine startRandomCoroutine;
-	void OnTriggerExit(Collider other){
-
-
-		if (other.CompareTag ("Player")) {
-			thisAnimator.SetBool (animIdleHash, true);
-			//thisAnimator.CrossFade(animIdleHash, 3f);
-			startRanIEnum = StartRandom ();
-			StartCoroutine (startRanIEnum);
-
-
-		}
-
-
-	}
+	
 	IEnumerator StartRandom(){
 	
 		yield return new WaitForSeconds (timeUntilRestartSearch);
@@ -74,60 +61,137 @@ public class CowMove : MonoBehaviour {
 
 	float timer = 0;
 	Vector3 oldPosition;
-	//To stop cow from going thru fence?
-	/*void OnColliderStay(Collision coll){
-	
-		thisTransform.position += 
-	}*/
-//	Vector3 velocity;
-	void OnTriggerStay(Collider other){
-	
-		timer += Time.deltaTime;
 
-		if(other.CompareTag("Player")){
+ 
 
-			thisAnimator.SetInteger (randAnimHash, Random.Range (0, randMoveAnimScript.randomAnimationParameterChance));
+    void OnTriggerStay(Collider other)
+    {
+
+        //if (!isTriggerMove)
+        //    return; 
+
+        //if(randMoveAnimScript.GetMoveMagnitude().magnitude < 2f)
+        //    thisAnimator.SetBool(animIdleHash, true);
+   
+
+		if(other.CompareTag("Player"))
+        {
+
+            timer += Time.deltaTime;
+
+            thisAnimator.SetInteger (randAnimHash, Random.Range (0, randMoveAnimScript.randomAnimationParameterChance));
 			thisAnimator.SetBool (animIdleHash, false);
 
-			Vector3 playerRelativePos =(thisTransform.position - other.transform.position).normalized;
+            Vector3 playerRelativePos = (thisTransform.position - other.transform.position).normalized;
 
-
-			playerRelativePos.y = 0;
-
-			thisTransform.position += playerRelativePos * moveSpeed * Time.deltaTime;
-	
-		
-			if (timer >= 0.7f) {
-				timer = 0;
-				randMoveAnimScript.isRandomOn = false;
-				StopAllCoroutines();
-				StartCoroutine (randMoveAnimScript.Turn (2*thisTransform.position - other.transform.position));
-			}
+            playerRelativePos.y = 0;
 
 
 
 
+            if (timer >= 0.5f)
+            {
+
+            
+                    timer = 0;
+                    randMoveAnimScript.isRandomOn = false;
+                    StopAllCoroutines();
+                    StartCoroutine(randMoveAnimScript.Turn(2 * thisTransform.position - other.transform.position));
+                    
+
+              }
+
+            thisTransform.position += playerRelativePos * moveSpeed * Time.deltaTime;
+
+
+        }
+
+
+    }
+
+    //bool isTriggerMove = true;
+    void OnCollisionEnter(Collision collision)
+    {
+
+        if (!collision.collider.CompareTag("Player")) {
+            
+            Debug.Log("COW COLLIDED");
+
+            randMoveAnimScript.isRandomOn = false;
+            //StopAllCoroutines();
+            
+           // StartCoroutine(TurnToFaceAwayFromObstacles(collision.contacts[0].normal));
+            thisAnimator.SetBool(animIdleHash, false);
+            //isTriggerMove = false;
 		}
-	
-	
-	}
-	void OnCollisionEnter(Collision other){
 
-		if (other.collider.CompareTag ("Player")) {
-			Debug.Log ("COW COLLIDED");
-			
-		}
-			
-	
-	
-	}
+    }
 
-/*	void OnCollisionExit(Collision other){
-
-		if (!other.collider.CompareTag ("Player")) {
-		}
+    void OnTriggerExit(Collider other)
+    {
 
 
+        if (other.CompareTag("Player"))
+        {
+            thisAnimator.SetBool(animIdleHash, true);
+            //thisAnimator.CrossFade(animIdleHash, 3f);
+            startRanIEnum = StartRandom();
+            StartCoroutine(startRanIEnum);
 
-	}*/
+
+        }
+
+
+    }
+
+    bool isTurnOnCollisionDone = false;
+
+    private IEnumerator TurnToFaceAwayFromObstacles(Vector3 dir)
+    {
+        isTurnOnCollisionDone = false;
+        yield return StartCoroutine(randMoveAnimScript.TurnUntilNoForwardObstacles(dir));
+        isTurnOnCollisionDone = true;
+
+    }
+
+    float timerUntilNewTurn;
+    private void OnCollisionStay(Collision collision)
+    {
+        timerUntilNewTurn += Time.deltaTime;
+
+        //if (!collision.collider.CompareTag("Player"))
+        //    isTriggerMove = false;
+        //else
+        //    return;
+
+        //randMoveAnimScript.isRandomOn = false;
+
+        if (!Physics.Raycast(thisTransform.position, thisTransform.forward, 5))
+            thisTransform.position += thisTransform.forward * moveSpeed * Time.deltaTime;
+
+        if (isTurnOnCollisionDone || timerUntilNewTurn > 2f)
+        {
+            randMoveAnimScript.isRandomOn = false;
+            thisAnimator.SetBool(animIdleHash, false);
+            timerUntilNewTurn = 0f;
+            StartCoroutine(TurnToFaceAwayFromObstacles(collision.contacts[0].normal));
+        
+        }
+    }
+
+    void OnCollisionExit(Collision other)
+{
+
+    if (!other.collider.CompareTag("Player"))
+    {
+
+        startRanIEnum = StartRandom();
+        StartCoroutine(startRanIEnum);
+
+        //isTriggerMove = true;
+    }
+
+
+
+}
 }
