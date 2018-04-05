@@ -14,9 +14,10 @@ public class BicycleInteraction : InteractionBehaviour {
 	[SerializeField] private float maxMoveAngleFromUp = 180.0f;
 	[SerializeField] private CharacterController charController;
 
-	[SerializeField]private GameObject feetGO;
+	[SerializeField]private GameObject feetInteractionUI_GO;
+    [SerializeField] private GameObject getOutBikeUI_GO;
 
-	private bool isOnBike;
+    private bool isOnBike;
 
 
 
@@ -36,8 +37,13 @@ public class BicycleInteraction : InteractionBehaviour {
 			bikeAS = AudioManager.Instance.GetAudioSourceReferance (AudioManager.AudioReferanceType._DIRECT, "BikeRiding");
 
 			Drive = StartCoroutine (DriveBike ());
-			if (feetGO)
-				feetGO.SetActive (false);
+
+            if (feetInteractionUI_GO && getOutBikeUI_GO)
+            {
+                feetInteractionUI_GO.SetActive(false);
+                getOutBikeUI_GO.SetActive(true);
+            }
+
 			isOnBike = true;
 
 
@@ -47,9 +53,12 @@ public class BicycleInteraction : InteractionBehaviour {
 			player.GetComponent<PlayerLookMove> ().enabled = true;
 			StopCoroutine (Drive);
 			isOnBike = false;
-			if (feetGO)
-				feetGO.SetActive (true);
-			
+
+            if (feetInteractionUI_GO && getOutBikeUI_GO)
+            {
+                feetInteractionUI_GO.SetActive(true);
+                getOutBikeUI_GO.SetActive(false);
+            }
 		}
 
 		

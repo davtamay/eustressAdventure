@@ -59,11 +59,10 @@ public class PlayerLookMove : MonoBehaviour {
 	void Awake(){
 		
 		controller = GetComponent<CharacterController> ();
+        //if (isSlotsPresent)
+        //	UISlots = GameObject.FindWithTag ("UISlot");
 
-		//if (isSlotsPresent)
-		//	UISlots = GameObject.FindWithTag ("UISlot");
-		
-	}
+    }
 
 	float rechargeTimer;
 	void Start () {
@@ -328,6 +327,10 @@ public class PlayerLookMove : MonoBehaviour {
 	private float CameraAngleFromUp(){
 		return Vector3.Angle (Vector3.up, Camera.main.transform.rotation * Vector3.forward);}
 
+    //public void PlayerPositionChange(Vector3 pos)
+    //{
+    //   // thisTransform.position = pos;
 
+    //}
 
 }

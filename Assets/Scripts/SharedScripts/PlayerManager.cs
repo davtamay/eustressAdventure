@@ -184,9 +184,11 @@ public class PlayerManager : MonoBehaviour {
 //		isCustomSavePosition = true;
 //		customSavePosition = homePosition;
 		DATA_MANAGER.SavePosition (homePosition);
+        
 	//	LoadScene ("Intro");
 
 	}
+
 
 
 	public static float armorTimer = 0f;
